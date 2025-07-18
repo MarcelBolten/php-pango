@@ -106,7 +106,6 @@ PHP_FUNCTION(pango_layout_line_get_extents)
     PangoRectangle ink;
     PangoRectangle logical;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -114,11 +113,6 @@ PHP_FUNCTION(pango_layout_line_get_extents)
         &layoutline_zval,
         pango_ce_pangolayoutline,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
     pango_layout_line_get_extents(layoutline_object->line, &ink, &logical);
@@ -160,7 +154,6 @@ PHP_FUNCTION(pango_layout_line_get_pixel_extents)
     PangoRectangle ink;
     PangoRectangle logical;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -168,11 +161,6 @@ PHP_FUNCTION(pango_layout_line_get_pixel_extents)
         &layoutline_zval,
         pango_ce_pangolayoutline,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
     pango_layout_line_get_pixel_extents(layoutline_object->line, &ink, &logical);
@@ -216,7 +204,6 @@ PHP_FUNCTION(pango_cairo_show_layout_line)
     pango_layout_object *layout_object = NULL;
     cairo_context_object *cairocontext_object = NULL;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -226,11 +213,6 @@ PHP_FUNCTION(pango_cairo_show_layout_line)
         &cairocontext_zval,
         php_cairo_get_context_ce(),
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
 

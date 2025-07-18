@@ -116,7 +116,6 @@ PHP_FUNCTION(pango_font_description_get_variant)
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -124,11 +123,6 @@ PHP_FUNCTION(pango_font_description_get_variant)
         &fontdesc_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_variant(fontdesc_object->fontdesc));
@@ -144,7 +138,6 @@ PHP_FUNCTION(pango_font_description_set_variant)
     pango_fontdesc_object *fontdesc_object;
     long variant;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -153,11 +146,6 @@ PHP_FUNCTION(pango_font_description_set_variant)
         pango_ce_pangofontdescription,
         &variant,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_variant(fontdesc_object->fontdesc, variant);
@@ -174,7 +162,6 @@ PHP_FUNCTION(pango_font_description_equal)
     pango_fontdesc_object *fontdesc_object;
     pango_fontdesc_object *fontdesc2_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -184,11 +171,6 @@ PHP_FUNCTION(pango_font_description_equal)
         &fontdesc2_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     fontdesc2_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc2_zval);
@@ -206,7 +188,6 @@ PHP_FUNCTION(pango_font_description_set_family)
     const char *family;
     long family_len;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -216,11 +197,6 @@ PHP_FUNCTION(pango_font_description_set_family)
         &family,
         &family_len,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_family(fontdesc_object->fontdesc, family);
@@ -236,7 +212,6 @@ PHP_FUNCTION(pango_font_description_get_family)
     pango_fontdesc_object *fontdesc_object;
     const char *family;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -244,11 +219,6 @@ PHP_FUNCTION(pango_font_description_get_family)
         &fontdesc_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     if ((family = pango_font_description_get_family(fontdesc_object->fontdesc))) {
@@ -267,7 +237,6 @@ PHP_FUNCTION(pango_font_description_set_size)
     pango_fontdesc_object *fontdesc_object;
     long size;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -276,11 +245,6 @@ PHP_FUNCTION(pango_font_description_set_size)
         pango_ce_pangofontdescription,
         &size,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_size(fontdesc_object->fontdesc, size);
@@ -296,7 +260,6 @@ PHP_FUNCTION(pango_font_description_get_size)
     pango_fontdesc_object *fontdesc_object;
     long size;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -304,11 +267,6 @@ PHP_FUNCTION(pango_font_description_get_size)
         &fontdesc_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG (pango_font_description_get_size(fontdesc_object->fontdesc));
@@ -323,7 +281,6 @@ PHP_FUNCTION(pango_font_description_get_style)
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -331,11 +288,6 @@ PHP_FUNCTION(pango_font_description_get_style)
         &fontdesc_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_style(fontdesc_object->fontdesc));
@@ -351,7 +303,6 @@ PHP_FUNCTION(pango_font_description_set_style)
     pango_fontdesc_object *fontdesc_object;
     long style;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -360,11 +311,6 @@ PHP_FUNCTION(pango_font_description_set_style)
         pango_ce_pangofontdescription,
         &style,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_style(fontdesc_object->fontdesc, style);
@@ -379,7 +325,6 @@ PHP_FUNCTION(pango_font_description_get_weight)
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -387,11 +332,6 @@ PHP_FUNCTION(pango_font_description_get_weight)
         &fontdesc_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_weight(fontdesc_object->fontdesc));
@@ -407,7 +347,6 @@ PHP_FUNCTION(pango_font_description_set_weight)
     pango_fontdesc_object *fontdesc_object;
     long weight;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -416,11 +355,6 @@ PHP_FUNCTION(pango_font_description_set_weight)
         pango_ce_pangofontdescription,
         &weight,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_weight(fontdesc_object->fontdesc, weight);
@@ -436,7 +370,6 @@ PHP_FUNCTION(pango_font_description_get_stretch)
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -444,11 +377,6 @@ PHP_FUNCTION(pango_font_description_get_stretch)
         &fontdesc_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_stretch(fontdesc_object->fontdesc));
@@ -464,7 +392,6 @@ PHP_FUNCTION(pango_font_description_set_stretch)
     pango_fontdesc_object *fontdesc_object;
     long stretch;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -473,11 +400,6 @@ PHP_FUNCTION(pango_font_description_set_stretch)
         pango_ce_pangofontdescription,
         &stretch,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_stretch(fontdesc_object->fontdesc, stretch);
@@ -493,7 +415,6 @@ PHP_FUNCTION(pango_font_description_to_string)
     pango_fontdesc_object *fontdesc_object;
     const char *result;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -501,11 +422,6 @@ PHP_FUNCTION(pango_font_description_to_string)
         &fontdesc_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     if (result = pango_font_description_to_string(fontdesc_object->fontdesc)) {

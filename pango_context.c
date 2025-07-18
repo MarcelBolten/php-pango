@@ -48,7 +48,6 @@ PHP_FUNCTION(pango_context_set_base_gravity)
     pango_context_object *context_object;
     long gravity;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -57,11 +56,6 @@ PHP_FUNCTION(pango_context_set_base_gravity)
         pango_ce_pangocontext,
         &gravity,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     pango_context_set_base_gravity(context_object->context, gravity);
@@ -76,7 +70,6 @@ PHP_FUNCTION(pango_context_get_base_gravity)
     zval *context_zval = NULL;
     pango_context_object *context_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -84,11 +77,6 @@ PHP_FUNCTION(pango_context_get_base_gravity)
         &context_zval,
         pango_ce_pangocontext,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_base_gravity(context_object->context));
@@ -103,7 +91,6 @@ PHP_FUNCTION(pango_context_get_gravity)
     zval *context_zval = NULL;
     pango_context_object *context_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -111,11 +98,6 @@ PHP_FUNCTION(pango_context_get_gravity)
         &context_zval,
         pango_ce_pangocontext,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_gravity(context_object->context));
@@ -131,7 +113,6 @@ PHP_FUNCTION(pango_context_set_gravity_hint)
     pango_context_object *context_object;
     long gravity;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -140,11 +121,6 @@ PHP_FUNCTION(pango_context_set_gravity_hint)
         pango_ce_pangocontext,
         &gravity,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     pango_context_set_gravity_hint(context_object->context, gravity);
@@ -159,7 +135,6 @@ PHP_FUNCTION(pango_context_get_gravity_hint)
     zval *context_zval = NULL;
     pango_context_object *context_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -167,11 +142,6 @@ PHP_FUNCTION(pango_context_get_gravity_hint)
         &context_zval,
         pango_ce_pangocontext,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_gravity_hint(context_object->context));

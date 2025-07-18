@@ -115,7 +115,6 @@ PHP_FUNCTION(pango_layout_get_context)
     PangoContext *context;
     zend_class_entry *ce;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -123,11 +122,6 @@ PHP_FUNCTION(pango_layout_get_context)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     context = pango_layout_get_context(layout_object->layout);
@@ -167,7 +161,6 @@ PHP_FUNCTION(pango_layout_set_text)
     const char *text;
     long text_len;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -177,11 +170,6 @@ PHP_FUNCTION(pango_layout_set_text)
         &text,
         &text_len,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_text(layout_object->layout, text, text_len);
@@ -197,7 +185,6 @@ PHP_FUNCTION(pango_layout_get_text)
     pango_layout_object *layout_object;
     const char *text;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -205,11 +192,6 @@ PHP_FUNCTION(pango_layout_get_text)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (text = pango_layout_get_text(layout_object->layout)) {
@@ -229,7 +211,6 @@ PHP_FUNCTION(pango_layout_set_markup)
     const char *markup;
     long markup_len;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -239,11 +220,6 @@ PHP_FUNCTION(pango_layout_set_markup)
         &markup,
         &markup_len,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_markup(layout_object->layout, markup, markup_len);
@@ -259,13 +235,6 @@ PHP_FUNCTION(pango_layout_context_changed)
 {
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
-
-    PHP_PANGO_ERROR_HANDLING(FALSE)
-    if (zend_parse_parameters_none() == FAILURE) {
-       PHP_PANGO_RESTORE_ERRORS(FALSE)
-       return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_context_changed(layout_object->layout);
@@ -288,7 +257,6 @@ PHP_FUNCTION(pango_layout_set_markup_with_accel)
     long accel_marker_len = 0;
     long first_accel = 0;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -300,11 +268,6 @@ PHP_FUNCTION(pango_layout_set_markup_with_accel)
         &accel_marker,
         &accel_marker_len,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_markup_with_accel(
@@ -333,7 +296,6 @@ PHP_FUNCTION(pango_cairo_update_layout)
     cairo_context_object *context_object;
     zend_class_entry *cairo_ce_cairocontext = php_cairo_get_context_ce();
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -343,11 +305,6 @@ PHP_FUNCTION(pango_cairo_update_layout)
         &context_zval,
         cairo_ce_cairocontext,
     );
-    if (parse_result == FAILURE) {
-       PHP_PANGO_RESTORE_ERRORS(FALSE)
-       return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
@@ -373,7 +330,6 @@ PHP_FUNCTION(pango_cairo_show_layout)
     cairo_context_object *context_object;
     zend_class_entry *cairo_ce_cairocontext = php_cairo_get_context_ce();
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -383,11 +339,6 @@ PHP_FUNCTION(pango_cairo_show_layout)
         &context_zval,
         cairo_ce_cairocontext,
     );
-    if (parse_result == FAILURE) {
-       PHP_PANGO_RESTORE_ERRORS(FALSE)
-       return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
@@ -413,7 +364,6 @@ PHP_FUNCTION(pango_cairo_layout_path)
     cairo_context_object *context_object;
     zend_class_entry *cairo_ce_cairocontext = php_cairo_get_context_ce();
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -423,11 +373,6 @@ PHP_FUNCTION(pango_cairo_layout_path)
         &context_zval,
         cairo_ce_cairocontext,
     );
-    if (parse_result == FAILURE) {
-       PHP_PANGO_RESTORE_ERRORS(FALSE)
-       return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
@@ -451,7 +396,6 @@ PHP_FUNCTION(pango_layout_get_width)
     pango_layout_object *layout_object;
     long width;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -459,11 +403,6 @@ PHP_FUNCTION(pango_layout_get_width)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (width = pango_layout_get_width(layout_object->layout)) {
@@ -485,7 +424,6 @@ PHP_FUNCTION(pango_layout_get_height)
     pango_layout_object *layout_object;
     long height;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -493,11 +431,6 @@ PHP_FUNCTION(pango_layout_get_height)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (height = pango_layout_get_height(layout_object->layout)) {
@@ -520,7 +453,6 @@ PHP_FUNCTION(pango_layout_get_size)
     pango_layout_object *layout_object;
     int height = 0, width = 0;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -528,11 +460,6 @@ PHP_FUNCTION(pango_layout_get_size)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_size(layout_object->layout, &width, &height);
@@ -552,7 +479,6 @@ PHP_FUNCTION(pango_layout_get_pixel_size)
     pango_layout_object *layout_object;
     int height = 0, width = 0;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -560,11 +486,6 @@ PHP_FUNCTION(pango_layout_get_pixel_size)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_pixel_size(layout_object->layout, &width, &height);
@@ -586,7 +507,6 @@ PHP_FUNCTION(pango_layout_get_extents)
     PangoRectangle logical;
     zval *array;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -594,11 +514,6 @@ PHP_FUNCTION(pango_layout_get_extents)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_extents(layout_object->layout, &ink, &logical);
@@ -632,7 +547,6 @@ PHP_FUNCTION(pango_layout_get_pixel_extents)
     PangoRectangle logical;
     zval *array;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -640,11 +554,6 @@ PHP_FUNCTION(pango_layout_get_pixel_extents)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_pixel_extents(layout_object->layout, &ink, &logical);
@@ -676,7 +585,6 @@ PHP_FUNCTION(pango_layout_set_width)
     pango_layout_object *layout_object;
     long width;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -685,11 +593,6 @@ PHP_FUNCTION(pango_layout_set_width)
         pango_ce_pangolayout,
         &width,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_width(layout_object->layout, width);
@@ -707,7 +610,6 @@ PHP_FUNCTION(pango_layout_set_height)
     pango_layout_object *layout_object;
     long height;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -716,11 +618,6 @@ PHP_FUNCTION(pango_layout_set_height)
         pango_ce_pangolayout,
         &height,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_height(layout_object->layout, height);
@@ -738,7 +635,6 @@ PHP_FUNCTION(pango_layout_set_font_description)
     pango_layout_object *layout_object;
     pango_fontdesc_object *fontdesc_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -748,11 +644,6 @@ PHP_FUNCTION(pango_layout_set_font_description)
         &fontdesc_zval,
         pango_ce_pangofontdescription,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
@@ -771,7 +662,6 @@ PHP_FUNCTION(pango_layout_get_font_description)
     pango_fontdesc_object *fontdesc_object = NULL;
     const PangoFontDescription *aux = NULL;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -779,11 +669,6 @@ PHP_FUNCTION(pango_layout_get_font_description)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     object_init_ex(return_value, pango_ce_pangofontdescription);
     fontdesc_object = (pango_fontdesc_object *) zend_object_store_get_object(return_value);
@@ -804,7 +689,6 @@ PHP_FUNCTION(pango_layout_set_justify)
     pango_layout_object *layout_object;
     zend_bool justify;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -813,11 +697,6 @@ PHP_FUNCTION(pango_layout_set_justify)
         pango_ce_pangolayout,
         &justify,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_justify(layout_object->layout, justify);
@@ -832,7 +711,6 @@ PHP_FUNCTION(pango_layout_get_justify)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -840,11 +718,6 @@ PHP_FUNCTION(pango_layout_get_justify)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_get_justify(layout_object->layout));
@@ -860,7 +733,6 @@ PHP_FUNCTION(pango_layout_set_alignment)
     pango_layout_object *layout_object;
     long alignment;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -869,11 +741,6 @@ PHP_FUNCTION(pango_layout_set_alignment)
         pango_ce_pangolayout,
         &alignment,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_alignment(layout_object->layout, alignment);
@@ -888,7 +755,6 @@ PHP_FUNCTION(pango_layout_get_alignment)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -896,11 +762,6 @@ PHP_FUNCTION(pango_layout_get_alignment)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_alignment(layout_object->layout));
@@ -916,7 +777,6 @@ PHP_FUNCTION(pango_layout_set_wrap)
     pango_layout_object *layout_object;
     long wrap;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -925,11 +785,6 @@ PHP_FUNCTION(pango_layout_set_wrap)
         pango_ce_pangolayout,
         &wrap,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_wrap(layout_object->layout, wrap);
@@ -944,7 +799,6 @@ PHP_FUNCTION(pango_layout_get_wrap)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -952,11 +806,6 @@ PHP_FUNCTION(pango_layout_get_wrap)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_wrap(layout_object->layout));
@@ -973,7 +822,6 @@ PHP_FUNCTION(pango_layout_is_wrapped)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -981,11 +829,6 @@ PHP_FUNCTION(pango_layout_is_wrapped)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_is_wrapped(layout_object->layout));
@@ -1003,7 +846,6 @@ PHP_FUNCTION(pango_layout_set_indent)
     pango_layout_object *layout_object;
     long indent;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1012,11 +854,6 @@ PHP_FUNCTION(pango_layout_set_indent)
         pango_ce_pangolayout,
         &indent,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_indent(layout_object->layout, indent);
@@ -1031,7 +868,6 @@ PHP_FUNCTION(pango_layout_get_indent)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1039,11 +875,6 @@ PHP_FUNCTION(pango_layout_get_indent)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_indent(layout_object->layout));
@@ -1059,7 +890,6 @@ PHP_FUNCTION(pango_layout_set_spacing)
     pango_layout_object *layout_object;
     long spacing;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1068,11 +898,6 @@ PHP_FUNCTION(pango_layout_set_spacing)
         pango_ce_pangolayout,
         &spacing,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_spacing(layout_object->layout, spacing);
@@ -1087,7 +912,6 @@ PHP_FUNCTION(pango_layout_get_spacing)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1095,11 +919,6 @@ PHP_FUNCTION(pango_layout_get_spacing)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_spacing(layout_object->layout));
@@ -1115,7 +934,6 @@ PHP_FUNCTION(pango_layout_set_ellipsize)
     pango_layout_object *layout_object;
     long ellipsize;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1124,11 +942,6 @@ PHP_FUNCTION(pango_layout_set_ellipsize)
         pango_ce_pangolayout,
         &ellipsize,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_ellipsize(layout_object->layout, ellipsize);
@@ -1143,7 +956,6 @@ PHP_FUNCTION(pango_layout_get_ellipsize)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1151,11 +963,6 @@ PHP_FUNCTION(pango_layout_get_ellipsize)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_ellipsize(layout_object->layout));
@@ -1172,7 +979,6 @@ PHP_FUNCTION(pango_layout_is_ellipsized)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1180,11 +986,6 @@ PHP_FUNCTION(pango_layout_is_ellipsized)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_is_ellipsized(layout_object->layout));
@@ -1206,7 +1007,6 @@ PHP_FUNCTION(pango_layout_get_lines)
     zend_class_entry *layoutline_ce;
 
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1214,11 +1014,6 @@ PHP_FUNCTION(pango_layout_get_lines)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     lines = pango_layout_get_lines(layout_object->layout);
@@ -1243,19 +1038,14 @@ PHP_FUNCTION(pango_layout_get_line)
     PangoLayoutLine *layoutline;
     long line_number = 0;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
-    if (zend_parse_method_parameters(
+    int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
         pango_ce_pangolayout,
-        &line_number
-    ) == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
+        &line_number,
+    );
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     layoutline = pango_layout_get_line(layout_object->layout, line_number);
@@ -1279,7 +1069,6 @@ PHP_FUNCTION(pango_layout_get_line_count)
     pango_layoutline_object *layoutline_object;
     PangoLayoutLine *layoutline;
 
-    PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
         ZEND_NUM_ARGS(),
         getThis(),
@@ -1287,11 +1076,6 @@ PHP_FUNCTION(pango_layout_get_line_count)
         &layout_zval,
         pango_ce_pangolayout,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(FALSE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_line_count(layout_object->layout));

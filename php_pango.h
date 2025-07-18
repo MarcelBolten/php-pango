@@ -187,42 +187,6 @@ ZEND_END_MODULE_GLOBALS(pango)
 #define PANGO_G(v) (pango_globals.v)
 #endif
 
-
-/* turn error handling to exception mode and restore */
-/* Borrowed from pecl/cairo, ta auroraeosrose */
-#if PHP_VERSION_ID >= 50300
-#define PHP_PANGO_ERROR_HANDLING(force_exceptions) \
-    zend_error_handling error_handling; \
-    if (force_exceptions || getThis()) { \
-        zend_replace_error_handling(EH_THROW, pango_ce_pangoexception, &error_handling); \
-    }
-
-#define PHP_PANGO_RESTORE_ERRORS(force_exceptions) \
-    if (force_exceptions || getThis()) { \
-        zend_restore_error_handling(&error_handling); \
-    }
-
-#else
-#define PHP_PANGO_ERROR_HANDLING(force_exceptions) \
-    if (force_exceptions || getThis()) { \
-        php_set_error_handling(EH_THROW, pango_ce_pangoexception); \
-    }
-
-#define PHP_PANGO_RESTORE_ERRORS(force_exceptions) \
-    if (force_exceptions || getThis()) { \
-        php_std_error_handling(); \
-    }
-#endif
-
-/* do error or exception based on "are we in method or in function" */
-#define PHP_PANGO_ERROR(status) \
-    if (!getThis()) { \
-        php_pango_trigger_error(status); \
-    } else { \
-        php_pango_throw_exception(status); \
-    }
-
-
 /* refcount macros */
 #ifndef Z_ADDREF_P
 #define Z_ADDREF_P(pz)                (pz)->refcount++
