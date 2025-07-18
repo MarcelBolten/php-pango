@@ -39,7 +39,7 @@ PHP_PANGO_API zend_class_entry* php_pango_get_layoutline_ce()
        Convenience function to handle setting all the properties etc */
 PHP_PANGO_API zval* php_pango_make_layoutline_zval(
     PangoLayoutLine *line,
-    zval *layout TSRMLS_DC
+    zval *layout
 ) {
     zval *return_value;
     zval *length;
@@ -49,7 +49,7 @@ PHP_PANGO_API zval* php_pango_make_layoutline_zval(
 
     MAKE_STD_ZVAL(return_value);
     object_init_ex(return_value, pango_ce_pangolayoutline);
-    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(return_value TSRMLS_CC);
+    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(return_value);
     layoutline_object->line = line;
 
     /* Optionally cache the PangoLayout zval for later */
@@ -108,7 +108,7 @@ PHP_FUNCTION(pango_layout_line_get_extents)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layoutline_zval,
@@ -120,7 +120,7 @@ PHP_FUNCTION(pango_layout_line_get_extents)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval TSRMLS_CC);
+    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
     pango_layout_line_get_extents(layoutline_object->line, &ink, &logical);
 
     array_init(return_value);
@@ -162,7 +162,7 @@ PHP_FUNCTION(pango_layout_line_get_pixel_extents)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layoutline_zval,
@@ -174,7 +174,7 @@ PHP_FUNCTION(pango_layout_line_get_pixel_extents)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval TSRMLS_CC);
+    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
     pango_layout_line_get_pixel_extents(layoutline_object->line, &ink, &logical);
 
     array_init(return_value);
@@ -218,7 +218,7 @@ PHP_FUNCTION(pango_cairo_show_layout_line)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O|O",
         &layoutline_zval,
@@ -232,21 +232,21 @@ PHP_FUNCTION(pango_cairo_show_layout_line)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval TSRMLS_CC);
+    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
 
     if (cairocontext_zval == NULL) {
         layout_zval = layoutline_object->layout_zval;
-        layout_object = zend_object_store_get_object(layout_zval TSRMLS_CC);
+        layout_object = zend_object_store_get_object(layout_zval);
         cairocontext_zval = layout_object->cairo_context;
     }
-    cairocontext_object = zend_object_store_get_object(cairocontext_zval TSRMLS_CC);
+    cairocontext_object = zend_object_store_get_object(cairocontext_zval);
 
     pango_cairo_show_layout_line(cairocontext_object->context, layoutline_object->line);
 }
 /* }}} */
 
 /* {{{ Object creation/destruction functions */
-static void pango_layoutline_object_destroy(void *object TSRMLS_DC)
+static void pango_layoutline_object_destroy(void *object)
 {
     pango_layoutline_object *layoutline = (pango_layoutline_object *)object;
     zend_hash_destroy(layoutline->std.properties);
@@ -262,11 +262,10 @@ static void pango_layoutline_object_destroy(void *object TSRMLS_DC)
 static void php_pango_layoutline_write_property(
     zval *object,
     zval *member,
-    zval *value
+    zval *value,
 #if PHP_VERSION_ID >= 50399
-    , const zend_literal *key
+    const zend_literal *key,
 #endif
-    TSRMLS_DC
 ) {
     zval tmp_member;
 
@@ -286,7 +285,7 @@ static void php_pango_layoutline_write_property(
     ) {
         zend_throw_exception_ex(
             pango_ce_pangoexception,
-            0 TSRMLS_CC,
+            0,
             "Cannot set read-only property %s::$%s",
             Z_OBJCE_P(object)->name,
             Z_STRVAL_P(member),
@@ -295,11 +294,10 @@ static void php_pango_layoutline_write_property(
         pango_std_object_handlers.write_property(
             object,
             member,
-            value
+            value,
 #if PHP_VERSION_ID >= 50399
-            , key
+            key,
 #endif
-            TSRMLS_CC,
         );
     }
 
@@ -309,7 +307,7 @@ static void php_pango_layoutline_write_property(
 }
 
 
-static zend_object_value pango_layoutline_object_new(zend_class_entry *ce TSRMLS_DC)
+static zend_object_value pango_layoutline_object_new(zend_class_entry *ce)
 {
     zend_object_value retval;
     pango_layoutline_object *layoutline;
@@ -337,8 +335,7 @@ static zend_object_value pango_layoutline_object_new(zend_class_entry *ce TSRMLS
         layoutline,
         NULL,
         (zend_objects_free_object_storage_t)pango_layoutline_object_destroy,
-        NULL
-        TSRMLS_CC,
+        NULL,
     );
     retval.handlers = &pango_layoutline_object_handlers;
     return retval;
@@ -360,7 +357,7 @@ PHP_MINIT_FUNCTION(pango_line)
     zend_class_entry line_ce;
 
     INIT_CLASS_ENTRY(line_ce, "PangoLayoutLine", pango_layoutline_methods);
-    pango_ce_pangolayoutline = zend_register_internal_class(&line_ce TSRMLS_CC);
+    pango_ce_pangolayoutline = zend_register_internal_class(&line_ce);
     pango_ce_pangolayoutline->create_object = pango_layoutline_object_new;
     memcpy(&pango_layoutline_object_handlers, zend_get_std_object_handlers(), sizeof(zend_object_handlers));
     pango_layoutline_object_handlers.write_property = php_pango_layoutline_write_property;

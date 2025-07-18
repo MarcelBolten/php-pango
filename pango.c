@@ -186,11 +186,11 @@ PHP_MINIT_FUNCTION(pango)
     pango_std_object_handlers.clone_obj = NULL;
 
     INIT_CLASS_ENTRY(pango_ce, "Pango", pango_methods);
-    pango_ce_pango = zend_register_internal_class(&pango_ce TSRMLS_CC);
+    pango_ce_pango = zend_register_internal_class(&pango_ce);
     pango_ce_pango->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pango, const_name, sizeof(const_name)-1, (long)value TSRMLS_CC); \
+    zend_declare_class_constant_long(pango_ce_pango, const_name, sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_LONG_CONST("SCALE", PANGO_SCALE);

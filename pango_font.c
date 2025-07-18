@@ -43,7 +43,7 @@ PHP_METHOD(PangoFontDescription, __construct)
 
     PHP_PANGO_ERROR_HANDLING(TRUE)
     int parse_result = zend_parse_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         "|s",
         &text,
         &text_len,
@@ -55,7 +55,7 @@ PHP_METHOD(PangoFontDescription, __construct)
     PHP_PANGO_RESTORE_ERRORS(TRUE)
 
     if (text_len) {
-        fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+        fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(getThis());
         fontdesc_object->fontdesc = pango_font_description_from_string(text);
     } else {
         fontdesc_object->fontdesc = pango_font_description_new();
@@ -65,8 +65,7 @@ PHP_METHOD(PangoFontDescription, __construct)
         zend_throw_exception(
             pango_ce_pangoexception,
             "Could not create the Pango font description",
-            0
-            TSRMLS_CC,
+            0,
         );
         return;
     }
@@ -84,7 +83,7 @@ PHP_FUNCTION(pango_font_description_new)
 
     PHP_PANGO_ERROR_HANDLING(TRUE)
     int parse_result = zend_parse_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         "|s",
         &text,
         &text_len,
@@ -98,7 +97,7 @@ PHP_FUNCTION(pango_font_description_new)
     object_init_ex(return_value, pango_ce_pangofontdescription);
 
     if (text_len) {
-        fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(return_value TSRMLS_CC);
+        fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(return_value);
         fontdesc_object->fontdesc = pango_font_description_from_string(text);
     } else {
         fontdesc_object->fontdesc = pango_font_description_new();
@@ -119,7 +118,7 @@ PHP_FUNCTION(pango_font_description_get_variant)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &fontdesc_zval,
@@ -131,7 +130,7 @@ PHP_FUNCTION(pango_font_description_get_variant)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_variant(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -147,7 +146,7 @@ PHP_FUNCTION(pango_font_description_set_variant)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &fontdesc_zval,
@@ -160,7 +159,7 @@ PHP_FUNCTION(pango_font_description_set_variant)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_variant(fontdesc_object->fontdesc, variant);
 }
 /* }}} */
@@ -177,7 +176,7 @@ PHP_FUNCTION(pango_font_description_equal)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "OO",
         &fontdesc_zval,
@@ -191,8 +190,8 @@ PHP_FUNCTION(pango_font_description_equal)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
-    fontdesc2_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc2_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc2_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc2_zval);
     RETURN_BOOL(pango_font_description_equal(fontdesc_object->fontdesc, fontdesc2_object->fontdesc));
 }
 /* }}} */
@@ -209,7 +208,7 @@ PHP_FUNCTION(pango_font_description_set_family)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Os",
         &fontdesc_zval,
@@ -223,7 +222,7 @@ PHP_FUNCTION(pango_font_description_set_family)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_family(fontdesc_object->fontdesc, family);
 }
 /* }}} */
@@ -239,7 +238,7 @@ PHP_FUNCTION(pango_font_description_get_family)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &fontdesc_zval,
@@ -251,7 +250,7 @@ PHP_FUNCTION(pango_font_description_get_family)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     if ((family = pango_font_description_get_family(fontdesc_object->fontdesc))) {
         RETURN_STRING((char *)family, 1);
     }
@@ -270,7 +269,7 @@ PHP_FUNCTION(pango_font_description_set_size)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &fontdesc_zval,
@@ -283,7 +282,7 @@ PHP_FUNCTION(pango_font_description_set_size)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_size(fontdesc_object->fontdesc, size);
 }
 /* }}} */
@@ -299,7 +298,7 @@ PHP_FUNCTION(pango_font_description_get_size)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &fontdesc_zval,
@@ -311,7 +310,7 @@ PHP_FUNCTION(pango_font_description_get_size)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG (pango_font_description_get_size(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -326,7 +325,7 @@ PHP_FUNCTION(pango_font_description_get_style)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &fontdesc_zval,
@@ -338,7 +337,7 @@ PHP_FUNCTION(pango_font_description_get_style)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_style(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -354,7 +353,7 @@ PHP_FUNCTION(pango_font_description_set_style)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &fontdesc_zval,
@@ -367,7 +366,7 @@ PHP_FUNCTION(pango_font_description_set_style)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_style(fontdesc_object->fontdesc, style);
 }
 /* }}} */
@@ -382,7 +381,7 @@ PHP_FUNCTION(pango_font_description_get_weight)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &fontdesc_zval,
@@ -394,7 +393,7 @@ PHP_FUNCTION(pango_font_description_get_weight)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_weight(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -410,7 +409,7 @@ PHP_FUNCTION(pango_font_description_set_weight)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &fontdesc_zval,
@@ -423,7 +422,7 @@ PHP_FUNCTION(pango_font_description_set_weight)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_weight(fontdesc_object->fontdesc, weight);
 }
 /* }}} */
@@ -439,7 +438,7 @@ PHP_FUNCTION(pango_font_description_get_stretch)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &fontdesc_zval,
@@ -451,7 +450,7 @@ PHP_FUNCTION(pango_font_description_get_stretch)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_stretch(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -467,7 +466,7 @@ PHP_FUNCTION(pango_font_description_set_stretch)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &fontdesc_zval,
@@ -480,7 +479,7 @@ PHP_FUNCTION(pango_font_description_set_stretch)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_stretch(fontdesc_object->fontdesc, stretch);
 }
 /* }}} */
@@ -496,7 +495,7 @@ PHP_FUNCTION(pango_font_description_to_string)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &fontdesc_zval,
@@ -508,7 +507,7 @@ PHP_FUNCTION(pango_font_description_to_string)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     if (result = pango_font_description_to_string(fontdesc_object->fontdesc)) {
         RETURN_STRING((char *)result, 1);
     }
@@ -517,7 +516,7 @@ PHP_FUNCTION(pango_font_description_to_string)
 /* }}} */
 
 /* {{{ Object creation/destruction functions */
-static void pango_fontdesc_object_destroy(void *object TSRMLS_DC)
+static void pango_fontdesc_object_destroy(void *object)
 {
     pango_fontdesc_object *fontdesc = (pango_fontdesc_object *)object;
     zend_hash_destroy(fontdesc->std.properties);
@@ -529,7 +528,7 @@ static void pango_fontdesc_object_destroy(void *object TSRMLS_DC)
     efree(object);
 }
 
-static zend_object_value pango_fontdesc_object_new(zend_class_entry *ce TSRMLS_DC)
+static zend_object_value pango_fontdesc_object_new(zend_class_entry *ce)
 {
     zend_object_value retval;
     pango_fontdesc_object *fontdesc;
@@ -557,8 +556,7 @@ static zend_object_value pango_fontdesc_object_new(zend_class_entry *ce TSRMLS_D
         fontdesc,
         NULL,
         (zend_objects_free_object_storage_t)pango_fontdesc_object_destroy,
-        NULL
-        TSRMLS_CC,
+        NULL,
     );
     retval.handlers = &pango_std_object_handlers;
     return retval;
@@ -596,16 +594,16 @@ PHP_MINIT_FUNCTION(pango_font)
     zend_class_entry fontmask_ce;
 
     INIT_CLASS_ENTRY(fontdescription_ce, "PangoFontDescription", pango_fontdesc_methods);
-    pango_ce_pangofontdescription = zend_register_internal_class(&fontdescription_ce TSRMLS_CC);
+    pango_ce_pangofontdescription = zend_register_internal_class(&fontdescription_ce);
     pango_ce_pangofontdescription->create_object = pango_fontdesc_object_new;
 
     INIT_CLASS_ENTRY(style_ce, "PangoStyle", NULL);
-    pango_ce_pangostyle = zend_register_internal_class(&style_ce TSRMLS_CC);
+    pango_ce_pangostyle = zend_register_internal_class(&style_ce);
     pango_ce_pangostyle->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_STYLE_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangostyle, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_STYLE_LONG_CONST("NORMAL", PANGO_STYLE_NORMAL);
@@ -613,12 +611,12 @@ PHP_MINIT_FUNCTION(pango_font)
     REGISTER_PANGO_STYLE_LONG_CONST("ITALIC", PANGO_STYLE_ITALIC);
 
     INIT_CLASS_ENTRY(weight_ce, "PangoWeight", NULL);
-    pango_ce_pangoweight = zend_register_internal_class(&weight_ce TSRMLS_CC);
+    pango_ce_pangoweight = zend_register_internal_class(&weight_ce);
     pango_ce_pangoweight->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_WEIGHT_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangoweight, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_WEIGHT_LONG_CONST("ULTRALIGHT", PANGO_WEIGHT_ULTRALIGHT);
@@ -639,24 +637,24 @@ PHP_MINIT_FUNCTION(pango_font)
 #endif
 
     INIT_CLASS_ENTRY(variant_ce, "PangoVariant", NULL);
-    pango_ce_pangovariant = zend_register_internal_class(&variant_ce TSRMLS_CC);
+    pango_ce_pangovariant = zend_register_internal_class(&variant_ce);
     pango_ce_pangovariant->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_VARIANT_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangovariant, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_VARIANT_LONG_CONST("NORMAL", PANGO_VARIANT_NORMAL);
     REGISTER_PANGO_VARIANT_LONG_CONST("SMALL_CAPS", PANGO_VARIANT_SMALL_CAPS);
 
     INIT_CLASS_ENTRY(stretch_ce, "PangoStretch", NULL);
-    pango_ce_pangostretch = zend_register_internal_class(&stretch_ce TSRMLS_CC);
+    pango_ce_pangostretch = zend_register_internal_class(&stretch_ce);
     pango_ce_pangostretch->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_STRETCH_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangostretch, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_STRETCH_LONG_CONST("ULTRA_CONDENSED", PANGO_STRETCH_ULTRA_CONDENSED);
@@ -670,12 +668,12 @@ PHP_MINIT_FUNCTION(pango_font)
     REGISTER_PANGO_STRETCH_LONG_CONST("ULTRA_EXPANDED", PANGO_STRETCH_ULTRA_EXPANDED);
 
     INIT_CLASS_ENTRY(fontmask_ce, "PangoFontMask", NULL);
-    pango_ce_pangofontmask = zend_register_internal_class(&fontmask_ce TSRMLS_CC);
+    pango_ce_pangofontmask = zend_register_internal_class(&fontmask_ce);
     pango_ce_pangofontmask->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_FONT_MASK_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangofontmask, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_FONT_MASK_LONG_CONST("FAMILY", PANGO_FONT_MASK_FAMILY);

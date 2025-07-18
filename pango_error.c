@@ -34,9 +34,8 @@ PHP_MINIT_FUNCTION(pango_error)
     INIT_CLASS_ENTRY(ce, "PangoException", NULL);
     pango_ce_pangoexception = zend_register_internal_class_ex(
         &ce,
-        zend_exception_get_default(TSRMLS_C),
-        "Exception"
-        TSRMLS_CC,
+        zend_exception_get_default(),
+        "Exception",
     );
 
     return SUCCESS;

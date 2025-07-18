@@ -50,7 +50,7 @@ PHP_FUNCTION(pango_context_set_base_gravity)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &context_zval,
@@ -63,7 +63,7 @@ PHP_FUNCTION(pango_context_set_base_gravity)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval TSRMLS_CC);
+    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     pango_context_set_base_gravity(context_object->context, gravity);
 }
 /* }}} */
@@ -78,7 +78,7 @@ PHP_FUNCTION(pango_context_get_base_gravity)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &context_zval,
@@ -90,7 +90,7 @@ PHP_FUNCTION(pango_context_get_base_gravity)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval TSRMLS_CC);
+    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_base_gravity(context_object->context));
 }
 /* }}} */
@@ -105,7 +105,7 @@ PHP_FUNCTION(pango_context_get_gravity)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &context_zval,
@@ -117,7 +117,7 @@ PHP_FUNCTION(pango_context_get_gravity)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval TSRMLS_CC);
+    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_gravity(context_object->context));
 }
 /* }}} */
@@ -133,7 +133,7 @@ PHP_FUNCTION(pango_context_set_gravity_hint)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &context_zval,
@@ -146,7 +146,7 @@ PHP_FUNCTION(pango_context_set_gravity_hint)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval TSRMLS_CC);
+    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     pango_context_set_gravity_hint(context_object->context, gravity);
 }
 /* }}} */
@@ -161,7 +161,7 @@ PHP_FUNCTION(pango_context_get_gravity_hint)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &context_zval,
@@ -173,7 +173,7 @@ PHP_FUNCTION(pango_context_get_gravity_hint)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval TSRMLS_CC);
+    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_gravity_hint(context_object->context));
 }
 /* }}} */
@@ -181,7 +181,7 @@ PHP_FUNCTION(pango_context_get_gravity_hint)
 #endif
 
 /* {{{ Object creation/destruction functions */
-static void pango_context_object_destroy(void *object TSRMLS_DC)
+static void pango_context_object_destroy(void *object)
 {
     pango_context_object *context = (pango_context_object *)object;
     zend_hash_destroy(context->std.properties);
@@ -193,7 +193,7 @@ static void pango_context_object_destroy(void *object TSRMLS_DC)
     efree(object);
 }
 
-static zend_object_value pango_context_object_new(zend_class_entry *ce TSRMLS_DC)
+static zend_object_value pango_context_object_new(zend_class_entry *ce)
 {
     zend_object_value retval;
     pango_context_object *context;
@@ -221,8 +221,7 @@ static zend_object_value pango_context_object_new(zend_class_entry *ce TSRMLS_DC
         context,
         NULL,
         (zend_objects_free_object_storage_t)pango_context_object_destroy,
-        NULL
-        TSRMLS_CC,
+        NULL,
     );
     retval.handlers = &pango_std_object_handlers;
     return retval;
@@ -255,16 +254,16 @@ PHP_MINIT_FUNCTION(pango_context)
 #endif
 
     INIT_CLASS_ENTRY(context_ce, "PangoContext", pango_context_methods);
-    pango_ce_pangocontext = zend_register_internal_class(&context_ce TSRMLS_CC);
+    pango_ce_pangocontext = zend_register_internal_class(&context_ce);
     pango_ce_pangocontext->create_object = pango_context_object_new;
 
     INIT_CLASS_ENTRY(direction_ce, "PangoDirection", NULL);
-    pango_ce_pangodirection = zend_register_internal_class(&direction_ce TSRMLS_CC);
+    pango_ce_pangodirection = zend_register_internal_class(&direction_ce);
     pango_ce_pangodirection->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_DIRECTION_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangodirection, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_DIRECTION_LONG_CONST("LTR", PANGO_DIRECTION_LTR);
@@ -278,12 +277,12 @@ PHP_MINIT_FUNCTION(pango_context)
 #ifdef PANGO_VERSION
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 6, 0)
     INIT_CLASS_ENTRY(gravity_ce, "PangoGravity", NULL);
-    pango_ce_pangogravity = zend_register_internal_class(&gravity_ce TSRMLS_CC);
+    pango_ce_pangogravity = zend_register_internal_class(&gravity_ce);
     pango_ce_pangogravity->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_GRAVITY_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangogravity, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_GRAVITY_LONG_CONST("SOUTH", PANGO_GRAVITY_SOUTH);
@@ -293,12 +292,12 @@ PHP_MINIT_FUNCTION(pango_context)
     REGISTER_PANGO_GRAVITY_LONG_CONST("AUTO", PANGO_GRAVITY_AUTO);
 
     INIT_CLASS_ENTRY(gravityhint_ce, "PangoGravityHint", NULL);
-    pango_ce_pangogravityhint = zend_register_internal_class(&gravityhint_ce TSRMLS_CC);
+    pango_ce_pangogravityhint = zend_register_internal_class(&gravityhint_ce);
     pango_ce_pangogravityhint->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_GRAVITY_HINT_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangogravityhint, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_GRAVITY_HINT_LONG_CONST("NATURAL", PANGO_GRAVITY_HINT_NATURAL);

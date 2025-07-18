@@ -43,7 +43,7 @@ PHP_METHOD(PangoLayout, __construct)
 
     PHP_PANGO_ERROR_HANDLING(TRUE)
     int parse_result = zend_parse_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         "O",
         &context_zval,
         cairo_ce_cairocontext,
@@ -54,13 +54,13 @@ PHP_METHOD(PangoLayout, __construct)
     }
     PHP_PANGO_RESTORE_ERRORS(TRUE)
 
-    context_object = (cairo_context_object *)zend_object_store_get_object(context_zval TSRMLS_CC);
+    context_object = (cairo_context_object *)zend_object_store_get_object(context_zval);
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(getThis());
     layout_object->layout = pango_cairo_create_layout(context_object->context);
 
     if (layout_object->layout == NULL) {
-        zend_throw_exception(pango_ce_pangoexception, "Could not create the Pango layout", 0 TSRMLS_CC);
+        zend_throw_exception(pango_ce_pangoexception, "Could not create the Pango layout", 0);
         return;
     }
 
@@ -80,21 +80,21 @@ PHP_FUNCTION(pango_layout_new)
     pango_layout_object *layout_object;
 
     PHP_PANGO_ERROR_HANDLING(TRUE)
-    int parse_result = zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "O", &context_zval, cairo_ce_cairocontext);
+    int parse_result = zend_parse_parameters(ZEND_NUM_ARGS(), "O", &context_zval, cairo_ce_cairocontext);
     if (parse_result == FAILURE) {
         PHP_PANGO_RESTORE_ERRORS(TRUE)
         return;
     }
     PHP_PANGO_RESTORE_ERRORS(TRUE)
 
-    context_object = (cairo_context_object *)zend_object_store_get_object(context_zval TSRMLS_CC);
+    context_object = (cairo_context_object *)zend_object_store_get_object(context_zval);
 
     object_init_ex(return_value, pango_ce_pangolayout);
-    layout_object = (pango_layout_object *)zend_object_store_get_object(return_value TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(return_value);
     layout_object->layout = pango_cairo_create_layout(context_object->context);
 
     if (layout_object->layout == NULL) {
-        php_error_docref(NULL TSRMLS_CC, E_WARNING, "Could not create the Pango layout");
+        php_error_docref(NULL, E_WARNING, "Could not create the Pango layout");
         return;
     }
 
@@ -117,7 +117,7 @@ PHP_FUNCTION(pango_layout_get_context)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -129,7 +129,7 @@ PHP_FUNCTION(pango_layout_get_context)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     context = pango_layout_get_context(layout_object->layout);
 
     /* Have we already got the context object and cached it? */
@@ -146,7 +146,7 @@ PHP_FUNCTION(pango_layout_get_context)
 
     /* Get the context_object and replace the internal context pointer
      * with what we fetched (should be the same) */
-    context_object = (pango_context_object *)zend_object_store_get_object(return_value TSRMLS_CC);
+    context_object = (pango_context_object *)zend_object_store_get_object(return_value);
     /* if there IS a value in context, destroy it cause we're getting a new one */
     if (context_object->context != NULL) {
         g_object_unref(context_object->context);
@@ -169,7 +169,7 @@ PHP_FUNCTION(pango_layout_set_text)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Os",
         &layout_zval,
@@ -183,7 +183,7 @@ PHP_FUNCTION(pango_layout_set_text)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_text(layout_object->layout, text, text_len);
 }
 /* }}} */
@@ -199,7 +199,7 @@ PHP_FUNCTION(pango_layout_get_text)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -211,7 +211,7 @@ PHP_FUNCTION(pango_layout_get_text)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (text = pango_layout_get_text(layout_object->layout)) {
         RETURN_STRING((char *)text, 1);
     }
@@ -231,7 +231,7 @@ PHP_FUNCTION(pango_layout_set_markup)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Os",
         &layout_zval,
@@ -245,7 +245,7 @@ PHP_FUNCTION(pango_layout_set_markup)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_markup(layout_object->layout, markup, markup_len);
 }
 /* }}} */
@@ -267,7 +267,7 @@ PHP_FUNCTION(pango_layout_context_changed)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_context_changed(layout_object->layout);
 }
 /* }}} */
@@ -290,7 +290,7 @@ PHP_FUNCTION(pango_layout_set_markup_with_accel)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Oss",
         &layout_zval,
@@ -306,7 +306,7 @@ PHP_FUNCTION(pango_layout_set_markup_with_accel)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_markup_with_accel(
         layout_object->layout,
         markup,
@@ -335,7 +335,7 @@ PHP_FUNCTION(pango_cairo_update_layout)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O|O",
         &layout_zval,
@@ -349,14 +349,13 @@ PHP_FUNCTION(pango_cairo_update_layout)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
     /* If the user supplies a context, use that, otherwise get the one from the layout */
     context_object = (cairo_context_object *)zend_object_store_get_object(
         context_zval
             ? context_zval
-            : layout_object->cairo_context
-        TSRMLS_CC,
+            : layout_object->cairo_context,
     );
 
     pango_cairo_update_layout(context_object->context, layout_object->layout);
@@ -376,7 +375,7 @@ PHP_FUNCTION(pango_cairo_show_layout)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O|O",
         &layout_zval,
@@ -390,14 +389,13 @@ PHP_FUNCTION(pango_cairo_show_layout)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
     /* If the user supplies a context, use that, otherwise get the one from the layout */
     context_object = (cairo_context_object *)zend_object_store_get_object(
         context_zval
             ? context_zval
-            : layout_object->cairo_context
-        TSRMLS_CC,
+            : layout_object->cairo_context,
     );
 
     pango_cairo_show_layout(context_object->context, layout_object->layout);
@@ -417,7 +415,7 @@ PHP_FUNCTION(pango_cairo_layout_path)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O|O",
         &layout_zval,
@@ -431,14 +429,13 @@ PHP_FUNCTION(pango_cairo_layout_path)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
     /* If the user supplies a context, use that, otherwise get the one from the layout */
     context_object = (cairo_context_object *)zend_object_store_get_object(
         context_zval
             ? context_zval
-            : layout_object->cairo_context
-        TSRMLS_CC,
+            : layout_object->cairo_context,
     );
 
     pango_cairo_layout_path(context_object->context, layout_object->layout);
@@ -456,7 +453,7 @@ PHP_FUNCTION(pango_layout_get_width)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -468,7 +465,7 @@ PHP_FUNCTION(pango_layout_get_width)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (width = pango_layout_get_width(layout_object->layout)) {
         RETURN_LONG(width);
     }
@@ -490,7 +487,7 @@ PHP_FUNCTION(pango_layout_get_height)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -502,7 +499,7 @@ PHP_FUNCTION(pango_layout_get_height)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (height = pango_layout_get_height(layout_object->layout)) {
         RETURN_LONG(height);
     }
@@ -525,7 +522,7 @@ PHP_FUNCTION(pango_layout_get_size)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -537,7 +534,7 @@ PHP_FUNCTION(pango_layout_get_size)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_size(layout_object->layout, &width, &height);
 
     array_init(return_value);
@@ -557,7 +554,7 @@ PHP_FUNCTION(pango_layout_get_pixel_size)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -569,7 +566,7 @@ PHP_FUNCTION(pango_layout_get_pixel_size)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_pixel_size(layout_object->layout, &width, &height);
 
     array_init(return_value);
@@ -591,7 +588,7 @@ PHP_FUNCTION(pango_layout_get_extents)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -603,7 +600,7 @@ PHP_FUNCTION(pango_layout_get_extents)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_extents(layout_object->layout, &ink, &logical);
 
     array_init(return_value);
@@ -637,7 +634,7 @@ PHP_FUNCTION(pango_layout_get_pixel_extents)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -649,7 +646,7 @@ PHP_FUNCTION(pango_layout_get_pixel_extents)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_pixel_extents(layout_object->layout, &ink, &logical);
 
     array_init(return_value);
@@ -681,7 +678,7 @@ PHP_FUNCTION(pango_layout_set_width)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
@@ -694,7 +691,7 @@ PHP_FUNCTION(pango_layout_set_width)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_width(layout_object->layout, width);
 }
 /* }}} */
@@ -712,7 +709,7 @@ PHP_FUNCTION(pango_layout_set_height)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
@@ -725,7 +722,7 @@ PHP_FUNCTION(pango_layout_set_height)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_height(layout_object->layout, height);
 }
 /* }}} */
@@ -743,7 +740,7 @@ PHP_FUNCTION(pango_layout_set_font_description)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "OO",
         &layout_zval,
@@ -757,8 +754,8 @@ PHP_FUNCTION(pango_layout_set_font_description)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_layout_set_font_description(layout_object->layout, fontdesc_object->fontdesc);
 }
 /* }}} */
@@ -776,7 +773,7 @@ PHP_FUNCTION(pango_layout_get_font_description)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -789,9 +786,9 @@ PHP_FUNCTION(pango_layout_get_font_description)
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
     object_init_ex(return_value, pango_ce_pangofontdescription);
-    fontdesc_object = (pango_fontdesc_object *) zend_object_store_get_object(return_value TSRMLS_CC);
+    fontdesc_object = (pango_fontdesc_object *) zend_object_store_get_object(return_value);
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     aux = pango_layout_get_font_description(layout_object->layout);
     fontdesc_object->fontdesc = pango_font_description_copy (aux);
 
@@ -809,7 +806,7 @@ PHP_FUNCTION(pango_layout_set_justify)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ob",
         &layout_zval,
@@ -822,7 +819,7 @@ PHP_FUNCTION(pango_layout_set_justify)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_justify(layout_object->layout, justify);
 }
 /* }}} */
@@ -837,7 +834,7 @@ PHP_FUNCTION(pango_layout_get_justify)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -849,7 +846,7 @@ PHP_FUNCTION(pango_layout_get_justify)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_get_justify(layout_object->layout));
 }
 /* }}} */
@@ -865,7 +862,7 @@ PHP_FUNCTION(pango_layout_set_alignment)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
@@ -878,7 +875,7 @@ PHP_FUNCTION(pango_layout_set_alignment)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_alignment(layout_object->layout, alignment);
 }
 /* }}} */
@@ -893,7 +890,7 @@ PHP_FUNCTION(pango_layout_get_alignment)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -905,7 +902,7 @@ PHP_FUNCTION(pango_layout_get_alignment)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_alignment(layout_object->layout));
 }
 /* }}} */
@@ -921,7 +918,7 @@ PHP_FUNCTION(pango_layout_set_wrap)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
@@ -934,7 +931,7 @@ PHP_FUNCTION(pango_layout_set_wrap)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_wrap(layout_object->layout, wrap);
 }
 /* }}} */
@@ -949,7 +946,7 @@ PHP_FUNCTION(pango_layout_get_wrap)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -961,7 +958,7 @@ PHP_FUNCTION(pango_layout_get_wrap)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_wrap(layout_object->layout));
 }
 /* }}} */
@@ -978,7 +975,7 @@ PHP_FUNCTION(pango_layout_is_wrapped)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -990,7 +987,7 @@ PHP_FUNCTION(pango_layout_is_wrapped)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_is_wrapped(layout_object->layout));
 }
 /* }}} */
@@ -1008,7 +1005,7 @@ PHP_FUNCTION(pango_layout_set_indent)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
@@ -1021,7 +1018,7 @@ PHP_FUNCTION(pango_layout_set_indent)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_indent(layout_object->layout, indent);
 }
 /* }}} */
@@ -1036,7 +1033,7 @@ PHP_FUNCTION(pango_layout_get_indent)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -1048,7 +1045,7 @@ PHP_FUNCTION(pango_layout_get_indent)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_indent(layout_object->layout));
 }
 /* }}} */
@@ -1064,7 +1061,7 @@ PHP_FUNCTION(pango_layout_set_spacing)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
@@ -1077,7 +1074,7 @@ PHP_FUNCTION(pango_layout_set_spacing)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_spacing(layout_object->layout, spacing);
 }
 /* }}} */
@@ -1092,7 +1089,7 @@ PHP_FUNCTION(pango_layout_get_spacing)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -1104,7 +1101,7 @@ PHP_FUNCTION(pango_layout_get_spacing)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_spacing(layout_object->layout));
 }
 /* }}} */
@@ -1120,7 +1117,7 @@ PHP_FUNCTION(pango_layout_set_ellipsize)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
@@ -1133,7 +1130,7 @@ PHP_FUNCTION(pango_layout_set_ellipsize)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_ellipsize(layout_object->layout, ellipsize);
 }
 /* }}} */
@@ -1148,7 +1145,7 @@ PHP_FUNCTION(pango_layout_get_ellipsize)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -1160,7 +1157,7 @@ PHP_FUNCTION(pango_layout_get_ellipsize)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_ellipsize(layout_object->layout));
 }
 /* }}} */
@@ -1177,7 +1174,7 @@ PHP_FUNCTION(pango_layout_is_ellipsized)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -1189,7 +1186,7 @@ PHP_FUNCTION(pango_layout_is_ellipsized)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_is_ellipsized(layout_object->layout));
 }
 /* }}} */
@@ -1211,7 +1208,7 @@ PHP_FUNCTION(pango_layout_get_lines)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -1223,13 +1220,13 @@ PHP_FUNCTION(pango_layout_get_lines)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     lines = pango_layout_get_lines(layout_object->layout);
 
     layoutline_ce = php_pango_get_layoutline_ce();
     array_init(return_value);
     for (iter = lines; iter != NULL; iter = iter->next) {
-        elem = php_pango_make_layoutline_zval((PangoLayoutLine *)iter->data, layout_zval TSRMLS_CC);
+        elem = php_pango_make_layoutline_zval((PangoLayoutLine *)iter->data, layout_zval);
         add_next_index_zval(return_value, elem);
     }
 }
@@ -1248,7 +1245,7 @@ PHP_FUNCTION(pango_layout_get_line)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     if (zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "Ol",
         &layout_zval,
@@ -1260,7 +1257,7 @@ PHP_FUNCTION(pango_layout_get_line)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     layoutline = pango_layout_get_line(layout_object->layout, line_number);
 
     if (!layoutline) {
@@ -1268,7 +1265,7 @@ PHP_FUNCTION(pango_layout_get_line)
     }
 
     zval_dtor(return_value);
-    *return_value = *php_pango_make_layoutline_zval(layoutline, layout_zval TSRMLS_CC);
+    *return_value = *php_pango_make_layoutline_zval(layoutline, layout_zval);
 }
 
 /* {{{ proto long pango_layout_get_line_count(PangoLayout layout)
@@ -1284,7 +1281,7 @@ PHP_FUNCTION(pango_layout_get_line_count)
 
     PHP_PANGO_ERROR_HANDLING(FALSE)
     int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS() TSRMLS_CC,
+        ZEND_NUM_ARGS(),
         getThis(),
         "O",
         &layout_zval,
@@ -1296,13 +1293,13 @@ PHP_FUNCTION(pango_layout_get_line_count)
     }
     PHP_PANGO_RESTORE_ERRORS(FALSE)
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval TSRMLS_CC);
+    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_line_count(layout_object->layout));
 }
 /* }}} */
 
 /* {{{ Object creation/destruction functions */
-static void pango_layout_object_destroy(void *object TSRMLS_DC)
+static void pango_layout_object_destroy(void *object)
 {
     pango_layout_object *layout = (pango_layout_object *)object;
     zend_hash_destroy(layout->std.properties);
@@ -1319,7 +1316,7 @@ static void pango_layout_object_destroy(void *object TSRMLS_DC)
     efree(object);
 }
 
-static zend_object_value pango_layout_object_new(zend_class_entry *ce TSRMLS_DC)
+static zend_object_value pango_layout_object_new(zend_class_entry *ce)
 {
     zend_object_value retval;
     pango_layout_object *layout;
@@ -1348,8 +1345,7 @@ static zend_object_value pango_layout_object_new(zend_class_entry *ce TSRMLS_DC)
         layout,
         NULL,
         (zend_objects_free_object_storage_t)pango_layout_object_destroy,
-        NULL
-        TSRMLS_CC,
+        NULL,
     );
     retval.handlers = &pango_std_object_handlers;
     return retval;
@@ -1420,16 +1416,16 @@ PHP_MINIT_FUNCTION(pango_layout)
     zend_class_entry fontdescription_ce;
 
     INIT_CLASS_ENTRY(layout_ce, "PangoLayout", pango_layout_methods);
-    pango_ce_pangolayout = zend_register_internal_class(&layout_ce TSRMLS_CC);
+    pango_ce_pangolayout = zend_register_internal_class(&layout_ce);
     pango_ce_pangolayout->create_object = pango_layout_object_new;
 
     INIT_CLASS_ENTRY(alignment_ce, "PangoAlignment", NULL);
-    pango_ce_pangoalignment = zend_register_internal_class(&alignment_ce TSRMLS_CC);
+    pango_ce_pangoalignment = zend_register_internal_class(&alignment_ce);
     pango_ce_pangoalignment->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_ALIGNMENT_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangoalignment, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_ALIGNMENT_LONG_CONST("LEFT", PANGO_ALIGN_LEFT);
@@ -1437,12 +1433,12 @@ PHP_MINIT_FUNCTION(pango_layout)
     REGISTER_PANGO_ALIGNMENT_LONG_CONST("RIGHT", PANGO_ALIGN_RIGHT);
 
     INIT_CLASS_ENTRY(wrapmode_ce, "PangoWrapMode", NULL);
-    pango_ce_pangowrapmode = zend_register_internal_class(&wrapmode_ce TSRMLS_CC);
+    pango_ce_pangowrapmode = zend_register_internal_class(&wrapmode_ce);
     pango_ce_pangowrapmode->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_WRAPMODE_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangowrapmode, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_WRAPMODE_LONG_CONST("WORD", PANGO_WRAP_WORD);
@@ -1450,12 +1446,12 @@ PHP_MINIT_FUNCTION(pango_layout)
     REGISTER_PANGO_WRAPMODE_LONG_CONST("WORD_CHAR", PANGO_WRAP_WORD_CHAR);
 
     INIT_CLASS_ENTRY(ellipsizemode_ce, "PangoEllipsizeMode", NULL);
-    pango_ce_pangoellipsizemode = zend_register_internal_class(&ellipsizemode_ce TSRMLS_CC);
+    pango_ce_pangoellipsizemode = zend_register_internal_class(&ellipsizemode_ce);
     pango_ce_pangoellipsizemode->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_ELLIPSIZEMODE_LONG_CONST(const_name, value) \
     zend_declare_class_constant_long(pango_ce_pangoellipsizemode, const_name, \
-        sizeof(const_name)-1, (long)value TSRMLS_CC); \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_ELLIPSIZEMODE_LONG_CONST("NONE", PANGO_ELLIPSIZE_NONE);
@@ -1464,7 +1460,7 @@ PHP_MINIT_FUNCTION(pango_layout)
     REGISTER_PANGO_ELLIPSIZEMODE_LONG_CONST("END", PANGO_ELLIPSIZE_END);
 
     INIT_CLASS_ENTRY(fontdescription_ce, "PangoFontDescription", NULL);
-    pango_ce_pangofontdescription = zend_register_internal_class(&fontdescription_ce TSRMLS_CC);
+    pango_ce_pangofontdescription = zend_register_internal_class(&fontdescription_ce);
     pango_ce_pangofontdescription->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
     return SUCCESS;
