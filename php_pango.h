@@ -49,7 +49,7 @@ extern zend_object_handlers pango_std_object_handlers;
 /* for PHP 5.2 */
 #ifndef zend_parse_parameters_none
 #define zend_parse_parameters_none() \
-    zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "")
+    zend_parse_parameters(ZEND_NUM_ARGS(), "")
 #endif
 
 #include <pango/pango.h>
@@ -58,7 +58,7 @@ extern zend_object_handlers pango_std_object_handlers;
 
 PHP_PANGO_API extern zend_class_entry *php_pango_get_context_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_layoutline_ce();
-PHP_PANGO_API extern zval* php_pango_make_layoutline_zval(PangoLayoutLine *line, zval *layout TSRMLS_DC);
+PHP_PANGO_API extern zval* php_pango_make_layoutline_zval(PangoLayoutLine *line, zval *layout _DC);
 
 /* Objects */
 typedef struct _pango_context_object {
@@ -181,17 +181,6 @@ ZEND_BEGIN_MODULE_GLOBALS(pango)
 ZEND_END_MODULE_GLOBALS(pango)
 */
 
-/*
-   In every utility function you add that needs to use variables
-   in php_pango_globals, call TSRMLS_FETCH(); after declaring other
-   variables used by that function, or better yet, pass in TSRMLS_CC
-   after the last function argument and declare your utility function
-   with TSRMLS_DC after the last declared argument.  Always refer to
-   the globals in your function as PANGO_G(variable).  You are
-   encouraged to rename these macros something shorter, see
-   examples in any other php module directory.
-*/
-
 #ifdef ZTS
 #define PANGO_G(v) TSRMG(pango_globals_id, zend_pango_globals *, v)
 #else
@@ -205,18 +194,18 @@ ZEND_END_MODULE_GLOBALS(pango)
 #define PHP_PANGO_ERROR_HANDLING(force_exceptions) \
     zend_error_handling error_handling; \
     if (force_exceptions || getThis()) { \
-        zend_replace_error_handling(EH_THROW, pango_ce_pangoexception, &error_handling TSRMLS_CC); \
+        zend_replace_error_handling(EH_THROW, pango_ce_pangoexception, &error_handling); \
     }
 
 #define PHP_PANGO_RESTORE_ERRORS(force_exceptions) \
     if (force_exceptions || getThis()) { \
-        zend_restore_error_handling(&error_handling TSRMLS_CC); \
+        zend_restore_error_handling(&error_handling); \
     }
 
 #else
 #define PHP_PANGO_ERROR_HANDLING(force_exceptions) \
     if (force_exceptions || getThis()) { \
-        php_set_error_handling(EH_THROW, pango_ce_pangoexception TSRMLS_CC); \
+        php_set_error_handling(EH_THROW, pango_ce_pangoexception); \
     }
 
 #define PHP_PANGO_RESTORE_ERRORS(force_exceptions) \
@@ -228,9 +217,9 @@ ZEND_END_MODULE_GLOBALS(pango)
 /* do error or exception based on "are we in method or in function" */
 #define PHP_PANGO_ERROR(status) \
     if (!getThis()) { \
-        php_pango_trigger_error(status TSRMLS_CC); \
+        php_pango_trigger_error(status); \
     } else { \
-        php_pango_throw_exception(status TSRMLS_CC); \
+        php_pango_throw_exception(status); \
     }
 
 
