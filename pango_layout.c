@@ -41,18 +41,12 @@ PHP_METHOD(PangoLayout, __construct)
     cairo_context_object *context_object;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(TRUE)
     int parse_result = zend_parse_parameters(
         ZEND_NUM_ARGS(),
         "O",
         &context_zval,
         cairo_ce_cairocontext,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(TRUE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(TRUE)
 
     context_object = (cairo_context_object *)zend_object_store_get_object(context_zval);
 
@@ -79,13 +73,7 @@ PHP_FUNCTION(pango_layout_new)
     cairo_context_object *context_object;
     pango_layout_object *layout_object;
 
-    PHP_PANGO_ERROR_HANDLING(TRUE)
     int parse_result = zend_parse_parameters(ZEND_NUM_ARGS(), "O", &context_zval, cairo_ce_cairocontext);
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(TRUE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(TRUE)
 
     context_object = (cairo_context_object *)zend_object_store_get_object(context_zval);
 

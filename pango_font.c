@@ -41,18 +41,12 @@ PHP_METHOD(PangoFontDescription, __construct)
     const char *text;
     long text_len = -1;
 
-    PHP_PANGO_ERROR_HANDLING(TRUE)
     int parse_result = zend_parse_parameters(
         ZEND_NUM_ARGS(),
         "|s",
         &text,
         &text_len,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(TRUE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(TRUE)
 
     if (text_len) {
         fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(getThis());
@@ -81,18 +75,12 @@ PHP_FUNCTION(pango_font_description_new)
     const char *text;
     long text_len = -1;
 
-    PHP_PANGO_ERROR_HANDLING(TRUE)
     int parse_result = zend_parse_parameters(
         ZEND_NUM_ARGS(),
         "|s",
         &text,
         &text_len,
     );
-    if (parse_result == FAILURE) {
-        PHP_PANGO_RESTORE_ERRORS(TRUE)
-        return;
-    }
-    PHP_PANGO_RESTORE_ERRORS(TRUE)
 
     object_init_ex(return_value, pango_ce_pangofontdescription);
 
