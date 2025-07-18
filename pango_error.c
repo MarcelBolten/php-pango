@@ -29,20 +29,16 @@ zend_class_entry *pango_ce_pangoexception;
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(pango_error)
 {
-	zend_class_entry ce;
+    zend_class_entry ce;
 
-	INIT_CLASS_ENTRY(ce, "PangoException", NULL);
-	pango_ce_pangoexception = zend_register_internal_class_ex(&ce, zend_exception_get_default(TSRMLS_C), "Exception" TSRMLS_CC);
+    INIT_CLASS_ENTRY(ce, "PangoException", NULL);
+    pango_ce_pangoexception = zend_register_internal_class_ex(
+        &ce,
+        zend_exception_get_default(TSRMLS_C),
+        "Exception"
+        TSRMLS_CC,
+    );
 
-	return SUCCESS;
+    return SUCCESS;
 }
 /* }}} */
-
-/*
- * Local variables:
- * tab-width: 4
- * c-basic-offset: 4
- * End:
- * vim600: noet sw=4 ts=4 fdm=marker
- * vim<600: noet sw=4 ts=4
- */

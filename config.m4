@@ -12,7 +12,7 @@ if test "$PHP_PANGO" != "no"; then
   AC_MSG_CHECKING(PHP version)
   AC_TRY_COMPILE([#include <php_version.h>], [
 #if PHP_VERSION_ID < 50200
-#error  this extension requires at least PHP version 5.2.0
+#error this extension requires at least PHP version 5.2.0
 #endif
 ],
 [AC_MSG_RESULT(ok)],
@@ -44,7 +44,7 @@ if test "$PHP_PANGO" != "no"; then
    LDFLAGS=`$PANGO_DIR/bin/pango-config --libs`
   else
     AC_MSG_CHECKING(for pkg-config)
-  
+
     if test ! -f "$PKG_CONFIG"; then
       PKG_CONFIG=`which pkg-config`
     fi
@@ -52,7 +52,7 @@ if test "$PHP_PANGO" != "no"; then
       if test -f "$PKG_CONFIG"; then
         AC_MSG_RESULT(found)
         AC_MSG_CHECKING(for pango)
-    
+
         if $PKG_CONFIG --exists pango; then
             if $PKG_CONFIG --atleast-version=1.14 pango; then
                 pango_version_full=`$PKG_CONFIG --modversion pango`
@@ -92,5 +92,5 @@ if test "$PHP_PANGO" != "no"; then
    else
        AC_MSG_RESULT(no)
        AC_MSG_ERROR(cairo php extension not found.)
-   fi  
+   fi
 fi

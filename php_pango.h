@@ -48,7 +48,7 @@ extern zend_object_handlers pango_std_object_handlers;
 
 /* for PHP 5.2 */
 #ifndef zend_parse_parameters_none
-#define zend_parse_parameters_none()                                        \
+#define zend_parse_parameters_none() \
     zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "")
 #endif
 
@@ -56,37 +56,37 @@ extern zend_object_handlers pango_std_object_handlers;
 #include <pango/pangocairo.h>
 #include "php_cairo_api.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_context_ce(); 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_layoutline_ce(); 
+PHP_PANGO_API extern zend_class_entry *php_pango_get_context_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_layoutline_ce();
 PHP_PANGO_API extern zval* php_pango_make_layoutline_zval(PangoLayoutLine *line, zval *layout TSRMLS_DC);
 
 /* Objects */
 typedef struct _pango_context_object {
-	zend_object std;
-	PangoContext *context;
+    zend_object std;
+    PangoContext *context;
 } pango_context_object;
 
 typedef struct _pango_layout_object {
-	zend_object std;
-	PangoLayout *layout;
-	zval *cairo_context;
-	zval *pango_context;
+    zend_object std;
+    PangoLayout *layout;
+    zval *cairo_context;
+    zval *pango_context;
 } pango_layout_object;
 
 typedef struct _pango_fontdesc_object {
-	zend_object std;
-	PangoFontDescription *fontdesc;
+    zend_object std;
+    PangoFontDescription *fontdesc;
 } pango_fontdesc_object;
 
 typedef struct _pango_item_object {
-	zend_object std;
-	PangoItem *item;
+    zend_object std;
+    PangoItem *item;
 } pango_item_object;
 
 typedef struct _pango_layoutline_object {
-	zend_object std;
-	PangoLayoutLine *line;
-	zval *layout_zval;
+    zend_object std;
+    PangoLayoutLine *line;
+    zval *layout_zval;
 } pango_layoutline_object;
 
 PHP_MINIT_FUNCTION(pango);
@@ -171,22 +171,23 @@ PHP_FUNCTION(pango_font_description_get_stretch);
 PHP_FUNCTION(pango_font_description_set_stretch);
 PHP_FUNCTION(pango_font_description_to_string);
 
-/* 
-  	Declare any global variables you may need between the BEGIN
-	and END macros here:     
+/*
+ * Declare any global variables you may need between the BEGIN
+ * and END macros here:
 
 ZEND_BEGIN_MODULE_GLOBALS(pango)
-	long  global_value;
-	char *global_string;
+    long global_value;
+    char *global_string;
 ZEND_END_MODULE_GLOBALS(pango)
 */
 
-/* In every utility function you add that needs to use variables 
-   in php_pango_globals, call TSRMLS_FETCH(); after declaring other 
+/*
+   In every utility function you add that needs to use variables
+   in php_pango_globals, call TSRMLS_FETCH(); after declaring other
    variables used by that function, or better yet, pass in TSRMLS_CC
    after the last function argument and declare your utility function
    with TSRMLS_DC after the last declared argument.  Always refer to
-   the globals in your function as PANGO_G(variable).  You are 
+   the globals in your function as PANGO_G(variable).  You are
    encouraged to rename these macros something shorter, see
    examples in any other php module directory.
 */
@@ -201,35 +202,32 @@ ZEND_END_MODULE_GLOBALS(pango)
 /* turn error handling to exception mode and restore */
 /* Borrowed from pecl/cairo, ta auroraeosrose */
 #if PHP_VERSION_ID >= 50300
-/* 5.3 version of the macros */
 #define PHP_PANGO_ERROR_HANDLING(force_exceptions) \
     zend_error_handling error_handling; \
-    if(force_exceptions || getThis()) { \
+    if (force_exceptions || getThis()) { \
         zend_replace_error_handling(EH_THROW, pango_ce_pangoexception, &error_handling TSRMLS_CC); \
     }
 
 #define PHP_PANGO_RESTORE_ERRORS(force_exceptions) \
-    if(force_exceptions || getThis()) { \
+    if (force_exceptions || getThis()) { \
         zend_restore_error_handling(&error_handling TSRMLS_CC); \
     }
 
 #else
-/* 5.2 versions of the macros */
 #define PHP_PANGO_ERROR_HANDLING(force_exceptions) \
-    if(force_exceptions || getThis()) { \
+    if (force_exceptions || getThis()) { \
         php_set_error_handling(EH_THROW, pango_ce_pangoexception TSRMLS_CC); \
     }
 
 #define PHP_PANGO_RESTORE_ERRORS(force_exceptions) \
-    if(force_exceptions || getThis()) { \
+    if (force_exceptions || getThis()) { \
         php_std_error_handling(); \
     }
-
 #endif
 
 /* do error or exception based on "are we in method or in function" */
 #define PHP_PANGO_ERROR(status) \
-    if(!getThis()) { \
+    if (!getThis()) { \
         php_pango_trigger_error(status TSRMLS_CC); \
     } else { \
         php_pango_throw_exception(status TSRMLS_CC); \
@@ -250,13 +248,3 @@ ZEND_END_MODULE_GLOBALS(pango)
 #endif
 
 #endif	/* PHP_PANGO_H */
-
-
-/*
- * Local variables:
- * tab-width: 4
- * c-basic-offset: 4
- * End:
- * vim600: noet sw=4 ts=4 fdm=marker
- * vim<600: noet sw=4 ts=4
- */
