@@ -41,12 +41,9 @@ PHP_METHOD(PangoLayout, __construct)
     cairo_context_object *context_object;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_parameters(
-        ZEND_NUM_ARGS(),
-        "O",
-        &context_zval,
-        cairo_ce_cairocontext,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
+    ZEND_PARSE_PARAMETERS_END();
 
     context_object = (cairo_context_object *)zend_object_store_get_object(context_zval);
 
@@ -73,7 +70,9 @@ PHP_FUNCTION(pango_layout_new)
     cairo_context_object *context_object;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_parameters(ZEND_NUM_ARGS(), "O", &context_zval, cairo_ce_cairocontext);
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
+    ZEND_PARSE_PARAMETERS_END();
 
     context_object = (cairo_context_object *)zend_object_store_get_object(context_zval);
 
@@ -103,25 +102,20 @@ PHP_FUNCTION(pango_layout_get_context)
     PangoContext *context;
     zend_class_entry *ce;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     context = pango_layout_get_context(layout_object->layout);
 
-    /* Have we already got the context object and cached it? */
+    /* If there is no context object create one */
     if (layout_object->pango_context) {
         zval_dtor(return_value);
         *return_value = *layout_object->pango_context;
         zval_copy_ctor(return_value);
         Z_SET_REFCOUNT_P(return_value, 1);
     } else {
-        /* We haven't already got one, let's make one */
         ce = php_pango_get_context_ce();
         object_init_ex(return_value, ce);
     }
@@ -133,6 +127,7 @@ PHP_FUNCTION(pango_layout_get_context)
     if (context_object->context != NULL) {
         g_object_unref(context_object->context);
     }
+
     /* Grab the context properly */
     context_object->context = context;
     g_object_ref(context_object->context);
@@ -149,15 +144,10 @@ PHP_FUNCTION(pango_layout_set_text)
     const char *text;
     long text_len;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Os",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &text,
-        &text_len,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_STRING(text, text_len)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_text(layout_object->layout, text, text_len);
@@ -173,13 +163,9 @@ PHP_FUNCTION(pango_layout_get_text)
     pango_layout_object *layout_object;
     const char *text;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (text = pango_layout_get_text(layout_object->layout)) {
@@ -199,15 +185,10 @@ PHP_FUNCTION(pango_layout_set_markup)
     const char *markup;
     long markup_len;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Os",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &markup,
-        &markup_len,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_STRING(markup, markup_len)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_markup(layout_object->layout, markup, markup_len);
@@ -223,6 +204,8 @@ PHP_FUNCTION(pango_layout_context_changed)
 {
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_context_changed(layout_object->layout);
@@ -245,17 +228,11 @@ PHP_FUNCTION(pango_layout_set_markup_with_accel)
     long accel_marker_len = 0;
     long first_accel = 0;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Oss",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &markup,
-        &markup_len,
-        &accel_marker,
-        &accel_marker_len,
-    );
+    ZEND_PARSE_PARAMETERS_START(3, 3)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_STRING(markup, markup_len)
+        Z_PARAM_STRING(accel_marker, accel_marker_len)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_markup_with_accel(
@@ -284,15 +261,11 @@ PHP_FUNCTION(pango_cairo_update_layout)
     cairo_context_object *context_object;
     zend_class_entry *cairo_ce_cairocontext = php_cairo_get_context_ce();
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O|O",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &context_zval,
-        cairo_ce_cairocontext,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
@@ -318,15 +291,11 @@ PHP_FUNCTION(pango_cairo_show_layout)
     cairo_context_object *context_object;
     zend_class_entry *cairo_ce_cairocontext = php_cairo_get_context_ce();
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O|O",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &context_zval,
-        cairo_ce_cairocontext,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
@@ -352,15 +321,11 @@ PHP_FUNCTION(pango_cairo_layout_path)
     cairo_context_object *context_object;
     zend_class_entry *cairo_ce_cairocontext = php_cairo_get_context_ce();
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O|O",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &context_zval,
-        cairo_ce_cairocontext,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
 
@@ -384,13 +349,9 @@ PHP_FUNCTION(pango_layout_get_width)
     pango_layout_object *layout_object;
     long width;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (width = pango_layout_get_width(layout_object->layout)) {
@@ -412,13 +373,9 @@ PHP_FUNCTION(pango_layout_get_height)
     pango_layout_object *layout_object;
     long height;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     if (height = pango_layout_get_height(layout_object->layout)) {
@@ -441,13 +398,9 @@ PHP_FUNCTION(pango_layout_get_size)
     pango_layout_object *layout_object;
     int height = 0, width = 0;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_size(layout_object->layout, &width, &height);
@@ -467,13 +420,9 @@ PHP_FUNCTION(pango_layout_get_pixel_size)
     pango_layout_object *layout_object;
     int height = 0, width = 0;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_pixel_size(layout_object->layout, &width, &height);
@@ -495,13 +444,9 @@ PHP_FUNCTION(pango_layout_get_extents)
     PangoRectangle logical;
     zval *array;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_extents(layout_object->layout, &ink, &logical);
@@ -535,13 +480,9 @@ PHP_FUNCTION(pango_layout_get_pixel_extents)
     PangoRectangle logical;
     zval *array;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_pixel_extents(layout_object->layout, &ink, &logical);
@@ -573,14 +514,10 @@ PHP_FUNCTION(pango_layout_set_width)
     pango_layout_object *layout_object;
     long width;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &width,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_LONG(width)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_width(layout_object->layout, width);
@@ -598,14 +535,10 @@ PHP_FUNCTION(pango_layout_set_height)
     pango_layout_object *layout_object;
     long height;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &height,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_LONG(height)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_height(layout_object->layout, height);
@@ -623,15 +556,10 @@ PHP_FUNCTION(pango_layout_set_font_description)
     pango_layout_object *layout_object;
     pango_fontdesc_object *fontdesc_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "OO",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
@@ -650,13 +578,9 @@ PHP_FUNCTION(pango_layout_get_font_description)
     pango_fontdesc_object *fontdesc_object = NULL;
     const PangoFontDescription *aux = NULL;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     object_init_ex(return_value, pango_ce_pangofontdescription);
     fontdesc_object = (pango_fontdesc_object *) zend_object_store_get_object(return_value);
@@ -677,14 +601,10 @@ PHP_FUNCTION(pango_layout_set_justify)
     pango_layout_object *layout_object;
     zend_bool justify;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ob",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &justify,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_BOOL(justify)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_justify(layout_object->layout, justify);
@@ -699,13 +619,9 @@ PHP_FUNCTION(pango_layout_get_justify)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_get_justify(layout_object->layout));
@@ -721,14 +637,10 @@ PHP_FUNCTION(pango_layout_set_alignment)
     pango_layout_object *layout_object;
     long alignment;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &alignment,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_LONG(alignment)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_alignment(layout_object->layout, alignment);
@@ -743,13 +655,9 @@ PHP_FUNCTION(pango_layout_get_alignment)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_alignment(layout_object->layout));
@@ -765,14 +673,10 @@ PHP_FUNCTION(pango_layout_set_wrap)
     pango_layout_object *layout_object;
     long wrap;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &wrap,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_LONG(wrap)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_wrap(layout_object->layout, wrap);
@@ -787,13 +691,9 @@ PHP_FUNCTION(pango_layout_get_wrap)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_wrap(layout_object->layout));
@@ -810,13 +710,9 @@ PHP_FUNCTION(pango_layout_is_wrapped)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_is_wrapped(layout_object->layout));
@@ -834,14 +730,10 @@ PHP_FUNCTION(pango_layout_set_indent)
     pango_layout_object *layout_object;
     long indent;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &indent,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_LONG(indent)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_indent(layout_object->layout, indent);
@@ -856,13 +748,9 @@ PHP_FUNCTION(pango_layout_get_indent)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_indent(layout_object->layout));
@@ -878,14 +766,10 @@ PHP_FUNCTION(pango_layout_set_spacing)
     pango_layout_object *layout_object;
     long spacing;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &spacing,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_LONG(spacing)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_spacing(layout_object->layout, spacing);
@@ -900,13 +784,9 @@ PHP_FUNCTION(pango_layout_get_spacing)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_spacing(layout_object->layout));
@@ -922,14 +802,10 @@ PHP_FUNCTION(pango_layout_set_ellipsize)
     pango_layout_object *layout_object;
     long ellipsize;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &ellipsize,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_LONG(ellipsize)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_set_ellipsize(layout_object->layout, ellipsize);
@@ -944,13 +820,9 @@ PHP_FUNCTION(pango_layout_get_ellipsize)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_ellipsize(layout_object->layout));
@@ -967,13 +839,9 @@ PHP_FUNCTION(pango_layout_is_ellipsized)
     zval *layout_zval = NULL;
     pango_layout_object *layout_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_BOOL(pango_layout_is_ellipsized(layout_object->layout));
@@ -994,14 +862,9 @@ PHP_FUNCTION(pango_layout_get_lines)
     GSList *iter;
     zend_class_entry *layoutline_ce;
 
-
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     lines = pango_layout_get_lines(layout_object->layout);
@@ -1026,14 +889,10 @@ PHP_FUNCTION(pango_layout_get_line)
     PangoLayoutLine *layoutline;
     long line_number = 0;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &layout_zval,
-        pango_ce_pangolayout,
-        &line_number,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+        Z_PARAM_LONG(line_number)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     layoutline = pango_layout_get_line(layout_object->layout, line_number);
@@ -1057,13 +916,9 @@ PHP_FUNCTION(pango_layout_get_line_count)
     pango_layoutline_object *layoutline_object;
     PangoLayoutLine *layoutline;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layout_zval,
-        pango_ce_pangolayout,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     RETURN_LONG(pango_layout_get_line_count(layout_object->layout));

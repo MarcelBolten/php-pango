@@ -41,12 +41,10 @@ PHP_METHOD(PangoFontDescription, __construct)
     const char *text;
     long text_len = -1;
 
-    int parse_result = zend_parse_parameters(
-        ZEND_NUM_ARGS(),
-        "|s",
-        &text,
-        &text_len,
-    );
+    ZEND_PARSE_PARAMETERS_START(0, 1)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_STRING(text, text_len)
+    ZEND_PARSE_PARAMETERS_END();
 
     if (text_len) {
         fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(getThis());
@@ -75,12 +73,10 @@ PHP_FUNCTION(pango_font_description_new)
     const char *text;
     long text_len = -1;
 
-    int parse_result = zend_parse_parameters(
-        ZEND_NUM_ARGS(),
-        "|s",
-        &text,
-        &text_len,
-    );
+    ZEND_PARSE_PARAMETERS_START(0, 1)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_STRING(text, text_len)
+    ZEND_PARSE_PARAMETERS_END();
 
     object_init_ex(return_value, pango_ce_pangofontdescription);
 
@@ -104,13 +100,9 @@ PHP_FUNCTION(pango_font_description_get_variant)
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_variant(fontdesc_object->fontdesc));
@@ -126,14 +118,10 @@ PHP_FUNCTION(pango_font_description_set_variant)
     pango_fontdesc_object *fontdesc_object;
     long variant;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-        &variant,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+        Z_PARAM_LONG(variant)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_variant(fontdesc_object->fontdesc, variant);
@@ -150,15 +138,10 @@ PHP_FUNCTION(pango_font_description_equal)
     pango_fontdesc_object *fontdesc_object;
     pango_fontdesc_object *fontdesc2_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "OO",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-        &fontdesc2_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc2_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     fontdesc2_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc2_zval);
@@ -176,15 +159,10 @@ PHP_FUNCTION(pango_font_description_set_family)
     const char *family;
     long family_len;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Os",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-        &family,
-        &family_len,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+        Z_PARAM_STRING(family, family_len)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_family(fontdesc_object->fontdesc, family);
@@ -200,13 +178,9 @@ PHP_FUNCTION(pango_font_description_get_family)
     pango_fontdesc_object *fontdesc_object;
     const char *family;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     if ((family = pango_font_description_get_family(fontdesc_object->fontdesc))) {
@@ -216,23 +190,19 @@ PHP_FUNCTION(pango_font_description_get_family)
 }
 /* }}} */
 
-/*  proto void pango_font_description_set_size (PangoFontDescription fontdesc, long size)
-   proto void PangoFontDescription::setSize(long size)
-   Sets the size field of a font description. */
+/*  {{{ proto void pango_font_description_set_size (PangoFontDescription fontdesc, long size)
+        proto void PangoFontDescription::setSize(long size)
+        Sets the size field of a font description. */
 PHP_FUNCTION(pango_font_description_set_size)
 {
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
     long size;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-        &size,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+        Z_PARAM_LONG(size)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_size(fontdesc_object->fontdesc, size);
@@ -248,13 +218,9 @@ PHP_FUNCTION(pango_font_description_get_size)
     pango_fontdesc_object *fontdesc_object;
     long size;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG (pango_font_description_get_size(fontdesc_object->fontdesc));
@@ -269,13 +235,9 @@ PHP_FUNCTION(pango_font_description_get_style)
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_style(fontdesc_object->fontdesc));
@@ -291,14 +253,10 @@ PHP_FUNCTION(pango_font_description_set_style)
     pango_fontdesc_object *fontdesc_object;
     long style;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-        &style,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+        Z_PARAM_LONG(style)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_style(fontdesc_object->fontdesc, style);
@@ -313,13 +271,9 @@ PHP_FUNCTION(pango_font_description_get_weight)
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_weight(fontdesc_object->fontdesc));
@@ -335,14 +289,10 @@ PHP_FUNCTION(pango_font_description_set_weight)
     pango_fontdesc_object *fontdesc_object;
     long weight;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-        &weight,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+        Z_PARAM_LONG(weight)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_weight(fontdesc_object->fontdesc, weight);
@@ -358,13 +308,9 @@ PHP_FUNCTION(pango_font_description_get_stretch)
     zval *fontdesc_zval = NULL;
     pango_fontdesc_object *fontdesc_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_stretch(fontdesc_object->fontdesc));
@@ -380,14 +326,10 @@ PHP_FUNCTION(pango_font_description_set_stretch)
     pango_fontdesc_object *fontdesc_object;
     long stretch;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-        &stretch,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+        Z_PARAM_LONG(stretch)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     pango_font_description_set_stretch(fontdesc_object->fontdesc, stretch);
@@ -403,13 +345,9 @@ PHP_FUNCTION(pango_font_description_to_string)
     pango_fontdesc_object *fontdesc_object;
     const char *result;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &fontdesc_zval,
-        pango_ce_pangofontdescription,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
+    ZEND_PARSE_PARAMETERS_END();
 
     fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
     if (result = pango_font_description_to_string(fontdesc_object->fontdesc)) {

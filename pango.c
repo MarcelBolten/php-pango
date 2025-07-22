@@ -40,9 +40,7 @@ zend_object_handlers pango_std_object_handlers;
        returns the Pango version */
 PHP_FUNCTION(pango_version)
 {
-    if (zend_parse_parameters_none() == FAILURE) {
-        return;
-    }
+    ZEND_PARSE_PARAMETERS_NONE();
 
     RETURN_LONG(pango_version());
 }
@@ -52,9 +50,7 @@ PHP_FUNCTION(pango_version)
        returns the Pango version as a string */
 PHP_FUNCTION(pango_version_string)
 {
-    if (zend_parse_parameters_none() == FAILURE) {
-        return;
-    }
+    ZEND_PARSE_PARAMETERS_NONE();
 
     RETURN_STRING((char *)pango_version_string(), 1);
 }

@@ -48,14 +48,10 @@ PHP_FUNCTION(pango_context_set_base_gravity)
     pango_context_object *context_object;
     long gravity;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &context_zval,
-        pango_ce_pangocontext,
-        &gravity,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, pango_ce_pangocontext)
+        Z_PARAM_LONG(gravity)
+    ZEND_PARSE_PARAMETERS_END();
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     pango_context_set_base_gravity(context_object->context, gravity);
@@ -70,13 +66,9 @@ PHP_FUNCTION(pango_context_get_base_gravity)
     zval *context_zval = NULL;
     pango_context_object *context_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &context_zval,
-        pango_ce_pangocontext,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, pango_ce_pangocontext)
+    ZEND_PARSE_PARAMETERS_END();
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_base_gravity(context_object->context));
@@ -91,13 +83,9 @@ PHP_FUNCTION(pango_context_get_gravity)
     zval *context_zval = NULL;
     pango_context_object *context_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &context_zval,
-        pango_ce_pangocontext,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, pango_ce_pangocontext)
+    ZEND_PARSE_PARAMETERS_END();
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_gravity(context_object->context));
@@ -113,14 +101,10 @@ PHP_FUNCTION(pango_context_set_gravity_hint)
     pango_context_object *context_object;
     long gravity;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "Ol",
-        &context_zval,
-        pango_ce_pangocontext,
-        &gravity,
-    );
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, pango_ce_pangocontext)
+        Z_PARAM_LONG(gravity)
+    ZEND_PARSE_PARAMETERS_END();
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     pango_context_set_gravity_hint(context_object->context, gravity);
@@ -135,13 +119,9 @@ PHP_FUNCTION(pango_context_get_gravity_hint)
     zval *context_zval = NULL;
     pango_context_object *context_object;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &context_zval,
-        pango_ce_pangocontext,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, pango_ce_pangocontext)
+    ZEND_PARSE_PARAMETERS_END();
 
     context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
     RETURN_LONG(pango_context_get_gravity_hint(context_object->context));

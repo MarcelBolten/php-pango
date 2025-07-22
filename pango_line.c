@@ -106,13 +106,9 @@ PHP_FUNCTION(pango_layout_line_get_extents)
     PangoRectangle ink;
     PangoRectangle logical;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layoutline_zval,
-        pango_ce_pangolayoutline,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layoutline_zval, pango_ce_pangolayoutline)
+    ZEND_PARSE_PARAMETERS_END();
 
     layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
     pango_layout_line_get_extents(layoutline_object->line, &ink, &logical);
@@ -154,13 +150,9 @@ PHP_FUNCTION(pango_layout_line_get_pixel_extents)
     PangoRectangle ink;
     PangoRectangle logical;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O",
-        &layoutline_zval,
-        pango_ce_pangolayoutline,
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(layoutline_zval, pango_ce_pangolayoutline)
+    ZEND_PARSE_PARAMETERS_END();
 
     layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
     pango_layout_line_get_pixel_extents(layoutline_object->line, &ink, &logical);
@@ -204,15 +196,11 @@ PHP_FUNCTION(pango_cairo_show_layout_line)
     pango_layout_object *layout_object = NULL;
     cairo_context_object *cairocontext_object = NULL;
 
-    int parse_result = zend_parse_method_parameters(
-        ZEND_NUM_ARGS(),
-        getThis(),
-        "O|O",
-        &layoutline_zval,
-        pango_ce_pangolayoutline,
-        &cairocontext_zval,
-        php_cairo_get_context_ce(),
-    );
+    ZEND_PARSE_PARAMETERS_START(1, 2)
+        Z_PARAM_OBJECT_OF_CLASS(layoutline_zval, pango_ce_pangolayoutline)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_OBJECT_OF_CLASS(cairocontext_zval, php_cairo_get_context_ce())
+    ZEND_PARSE_PARAMETERS_END();
 
     layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
 
