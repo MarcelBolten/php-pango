@@ -35,11 +35,11 @@ extern zend_class_entry *pango_ce_pangofontdescription;
 extern zend_object_handlers pango_std_object_handlers;
 
 #ifdef PHP_WIN32
-#	define PHP_PANGO_API __declspec(dllexport)
+#    define PHP_PANGO_API __declspec(dllexport)
 #elif defined(__GNUC__) && __GNUC__ >= 4
-#	define PHP_PANGO_API __attribute__ ((visibility("default")))
+#    define PHP_PANGO_API __attribute__ ((visibility("default")))
 #else
-#	define PHP_PANGO_API
+#    define PHP_PANGO_API
 #endif
 
 #ifdef ZTS
@@ -194,4 +194,4 @@ ZEND_END_MODULE_GLOBALS(pango)
 #define Z_SET_REFCOUNT_P(pz, rc)      (pz)->refcount = rc
 #endif
 
-#endif	/* PHP_PANGO_H */
+#endif /* PHP_PANGO_H */
