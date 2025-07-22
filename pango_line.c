@@ -113,6 +113,7 @@ PHP_FUNCTION(pango_layout_line_get_extents)
     layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
     pango_layout_line_get_extents(layoutline_object->line, &ink, &logical);
 
+    // TODO: don't return an array but an object with properties
     array_init(return_value);
     MAKE_STD_ZVAL(array);
     array_init(array);
@@ -157,6 +158,7 @@ PHP_FUNCTION(pango_layout_line_get_pixel_extents)
     layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
     pango_layout_line_get_pixel_extents(layoutline_object->line, &ink, &logical);
 
+    // TODO: don't return an array but an object with properties
     array_init(return_value);
     MAKE_STD_ZVAL(array);
     array_init(array);

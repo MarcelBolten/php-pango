@@ -405,6 +405,7 @@ PHP_FUNCTION(pango_layout_get_size)
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_size(layout_object->layout, &width, &height);
 
+    // TODO: don't return an array but an object with properties
     array_init(return_value);
     add_assoc_long(return_value, "width", width);
     add_assoc_long(return_value, "height", height);
@@ -427,6 +428,7 @@ PHP_FUNCTION(pango_layout_get_pixel_size)
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_pixel_size(layout_object->layout, &width, &height);
 
+    // TODO: don't return an array but an object with properties
     array_init(return_value);
     add_assoc_long(return_value, "width", width);
     add_assoc_long(return_value, "height", height);
@@ -451,6 +453,7 @@ PHP_FUNCTION(pango_layout_get_extents)
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_extents(layout_object->layout, &ink, &logical);
 
+    // TODO: don't return an array but an object with properties
     array_init(return_value);
     ALLOC_INIT_ZVAL(array);
     array_init(array);
@@ -487,6 +490,7 @@ PHP_FUNCTION(pango_layout_get_pixel_extents)
     layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
     pango_layout_get_pixel_extents(layout_object->layout, &ink, &logical);
 
+    // TODO: don't return an array but an object with properties
     array_init(return_value);
     ALLOC_INIT_ZVAL(array);
     array_init(array);
