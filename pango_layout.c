@@ -23,6 +23,7 @@
 
 #include "php.h"
 #include "php_pango.h"
+#include "php_pango_macros.h"
 
 #include "zend_exceptions.h"
 
@@ -1055,9 +1056,7 @@ PHP_MINIT_FUNCTION(pango_layout)
     pango_ce_pangoalignment->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_ALIGNMENT_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangoalignment, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangoalignment, const_name, value)
 
     REGISTER_PANGO_ALIGNMENT_LONG_CONST("LEFT", PANGO_ALIGN_LEFT);
     REGISTER_PANGO_ALIGNMENT_LONG_CONST("CENTER", PANGO_ALIGN_CENTER);
@@ -1068,9 +1067,7 @@ PHP_MINIT_FUNCTION(pango_layout)
     pango_ce_pangowrapmode->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_WRAPMODE_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangowrapmode, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangowrapmode, const_name, value)
 
     REGISTER_PANGO_WRAPMODE_LONG_CONST("WORD", PANGO_WRAP_WORD);
     REGISTER_PANGO_WRAPMODE_LONG_CONST("CHAR", PANGO_WRAP_CHAR);
@@ -1081,9 +1078,7 @@ PHP_MINIT_FUNCTION(pango_layout)
     pango_ce_pangoellipsizemode->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_ELLIPSIZEMODE_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangoellipsizemode, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangoellipsizemode, const_name, value)
 
     REGISTER_PANGO_ELLIPSIZEMODE_LONG_CONST("NONE", PANGO_ELLIPSIZE_NONE);
     REGISTER_PANGO_ELLIPSIZEMODE_LONG_CONST("START", PANGO_ELLIPSIZE_START);

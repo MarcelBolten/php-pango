@@ -26,6 +26,7 @@
 #include "php_ini.h"
 #include "ext/standard/info.h"
 #include "php_pango.h"
+#include "php_pango_macros.h"
 
 /* If you declare any globals in php_pango.h uncomment this:
 ZEND_DECLARE_MODULE_GLOBALS(pango)
@@ -185,12 +186,7 @@ PHP_MINIT_FUNCTION(pango)
     pango_ce_pango = zend_register_internal_class(&pango_ce);
     pango_ce_pango->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
-#define REGISTER_PANGO_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pango, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
-
-    REGISTER_PANGO_LONG_CONST("SCALE", PANGO_SCALE);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pango, "SCALE", PANGO_SCALE);
 
     PHP_MINIT(pango_error)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_context)(INIT_FUNC_ARGS_PASSTHRU);

@@ -22,6 +22,7 @@
 
 #include "php.h"
 #include "php_pango.h"
+#include "php_pango_macros.h"
 
 #include "zend_exceptions.h"
 
@@ -444,9 +445,7 @@ PHP_MINIT_FUNCTION(pango_font)
     pango_ce_pangostyle->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_STYLE_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangostyle, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangostyle, const_name, value)
 
     REGISTER_PANGO_STYLE_LONG_CONST("NORMAL", PANGO_STYLE_NORMAL);
     REGISTER_PANGO_STYLE_LONG_CONST("OBLIQUE", PANGO_STYLE_OBLIQUE);
@@ -457,9 +456,7 @@ PHP_MINIT_FUNCTION(pango_font)
     pango_ce_pangoweight->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_WEIGHT_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangoweight, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangoweight, const_name, value)
 
     REGISTER_PANGO_WEIGHT_LONG_CONST("ULTRALIGHT", PANGO_WEIGHT_ULTRALIGHT);
     REGISTER_PANGO_WEIGHT_LONG_CONST("LIGHT", PANGO_WEIGHT_LIGHT);
@@ -483,9 +480,7 @@ PHP_MINIT_FUNCTION(pango_font)
     pango_ce_pangovariant->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_VARIANT_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangovariant, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangovariant, const_name, value)
 
     REGISTER_PANGO_VARIANT_LONG_CONST("NORMAL", PANGO_VARIANT_NORMAL);
     REGISTER_PANGO_VARIANT_LONG_CONST("SMALL_CAPS", PANGO_VARIANT_SMALL_CAPS);
@@ -495,9 +490,7 @@ PHP_MINIT_FUNCTION(pango_font)
     pango_ce_pangostretch->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_STRETCH_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangostretch, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangostretch, const_name, value)
 
     REGISTER_PANGO_STRETCH_LONG_CONST("ULTRA_CONDENSED", PANGO_STRETCH_ULTRA_CONDENSED);
     REGISTER_PANGO_STRETCH_LONG_CONST("EXTRA_CONDENSED", PANGO_STRETCH_EXTRA_CONDENSED);
@@ -514,9 +507,7 @@ PHP_MINIT_FUNCTION(pango_font)
     pango_ce_pangofontmask->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_FONT_MASK_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangofontmask, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangofontmask, const_name, value)
 
     REGISTER_PANGO_FONT_MASK_LONG_CONST("FAMILY", PANGO_FONT_MASK_FAMILY);
     REGISTER_PANGO_FONT_MASK_LONG_CONST("STYLE", PANGO_FONT_MASK_STYLE);

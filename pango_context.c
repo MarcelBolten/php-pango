@@ -22,6 +22,7 @@
 
 #include "php.h"
 #include "php_pango.h"
+#include "php_pango_macros.h"
 
 zend_class_entry *pango_ce_pangocontext;
 zend_class_entry *pango_ce_pangodirection;
@@ -212,9 +213,7 @@ PHP_MINIT_FUNCTION(pango_context)
     pango_ce_pangodirection->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_DIRECTION_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangodirection, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangodirection, const_name, value)
 
     REGISTER_PANGO_DIRECTION_LONG_CONST("LTR", PANGO_DIRECTION_LTR);
     REGISTER_PANGO_DIRECTION_LONG_CONST("RTL", PANGO_DIRECTION_RTL);
@@ -231,9 +230,7 @@ PHP_MINIT_FUNCTION(pango_context)
     pango_ce_pangogravity->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_GRAVITY_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangogravity, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangogravity, const_name, value)
 
     REGISTER_PANGO_GRAVITY_LONG_CONST("SOUTH", PANGO_GRAVITY_SOUTH);
     REGISTER_PANGO_GRAVITY_LONG_CONST("EAST", PANGO_GRAVITY_EAST);
@@ -246,9 +243,7 @@ PHP_MINIT_FUNCTION(pango_context)
     pango_ce_pangogravityhint->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_GRAVITY_HINT_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pangogravityhint, const_name, \
-        sizeof(const_name)-1, (long)value); \
-    REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
+    REGISTER_PANGO_CLASS_LONG_CONST(pango_ce_pangogravityhint, const_name, value)
 
     REGISTER_PANGO_GRAVITY_HINT_LONG_CONST("NATURAL", PANGO_GRAVITY_HINT_NATURAL);
     REGISTER_PANGO_GRAVITY_HINT_LONG_CONST("STRONG", PANGO_GRAVITY_HINT_STRONG);
