@@ -190,7 +190,8 @@ PHP_MINIT_FUNCTION(pango)
     pango_ce_pango->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL_CLASS;
 
 #define REGISTER_PANGO_LONG_CONST(const_name, value) \
-    zend_declare_class_constant_long(pango_ce_pango, const_name, sizeof(const_name)-1, (long)value); \
+    zend_declare_class_constant_long(pango_ce_pango, const_name, \
+        sizeof(const_name)-1, (long)value); \
     REGISTER_LONG_CONSTANT(#value, value, CONST_CS | CONST_PERSISTENT);
 
     REGISTER_PANGO_LONG_CONST("SCALE", PANGO_SCALE);
