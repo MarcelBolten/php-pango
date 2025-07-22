@@ -1126,7 +1126,7 @@ static zend_object_value pango_layout_object_new(zend_class_entry *ce)
 
 /* {{{ pango_layout_class_functions */
 const zend_function_entry pango_layout_methods[] = {
-    PHP_ME(PangoLayout, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+    PHP_ME(PangoLayout, __construct, NULL, ZEND_ACC_PUBLIC | ZEND_ACC_CTOR)
     PHP_ME_MAPPING(getContext, pango_layout_get_context, NULL, ZEND_ACC_PUBLIC)
     PHP_ME_MAPPING(setText, pango_layout_set_text, NULL, ZEND_ACC_PUBLIC)
     PHP_ME_MAPPING(getText, pango_layout_get_text, NULL, ZEND_ACC_PUBLIC)

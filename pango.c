@@ -147,8 +147,8 @@ const zend_function_entry pango_functions[] = {
 const zend_function_entry pango_methods[] = {
 #ifdef PANGO_VERSION
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 16, 0)
-    PHP_ME_MAPPING(version, pango_version, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
-    PHP_ME_MAPPING(versionString, pango_version_string, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+    PHP_ME_MAPPING(version, pango_version, NULL, ZEND_ACC_PUBLIC | ZEND_ACC_STATIC)
+    PHP_ME_MAPPING(versionString, pango_version_string, NULL, ZEND_ACC_PUBLIC | ZEND_ACC_STATIC)
 #endif
 #endif
     {NULL, NULL, NULL}

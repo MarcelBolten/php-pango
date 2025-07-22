@@ -469,7 +469,7 @@ static zend_object_value pango_fontdesc_object_new(zend_class_entry *ce)
 
 /* {{{ pango fontdescription class functions */
 const zend_function_entry pango_fontdesc_methods[] = {
-    PHP_ME(PangoFontDescription, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+    PHP_ME(PangoFontDescription, __construct, NULL, ZEND_ACC_PUBLIC | ZEND_ACC_CTOR)
     PHP_ME_MAPPING(getVariant, pango_font_description_get_variant, NULL, ZEND_ACC_PUBLIC)
     PHP_ME_MAPPING(setVariant, pango_font_description_set_variant, NULL, ZEND_ACC_PUBLIC)
     PHP_ME_MAPPING(equal, pango_font_description_equal, NULL, ZEND_ACC_PUBLIC)
