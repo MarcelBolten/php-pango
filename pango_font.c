@@ -48,7 +48,7 @@ PHP_METHOD(PangoFontDescription, __construct)
     ZEND_PARSE_PARAMETERS_END();
 
     if (text_len) {
-        fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(getThis());
+        fontdesc_object = Z_PANGO_FONTDESC_P(getThis());
         fontdesc_object->fontdesc = pango_font_description_from_string(text);
     } else {
         fontdesc_object->fontdesc = pango_font_description_new();
@@ -82,7 +82,7 @@ PHP_FUNCTION(pango_font_description_new)
     object_init_ex(return_value, pango_ce_pangofontdescription);
 
     if (text_len) {
-        fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(return_value);
+        fontdesc_object = Z_PANGO_FONTDESC_P(return_value);
         fontdesc_object->fontdesc = pango_font_description_from_string(text);
     } else {
         fontdesc_object->fontdesc = pango_font_description_new();
@@ -105,7 +105,7 @@ PHP_FUNCTION(pango_font_description_get_variant)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_variant(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -124,7 +124,7 @@ PHP_FUNCTION(pango_font_description_set_variant)
         Z_PARAM_LONG(variant)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     pango_font_description_set_variant(fontdesc_object->fontdesc, variant);
 }
 /* }}} */
@@ -144,8 +144,8 @@ PHP_FUNCTION(pango_font_description_equal)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc2_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
-    fontdesc2_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc2_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
+    fontdesc2_object = Z_PANGO_FONTDESC_P(fontdesc2_zval);
     RETURN_BOOL(pango_font_description_equal(fontdesc_object->fontdesc, fontdesc2_object->fontdesc));
 }
 /* }}} */
@@ -165,7 +165,7 @@ PHP_FUNCTION(pango_font_description_set_family)
         Z_PARAM_STRING(family, family_len)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     pango_font_description_set_family(fontdesc_object->fontdesc, family);
 }
 /* }}} */
@@ -183,7 +183,7 @@ PHP_FUNCTION(pango_font_description_get_family)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     if ((family = pango_font_description_get_family(fontdesc_object->fontdesc))) {
         RETURN_STRING((char *)family, 1);
     }
@@ -205,7 +205,7 @@ PHP_FUNCTION(pango_font_description_set_size)
         Z_PARAM_LONG(size)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     pango_font_description_set_size(fontdesc_object->fontdesc, size);
 }
 /* }}} */
@@ -223,7 +223,7 @@ PHP_FUNCTION(pango_font_description_get_size)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     RETURN_LONG (pango_font_description_get_size(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -240,7 +240,7 @@ PHP_FUNCTION(pango_font_description_get_style)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_style(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -259,7 +259,7 @@ PHP_FUNCTION(pango_font_description_set_style)
         Z_PARAM_LONG(style)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     pango_font_description_set_style(fontdesc_object->fontdesc, style);
 }
 /* }}} */
@@ -276,7 +276,7 @@ PHP_FUNCTION(pango_font_description_get_weight)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_weight(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -295,7 +295,7 @@ PHP_FUNCTION(pango_font_description_set_weight)
         Z_PARAM_LONG(weight)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     pango_font_description_set_weight(fontdesc_object->fontdesc, weight);
 }
 /* }}} */
@@ -313,7 +313,7 @@ PHP_FUNCTION(pango_font_description_get_stretch)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     RETURN_LONG(pango_font_description_get_stretch(fontdesc_object->fontdesc));
 }
 /* }}} */
@@ -332,7 +332,7 @@ PHP_FUNCTION(pango_font_description_set_stretch)
         Z_PARAM_LONG(stretch)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     pango_font_description_set_stretch(fontdesc_object->fontdesc, stretch);
 }
 /* }}} */
@@ -350,7 +350,7 @@ PHP_FUNCTION(pango_font_description_to_string)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     if (result = pango_font_description_to_string(fontdesc_object->fontdesc)) {
         RETURN_STRING((char *)result, 1);
     }

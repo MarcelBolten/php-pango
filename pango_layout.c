@@ -46,9 +46,9 @@ PHP_METHOD(PangoLayout, __construct)
         Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
     ZEND_PARSE_PARAMETERS_END();
 
-    context_object = (cairo_context_object *)zend_object_store_get_object(context_zval);
+    context_object = Z_CAIRO_CONTEXT_P(context_zval);
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(getThis());
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
     layout_object->layout = pango_cairo_create_layout(context_object->context);
 
     if (layout_object->layout == NULL) {
@@ -75,10 +75,10 @@ PHP_FUNCTION(pango_layout_new)
         Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
     ZEND_PARSE_PARAMETERS_END();
 
-    context_object = (cairo_context_object *)zend_object_store_get_object(context_zval);
+    context_object = Z_CAIRO_CONTEXT_P(context_zval);
 
     object_init_ex(return_value, pango_ce_pangolayout);
-    layout_object = (pango_layout_object *)zend_object_store_get_object(return_value);
+    layout_object = Z_PANGO_LAYOUT_P(return_value);
     layout_object->layout = pango_cairo_create_layout(context_object->context);
 
     if (layout_object->layout == NULL) {
@@ -107,7 +107,7 @@ PHP_FUNCTION(pango_layout_get_context)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     context = pango_layout_get_context(layout_object->layout);
 
     /* If there is no context object create one */
@@ -123,7 +123,7 @@ PHP_FUNCTION(pango_layout_get_context)
 
     /* Get the context_object and replace the internal context pointer
      * with what we fetched (should be the same) */
-    context_object = (pango_context_object *)zend_object_store_get_object(return_value);
+    context_object = Z_PANGO_CONTEXT_P(return_value);
     /* if there IS a value in context, destroy it cause we're getting a new one */
     if (context_object->context != NULL) {
         g_object_unref(context_object->context);
@@ -150,7 +150,7 @@ PHP_FUNCTION(pango_layout_set_text)
         Z_PARAM_STRING(text, text_len)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_text(layout_object->layout, text, text_len);
 }
 /* }}} */
@@ -168,7 +168,7 @@ PHP_FUNCTION(pango_layout_get_text)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     if (text = pango_layout_get_text(layout_object->layout)) {
         RETURN_STRING((char *)text, 1);
     }
@@ -191,7 +191,7 @@ PHP_FUNCTION(pango_layout_set_markup)
         Z_PARAM_STRING(markup, markup_len)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_markup(layout_object->layout, markup, markup_len);
 }
 /* }}} */
@@ -208,7 +208,7 @@ PHP_FUNCTION(pango_layout_context_changed)
 
     ZEND_PARSE_PARAMETERS_NONE();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_context_changed(layout_object->layout);
 }
 /* }}} */
@@ -235,7 +235,7 @@ PHP_FUNCTION(pango_layout_set_markup_with_accel)
         Z_PARAM_STRING(accel_marker, accel_marker_len)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_markup_with_accel(
         layout_object->layout,
         markup,
@@ -268,10 +268,10 @@ PHP_FUNCTION(pango_cairo_update_layout)
         Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
 
     /* If the user supplies a context, use that, otherwise get the one from the layout */
-    context_object = (cairo_context_object *)zend_object_store_get_object(
+    context_object = Z_CAIRO_CONTEXT_P(
         context_zval
             ? context_zval
             : layout_object->cairo_context,
@@ -298,10 +298,10 @@ PHP_FUNCTION(pango_cairo_show_layout)
         Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
 
     /* If the user supplies a context, use that, otherwise get the one from the layout */
-    context_object = (cairo_context_object *)zend_object_store_get_object(
+    context_object = Z_CAIRO_CONTEXT_P(
         context_zval
             ? context_zval
             : layout_object->cairo_context,
@@ -328,10 +328,10 @@ PHP_FUNCTION(pango_cairo_layout_path)
         Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairocontext)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
 
     /* If the user supplies a context, use that, otherwise get the one from the layout */
-    context_object = (cairo_context_object *)zend_object_store_get_object(
+    context_object = Z_CAIRO_CONTEXT_P(
         context_zval
             ? context_zval
             : layout_object->cairo_context,
@@ -354,7 +354,7 @@ PHP_FUNCTION(pango_layout_get_width)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     if (width = pango_layout_get_width(layout_object->layout)) {
         RETURN_LONG(width);
     }
@@ -378,7 +378,7 @@ PHP_FUNCTION(pango_layout_get_height)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     if (height = pango_layout_get_height(layout_object->layout)) {
         RETURN_LONG(height);
     }
@@ -403,7 +403,7 @@ PHP_FUNCTION(pango_layout_get_size)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_get_size(layout_object->layout, &width, &height);
 
     // TODO: don't return an array but an object with properties
@@ -426,7 +426,7 @@ PHP_FUNCTION(pango_layout_get_pixel_size)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_get_pixel_size(layout_object->layout, &width, &height);
 
     // TODO: don't return an array but an object with properties
@@ -451,7 +451,7 @@ PHP_FUNCTION(pango_layout_get_extents)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_get_extents(layout_object->layout, &ink, &logical);
 
     // TODO: don't return an array but an object with properties
@@ -488,7 +488,7 @@ PHP_FUNCTION(pango_layout_get_pixel_extents)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_get_pixel_extents(layout_object->layout, &ink, &logical);
 
     // TODO: don't return an array but an object with properties
@@ -524,7 +524,7 @@ PHP_FUNCTION(pango_layout_set_width)
         Z_PARAM_LONG(width)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_width(layout_object->layout, width);
 }
 /* }}} */
@@ -545,7 +545,7 @@ PHP_FUNCTION(pango_layout_set_height)
         Z_PARAM_LONG(height)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_height(layout_object->layout, height);
 }
 /* }}} */
@@ -566,8 +566,8 @@ PHP_FUNCTION(pango_layout_set_font_description)
         Z_PARAM_OBJECT_OF_CLASS(fontdesc_zval, pango_ce_pangofontdescription)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
-    fontdesc_object = (pango_fontdesc_object *)zend_object_store_get_object(fontdesc_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
+    fontdesc_object = Z_PANGO_FONTDESC_P(fontdesc_zval);
     pango_layout_set_font_description(layout_object->layout, fontdesc_object->fontdesc);
 }
 /* }}} */
@@ -588,9 +588,9 @@ PHP_FUNCTION(pango_layout_get_font_description)
     ZEND_PARSE_PARAMETERS_END();
 
     object_init_ex(return_value, pango_ce_pangofontdescription);
-    fontdesc_object = (pango_fontdesc_object *) zend_object_store_get_object(return_value);
+    fontdesc_object = Z_PANGO_FONTDESC_P(return_value);
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     aux = pango_layout_get_font_description(layout_object->layout);
     fontdesc_object->fontdesc = pango_font_description_copy (aux);
 
@@ -611,7 +611,7 @@ PHP_FUNCTION(pango_layout_set_justify)
         Z_PARAM_BOOL(justify)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_justify(layout_object->layout, justify);
 }
 /* }}} */
@@ -628,7 +628,7 @@ PHP_FUNCTION(pango_layout_get_justify)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_BOOL(pango_layout_get_justify(layout_object->layout));
 }
 /* }}} */
@@ -647,7 +647,7 @@ PHP_FUNCTION(pango_layout_set_alignment)
         Z_PARAM_LONG(alignment)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_alignment(layout_object->layout, alignment);
 }
 /* }}} */
@@ -664,7 +664,7 @@ PHP_FUNCTION(pango_layout_get_alignment)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_LONG(pango_layout_get_alignment(layout_object->layout));
 }
 /* }}} */
@@ -683,7 +683,7 @@ PHP_FUNCTION(pango_layout_set_wrap)
         Z_PARAM_LONG(wrap)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_wrap(layout_object->layout, wrap);
 }
 /* }}} */
@@ -700,7 +700,7 @@ PHP_FUNCTION(pango_layout_get_wrap)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_LONG(pango_layout_get_wrap(layout_object->layout));
 }
 /* }}} */
@@ -719,7 +719,7 @@ PHP_FUNCTION(pango_layout_is_wrapped)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_BOOL(pango_layout_is_wrapped(layout_object->layout));
 }
 /* }}} */
@@ -740,7 +740,7 @@ PHP_FUNCTION(pango_layout_set_indent)
         Z_PARAM_LONG(indent)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_indent(layout_object->layout, indent);
 }
 /* }}} */
@@ -757,7 +757,7 @@ PHP_FUNCTION(pango_layout_get_indent)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_LONG(pango_layout_get_indent(layout_object->layout));
 }
 /* }}} */
@@ -776,7 +776,7 @@ PHP_FUNCTION(pango_layout_set_spacing)
         Z_PARAM_LONG(spacing)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_spacing(layout_object->layout, spacing);
 }
 /* }}} */
@@ -793,7 +793,7 @@ PHP_FUNCTION(pango_layout_get_spacing)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_LONG(pango_layout_get_spacing(layout_object->layout));
 }
 /* }}} */
@@ -812,7 +812,7 @@ PHP_FUNCTION(pango_layout_set_ellipsize)
         Z_PARAM_LONG(ellipsize)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     pango_layout_set_ellipsize(layout_object->layout, ellipsize);
 }
 /* }}} */
@@ -829,7 +829,7 @@ PHP_FUNCTION(pango_layout_get_ellipsize)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_LONG(pango_layout_get_ellipsize(layout_object->layout));
 }
 /* }}} */
@@ -848,7 +848,7 @@ PHP_FUNCTION(pango_layout_is_ellipsized)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_BOOL(pango_layout_is_ellipsized(layout_object->layout));
 }
 /* }}} */
@@ -871,7 +871,7 @@ PHP_FUNCTION(pango_layout_get_lines)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     lines = pango_layout_get_lines(layout_object->layout);
 
     layoutline_ce = php_pango_get_layoutline_ce();
@@ -899,7 +899,7 @@ PHP_FUNCTION(pango_layout_get_line)
         Z_PARAM_LONG(line_number)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     layoutline = pango_layout_get_line(layout_object->layout, line_number);
 
     if (!layoutline) {
@@ -925,7 +925,7 @@ PHP_FUNCTION(pango_layout_get_line_count)
         Z_PARAM_OBJECT_OF_CLASS(layout_zval, pango_ce_pangolayout)
     ZEND_PARSE_PARAMETERS_END();
 
-    layout_object = (pango_layout_object *)zend_object_store_get_object(layout_zval);
+    layout_object = Z_PANGO_LAYOUT_P(layout_zval);
     RETURN_LONG(pango_layout_get_line_count(layout_object->layout));
 }
 /* }}} */

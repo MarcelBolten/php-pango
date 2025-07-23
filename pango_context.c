@@ -54,7 +54,7 @@ PHP_FUNCTION(pango_context_set_base_gravity)
         Z_PARAM_LONG(gravity)
     ZEND_PARSE_PARAMETERS_END();
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
+    context_object = Z_PANGO_CONTEXT_P(context_zval);
     pango_context_set_base_gravity(context_object->context, gravity);
 }
 /* }}} */
@@ -71,7 +71,7 @@ PHP_FUNCTION(pango_context_get_base_gravity)
         Z_PARAM_OBJECT_OF_CLASS(context_zval, pango_ce_pangocontext)
     ZEND_PARSE_PARAMETERS_END();
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
+    context_object = Z_PANGO_CONTEXT_P(context_zval);
     RETURN_LONG(pango_context_get_base_gravity(context_object->context));
 }
 /* }}} */
@@ -88,7 +88,7 @@ PHP_FUNCTION(pango_context_get_gravity)
         Z_PARAM_OBJECT_OF_CLASS(context_zval, pango_ce_pangocontext)
     ZEND_PARSE_PARAMETERS_END();
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
+    context_object = Z_PANGO_CONTEXT_P(context_zval);
     RETURN_LONG(pango_context_get_gravity(context_object->context));
 }
 /* }}} */
@@ -107,7 +107,7 @@ PHP_FUNCTION(pango_context_set_gravity_hint)
         Z_PARAM_LONG(gravity)
     ZEND_PARSE_PARAMETERS_END();
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
+    context_object = Z_PANGO_CONTEXT_P(context_zval);
     pango_context_set_gravity_hint(context_object->context, gravity);
 }
 /* }}} */
@@ -124,7 +124,7 @@ PHP_FUNCTION(pango_context_get_gravity_hint)
         Z_PARAM_OBJECT_OF_CLASS(context_zval, pango_ce_pangocontext)
     ZEND_PARSE_PARAMETERS_END();
 
-    context_object = (pango_context_object *)zend_object_store_get_object(context_zval);
+    context_object = Z_PANGO_CONTEXT_P(context_zval);
     RETURN_LONG(pango_context_get_gravity_hint(context_object->context));
 }
 /* }}} */

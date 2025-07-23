@@ -22,6 +22,7 @@
 
 #include "php.h"
 #include "php_pango.h"
+#include "php_pango_macros.h"
 
 #include <string.h>
 #include "zend_exceptions.h"
@@ -49,7 +50,7 @@ PHP_PANGO_API zval* php_pango_make_layoutline_zval(
 
     MAKE_STD_ZVAL(return_value);
     object_init_ex(return_value, pango_ce_pangolayoutline);
-    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(return_value);
+    layoutline_object = Z_PANGO_LAYOUTLINE_P(return_value);
     layoutline_object->line = line;
 
     /* Optionally cache the PangoLayout zval for later */
@@ -110,7 +111,7 @@ PHP_FUNCTION(pango_layout_line_get_extents)
         Z_PARAM_OBJECT_OF_CLASS(layoutline_zval, pango_ce_pangolayoutline)
     ZEND_PARSE_PARAMETERS_END();
 
-    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
+    layoutline_object = Z_PANGO_LAYOUTLINE_P(layoutline_zval);
     pango_layout_line_get_extents(layoutline_object->line, &ink, &logical);
 
     // TODO: don't return an array but an object with properties
@@ -155,7 +156,7 @@ PHP_FUNCTION(pango_layout_line_get_pixel_extents)
         Z_PARAM_OBJECT_OF_CLASS(layoutline_zval, pango_ce_pangolayoutline)
     ZEND_PARSE_PARAMETERS_END();
 
-    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
+    layoutline_object = Z_PANGO_LAYOUTLINE_P(layoutline_zval);
     pango_layout_line_get_pixel_extents(layoutline_object->line, &ink, &logical);
 
     // TODO: don't return an array but an object with properties
@@ -204,14 +205,14 @@ PHP_FUNCTION(pango_cairo_show_layout_line)
         Z_PARAM_OBJECT_OF_CLASS(cairocontext_zval, php_cairo_get_context_ce())
     ZEND_PARSE_PARAMETERS_END();
 
-    layoutline_object = (pango_layoutline_object *)zend_object_store_get_object(layoutline_zval);
+    layoutline_object = Z_PANGO_LAYOUTLINE_P(layoutline_zval);
 
     if (cairocontext_zval == NULL) {
         layout_zval = layoutline_object->layout_zval;
-        layout_object = zend_object_store_get_object(layout_zval);
+        layout_object = Z_PANGO_LAYOUT_P(layout_zval);
         cairocontext_zval = layout_object->cairo_context;
     }
-    cairocontext_object = zend_object_store_get_object(cairocontext_zval);
+    cairocontext_object = Z_CAIRO_CONTEXT_P(cairocontext_zval);
 
     pango_cairo_show_layout_line(cairocontext_object->context, layoutline_object->line);
 }
