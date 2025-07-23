@@ -962,17 +962,7 @@ static zend_object_value pango_layout_object_new(zend_class_entry *ce)
 
     ALLOC_HASHTABLE(layout->std.properties);
     zend_hash_init(layout->std.properties, 0, NULL, ZVAL_PTR_DTOR, 0);
-#if PHP_VERSION_ID < 50399
-    zend_hash_copy(
-        layout->std.properties,
-        &ce->default_properties,
-        (copy_ctor_func_t)zval_add_ref,
-        (void *)&temp,
-        sizeof(zval *),
-    );
-#else
     object_properties_init(&(layout->std), ce);
-#endif
     retval.handle = zend_objects_store_put(
         layout,
         NULL,

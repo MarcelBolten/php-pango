@@ -235,9 +235,7 @@ static void php_pango_layoutline_write_property(
     zval *object,
     zval *member,
     zval *value,
-#if PHP_VERSION_ID >= 50399
     const zend_literal *key,
-#endif
 ) {
     zval tmp_member;
 
@@ -267,9 +265,7 @@ static void php_pango_layoutline_write_property(
             object,
             member,
             value,
-#if PHP_VERSION_ID >= 50399
             key,
-#endif
         );
     }
 
@@ -292,17 +288,7 @@ static zend_object_value pango_layoutline_object_new(zend_class_entry *ce)
 
     ALLOC_HASHTABLE(layoutline->std.properties);
     zend_hash_init(layoutline->std.properties, 0, NULL, ZVAL_PTR_DTOR, 0);
-    #if PHP_VERSION_ID < 50399
-        zend_hash_copy(
-            layoutline->std.properties,
-            &ce->default_properties,
-            (copy_ctor_func_t)zval_add_ref,
-            (void *) &temp,
-            sizeof(zval *),
-        );
-    #else
-        object_properties_init(&(layoutline->std), ce);
-    #endif
+    object_properties_init(&(layoutline->std), ce);
     retval.handle = zend_objects_store_put(
         layoutline,
         NULL,
