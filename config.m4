@@ -10,20 +10,22 @@ if test "$PHP_PANGO" != "no"; then
   export CPPFLAGS="$CPPFLAGS $INCLUDES -DHAVE_PANGO"
 
   AC_MSG_CHECKING(PHP version)
-  AC_TRY_COMPILE([#include <php_version.h>], [
-  #if PHP_VERSION_ID < 50200
-  #error this extension requires at least PHP version 5.2.0
-  #endif
-  ],
-  [AC_MSG_RESULT(ok)],
-  [AC_MSG_ERROR([need at least PHP 5.2.0])])
+  AC_COMPILE_IFELSE(
+  [AC_LANG_PROGRAM([#include <php_version.h>], [
+#if PHP_VERSION_ID < 80100
+#error this extension requires at least PHP version 8.1.0
+#endif
+    ])],
+    [AC_MSG_RESULT(ok)],
+    [AC_MSG_ERROR([need at least PHP 8.1.0])]
+  )
 
   export CPPFLAGS="$OLD_CPPFLAGS"
 
   PHP_SUBST(PANGO_SHARED_LIBADD)
   AC_DEFINE(HAVE_PANGO, 1, [ ])
 
-  PHP_NEW_EXTENSION(pango, pango.c pango_error.c pango_context.c pango_layout.c pango_font.c pango_line.c, $ext_shared)
+  PHP_NEW_EXTENSION(pango, src/pango.c src/exception.c src/context.c src/layout.c src/font_description.c src/layout_line.c src/glyph_item.c src/item.c src/glyph_string.c src/glyph_info.c, $ext_shared)
 
   EXT_PANGO_HEADERS="php_pango_api.h"
 
@@ -62,7 +64,7 @@ if test "$PHP_PANGO" != "no"; then
       AC_MSG_ERROR(Ooops ! no pango detected in the system)
     fi
 
-    PANGO_MIN_VERSION="1.4"
+    PANGO_MIN_VERSION="1.50"
     if ! $PKG_CONFIG --atleast-version=$PANGO_MIN_VERSION pango; then
       AC_MSG_RESULT(too old)
       AC_MSG_ERROR(Ooops ! You need at least pango $PANGO_MIN_VERSION)
@@ -70,28 +72,38 @@ if test "$PHP_PANGO" != "no"; then
 
     pango_version_full=`$PKG_CONFIG --modversion pango`
     AC_MSG_RESULT([found $pango_version_full])
+
     PANGO_LIBS="$LDFLAGS `$PKG_CONFIG --libs pango`"
-    CAIRO_LIBS="$LDFLAGS `$PKG_CONFIG --libs cairo`"
-    PANGOCAIRO_LIBS="$LDFLAGS `$PKG_CONFIG --libs pangocairo`"
-    PANGO_INCS="$CFLAGS `$PKG_CONFIG --cflags-only-I pango`"
-    CAIRO_INCS="$CFLAGS `$PKG_CONFIG --cflags-only-I cairo`"
-    PANGOCAIRO_INCS="$CFLAGS `$PKG_CONFIG --cflags-only-I pangocairo`"
-    PHP_EVAL_INCLINE($PANGO_INCS)
-    PHP_EVAL_INCLINE($CAIRO_INCS)
-    PHP_EVAL_INCLINE($PANGOCAIRO_INCS)
     PHP_EVAL_LIBLINE($PANGO_LIBS, PANGO_SHARED_LIBADD)
+    PANGO_INCS="$CFLAGS `$PKG_CONFIG --cflags-only-I pango`"
+    PHP_EVAL_INCLINE($PANGO_INCS)
+
+    CAIRO_LIBS="$LDFLAGS `$PKG_CONFIG --libs cairo`"
     PHP_EVAL_LIBLINE($CAIRO_LIBS, PANGO_SHARED_LIBADD)
+    CAIRO_INCS="$CFLAGS `$PKG_CONFIG --cflags-only-I cairo`"
+    PHP_EVAL_INCLINE($CAIRO_INCS)
+
+    PANGOCAIRO_LIBS="$LDFLAGS `$PKG_CONFIG --libs pangocairo`"
     PHP_EVAL_LIBLINE($PANGOCAIRO_LIBS, PANGO_SHARED_LIBADD)
+    PANGOCAIRO_INCS="$CFLAGS `$PKG_CONFIG --cflags-only-I pangocairo`"
+    PHP_EVAL_INCLINE($PANGOCAIRO_INCS)
+
     AC_DEFINE(HAVE_PANGO, 1, [whether pango exists in the system])
   fi
 
   AC_MSG_CHECKING(for cairo php extension)
-  if test ! -f "$phpincludedir/ext/cairo/php_cairo_api.h"; then
+  if test ! -f "$phpincludedir/ext/cairo/src/php_cairo_internal.h"; then
     AC_MSG_RESULT(no)
     AC_MSG_ERROR(cairo php extension not found.)
   fi
 
+  if test "$PANGO_COVERAGE" = "yes"; then
+      CFLAGS="$CFLAGS -fprofile-arcs -ftest-coverage"
+      LDFLAGS="$LDFLAGS -lgcov"
+  fi
+
+
   PHP_ADD_INCLUDE($phpincludedir/ext/cairo)
-  PHP_DEF_HAVE(CAIRO)
+  AC_DEFINE(CAIRO, 1, [whether cairo exists in the system])
   AC_MSG_RESULT(yes)
 fi
