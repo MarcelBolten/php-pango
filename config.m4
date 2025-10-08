@@ -25,7 +25,7 @@ if test "$PHP_PANGO" != "no"; then
   PHP_SUBST(PANGO_SHARED_LIBADD)
   AC_DEFINE(HAVE_PANGO, 1, [ ])
 
-  PHP_NEW_EXTENSION(pango, src/pango.c src/exception.c src/context.c src/layout.c src/font_description.c src/layout_line.c src/glyph_item.c src/item.c src/glyph_string.c src/glyph_info.c, $ext_shared)
+  PHP_NEW_EXTENSION(pango, src/pango.c src/exception.c src/context.c src/layout.c src/font_description.c src/layout_line.c src/glyph_item.c src/item.c src/glyph_string.c src/glyph_info.c src/matrix.c, $ext_shared)
 
   EXT_PANGO_HEADERS="php_pango_api.h"
 

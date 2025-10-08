@@ -15,9 +15,9 @@ array(5) {
   [1]=>
   enum(Pango\Direction::RTL)
   [2]=>
-  enum(Pango\Direction::Weak_LTR)
+  enum(Pango\Direction::WeakLTR)
   [3]=>
-  enum(Pango\Direction::Weak_RTL)
+  enum(Pango\Direction::WeakRTL)
   [4]=>
   enum(Pango\Direction::Neutral)
 }

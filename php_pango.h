@@ -53,6 +53,7 @@ PHP_PANGO_API extern zend_class_entry *php_pango_get_glyph_item_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_item_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_glyph_string_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_glyph_info_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_matrix_ce();
 
 /* Objects */
 typedef struct _pango_context_object {
@@ -118,6 +119,14 @@ typedef struct _pango_glyph_info_object {
 extern pango_glyph_info_object *pango_glyph_info_fetch_object(zend_object *object);
 #define Z_PANGO_GLYPH_INFO_P(zv) pango_glyph_info_fetch_object(Z_OBJ_P(zv))
 
+typedef struct _pango_matrix_object {
+    PangoMatrix *matrix;
+    zend_object std;
+} pango_matrix_object;
+extern pango_matrix_object *pango_matrix_fetch_object(zend_object *object);
+#define Z_PANGO_MATRIX_P(zv) pango_matrix_fetch_object(Z_OBJ_P(zv))
+extern PangoMatrix *pango_matrix_object_get_matrix(zval *zv);
+
 PHP_MINIT_FUNCTION(pango);
 PHP_MSHUTDOWN_FUNCTION(pango);
 PHP_MINFO_FUNCTION(pango);
@@ -131,6 +140,7 @@ PHP_MINIT_FUNCTION(pango_glyph_item);
 PHP_MINIT_FUNCTION(pango_item);
 PHP_MINIT_FUNCTION(pango_glyph_string);
 PHP_MINIT_FUNCTION(pango_glyph_info);
+PHP_MINIT_FUNCTION(pango_matrix);
 
 #ifdef ZTS
 #define PANGO_G(v) TSRMG(pango_globals_id, zend_pango_globals *, v)

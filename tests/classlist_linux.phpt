@@ -11,7 +11,7 @@ if (strtolower(PHP_OS_FAMILY) !== 'linux') {
 $ext = new ReflectionExtension('pango');
 var_dump($ext->getClassNames());
 --EXPECT--
-array(21) {
+array(22) {
   [0]=>
   string(11) "Pango\Pango"
   [1]=>
@@ -54,4 +54,6 @@ array(21) {
   string(17) "Pango\GlyphString"
   [20]=>
   string(15) "Pango\GlyphInfo"
+  [21]=>
+  string(12) "Pango\Matrix"
 }

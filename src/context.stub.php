@@ -13,11 +13,64 @@ class Context
     //     PangoFontMap $fontmap
     // ) {}
 
-    // public function setFontDescription(
-    //     FontDescription $desc
-    // ): void {}
+    /**
+     * Retrieves the base direction for the context.
+     */
+    public function getBaseDir(): Direction {}
+
+    public function getBaseGravity(): Gravity {}
 
     // public function getFontDescription(): FontDescription {}
+
+    // public function getFontMap(): FontMap {}
+
+    public function getGravity(): Gravity {}
+
+    public function getGravityHint(): GravityHint {}
+
+    // public function getLanguage(): Language {}
+
+    public function getMatrix(): Matrix {}
+
+    // public function getMetrics(
+    //     FontDescription $desc,
+    //     Language $language
+    // ): FontMetrics {}
+
+    /**
+     * Returns whether font rendering with this context
+     * should round glyph positions and widths.
+     */
+    public function getRoundGlyphPositions(): bool {}
+
+    // /**
+    //  * List all families for a context.
+    //  *
+    //  * @return FontFamily[] An array of FontFamily objects
+    //  */
+    // public function listFamilies(): array {}
+
+    // /**
+    //  * Loads the font in one of the fontmaps in the context that is the closest match for desc.
+    //  */
+    // public function loadFont(
+    //     FontDescription $fontDesc
+    // ): Font {}
+
+    // /**
+    //  * Load a set of fonts in the context that can be used to render a font matching $fontDesc.
+    //  */
+    // public function loadFontset(
+    //     FontDescription $fontDesc,
+    //     Language $language
+    // ): Fontset {}
+
+    /**
+     * Sets the base direction for the context.
+     */
+    public function setBaseDir(
+        Direction $direction
+    ): void {}
 
     /**
      * Sets the gravity to be used to lay out the text
@@ -26,15 +79,50 @@ class Context
         Gravity $gravity
     ): void {}
 
-    public function getBaseGravity(): Gravity {}
+    // /**
+    //  * Set the default font description for the context.
+    //  */
+    // public function setFontDescription(
+    //     FontDescription $desc
+    // ): void {}
 
-    public function getGravity(): Gravity {}
+    // /**
+    //  * Sets the font map to be searched when fonts are looked-up in this context.
+    //  */
+    // public function setFontMap(
+    //     FontMap $fontmap
+    // ): void {}
 
+    /**
+     * Sets the gravity hint for the context.
+     */
     public function setGravityHint(
         GravityHint $hint
     ): void {}
 
-    public function getGravityHint(): GravityHint {}
+    // /**
+    //  * Sets the global language tag for the context.
+    //  */
+    // public function setLanguage(
+    //     Language $language
+    // ): void {}
+
+    /**
+     * Sets the transformation matrix that will be applied when rendering with this context.
+     *
+     * @param Matrix|null $matrix A Pango\Matrix, or null to unset (set to identity matrix) any existing matrix.
+     */
+    public function setMatrix(
+        ?Matrix $matrix
+    ): void {}
+
+    /**
+     * Sets whether font rendering with this context should round glyph positions
+     * and widths to integral positions, in device units.
+     */
+    public function setRoundGlyphPositions(
+        bool $round
+    ): void {}
 }
 
 enum Gravity: int
@@ -127,10 +215,10 @@ enum Direction: int
     // case TTB_RTL = UNKNOWN;
 
     /** @cvalue PANGO_DIRECTION_WEAK_LTR */
-    case Weak_LTR = UNKNOWN;
+    case WeakLTR = UNKNOWN;
 
     /** @cvalue PANGO_DIRECTION_WEAK_RTL */
-    case Weak_RTL = UNKNOWN;
+    case WeakRTL = UNKNOWN;
 
     /** @cvalue PANGO_DIRECTION_NEUTRAL */
     case Neutral = UNKNOWN;

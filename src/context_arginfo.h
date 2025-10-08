@@ -1,8 +1,7 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: cbfb556ad9bffd6d48476d77ded379468d68ee0b */
+ * Stub hash: 0a80f9a3c2134286efe60beba198bd81060dcbb4 */
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setBaseGravity, 0, 1, IS_VOID, 0)
-	ZEND_ARG_OBJ_INFO(0, gravity, Pango\\Gravity, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getBaseDir, 0, 0, Pango\\Direction, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getBaseGravity, 0, 0, Pango\\Gravity, 0)
@@ -10,25 +9,59 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Context_getGravity arginfo_class_Pango_Context_getBaseGravity
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getGravityHint, 0, 0, Pango\\GravityHint, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getMatrix, 0, 0, Pango\\Matrix, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_getRoundGlyphPositions, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setBaseDir, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, direction, Pango\\Direction, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setBaseGravity, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, gravity, Pango\\Gravity, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setGravityHint, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, hint, Pango\\GravityHint, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getGravityHint, 0, 0, Pango\\GravityHint, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setMatrix, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, matrix, Pango\\Matrix, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_METHOD(Pango_Context, setBaseGravity);
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setRoundGlyphPositions, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, round, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_METHOD(Pango_Context, getBaseDir);
 ZEND_METHOD(Pango_Context, getBaseGravity);
 ZEND_METHOD(Pango_Context, getGravity);
-ZEND_METHOD(Pango_Context, setGravityHint);
 ZEND_METHOD(Pango_Context, getGravityHint);
+ZEND_METHOD(Pango_Context, getMatrix);
+ZEND_METHOD(Pango_Context, getRoundGlyphPositions);
+ZEND_METHOD(Pango_Context, setBaseDir);
+ZEND_METHOD(Pango_Context, setBaseGravity);
+ZEND_METHOD(Pango_Context, setGravityHint);
+ZEND_METHOD(Pango_Context, setMatrix);
+ZEND_METHOD(Pango_Context, setRoundGlyphPositions);
 
 static const zend_function_entry class_Pango_Context_methods[] = {
-	ZEND_ME(Pango_Context, setBaseGravity, arginfo_class_Pango_Context_setBaseGravity, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, getBaseDir, arginfo_class_Pango_Context_getBaseDir, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getBaseGravity, arginfo_class_Pango_Context_getBaseGravity, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getGravity, arginfo_class_Pango_Context_getGravity, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Context, setGravityHint, arginfo_class_Pango_Context_setGravityHint, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getGravityHint, arginfo_class_Pango_Context_getGravityHint, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, getMatrix, arginfo_class_Pango_Context_getMatrix, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, getRoundGlyphPositions, arginfo_class_Pango_Context_getRoundGlyphPositions, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, setBaseDir, arginfo_class_Pango_Context_setBaseDir, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, setBaseGravity, arginfo_class_Pango_Context_setBaseGravity, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, setGravityHint, arginfo_class_Pango_Context_setGravityHint, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, setMatrix, arginfo_class_Pango_Context_setMatrix, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, setRoundGlyphPositions, arginfo_class_Pango_Context_setRoundGlyphPositions, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -104,13 +137,13 @@ static zend_class_entry *register_class_Pango_Direction(void)
 	ZVAL_LONG(&enum_case_RTL_value, PANGO_DIRECTION_RTL);
 	zend_enum_add_case_cstr(class_entry, "RTL", &enum_case_RTL_value);
 
-	zval enum_case_Weak_LTR_value;
-	ZVAL_LONG(&enum_case_Weak_LTR_value, PANGO_DIRECTION_WEAK_LTR);
-	zend_enum_add_case_cstr(class_entry, "Weak_LTR", &enum_case_Weak_LTR_value);
+	zval enum_case_WeakLTR_value;
+	ZVAL_LONG(&enum_case_WeakLTR_value, PANGO_DIRECTION_WEAK_LTR);
+	zend_enum_add_case_cstr(class_entry, "WeakLTR", &enum_case_WeakLTR_value);
 
-	zval enum_case_Weak_RTL_value;
-	ZVAL_LONG(&enum_case_Weak_RTL_value, PANGO_DIRECTION_WEAK_RTL);
-	zend_enum_add_case_cstr(class_entry, "Weak_RTL", &enum_case_Weak_RTL_value);
+	zval enum_case_WeakRTL_value;
+	ZVAL_LONG(&enum_case_WeakRTL_value, PANGO_DIRECTION_WEAK_RTL);
+	zend_enum_add_case_cstr(class_entry, "WeakRTL", &enum_case_WeakRTL_value);
 
 	zval enum_case_Neutral_value;
 	ZVAL_LONG(&enum_case_Neutral_value, PANGO_DIRECTION_NEUTRAL);

@@ -96,6 +96,7 @@ PHP_MINIT_FUNCTION(pango)
     PHP_MINIT(pango_item)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_glyph_string)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_glyph_info)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(pango_matrix)(INIT_FUNC_ARGS_PASSTHRU);
 
     return SUCCESS;
 }

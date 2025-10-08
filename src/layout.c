@@ -401,6 +401,7 @@ PHP_METHOD(Pango_Layout, getPixelExtents)
     add_assoc_long(&ink_array, "width", ink.width);
     add_assoc_long(&ink_array, "height", ink.height);
     add_assoc_zval(return_value, "ink", &ink_array);
+
     array_init(&logical_array);
     add_assoc_long(&logical_array, "x", logical.x);
     add_assoc_long(&logical_array, "y", logical.y);

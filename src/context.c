@@ -44,26 +44,27 @@ pango_context_object *pango_context_fetch_object(zend_object *object)
     return (pango_context_object *) ((char*)(object) - XtOffsetOf(pango_context_object, std));
 }
 
-
-/* {{{ Sets the base gravity to be used to lay out the text */
-PHP_METHOD(Pango_Context, setBaseGravity)
+/* {{{ Retrieves the base direction for the context. */
+PHP_METHOD(Pango_Context, getBaseDir)
 {
     pango_context_object *context_object;
-    zend_object *base_gravity;
+    zend_object *base_dir_case;
 
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_OBJ_OF_CLASS(base_gravity, pango_ce_pango_gravity)
-    ZEND_PARSE_PARAMETERS_END();
+    ZEND_PARSE_PARAMETERS_NONE();
 
     context_object = Z_PANGO_CONTEXT_P(getThis());
-    pango_context_set_base_gravity(
-        context_object->context,
-        Z_LVAL_P(zend_enum_fetch_case_value(base_gravity))
+
+    zend_enum_get_case_by_value(
+        &base_dir_case, pango_ce_pango_direction,
+        pango_context_get_base_dir(context_object->context),
+        NULL, false
     );
+
+    RETURN_OBJ_COPY(base_dir_case);
 }
 /* }}} */
 
-/* {{{ Gets the base gravity to be used to lay out the text */
+/* {{{ Gets the base gravity to be used to lay out the text. */
 PHP_METHOD(Pango_Context, getBaseGravity)
 {
     pango_context_object *context_object;
@@ -103,6 +104,95 @@ PHP_METHOD(Pango_Context, getGravity)
 }
 /* }}} */
 
+/* {{{ Gets the gravity hint to be used to lay out the text */
+PHP_METHOD(Pango_Context, getGravityHint)
+{
+    pango_context_object *context_object;
+    zend_object *gravity_hint_case;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+
+    zend_enum_get_case_by_value(
+        &gravity_hint_case, pango_ce_pango_gravity_hint,
+        pango_context_get_gravity_hint(context_object->context),
+        NULL, false
+    );
+
+    RETURN_OBJ_COPY(gravity_hint_case);
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Context, getMatrix)
+{
+    pango_context_object *context_object;
+    const PangoMatrix *matrix_pango;
+    PangoMatrix *matrix_php;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+    matrix_pango = pango_context_get_matrix(context_object->context);
+
+    object_init_ex(return_value, php_pango_get_matrix_ce());
+    // TODO: check if a copy is wanted here, perhaps just assign the pointer?
+    // but the returned matrix is const so probably a copy is better
+    matrix_php = pango_matrix_object_get_matrix(return_value);
+    *matrix_php = *matrix_pango;
+}
+/* }}} */
+
+/* {{{ Returns whether font rendering with this context should round glyph positions and widths. */
+PHP_METHOD(Pango_Context, getRoundGlyphPositions)
+{
+    pango_context_object *context_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+
+    RETURN_BOOL(pango_context_get_round_glyph_positions(context_object->context));
+}
+/* }}} */
+
+/* {{{ Sets the base direction for the context. */
+PHP_METHOD(Pango_Context, setBaseDir)
+{
+    pango_context_object *context_object;
+    zend_object *base_dir;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJ_OF_CLASS(base_dir, pango_ce_pango_direction)
+    ZEND_PARSE_PARAMETERS_END();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+    pango_context_set_base_dir(
+        context_object->context,
+        Z_LVAL_P(zend_enum_fetch_case_value(base_dir))
+    );
+}
+/* }}} */
+
+/* {{{ Sets the base gravity to be used to lay out the text */
+PHP_METHOD(Pango_Context, setBaseGravity)
+{
+    pango_context_object *context_object;
+    zend_object *base_gravity;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJ_OF_CLASS(base_gravity, pango_ce_pango_gravity)
+    ZEND_PARSE_PARAMETERS_END();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+    pango_context_set_base_gravity(
+        context_object->context,
+        Z_LVAL_P(zend_enum_fetch_case_value(base_gravity))
+    );
+}
+/* }}} */
+
 /* {{{ Sets the gravity hint to be used to lay out the text */
 PHP_METHOD(Pango_Context, setGravityHint)
 {
@@ -121,23 +211,36 @@ PHP_METHOD(Pango_Context, setGravityHint)
 }
 /* }}} */
 
-/* {{{ Gets the gravity hint to be used to lay out the text */
-PHP_METHOD(Pango_Context, getGravityHint)
+/* {{{ */
+PHP_METHOD(Pango_Context, setMatrix)
 {
     pango_context_object *context_object;
-    zend_object *gravity_hint_case;
+    zval *matrix_zval;
+    PangoMatrix *matrix;
 
-    ZEND_PARSE_PARAMETERS_NONE();
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(matrix_zval, php_pango_get_matrix_ce())
+    ZEND_PARSE_PARAMETERS_END();
 
     context_object = Z_PANGO_CONTEXT_P(getThis());
+    matrix = pango_matrix_object_get_matrix(matrix_zval);
 
-    zend_enum_get_case_by_value(
-        &gravity_hint_case, pango_ce_pango_gravity_hint,
-        pango_context_get_gravity_hint(context_object->context),
-        NULL, false
-    );
+    pango_context_set_matrix(context_object->context, matrix);
+}
+/* }}} */
 
-    RETURN_OBJ_COPY(gravity_hint_case);
+/* {{{ Sets the round glyph positions for the context. */
+PHP_METHOD(Pango_Context, setRoundGlyphPositions)
+{
+    pango_context_object *context_object;
+    zend_bool round;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_BOOL(round)
+    ZEND_PARSE_PARAMETERS_END();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+    pango_context_set_round_glyph_positions(context_object->context, round);
 }
 /* }}} */
 

@@ -16,7 +16,7 @@ if (PHP_PANGO != "no") {
 
         && ADD_EXTENSION_DEP('pango', 'cairo')
     ) {
-        EXTENSION("pango", "src/pango.c src/exception.c src/context.c src/layout.c src/font_description.c src/layout_line.c src/glyph_item.c src/item.c src/glyph_string.c src/glyph_info.c");
+        EXTENSION("pango", "src/pango.c src/exception.c src/context.c src/layout.c src/font_description.c src/layout_line.c src/glyph_item.c src/item.c src/glyph_string.c src/glyph_info.c src/matrix.c");
         AC_DEFINE("HAVE_PANGO", 1);
     }
 }
