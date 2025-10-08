@@ -351,31 +351,24 @@ PHP_METHOD(Pango_Layout, getPixelSize)
 PHP_METHOD(Pango_Layout, getExtents)
 {
     pango_layout_object *layout_object;
-    PangoRectangle ink = {0};
-    PangoRectangle logical = {0};
-    zval ink_array;
-    zval logical_array;
+    PangoRectangle pango_ink_rect;
+    PangoRectangle pango_logical_rect;
+    zval ink_rect_zv;
+    zval logical_rect_zv;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     layout_object = Z_PANGO_LAYOUT_P(getThis());
-    pango_layout_get_extents(layout_object->layout, &ink, &logical);
+    pango_layout_get_extents(layout_object->layout, &pango_ink_rect, &pango_logical_rect);
 
-    // TODO: don't return an array but rectangle objects
     array_init(return_value);
-    array_init(&ink_array);
-    add_assoc_long(&ink_array, "x", (zend_long) ink.x);
-    add_assoc_long(&ink_array, "y", (zend_long) ink.y);
-    add_assoc_long(&ink_array, "width", (zend_long) ink.width);
-    add_assoc_long(&ink_array, "height", (zend_long) ink.height);
-    add_assoc_zval(return_value, "ink", &ink_array);
+    object_init_ex(&ink_rect_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&ink_rect_zv) = pango_ink_rect;
+    add_assoc_zval(return_value, "ink", &ink_rect_zv);
 
-    array_init(&logical_array);
-    add_assoc_long(&logical_array, "x", (zend_long) logical.x);
-    add_assoc_long(&logical_array, "y", (zend_long) logical.y);
-    add_assoc_long(&logical_array, "width", (zend_long) logical.width);
-    add_assoc_long(&logical_array, "height", (zend_long) logical.height);
-    add_assoc_zval(return_value, "logical", &logical_array);
+    object_init_ex(&logical_rect_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&logical_rect_zv) = pango_logical_rect;
+    add_assoc_zval(return_value, "logical", &logical_rect_zv);
 }
 /* }}} */
 
@@ -383,31 +376,24 @@ PHP_METHOD(Pango_Layout, getExtents)
 PHP_METHOD(Pango_Layout, getPixelExtents)
 {
     pango_layout_object *layout_object;
-    PangoRectangle ink;
-    PangoRectangle logical;
-    zval ink_array;
-    zval logical_array;
+    PangoRectangle pango_ink_rect;
+    PangoRectangle pango_logical_rect;
+    zval ink_rect_zv;
+    zval logical_rect_zv;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     layout_object = Z_PANGO_LAYOUT_P(getThis());
-    pango_layout_get_pixel_extents(layout_object->layout, &ink, &logical);
+    pango_layout_get_pixel_extents(layout_object->layout, &pango_ink_rect, &pango_logical_rect);
 
-    // TODO: don't return an array but rectangle objects
     array_init(return_value);
-    array_init(&ink_array);
-    add_assoc_long(&ink_array, "x", ink.x);
-    add_assoc_long(&ink_array, "y", ink.y);
-    add_assoc_long(&ink_array, "width", ink.width);
-    add_assoc_long(&ink_array, "height", ink.height);
-    add_assoc_zval(return_value, "ink", &ink_array);
+    object_init_ex(&ink_rect_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&ink_rect_zv) = pango_ink_rect;
+    add_assoc_zval(return_value, "ink", &ink_rect_zv);
 
-    array_init(&logical_array);
-    add_assoc_long(&logical_array, "x", logical.x);
-    add_assoc_long(&logical_array, "y", logical.y);
-    add_assoc_long(&logical_array, "width", logical.width);
-    add_assoc_long(&logical_array, "height", logical.height);
-    add_assoc_zval(return_value, "logical", &logical_array);
+    object_init_ex(&logical_rect_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&logical_rect_zv) = pango_logical_rect;
+    add_assoc_zval(return_value, "logical", &logical_rect_zv);
 }
 /* }}} */
 

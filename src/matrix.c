@@ -211,6 +211,28 @@ PHP_METHOD(Pango_Matrix, transformDistance)
 }
 /* }}} */
 
+/* {{{ */
+PHP_METHOD(Pango_Matrix, transformPixelRectangle)
+{
+    zval *rectangle_zv;
+    PangoRectangle rect;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(rectangle_zv, php_pango_get_rectangle_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    rect = *pango_rectangle_object_get_rectangle(rectangle_zv);
+
+    pango_matrix_transform_pixel_rectangle(
+        pango_matrix_object_get_matrix(getThis()),
+        &rect
+    );
+
+    object_init_ex(return_value, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(return_value) = rect;
+}
+/* }}} */
+
 /* {{{ Transforms the point (x, y) by matrix. */
 PHP_METHOD(Pango_Matrix, transformPoint)
 {
@@ -229,6 +251,28 @@ PHP_METHOD(Pango_Matrix, transformPoint)
     array_init(return_value);
     add_assoc_double(return_value, "x", x);
     add_assoc_double(return_value, "y", y);
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Matrix, transformRectangle)
+{
+    zval *rectangle_zv;
+    PangoRectangle rect;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(rectangle_zv, php_pango_get_rectangle_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    rect = *pango_rectangle_object_get_rectangle(rectangle_zv);
+
+    pango_matrix_transform_rectangle(
+        pango_matrix_object_get_matrix(getThis()),
+        &rect
+    );
+
+    object_init_ex(return_value, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(return_value) = rect;
 }
 /* }}} */
 

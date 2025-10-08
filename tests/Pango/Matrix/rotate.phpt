@@ -51,4 +51,4 @@ object(Pango\Matrix)#%d (6) {
 }
 Pango\Matrix::rotate() expects exactly 1 argument, 0 given
 Pango\Matrix::rotate() expects exactly 1 argument, 2 given
-Pango\Matrix::rotate(): Argument #1 ($radians) must be of type float, array given
+Pango\Matrix::rotate(): Argument #1 ($degrees) must be of type float, array given

@@ -37,7 +37,7 @@ object(Pango\LayoutLine)#%d (0) {
 }
 array(2) {
   ["ink"]=>
-  array(8) {
+  object(Pango\Rectangle)#%d (8) {
     ["x"]=>
     int(0)
     ["y"]=>
@@ -50,13 +50,13 @@ array(2) {
     int(0)
     ["descent"]=>
     int(0)
-    ["lbearing"]=>
+    ["leftBearing"]=>
     int(0)
-    ["rbearing"]=>
+    ["rightBearing"]=>
     int(0)
   }
   ["logical"]=>
-  array(8) {
+  object(Pango\Rectangle)#%d (8) {
     ["x"]=>
     int(0)
     ["y"]=>
@@ -69,9 +69,9 @@ array(2) {
     int(19)
     ["descent"]=>
     int(5)
-    ["lbearing"]=>
+    ["leftBearing"]=>
     int(0)
-    ["rbearing"]=>
+    ["rightBearing"]=>
     int(0)
   }
 }
@@ -79,7 +79,7 @@ object(Pango\LayoutLine)#%d (0) {
 }
 array(2) {
   ["ink"]=>
-  array(8) {
+  object(Pango\Rectangle)#%d (8) {
     ["x"]=>
     int(1)
     ["y"]=>
@@ -92,13 +92,13 @@ array(2) {
     int(13)
     ["descent"]=>
     int(4)
-    ["lbearing"]=>
+    ["leftBearing"]=>
     int(1)
-    ["rbearing"]=>
+    ["rightBearing"]=>
     int(99)
   }
   ["logical"]=>
-  array(8) {
+  object(Pango\Rectangle)#%d (8) {
     ["x"]=>
     int(0)
     ["y"]=>
@@ -111,9 +111,9 @@ array(2) {
     int(19)
     ["descent"]=>
     int(5)
-    ["lbearing"]=>
+    ["leftBearing"]=>
     int(0)
-    ["rbearing"]=>
+    ["rightBearing"]=>
     int(100)
   }
 }

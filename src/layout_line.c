@@ -45,39 +45,24 @@ PHP_PANGO_API zend_class_entry* php_pango_get_layout_line_ce()
 ZEND_METHOD(Pango_LayoutLine, getExtents)
 {
     pango_layout_line_object *layout_line_object;
-    PangoRectangle ink;
-    PangoRectangle logical;
-    zval ink_array;
-    zval logical_array;
+    PangoRectangle pango_ink_rect;
+    PangoRectangle pango_logical_rect;
+    zval ink_rect_zv;
+    zval logical_rect_zv;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     layout_line_object = Z_PANGO_LAYOUT_LINE_P(getThis());
-    pango_layout_line_get_extents(layout_line_object->line, &ink, &logical);
+    pango_layout_line_get_extents(layout_line_object->line, &pango_ink_rect, &pango_logical_rect);
 
-    // TODO: don't return an array but an object with properties
     array_init(return_value);
-    array_init(&ink_array);
-    add_assoc_long(&ink_array, "x", ink.x);
-    add_assoc_long(&ink_array, "y", ink.y);
-    add_assoc_long(&ink_array, "width", ink.width);
-    add_assoc_long(&ink_array, "height", ink.height);
-    add_assoc_long(&ink_array, "ascent", PANGO_ASCENT(ink));
-    add_assoc_long(&ink_array, "descent", PANGO_DESCENT(ink));
-    add_assoc_long(&ink_array, "lbearing", PANGO_LBEARING(ink));
-    add_assoc_long(&ink_array, "rbearing", PANGO_RBEARING(ink));
-    add_assoc_zval(return_value, "ink", &ink_array);
+    object_init_ex(&ink_rect_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&ink_rect_zv) = pango_ink_rect;
+    add_assoc_zval(return_value, "ink", &ink_rect_zv);
 
-    array_init(&logical_array);
-    add_assoc_long(&logical_array, "x", logical.x);
-    add_assoc_long(&logical_array, "y", logical.y);
-    add_assoc_long(&logical_array, "width", logical.width);
-    add_assoc_long(&logical_array, "height", logical.height);
-    add_assoc_long(&logical_array, "ascent", PANGO_ASCENT(logical));
-    add_assoc_long(&logical_array, "descent", PANGO_DESCENT(logical));
-    add_assoc_long(&logical_array, "lbearing", PANGO_LBEARING(logical));
-    add_assoc_long(&logical_array, "rbearing", PANGO_RBEARING(logical));
-    add_assoc_zval(return_value, "logical", &logical_array);
+    object_init_ex(&logical_rect_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&logical_rect_zv) = pango_logical_rect;
+    add_assoc_zval(return_value, "logical", &logical_rect_zv);
 }
 /* }}} */
 
@@ -112,39 +97,24 @@ ZEND_METHOD(Pango_LayoutLine, getLength)
 ZEND_METHOD(Pango_LayoutLine, getPixelExtents)
 {
     pango_layout_line_object *layout_line_object = NULL;
-    PangoRectangle ink;
-    PangoRectangle logical;
-    zval ink_array;
-    zval logical_array;
+    PangoRectangle pango_ink_rect;
+    PangoRectangle pango_logical_rect;
+    zval ink_rect_zv;
+    zval logical_rect_zv;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     layout_line_object = Z_PANGO_LAYOUT_LINE_P(getThis());
-    pango_layout_line_get_pixel_extents(layout_line_object->line, &ink, &logical);
+    pango_layout_line_get_pixel_extents(layout_line_object->line, &pango_ink_rect, &pango_logical_rect);
 
-    // TODO: don't return an array but an object with properties
     array_init(return_value);
-    array_init(&ink_array);
-    add_assoc_long(&ink_array, "x", ink.x);
-    add_assoc_long(&ink_array, "y", ink.y);
-    add_assoc_long(&ink_array, "width", ink.width);
-    add_assoc_long(&ink_array, "height", ink.height);
-    add_assoc_long(&ink_array, "ascent", PANGO_ASCENT(ink));
-    add_assoc_long(&ink_array, "descent", PANGO_DESCENT(ink));
-    add_assoc_long(&ink_array, "lbearing", PANGO_LBEARING(ink));
-    add_assoc_long(&ink_array, "rbearing", PANGO_RBEARING(ink));
-    add_assoc_zval(return_value, "ink", &ink_array);
+    object_init_ex(&ink_rect_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&ink_rect_zv) = pango_ink_rect;
+    add_assoc_zval(return_value, "ink", &ink_rect_zv);
 
-    array_init(&logical_array);
-    add_assoc_long(&logical_array, "x", logical.x);
-    add_assoc_long(&logical_array, "y", logical.y);
-    add_assoc_long(&logical_array, "width", logical.width);
-    add_assoc_long(&logical_array, "height", logical.height);
-    add_assoc_long(&logical_array, "ascent", PANGO_ASCENT(logical));
-    add_assoc_long(&logical_array, "descent", PANGO_DESCENT(logical));
-    add_assoc_long(&logical_array, "lbearing", PANGO_LBEARING(logical));
-    add_assoc_long(&logical_array, "rbearing", PANGO_RBEARING(logical));
-    add_assoc_zval(return_value, "logical", &logical_array);
+    object_init_ex(&logical_rect_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&logical_rect_zv) = pango_logical_rect;
+    add_assoc_zval(return_value, "logical", &logical_rect_zv);
 }
 /* }}} */
 

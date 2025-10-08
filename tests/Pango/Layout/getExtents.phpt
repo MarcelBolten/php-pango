@@ -31,56 +31,88 @@ try {
 }
 ?>
 --EXPECTF--
-object(Cairo\Context)#1 (0) {
+object(Cairo\Context)#%d (0) {
 }
-object(Pango\Layout)#4 (0) {
-}
-array(2) {
-  ["ink"]=>
-  array(4) {
-    ["x"]=>
-    int(%d)
-    ["y"]=>
-    int(%d)
-    ["width"]=>
-    int(%d)
-    ["height"]=>
-    int(%d)
-  }
-  ["logical"]=>
-  array(4) {
-    ["x"]=>
-    int(%d)
-    ["y"]=>
-    int(%d)
-    ["width"]=>
-    int(%d)
-    ["height"]=>
-    int(%d)
-  }
+object(Pango\Layout)#%d (0) {
 }
 array(2) {
   ["ink"]=>
-  array(4) {
+  object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(%d)
+    int(0)
     ["y"]=>
-    int(%d)
+    int(19456)
     ["width"]=>
-    int(%d)
+    int(0)
     ["height"]=>
-    int(%d)
+    int(0)
+    ["ascent"]=>
+    int(-19456)
+    ["descent"]=>
+    int(19456)
+    ["leftBearing"]=>
+    int(0)
+    ["rightBearing"]=>
+    int(0)
   }
   ["logical"]=>
-  array(4) {
+  object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(%d)
+    int(0)
     ["y"]=>
-    int(%d)
+    int(0)
     ["width"]=>
-    int(%d)
+    int(0)
     ["height"]=>
-    int(%d)
+    int(24576)
+    ["ascent"]=>
+    int(0)
+    ["descent"]=>
+    int(24576)
+    ["leftBearing"]=>
+    int(0)
+    ["rightBearing"]=>
+    int(0)
+  }
+}
+array(2) {
+  ["ink"]=>
+  object(Pango\Rectangle)#%d (8) {
+    ["x"]=>
+    int(0)
+    ["y"]=>
+    int(6144)
+    ["width"]=>
+    int(81920)
+    ["height"]=>
+    int(39936)
+    ["ascent"]=>
+    int(-6144)
+    ["descent"]=>
+    int(46080)
+    ["leftBearing"]=>
+    int(0)
+    ["rightBearing"]=>
+    int(81920)
+  }
+  ["logical"]=>
+  object(Pango\Rectangle)#%d (8) {
+    ["x"]=>
+    int(0)
+    ["y"]=>
+    int(0)
+    ["width"]=>
+    int(80896)
+    ["height"]=>
+    int(49152)
+    ["ascent"]=>
+    int(0)
+    ["descent"]=>
+    int(49152)
+    ["leftBearing"]=>
+    int(0)
+    ["rightBearing"]=>
+    int(80896)
   }
 }
 Pango\Layout::getExtents() expects exactly 0 arguments, 1 given

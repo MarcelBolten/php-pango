@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 1af097c7f08faa43c8d052d43a9f16a668c8261c */
+ * Stub hash: 5cad349e2628067a9d2e30a4b56435795c881dc3 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Matrix___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, xx, IS_DOUBLE, 0, "1.0")
@@ -11,7 +11,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Matrix___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_rotate, 0, 1, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, radians, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, degrees, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_scale, 0, 2, IS_VOID, 0)
@@ -24,10 +24,16 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_transformDist
 	ZEND_ARG_TYPE_INFO(0, dy, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Matrix_transformPixelRectangle, 0, 1, Pango\\Rectangle, 0)
+	ZEND_ARG_OBJ_INFO(0, rectangle, Pango\\Rectangle, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_transformPoint, 0, 2, IS_ARRAY, 0)
 	ZEND_ARG_TYPE_INFO(0, x, IS_DOUBLE, 0)
 	ZEND_ARG_TYPE_INFO(0, y, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
+
+#define arginfo_class_Pango_Matrix_transformRectangle arginfo_class_Pango_Matrix_transformPixelRectangle
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_translate, 0, 2, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, tx, IS_DOUBLE, 0)
@@ -38,7 +44,9 @@ ZEND_METHOD(Pango_Matrix, __construct);
 ZEND_METHOD(Pango_Matrix, rotate);
 ZEND_METHOD(Pango_Matrix, scale);
 ZEND_METHOD(Pango_Matrix, transformDistance);
+ZEND_METHOD(Pango_Matrix, transformPixelRectangle);
 ZEND_METHOD(Pango_Matrix, transformPoint);
+ZEND_METHOD(Pango_Matrix, transformRectangle);
 ZEND_METHOD(Pango_Matrix, translate);
 
 static const zend_function_entry class_Pango_Matrix_methods[] = {
@@ -46,7 +54,9 @@ static const zend_function_entry class_Pango_Matrix_methods[] = {
 	ZEND_ME(Pango_Matrix, rotate, arginfo_class_Pango_Matrix_rotate, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Matrix, scale, arginfo_class_Pango_Matrix_scale, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Matrix, transformDistance, arginfo_class_Pango_Matrix_transformDistance, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Matrix, transformPixelRectangle, arginfo_class_Pango_Matrix_transformPixelRectangle, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Matrix, transformPoint, arginfo_class_Pango_Matrix_transformPoint, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Matrix, transformRectangle, arginfo_class_Pango_Matrix_transformRectangle, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Matrix, translate, arginfo_class_Pango_Matrix_translate, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };

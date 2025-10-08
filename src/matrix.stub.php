@@ -43,10 +43,20 @@ final class Matrix
     //  */
     // public function getSlantRatio(): float {}
 
+    /**
+     * Changes the transformation represented by matrix to be the transformation
+     * given by first rotating by degrees degrees counter-clockwise then
+     * applying the original transformation.
+     */
     public function rotate(
-        float $radians
+        float $degrees
     ): void {}
 
+    /**
+     * Changes the transformation represented by matrix to be the transformation
+     * given by first scaling by sx in the X direction and sy in the Y direction
+     * then applying the original transformation.
+     */
     public function scale(
         float $sx,
         float $sy
@@ -61,9 +71,15 @@ final class Matrix
         float $dy
     ): array {}
 
-    // public function transformPixelRectangle(
-    //     Rectangle $rectangle
-    // ): Rectangle {}
+    /**
+     * First transforms a rectangle using matrix, then calculates the bounding box of the transformed rectangle.
+     *
+     * For better accuracy, transformRectangle() should be used on the original rectangle in Pango units
+     * and convert to pixels afterward using Rectangle::extentsToPixels().
+     */
+    public function transformPixelRectangle(
+        Rectangle $rectangle
+    ): Rectangle {}
 
     /**
      * @return array{"x": float, "y": float}
@@ -74,9 +90,14 @@ final class Matrix
         float $y
     ): array {}
 
-    // public function transformRectangle(
-    //     Rectangle $rectangle
-    // ): Rectangle {}
+    /**
+     * First transforms a rectangle using matrix, then calculates the bounding box of the transformed rectangle.
+     *
+     * If rectangle is in device units (pixels), use transformPixelRectangle().
+     */
+    public function transformRectangle(
+        Rectangle $rectangle
+    ): Rectangle {}
 
     public function translate(
         float $tx,
