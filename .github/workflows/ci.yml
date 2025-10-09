@@ -65,11 +65,33 @@ jobs:
 
             - name: "Run Tests"
               run: |
+                ulimit -c unlimited
                 php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
                 php ./run-tests.php -d extension=pango.so -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
                 php ./run-tests.php -d extension=pango.so -m -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
+                ZEND_DONT_UNLOAD_MODULES=0 USE_ZEND_ALLOC=1 valgrind --leak-check=full --track-origins=yes php tests/Pango/Layout/getSpacing.phpt || true
+                ZEND_DONT_UNLOAD_MODULES=0 USE_ZEND_ALLOC=0 valgrind --leak-check=full --track-origins=yes php tests/Pango/Layout/getSpacing.phpt || true
                 ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=1 valgrind --leak-check=full --track-origins=yes php tests/Pango/Layout/getSpacing.phpt || true
                 ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=0 valgrind --leak-check=full --track-origins=yes php tests/Pango/Layout/getSpacing.phpt
+
+            - name: "Check for core dumps"
+              if: always()
+              run: |
+                if ls core* 1> /dev/null 2>&1; then
+                  for core in core*; do
+                    echo "=== Core dump found: $core ==="
+                    gdb -batch -ex "bt full" -ex "thread apply all bt" -ex "quit" \
+                      $(which php) "$core" 2>&1 | tee backtrace-$core.txt
+                  done
+                fi
+
+            - name: "Upload core dump backtraces"
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                name: core-dumps-${{ matrix.php-version }}
+                path: backtrace-*.txt
+                if-no-files-found: ignore
 
             - name: "Upload test outputs"
               if: ${{ always() }}
