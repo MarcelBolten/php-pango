@@ -52,6 +52,7 @@ jobs:
                 make -j$(nproc)
                 sudo make -j$(nproc) install
               env:
+                CFLAGS: "-ggdb3"
                 PANGO_COVERAGE: yes
 
             - name: "Show versions"
@@ -61,7 +62,7 @@ jobs:
                 php -d extension=pango.so --ri pango
 
             - name: "Run Tests"
-              run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
+              run: php ./run-tests.php -d extension=pango.so -m -j$(nproc) -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
