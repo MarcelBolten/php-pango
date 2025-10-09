@@ -54,6 +54,7 @@ jobs:
                 make -j$(nproc)
                 sudo make -j$(nproc) install
               env:
+                CFLAGS: "-ggdb3"
                 PANGO_COVERAGE: yes
 
             - name: "Show versions"
