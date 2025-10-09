@@ -1,0 +1,80 @@
+name: Build and Test
+
+on:
+    push:
+        branches:
+            - '*'
+
+jobs:
+    Build_Test_Coverage:
+        strategy:
+            fail-fast: false
+            matrix:
+                php-version: [8.2, 8.3, 8.4, 8.5, 8.6]
+                os: [ubuntu-latest]
+                phpts: [ts, nts]
+
+        runs-on: ${{ matrix.os }}
+
+        steps:
+            - name: Install system dependencies
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y --no-install-recommends \
+                build-essential autoconf libtool bison re2c pkg-config \
+                libssl-dev libxml2-dev libcairo2-dev libpango-dev \
+                libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip
+
+            - name: "Set up PHP"
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-version }}
+                  ini-values: extension=pango.so
+                  tools: pie
+              env:
+                debug: true
+                phpts: ${{ matrix.phpts }}
+
+            - name: "Build Cairo dependency with PIE"
+              # Todo: use a stable version after it is released not dev-overhaul branch
+              run: pie install marcelbolten/php-cairo:dev-overhaul
+
+            - name: "Checkout"
+              uses: actions/checkout@v5
+
+            - name: "Build Pango"
+              run: |
+                phpize
+                ./configure --with-php-config=$(which php-config)
+                make -j$(nproc)
+                sudo make -j$(nproc) install
+              env:
+                PANGO_COVERAGE: yes
+
+            - name: "Run Tests"
+              run: php ./run-tests.php -j$(nproc) -q --show-diff
+
+            - name: "Upload test outputs"
+              if: ${{ always() }}
+              uses: actions/upload-artifact@v4
+              with:
+                name: pango-test-${{ matrix.php-version }}
+                path: tests/**/*.log
+
+            - name: "Create Coverage report"
+              if: ${{ matrix.php-version == '8.4' && matrix.phpts == 'nts' && github.ref_name == 'modern_php' }}
+              run: chmod +x ./coverage.sh && ./coverage.sh
+
+            - name: "Publish on gh-pages"
+              if: ${{ matrix.php-version == '8.4' && matrix.phpts == 'nts' && github.ref_name == 'modern_php' }}
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./coverage_html
+
+            - name: "Upload coverage report artifacts"
+              if: ${{ matrix.php-version == '8.4' && matrix.phpts == 'nts' && github.ref_name == 'modern_php' }}
+              uses: actions/upload-artifact@v4
+              with:
+                name: pango-coverage-8.4
+                path: coverage_html
