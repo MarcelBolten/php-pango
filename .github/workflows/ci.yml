@@ -60,7 +60,7 @@ jobs:
               if: ${{ always() }}
               uses: actions/upload-artifact@v4
               with:
-                name: pango-test-${{ matrix.php-version }}
+                name: pango-test-${{ matrix.php-version }}-${{ matrix.phpts }}
                 path: tests/**/*.log
 
             - name: "Create Coverage report"
