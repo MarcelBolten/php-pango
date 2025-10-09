@@ -67,7 +67,9 @@ jobs:
               run: |
                 php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
                 php ./run-tests.php -d extension=pango.so -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
-                php ./run-tests.php -d extension=pango.so -m -j$(nproc) -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
+                php ./run-tests.php -d extension=pango.so -m -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
+                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=1 valgrind --leak-check=full --track-origins=yes php tests/Pango/Layout/getSpacing.phpt || true
+                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=0 valgrind --leak-check=full --track-origins=yes php tests/Pango/Layout/getSpacing.phpt
 
             - name: "Upload test outputs"
               if: ${{ always() }}
