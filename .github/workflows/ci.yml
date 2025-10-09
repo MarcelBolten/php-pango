@@ -95,7 +95,14 @@ jobs:
                 ZEND_DONT_UNLOAD_MODULES=0 USE_ZEND_ALLOC=1 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt || true
                 ZEND_DONT_UNLOAD_MODULES=0 USE_ZEND_ALLOC=0 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt || true
                 ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=1 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt || true
-                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=0 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt
+                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=0 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt || true
+                gdb -batch \
+                  -ex "set pagination off" \
+                  -ex "run" \
+                  -ex "thread apply all bt full" \
+                  -ex "quit" \
+                  --args php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt
+
 
             - name: "Check for core dumps"
               if: always()
