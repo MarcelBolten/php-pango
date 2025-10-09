@@ -25,11 +25,13 @@ jobs:
                 libssl-dev libxml2-dev libcairo2-dev libpango1.0-dev \
                 libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip
 
+            # perhaps need to install some fonts but ubuntu loads too many by default in fonts-noto
+            # fonts-noto fonts-noto-cjk fonts-noto-color-emoji
+
             - name: "Set up PHP"
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
-                  ini-values: extension=pango.so
                   tools: pie
               env:
                 debug: true
@@ -37,7 +39,7 @@ jobs:
 
             - name: "Build Cairo dependency with PIE"
               # Todo: use a stable version after it is released not dev-overhaul branch
-              run: pie install marcelbolten/php-cairo:dev-overhaul
+              run: sudo pie install marcelbolten/php-cairo:dev-overhaul
 
             - name: "Checkout"
               uses: actions/checkout@v5
@@ -52,7 +54,7 @@ jobs:
                 PANGO_COVERAGE: yes
 
             - name: "Run Tests"
-              run: php ./run-tests.php -j$(nproc) -q --show-diff
+              run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
