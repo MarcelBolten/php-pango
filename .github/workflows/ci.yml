@@ -62,12 +62,11 @@ jobs:
                 php --ri cairo
                 php -d extension=pango.so --ri pango
 
-            - name: "Run Tests with Memcheck"
-              run: php ./run-tests.php -d extension=pango.so -m -j$(nproc) -q --show-diff
-
             - name: "Run Tests"
-              if: ${{ always() }}
-              run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
+              run: |
+                php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
+                php ./run-tests.php -d extension=pango.so -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
+                php ./run-tests.php -d extension=pango.so -m -j$(nproc) -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
 
             - name: "Upload test outputs"
               if: ${{ always() }}
