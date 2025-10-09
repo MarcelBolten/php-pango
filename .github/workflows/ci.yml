@@ -10,7 +10,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: [8.2, 8.3, 8.4, 8.5, 8.6]
+                php-version: [8.2, 8.3, 8.4, 8.5]
                 os: [ubuntu-latest]
                 phpts: [ts, nts]
 
@@ -23,7 +23,8 @@ jobs:
                 sudo apt-get install -y --no-install-recommends \
                 build-essential autoconf libtool bison re2c pkg-config \
                 libssl-dev libxml2-dev libcairo2-dev libpango1.0-dev \
-                libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip
+                libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
+                fonts-noto-cjk
 
             # perhaps need to install some fonts but ubuntu loads too many by default in fonts-noto
             # fonts-noto fonts-noto-cjk fonts-noto-color-emoji
