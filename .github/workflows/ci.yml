@@ -22,7 +22,7 @@ jobs:
                 sudo apt-get update
                 sudo apt-get install -y --no-install-recommends \
                 build-essential autoconf libtool bison re2c pkg-config \
-                libssl-dev libxml2-dev libcairo2-dev libpango-dev \
+                libssl-dev libxml2-dev libcairo2-dev libpango1.0-dev \
                 libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip
 
             - name: "Set up PHP"
