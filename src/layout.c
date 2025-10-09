@@ -47,12 +47,11 @@ pango_layout_object *pango_layout_fetch_object(zend_object *object)
 PHP_METHOD(Pango_Layout, __construct)
 {
     zval *context_zval = NULL;
-    zend_class_entry *cairo_ce_cairo_context = php_cairo_get_context_ce();
     cairo_context_object *context_object;
     pango_layout_object *layout_object;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_OBJECT_OF_CLASS(context_zval, cairo_ce_cairo_context)
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, php_cairo_get_context_ce())
     ZEND_PARSE_PARAMETERS_END();
 
     context_object = Z_CAIRO_CONTEXT_P(context_zval);
@@ -242,12 +241,18 @@ PHP_METHOD(Pango_Layout, updateLayout)
 {
     pango_layout_object *layout_object;
     cairo_context_object *context_object;
+    zval *cairo_context_zv;
 
-    ZEND_PARSE_PARAMETERS_NONE();
+    ZEND_PARSE_PARAMETERS_START(1, 1);
+        Z_PARAM_OBJECT_OF_CLASS(cairo_context_zv, php_cairo_get_context_ce());
+    ZEND_PARSE_PARAMETERS_END();
 
     layout_object = Z_PANGO_LAYOUT_P(getThis());
-    context_object = Z_CAIRO_CONTEXT_P(&layout_object->cairo_context_zv);
+    context_object = Z_CAIRO_CONTEXT_P(cairo_context_zv);
     pango_cairo_update_layout(context_object->context, layout_object->layout);
+
+    zval_ptr_dtor(&layout_object->cairo_context_zv);
+    ZVAL_COPY(&layout_object->cairo_context_zv, cairo_context_zv);
 }
 /* }}} */
 

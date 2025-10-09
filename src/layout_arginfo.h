@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: a51e323175d5de930233df301163488126355308 */
+ * Stub hash: df11f7a8645afd9492832db390e59b389a1f0b1b */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
@@ -46,12 +46,14 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setMarkupWith
 	ZEND_ARG_TYPE_INFO(0, accelMarker, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_updateLayout, 0, 0, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_updateLayout, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Layout_showLayout arginfo_class_Pango_Layout_updateLayout
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_showLayout, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Layout_layoutPath arginfo_class_Pango_Layout_updateLayout
+#define arginfo_class_Pango_Layout_layoutPath arginfo_class_Pango_Layout_showLayout
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)
@@ -104,7 +106,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_isEllipsized arginfo_class_Pango_Layout_getJustify
 
-#define arginfo_class_Pango_Layout_contextChanged arginfo_class_Pango_Layout_updateLayout
+#define arginfo_class_Pango_Layout_contextChanged arginfo_class_Pango_Layout_showLayout
 
 #define arginfo_class_Pango_Layout_getLines arginfo_class_Pango_Layout_getSize
 

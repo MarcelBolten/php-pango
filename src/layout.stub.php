@@ -171,7 +171,9 @@ class Layout
     /**
      * Updates the private PangoContext of a PangoLayout to match the current transformation and target surface of a Cairo context.
      */
-    public function updateLayout(): void {}
+    public function updateLayout(
+        \Cairo\Context $context
+    ): void {}
 
     /**
      * Draws a LayoutLine in the specified cairo context.

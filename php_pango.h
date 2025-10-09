@@ -59,6 +59,7 @@ PHP_PANGO_API extern zend_class_entry *php_pango_get_rectangle_ce();
 /* Objects */
 typedef struct _pango_context_object {
     PangoContext *context;
+    zval cairo_context_zv;
     zend_object std;
 } pango_context_object;
 extern pango_context_object *pango_context_fetch_object(zend_object *object);

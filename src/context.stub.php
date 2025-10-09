@@ -14,6 +14,13 @@ class Context
     // ) {}
 
     /**
+     * Creates a context object set up to match the current transformation and target surface of the Cairo context.
+     */
+    public static function createFromCairoContext(
+        \Cairo\Context $context
+    ): Context {}
+
+    /**
      * Retrieves the base direction for the context.
      */
     public function getBaseDir(): Direction {}
@@ -122,6 +129,40 @@ class Context
      */
     public function setRoundGlyphPositions(
         bool $round
+    ): void {}
+
+    /**
+     * Gets the resolution for the context.
+     *
+     * The resolution in “dots per inch”. A negative value will be returned if no resolution has previously been set.
+     */
+    public function getResolution(): float {}
+
+    /**
+     * Sets the resolution for the context.
+     *
+     * This is a scale factor between points specified in a FontDescription and
+     * Cairo units. The default value is 96, meaning that a 10 point font will
+     * be 13 units high. (10 * 96. / 72. = 13.3).
+     *
+     * @param float $dpi The resolution in “dots per inch”.
+     *
+     * (Physical inches aren’t actually involved; the terminology is conventional.)
+     * A 0 or negative value means to use the resolution from the font map.
+     */
+    public function setResolution(
+        float $dpi
+    ): void {}
+
+    /**
+     * Updates a Pango\Context previously created for use with Cairo to match
+     * the current transformation and target surface of a Cairo context.
+     *
+     * If any layouts have been created for the context, it’s necessary to call
+     * pango_layout_context_changed() on those layouts.
+     */
+    public function updateContext(
+        \Cairo\Context $context
     ): void {}
 }
 

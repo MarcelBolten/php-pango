@@ -1,13 +1,10 @@
+This is the start of a Pango binding for PHP 8.2+. Current requirements are:
 
-This is the start of a Pango binding for PHP. Current requirements are:
-
- * PHP 5.2+
- * Pango 1.14+ :
- * pecl/cairo. Currently the only functionality I'm wrapping are those required
+ * PHP 8.2+
+ * Pango 1.40+ :
+ * ext-cairo. Currently the only functionality I'm wrapping are those required
    to make Cairo rendering work which will suit my own purposes - however, once
    that works I intend to remove the hard dependency here if I can.
-
-Once this gets up to something usable it will be proposed for PECL.
 
 Compiling on windows
 ====================
@@ -45,8 +42,3 @@ lib/glib-2.0/include/glibconfig.h header file to deps/include/glib-pango.
  * Run: buildconf.
  * Run: configure.js --enable-pango=shared --with-cairo=shared
  * Run: nmake
-
-5. Done
-
-You're pango extension is now ready in: Release_TS/php_pango.dll
-

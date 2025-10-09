@@ -1,5 +1,9 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 0a80f9a3c2134286efe60beba198bd81060dcbb4 */
+ * Stub hash: d8c1ad6018f130d5957fb92901dc29371be83d77 */
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_createFromCairoContext, 0, 1, Pango\\Context, 0)
+	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getBaseDir, 0, 0, Pango\\Direction, 0)
 ZEND_END_ARG_INFO()
@@ -38,6 +42,18 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setRoundGlyp
 	ZEND_ARG_TYPE_INFO(0, round, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_getResolution, 0, 0, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setResolution, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, dpi, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_updateContext, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_METHOD(Pango_Context, createFromCairoContext);
 ZEND_METHOD(Pango_Context, getBaseDir);
 ZEND_METHOD(Pango_Context, getBaseGravity);
 ZEND_METHOD(Pango_Context, getGravity);
@@ -49,8 +65,12 @@ ZEND_METHOD(Pango_Context, setBaseGravity);
 ZEND_METHOD(Pango_Context, setGravityHint);
 ZEND_METHOD(Pango_Context, setMatrix);
 ZEND_METHOD(Pango_Context, setRoundGlyphPositions);
+ZEND_METHOD(Pango_Context, getResolution);
+ZEND_METHOD(Pango_Context, setResolution);
+ZEND_METHOD(Pango_Context, updateContext);
 
 static const zend_function_entry class_Pango_Context_methods[] = {
+	ZEND_ME(Pango_Context, createFromCairoContext, arginfo_class_Pango_Context_createFromCairoContext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(Pango_Context, getBaseDir, arginfo_class_Pango_Context_getBaseDir, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getBaseGravity, arginfo_class_Pango_Context_getBaseGravity, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getGravity, arginfo_class_Pango_Context_getGravity, ZEND_ACC_PUBLIC)
@@ -62,6 +82,9 @@ static const zend_function_entry class_Pango_Context_methods[] = {
 	ZEND_ME(Pango_Context, setGravityHint, arginfo_class_Pango_Context_setGravityHint, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setMatrix, arginfo_class_Pango_Context_setMatrix, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setRoundGlyphPositions, arginfo_class_Pango_Context_setRoundGlyphPositions, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, getResolution, arginfo_class_Pango_Context_getResolution, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, setResolution, arginfo_class_Pango_Context_setResolution, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, updateContext, arginfo_class_Pango_Context_updateContext, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

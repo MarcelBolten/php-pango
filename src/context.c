@@ -44,6 +44,28 @@ pango_context_object *pango_context_fetch_object(zend_object *object)
     return (pango_context_object *) ((char*)(object) - XtOffsetOf(pango_context_object, std));
 }
 
+/* {{{ Creates a context object set up to match the current transformation and target surface of the Cairo context. */
+PHP_METHOD(Pango_Context, createFromCairoContext)
+{
+    pango_context_object *context_object;
+    zval *cairo_context_zv;
+    cairo_context_object *cairo_context_object;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(cairo_context_zv, php_cairo_get_context_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    cairo_context_object = Z_CAIRO_CONTEXT_P(cairo_context_zv);
+
+    object_init_ex(return_value, pango_ce_pango_context);
+    context_object = Z_PANGO_CONTEXT_P(return_value);
+    context_object->context = pango_cairo_create_context(cairo_context_object->context);
+
+    // store the cairo context zv in the pango context object to keep a reference
+    ZVAL_COPY(&context_object->cairo_context_zv, cairo_context_zv);
+}
+/* }}} */
+
 /* {{{ Retrieves the base direction for the context. */
 PHP_METHOD(Pango_Context, getBaseDir)
 {
@@ -244,6 +266,56 @@ PHP_METHOD(Pango_Context, setRoundGlyphPositions)
 }
 /* }}} */
 
+/* {{{ */
+PHP_METHOD(Pango_Context, getResolution)
+{
+    pango_context_object *context_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+
+    RETURN_DOUBLE(pango_cairo_context_get_resolution(context_object->context));
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Context, setResolution)
+{
+    pango_context_object *context_object;
+    double resolution;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_DOUBLE(resolution)
+    ZEND_PARSE_PARAMETERS_END();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+    pango_cairo_context_set_resolution(context_object->context, resolution);
+}
+/* }}} */
+
+/* {{{ Updates the private PangoContext previously created for use with Cairo
+       to match the current transformation and target surface of a Cairo context. */
+PHP_METHOD(Pango_Context, updateContext)
+{
+    pango_context_object *pango_context_object;
+    cairo_context_object *cairo_context_object;
+    zval *cairo_context_zv;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1);
+        Z_PARAM_OBJECT_OF_CLASS(cairo_context_zv, php_cairo_get_context_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    pango_context_object = Z_PANGO_CONTEXT_P(getThis());
+    cairo_context_object = Z_CAIRO_CONTEXT_P(cairo_context_zv);
+    pango_cairo_update_context(cairo_context_object->context, pango_context_object->context);
+
+    zval_ptr_dtor(&pango_context_object->cairo_context_zv);
+    ZVAL_COPY(&pango_context_object->cairo_context_zv, cairo_context_zv);
+}
+/* }}} */
+
+
 /* ----------------------------------------------------------------
     \Pango\Context Object management
 ------------------------------------------------------------------*/
@@ -256,6 +328,8 @@ static void pango_context_free_obj(zend_object *zobj)
     if (!intern) {
         return;
     }
+
+    zval_ptr_dtor(&intern->cairo_context_zv);
 
     if (intern->context) {
         g_object_unref(intern->context);
@@ -270,6 +344,7 @@ static zend_object* pango_context_obj_ctor(zend_class_entry *ce, pango_context_o
     pango_context_object *object = ecalloc(1, sizeof(pango_context_object) + zend_object_properties_size(ce));
 
     object->context = NULL;
+    ZVAL_UNDEF(&object->cairo_context_zv);
 
     zend_object_std_init(&object->std, ce);
 
