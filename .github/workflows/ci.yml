@@ -62,8 +62,12 @@ jobs:
                 php --ri cairo
                 php -d extension=pango.so --ri pango
 
-            - name: "Run Tests"
+            - name: "Run Tests with Memcheck"
               run: php ./run-tests.php -d extension=pango.so -m -j$(nproc) -q --show-diff
+
+            - name: "Run Tests"
+              if: ${{ always() }}
+              run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
