@@ -63,6 +63,29 @@ jobs:
                 php --ri cairo
                 php -d extension=pango.so --ri pango
 
+            - name: "Debug fontconfig"
+              run: |
+                echo "=== Fontconfig version ==="
+                fc-list --version || true
+                echo "=== Cache dirs ==="
+                fc-cache --version
+                echo "=== Trying to build cache ==="
+                fc-cache -fv 2>&1 | head -20
+                echo "=== Environment ==="
+                env | grep -i font || true
+                echo "=== Home directory ==="
+                ls -la ~ || true
+
+            - name: "Setup fontconfig cache"
+              run: |
+                mkdir -p ~/.cache/fontconfig
+                mkdir -p ~/.fontconfig
+                # Set fontconfig cache location
+                echo "FONTCONFIG_PATH=/etc/fonts" >> $GITHUB_ENV
+                echo "XDG_CACHE_HOME=$HOME/.cache" >> $GITHUB_ENV
+                # Build font cache
+                fc-cache -fv
+
             - name: "Run Tests"
               run: |
                 ulimit -c unlimited
