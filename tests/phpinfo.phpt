@@ -3,10 +3,12 @@ pango extension phpinfo information
 --SKIPIF--
 <?php
 include __DIR__ . '/skipif.php.inc';
+?>
 --FILE--
 <?php
 $ext = new ReflectionExtension('pango');
 $ext->info();
+?>
 --EXPECTF--
 pango
 

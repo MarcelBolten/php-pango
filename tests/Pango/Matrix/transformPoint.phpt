@@ -3,6 +3,7 @@ Pango\Matrix::transformPoint()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
+?>
 --FILE--
 <?php
 use Pango\Matrix;

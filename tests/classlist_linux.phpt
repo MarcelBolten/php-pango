@@ -6,10 +6,12 @@ include __DIR__ . '/skipif.php.inc';
 if (strtolower(PHP_OS_FAMILY) !== 'linux') {
     die('skip - This test is for Linux only');
 }
+?>
 --FILE--
 <?php
 $ext = new ReflectionExtension('pango');
 var_dump($ext->getClassNames());
+?>
 --EXPECT--
 array(24) {
   [0]=>
