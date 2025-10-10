@@ -23,6 +23,7 @@
 #include "php.h"
 #include "php_ini.h"
 #include "ext/standard/info.h"
+#include <fontconfig/fontconfig.h>
 #include "php_pango.h"
 #include "pango_arginfo.h"
 
@@ -76,6 +77,10 @@ ZEND_GET_MODULE(pango)
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(pango)
 {
+    // init fontconfig to avoid potential race conditions later
+    // TODO: maybe need to do it only on linux systems?
+    FcInit();
+
     memcpy(
         &pango_std_object_handlers,
         zend_get_std_object_handlers(),
@@ -106,6 +111,7 @@ PHP_MINIT_FUNCTION(pango)
 /* {{{ PHP_MSHUTDOWN_FUNCTION */
 PHP_MSHUTDOWN_FUNCTION(pango)
 {
+    FcFini();
     /* uncomment this line if you have INI entries
     UNREGISTER_INI_ENTRIES();
     */
