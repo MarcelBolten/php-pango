@@ -60,6 +60,11 @@ jobs:
               run: |
                 php -v
                 php --ri cairo
+                PID=$!
+                wait $PID
+                ps -T -p $PID 2>/dev/null || echo "Process fully exited"
+                sleep 5
+                ps -T -p $PID 2>/dev/null || echo "All threads cleaned up"
                 php -d extension=pango.so --ri pango
 
             - name: "Run Tests"
