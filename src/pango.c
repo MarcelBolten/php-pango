@@ -23,12 +23,37 @@
 #include "php.h"
 #include "php_ini.h"
 #include "ext/standard/info.h"
+
 #include <fontconfig/fontconfig.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <limits.h>
+#include "php_open_temporary_file.h"
+
 #include "php_pango.h"
 #include "pango_arginfo.h"
 
 zend_class_entry *pango_ce_pango;
 zend_object_handlers pango_std_object_handlers;
+
+// TODO: move to separate file with corresponding headers
+void pango_setup_font_config(void)
+{
+    char cache_dir[MAXPATHLEN];
+    const char *temp_dir = php_get_temporary_directory();
+
+    snprintf(cache_dir, sizeof(cache_dir), "%s/php-pango-fontconfig", temp_dir);
+
+    #ifdef PHP_WIN32
+        _mkdir(cache_dir);
+    #else
+        mkdir(cache_dir, 0755);
+    #endif
+
+    setenv("XDG_CACHE_HOME", cache_dir, 0);
+
+    FcInit();
+}
 
 /* {{{ returns the Pango version */
 ZEND_METHOD(Pango_Pango, version)
@@ -79,7 +104,7 @@ PHP_MINIT_FUNCTION(pango)
 {
     // init fontconfig to avoid potential race conditions later
     // TODO: maybe need to do it only on linux systems?
-    FcInit();
+    pango_setup_font_config();
 
     memcpy(
         &pango_std_object_handlers,
