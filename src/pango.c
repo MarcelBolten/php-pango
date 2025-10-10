@@ -39,6 +39,8 @@ zend_object_handlers pango_std_object_handlers;
 // TODO: move to separate file with corresponding headers
 void pango_setup_font_config(void)
 {
+    php_error(E_NOTICE, "Setting up fontconfig for Pango extension");
+
     char cache_dir[MAXPATHLEN];
     const char *temp_dir = php_get_temporary_directory();
 
@@ -52,7 +54,10 @@ void pango_setup_font_config(void)
 
     setenv("XDG_CACHE_HOME", cache_dir, 0);
 
-    FcInit();
+    FcBool result = FcInit();
+    if (!result) {
+        php_error(E_WARNING, "Pango: Failed to initialize fontconfig");
+    }
 }
 
 /* {{{ returns the Pango version */
@@ -136,7 +141,7 @@ PHP_MINIT_FUNCTION(pango)
 /* {{{ PHP_MSHUTDOWN_FUNCTION */
 PHP_MSHUTDOWN_FUNCTION(pango)
 {
-    zend_error(E_NOTICE, "Shutting down Pango extension");
+    php_error(E_NOTICE, "Shutting down Pango extension");
     FcFini();
     /* uncomment this line if you have INI entries
     UNREGISTER_INI_ENTRIES();
