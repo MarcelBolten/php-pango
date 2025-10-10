@@ -41,4 +41,5 @@ bool(true)
 bool(true)
 bool(true)
 bool(true)
+bool(true)
 Pango\LayoutLine::getRuns() expects exactly 0 arguments, 1 given

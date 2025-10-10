@@ -60,42 +60,42 @@ array(2) {
     ["x"]=>
     int(0)
     ["y"]=>
-    int(-19456)
+    int(-15360)
     ["width"]=>
     int(0)
     ["height"]=>
-    int(24576)
-    ["ascent"]=>
     int(19456)
+    ["ascent"]=>
+    int(15360)
     ["descent"]=>
-    int(5120)
+    int(4096)
     ["leftBearing"]=>
     int(0)
     ["rightBearing"]=>
     int(0)
   }
 }
-object(Pango\LayoutLine)#%d (0) {
+object(Pango\LayoutLine)#7 (0) {
 }
 array(2) {
   ["ink"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(1024)
+    int(0)
     ["y"]=>
     int(-13312)
     ["width"]=>
-    int(100352)
+    int(111616)
     ["height"]=>
-    int(17408)
+    int(16384)
     ["ascent"]=>
     int(13312)
     ["descent"]=>
-    int(4096)
+    int(3072)
     ["leftBearing"]=>
-    int(1024)
+    int(0)
     ["rightBearing"]=>
-    int(101376)
+    int(111616)
   }
   ["logical"]=>
   object(Pango\Rectangle)#%d (8) {
@@ -104,7 +104,7 @@ array(2) {
     ["y"]=>
     int(-19456)
     ["width"]=>
-    int(102400)
+    int(112640)
     ["height"]=>
     int(24576)
     ["ascent"]=>
@@ -114,7 +114,7 @@ array(2) {
     ["leftBearing"]=>
     int(0)
     ["rightBearing"]=>
-    int(102400)
+    int(112640)
   }
 }
 Pango\LayoutLine::getExtents() expects exactly 0 arguments, 1 given

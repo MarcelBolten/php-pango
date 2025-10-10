@@ -60,42 +60,42 @@ array(2) {
     ["x"]=>
     int(0)
     ["y"]=>
-    int(-19)
+    int(-15)
     ["width"]=>
     int(0)
     ["height"]=>
-    int(24)
-    ["ascent"]=>
     int(19)
+    ["ascent"]=>
+    int(15)
     ["descent"]=>
-    int(5)
+    int(4)
     ["leftBearing"]=>
     int(0)
     ["rightBearing"]=>
     int(0)
   }
 }
-object(Pango\LayoutLine)#%d (0) {
+object(Pango\LayoutLine)#7 (0) {
 }
 array(2) {
   ["ink"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(1)
+    int(0)
     ["y"]=>
     int(-13)
     ["width"]=>
-    int(98)
+    int(109)
     ["height"]=>
-    int(17)
+    int(16)
     ["ascent"]=>
     int(13)
     ["descent"]=>
-    int(4)
+    int(3)
     ["leftBearing"]=>
-    int(1)
+    int(0)
     ["rightBearing"]=>
-    int(99)
+    int(109)
   }
   ["logical"]=>
   object(Pango\Rectangle)#%d (8) {
@@ -104,7 +104,7 @@ array(2) {
     ["y"]=>
     int(-19)
     ["width"]=>
-    int(100)
+    int(110)
     ["height"]=>
     int(24)
     ["ascent"]=>
@@ -114,7 +114,7 @@ array(2) {
     ["leftBearing"]=>
     int(0)
     ["rightBearing"]=>
-    int(100)
+    int(110)
   }
 }
 Pango\LayoutLine::getPixelExtents() expects exactly 0 arguments, 1 given

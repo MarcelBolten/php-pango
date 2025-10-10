@@ -42,7 +42,7 @@ string(35) "{
   "text" : "Hello, Παν語!"
 }
 "
-string(6939) "{
+string(7660) "{
   "context" : {
     "font" : "serif 12",
     "base-gravity" : "south",
@@ -63,7 +63,7 @@ string(6939) "{
     "is-wrapped" : false,
     "is-ellipsized" : false,
     "unknown-glyphs" : 0,
-    "width" : 102400,
+    "width" : 112640,
     "height" : 24576,
     "log-attrs" : [
       {
@@ -165,8 +165,8 @@ string(6939) "{
             "language" : "c",
             "script" : "latin",
             "font" : {
-              "description" : "Noto Sans CJK JP 12",
-              "checksum" : "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
+              "description" : "DejaVu Serif 12",
+              "checksum" : "42d1edeb7952f31b1f96d767ed7030b08a39e0c372b0071641518864e2bffb51",
               "matrix" : [
                 1,
                 -0,
@@ -182,44 +182,44 @@ string(6939) "{
             "end-x-offset" : 0,
             "glyphs" : [
               {
-                "glyph" : 41,
-                "width" : 12288,
+                "glyph" : 43,
+                "width" : 14336,
                 "is-cluster-start" : true,
                 "log-cluster" : 0
               },
               {
-                "glyph" : 70,
+                "glyph" : 72,
                 "width" : 9216,
                 "is-cluster-start" : true,
                 "log-cluster" : 1
               },
               {
-                "glyph" : 77,
+                "glyph" : 79,
                 "width" : 5120,
                 "is-cluster-start" : true,
                 "log-cluster" : 2
               },
               {
-                "glyph" : 77,
+                "glyph" : 79,
                 "width" : 5120,
                 "is-cluster-start" : true,
                 "log-cluster" : 3
               },
               {
-                "glyph" : 80,
+                "glyph" : 82,
                 "width" : 10240,
                 "is-cluster-start" : true,
                 "log-cluster" : 4
               },
               {
-                "glyph" : 13,
-                "width" : 4096,
+                "glyph" : 15,
+                "width" : 5120,
                 "is-cluster-start" : true,
                 "log-cluster" : 5
               },
               {
-                "glyph" : 1,
-                "width" : 4096,
+                "glyph" : 3,
+                "width" : 5120,
                 "is-cluster-start" : true,
                 "log-cluster" : 6
               }
@@ -234,8 +234,8 @@ string(6939) "{
             "language" : "c",
             "script" : "greek",
             "font" : {
-              "description" : "Noto Sans CJK JP 12",
-              "checksum" : "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
+              "description" : "DejaVu Serif 12",
+              "checksum" : "42d1edeb7952f31b1f96d767ed7030b08a39e0c372b0071641518864e2bffb51",
               "matrix" : [
                 1,
                 -0,
@@ -251,20 +251,20 @@ string(6939) "{
             "end-x-offset" : 0,
             "glyphs" : [
               {
-                "glyph" : 272,
-                "width" : 12288,
+                "glyph" : 794,
+                "width" : 14336,
                 "is-cluster-start" : true,
                 "log-cluster" : 0
               },
               {
-                "glyph" : 281,
-                "width" : 10240,
+                "glyph" : 810,
+                "width" : 11264,
                 "is-cluster-start" : true,
                 "log-cluster" : 2
               },
               {
-                "glyph" : 293,
-                "width" : 8192,
+                "glyph" : 822,
+                "width" : 10240,
                 "is-cluster-start" : true,
                 "log-cluster" : 4
               }
@@ -272,14 +272,14 @@ string(6939) "{
           },
           {
             "offset" : 13,
-            "length" : 4,
-            "text" : "語!",
+            "length" : 3,
+            "text" : "語",
             "bidi-level" : 0,
             "gravity" : "south",
             "language" : "c",
             "script" : "han",
             "font" : {
-              "description" : "Noto Sans CJK JP 12",
+              "description" : "Noto Sans Mono CJK JP 12",
               "checksum" : "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
               "matrix" : [
                 1,
@@ -300,12 +300,39 @@ string(6939) "{
                 "width" : 16384,
                 "is-cluster-start" : true,
                 "log-cluster" : 0
-              },
+              }
+            ]
+          },
+          {
+            "offset" : 16,
+            "length" : 1,
+            "text" : "!",
+            "bidi-level" : 0,
+            "gravity" : "south",
+            "language" : "c",
+            "script" : "han",
+            "font" : {
+              "description" : "DejaVu Serif 12",
+              "checksum" : "42d1edeb7952f31b1f96d767ed7030b08a39e0c372b0071641518864e2bffb51",
+              "matrix" : [
+                1,
+                -0,
+                -0,
+                1,
+                0,
+                0
+              ]
+            },
+            "flags" : 0,
+            "y-offset" : 0,
+            "start-x-offset" : 0,
+            "end-x-offset" : 0,
+            "glyphs" : [
               {
-                "glyph" : 2,
-                "width" : 5120,
+                "glyph" : 4,
+                "width" : 6144,
                 "is-cluster-start" : true,
-                "log-cluster" : 3
+                "log-cluster" : 0
               }
             ]
           }
