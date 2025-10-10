@@ -41,7 +41,7 @@ void pango_setup_font_config(void)
 {
     php_error(E_NOTICE, "Setting up fontconfig for Pango extension");
 
-    char cache_dir[MAXPATHLEN];
+    static char cache_dir[MAXPATHLEN];
     const char *temp_dir = php_get_temporary_directory();
 
     snprintf(cache_dir, sizeof(cache_dir), "%s/php-pango-fontconfig", temp_dir);
