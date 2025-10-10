@@ -136,6 +136,7 @@ PHP_MINIT_FUNCTION(pango)
 /* {{{ PHP_MSHUTDOWN_FUNCTION */
 PHP_MSHUTDOWN_FUNCTION(pango)
 {
+    zend_error(E_NOTICE, "Shutting down Pango extension");
     FcFini();
     /* uncomment this line if you have INI entries
     UNREGISTER_INI_ENTRIES();
