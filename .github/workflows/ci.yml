@@ -42,7 +42,7 @@ jobs:
 
             - name: "Build Cairo dependency with PIE"
               # Todo: use a stable version after it is released not dev-overhaul branch
-              run: sudo pie install marcelbolten/php-cairo:dev-overhaul#684b4ea3cbe13f9a084cf0443c450557878de461
+              run: sudo pie install marcelbolten/php-cairo:dev-overhaul
 
             - name: "Checkout"
               uses: actions/checkout@v5
@@ -54,7 +54,6 @@ jobs:
                 make -j$(nproc)
                 sudo make -j$(nproc) install
               env:
-                CFLAGS: "-ggdb3"
                 PANGO_COVERAGE: yes
 
             - name: "Show versions"
@@ -63,65 +62,8 @@ jobs:
                 php --ri cairo
                 php -d extension=pango.so --ri pango
 
-            - name: "Debug fontconfig"
-              run: |
-                echo "=== Fontconfig version ==="
-                fc-list --version || true
-                echo "=== Cache dirs ==="
-                fc-cache --version
-                echo "=== Trying to build cache ==="
-                fc-cache -fv 2>&1 | head -20
-                echo "=== Environment ==="
-                env | grep -i font || true
-                echo "=== Home directory ==="
-                ls -la ~ || true
-
-            - name: "Setup fontconfig cache"
-              run: |
-                mkdir -p ~/.cache/fontconfig
-                mkdir -p ~/.fontconfig
-                # Set fontconfig cache location
-                echo "FONTCONFIG_PATH=/etc/fonts" >> $GITHUB_ENV
-                echo "XDG_CACHE_HOME=$HOME/.cache" >> $GITHUB_ENV
-                # Build font cache
-                fc-cache -fv
-
             - name: "Run Tests"
-              run: |
-                ulimit -c unlimited
-                php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
-                php ./run-tests.php -d extension=pango.so -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
-                php ./run-tests.php -d extension=pango.so -m -q --show-diff tests/Pango/Layout/getSpacing.phpt || true
-                ZEND_DONT_UNLOAD_MODULES=0 USE_ZEND_ALLOC=1 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt || true
-                ZEND_DONT_UNLOAD_MODULES=0 USE_ZEND_ALLOC=0 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt || true
-                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=1 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt || true
-                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=0 valgrind --leak-check=full --track-origins=yes php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt || true
-                gdb -batch \
-                  -ex "set pagination off" \
-                  -ex "run" \
-                  -ex "thread apply all bt full" \
-                  -ex "quit" \
-                  --args php -d extension=pango.so tests/Pango/Layout/getSpacing.phpt
-
-
-            - name: "Check for core dumps"
-              if: always()
-              run: |
-                if ls core* 1> /dev/null 2>&1; then
-                  for core in core*; do
-                    echo "=== Core dump found: $core ==="
-                    gdb -batch -ex "bt full" -ex "thread apply all bt" -ex "quit" \
-                      $(which php) "$core" 2>&1 | tee backtrace-$core.txt
-                  done
-                fi
-
-            - name: "Upload core dump backtraces"
-              if: always()
-              uses: actions/upload-artifact@v4
-              with:
-                name: core-dumps-${{ matrix.php-version }}
-                path: backtrace-*.txt
-                if-no-files-found: ignore
+              run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
