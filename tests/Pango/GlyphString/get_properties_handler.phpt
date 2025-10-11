@@ -1,5 +1,5 @@
 --TEST--
-Pango\Item read property handler
+Pango\GlyphString get_properties handler
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -15,11 +15,9 @@ var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
 foreach ($layout->getLinesReadonly() as $line) {
-    foreach(get_object_vars($line->getRuns()[1]->item) as $name => $value) {
+    $runs = $line->getRuns();
+    foreach(get_object_vars($runs[1]->glyphs) as $name => $value) {
         echo $name, ": ", get_debug_type($value);
-        if (gettype($value) !== 'object') {
-            echo "($value)";
-        }
         echo "\n";
     }
 }
@@ -29,6 +27,5 @@ object(Cairo\Context)#%d (0) {
 }
 object(Pango\Layout)#%d (0) {
 }
-offset: int(7)
-length: int(6)
-numChars: int(3)
+numGlyphs: int
+glyphs: array
