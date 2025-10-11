@@ -29,6 +29,9 @@
 #include <sys/types.h>
 #include <limits.h>
 #include "php_open_temporary_file.h"
+#include <sys/file.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 #include "php_pango.h"
 #include "pango_arginfo.h"
@@ -41,6 +44,8 @@ void pango_setup_font_config(void)
 {
     static char cache_dir[MAXPATHLEN];
     const char *temp_dir = php_get_temporary_directory();
+    char lock_file[MAXPATHLEN];
+    int lock_fd = -1;
 
     snprintf(cache_dir, sizeof(cache_dir), "%s/php-pango-fontconfig", temp_dir);
 
@@ -52,7 +57,31 @@ void pango_setup_font_config(void)
 
     setenv("XDG_CACHE_HOME", cache_dir, 0);
 
+    #ifndef PHP_WIN32
+    snprintf(lock_file, sizeof(lock_file), "%s/init.lock", cache_dir);
+    lock_fd = open(lock_file, O_CREAT | O_RDWR, 0644);
+
+    if (lock_fd >= 0) {
+        flock(lock_fd, LOCK_EX);  // Block until lock acquired
+    }
+    #endif
+
     FcBool result = FcInit();
+
+    // Pre-build font cache
+    if (result) {
+        FcConfig *config = FcConfigGetCurrent();
+        if (config) {
+            FcConfigBuildFonts(config);
+        }
+    }
+
+    #ifndef PHP_WIN32
+    if (lock_fd >= 0) {
+        flock(lock_fd, LOCK_UN);
+        close(lock_fd);
+    }
+    #endif
 }
 
 /* {{{ returns the Pango version */
@@ -136,7 +165,7 @@ PHP_MINIT_FUNCTION(pango)
 /* {{{ PHP_MSHUTDOWN_FUNCTION */
 PHP_MSHUTDOWN_FUNCTION(pango)
 {
-    FcFini();
+    // FcFini();
     /* uncomment this line if you have INI entries
     UNREGISTER_INI_ENTRIES();
     */
