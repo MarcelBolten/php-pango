@@ -1,5 +1,5 @@
 --TEST--
-pango extension phpinfo information
+Pango extension phpinfo information
 --SKIPIF--
 <?php
 include __DIR__ . '/skipif.php.inc';

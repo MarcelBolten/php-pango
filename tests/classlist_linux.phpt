@@ -1,5 +1,5 @@
 --TEST--
-pango extension class listing
+Pango extension class listing
 --SKIPIF--
 <?php
 include __DIR__ . '/skipif.php.inc';
