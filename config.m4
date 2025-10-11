@@ -98,8 +98,8 @@ if test "$PHP_PANGO" != "no"; then
   fi
 
   if test "$PANGO_COVERAGE" = "yes"; then
-      CFLAGS="$CFLAGS -fprofile-arcs -ftest-coverage"
-      LDFLAGS="$LDFLAGS -lgcov"
+      CFLAGS="$CFLAGS --coverage"
+      LDFLAGS="$LDFLAGS --coverage"
   fi
 
 
