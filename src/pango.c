@@ -133,7 +133,7 @@ PHP_MINIT_FUNCTION(pango)
 {
     // init fontconfig to avoid potential race conditions later
     // TODO: maybe need to do it only on linux systems?
-    pango_setup_font_config();
+    // pango_setup_font_config();
 
     memcpy(
         &pango_std_object_handlers,
