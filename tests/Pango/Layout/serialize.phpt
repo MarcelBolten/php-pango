@@ -42,7 +42,7 @@ string(35) "{
   "text" : "Hello, Παν語!"
 }
 "
-string(7660) "{
+string(7655) "{
   "context" : {
     "font" : "serif 12",
     "base-gravity" : "south",
@@ -166,7 +166,7 @@ string(7660) "{
             "script" : "latin",
             "font" : {
               "description" : "DejaVu Serif 12",
-              "checksum" : "42d1edeb7952f31b1f96d767ed7030b08a39e0c372b0071641518864e2bffb51",
+              "checksum" : "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
               "matrix" : [
                 1,
                 -0,
@@ -235,7 +235,7 @@ string(7660) "{
             "script" : "greek",
             "font" : {
               "description" : "DejaVu Serif 12",
-              "checksum" : "42d1edeb7952f31b1f96d767ed7030b08a39e0c372b0071641518864e2bffb51",
+              "checksum" : "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
               "matrix" : [
                 1,
                 -0,
@@ -279,7 +279,7 @@ string(7660) "{
             "language" : "c",
             "script" : "han",
             "font" : {
-              "description" : "Noto Sans Mono CJK JP 12",
+              "description" : "Noto Sans CJK JP 12",
               "checksum" : "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
               "matrix" : [
                 1,
@@ -313,7 +313,7 @@ string(7660) "{
             "script" : "han",
             "font" : {
               "description" : "DejaVu Serif 12",
-              "checksum" : "42d1edeb7952f31b1f96d767ed7030b08a39e0c372b0071641518864e2bffb51",
+              "checksum" : "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
               "matrix" : [
                 1,
                 -0,
