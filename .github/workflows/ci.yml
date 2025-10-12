@@ -59,24 +59,15 @@ jobs:
 
             - name: "Show versions"
               run: |
-                whoami
                 php -v
                 php --ri cairo
-                PID=$!
-                wait $PID
-                ps -T -p $PID 2>/dev/null || echo "Process fully exited"
-                sleep 5
-                ps -T -p $PID 2>/dev/null || echo "All threads cleaned up"
-                ulimit -a
                 ulimit -c unlimited
                 ulimit -a
                 cat /proc/sys/kernel/core_pattern
-                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=0 php -d extension=pango.so --ri pango || true
+                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=1 php -d extension=pango.so --ri pango || true
                 echo "Check if any core dumps are present from previous runs:"
-                which coredumpctl
                 coredumpctl list
                 coredumpctl info
-                coredumpctl --help
                 coredumpctl debug php -A "\
                   -batch \
                   -ex 'set pagination off' \
@@ -85,6 +76,7 @@ jobs:
                   -ex 'info locals' \
                   -ex 'info registers' \
                   -ex 'quit'"
+              continue-on-error: true
 
             - name: "Run Tests"
               run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
