@@ -71,7 +71,7 @@ jobs:
                 ulimit -c unlimited
                 ulimit -a
                 cat /proc/sys/kernel/core_pattern
-                php -d extension=pango.so --ri pango || true
+                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=0 php -d extension=pango.so --ri pango || true
                 echo "Check if any core dumps are present from previous runs:"
                 which coredumpctl
                 coredumpctl list
