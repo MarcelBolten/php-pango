@@ -90,6 +90,16 @@ jobs:
                   -ex 'quit'"
               continue-on-error: true
 
+            - name: "Setup fontconfig cache"
+              run: |
+                mkdir -p ~/.cache/fontconfig
+                mkdir -p ~/.fontconfig
+                # Set fontconfig cache location
+                echo "FONTCONFIG_PATH=/etc/fonts" >> $GITHUB_ENV
+                echo "XDG_CACHE_HOME=$HOME/.cache" >> $GITHUB_ENV
+                # Build font cache
+                fc-cache -fv
+
             - name: "Run Tests"
               run: |
                 php ./run-tests.php -d extension=pango.so -q --show-diff || true
