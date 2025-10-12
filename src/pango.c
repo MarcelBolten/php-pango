@@ -42,7 +42,7 @@ zend_object_handlers pango_std_object_handlers;
 // TODO: move to separate file with corresponding headers
 void pango_setup_font_config(void)
 {
-    static char cache_dir[MAXPATHLEN];
+    char cache_dir[MAXPATHLEN];
     const char *temp_dir = php_get_temporary_directory();
     char lock_file[MAXPATHLEN];
     int lock_fd = -1;
