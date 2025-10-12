@@ -91,7 +91,9 @@ jobs:
               continue-on-error: true
 
             - name: "Run Tests"
-              run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
+              run: |
+                php ./run-tests.php -d extension=pango.so -q --show-diff || true
+                php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
