@@ -36,6 +36,7 @@ jobs:
               with:
                   php-version: ${{ matrix.php-version }}
                   tools: pie
+                  ini-values: extension=pango.so
               env:
                 debug: true
                 phpts: ${{ matrix.phpts }}
@@ -64,7 +65,7 @@ jobs:
                 ulimit -c unlimited
                 ulimit -a
                 cat /proc/sys/kernel/core_pattern
-                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=1 php -d extension=pango.so --ri pango || true
+                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=1 php --ri pango || true
                 echo "Check if any core dumps are present from previous runs:"
                 coredumpctl list
                 coredumpctl info
@@ -102,8 +103,8 @@ jobs:
 
             - name: "Run Tests"
               run: |
-                php ./run-tests.php -d extension=pango.so -q --show-diff || true
-                php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
+                php ./run-tests.php -q --show-diff || true
+                php ./run-tests.php -j$(nproc) -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
