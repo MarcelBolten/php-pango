@@ -72,8 +72,13 @@ jobs:
                 ulimit -a
                 cat /proc/sys/kernel/core_pattern
                 php -d extension=pango.so --ri pango || true
-                if ls core* 1> /dev/null 2>&1; then
-                  for core in core*; do
+                echo "Check if any core dumps are present from previous runs:"
+                which coredumpctl
+                coredumpctl list
+                coredumpctl info
+                echo "If there are any core dumps, print their backtrace:"
+                if ls /var/lib/systemd/coredump/ 1> /dev/null 2>&1; then
+                  for core in /var/lib/systemd/coredump/*; do
                     echo "=== Core dump found: $core ==="
                     gdb -batch -ex "bt full" -ex "thread apply all bt" -ex "quit" \
                       $(which php) "$core" 2>&1
