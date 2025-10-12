@@ -76,13 +76,15 @@ jobs:
                 which coredumpctl
                 coredumpctl list
                 coredumpctl info
-                coredumpctl gdb php --batch \
-                  -ex "set pagination off" \
-                  -ex "bt full" \
-                  -ex "thread apply all bt" \
-                  -ex "info locals" \
-                  -ex "info registers"
-                  -ex "quit"
+                coredumpctl --help
+                coredumpctl debug php -A "\
+                  -batch \
+                  -ex 'set pagination off' \
+                  -ex 'bt full' \
+                  -ex 'thread apply all bt' \
+                  -ex 'info locals' \
+                  -ex 'info registers' \
+                  -ex 'quit'"
 
             - name: "Run Tests"
               run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
