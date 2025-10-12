@@ -72,9 +72,21 @@ jobs:
                   -batch \
                   -ex 'set pagination off' \
                   -ex 'bt full' \
-                  -ex 'thread apply all bt' \
+                  -ex 'frame 6' \
+                  -ex 'info args' \
                   -ex 'info locals' \
-                  -ex 'info registers' \
+                  -ex 'frame 7' \
+                  -ex 'print ptr' \
+                  -ex 'print/x ptr' \
+                  -ex 'print *((zend_string*)ptr - 1)' \
+                  -ex 'x/64xb ptr-16'
+                  -ex 'info args' \
+                  -ex 'x/32xb \$rdi' \
+                  -ex 'x/s \$rdi' \
+                  -ex 'frame 8' \
+                  -ex 'info args' \
+                  -ex 'info locals' \
+                  -ex 'disassemble' \
                   -ex 'quit'"
               continue-on-error: true
 
