@@ -54,10 +54,12 @@ jobs:
                 make -j$(nproc)
                 sudo make -j$(nproc) install
               env:
+                CFLAGS: "-ggdb3"
                 PANGO_COVERAGE: yes
 
             - name: "Show versions"
               run: |
+                whoami
                 php -v
                 php --ri cairo
                 PID=$!
@@ -65,7 +67,18 @@ jobs:
                 ps -T -p $PID 2>/dev/null || echo "Process fully exited"
                 sleep 5
                 ps -T -p $PID 2>/dev/null || echo "All threads cleaned up"
-                php -d extension=pango.so --ri pango
+                ulimit -a
+                ulimit -c unlimited
+                ulimit -a
+                cat /proc/sys/kernel/core_pattern
+                php -d extension=pango.so --ri pango || true
+                if ls core* 1> /dev/null 2>&1; then
+                  for core in core*; do
+                    echo "=== Core dump found: $core ==="
+                    gdb -batch -ex "bt full" -ex "thread apply all bt" -ex "quit" \
+                      $(which php) "$core" 2>&1
+                  done
+                fi
 
             - name: "Run Tests"
               run: php ./run-tests.php -d extension=pango.so -j$(nproc) -q --show-diff
