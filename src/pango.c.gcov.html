@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-12 06:01:22</td>
+            <td class="headerValue">2025-10-14 19:30:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">85.7&nbsp;%</td>
@@ -187,52 +187,52 @@
 <span id="L125"><span class="lineNum">     125</span>              : /* }}} */</span>
 <span id="L126"><span class="lineNum">     126</span>              : </span>
 <span id="L127"><span class="lineNum">     127</span>              : #ifdef COMPILE_DL_PANGO</span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">         141 : ZEND_GET_MODULE(pango)</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">         154 : ZEND_GET_MODULE(pango)</span></span>
 <span id="L129"><span class="lineNum">     129</span>              : #endif</span>
 <span id="L130"><span class="lineNum">     130</span>              : </span>
 <span id="L131"><span class="lineNum">     131</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">         141 : PHP_MINIT_FUNCTION(pango)</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">         154 : PHP_MINIT_FUNCTION(pango)</span></span>
 <span id="L133"><span class="lineNum">     133</span>              : {</span>
 <span id="L134"><span class="lineNum">     134</span>              :     // init fontconfig to avoid potential race conditions later</span>
 <span id="L135"><span class="lineNum">     135</span>              :     // TODO: maybe need to do it only on linux systems?</span>
 <span id="L136"><span class="lineNum">     136</span>              :     // pango_setup_font_config();</span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         141 :     FcInit();</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         154 :     FcInit();</span></span>
 <span id="L138"><span class="lineNum">     138</span>              : </span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         141 :     memcpy(</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         154 :     memcpy(</span></span>
 <span id="L140"><span class="lineNum">     140</span>              :         &amp;pango_std_object_handlers,</span>
 <span id="L141"><span class="lineNum">     141</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L142"><span class="lineNum">     142</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L143"><span class="lineNum">     143</span>              :     );</span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">         141 :     pango_std_object_handlers.clone_obj = NULL;</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">         154 :     pango_std_object_handlers.clone_obj = NULL;</span></span>
 <span id="L145"><span class="lineNum">     145</span>              : </span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">         141 :     pango_ce_pango = register_class_Pango_Pango();</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">         154 :     pango_ce_pango = register_class_Pango_Pango();</span></span>
 <span id="L147"><span class="lineNum">     147</span>              :     // Make abstract so no-one can instantiate it</span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         141 :     pango_ce_pango-&gt;ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS;</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         154 :     pango_ce_pango-&gt;ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS;</span></span>
 <span id="L149"><span class="lineNum">     149</span>              : </span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_exception)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_context)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_layout)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_font_description)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_layout_line)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_glyph_item)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_item)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_glyph_string)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_glyph_info)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_matrix)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         141 :     PHP_MINIT(pango_rectangle)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_exception)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_context)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_layout)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_font_description)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_layout_line)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_glyph_item)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_item)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_glyph_string)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_glyph_info)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_matrix)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         154 :     PHP_MINIT(pango_rectangle)(INIT_FUNC_ARGS_PASSTHRU);</span></span>
 <span id="L161"><span class="lineNum">     161</span>              : </span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         141 :     return SUCCESS;</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         154 :     return SUCCESS;</span></span>
 <span id="L163"><span class="lineNum">     163</span>              : }</span>
 <span id="L164"><span class="lineNum">     164</span>              : /* }}} */</span>
 <span id="L165"><span class="lineNum">     165</span>              : </span>
 <span id="L166"><span class="lineNum">     166</span>              : /* {{{ PHP_MSHUTDOWN_FUNCTION */</span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         141 : PHP_MSHUTDOWN_FUNCTION(pango)</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         154 : PHP_MSHUTDOWN_FUNCTION(pango)</span></span>
 <span id="L168"><span class="lineNum">     168</span>              : {</span>
 <span id="L169"><span class="lineNum">     169</span>              :     // FcFini();</span>
 <span id="L170"><span class="lineNum">     170</span>              :     /* uncomment this line if you have INI entries</span>
 <span id="L171"><span class="lineNum">     171</span>              :     UNREGISTER_INI_ENTRIES();</span>
 <span id="L172"><span class="lineNum">     172</span>              :     */</span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">         141 :     return SUCCESS;</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">         154 :     return SUCCESS;</span></span>
 <span id="L174"><span class="lineNum">     174</span>              : }</span>
 <span id="L175"><span class="lineNum">     175</span>              : /* }}} */</span>
 <span id="L176"><span class="lineNum">     176</span>              : </span>

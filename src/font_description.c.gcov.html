@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-12 06:01:22</td>
+            <td class="headerValue">2025-10-14 19:30:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -437,28 +437,28 @@
 <span id="L375"><span class="lineNum">     375</span>              : /* }}} */</span>
 <span id="L376"><span class="lineNum">     376</span>              : </span>
 <span id="L377"><span class="lineNum">     377</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         141 : PHP_MINIT_FUNCTION(pango_font_description)</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         154 : PHP_MINIT_FUNCTION(pango_font_description)</span></span>
 <span id="L379"><span class="lineNum">     379</span>              : {</span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         141 :     memcpy(</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         154 :     memcpy(</span></span>
 <span id="L381"><span class="lineNum">     381</span>              :         &amp;pango_font_description_object_handlers,</span>
 <span id="L382"><span class="lineNum">     382</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L383"><span class="lineNum">     383</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L384"><span class="lineNum">     384</span>              :     );</span>
 <span id="L385"><span class="lineNum">     385</span>              : </span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         141 :     pango_font_description_object_handlers.offset = XtOffsetOf(pango_font_description_object, std);</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         141 :     pango_font_description_object_handlers.free_obj = pango_font_description_free_obj;</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         154 :     pango_font_description_object_handlers.offset = XtOffsetOf(pango_font_description_object, std);</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         154 :     pango_font_description_object_handlers.free_obj = pango_font_description_free_obj;</span></span>
 <span id="L388"><span class="lineNum">     388</span>              : </span>
-<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">         141 :     pango_ce_pango_font_description = register_class_Pango_FontDescription();</span></span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">         141 :     pango_ce_pango_font_description-&gt;create_object = pango_font_description_create_object;</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">         154 :     pango_ce_pango_font_description = register_class_Pango_FontDescription();</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">         154 :     pango_ce_pango_font_description-&gt;create_object = pango_font_description_create_object;</span></span>
 <span id="L391"><span class="lineNum">     391</span>              : </span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         141 :     pango_ce_pango_style = register_class_Pango_Style();</span></span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         141 :     pango_ce_pango_weight = register_class_Pango_Weight();</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         141 :     pango_ce_pango_variant = register_class_Pango_Variant();</span></span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         141 :     pango_ce_pango_stretch = register_class_Pango_Stretch();</span></span>
-<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">         141 :     pango_ce_pango_font_mask = register_class_Pango_FontMask();</span></span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         141 :     pango_ce_pango_font_mask-&gt;ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL;</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         154 :     pango_ce_pango_style = register_class_Pango_Style();</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         154 :     pango_ce_pango_weight = register_class_Pango_Weight();</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         154 :     pango_ce_pango_variant = register_class_Pango_Variant();</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         154 :     pango_ce_pango_stretch = register_class_Pango_Stretch();</span></span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">         154 :     pango_ce_pango_font_mask = register_class_Pango_FontMask();</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         154 :     pango_ce_pango_font_mask-&gt;ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS | ZEND_ACC_FINAL;</span></span>
 <span id="L398"><span class="lineNum">     398</span>              : </span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">         141 :     return SUCCESS;</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">         154 :     return SUCCESS;</span></span>
 <span id="L400"><span class="lineNum">     400</span>              : }</span>
 <span id="L401"><span class="lineNum">     401</span>              : /* }}} */</span>
         </pre>

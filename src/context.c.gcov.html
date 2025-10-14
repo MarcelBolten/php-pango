@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-12 06:01:22</td>
+            <td class="headerValue">2025-10-14 19:30:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -95,8 +95,8 @@
 <span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          13 :     return pango_ce_pango_context;</span></span>
 <span id="L34"><span class="lineNum">      34</span>              : }</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           3 : PHP_PANGO_API zend_class_entry* php_pango_get_direction_ce() {</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           3 :     return pango_ce_pango_direction;</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           4 : PHP_PANGO_API zend_class_entry* php_pango_get_direction_ce() {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           4 :     return pango_ce_pango_direction;</span></span>
 <span id="L38"><span class="lineNum">      38</span>              : }</span>
 <span id="L39"><span class="lineNum">      39</span>              : </span>
 <span id="L40"><span class="lineNum">      40</span>              : static zend_object_handlers pango_context_object_handlers;</span>
@@ -317,7 +317,7 @@
 <span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">           4 : PHP_METHOD(Pango_Context, setRoundGlyphPositions)</span></span>
 <span id="L256"><span class="lineNum">     256</span>              : {</span>
 <span id="L257"><span class="lineNum">     257</span>              :     pango_context_object *context_object;</span>
-<span id="L258"><span class="lineNum">     258</span>              :     zend_bool round;</span>
+<span id="L258"><span class="lineNum">     258</span>              :     bool round;</span>
 <span id="L259"><span class="lineNum">     259</span>              : </span>
 <span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_START(1, 1)</span></span>
 <span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">           4 :         Z_PARAM_BOOL(round)</span></span>
@@ -429,25 +429,25 @@
 <span id="L367"><span class="lineNum">     367</span>              : /* }}} */</span>
 <span id="L368"><span class="lineNum">     368</span>              : </span>
 <span id="L369"><span class="lineNum">     369</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">         141 : PHP_MINIT_FUNCTION(pango_context)</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">         154 : PHP_MINIT_FUNCTION(pango_context)</span></span>
 <span id="L371"><span class="lineNum">     371</span>              : {</span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">         141 :     memcpy(</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">         154 :     memcpy(</span></span>
 <span id="L373"><span class="lineNum">     373</span>              :         &amp;pango_context_object_handlers,</span>
 <span id="L374"><span class="lineNum">     374</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L375"><span class="lineNum">     375</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L376"><span class="lineNum">     376</span>              :     );</span>
 <span id="L377"><span class="lineNum">     377</span>              : </span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         141 :     pango_context_object_handlers.offset = XtOffsetOf(pango_context_object, std);</span></span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         141 :     pango_context_object_handlers.free_obj = pango_context_free_obj;</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         154 :     pango_context_object_handlers.offset = XtOffsetOf(pango_context_object, std);</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         154 :     pango_context_object_handlers.free_obj = pango_context_free_obj;</span></span>
 <span id="L380"><span class="lineNum">     380</span>              : </span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         141 :     pango_ce_pango_context = register_class_Pango_Context();</span></span>
-<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         141 :     pango_ce_pango_context-&gt;create_object = pango_context_create_object;</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         154 :     pango_ce_pango_context = register_class_Pango_Context();</span></span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         154 :     pango_ce_pango_context-&gt;create_object = pango_context_create_object;</span></span>
 <span id="L383"><span class="lineNum">     383</span>              : </span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         141 :     pango_ce_pango_gravity = register_class_Pango_Gravity();</span></span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         141 :     pango_ce_pango_gravity_hint = register_class_Pango_GravityHint();</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         141 :     pango_ce_pango_direction = register_class_Pango_Direction();</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         154 :     pango_ce_pango_gravity = register_class_Pango_Gravity();</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         154 :     pango_ce_pango_gravity_hint = register_class_Pango_GravityHint();</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         154 :     pango_ce_pango_direction = register_class_Pango_Direction();</span></span>
 <span id="L387"><span class="lineNum">     387</span>              : </span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         141 :     return SUCCESS;</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         154 :     return SUCCESS;</span></span>
 <span id="L389"><span class="lineNum">     389</span>              : }</span>
 <span id="L390"><span class="lineNum">     390</span>              : /* }}} */</span>
         </pre>

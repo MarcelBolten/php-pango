@@ -31,18 +31,18 @@
             <td class="headerValue">PHP Pango Extension Coverage</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">95.7&nbsp;%</td>
-            <td class="headerCovTableEntry">347</td>
-            <td class="headerCovTableEntry">332</td>
+            <td class="headerCovTableEntryHi">96.3&nbsp;%</td>
+            <td class="headerCovTableEntry">407</td>
+            <td class="headerCovTableEntry">392</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-12 06:01:22</td>
+            <td class="headerValue">2025-10-14 19:30:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">97.8&nbsp;%</td>
-            <td class="headerCovTableEntry">46</td>
-            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntryHi">98.3&nbsp;%</td>
+            <td class="headerCovTableEntry">58</td>
+            <td class="headerCovTableEntry">57</td>
           </tr>
                   <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -100,28 +100,28 @@
 <span id="L38"><span class="lineNum">      38</span>              : </span>
 <span id="L39"><span class="lineNum">      39</span>              : static zend_object_handlers pango_layout_object_handlers;</span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC tlaBgGNC">         338 : pango_layout_object *pango_layout_fetch_object(zend_object *object)</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC tlaBgGNC">         384 : pango_layout_object *pango_layout_fetch_object(zend_object *object)</span></span>
 <span id="L42"><span class="lineNum">      42</span>              : {</span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         338 :     return (pango_layout_object *) ((char*)(object) - XtOffsetOf(pango_layout_object, std));</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         384 :     return (pango_layout_object *) ((char*)(object) - XtOffsetOf(pango_layout_object, std));</span></span>
 <span id="L44"><span class="lineNum">      44</span>              : }</span>
 <span id="L45"><span class="lineNum">      45</span>              : </span>
 <span id="L46"><span class="lineNum">      46</span>              : /* {{{ Creates a PangoLayout based on the Cairo or Pango Context object */</span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          70 : PHP_METHOD(Pango_Layout, __construct)</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          82 : PHP_METHOD(Pango_Layout, __construct)</span></span>
 <span id="L48"><span class="lineNum">      48</span>              : {</span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">          70 :     zval *context_zval = NULL;</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">          82 :     zval *context_zval = NULL;</span></span>
 <span id="L50"><span class="lineNum">      50</span>              :     cairo_context_object *context_object;</span>
 <span id="L51"><span class="lineNum">      51</span>              :     pango_layout_object *layout_object;</span>
 <span id="L52"><span class="lineNum">      52</span>              : </span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">          70 :     ZEND_PARSE_PARAMETERS_START(1, 1)</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">         138 :         Z_PARAM_OBJECT_OF_CLASS(context_zval, php_cairo_get_context_ce())</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          70 :     ZEND_PARSE_PARAMETERS_END();</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">          82 :     ZEND_PARSE_PARAMETERS_START(1, 1)</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">         162 :         Z_PARAM_OBJECT_OF_CLASS(context_zval, php_cairo_get_context_ce())</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          82 :     ZEND_PARSE_PARAMETERS_END();</span></span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          68 :     context_object = Z_CAIRO_CONTEXT_P(context_zval);</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          80 :     context_object = Z_CAIRO_CONTEXT_P(context_zval);</span></span>
 <span id="L58"><span class="lineNum">      58</span>              : </span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">         136 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">          68 :     layout_object-&gt;layout = pango_cairo_create_layout(context_object-&gt;context);</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">         160 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">          80 :     layout_object-&gt;layout = pango_cairo_create_layout(context_object-&gt;context);</span></span>
 <span id="L61"><span class="lineNum">      61</span>              : </span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">          68 :     if (layout_object-&gt;layout == NULL) {</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">          80 :     if (layout_object-&gt;layout == NULL) {</span></span>
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC tlaBgUNC">           0 :         zend_throw_exception(</span></span>
 <span id="L64"><span class="lineNum">      64</span>              :             pango_ce_pango_exception,</span>
 <span id="L65"><span class="lineNum">      65</span>              :             &quot;Could not create the Pango layout&quot;,</span>
@@ -130,7 +130,7 @@
 <span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :         RETURN_THROWS();</span></span>
 <span id="L69"><span class="lineNum">      69</span>              :     }</span>
 <span id="L70"><span class="lineNum">      70</span>              : </span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC tlaBgGNC">          68 :     ZVAL_COPY(&amp;layout_object-&gt;cairo_context_zv, context_zval);</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC tlaBgGNC">          80 :     ZVAL_COPY(&amp;layout_object-&gt;cairo_context_zv, context_zval);</span></span>
 <span id="L72"><span class="lineNum">      72</span>              : }</span>
 <span id="L73"><span class="lineNum">      73</span>              : /* }}} */</span>
 <span id="L74"><span class="lineNum">      74</span>              : </span>
@@ -538,7 +538,7 @@
 <span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">           5 : PHP_METHOD(Pango_Layout, setJustify)</span></span>
 <span id="L477"><span class="lineNum">     477</span>              : {</span>
 <span id="L478"><span class="lineNum">     478</span>              :     pango_layout_object *layout_object;</span>
-<span id="L479"><span class="lineNum">     479</span>              :     zend_bool justify;</span>
+<span id="L479"><span class="lineNum">     479</span>              :     bool justify;</span>
 <span id="L480"><span class="lineNum">     480</span>              : </span>
 <span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_START(1, 1)</span></span>
 <span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">           8 :         Z_PARAM_BOOL(justify)</span></span>
@@ -662,7 +662,7 @@
 <span id="L600"><span class="lineNum">     600</span>              : }</span>
 <span id="L601"><span class="lineNum">     601</span>              : /* }}} */</span>
 <span id="L602"><span class="lineNum">     602</span>              : </span>
-<span id="L603"><span class="lineNum">     603</span>              : /* {{{ Returns how text will be indentped or not in the current layout */</span>
+<span id="L603"><span class="lineNum">     603</span>              : /* {{{ Returns how text will be indented or not in the current layout */</span>
 <span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">           5 : PHP_METHOD(Pango_Layout, getIndent)</span></span>
 <span id="L605"><span class="lineNum">     605</span>              : {</span>
 <span id="L606"><span class="lineNum">     606</span>              :     pango_layout_object *layout_object;</span>
@@ -906,81 +906,259 @@
 <span id="L844"><span class="lineNum">     844</span>              : /* }}} */</span>
 <span id="L845"><span class="lineNum">     845</span>              : #endif</span>
 <span id="L846"><span class="lineNum">     846</span>              : </span>
-<span id="L847"><span class="lineNum">     847</span>              : /* ----------------------------------------------------------------</span>
-<span id="L848"><span class="lineNum">     848</span>              :     \Pango\Layout Object management</span>
-<span id="L849"><span class="lineNum">     849</span>              : ------------------------------------------------------------------*/</span>
-<span id="L850"><span class="lineNum">     850</span>              : </span>
-<span id="L851"><span class="lineNum">     851</span>              : /* {{{ */</span>
-<span id="L852"><span class="lineNum">     852</span> <span class="tlaGNC tlaBgGNC">          70 : static void pango_layout_free_obj(zend_object *zobj)</span></span>
-<span id="L853"><span class="lineNum">     853</span>              : {</span>
-<span id="L854"><span class="lineNum">     854</span> <span class="tlaGNC">          70 :     pango_layout_object *intern = pango_layout_fetch_object(zobj);</span></span>
-<span id="L855"><span class="lineNum">     855</span>              : </span>
-<span id="L856"><span class="lineNum">     856</span> <span class="tlaGNC">          70 :     if (!intern) {</span></span>
-<span id="L857"><span class="lineNum">     857</span> <span class="tlaUNC tlaBgUNC">           0 :         return;</span></span>
-<span id="L858"><span class="lineNum">     858</span>              :     }</span>
-<span id="L859"><span class="lineNum">     859</span>              : </span>
-<span id="L860"><span class="lineNum">     860</span> <span class="tlaGNC tlaBgGNC">          70 :     zval_ptr_dtor(&amp;intern-&gt;cairo_context_zv);</span></span>
-<span id="L861"><span class="lineNum">     861</span> <span class="tlaGNC">          70 :     zval_ptr_dtor(&amp;intern-&gt;pango_context_zv);</span></span>
-<span id="L862"><span class="lineNum">     862</span>              : </span>
-<span id="L863"><span class="lineNum">     863</span> <span class="tlaGNC">          70 :     if (intern-&gt;layout) {</span></span>
-<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC">          68 :         g_object_unref(intern-&gt;layout);</span></span>
-<span id="L865"><span class="lineNum">     865</span> <span class="tlaGNC">          68 :         intern-&gt;layout = NULL;</span></span>
-<span id="L866"><span class="lineNum">     866</span>              :     }</span>
-<span id="L867"><span class="lineNum">     867</span>              : </span>
-<span id="L868"><span class="lineNum">     868</span> <span class="tlaGNC">          70 :     zend_object_std_dtor(&amp;intern-&gt;std);</span></span>
-<span id="L869"><span class="lineNum">     869</span>              : }</span>
-<span id="L870"><span class="lineNum">     870</span>              : /* }}} */</span>
-<span id="L871"><span class="lineNum">     871</span>              : </span>
-<span id="L872"><span class="lineNum">     872</span>              : /* {{{ */</span>
-<span id="L873"><span class="lineNum">     873</span> <span class="tlaGNC">          70 : static zend_object* pango_layout_obj_ctor(zend_class_entry *ce, pango_layout_object **intern)</span></span>
-<span id="L874"><span class="lineNum">     874</span>              : {</span>
-<span id="L875"><span class="lineNum">     875</span> <span class="tlaGNC">          70 :     pango_layout_object *object = ecalloc(1, sizeof(pango_layout_object) + zend_object_properties_size(ce));</span></span>
+<span id="L847"><span class="lineNum">     847</span>              : /* {{{ Gets the Y position of baseline of the first line in layout.*/</span>
+<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC tlaBgGNC">           2 : PHP_METHOD(Pango_Layout, getBaseline)</span></span>
+<span id="L849"><span class="lineNum">     849</span>              : {</span>
+<span id="L850"><span class="lineNum">     850</span>              :     pango_layout_object *layout_object;</span>
+<span id="L851"><span class="lineNum">     851</span>              : </span>
+<span id="L852"><span class="lineNum">     852</span> <span class="tlaGNC">           2 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
+<span id="L853"><span class="lineNum">     853</span>              : </span>
+<span id="L854"><span class="lineNum">     854</span> <span class="tlaGNC">           2 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L855"><span class="lineNum">     855</span> <span class="tlaGNC">           1 :     RETURN_LONG(pango_layout_get_baseline(layout_object-&gt;layout));</span></span>
+<span id="L856"><span class="lineNum">     856</span>              : }</span>
+<span id="L857"><span class="lineNum">     857</span>              : /* }}} */</span>
+<span id="L858"><span class="lineNum">     858</span>              : </span>
+<span id="L859"><span class="lineNum">     859</span>              : /* {{{ Gets whether to calculate the base direction for the layout according to its contents. */</span>
+<span id="L860"><span class="lineNum">     860</span> <span class="tlaGNC">           4 : PHP_METHOD(Pango_Layout, getAutoDir)</span></span>
+<span id="L861"><span class="lineNum">     861</span>              : {</span>
+<span id="L862"><span class="lineNum">     862</span>              :     pango_layout_object *layout_object;</span>
+<span id="L863"><span class="lineNum">     863</span>              : </span>
+<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
+<span id="L865"><span class="lineNum">     865</span>              : </span>
+<span id="L866"><span class="lineNum">     866</span> <span class="tlaGNC">           6 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L867"><span class="lineNum">     867</span> <span class="tlaGNC">           3 :     RETURN_BOOL(pango_layout_get_auto_dir(layout_object-&gt;layout));</span></span>
+<span id="L868"><span class="lineNum">     868</span>              : }</span>
+<span id="L869"><span class="lineNum">     869</span>              : /* }}} */</span>
+<span id="L870"><span class="lineNum">     870</span>              : </span>
+<span id="L871"><span class="lineNum">     871</span>              : /* {{{ Sets whether to calculate the base direction for the layout according to its contents. */</span>
+<span id="L872"><span class="lineNum">     872</span> <span class="tlaGNC">           5 : PHP_METHOD(Pango_Layout, setAutoDir)</span></span>
+<span id="L873"><span class="lineNum">     873</span>              : {</span>
+<span id="L874"><span class="lineNum">     874</span>              :     pango_layout_object *layout_object;</span>
+<span id="L875"><span class="lineNum">     875</span>              :     bool auto_dir;</span>
 <span id="L876"><span class="lineNum">     876</span>              : </span>
-<span id="L877"><span class="lineNum">     877</span> <span class="tlaGNC">          70 :     ZVAL_UNDEF(&amp;object-&gt;cairo_context_zv);</span></span>
-<span id="L878"><span class="lineNum">     878</span> <span class="tlaGNC">          70 :     ZVAL_UNDEF(&amp;object-&gt;pango_context_zv);</span></span>
-<span id="L879"><span class="lineNum">     879</span>              : </span>
-<span id="L880"><span class="lineNum">     880</span> <span class="tlaGNC">          70 :     zend_object_std_init(&amp;object-&gt;std, ce);</span></span>
-<span id="L881"><span class="lineNum">     881</span>              : </span>
-<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">          70 :     object-&gt;std.handlers = &amp;pango_layout_object_handlers;</span></span>
-<span id="L883"><span class="lineNum">     883</span> <span class="tlaGNC">          70 :     *intern = object;</span></span>
-<span id="L884"><span class="lineNum">     884</span>              : </span>
-<span id="L885"><span class="lineNum">     885</span> <span class="tlaGNC">          70 :     return &amp;object-&gt;std;</span></span>
-<span id="L886"><span class="lineNum">     886</span>              : }</span>
-<span id="L887"><span class="lineNum">     887</span>              : /* }}} */</span>
-<span id="L888"><span class="lineNum">     888</span>              : </span>
-<span id="L889"><span class="lineNum">     889</span>              : /* {{{ */</span>
-<span id="L890"><span class="lineNum">     890</span> <span class="tlaGNC">          70 : static zend_object* pango_layout_create_object(zend_class_entry *ce)</span></span>
-<span id="L891"><span class="lineNum">     891</span>              : {</span>
-<span id="L892"><span class="lineNum">     892</span> <span class="tlaGNC">          70 :     pango_layout_object *intern = NULL;</span></span>
-<span id="L893"><span class="lineNum">     893</span> <span class="tlaGNC">          70 :     zend_object *return_value = pango_layout_obj_ctor(ce, &amp;intern);</span></span>
-<span id="L894"><span class="lineNum">     894</span>              : </span>
-<span id="L895"><span class="lineNum">     895</span> <span class="tlaGNC">          70 :     object_properties_init(&amp;intern-&gt;std, ce);</span></span>
-<span id="L896"><span class="lineNum">     896</span> <span class="tlaGNC">          70 :     return return_value;</span></span>
-<span id="L897"><span class="lineNum">     897</span>              : }</span>
-<span id="L898"><span class="lineNum">     898</span>              : /* }}} */</span>
-<span id="L899"><span class="lineNum">     899</span>              : </span>
-<span id="L900"><span class="lineNum">     900</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L901"><span class="lineNum">     901</span> <span class="tlaGNC">         141 : PHP_MINIT_FUNCTION(pango_layout)</span></span>
-<span id="L902"><span class="lineNum">     902</span>              : {</span>
-<span id="L903"><span class="lineNum">     903</span> <span class="tlaGNC">         141 :     memcpy(</span></span>
-<span id="L904"><span class="lineNum">     904</span>              :         &amp;pango_layout_object_handlers,</span>
-<span id="L905"><span class="lineNum">     905</span>              :         zend_get_std_object_handlers(),</span>
-<span id="L906"><span class="lineNum">     906</span>              :         sizeof(zend_object_handlers)</span>
-<span id="L907"><span class="lineNum">     907</span>              :     );</span>
-<span id="L908"><span class="lineNum">     908</span>              : </span>
-<span id="L909"><span class="lineNum">     909</span> <span class="tlaGNC">         141 :     pango_layout_object_handlers.offset = XtOffsetOf(pango_layout_object, std);</span></span>
-<span id="L910"><span class="lineNum">     910</span> <span class="tlaGNC">         141 :     pango_layout_object_handlers.free_obj = pango_layout_free_obj;</span></span>
-<span id="L911"><span class="lineNum">     911</span>              : </span>
-<span id="L912"><span class="lineNum">     912</span> <span class="tlaGNC">         141 :     pango_ce_pango_layout = register_class_Pango_Layout();</span></span>
-<span id="L913"><span class="lineNum">     913</span> <span class="tlaGNC">         141 :     pango_ce_pango_layout-&gt;create_object = pango_layout_create_object;</span></span>
-<span id="L914"><span class="lineNum">     914</span>              : </span>
-<span id="L915"><span class="lineNum">     915</span> <span class="tlaGNC">         141 :     pango_ce_pango_alignment = register_class_Pango_Alignment();</span></span>
-<span id="L916"><span class="lineNum">     916</span> <span class="tlaGNC">         141 :     pango_ce_pango_wrap_mode = register_class_Pango_WrapMode();</span></span>
-<span id="L917"><span class="lineNum">     917</span> <span class="tlaGNC">         141 :     pango_ce_pango_ellipsize_mode = register_class_Pango_EllipsizeMode();</span></span>
-<span id="L918"><span class="lineNum">     918</span>              : </span>
-<span id="L919"><span class="lineNum">     919</span> <span class="tlaGNC">         141 :     return SUCCESS;</span></span>
-<span id="L920"><span class="lineNum">     920</span>              : }</span>
-<span id="L921"><span class="lineNum">     921</span>              : /* }}} */</span>
+<span id="L877"><span class="lineNum">     877</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_START(1, 1);</span></span>
+<span id="L878"><span class="lineNum">     878</span> <span class="tlaGNC">           6 :         Z_PARAM_BOOL(auto_dir)</span></span>
+<span id="L879"><span class="lineNum">     879</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_END();</span></span>
+<span id="L880"><span class="lineNum">     880</span>              : </span>
+<span id="L881"><span class="lineNum">     881</span> <span class="tlaGNC">           4 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">           2 :     pango_layout_set_auto_dir(layout_object-&gt;layout, auto_dir);</span></span>
+<span id="L883"><span class="lineNum">     883</span>              : }</span>
+<span id="L884"><span class="lineNum">     884</span>              : /* }}} */</span>
+<span id="L885"><span class="lineNum">     885</span>              : </span>
+<span id="L886"><span class="lineNum">     886</span>              : /* {{{ */</span>
+<span id="L887"><span class="lineNum">     887</span> <span class="tlaGNC">           2 : PHP_METHOD(Pango_Layout, getCharacterCount)</span></span>
+<span id="L888"><span class="lineNum">     888</span>              : {</span>
+<span id="L889"><span class="lineNum">     889</span>              :     pango_layout_object *layout_object;</span>
+<span id="L890"><span class="lineNum">     890</span>              : </span>
+<span id="L891"><span class="lineNum">     891</span> <span class="tlaGNC">           2 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
+<span id="L892"><span class="lineNum">     892</span>              : </span>
+<span id="L893"><span class="lineNum">     893</span> <span class="tlaGNC">           2 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L894"><span class="lineNum">     894</span> <span class="tlaGNC">           1 :     RETURN_LONG(pango_layout_get_character_count(layout_object-&gt;layout));</span></span>
+<span id="L895"><span class="lineNum">     895</span>              : }</span>
+<span id="L896"><span class="lineNum">     896</span>              : /* }}} */</span>
+<span id="L897"><span class="lineNum">     897</span>              : </span>
+<span id="L898"><span class="lineNum">     898</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 46, 0)</span>
+<span id="L899"><span class="lineNum">     899</span>              : /* {{{ Gets the text direction at the given character position in layout. */</span>
+<span id="L900"><span class="lineNum">     900</span> <span class="tlaGNC">           4 : PHP_METHOD(Pango_Layout, getDirection)</span></span>
+<span id="L901"><span class="lineNum">     901</span>              : {</span>
+<span id="L902"><span class="lineNum">     902</span>              :     pango_layout_object *layout_object;</span>
+<span id="L903"><span class="lineNum">     903</span>              :     zend_long byte_index;</span>
+<span id="L904"><span class="lineNum">     904</span>              :     zend_object *direction_case;</span>
+<span id="L905"><span class="lineNum">     905</span>              : </span>
+<span id="L906"><span class="lineNum">     906</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_START(1, 1);</span></span>
+<span id="L907"><span class="lineNum">     907</span> <span class="tlaGNC">           4 :         Z_PARAM_LONG(byte_index)</span></span>
+<span id="L908"><span class="lineNum">     908</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_END();</span></span>
+<span id="L909"><span class="lineNum">     909</span>              : </span>
+<span id="L910"><span class="lineNum">     910</span> <span class="tlaGNC">           2 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L911"><span class="lineNum">     911</span> <span class="tlaGNC">           1 :     zend_enum_get_case_by_value(</span></span>
+<span id="L912"><span class="lineNum">     912</span>              :         &amp;direction_case, php_pango_get_direction_ce(),</span>
+<span id="L913"><span class="lineNum">     913</span> <span class="tlaGNC">           1 :         pango_layout_get_direction(layout_object-&gt;layout, byte_index),</span></span>
+<span id="L914"><span class="lineNum">     914</span>              :         NULL, false</span>
+<span id="L915"><span class="lineNum">     915</span>              :     );</span>
+<span id="L916"><span class="lineNum">     916</span>              : </span>
+<span id="L917"><span class="lineNum">     917</span> <span class="tlaGNC">           2 :     RETURN_OBJ_COPY(direction_case);</span></span>
+<span id="L918"><span class="lineNum">     918</span>              : }</span>
+<span id="L919"><span class="lineNum">     919</span>              : /* }}} */</span>
+<span id="L920"><span class="lineNum">     920</span>              : #endif</span>
+<span id="L921"><span class="lineNum">     921</span>              : </span>
+<span id="L922"><span class="lineNum">     922</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L923"><span class="lineNum">     923</span>              : /* {{{ Gets whether the last line should be stretched to fill the entire width of the layout. */</span>
+<span id="L924"><span class="lineNum">     924</span> <span class="tlaGNC">           4 : PHP_METHOD(Pango_Layout, getJustifyLastLine)</span></span>
+<span id="L925"><span class="lineNum">     925</span>              : {</span>
+<span id="L926"><span class="lineNum">     926</span>              :     pango_layout_object *layout_object;</span>
+<span id="L927"><span class="lineNum">     927</span>              : </span>
+<span id="L928"><span class="lineNum">     928</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
+<span id="L929"><span class="lineNum">     929</span>              : </span>
+<span id="L930"><span class="lineNum">     930</span> <span class="tlaGNC">           6 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L931"><span class="lineNum">     931</span> <span class="tlaGNC">           3 :     RETURN_BOOL(pango_layout_get_justify_last_line(layout_object-&gt;layout));</span></span>
+<span id="L932"><span class="lineNum">     932</span>              : }</span>
+<span id="L933"><span class="lineNum">     933</span>              : /* }}} */</span>
+<span id="L934"><span class="lineNum">     934</span>              : #endif</span>
+<span id="L935"><span class="lineNum">     935</span>              : </span>
+<span id="L936"><span class="lineNum">     936</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L937"><span class="lineNum">     937</span>              : /* {{{ Sets whether the last line should be stretched to fill the entire width of the layout. */</span>
+<span id="L938"><span class="lineNum">     938</span> <span class="tlaGNC">           5 : PHP_METHOD(Pango_Layout, setJustifyLastLine)</span></span>
+<span id="L939"><span class="lineNum">     939</span>              : {</span>
+<span id="L940"><span class="lineNum">     940</span>              :     pango_layout_object *layout_object;</span>
+<span id="L941"><span class="lineNum">     941</span>              :     bool justify_last_line;</span>
+<span id="L942"><span class="lineNum">     942</span>              : </span>
+<span id="L943"><span class="lineNum">     943</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_START(1, 1);</span></span>
+<span id="L944"><span class="lineNum">     944</span> <span class="tlaGNC">           6 :         Z_PARAM_BOOL(justify_last_line)</span></span>
+<span id="L945"><span class="lineNum">     945</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_END();</span></span>
+<span id="L946"><span class="lineNum">     946</span>              : </span>
+<span id="L947"><span class="lineNum">     947</span> <span class="tlaGNC">           4 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">           2 :     pango_layout_set_justify_last_line(layout_object-&gt;layout, justify_last_line);</span></span>
+<span id="L949"><span class="lineNum">     949</span>              : }</span>
+<span id="L950"><span class="lineNum">     950</span>              : /* }}} */</span>
+<span id="L951"><span class="lineNum">     951</span>              : #endif</span>
+<span id="L952"><span class="lineNum">     952</span>              : </span>
+<span id="L953"><span class="lineNum">     953</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 44, 0)</span>
+<span id="L954"><span class="lineNum">     954</span>              : /* {{{ */</span>
+<span id="L955"><span class="lineNum">     955</span> <span class="tlaGNC">           3 : PHP_METHOD(Pango_Layout, getLineSpacing)</span></span>
+<span id="L956"><span class="lineNum">     956</span>              : {</span>
+<span id="L957"><span class="lineNum">     957</span>              :     pango_layout_object *layout_object;</span>
+<span id="L958"><span class="lineNum">     958</span>              : </span>
+<span id="L959"><span class="lineNum">     959</span> <span class="tlaGNC">           3 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
+<span id="L960"><span class="lineNum">     960</span>              : </span>
+<span id="L961"><span class="lineNum">     961</span> <span class="tlaGNC">           4 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L962"><span class="lineNum">     962</span> <span class="tlaGNC">           2 :     RETURN_DOUBLE(pango_layout_get_line_spacing(layout_object-&gt;layout));</span></span>
+<span id="L963"><span class="lineNum">     963</span>              : }</span>
+<span id="L964"><span class="lineNum">     964</span>              : /* }}} */</span>
+<span id="L965"><span class="lineNum">     965</span>              : #endif</span>
+<span id="L966"><span class="lineNum">     966</span>              : </span>
+<span id="L967"><span class="lineNum">     967</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L968"><span class="lineNum">     968</span>              : /* {{{ */</span>
+<span id="L969"><span class="lineNum">     969</span> <span class="tlaGNC">           4 : PHP_METHOD(Pango_Layout, setLineSpacing)</span></span>
+<span id="L970"><span class="lineNum">     970</span>              : {</span>
+<span id="L971"><span class="lineNum">     971</span>              :     pango_layout_object *layout_object;</span>
+<span id="L972"><span class="lineNum">     972</span>              :     double factor;</span>
+<span id="L973"><span class="lineNum">     973</span>              : </span>
+<span id="L974"><span class="lineNum">     974</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_START(1, 1);</span></span>
+<span id="L975"><span class="lineNum">     975</span> <span class="tlaGNC">           4 :         Z_PARAM_DOUBLE(factor)</span></span>
+<span id="L976"><span class="lineNum">     976</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_END();</span></span>
+<span id="L977"><span class="lineNum">     977</span>              : </span>
+<span id="L978"><span class="lineNum">     978</span> <span class="tlaGNC">           2 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L979"><span class="lineNum">     979</span> <span class="tlaGNC">           1 :     pango_layout_set_line_spacing(layout_object-&gt;layout, factor);</span></span>
+<span id="L980"><span class="lineNum">     980</span>              : }</span>
+<span id="L981"><span class="lineNum">     981</span>              : /* }}} */</span>
+<span id="L982"><span class="lineNum">     982</span>              : #endif</span>
+<span id="L983"><span class="lineNum">     983</span>              : </span>
+<span id="L984"><span class="lineNum">     984</span>              : /* {{{ */</span>
+<span id="L985"><span class="lineNum">     985</span> <span class="tlaGNC">           2 : PHP_METHOD(Pango_Layout, getUnknownGlyphsCount)</span></span>
+<span id="L986"><span class="lineNum">     986</span>              : {</span>
+<span id="L987"><span class="lineNum">     987</span>              :     pango_layout_object *layout_object;</span>
+<span id="L988"><span class="lineNum">     988</span>              : </span>
+<span id="L989"><span class="lineNum">     989</span> <span class="tlaGNC">           2 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
+<span id="L990"><span class="lineNum">     990</span>              : </span>
+<span id="L991"><span class="lineNum">     991</span> <span class="tlaGNC">           2 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L992"><span class="lineNum">     992</span> <span class="tlaGNC">           1 :     RETURN_LONG(pango_layout_get_unknown_glyphs_count(layout_object-&gt;layout));</span></span>
+<span id="L993"><span class="lineNum">     993</span>              : }</span>
+<span id="L994"><span class="lineNum">     994</span>              : /* }}} */</span>
+<span id="L995"><span class="lineNum">     995</span>              : </span>
+<span id="L996"><span class="lineNum">     996</span>              : /* {{{ Obtains whether layout is in single paragraph mode. */</span>
+<span id="L997"><span class="lineNum">     997</span> <span class="tlaGNC">           4 : PHP_METHOD(Pango_Layout, getSingleParagraphMode)</span></span>
+<span id="L998"><span class="lineNum">     998</span>              : {</span>
+<span id="L999"><span class="lineNum">     999</span>              :     pango_layout_object *layout_object;</span>
+<span id="L1000"><span class="lineNum">    1000</span>              : </span>
+<span id="L1001"><span class="lineNum">    1001</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
+<span id="L1002"><span class="lineNum">    1002</span>              : </span>
+<span id="L1003"><span class="lineNum">    1003</span> <span class="tlaGNC">           6 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L1004"><span class="lineNum">    1004</span> <span class="tlaGNC">           3 :     RETURN_BOOL(pango_layout_get_single_paragraph_mode(layout_object-&gt;layout));</span></span>
+<span id="L1005"><span class="lineNum">    1005</span>              : }</span>
+<span id="L1006"><span class="lineNum">    1006</span>              : /* }}} */</span>
+<span id="L1007"><span class="lineNum">    1007</span>              : </span>
+<span id="L1008"><span class="lineNum">    1008</span>              : </span>
+<span id="L1009"><span class="lineNum">    1009</span>              : /* {{{ Sets the single paragraph mode. */</span>
+<span id="L1010"><span class="lineNum">    1010</span> <span class="tlaGNC">           5 : PHP_METHOD(Pango_Layout, setSingleParagraphMode)</span></span>
+<span id="L1011"><span class="lineNum">    1011</span>              : {</span>
+<span id="L1012"><span class="lineNum">    1012</span>              :     pango_layout_object *layout_object;</span>
+<span id="L1013"><span class="lineNum">    1013</span>              :     bool setting;</span>
+<span id="L1014"><span class="lineNum">    1014</span>              : </span>
+<span id="L1015"><span class="lineNum">    1015</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_START(1, 1);</span></span>
+<span id="L1016"><span class="lineNum">    1016</span> <span class="tlaGNC">           6 :         Z_PARAM_BOOL(setting)</span></span>
+<span id="L1017"><span class="lineNum">    1017</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_END();</span></span>
+<span id="L1018"><span class="lineNum">    1018</span>              : </span>
+<span id="L1019"><span class="lineNum">    1019</span> <span class="tlaGNC">           4 :     layout_object = Z_PANGO_LAYOUT_P(getThis());</span></span>
+<span id="L1020"><span class="lineNum">    1020</span> <span class="tlaGNC">           2 :     pango_layout_set_single_paragraph_mode(layout_object-&gt;layout, setting);</span></span>
+<span id="L1021"><span class="lineNum">    1021</span>              : }</span>
+<span id="L1022"><span class="lineNum">    1022</span>              : /* }}} */</span>
+<span id="L1023"><span class="lineNum">    1023</span>              : </span>
+<span id="L1024"><span class="lineNum">    1024</span>              : </span>
+<span id="L1025"><span class="lineNum">    1025</span>              : /* ----------------------------------------------------------------</span>
+<span id="L1026"><span class="lineNum">    1026</span>              :     \Pango\Layout Object management</span>
+<span id="L1027"><span class="lineNum">    1027</span>              : ------------------------------------------------------------------*/</span>
+<span id="L1028"><span class="lineNum">    1028</span>              : </span>
+<span id="L1029"><span class="lineNum">    1029</span>              : /* {{{ */</span>
+<span id="L1030"><span class="lineNum">    1030</span> <span class="tlaGNC">          82 : static void pango_layout_free_obj(zend_object *zobj)</span></span>
+<span id="L1031"><span class="lineNum">    1031</span>              : {</span>
+<span id="L1032"><span class="lineNum">    1032</span> <span class="tlaGNC">          82 :     pango_layout_object *intern = pango_layout_fetch_object(zobj);</span></span>
+<span id="L1033"><span class="lineNum">    1033</span>              : </span>
+<span id="L1034"><span class="lineNum">    1034</span> <span class="tlaGNC">          82 :     if (!intern) {</span></span>
+<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaUNC tlaBgUNC">           0 :         return;</span></span>
+<span id="L1036"><span class="lineNum">    1036</span>              :     }</span>
+<span id="L1037"><span class="lineNum">    1037</span>              : </span>
+<span id="L1038"><span class="lineNum">    1038</span> <span class="tlaGNC tlaBgGNC">          82 :     zval_ptr_dtor(&amp;intern-&gt;cairo_context_zv);</span></span>
+<span id="L1039"><span class="lineNum">    1039</span> <span class="tlaGNC">          82 :     zval_ptr_dtor(&amp;intern-&gt;pango_context_zv);</span></span>
+<span id="L1040"><span class="lineNum">    1040</span>              : </span>
+<span id="L1041"><span class="lineNum">    1041</span> <span class="tlaGNC">          82 :     if (intern-&gt;layout) {</span></span>
+<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaGNC">          80 :         g_object_unref(intern-&gt;layout);</span></span>
+<span id="L1043"><span class="lineNum">    1043</span> <span class="tlaGNC">          80 :         intern-&gt;layout = NULL;</span></span>
+<span id="L1044"><span class="lineNum">    1044</span>              :     }</span>
+<span id="L1045"><span class="lineNum">    1045</span>              : </span>
+<span id="L1046"><span class="lineNum">    1046</span> <span class="tlaGNC">          82 :     zend_object_std_dtor(&amp;intern-&gt;std);</span></span>
+<span id="L1047"><span class="lineNum">    1047</span>              : }</span>
+<span id="L1048"><span class="lineNum">    1048</span>              : /* }}} */</span>
+<span id="L1049"><span class="lineNum">    1049</span>              : </span>
+<span id="L1050"><span class="lineNum">    1050</span>              : /* {{{ */</span>
+<span id="L1051"><span class="lineNum">    1051</span> <span class="tlaGNC">          82 : static zend_object* pango_layout_obj_ctor(zend_class_entry *ce, pango_layout_object **intern)</span></span>
+<span id="L1052"><span class="lineNum">    1052</span>              : {</span>
+<span id="L1053"><span class="lineNum">    1053</span> <span class="tlaGNC">          82 :     pango_layout_object *object = ecalloc(1, sizeof(pango_layout_object) + zend_object_properties_size(ce));</span></span>
+<span id="L1054"><span class="lineNum">    1054</span>              : </span>
+<span id="L1055"><span class="lineNum">    1055</span> <span class="tlaGNC">          82 :     ZVAL_UNDEF(&amp;object-&gt;cairo_context_zv);</span></span>
+<span id="L1056"><span class="lineNum">    1056</span> <span class="tlaGNC">          82 :     ZVAL_UNDEF(&amp;object-&gt;pango_context_zv);</span></span>
+<span id="L1057"><span class="lineNum">    1057</span>              : </span>
+<span id="L1058"><span class="lineNum">    1058</span> <span class="tlaGNC">          82 :     zend_object_std_init(&amp;object-&gt;std, ce);</span></span>
+<span id="L1059"><span class="lineNum">    1059</span>              : </span>
+<span id="L1060"><span class="lineNum">    1060</span> <span class="tlaGNC">          82 :     object-&gt;std.handlers = &amp;pango_layout_object_handlers;</span></span>
+<span id="L1061"><span class="lineNum">    1061</span> <span class="tlaGNC">          82 :     *intern = object;</span></span>
+<span id="L1062"><span class="lineNum">    1062</span>              : </span>
+<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaGNC">          82 :     return &amp;object-&gt;std;</span></span>
+<span id="L1064"><span class="lineNum">    1064</span>              : }</span>
+<span id="L1065"><span class="lineNum">    1065</span>              : /* }}} */</span>
+<span id="L1066"><span class="lineNum">    1066</span>              : </span>
+<span id="L1067"><span class="lineNum">    1067</span>              : /* {{{ */</span>
+<span id="L1068"><span class="lineNum">    1068</span> <span class="tlaGNC">          82 : static zend_object* pango_layout_create_object(zend_class_entry *ce)</span></span>
+<span id="L1069"><span class="lineNum">    1069</span>              : {</span>
+<span id="L1070"><span class="lineNum">    1070</span> <span class="tlaGNC">          82 :     pango_layout_object *intern = NULL;</span></span>
+<span id="L1071"><span class="lineNum">    1071</span> <span class="tlaGNC">          82 :     zend_object *return_value = pango_layout_obj_ctor(ce, &amp;intern);</span></span>
+<span id="L1072"><span class="lineNum">    1072</span>              : </span>
+<span id="L1073"><span class="lineNum">    1073</span> <span class="tlaGNC">          82 :     object_properties_init(&amp;intern-&gt;std, ce);</span></span>
+<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">          82 :     return return_value;</span></span>
+<span id="L1075"><span class="lineNum">    1075</span>              : }</span>
+<span id="L1076"><span class="lineNum">    1076</span>              : /* }}} */</span>
+<span id="L1077"><span class="lineNum">    1077</span>              : </span>
+<span id="L1078"><span class="lineNum">    1078</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
+<span id="L1079"><span class="lineNum">    1079</span> <span class="tlaGNC">         154 : PHP_MINIT_FUNCTION(pango_layout)</span></span>
+<span id="L1080"><span class="lineNum">    1080</span>              : {</span>
+<span id="L1081"><span class="lineNum">    1081</span> <span class="tlaGNC">         154 :     memcpy(</span></span>
+<span id="L1082"><span class="lineNum">    1082</span>              :         &amp;pango_layout_object_handlers,</span>
+<span id="L1083"><span class="lineNum">    1083</span>              :         zend_get_std_object_handlers(),</span>
+<span id="L1084"><span class="lineNum">    1084</span>              :         sizeof(zend_object_handlers)</span>
+<span id="L1085"><span class="lineNum">    1085</span>              :     );</span>
+<span id="L1086"><span class="lineNum">    1086</span>              : </span>
+<span id="L1087"><span class="lineNum">    1087</span> <span class="tlaGNC">         154 :     pango_layout_object_handlers.offset = XtOffsetOf(pango_layout_object, std);</span></span>
+<span id="L1088"><span class="lineNum">    1088</span> <span class="tlaGNC">         154 :     pango_layout_object_handlers.free_obj = pango_layout_free_obj;</span></span>
+<span id="L1089"><span class="lineNum">    1089</span>              : </span>
+<span id="L1090"><span class="lineNum">    1090</span> <span class="tlaGNC">         154 :     pango_ce_pango_layout = register_class_Pango_Layout();</span></span>
+<span id="L1091"><span class="lineNum">    1091</span> <span class="tlaGNC">         154 :     pango_ce_pango_layout-&gt;create_object = pango_layout_create_object;</span></span>
+<span id="L1092"><span class="lineNum">    1092</span>              : </span>
+<span id="L1093"><span class="lineNum">    1093</span> <span class="tlaGNC">         154 :     pango_ce_pango_alignment = register_class_Pango_Alignment();</span></span>
+<span id="L1094"><span class="lineNum">    1094</span> <span class="tlaGNC">         154 :     pango_ce_pango_wrap_mode = register_class_Pango_WrapMode();</span></span>
+<span id="L1095"><span class="lineNum">    1095</span> <span class="tlaGNC">         154 :     pango_ce_pango_ellipsize_mode = register_class_Pango_EllipsizeMode();</span></span>
+<span id="L1096"><span class="lineNum">    1096</span>              : </span>
+<span id="L1097"><span class="lineNum">    1097</span> <span class="tlaGNC">         154 :     return SUCCESS;</span></span>
+<span id="L1098"><span class="lineNum">    1098</span>              : }</span>
+<span id="L1099"><span class="lineNum">    1099</span>              : /* }}} */</span>
         </pre>
               </td>
             </tr>
