@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-14 19:30:52</td>
+            <td class="headerValue">2025-10-14 21:38:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">98.3&nbsp;%</td>
@@ -782,7 +782,7 @@
 <span id="L720"><span class="lineNum">     720</span>              : /* }}} */</span>
 <span id="L721"><span class="lineNum">     721</span>              : </span>
 <span id="L722"><span class="lineNum">     722</span>              : /* {{{ Returns an array of LayoutLines representing each line of the layout */</span>
-<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">          12 : PHP_METHOD(Pango_Layout, getLinesReadonly)</span></span>
+<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">          11 : PHP_METHOD(Pango_Layout, getLinesReadonly)</span></span>
 <span id="L724"><span class="lineNum">     724</span>              : {</span>
 <span id="L725"><span class="lineNum">     725</span>              :     zval *layout;</span>
 <span id="L726"><span class="lineNum">     726</span>              :     pango_layout_object *layout_object;</span>
@@ -791,21 +791,21 @@
 <span id="L729"><span class="lineNum">     729</span>              :     zval line_zv;</span>
 <span id="L730"><span class="lineNum">     730</span>              :     pango_layout_line_object *line_object;</span>
 <span id="L731"><span class="lineNum">     731</span>              : </span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          12 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          11 :     ZEND_PARSE_PARAMETERS_NONE();</span></span>
 <span id="L733"><span class="lineNum">     733</span>              : </span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">          22 :     layout = getThis();</span></span>
-<span id="L735"><span class="lineNum">     735</span> <span class="tlaGNC">          11 :     layout_object = Z_PANGO_LAYOUT_P(layout);</span></span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">          20 :     layout = getThis();</span></span>
+<span id="L735"><span class="lineNum">     735</span> <span class="tlaGNC">          10 :     layout_object = Z_PANGO_LAYOUT_P(layout);</span></span>
 <span id="L736"><span class="lineNum">     736</span>              :     // Todo: Check if there is always be at least one line, even for empty text</span>
-<span id="L737"><span class="lineNum">     737</span> <span class="tlaGNC">          11 :     if (!(lines = pango_layout_get_lines_readonly(layout_object-&gt;layout))) {</span></span>
+<span id="L737"><span class="lineNum">     737</span> <span class="tlaGNC">          10 :     if (!(lines = pango_layout_get_lines_readonly(layout_object-&gt;layout))) {</span></span>
 <span id="L738"><span class="lineNum">     738</span> <span class="tlaUNC tlaBgUNC">           0 :         RETURN_EMPTY_ARRAY();</span></span>
 <span id="L739"><span class="lineNum">     739</span>              :     }</span>
 <span id="L740"><span class="lineNum">     740</span>              : </span>
-<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC tlaBgGNC">          11 :     array_init(return_value);</span></span>
-<span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">          24 :     for (iter = lines; iter != NULL; iter = iter-&gt;next) {</span></span>
-<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">          13 :         object_init_ex(&amp;line_zv, php_pango_get_layout_line_ce());</span></span>
-<span id="L744"><span class="lineNum">     744</span> <span class="tlaGNC">          13 :         line_object = Z_PANGO_LAYOUT_LINE_P(&amp;line_zv);</span></span>
-<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">          13 :         line_object-&gt;line = pango_layout_line_ref((PangoLayoutLine *)iter-&gt;data);</span></span>
-<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">          13 :         ZVAL_COPY(&amp;line_object-&gt;layout_zval, layout);</span></span>
+<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC tlaBgGNC">          10 :     array_init(return_value);</span></span>
+<span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">          22 :     for (iter = lines; iter != NULL; iter = iter-&gt;next) {</span></span>
+<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">          12 :         object_init_ex(&amp;line_zv, php_pango_get_layout_line_ce());</span></span>
+<span id="L744"><span class="lineNum">     744</span> <span class="tlaGNC">          12 :         line_object = Z_PANGO_LAYOUT_LINE_P(&amp;line_zv);</span></span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">          12 :         line_object-&gt;line = pango_layout_line_ref((PangoLayoutLine *)iter-&gt;data);</span></span>
+<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">          12 :         ZVAL_COPY(&amp;line_object-&gt;layout_zval, layout);</span></span>
 <span id="L747"><span class="lineNum">     747</span>              : </span>
 <span id="L748"><span class="lineNum">     748</span>              :         add_next_index_zval(return_value, &amp;line_zv);</span>
 <span id="L749"><span class="lineNum">     749</span>              :     }</span>
@@ -813,29 +813,29 @@
 <span id="L751"><span class="lineNum">     751</span>              : /* }}} */</span>
 <span id="L752"><span class="lineNum">     752</span>              : </span>
 <span id="L753"><span class="lineNum">     753</span>              : /* {{{ Returns a particular LayoutLine from the layout */</span>
-<span id="L754"><span class="lineNum">     754</span> <span class="tlaGNC">           4 : PHP_METHOD(Pango_Layout, getLine)</span></span>
+<span id="L754"><span class="lineNum">     754</span> <span class="tlaGNC">           5 : PHP_METHOD(Pango_Layout, getLine)</span></span>
 <span id="L755"><span class="lineNum">     755</span>              : {</span>
 <span id="L756"><span class="lineNum">     756</span>              :     zval *layout;</span>
 <span id="L757"><span class="lineNum">     757</span>              :     pango_layout_object *layout_object;</span>
-<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">           4 :     zend_long line_number = 0;</span></span>
+<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">           5 :     zend_long line_number = 0;</span></span>
 <span id="L759"><span class="lineNum">     759</span>              :     PangoLayoutLine *layout_line;</span>
 <span id="L760"><span class="lineNum">     760</span>              :     pango_layout_line_object *layout_line_object;</span>
 <span id="L761"><span class="lineNum">     761</span>              : </span>
-<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_START(1, 1)</span></span>
-<span id="L763"><span class="lineNum">     763</span> <span class="tlaGNC">           4 :         Z_PARAM_LONG(line_number)</span></span>
-<span id="L764"><span class="lineNum">     764</span> <span class="tlaGNC">           4 :     ZEND_PARSE_PARAMETERS_END();</span></span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_START(1, 1)</span></span>
+<span id="L763"><span class="lineNum">     763</span> <span class="tlaGNC">           6 :         Z_PARAM_LONG(line_number)</span></span>
+<span id="L764"><span class="lineNum">     764</span> <span class="tlaGNC">           5 :     ZEND_PARSE_PARAMETERS_END();</span></span>
 <span id="L765"><span class="lineNum">     765</span>              : </span>
-<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC">           2 :     layout = getThis();</span></span>
-<span id="L767"><span class="lineNum">     767</span> <span class="tlaGNC">           1 :     layout_object = Z_PANGO_LAYOUT_P(layout);</span></span>
+<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC">           4 :     layout = getThis();</span></span>
+<span id="L767"><span class="lineNum">     767</span> <span class="tlaGNC">           2 :     layout_object = Z_PANGO_LAYOUT_P(layout);</span></span>
 <span id="L768"><span class="lineNum">     768</span>              : </span>
-<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">           1 :     if (!(layout_line = pango_layout_get_line(layout_object-&gt;layout, (int) line_number))) {</span></span>
+<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">           2 :     if (!(layout_line = pango_layout_get_line(layout_object-&gt;layout, (int) line_number))) {</span></span>
 <span id="L770"><span class="lineNum">     770</span> <span class="tlaUNC tlaBgUNC">           0 :         RETURN_NULL();</span></span>
 <span id="L771"><span class="lineNum">     771</span>              :     }</span>
 <span id="L772"><span class="lineNum">     772</span>              : </span>
-<span id="L773"><span class="lineNum">     773</span> <span class="tlaGNC tlaBgGNC">           1 :     object_init_ex(return_value, php_pango_get_layout_line_ce());</span></span>
-<span id="L774"><span class="lineNum">     774</span> <span class="tlaGNC">           1 :     layout_line_object = Z_PANGO_LAYOUT_LINE_P(return_value);</span></span>
-<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">           1 :     layout_line_object-&gt;line = pango_layout_line_ref(layout_line);</span></span>
-<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC">           1 :     ZVAL_COPY(&amp;layout_line_object-&gt;layout_zval, layout);</span></span>
+<span id="L773"><span class="lineNum">     773</span> <span class="tlaGNC tlaBgGNC">           2 :     object_init_ex(return_value, php_pango_get_layout_line_ce());</span></span>
+<span id="L774"><span class="lineNum">     774</span> <span class="tlaGNC">           2 :     layout_line_object = Z_PANGO_LAYOUT_LINE_P(return_value);</span></span>
+<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">           2 :     layout_line_object-&gt;line = pango_layout_line_ref(layout_line);</span></span>
+<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC">           2 :     ZVAL_COPY(&amp;layout_line_object-&gt;layout_zval, layout);</span></span>
 <span id="L777"><span class="lineNum">     777</span>              : }</span>
 <span id="L778"><span class="lineNum">     778</span>              : </span>
 <span id="L779"><span class="lineNum">     779</span>              : /* {{{ Returns a particular LayoutLine from the layout */</span>
