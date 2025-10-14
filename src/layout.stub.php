@@ -362,6 +362,116 @@ class Layout
         int $flags = Pango\Layout::SERIALIZE_DEFAULT
     ): string {}
 #endif
+
+    /**
+     * Gets the Y position of baseline of the first line in layout.
+     *
+     * @return int Baseline of first line, from top of layout.
+     */
+    public function getBaseline(): int {}
+
+    /**
+     * Gets whether to calculate the base direction for the layout according to
+     * its contents.
+     *
+     * @return bool True if the bidirectional base direction is computed from
+     * the layout’s contents, false otherwise.
+     */
+    public function getAutoDir(): bool {}
+
+    /**
+     * Sets whether to calculate the base direction for the layout according to
+     * its contents.
+     *
+     * When the auto-computed direction of a paragraph differs from the base
+     * direction of the context, the interpretation of Pango\Alignment::Left and Pango\Alignment::Right are swapped.
+     *
+     * @param bool $autoDir If TRUE, compute the bidirectional base direction from the layout’s contents.
+     */
+    public function setAutoDir(
+        bool $autoDir
+    ): void {}
+
+    /**
+     * Returns the number of Unicode characters in the the text of layout.
+     */
+    public function getCharacterCount(): int {}
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
+    /**
+     * Gets the text direction at the given character position in layout.
+     *
+     * @param int $byteIndex The byte index of the char.
+     */
+    public function getDirection(
+        int $byteIndex
+    ): Direction {}
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+    /**
+     * Gets whether the last line should be stretched to fill the entire width of the layout.
+     */
+    public function getJustifyLastLine(): bool {}
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+    /**
+     * Sets whether the last line should be stretched to fill the entire width of the layout.
+     *
+     * This only has an effect if pango_layout_set_justify() has been called as well.
+     *
+     * @param bool $justifyLastLine Whether the last line in the layout should be justified.
+     */
+    public function setJustifyLastLine(
+        bool $justifyLastLine
+    ): void {}
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
+    /**
+     * Gets the line spacing factor of layout.
+     */
+    public function getLineSpacing(): float {}
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
+    /**
+     * Sets a factor for line spacing.
+     *
+     * If $factor is non-zero, lines are placed so that
+     * baseline2 = baseline1 + $factor * height2
+     * where height2 is the line height of the second line (as determined by the font(s)).
+     * In this case, the spacing set with setSpacing() is ignored.
+     *
+     * If $factor is zero (the default), spacing is applied as before.
+     */
+    public function setLineSpacing(
+        float $factor
+    ): void {}
+#endif
+
+    /**
+     * Counts the number of unknown glyphs.
+     */
+    public function getUnknownGlyphsCount(): int {}
+
+    /**
+     * Obtains whether layout is in single paragraph mode.
+     */
+    public function getSingleParagraphMode(): bool {}
+
+    /**
+     * Sets the single paragraph mode.
+     *
+     * If setting is true, do not treat newlines and similar characters as
+     * paragraph separators; instead, keep all text in a single paragraph, and
+     * display a glyph for paragraph separator characters. Used when you want
+     * to allow editing of newlines on a single text line.
+     */
+    public function setSingleParagraphMode(
+        bool $setting
+    ): void {}
 }
 
 /**

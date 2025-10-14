@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: df11f7a8645afd9492832db390e59b389a1f0b1b */
+ * Stub hash: 2601dd5a04e9babea991f7a39cdb94206a8751ba */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
@@ -126,6 +126,48 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_serialize, 0,
 ZEND_END_ARG_INFO()
 #endif
 
+#define arginfo_class_Pango_Layout_getBaseline arginfo_class_Pango_Layout_getWidth
+
+#define arginfo_class_Pango_Layout_getAutoDir arginfo_class_Pango_Layout_getJustify
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAutoDir, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, autoDir, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_Pango_Layout_getCharacterCount arginfo_class_Pango_Layout_getWidth
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getDirection, 0, 1, Pango\\Direction, 0)
+	ZEND_ARG_TYPE_INFO(0, byteIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustifyLastLine, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustifyLastLine, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, justifyLastLine, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getLineSpacing, 0, 0, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setLineSpacing, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, factor, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+#endif
+
+#define arginfo_class_Pango_Layout_getUnknownGlyphsCount arginfo_class_Pango_Layout_getWidth
+
+#define arginfo_class_Pango_Layout_getSingleParagraphMode arginfo_class_Pango_Layout_getJustify
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSingleParagraphMode, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, setting, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_METHOD(Pango_Layout, __construct);
 ZEND_METHOD(Pango_Layout, getContext);
 ZEND_METHOD(Pango_Layout, setText);
@@ -168,6 +210,24 @@ ZEND_METHOD(Pango_Layout, getLineCount);
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 ZEND_METHOD(Pango_Layout, serialize);
 #endif
+ZEND_METHOD(Pango_Layout, getBaseline);
+ZEND_METHOD(Pango_Layout, getAutoDir);
+ZEND_METHOD(Pango_Layout, setAutoDir);
+ZEND_METHOD(Pango_Layout, getCharacterCount);
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
+ZEND_METHOD(Pango_Layout, getDirection);
+#endif
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+ZEND_METHOD(Pango_Layout, getJustifyLastLine);
+ZEND_METHOD(Pango_Layout, setJustifyLastLine);
+#endif
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
+ZEND_METHOD(Pango_Layout, getLineSpacing);
+ZEND_METHOD(Pango_Layout, setLineSpacing);
+#endif
+ZEND_METHOD(Pango_Layout, getUnknownGlyphsCount);
+ZEND_METHOD(Pango_Layout, getSingleParagraphMode);
+ZEND_METHOD(Pango_Layout, setSingleParagraphMode);
 
 static const zend_function_entry class_Pango_Layout_methods[] = {
 	ZEND_ME(Pango_Layout, __construct, arginfo_class_Pango_Layout___construct, ZEND_ACC_PUBLIC)
@@ -212,6 +272,24 @@ static const zend_function_entry class_Pango_Layout_methods[] = {
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 	ZEND_ME(Pango_Layout, serialize, arginfo_class_Pango_Layout_serialize, ZEND_ACC_PUBLIC)
 #endif
+	ZEND_ME(Pango_Layout, getBaseline, arginfo_class_Pango_Layout_getBaseline, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getAutoDir, arginfo_class_Pango_Layout_getAutoDir, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, setAutoDir, arginfo_class_Pango_Layout_setAutoDir, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getCharacterCount, arginfo_class_Pango_Layout_getCharacterCount, ZEND_ACC_PUBLIC)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
+	ZEND_ME(Pango_Layout, getDirection, arginfo_class_Pango_Layout_getDirection, ZEND_ACC_PUBLIC)
+#endif
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+	ZEND_ME(Pango_Layout, getJustifyLastLine, arginfo_class_Pango_Layout_getJustifyLastLine, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, setJustifyLastLine, arginfo_class_Pango_Layout_setJustifyLastLine, ZEND_ACC_PUBLIC)
+#endif
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
+	ZEND_ME(Pango_Layout, getLineSpacing, arginfo_class_Pango_Layout_getLineSpacing, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, setLineSpacing, arginfo_class_Pango_Layout_setLineSpacing, ZEND_ACC_PUBLIC)
+#endif
+	ZEND_ME(Pango_Layout, getUnknownGlyphsCount, arginfo_class_Pango_Layout_getUnknownGlyphsCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getSingleParagraphMode, arginfo_class_Pango_Layout_getSingleParagraphMode, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, setSingleParagraphMode, arginfo_class_Pango_Layout_setSingleParagraphMode, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

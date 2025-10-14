@@ -844,6 +844,184 @@ PHP_METHOD(Pango_Layout, serialize)
 /* }}} */
 #endif
 
+/* {{{ Gets the Y position of baseline of the first line in layout.*/
+PHP_METHOD(Pango_Layout, getBaseline)
+{
+    pango_layout_object *layout_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    RETURN_LONG(pango_layout_get_baseline(layout_object->layout));
+}
+/* }}} */
+
+/* {{{ Gets whether to calculate the base direction for the layout according to its contents. */
+PHP_METHOD(Pango_Layout, getAutoDir)
+{
+    pango_layout_object *layout_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    RETURN_BOOL(pango_layout_get_auto_dir(layout_object->layout));
+}
+/* }}} */
+
+/* {{{ Sets whether to calculate the base direction for the layout according to its contents. */
+PHP_METHOD(Pango_Layout, setAutoDir)
+{
+    pango_layout_object *layout_object;
+    bool auto_dir;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1);
+        Z_PARAM_BOOL(auto_dir)
+    ZEND_PARSE_PARAMETERS_END();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    pango_layout_set_auto_dir(layout_object->layout, auto_dir);
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Layout, getCharacterCount)
+{
+    pango_layout_object *layout_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    RETURN_LONG(pango_layout_get_character_count(layout_object->layout));
+}
+/* }}} */
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
+/* {{{ Gets the text direction at the given character position in layout. */
+PHP_METHOD(Pango_Layout, getDirection)
+{
+    pango_layout_object *layout_object;
+    zend_long byte_index;
+    zend_object *direction_case;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1);
+        Z_PARAM_LONG(byte_index)
+    ZEND_PARSE_PARAMETERS_END();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    zend_enum_get_case_by_value(
+        &direction_case, php_pango_get_direction_ce(),
+        pango_layout_get_direction(layout_object->layout, byte_index),
+        NULL, false
+    );
+
+    RETURN_OBJ_COPY(direction_case);
+}
+/* }}} */
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+/* {{{ Gets whether the last line should be stretched to fill the entire width of the layout. */
+PHP_METHOD(Pango_Layout, getJustifyLastLine)
+{
+    pango_layout_object *layout_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    RETURN_BOOL(pango_layout_get_justify_last_line(layout_object->layout));
+}
+/* }}} */
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+/* {{{ Sets whether the last line should be stretched to fill the entire width of the layout. */
+PHP_METHOD(Pango_Layout, setJustifyLastLine)
+{
+    pango_layout_object *layout_object;
+    bool justify_last_line;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1);
+        Z_PARAM_BOOL(justify_last_line)
+    ZEND_PARSE_PARAMETERS_END();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    pango_layout_set_justify_last_line(layout_object->layout, justify_last_line);
+}
+/* }}} */
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
+/* {{{ */
+PHP_METHOD(Pango_Layout, getLineSpacing)
+{
+    pango_layout_object *layout_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    RETURN_DOUBLE(pango_layout_get_line_spacing(layout_object->layout));
+}
+/* }}} */
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+/* {{{ */
+PHP_METHOD(Pango_Layout, setLineSpacing)
+{
+    pango_layout_object *layout_object;
+    double factor;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1);
+        Z_PARAM_DOUBLE(factor)
+    ZEND_PARSE_PARAMETERS_END();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    pango_layout_set_line_spacing(layout_object->layout, factor);
+}
+/* }}} */
+#endif
+
+/* {{{ */
+PHP_METHOD(Pango_Layout, getUnknownGlyphsCount)
+{
+    pango_layout_object *layout_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    RETURN_LONG(pango_layout_get_unknown_glyphs_count(layout_object->layout));
+}
+/* }}} */
+
+/* {{{ Obtains whether layout is in single paragraph mode. */
+PHP_METHOD(Pango_Layout, getSingleParagraphMode)
+{
+    pango_layout_object *layout_object;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    RETURN_BOOL(pango_layout_get_single_paragraph_mode(layout_object->layout));
+}
+/* }}} */
+
+
+/* {{{ Sets the single paragraph mode. */
+PHP_METHOD(Pango_Layout, setSingleParagraphMode)
+{
+    pango_layout_object *layout_object;
+    bool setting;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1);
+        Z_PARAM_BOOL(setting)
+    ZEND_PARSE_PARAMETERS_END();
+
+    layout_object = Z_PANGO_LAYOUT_P(getThis());
+    pango_layout_set_single_paragraph_mode(layout_object->layout, setting);
+}
+/* }}} */
+
+
 /* ----------------------------------------------------------------
     \Pango\Layout Object management
 ------------------------------------------------------------------*/
