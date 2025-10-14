@@ -46,6 +46,7 @@ extern zend_object_handlers pango_std_object_handlers;
 
 PHP_PANGO_API extern zend_class_entry *php_pango_get_context_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_direction_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_gravity_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_layout_line_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_font_description_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_layout_ce();

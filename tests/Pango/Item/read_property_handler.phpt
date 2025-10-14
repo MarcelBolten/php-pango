@@ -19,6 +19,7 @@ foreach ($layout->getLinesReadonly() as $line) {
     var_dump($item->offset);
     var_dump($item->length);
     var_dump($item->numChars);
+    var_dump($item->analysis);
 }
 ?>
 --EXPECTF--
@@ -29,3 +30,19 @@ object(Pango\Layout)#%d (0) {
 int(7)
 int(6)
 int(3)
+array(7) {
+  ["bidiLevel"]=>
+  int(0)
+  ["gravity"]=>
+  enum(Pango\Gravity::South)
+  ["centeredBaseline"]=>
+  bool(false)
+  ["isEllipsis"]=>
+  bool(false)
+  ["needsHyphen"]=>
+  bool(false)
+  ["script"]=>
+  string(4) "Grek"
+  ["language"]=>
+  string(1) "c"
+}

@@ -25,6 +25,7 @@
 #include "item_arginfo.h"
 
 #include <string.h>
+#include <glib.h>
 #include "zend_exceptions.h"
 
 zend_class_entry *pango_ce_pango_item;
@@ -38,7 +39,10 @@ pango_item_object *pango_item_fetch_object(zend_object *object)
 
 #define PANGO_VALUE_FROM_STRUCT(php_name, c_name) \
     if (strcmp(ZSTR_VAL(member), #php_name) == 0) { \
+        zend_long value = 0; \
         value = item_object->item->c_name; \
+        ZVAL_LONG(rv, value); \
+        return rv; \
     }
 
 #define PANGO_ADD_STRUCT_VALUE(php_name, c_name) \
@@ -105,16 +109,43 @@ static zend_object* pango_item_create_object(zend_class_entry *ce)
 /* {{{ */
 static zval *pango_item_read_property(zend_object *zobj, zend_string *member, int type, void **cache_slot, zval *rv)
 {
-    zend_long value = 0;
     pango_item_object *item_object = pango_item_fetch_object(zobj);
+
+    if (strcmp(ZSTR_VAL(member), "analysis") == 0) {
+        array_init(rv);
+        add_assoc_long(rv, "bidiLevel", item_object->item->analysis.level);
+
+        zend_object *gravity_case;
+        zend_enum_get_case_by_value(
+            &gravity_case, php_pango_get_gravity_ce(),
+            item_object->item->analysis.gravity,
+            NULL, false
+        );
+        add_assoc_object(rv, "gravity", gravity_case);
+
+        // add_assoc_long(rv, "flags", item_object->item->analysis.flags);
+        add_assoc_bool(rv, "centeredBaseline", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_CENTERED_BASELINE) != 0);
+        add_assoc_bool(rv, "isEllipsis", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_IS_ELLIPSIS) != 0);
+        add_assoc_bool(rv, "needsHyphen", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_NEED_HYPHEN) != 0);
+
+        guint32 script_code = GUINT32_TO_BE(g_unicode_script_to_iso15924((GUnicodeScript)item_object->item->analysis.script));
+        char script_str[5] = {0};
+        memcpy(script_str, &script_code, 4);
+        script_str[4] = '\0';
+        add_assoc_string(rv, "script", script_str);
+
+        if (item_object->item->analysis.language != NULL) {
+            const char* lang_str = pango_language_to_string(item_object->item->analysis.language);
+            add_assoc_string(rv, "language", lang_str);
+        } else {
+            add_assoc_null(rv, "language");
+        }
+        return rv;
+    }
 
     PANGO_VALUE_FROM_STRUCT(offset, offset);
     PANGO_VALUE_FROM_STRUCT(length, length);
     PANGO_VALUE_FROM_STRUCT(numChars, num_chars);
-
-    ZVAL_LONG(rv, value);
-
-    return rv;
 }
 /* }}} */
 
@@ -131,6 +162,37 @@ static HashTable *pango_item_get_properties(zend_object *object)
     if (!item_object->item) {
         return props;
     }
+
+    array_init(&tmp);
+    add_assoc_long(&tmp, "bidiLevel", item_object->item->analysis.level);
+
+    zend_object *gravity_case;
+    zend_enum_get_case_by_value(
+        &gravity_case, php_pango_get_gravity_ce(),
+        item_object->item->analysis.gravity,
+        NULL, false
+    );
+    add_assoc_object(&tmp, "gravity", gravity_case);
+
+    // add_assoc_long(&tmp, "flags", item_object->item->analysis.flags);
+    add_assoc_bool(&tmp, "centeredBaseline", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_CENTERED_BASELINE) != 0);
+    add_assoc_bool(&tmp, "isEllipsis", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_IS_ELLIPSIS) != 0);
+    add_assoc_bool(&tmp, "needsHyphen", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_NEED_HYPHEN) != 0);
+
+    guint32 script_code = GUINT32_TO_BE(g_unicode_script_to_iso15924((GUnicodeScript)item_object->item->analysis.script));
+    char script_str[5] = {0};
+    memcpy(script_str, &script_code, 4);
+    script_str[4] = '\0';
+    add_assoc_string(&tmp, "script", script_str);
+
+    if (item_object->item->analysis.language != NULL) {
+        const char* lang_str = pango_language_to_string(item_object->item->analysis.language);
+        add_assoc_string(&tmp, "language", lang_str);
+    } else {
+        add_assoc_null(&tmp, "language");
+    }
+    zend_hash_str_update(props, "analysis", sizeof("analysis")-1, &tmp);
+
 
     PANGO_ADD_STRUCT_VALUE(offset, offset);
     PANGO_ADD_STRUCT_VALUE(length, length);

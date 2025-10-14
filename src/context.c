@@ -37,6 +37,10 @@ PHP_PANGO_API zend_class_entry* php_pango_get_direction_ce() {
     return pango_ce_pango_direction;
 }
 
+PHP_PANGO_API zend_class_entry* php_pango_get_gravity_ce() {
+    return pango_ce_pango_gravity;
+}
+
 static zend_object_handlers pango_context_object_handlers;
 
 pango_context_object *pango_context_fetch_object(zend_object *object)
