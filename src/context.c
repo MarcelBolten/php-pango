@@ -255,7 +255,7 @@ PHP_METHOD(Pango_Context, setMatrix)
 PHP_METHOD(Pango_Context, setRoundGlyphPositions)
 {
     pango_context_object *context_object;
-    zend_bool round;
+    bool round;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_BOOL(round)

@@ -476,7 +476,7 @@ PHP_METHOD(Pango_Layout, getFontDescription)
 PHP_METHOD(Pango_Layout, setJustify)
 {
     pango_layout_object *layout_object;
-    zend_bool justify;
+    bool justify;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_BOOL(justify)
@@ -600,7 +600,7 @@ PHP_METHOD(Pango_Layout, setIndent)
 }
 /* }}} */
 
-/* {{{ Returns how text will be indentped or not in the current layout */
+/* {{{ Returns how text will be indented or not in the current layout */
 PHP_METHOD(Pango_Layout, getIndent)
 {
     pango_layout_object *layout_object;
