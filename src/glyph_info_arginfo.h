@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 519a1c314eab63301bb2a648540fc41d56533e5f */
+ * Stub hash: 085539282c0504a2d2eb142260c656dfeb689508 */
 
 static zend_class_entry *register_class_Pango_GlyphInfo(void)
 {

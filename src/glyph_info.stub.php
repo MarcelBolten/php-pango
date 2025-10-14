@@ -24,16 +24,16 @@ class GlyphInfo
      * The positional information about the glyph.
      *
      * width: The logical width to use for the the character. \
-     * x_offset: Horizontal offset from nominal character position. \
-     * y_offset: Vertical offset from nominal character position.
+     * xOffset: Horizontal offset from nominal character position. \
+     * yOffset: Vertical offset from nominal character position.
      *
-     * @var array{width: int, x_offset: int, y_offset: int}
+     * @var array{width: int, xOffset: int, yOffset: int}
      */
     public array $geometry;
 
     /**
      * The visual attributes of the glyph.
-     * @var array{is_cluster_start: bool, is_color: bool}
+     * @var array{isClusterStart: bool, isColor: bool}
      */
     public array $attributes;
 }
