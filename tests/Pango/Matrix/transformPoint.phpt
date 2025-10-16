@@ -17,35 +17,35 @@ var_dump($matrix->transformPoint(1.0, 1.0));
 try {
     $matrix->transformPoint();
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong number args 2 */
 try {
     $matrix->transformPoint(1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong number args 3 */
 try {
     $matrix->transformPoint(1, 1, 1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 1 */
 try {
     $matrix->transformPoint([], 1);
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 2 */
 try {
     $matrix->transformPoint(1, []);
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

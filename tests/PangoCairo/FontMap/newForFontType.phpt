@@ -15,25 +15,25 @@ var_dump(FontMap::newForFontType(FontType::FT));
 try {
     FontMap::newForFontType(FontType::Toy);
 } catch (Pango\Exception $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 try {
     FontMap::newForFontType();
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 try {
     FontMap::newForFontType(FontType::Toy, 1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 try {
     FontMap::newForFontType(array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

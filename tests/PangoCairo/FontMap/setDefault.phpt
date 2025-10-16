@@ -19,19 +19,19 @@ $fontMap2->setDefault($fontMap);
 try {
     $fontMap->setDefault();
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 try {
     $fontMap->setDefault($fontMap, 1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 try {
     $fontMap->setDefault(array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

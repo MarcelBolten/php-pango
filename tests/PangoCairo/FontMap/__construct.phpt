@@ -13,7 +13,7 @@ var_dump(new FontMap());
 try {
     new FontMap(1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

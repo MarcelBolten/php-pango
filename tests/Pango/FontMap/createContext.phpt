@@ -15,7 +15,7 @@ var_dump($fontMap->createContext());
 try {
     $fontMap->createContext(1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

@@ -15,49 +15,49 @@ var_dump($matrix);
 try {
     new Matrix(1, 1, 1, 1, 1, 1, 1);
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 1 */
 try {
     new Matrix(array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 2 */
 try {
     new Matrix(1, array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 3 */
 try {
     new Matrix(1, 1, array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 4 */
 try {
     new Matrix(1, 1, 1, array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 5 */
 try {
     new Matrix(1, 1, 1, 1, array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 6 */
 try {
     new Matrix(1, 1, 1, 1, 1, array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

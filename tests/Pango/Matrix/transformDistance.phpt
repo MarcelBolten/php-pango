@@ -17,35 +17,35 @@ var_dump($matrix->transformDistance(1.0, 1.0));
 try {
     $matrix->transformDistance();
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong number args 2 */
 try {
     $matrix->transformDistance(1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong number args 3 */
 try {
     $matrix->transformDistance(1, 1, 1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 1 */
 try {
     $matrix->transformDistance(array(), 1);
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type 2 */
 try {
     $matrix->transformDistance(1, array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

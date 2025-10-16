@@ -15,7 +15,7 @@ var_dump($fontMap->getResolution());
 try {
     $fontMap->getResolution(1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

@@ -15,7 +15,7 @@ var_dump(is_array($fontMap->listFamilies()));
 try {
     $fontMap->listFamilies(1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

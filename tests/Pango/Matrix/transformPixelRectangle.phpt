@@ -22,19 +22,19 @@ var_dump($rectangle_out);
 try {
     $matrix->transformPixelRectangle();
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 try {
     $matrix->transformPixelRectangle($rectangle_in, 1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 try {
     $matrix->transformPixelRectangle(array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

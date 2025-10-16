@@ -18,35 +18,35 @@ var_dump($matrix);
 try {
     $matrix->translate();
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong number args 2 */
 try {
     $matrix->translate(1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Too many args */
 try {
     $matrix->translate(1, 1, 1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Bad arg type */
 try {
     $matrix->translate(array(), 1);
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Bad arg type 2*/
 try {
     $matrix->translate(1, array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--

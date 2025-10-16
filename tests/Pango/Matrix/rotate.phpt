@@ -17,21 +17,21 @@ $matrix->rotate(0.1);
 try {
     $matrix->rotate();
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong number args 2 */
 try {
     $matrix->rotate(1, 1);
 } catch (ArgumentCountError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 
 /* Wrong arg type */
 try {
     $matrix->rotate(array());
 } catch (TypeError $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--
