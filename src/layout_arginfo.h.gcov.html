@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-16 20:15:55</td>
+            <td class="headerValue">2025-10-16 21:26:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -355,74 +355,74 @@
 <span id="L293"><span class="lineNum">     293</span>              :     ZEND_FE_END</span>
 <span id="L294"><span class="lineNum">     294</span>              : };</span>
 <span id="L295"><span class="lineNum">     295</span>              : </span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC tlaBgGNC">         167 : static zend_class_entry *register_class_Pango_Layout(void)</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC tlaBgGNC">         169 : static zend_class_entry *register_class_Pango_Layout(void)</span></span>
 <span id="L297"><span class="lineNum">     297</span>              : {</span>
 <span id="L298"><span class="lineNum">     298</span>              :     zend_class_entry ce, *class_entry;</span>
 <span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">         167 :     INIT_NS_CLASS_ENTRY(ce, &quot;Pango&quot;, &quot;Layout&quot;, class_Pango_Layout_methods);</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">         169 :     INIT_NS_CLASS_ENTRY(ce, &quot;Pango&quot;, &quot;Layout&quot;, class_Pango_Layout_methods);</span></span>
 <span id="L301"><span class="lineNum">     301</span>              : #if (PHP_VERSION_ID &gt;= 80400)</span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         167 :     class_entry = zend_register_internal_class_with_flags(&amp;ce, NULL, 0);</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         169 :     class_entry = zend_register_internal_class_with_flags(&amp;ce, NULL, 0);</span></span>
 <span id="L303"><span class="lineNum">     303</span>              : #else</span>
 <span id="L304"><span class="lineNum">     304</span>              :     class_entry = zend_register_internal_class_ex(&amp;ce, NULL);</span>
 <span id="L305"><span class="lineNum">     305</span>              : #endif</span>
 <span id="L306"><span class="lineNum">     306</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
 <span id="L307"><span class="lineNum">     307</span>              : </span>
 <span id="L308"><span class="lineNum">     308</span>              :     zval const_SERIALIZE_DEFAULT_value;</span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;const_SERIALIZE_DEFAULT_value, PANGO_LAYOUT_SERIALIZE_DEFAULT);</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         167 :     zend_string *const_SERIALIZE_DEFAULT_name = zend_string_init_interned(&quot;SERIALIZE_DEFAULT&quot;, sizeof(&quot;SERIALIZE_DEFAULT&quot;) - 1, 1);</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">         167 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_DEFAULT_name, &amp;const_SERIALIZE_DEFAULT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;const_SERIALIZE_DEFAULT_value, PANGO_LAYOUT_SERIALIZE_DEFAULT);</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         169 :     zend_string *const_SERIALIZE_DEFAULT_name = zend_string_init_interned(&quot;SERIALIZE_DEFAULT&quot;, sizeof(&quot;SERIALIZE_DEFAULT&quot;) - 1, 1);</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">         169 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_DEFAULT_name, &amp;const_SERIALIZE_DEFAULT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
 <span id="L312"><span class="lineNum">     312</span>              :     zend_string_release(const_SERIALIZE_DEFAULT_name);</span>
 <span id="L313"><span class="lineNum">     313</span>              : </span>
 <span id="L314"><span class="lineNum">     314</span>              :     zval const_SERIALIZE_CONTEXT_value;</span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;const_SERIALIZE_CONTEXT_value, PANGO_LAYOUT_SERIALIZE_CONTEXT);</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         167 :     zend_string *const_SERIALIZE_CONTEXT_name = zend_string_init_interned(&quot;SERIALIZE_CONTEXT&quot;, sizeof(&quot;SERIALIZE_CONTEXT&quot;) - 1, 1);</span></span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         167 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_CONTEXT_name, &amp;const_SERIALIZE_CONTEXT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;const_SERIALIZE_CONTEXT_value, PANGO_LAYOUT_SERIALIZE_CONTEXT);</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         169 :     zend_string *const_SERIALIZE_CONTEXT_name = zend_string_init_interned(&quot;SERIALIZE_CONTEXT&quot;, sizeof(&quot;SERIALIZE_CONTEXT&quot;) - 1, 1);</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         169 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_CONTEXT_name, &amp;const_SERIALIZE_CONTEXT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
 <span id="L318"><span class="lineNum">     318</span>              :     zend_string_release(const_SERIALIZE_CONTEXT_name);</span>
 <span id="L319"><span class="lineNum">     319</span>              : </span>
 <span id="L320"><span class="lineNum">     320</span>              :     zval const_SERIALIZE_OUTPUT_value;</span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;const_SERIALIZE_OUTPUT_value, PANGO_LAYOUT_SERIALIZE_OUTPUT);</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         167 :     zend_string *const_SERIALIZE_OUTPUT_name = zend_string_init_interned(&quot;SERIALIZE_OUTPUT&quot;, sizeof(&quot;SERIALIZE_OUTPUT&quot;) - 1, 1);</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         167 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_OUTPUT_name, &amp;const_SERIALIZE_OUTPUT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;const_SERIALIZE_OUTPUT_value, PANGO_LAYOUT_SERIALIZE_OUTPUT);</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         169 :     zend_string *const_SERIALIZE_OUTPUT_name = zend_string_init_interned(&quot;SERIALIZE_OUTPUT&quot;, sizeof(&quot;SERIALIZE_OUTPUT&quot;) - 1, 1);</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         169 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_OUTPUT_name, &amp;const_SERIALIZE_OUTPUT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
 <span id="L324"><span class="lineNum">     324</span>              :     zend_string_release(const_SERIALIZE_OUTPUT_name);</span>
 <span id="L325"><span class="lineNum">     325</span>              : #endif</span>
 <span id="L326"><span class="lineNum">     326</span>              : </span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">         167 :     return class_entry;</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">         169 :     return class_entry;</span></span>
 <span id="L328"><span class="lineNum">     328</span>              : }</span>
 <span id="L329"><span class="lineNum">     329</span>              : </span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         167 : static zend_class_entry *register_class_Pango_Alignment(void)</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         169 : static zend_class_entry *register_class_Pango_Alignment(void)</span></span>
 <span id="L331"><span class="lineNum">     331</span>              : {</span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         167 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\Alignment&quot;, IS_LONG, NULL);</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         169 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\Alignment&quot;, IS_LONG, NULL);</span></span>
 <span id="L333"><span class="lineNum">     333</span>              : </span>
 <span id="L334"><span class="lineNum">     334</span>              :     zval enum_case_Left_value;</span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_Left_value, PANGO_ALIGN_LEFT);</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;Left&quot;, &amp;enum_case_Left_value);</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_Left_value, PANGO_ALIGN_LEFT);</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;Left&quot;, &amp;enum_case_Left_value);</span></span>
 <span id="L337"><span class="lineNum">     337</span>              : </span>
 <span id="L338"><span class="lineNum">     338</span>              :     zval enum_case_Center_value;</span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_Center_value, PANGO_ALIGN_CENTER);</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;Center&quot;, &amp;enum_case_Center_value);</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_Center_value, PANGO_ALIGN_CENTER);</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;Center&quot;, &amp;enum_case_Center_value);</span></span>
 <span id="L341"><span class="lineNum">     341</span>              : </span>
 <span id="L342"><span class="lineNum">     342</span>              :     zval enum_case_Right_value;</span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_Right_value, PANGO_ALIGN_RIGHT);</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;Right&quot;, &amp;enum_case_Right_value);</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_Right_value, PANGO_ALIGN_RIGHT);</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;Right&quot;, &amp;enum_case_Right_value);</span></span>
 <span id="L345"><span class="lineNum">     345</span>              : </span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         167 :     return class_entry;</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         169 :     return class_entry;</span></span>
 <span id="L347"><span class="lineNum">     347</span>              : }</span>
 <span id="L348"><span class="lineNum">     348</span>              : </span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         167 : static zend_class_entry *register_class_Pango_WrapMode(void)</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         169 : static zend_class_entry *register_class_Pango_WrapMode(void)</span></span>
 <span id="L350"><span class="lineNum">     350</span>              : {</span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         167 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\WrapMode&quot;, IS_LONG, NULL);</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         169 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\WrapMode&quot;, IS_LONG, NULL);</span></span>
 <span id="L352"><span class="lineNum">     352</span>              : </span>
 <span id="L353"><span class="lineNum">     353</span>              :     zval enum_case_Word_value;</span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_Word_value, PANGO_WRAP_WORD);</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;Word&quot;, &amp;enum_case_Word_value);</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_Word_value, PANGO_WRAP_WORD);</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;Word&quot;, &amp;enum_case_Word_value);</span></span>
 <span id="L356"><span class="lineNum">     356</span>              : </span>
 <span id="L357"><span class="lineNum">     357</span>              :     zval enum_case_Char_value;</span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_Char_value, PANGO_WRAP_CHAR);</span></span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;Char&quot;, &amp;enum_case_Char_value);</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_Char_value, PANGO_WRAP_CHAR);</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;Char&quot;, &amp;enum_case_Char_value);</span></span>
 <span id="L360"><span class="lineNum">     360</span>              : </span>
 <span id="L361"><span class="lineNum">     361</span>              :     zval enum_case_WordChar_value;</span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_WordChar_value, PANGO_WRAP_WORD_CHAR);</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;WordChar&quot;, &amp;enum_case_WordChar_value);</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_WordChar_value, PANGO_WRAP_WORD_CHAR);</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;WordChar&quot;, &amp;enum_case_WordChar_value);</span></span>
 <span id="L364"><span class="lineNum">     364</span>              : </span>
 <span id="L365"><span class="lineNum">     365</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 56, 0)</span>
 <span id="L366"><span class="lineNum">     366</span>              :     zval enum_case_None_value;</span>
@@ -430,30 +430,30 @@
 <span id="L368"><span class="lineNum">     368</span>              :     zend_enum_add_case_cstr(class_entry, &quot;None&quot;, &amp;enum_case_None_value);</span>
 <span id="L369"><span class="lineNum">     369</span>              : #endif</span>
 <span id="L370"><span class="lineNum">     370</span>              : </span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">         167 :     return class_entry;</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">         169 :     return class_entry;</span></span>
 <span id="L372"><span class="lineNum">     372</span>              : }</span>
 <span id="L373"><span class="lineNum">     373</span>              : </span>
-<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">         167 : static zend_class_entry *register_class_Pango_EllipsizeMode(void)</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">         169 : static zend_class_entry *register_class_Pango_EllipsizeMode(void)</span></span>
 <span id="L375"><span class="lineNum">     375</span>              : {</span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         167 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\EllipsizeMode&quot;, IS_LONG, NULL);</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         169 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\EllipsizeMode&quot;, IS_LONG, NULL);</span></span>
 <span id="L377"><span class="lineNum">     377</span>              : </span>
 <span id="L378"><span class="lineNum">     378</span>              :     zval enum_case_None_value;</span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_None_value, PANGO_ELLIPSIZE_NONE);</span></span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;None&quot;, &amp;enum_case_None_value);</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_None_value, PANGO_ELLIPSIZE_NONE);</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;None&quot;, &amp;enum_case_None_value);</span></span>
 <span id="L381"><span class="lineNum">     381</span>              : </span>
 <span id="L382"><span class="lineNum">     382</span>              :     zval enum_case_Start_value;</span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_Start_value, PANGO_ELLIPSIZE_START);</span></span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;Start&quot;, &amp;enum_case_Start_value);</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_Start_value, PANGO_ELLIPSIZE_START);</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;Start&quot;, &amp;enum_case_Start_value);</span></span>
 <span id="L385"><span class="lineNum">     385</span>              : </span>
 <span id="L386"><span class="lineNum">     386</span>              :     zval enum_case_Middle_value;</span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_Middle_value, PANGO_ELLIPSIZE_MIDDLE);</span></span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;Middle&quot;, &amp;enum_case_Middle_value);</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_Middle_value, PANGO_ELLIPSIZE_MIDDLE);</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;Middle&quot;, &amp;enum_case_Middle_value);</span></span>
 <span id="L389"><span class="lineNum">     389</span>              : </span>
 <span id="L390"><span class="lineNum">     390</span>              :     zval enum_case_End_value;</span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         167 :     ZVAL_LONG(&amp;enum_case_End_value, PANGO_ELLIPSIZE_END);</span></span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         167 :     zend_enum_add_case_cstr(class_entry, &quot;End&quot;, &amp;enum_case_End_value);</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         169 :     ZVAL_LONG(&amp;enum_case_End_value, PANGO_ELLIPSIZE_END);</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         169 :     zend_enum_add_case_cstr(class_entry, &quot;End&quot;, &amp;enum_case_End_value);</span></span>
 <span id="L393"><span class="lineNum">     393</span>              : </span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         167 :     return class_entry;</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         169 :     return class_entry;</span></span>
 <span id="L395"><span class="lineNum">     395</span>              : }</span>
         </pre>
               </td>

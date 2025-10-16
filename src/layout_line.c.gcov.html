@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-16 20:15:55</td>
+            <td class="headerValue">2025-10-16 21:26:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -329,21 +329,21 @@
 <span id="L267"><span class="lineNum">     267</span>              : /* }}} */</span>
 <span id="L268"><span class="lineNum">     268</span>              : </span>
 <span id="L269"><span class="lineNum">     269</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">         167 : PHP_MINIT_FUNCTION(pango_layout_line)</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">         169 : PHP_MINIT_FUNCTION(pango_layout_line)</span></span>
 <span id="L271"><span class="lineNum">     271</span>              : {</span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         167 :     memcpy(</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         169 :     memcpy(</span></span>
 <span id="L273"><span class="lineNum">     273</span>              :         &amp;pango_layout_line_object_handlers,</span>
 <span id="L274"><span class="lineNum">     274</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L275"><span class="lineNum">     275</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L276"><span class="lineNum">     276</span>              :     );</span>
 <span id="L277"><span class="lineNum">     277</span>              : </span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         167 :     pango_layout_line_object_handlers.offset = XtOffsetOf(pango_layout_line_object, std);</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         167 :     pango_layout_line_object_handlers.free_obj = pango_layout_line_free_obj;</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         169 :     pango_layout_line_object_handlers.offset = XtOffsetOf(pango_layout_line_object, std);</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         169 :     pango_layout_line_object_handlers.free_obj = pango_layout_line_free_obj;</span></span>
 <span id="L280"><span class="lineNum">     280</span>              : </span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         167 :     pango_ce_pango_layout_line = register_class_Pango_LayoutLine();</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">         167 :     pango_ce_pango_layout_line-&gt;create_object = pango_layout_line_create_object;</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         169 :     pango_ce_pango_layout_line = register_class_Pango_LayoutLine();</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">         169 :     pango_ce_pango_layout_line-&gt;create_object = pango_layout_line_create_object;</span></span>
 <span id="L283"><span class="lineNum">     283</span>              : </span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">         167 :     return SUCCESS;</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">         169 :     return SUCCESS;</span></span>
 <span id="L285"><span class="lineNum">     285</span>              : }</span>
 <span id="L286"><span class="lineNum">     286</span>              : /* }}} */</span>
         </pre>

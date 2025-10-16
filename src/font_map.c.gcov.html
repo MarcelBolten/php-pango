@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-16 20:15:55</td>
+            <td class="headerValue">2025-10-16 21:26:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -98,9 +98,9 @@
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           4 :     return (pango_font_map_object *) ((char*)(object) - XtOffsetOf(pango_font_map_object, std));</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : }</span>
 <span id="L38"><span class="lineNum">      38</span>              : </span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         167 : PHP_PANGO_API zend_class_entry* php_pango_get_font_map_ce()</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         169 : PHP_PANGO_API zend_class_entry* php_pango_get_font_map_ce()</span></span>
 <span id="L40"><span class="lineNum">      40</span>              : {</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         167 :     return pango_ce_pango_font_map;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         169 :     return pango_ce_pango_font_map;</span></span>
 <span id="L42"><span class="lineNum">      42</span>              : }</span>
 <span id="L43"><span class="lineNum">      43</span>              : </span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           4 : PHP_PANGO_API PangoFontMap* pango_font_map_object_get_font_map(zval *zv)</span></span>
@@ -264,21 +264,21 @@
 <span id="L202"><span class="lineNum">     202</span>              : /* }}} */</span>
 <span id="L203"><span class="lineNum">     203</span>              : </span>
 <span id="L204"><span class="lineNum">     204</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         167 : PHP_MINIT_FUNCTION(pango_font_map)</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         169 : PHP_MINIT_FUNCTION(pango_font_map)</span></span>
 <span id="L206"><span class="lineNum">     206</span>              : {</span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">         167 :     memcpy(</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">         169 :     memcpy(</span></span>
 <span id="L208"><span class="lineNum">     208</span>              :         &amp;pango_font_map_object_handlers,</span>
 <span id="L209"><span class="lineNum">     209</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L210"><span class="lineNum">     210</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L211"><span class="lineNum">     211</span>              :     );</span>
 <span id="L212"><span class="lineNum">     212</span>              : </span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         167 :     pango_font_map_object_handlers.offset = XtOffsetOf(pango_font_map_object, std);</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         169 :     pango_font_map_object_handlers.offset = XtOffsetOf(pango_font_map_object, std);</span></span>
 <span id="L214"><span class="lineNum">     214</span>              :     // pango_font_map_object_handlers.free_obj = pango_font_map_free_obj;</span>
 <span id="L215"><span class="lineNum">     215</span>              : </span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         167 :     pango_ce_pango_font_map = register_class_Pango_FontMap();</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         169 :     pango_ce_pango_font_map = register_class_Pango_FontMap();</span></span>
 <span id="L217"><span class="lineNum">     217</span>              :     // pango_ce_pango_font_map-&gt;create_object = pango_font_map_create_object;</span>
 <span id="L218"><span class="lineNum">     218</span>              : </span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">         167 :     return SUCCESS;</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">         169 :     return SUCCESS;</span></span>
 <span id="L220"><span class="lineNum">     220</span>              : }</span>
 <span id="L221"><span class="lineNum">     221</span>              : /* }}} */</span>
         </pre>

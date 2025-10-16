@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-16 20:15:55</td>
+            <td class="headerValue">2025-10-16 21:26:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">92.9&nbsp;%</td>
@@ -281,21 +281,21 @@
 <span id="L219"><span class="lineNum">     219</span>              : /* }}} */</span>
 <span id="L220"><span class="lineNum">     220</span>              : </span>
 <span id="L221"><span class="lineNum">     221</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">         167 : PHP_MINIT_FUNCTION(pango_cairo_font_map)</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">         169 : PHP_MINIT_FUNCTION(pango_cairo_font_map)</span></span>
 <span id="L223"><span class="lineNum">     223</span>              : {</span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">         167 :     memcpy(</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">         169 :     memcpy(</span></span>
 <span id="L225"><span class="lineNum">     225</span>              :         &amp;pango_cairo_font_map_object_handlers,</span>
 <span id="L226"><span class="lineNum">     226</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L227"><span class="lineNum">     227</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L228"><span class="lineNum">     228</span>              :     );</span>
 <span id="L229"><span class="lineNum">     229</span>              : </span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">         167 :     pango_cairo_font_map_object_handlers.offset = XtOffsetOf(pango_font_map_object, std);</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         167 :     pango_cairo_font_map_object_handlers.free_obj = pango_cairo_font_map_free_obj;</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">         169 :     pango_cairo_font_map_object_handlers.offset = XtOffsetOf(pango_font_map_object, std);</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         169 :     pango_cairo_font_map_object_handlers.free_obj = pango_cairo_font_map_free_obj;</span></span>
 <span id="L232"><span class="lineNum">     232</span>              : </span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         167 :     pango_ce_pango_cairo_font_map = register_class_PangoCairo_FontMap(php_pango_get_font_map_ce());</span></span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">         167 :     pango_ce_pango_cairo_font_map-&gt;create_object = pango_cairo_font_map_create_object;</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         169 :     pango_ce_pango_cairo_font_map = register_class_PangoCairo_FontMap(php_pango_get_font_map_ce());</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">         169 :     pango_ce_pango_cairo_font_map-&gt;create_object = pango_cairo_font_map_create_object;</span></span>
 <span id="L235"><span class="lineNum">     235</span>              : </span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">         167 :     return SUCCESS;</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">         169 :     return SUCCESS;</span></span>
 <span id="L237"><span class="lineNum">     237</span>              : }</span>
 <span id="L238"><span class="lineNum">     238</span>              : /* }}} */</span>
         </pre>

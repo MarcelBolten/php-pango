@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-16 20:15:55</td>
+            <td class="headerValue">2025-10-16 21:26:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -265,24 +265,24 @@
 <span id="L203"><span class="lineNum">     203</span>              : /* }}} */</span>
 <span id="L204"><span class="lineNum">     204</span>              : </span>
 <span id="L205"><span class="lineNum">     205</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">         167 : PHP_MINIT_FUNCTION(pango_item)</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">         169 : PHP_MINIT_FUNCTION(pango_item)</span></span>
 <span id="L207"><span class="lineNum">     207</span>              : {</span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">         167 :     memcpy(</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">         169 :     memcpy(</span></span>
 <span id="L209"><span class="lineNum">     209</span>              :         &amp;pango_item_object_handlers,</span>
 <span id="L210"><span class="lineNum">     210</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L211"><span class="lineNum">     211</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L212"><span class="lineNum">     212</span>              :     );</span>
 <span id="L213"><span class="lineNum">     213</span>              : </span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">         167 :     pango_item_object_handlers.offset = XtOffsetOf(pango_item_object, std);</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         167 :     pango_item_object_handlers.free_obj = pango_item_free_obj;</span></span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         167 :     pango_item_object_handlers.read_property = pango_item_read_property;</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         167 :     pango_item_object_handlers.get_property_ptr_ptr = NULL;</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         167 :     pango_item_object_handlers.get_properties = pango_item_get_properties;</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">         169 :     pango_item_object_handlers.offset = XtOffsetOf(pango_item_object, std);</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         169 :     pango_item_object_handlers.free_obj = pango_item_free_obj;</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         169 :     pango_item_object_handlers.read_property = pango_item_read_property;</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         169 :     pango_item_object_handlers.get_property_ptr_ptr = NULL;</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         169 :     pango_item_object_handlers.get_properties = pango_item_get_properties;</span></span>
 <span id="L219"><span class="lineNum">     219</span>              : </span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         167 :     pango_ce_pango_item = register_class_Pango_Item();</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         167 :     pango_ce_pango_item-&gt;create_object = pango_item_create_object;</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         169 :     pango_ce_pango_item = register_class_Pango_Item();</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         169 :     pango_ce_pango_item-&gt;create_object = pango_item_create_object;</span></span>
 <span id="L222"><span class="lineNum">     222</span>              : </span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         167 :     return SUCCESS;</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         169 :     return SUCCESS;</span></span>
 <span id="L224"><span class="lineNum">     224</span>              : }</span>
 <span id="L225"><span class="lineNum">     225</span>              : /* }}} */</span>
         </pre>
