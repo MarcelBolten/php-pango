@@ -36,7 +36,9 @@ if test "$PHP_PANGO" != "no"; then
     src/glyph_string.c
     src/glyph_info.c
     src/matrix.c
-    src/rectangle.c]), [$ext_shared])
+    src/rectangle.c
+    src/font_map.c
+    src/pango_cairo_font_map.c]), [$ext_shared])
     # src/ft2_font_map.c
 
   EXT_PANGO_HEADERS="php_pango_api.h"

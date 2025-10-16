@@ -56,6 +56,7 @@ PHP_PANGO_API extern zend_class_entry *php_pango_get_glyph_string_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_glyph_info_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_matrix_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_rectangle_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_font_map_ce();
 
 /* Objects */
 typedef struct _pango_context_object {
@@ -138,6 +139,21 @@ extern pango_rectangle_object *pango_rectangle_fetch_object(zend_object *object)
 #define Z_PANGO_RECTANGLE_P(zv) pango_rectangle_fetch_object(Z_OBJ_P(zv))
 extern PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv);
 
+// if FontMap is obtained via pango_cairo_font_map_get_default it should not be
+// freed, so we track it in is_default
+typedef struct _pango_font_map_object {
+    PangoFontMap *font_map;
+    bool is_default;
+    zend_object std;
+} pango_font_map_object;
+extern pango_font_map_object *pango_font_map_fetch_object(zend_object *object);
+#define Z_PANGO_FONT_MAP_P(zv) pango_font_map_fetch_object(Z_OBJ_P(zv))
+extern PangoFontMap *pango_font_map_object_get_font_map(zval *zv);
+
+extern pango_font_map_object *pango_cairo_font_map_fetch_object(zend_object *object);
+#define Z_PANGO_CAIRO_FONT_MAP_P(zv) pango_cairo_font_map_fetch_object(Z_OBJ_P(zv))
+extern PangoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv);
+
 PHP_MINIT_FUNCTION(pango);
 PHP_MSHUTDOWN_FUNCTION(pango);
 PHP_MINFO_FUNCTION(pango);
@@ -153,6 +169,8 @@ PHP_MINIT_FUNCTION(pango_glyph_string);
 PHP_MINIT_FUNCTION(pango_glyph_info);
 PHP_MINIT_FUNCTION(pango_matrix);
 PHP_MINIT_FUNCTION(pango_rectangle);
+PHP_MINIT_FUNCTION(pango_font_map);
+PHP_MINIT_FUNCTION(pango_cairo_font_map);
 
 #ifdef ZTS
 #define PANGO_G(v) TSRMG(pango_globals_id, zend_pango_globals *, v)
