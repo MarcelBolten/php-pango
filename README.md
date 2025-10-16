@@ -1,44 +1,98 @@
-This is the start of a Pango binding for PHP 8.2+. Current requirements are:
+Pango for PHP 8.2+
+=============
 
+[Pango](https://www.gtk.org/docs/architecture/pango) is a library for laying out and rendering of text, with an emphasis on internationalization. The name comes from the Greek Παν (“Pan”), meaning “all”, and the Japanese 語 (“Go”), meaning “language”.
+
+This extension provides access to Pango functionality in PHP 8.2+ in the Pango and PangoCairo namespace.
+
+[![Build and Test](https://github.com/MarcelBolten/php-pango/actions/workflows/ci.yml/badge.svg?branch=modern_php)](https://github.com/MarcelBolten/php-pango/actions/workflows/ci.yml)
+
+Requirements
+=============
  * PHP 8.2+
- * Pango 1.40+ :
- * ext-cairo. Currently the only functionality I'm wrapping are those required
-   to make Cairo rendering work which will suit my own purposes - however, once
-   that works I intend to remove the hard dependency here if I can.
+ * Pango 1.40+
+ * ext-cairo
 
-Compiling on windows
-====================
+Features are enabled at compile time based on the library version they are compiled against.
 
-1. Setup build environment
+Documentation and information about the underlying library can be found at https://docs.gtk.org/Pango/.
 
-Setup your build environment as described here:
-https://wiki.php.net/internals/windows/stepbystepbuild
+Installation
+=============
+There are plans to make this available via [PIE (PHP Installer for Extensions)](https://github.com/php/pie)
 
-2. Pecl packages
+Until then, please compile and install the pango extensions and enable it in your php.ini file.
 
-Create a directory called 'pecl' in the 'x86' directory.
+```
+extension=pango.so
+```
 
- * Download and extract the pecl/cairo extension in the pecl directory
- * Download and extract the pecl/pango extension in the pecl directory
+Compile
+=============
 
-3. Dependencies
+This extension can be compiled and tested using phpize.
 
-Download the following dependencies from www.gtk.org/download/win32.php and
-extract them to the 'deps' directory. Make sure you download the 'Dev'
-packages.
+The pango extension also requires pango development files.  You can build the package
+manually or use your system's package manager.  For example on ubuntu use:
 
- * Cairo
- * Freetype
- * Fontconfig
+```
+apt-get install libpango1.0-dev libcairo2-dev libfreetype6-dev fontconfig
+```
 
-You'll also need the GLib Dev package, you can copy the files in the lib
-directory to the deps/lib directory. The files in the include directory need
-special attention. You should extract the include/glib-2.0 directory to
-deps/include/glib-pango. Finally you should extract the
-lib/glib-2.0/include/glibconfig.h header file to deps/include/glib-pango.
+Then you can use phpize to install the extension against your current PHP install:
 
-4. Compiling pango
+```
+phpize
+./configure
+make && make test && make install
+```
 
- * Run: buildconf.
- * Run: configure.js --enable-pango=shared --with-cairo=shared
- * Run: nmake
+If you want to use a non-standard location for your PHP use:
+
+```
+/path/to/phpize
+./configure --with-php-config=/path/to/php-config
+make && make test && make install
+```
+
+`make install` copies `pango.so` to the right location, but you still need to enable the module
+in your php.ini file.
+
+Codec overage reports
+=====================
+
+A [coverage report](https://marcelbolten.github.io/php-pango/src/) is uploaded to gh-pages during every [Build and Test](https://github.com/MarcelBolten/php-pango/actions/workflows/ci.yml) workflow.
+
+Requirements: lcov, gzip.
+
+To obtain a code coverage report the extension must be compiled with additional flags:
+
+```
+phpize
+PANGO_COVERAGE=yes ./configure
+make && make install
+coverage.sh
+```
+
+This will run all tests and create an html report.
+
+Community
+=========
+You can send comments, patches, questions [here on github](https://github.com/marcelbolten/php-pango/issues).
+
+Authors
+====
+Michael Maclean | Marcel Bolten
+
+License
+=======
+The PHP extension binding code is released under the [MIT license](http://opensource.org/licenses/MIT)
+See [LICENSE](LICENSE)
+
+Pango is released under the [LGPL-2.1-or-later](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
+
+Documentation
+=============
+So far there is only limited documentation available. It is primarily in the code comments and the stub.php files.
+
+There are plans to make the stub files available as an independent composer package.
