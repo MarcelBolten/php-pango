@@ -1,4 +1,4 @@
-Pango for PHP 8.2+
+Pango extension for PHP 8.2+
 =============
 
 [Pango](https://www.gtk.org/docs/architecture/pango) is a library for laying out and rendering of text, with an emphasis on internationalization. The name comes from the Greek Παν (“Pan”), meaning “all”, and the Japanese 語 (“Go”), meaning “language”.
@@ -86,8 +86,10 @@ Michael Maclean | Marcel Bolten
 
 License
 =======
-The PHP extension binding code is released under the [MIT license](http://opensource.org/licenses/MIT)
+The PHP extension binding code is released under the [PHP License, version 3.01](https://www.php.net/license/3_01.txt)
 See [LICENSE](LICENSE)
+
+Parts of the code are based on files from the [cairo extension for PHP](https://github.com/MarcelBolten/php-cairo) which is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
 Pango is released under the [LGPL-2.1-or-later](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
