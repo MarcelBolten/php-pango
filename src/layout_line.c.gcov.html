@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-14 21:38:30</td>
+            <td class="headerValue">2025-10-16 19:22:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -62,9 +62,9 @@
 <pre class="source">
 <span id="L1"><span class="lineNum">       1</span>              : /*</span>
 <span id="L2"><span class="lineNum">       2</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L3"><span class="lineNum">       3</span>              :   | PHP Version 8                                                        |</span>
+<span id="L3"><span class="lineNum">       3</span>              :   | For PHP Version 8.2+                                                 |</span>
 <span id="L4"><span class="lineNum">       4</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L5"><span class="lineNum">       5</span>              :   | Copyright (c) 1997-2008 The PHP Group                                |</span>
+<span id="L5"><span class="lineNum">       5</span>              :   | Copyright (c) The PHP Group                                          |</span>
 <span id="L6"><span class="lineNum">       6</span>              :   +----------------------------------------------------------------------+</span>
 <span id="L7"><span class="lineNum">       7</span>              :   | This source file is subject to version 3.01 of the PHP license,      |</span>
 <span id="L8"><span class="lineNum">       8</span>              :   | that is bundled with this package in the file LICENSE, and is        |</span>
@@ -74,7 +74,7 @@
 <span id="L12"><span class="lineNum">      12</span>              :   | obtain it through the world-wide-web, please send a note to          |</span>
 <span id="L13"><span class="lineNum">      13</span>              :   | license@php.net so we can mail you a copy immediately.               |</span>
 <span id="L14"><span class="lineNum">      14</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L15"><span class="lineNum">      15</span>              :   | Author:  Michael Maclean &lt;mgdm@php.net&gt;                              |</span>
+<span id="L15"><span class="lineNum">      15</span>              :   | Author: Marcel Bolten &lt;github@marcelbolten.de&gt;                       |</span>
 <span id="L16"><span class="lineNum">      16</span>              :   +----------------------------------------------------------------------+</span>
 <span id="L17"><span class="lineNum">      17</span>              : */</span>
 <span id="L18"><span class="lineNum">      18</span>              : </span>
@@ -329,21 +329,21 @@
 <span id="L267"><span class="lineNum">     267</span>              : /* }}} */</span>
 <span id="L268"><span class="lineNum">     268</span>              : </span>
 <span id="L269"><span class="lineNum">     269</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">         154 : PHP_MINIT_FUNCTION(pango_layout_line)</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">         167 : PHP_MINIT_FUNCTION(pango_layout_line)</span></span>
 <span id="L271"><span class="lineNum">     271</span>              : {</span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         154 :     memcpy(</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         167 :     memcpy(</span></span>
 <span id="L273"><span class="lineNum">     273</span>              :         &amp;pango_layout_line_object_handlers,</span>
 <span id="L274"><span class="lineNum">     274</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L275"><span class="lineNum">     275</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L276"><span class="lineNum">     276</span>              :     );</span>
 <span id="L277"><span class="lineNum">     277</span>              : </span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         154 :     pango_layout_line_object_handlers.offset = XtOffsetOf(pango_layout_line_object, std);</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         154 :     pango_layout_line_object_handlers.free_obj = pango_layout_line_free_obj;</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         167 :     pango_layout_line_object_handlers.offset = XtOffsetOf(pango_layout_line_object, std);</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         167 :     pango_layout_line_object_handlers.free_obj = pango_layout_line_free_obj;</span></span>
 <span id="L280"><span class="lineNum">     280</span>              : </span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         154 :     pango_ce_pango_layout_line = register_class_Pango_LayoutLine();</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">         154 :     pango_ce_pango_layout_line-&gt;create_object = pango_layout_line_create_object;</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         167 :     pango_ce_pango_layout_line = register_class_Pango_LayoutLine();</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">         167 :     pango_ce_pango_layout_line-&gt;create_object = pango_layout_line_create_object;</span></span>
 <span id="L283"><span class="lineNum">     283</span>              : </span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">         154 :     return SUCCESS;</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">         167 :     return SUCCESS;</span></span>
 <span id="L285"><span class="lineNum">     285</span>              : }</span>
 <span id="L286"><span class="lineNum">     286</span>              : /* }}} */</span>
         </pre>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-14 21:38:30</td>
+            <td class="headerValue">2025-10-16 19:22:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -62,9 +62,9 @@
 <pre class="source">
 <span id="L1"><span class="lineNum">       1</span>              : /*</span>
 <span id="L2"><span class="lineNum">       2</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L3"><span class="lineNum">       3</span>              :   | PHP Version 8                                                        |</span>
+<span id="L3"><span class="lineNum">       3</span>              :   | For PHP Version 8.2+                                                 |</span>
 <span id="L4"><span class="lineNum">       4</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L5"><span class="lineNum">       5</span>              :   | Copyright (c) 1997-2008 The PHP Group                                |</span>
+<span id="L5"><span class="lineNum">       5</span>              :   | Copyright (c) The PHP Group                                          |</span>
 <span id="L6"><span class="lineNum">       6</span>              :   +----------------------------------------------------------------------+</span>
 <span id="L7"><span class="lineNum">       7</span>              :   | This source file is subject to version 3.01 of the PHP license,      |</span>
 <span id="L8"><span class="lineNum">       8</span>              :   | that is bundled with this package in the file LICENSE, and is        |</span>
@@ -74,7 +74,7 @@
 <span id="L12"><span class="lineNum">      12</span>              :   | obtain it through the world-wide-web, please send a note to          |</span>
 <span id="L13"><span class="lineNum">      13</span>              :   | license@php.net so we can mail you a copy immediately.               |</span>
 <span id="L14"><span class="lineNum">      14</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L15"><span class="lineNum">      15</span>              :   | Author:  Michael Maclean &lt;mgdm@php.net&gt;                              |</span>
+<span id="L15"><span class="lineNum">      15</span>              :   | Author: Marcel Bolten &lt;github@marcelbolten.de&gt;                       |</span>
 <span id="L16"><span class="lineNum">      16</span>              :   +----------------------------------------------------------------------+</span>
 <span id="L17"><span class="lineNum">      17</span>              : */</span>
 <span id="L18"><span class="lineNum">      18</span>              : </span>
@@ -214,24 +214,24 @@
 <span id="L152"><span class="lineNum">     152</span>              : /* }}} */</span>
 <span id="L153"><span class="lineNum">     153</span>              : </span>
 <span id="L154"><span class="lineNum">     154</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         154 : PHP_MINIT_FUNCTION(pango_glyph_info)</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         167 : PHP_MINIT_FUNCTION(pango_glyph_info)</span></span>
 <span id="L156"><span class="lineNum">     156</span>              : {</span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         154 :     memcpy(</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         167 :     memcpy(</span></span>
 <span id="L158"><span class="lineNum">     158</span>              :         &amp;pango_glyph_info_object_handlers,</span>
 <span id="L159"><span class="lineNum">     159</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L160"><span class="lineNum">     160</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L161"><span class="lineNum">     161</span>              :     );</span>
 <span id="L162"><span class="lineNum">     162</span>              : </span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         154 :     pango_glyph_info_object_handlers.offset = XtOffsetOf(pango_glyph_info_object, std);</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">         154 :     pango_glyph_info_object_handlers.free_obj = pango_glyph_info_free_obj;</span></span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         154 :     pango_glyph_info_object_handlers.read_property = pango_glyph_info_read_property;</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         154 :     pango_glyph_info_object_handlers.get_property_ptr_ptr = NULL;</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         154 :     pango_glyph_info_object_handlers.get_properties = pango_glyph_info_get_properties;</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         167 :     pango_glyph_info_object_handlers.offset = XtOffsetOf(pango_glyph_info_object, std);</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">         167 :     pango_glyph_info_object_handlers.free_obj = pango_glyph_info_free_obj;</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         167 :     pango_glyph_info_object_handlers.read_property = pango_glyph_info_read_property;</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         167 :     pango_glyph_info_object_handlers.get_property_ptr_ptr = NULL;</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         167 :     pango_glyph_info_object_handlers.get_properties = pango_glyph_info_get_properties;</span></span>
 <span id="L168"><span class="lineNum">     168</span>              : </span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">         154 :     pango_ce_pango_glyph_info = register_class_Pango_GlyphInfo();</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         154 :     pango_ce_pango_glyph_info-&gt;create_object = pango_glyph_info_create_object;</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">         167 :     pango_ce_pango_glyph_info = register_class_Pango_GlyphInfo();</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         167 :     pango_ce_pango_glyph_info-&gt;create_object = pango_glyph_info_create_object;</span></span>
 <span id="L171"><span class="lineNum">     171</span>              : </span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">         154 :     return SUCCESS;</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">         167 :     return SUCCESS;</span></span>
 <span id="L173"><span class="lineNum">     173</span>              : }</span>
 <span id="L174"><span class="lineNum">     174</span>              : /* }}} */</span>
         </pre>

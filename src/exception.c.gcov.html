@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-14 21:38:30</td>
+            <td class="headerValue">2025-10-16 19:22:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -62,9 +62,9 @@
 <pre class="source">
 <span id="L1"><span class="lineNum">       1</span>              : /*</span>
 <span id="L2"><span class="lineNum">       2</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L3"><span class="lineNum">       3</span>              :   | PHP Version 8                                                        |</span>
+<span id="L3"><span class="lineNum">       3</span>              :   | For PHP Version 8.2+                                                 |</span>
 <span id="L4"><span class="lineNum">       4</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L5"><span class="lineNum">       5</span>              :   | Copyright (c) 1997-2009 The PHP Group                                |</span>
+<span id="L5"><span class="lineNum">       5</span>              :   | Copyright (c) The PHP Group                                          |</span>
 <span id="L6"><span class="lineNum">       6</span>              :   +----------------------------------------------------------------------+</span>
 <span id="L7"><span class="lineNum">       7</span>              :   | This source file is subject to version 3.01 of the PHP license,      |</span>
 <span id="L8"><span class="lineNum">       8</span>              :   | that is bundled with this package in the file LICENSE, and is        |</span>
@@ -74,30 +74,31 @@
 <span id="L12"><span class="lineNum">      12</span>              :   | obtain it through the world-wide-web, please send a note to          |</span>
 <span id="L13"><span class="lineNum">      13</span>              :   | license@php.net so we can mail you a copy immediately.               |</span>
 <span id="L14"><span class="lineNum">      14</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L15"><span class="lineNum">      15</span>              :   | Author: Michael Maclean &lt;mgdm@php.net&gt;                               |</span>
-<span id="L16"><span class="lineNum">      16</span>              :   +----------------------------------------------------------------------+</span>
-<span id="L17"><span class="lineNum">      17</span>              : */</span>
-<span id="L18"><span class="lineNum">      18</span>              : </span>
-<span id="L19"><span class="lineNum">      19</span>              : #ifdef HAVE_CONFIG_H</span>
-<span id="L20"><span class="lineNum">      20</span>              : #include &quot;config.h&quot;</span>
-<span id="L21"><span class="lineNum">      21</span>              : #endif</span>
-<span id="L22"><span class="lineNum">      22</span>              : </span>
-<span id="L23"><span class="lineNum">      23</span>              : #include &quot;php.h&quot;</span>
-<span id="L24"><span class="lineNum">      24</span>              : #include &quot;zend_exceptions.h&quot;</span>
-<span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span>              : #include &quot;php_pango.h&quot;</span>
-<span id="L27"><span class="lineNum">      27</span>              : #include &quot;exception_arginfo.h&quot;</span>
-<span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span>              : zend_class_entry *pango_ce_pango_exception;</span>
-<span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC tlaBgGNC">         154 : PHP_MINIT_FUNCTION(pango_exception)</span></span>
-<span id="L33"><span class="lineNum">      33</span>              : {</span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         154 :     pango_ce_pango_exception = register_class_Pango_Exception(zend_ce_exception);</span></span>
-<span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         154 :     return SUCCESS;</span></span>
-<span id="L37"><span class="lineNum">      37</span>              : }</span>
-<span id="L38"><span class="lineNum">      38</span>              : /* }}} */</span>
+<span id="L15"><span class="lineNum">      15</span>              :   | Authors: Michael Maclean &lt;mgdm@php.net&gt;                              |</span>
+<span id="L16"><span class="lineNum">      16</span>              :   |          Marcel Bolten &lt;github@marcelbolten.de&gt;                      |</span>
+<span id="L17"><span class="lineNum">      17</span>              :   +----------------------------------------------------------------------+</span>
+<span id="L18"><span class="lineNum">      18</span>              : */</span>
+<span id="L19"><span class="lineNum">      19</span>              : </span>
+<span id="L20"><span class="lineNum">      20</span>              : #ifdef HAVE_CONFIG_H</span>
+<span id="L21"><span class="lineNum">      21</span>              : #include &quot;config.h&quot;</span>
+<span id="L22"><span class="lineNum">      22</span>              : #endif</span>
+<span id="L23"><span class="lineNum">      23</span>              : </span>
+<span id="L24"><span class="lineNum">      24</span>              : #include &quot;php.h&quot;</span>
+<span id="L25"><span class="lineNum">      25</span>              : #include &quot;zend_exceptions.h&quot;</span>
+<span id="L26"><span class="lineNum">      26</span>              : </span>
+<span id="L27"><span class="lineNum">      27</span>              : #include &quot;php_pango.h&quot;</span>
+<span id="L28"><span class="lineNum">      28</span>              : #include &quot;exception_arginfo.h&quot;</span>
+<span id="L29"><span class="lineNum">      29</span>              : </span>
+<span id="L30"><span class="lineNum">      30</span>              : zend_class_entry *pango_ce_pango_exception;</span>
+<span id="L31"><span class="lineNum">      31</span>              : </span>
+<span id="L32"><span class="lineNum">      32</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC tlaBgGNC">         167 : PHP_MINIT_FUNCTION(pango_exception)</span></span>
+<span id="L34"><span class="lineNum">      34</span>              : {</span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         167 :     pango_ce_pango_exception = register_class_Pango_Exception(zend_ce_exception);</span></span>
+<span id="L36"><span class="lineNum">      36</span>              : </span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         167 :     return SUCCESS;</span></span>
+<span id="L38"><span class="lineNum">      38</span>              : }</span>
+<span id="L39"><span class="lineNum">      39</span>              : /* }}} */</span>
         </pre>
               </td>
             </tr>
