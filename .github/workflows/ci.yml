@@ -11,10 +11,8 @@ jobs:
             fail-fast: false
             matrix:
                 php-version: [8.2, 8.3, 8.4, 8.5]
-                # php-version: [8.5]
                 os: [ubuntu-latest]
                 phpts: [ts, nts]
-                # phpts: [nts]
 
         runs-on: ${{ matrix.os }}
 
@@ -62,33 +60,7 @@ jobs:
               run: |
                 php -v
                 php --ri cairo
-                ulimit -c unlimited
-                ulimit -a
-                cat /proc/sys/kernel/core_pattern
-                ZEND_DONT_UNLOAD_MODULES=1 USE_ZEND_ALLOC=1 php --ri pango || true
-                echo "Check if any core dumps are present from previous runs:"
-                coredumpctl list
-                coredumpctl info
-                coredumpctl debug php -A "\
-                  -batch \
-                  -ex 'set pagination off' \
-                  -ex 'bt full' \
-                  -ex 'frame 6' \
-                  -ex 'info args' \
-                  -ex 'info locals' \
-                  -ex 'frame 7' \
-                  -ex 'print ptr' \
-                  -ex 'print/x ptr' \
-                  -ex 'print *((zend_string*)ptr - 1)' \
-                  -ex 'x/64xb ptr-16'
-                  -ex 'info args' \
-                  -ex 'x/32xb \$rdi' \
-                  -ex 'x/s \$rdi' \
-                  -ex 'frame 8' \
-                  -ex 'info args' \
-                  -ex 'info locals' \
-                  -ex 'disassemble' \
-                  -ex 'quit'"
+                php --ri pango
               continue-on-error: true
 
             - name: "Setup fontconfig cache"
@@ -103,7 +75,6 @@ jobs:
 
             - name: "Run Tests"
               run: |
-                php ./run-tests.php -q --show-diff || true
                 php ./run-tests.php -j$(nproc) -q --show-diff
 
             - name: "Upload test outputs"
