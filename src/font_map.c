@@ -159,46 +159,46 @@ PHP_METHOD(Pango_FontMap, listFamilies)
 ------------------------------------------------------------------*/
 
 /* {{{ */
-static void pango_font_map_free_obj(zend_object *zobj)
-{
-    pango_font_map_object *intern = pango_font_map_fetch_object(zobj);
+// static void pango_font_map_free_obj(zend_object *zobj)
+// {
+//     pango_font_map_object *intern = pango_font_map_fetch_object(zobj);
 
-    if (!intern) {
-        return;
-    }
+//     if (!intern) {
+//         return;
+//     }
 
-    if (intern->font_map && !intern->is_default) {
-        g_object_unref(intern->font_map);
-        intern->font_map = NULL;
-    }
+//     if (intern->font_map && !intern->is_default) {
+//         g_object_unref(intern->font_map);
+//         intern->font_map = NULL;
+//     }
 
-    zend_object_std_dtor(&intern->std);
-}
+//     zend_object_std_dtor(&intern->std);
+// }
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_font_map_obj_ctor(zend_class_entry *ce, pango_font_map_object **intern)
-{
-    pango_font_map_object *object = ecalloc(1, sizeof(pango_font_map_object) + zend_object_properties_size(ce));
+// static zend_object* pango_font_map_obj_ctor(zend_class_entry *ce, pango_font_map_object **intern)
+// {
+//     pango_font_map_object *object = ecalloc(1, sizeof(pango_font_map_object) + zend_object_properties_size(ce));
 
-    zend_object_std_init(&object->std, ce);
+//     zend_object_std_init(&object->std, ce);
 
-    object->std.handlers = &pango_font_map_object_handlers;
-    *intern = object;
+//     object->std.handlers = &pango_font_map_object_handlers;
+//     *intern = object;
 
-    return &object->std;
-}
+//     return &object->std;
+// }
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_font_map_create_object(zend_class_entry *ce)
-{
-    pango_font_map_object *intern = NULL;
-    zend_object *return_value = pango_font_map_obj_ctor(ce, &intern);
+// static zend_object* pango_font_map_create_object(zend_class_entry *ce)
+// {
+//     pango_font_map_object *intern = NULL;
+//     zend_object *return_value = pango_font_map_obj_ctor(ce, &intern);
 
-    object_properties_init(&intern->std, ce);
-    return return_value;
-}
+//     object_properties_init(&intern->std, ce);
+//     return return_value;
+// }
 /* }}} */
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -211,10 +211,10 @@ PHP_MINIT_FUNCTION(pango_font_map)
     );
 
     pango_font_map_object_handlers.offset = XtOffsetOf(pango_font_map_object, std);
-    pango_font_map_object_handlers.free_obj = pango_font_map_free_obj;
+    // pango_font_map_object_handlers.free_obj = pango_font_map_free_obj;
 
     pango_ce_pango_font_map = register_class_Pango_FontMap();
-    pango_ce_pango_font_map->create_object = pango_font_map_create_object;
+    // pango_ce_pango_font_map->create_object = pango_font_map_create_object;
 
     return SUCCESS;
 }

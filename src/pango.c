@@ -40,49 +40,49 @@ zend_class_entry *pango_ce_pango;
 zend_object_handlers pango_std_object_handlers;
 
 // TODO: move to separate file with corresponding headers
-void pango_setup_font_config(void)
-{
-    char cache_dir[MAXPATHLEN];
-    const char *temp_dir = php_get_temporary_directory();
-    char lock_file[MAXPATHLEN];
-    int lock_fd = -1;
+// void pango_setup_font_config(void)
+// {
+//     char cache_dir[MAXPATHLEN];
+//     const char *temp_dir = php_get_temporary_directory();
+//     char lock_file[MAXPATHLEN];
+//     int lock_fd = -1;
 
-    snprintf(cache_dir, sizeof(cache_dir), "%s/php-pango-fontconfig", temp_dir);
+//     snprintf(cache_dir, sizeof(cache_dir), "%s/php-pango-fontconfig", temp_dir);
 
-    #ifdef PHP_WIN32
-        _mkdir(cache_dir);
-    #else
-        mkdir(cache_dir, 0755);
-    #endif
+//     #ifdef PHP_WIN32
+//         _mkdir(cache_dir);
+//     #else
+//         mkdir(cache_dir, 0755);
+//     #endif
 
-    setenv("XDG_CACHE_HOME", cache_dir, 0);
+//     setenv("XDG_CACHE_HOME", cache_dir, 0);
 
-    #ifndef PHP_WIN32
-    snprintf(lock_file, sizeof(lock_file), "%s/init.lock", cache_dir);
-    lock_fd = open(lock_file, O_CREAT | O_RDWR, 0644);
+//     #ifndef PHP_WIN32
+//     snprintf(lock_file, sizeof(lock_file), "%s/init.lock", cache_dir);
+//     lock_fd = open(lock_file, O_CREAT | O_RDWR, 0644);
 
-    if (lock_fd >= 0) {
-        flock(lock_fd, LOCK_EX);  // Block until lock acquired
-    }
-    #endif
+//     if (lock_fd >= 0) {
+//         flock(lock_fd, LOCK_EX);  // Block until lock acquired
+//     }
+//     #endif
 
-    FcBool result = FcInit();
+//     FcBool result = FcInit();
 
-    // Pre-build font cache
-    if (result) {
-        FcConfig *config = FcConfigGetCurrent();
-        if (config) {
-            FcConfigBuildFonts(config);
-        }
-    }
+//     // Pre-build font cache
+//     if (result) {
+//         FcConfig *config = FcConfigGetCurrent();
+//         if (config) {
+//             FcConfigBuildFonts(config);
+//         }
+//     }
 
-    #ifndef PHP_WIN32
-    if (lock_fd >= 0) {
-        flock(lock_fd, LOCK_UN);
-        close(lock_fd);
-    }
-    #endif
-}
+//     #ifndef PHP_WIN32
+//     if (lock_fd >= 0) {
+//         flock(lock_fd, LOCK_UN);
+//         close(lock_fd);
+//     }
+//     #endif
+// }
 
 /* {{{ returns the Pango version */
 ZEND_METHOD(Pango_Pango, version)
