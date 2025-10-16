@@ -9,7 +9,7 @@ include __DIR__ . '/../../skipif.php.inc';
 use PangoCairo\FontMap;
 
 $fontMap = FontMap::getDefault();
-
+var_dump($fontMap);
 var_dump($fontMap->getFontType());
 
 try {
@@ -19,5 +19,7 @@ try {
 }
 ?>
 --EXPECTF--
+object(PangoCairo\FontMap)#%d (0) {
+}
 enum(Cairo\FontType::FT)
 PangoCairo\FontMap::getFontType() expects exactly 0 arguments, 1 given

@@ -10,7 +10,6 @@ use PangoCairo\FontMap;
 
 $fontMap = FontMap::getDefault();
 var_dump($fontMap);
-
 var_dump($fontMap->listFamilies());
 
 try {
