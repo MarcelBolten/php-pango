@@ -11,8 +11,7 @@ use Pango\Rectangle;
 $params = [1, 2, 100, 20];
 array_walk($params, fn (&$v) => $v = $v * Pango\Pango::SCALE);
 
-$rectangle = new Rectangle(...$params);
-var_dump($rectangle);
+var_dump(new Rectangle(...$params));
 
 try {
     new Rectangle();
