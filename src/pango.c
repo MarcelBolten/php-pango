@@ -1,8 +1,8 @@
 /*
   +----------------------------------------------------------------------+
-  | PHP Version 8                                                        |
+  | For PHP Version 8.2+                                                 |
   +----------------------------------------------------------------------+
-  | Copyright (c) 1997-2008 The PHP Group                                |
+  | Copyright (c) The PHP Group                                          |
   +----------------------------------------------------------------------+
   | This source file is subject to version 3.01 of the PHP license,      |
   | that is bundled with this package in the file LICENSE, and is        |
@@ -12,7 +12,8 @@
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author:  Michael Maclean <mgdm@php.net>                              |
+  | Authors: Michael Maclean <mgdm@php.net>                              |
+  |          Marcel Bolten <github@marcelbolten.de>                      |
   +----------------------------------------------------------------------+
 */
 
@@ -158,6 +159,7 @@ PHP_MINIT_FUNCTION(pango)
     PHP_MINIT(pango_glyph_info)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_matrix)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_rectangle)(INIT_FUNC_ARGS_PASSTHRU);
+    // PHP_MINIT(pango_ft2_font_map)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_font_map)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_cairo_font_map)(INIT_FUNC_ARGS_PASSTHRU);
 
