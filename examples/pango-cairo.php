@@ -1,10 +1,12 @@
 <?php
-/* This is a port of the equivalent code from the PangoCairo documentation */
+/**
+  * This example is based on the example from the PangoCairo documentation
+  * https://docs.gtk.org/PangoCairo/pango_cairo.html#using-pango-with-cairo
+  */
 
 define("RADIUS", 220);
 define("N_WORDS", 11);
-// define("FONT", "NotoSans 27");
-define("FONT", "NotoSansCJK 27");
+define("FONT", "Noto Sans 27");
 
 function draw_text(Cairo\Context $c) {
     $c->translate(RADIUS, RADIUS);
@@ -20,13 +22,13 @@ function draw_text(Cairo\Context $c) {
         $c->save();
         $c->setSourceRgba($red, 0, 1.0 - $red);
         $c->rotate($angle * M_PI / 180.0);
-        $l->updateLayout();
+        $l->updateLayout($c);
         $size = $l->getSize();
         $x = -((float) $size['width'] / Pango\Pango::SCALE) / 2;
         $c->moveTo($x, - RADIUS);
         $l->showLayout();
         $e = $l->getPixelExtents()["ink"];
-        $c->rectangle($e["x"] + $x, $e["y"] - RADIUS, $e["width"], $e["height"]);
+        $c->rectangle($e->x + $x, $e->y - RADIUS, $e->width, $e->height);
         $c->stroke();
         $c->restore();
     }
@@ -43,7 +45,6 @@ function draw_text(Cairo\Context $c) {
 }
 
 $s = new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, RADIUS *2, RADIUS *2);
-// $s = new Cairo\Surface\Pdf('circle.pdf', RADIUS *2, RADIUS *2);
 $c = new Cairo\Context($s);
 $c->setSourceRgba(0.8, 0.8, 0.8);
 $c->paint();
