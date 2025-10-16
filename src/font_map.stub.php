@@ -15,6 +15,9 @@ abstract class FontMap
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,56,0)
     /**
      * Loads a font file with one or more fonts into the FontMap.
+     *
+     * @param string $file The absolute path to the font file to load.
+     * @throws Exception If the font file could not be loaded.
      */
     public function addFontFile(
         string $file
