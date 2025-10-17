@@ -1,7 +1,7 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 89e0ac0ab32883dedcfe936f32a89338466129a8 */
+ * Stub hash: d492d83cb740a6c242b92bc9d43fb23fc324abb1 */
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,56,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontMap_addFontFile, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_TYPE_INFO(0, file, IS_STRING, 0)
 ZEND_END_ARG_INFO()
@@ -10,8 +10,8 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontMap_createContext, 0, 0, Pango\\Context, 0)
 ZEND_END_ARG_INFO()
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,46,0)
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontMap_getFamily, 0, 1, IS_STRING, 0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontMap_getFamily, 0, 1, Pango\\FontFamily, 0)
 	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 #endif
@@ -19,21 +19,21 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontMap_listFamilies, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,56,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 ZEND_METHOD(Pango_FontMap, addFontFile);
 #endif
 ZEND_METHOD(Pango_FontMap, createContext);
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,46,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 ZEND_METHOD(Pango_FontMap, getFamily);
 #endif
 ZEND_METHOD(Pango_FontMap, listFamilies);
 
 static const zend_function_entry class_Pango_FontMap_methods[] = {
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,56,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 	ZEND_ME(Pango_FontMap, addFontFile, arginfo_class_Pango_FontMap_addFontFile, ZEND_ACC_PUBLIC)
 #endif
 	ZEND_ME(Pango_FontMap, createContext, arginfo_class_Pango_FontMap_createContext, ZEND_ACC_PUBLIC)
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,46,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 	ZEND_ME(Pango_FontMap, getFamily, arginfo_class_Pango_FontMap_getFamily, ZEND_ACC_PUBLIC)
 #endif
 	ZEND_ME(Pango_FontMap, listFamilies, arginfo_class_Pango_FontMap_listFamilies, ZEND_ACC_PUBLIC)

@@ -12,7 +12,7 @@ namespace Pango;
  */
 abstract class FontMap
 {
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,56,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
     /**
      * Loads a font file with one or more fonts into the FontMap.
      *
@@ -29,21 +29,19 @@ abstract class FontMap
      */
     public function createContext(): Context {}
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,46,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
     /**
      * Gets a font family by name.
-     *
-     * TODO: Return FontFamily object when available.
      */
     public function getFamily(
         string $name
-    ): string {}
+    ): FontFamily {}
 #endif
 
     /**
      * List all families for a font map.
      *
-     * @return string[] An array of family names.
+     * @return FontFamily[] An array of FontFamily objects.
      */
     public function listFamilies(): array {}
 

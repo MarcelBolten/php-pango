@@ -38,9 +38,10 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#1 (0) {
+object(PangoCairo\FontMap)#%d (0) {
 }
-string(4) "Sans"
+object(Pango\FontFamily)#%d (0) {
+}
 Font family 'This family does not exist' not found.
 Pango\FontMap::getFamily() expects exactly 1 argument, 0 given
 Pango\FontMap::getFamily() expects exactly 1 argument, 2 given

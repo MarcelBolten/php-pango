@@ -47,7 +47,7 @@ PHP_PANGO_API PangoFontMap* pango_font_map_object_get_font_map(zval *zv)
     return obj->font_map;
 }
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,56,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 /* {{{ Loads a font file with one or more fonts into the FontMap. */
 PHP_METHOD(Pango_FontMap, addFontFile)
 {
@@ -100,7 +100,7 @@ PHP_METHOD(Pango_FontMap, createContext)
 }
 /* }}} */
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1,46,0)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 /* {{{ Gets a font family by name. */
 PHP_METHOD(Pango_FontMap, getFamily)
 {
@@ -108,6 +108,7 @@ PHP_METHOD(Pango_FontMap, getFamily)
     size_t name_len;
     PangoFontMap* font_map;
     PangoFontFamily *font_family;
+    pango_font_family_object *font_family_object;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_STRING(name, name_len)
@@ -126,7 +127,9 @@ PHP_METHOD(Pango_FontMap, getFamily)
         RETURN_THROWS();
     }
 
-    RETURN_STRING(pango_font_family_get_name(font_family));
+    object_init_ex(return_value, php_pango_get_font_family_ce());
+    font_family_object = Z_PANGO_FONT_FAMILY_P(return_value);
+    font_family_object->font_family = g_object_ref(font_family);
 }
 /* }}} */
 #endif
@@ -137,6 +140,8 @@ PHP_METHOD(Pango_FontMap, listFamilies)
     PangoFontMap* font_map;
     PangoFontFamily** families;
     int num_families;
+    zval family_zv;
+    pango_font_family_object *font_family_object;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
@@ -146,7 +151,10 @@ PHP_METHOD(Pango_FontMap, listFamilies)
 
     array_init(return_value);
     for (int i = 0; i < num_families; i++) {
-        add_next_index_string(return_value, pango_font_family_get_name(families[i]));
+        object_init_ex(&family_zv, php_pango_get_font_family_ce());
+        font_family_object = Z_PANGO_FONT_FAMILY_P(&family_zv);
+        font_family_object->font_family = g_object_ref(families[i]);
+        add_next_index_zval(return_value, &family_zv);
     }
 
     g_free(families);

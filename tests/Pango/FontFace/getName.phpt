@@ -1,5 +1,5 @@
 --TEST--
-Pango\FontMap::listFamilies()
+Pango\FontFace::getName()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -11,12 +11,16 @@ use PangoCairo\FontMap;
 
 $fontMap = FontMap::getDefault();
 var_dump($fontMap);
-$families = $fontMap->listFamilies();
-var_dump(is_array($families));
-var_dump($families[0]);
+
+$family = $fontMap->listFamilies()[0];
+var_dump($family);
+
+$defaultFace = $family->getFace(null);
+var_dump($defaultFace);
+var_dump($defaultFace->getName());
 
 try {
-    $fontMap->listFamilies(1);
+    $defaultFace->getName(1);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -24,7 +28,9 @@ try {
 --EXPECTF--
 object(PangoCairo\FontMap)#%d (0) {
 }
-bool(true)
 object(Pango\FontFamily)#%d (0) {
 }
-Pango\FontMap::listFamilies() expects exactly 0 arguments, 1 given
+object(Pango\FontFace)#%d (0) {
+}
+string(7) "Regular"
+Pango\FontFace::getName() expects exactly 0 arguments, 1 given

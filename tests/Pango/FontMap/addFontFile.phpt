@@ -14,7 +14,7 @@ use PangoCairo\FontMap;
 
 $fontMap = FontMap::getDefault();
 var_dump($fontMap);
-var_dump($fontMap->addFontFile(dirname(__FILE__) . "/Cantarell-VF.otf"));
+var_dump($fontMap->addFontFile(__DIR__ . "/Cantarell-VF.otf"));
 
 try {
     $fontMap->addFontFile("/wrong/path/Cantarell-VF.otf");

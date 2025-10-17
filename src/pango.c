@@ -26,13 +26,13 @@
 #include "ext/standard/info.h"
 
 #include <fontconfig/fontconfig.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <limits.h>
-#include "php_open_temporary_file.h"
-#include <sys/file.h>
-#include <fcntl.h>
-#include <unistd.h>
+// #include <sys/stat.h>
+// #include <sys/types.h>
+// #include <limits.h>
+// #include "php_open_temporary_file.h"
+// #include <sys/file.h>
+// #include <fcntl.h>
+// #include <unistd.h>
 
 #include "php_pango.h"
 #include "pango_arginfo.h"
@@ -162,6 +162,8 @@ PHP_MINIT_FUNCTION(pango)
     // PHP_MINIT(pango_ft2_font_map)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_font_map)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_cairo_font_map)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(pango_font_family)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(pango_font_face)(INIT_FUNC_ARGS_PASSTHRU);
 
     return SUCCESS;
 }
