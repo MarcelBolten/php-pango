@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-16 21:26:10</td>
+            <td class="headerValue">2025-10-17 07:15:41</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -510,26 +510,26 @@
 <span id="L448"><span class="lineNum">     448</span>              : ------------------------------------------------------------------*/</span>
 <span id="L449"><span class="lineNum">     449</span>              : </span>
 <span id="L450"><span class="lineNum">     450</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">         169 : PHP_MINIT_FUNCTION(pango_matrix)</span></span>
+<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">         181 : PHP_MINIT_FUNCTION(pango_matrix)</span></span>
 <span id="L452"><span class="lineNum">     452</span>              : {</span>
-<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">         169 :     memcpy(</span></span>
+<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">         181 :     memcpy(</span></span>
 <span id="L454"><span class="lineNum">     454</span>              :         &amp;pango_matrix_object_handlers,</span>
 <span id="L455"><span class="lineNum">     455</span>              :         zend_get_std_object_handlers(),</span>
 <span id="L456"><span class="lineNum">     456</span>              :         sizeof(zend_object_handlers)</span>
 <span id="L457"><span class="lineNum">     457</span>              :     );</span>
 <span id="L458"><span class="lineNum">     458</span>              : </span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">         169 :     pango_matrix_object_handlers.offset = XtOffsetOf(pango_matrix_object, std);</span></span>
-<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">         169 :     pango_matrix_object_handlers.free_obj = pango_matrix_free_obj;</span></span>
-<span id="L461"><span class="lineNum">     461</span> <span class="tlaGNC">         169 :     pango_matrix_object_handlers.clone_obj = pango_matrix_clone_obj;</span></span>
-<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">         169 :     pango_matrix_object_handlers.read_property = pango_matrix_object_read_property;</span></span>
-<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">         169 :     pango_matrix_object_handlers.write_property = pango_matrix_object_write_property;</span></span>
-<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">         169 :     pango_matrix_object_handlers.get_property_ptr_ptr = NULL;</span></span>
-<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">         169 :     pango_matrix_object_handlers.get_properties = pango_matrix_object_get_properties;</span></span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">         181 :     pango_matrix_object_handlers.offset = XtOffsetOf(pango_matrix_object, std);</span></span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">         181 :     pango_matrix_object_handlers.free_obj = pango_matrix_free_obj;</span></span>
+<span id="L461"><span class="lineNum">     461</span> <span class="tlaGNC">         181 :     pango_matrix_object_handlers.clone_obj = pango_matrix_clone_obj;</span></span>
+<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">         181 :     pango_matrix_object_handlers.read_property = pango_matrix_object_read_property;</span></span>
+<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">         181 :     pango_matrix_object_handlers.write_property = pango_matrix_object_write_property;</span></span>
+<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">         181 :     pango_matrix_object_handlers.get_property_ptr_ptr = NULL;</span></span>
+<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">         181 :     pango_matrix_object_handlers.get_properties = pango_matrix_object_get_properties;</span></span>
 <span id="L466"><span class="lineNum">     466</span>              : </span>
-<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">         169 :     ce_pango_matrix = register_class_Pango_Matrix();</span></span>
-<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">         169 :     ce_pango_matrix-&gt;create_object = pango_matrix_create_object;</span></span>
+<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">         181 :     ce_pango_matrix = register_class_Pango_Matrix();</span></span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">         181 :     ce_pango_matrix-&gt;create_object = pango_matrix_create_object;</span></span>
 <span id="L469"><span class="lineNum">     469</span>              : </span>
-<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">         169 :     return SUCCESS;</span></span>
+<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">         181 :     return SUCCESS;</span></span>
 <span id="L471"><span class="lineNum">     471</span>              : }</span>
 <span id="L472"><span class="lineNum">     472</span>              : /* }}} */</span>
         </pre>
