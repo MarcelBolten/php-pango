@@ -39,10 +39,10 @@ class Layout
 #endif
 
     /**
-     * Create a new Layout object with attributes initialized to default values for a particular Context.
+     * Create a new Layout object with attributes initialized to default values for a given Pango Context.
      */
     public function __construct(
-        \Cairo\Context $context
+        Context $context
     ) {}
 
     /**
@@ -167,25 +167,6 @@ class Layout
         string $markup,
         string $accelMarker
     ): string {}
-
-    /**
-     * Updates the private PangoContext of a PangoLayout to match the current transformation and target surface of a Cairo context.
-     */
-    public function updateLayout(
-        \Cairo\Context $context
-    ): void {}
-
-    /**
-     * Draws a LayoutLine in the specified cairo context.
-     */
-    public function showLayout(): void {}
-
-    /**
-     * Adds the text in this Layout to the current path in the specified cairo context.
-     *
-     * The top-left corner of the Layout will be at the current point of the cairo context.
-     */
-    public function layoutPath(): void {}
 
     /**
      * Sets the default FontDescription for this Layout.
