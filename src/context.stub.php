@@ -9,16 +9,9 @@ namespace Pango;
 
 class Context
 {
-    // public function __construct(
-    //     PangoFontMap $fontmap
-    // ) {}
-
-    /**
-     * Creates a context object set up to match the current transformation and target surface of the Cairo context.
-     */
-    public static function createFromCairoContext(
-        \Cairo\Context $context
-    ): Context {}
+    public function __construct(
+        null|FontMap $fontmap = null
+    ) {}
 
     /**
      * Retrieves the base direction for the context.
@@ -27,18 +20,26 @@ class Context
 
     public function getBaseGravity(): Gravity {}
 
-    // public function getFontDescription(): FontDescription {}
+    /**
+     * Retrieve the default FontDescription for the context.
+     */
+    public function getFontDescription(): FontDescription {}
 
-    // public function getFontMap(): FontMap {}
+    /**
+     * Gets the FontMap used to look up fonts for this context.
+     */
+    public function getFontMap(): FontMap {}
 
     public function getGravity(): Gravity {}
 
     public function getGravityHint(): GravityHint {}
 
+    // Todo: implement Language class
     // public function getLanguage(): Language {}
 
     public function getMatrix(): Matrix {}
 
+    // Todo: implement Language class
     // public function getMetrics(
     //     FontDescription $desc,
     //     Language $language
@@ -50,16 +51,17 @@ class Context
      */
     public function getRoundGlyphPositions(): bool {}
 
-    // /**
-    //  * List all families for a context.
-    //  *
-    //  * @return FontFamily[] An array of FontFamily objects
-    //  */
-    // public function listFamilies(): array {}
+    /**
+     * List all families for a context.
+     *
+     * @return FontFamily[] An array of FontFamily objects
+     */
+    public function listFamilies(): array {}
 
     // /**
     //  * Loads the font in one of the fontmaps in the context that is the closest match for desc.
     //  */
+    // Todo: implement Font class
     // public function loadFont(
     //     FontDescription $fontDesc
     // ): Font {}
@@ -67,6 +69,7 @@ class Context
     // /**
     //  * Load a set of fonts in the context that can be used to render a font matching $fontDesc.
     //  */
+    // Todo: implement Fontset class
     // public function loadFontset(
     //     FontDescription $fontDesc,
     //     Language $language
@@ -86,19 +89,19 @@ class Context
         Gravity $gravity
     ): void {}
 
-    // /**
-    //  * Set the default font description for the context.
-    //  */
-    // public function setFontDescription(
-    //     FontDescription $desc
-    // ): void {}
+    /**
+     * Set the default font description for the context.
+     */
+    public function setFontDescription(
+        null|FontDescription $desc
+    ): void {}
 
-    // /**
-    //  * Sets the font map to be searched when fonts are looked-up in this context.
-    //  */
-    // public function setFontMap(
-    //     FontMap $fontmap
-    // ): void {}
+    /**
+     * Sets the font map to be searched when fonts are looked-up in this context.
+     */
+    public function setFontMap(
+        null|FontMap $fontmap
+    ): void {}
 
     /**
      * Sets the gravity hint for the context.
@@ -111,7 +114,7 @@ class Context
     //  * Sets the global language tag for the context.
     //  */
     // public function setLanguage(
-    //     Language $language
+    //     null|Language $language
     // ): void {}
 
     /**
@@ -120,7 +123,7 @@ class Context
      * @param Matrix|null $matrix A Pango\Matrix, or null to unset (set to identity matrix) any existing matrix.
      */
     public function setMatrix(
-        ?Matrix $matrix
+        null|Matrix $matrix
     ): void {}
 
     /**
@@ -152,17 +155,6 @@ class Context
      */
     public function setResolution(
         float $dpi
-    ): void {}
-
-    /**
-     * Updates a Pango\Context previously created for use with Cairo to match
-     * the current transformation and target surface of a Cairo context.
-     *
-     * If any layouts have been created for the context, it’s necessary to call
-     * pango_layout_context_changed() on those layouts.
-     */
-    public function updateContext(
-        \Cairo\Context $context
     ): void {}
 }
 
