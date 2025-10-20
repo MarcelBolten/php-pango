@@ -178,7 +178,7 @@ PHP_MSHUTDOWN_FUNCTION(pango)
      * Note: FcFini() is intentionally not called here.
      * Calling FcFini() can cause issues in parallel test execution because
      * fontconfig manages shared resources (cache files) that may still be
-     * in use by other processes. Let the OS clean up when the process exits.
+     * in use by other processes. Let the OS clean up when the process exits. 
      */
 
     /* uncomment this line if you have INI entries
