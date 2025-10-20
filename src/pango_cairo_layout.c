@@ -97,11 +97,6 @@ PHP_METHOD(PangoCairo_Layout, updateLayout)
     layout_object = Z_PANGO_LAYOUT_P(getThis());
     cairo_context_object = Z_CAIRO_CONTEXT_P(&layout_object->cairo_context_zv);
     pango_cairo_update_layout(cairo_context_object->context, layout_object->layout);
-
-    // if (Z_TYPE(layout_object->pango_context_zv) != IS_UNDEF) {
-    //     pango_context_object *pango_context_object = Z_PANGO_CONTEXT_P(&layout_object->pango_context_zv);
-    //     pango_context_object->context = pango_layout_get_context(layout_object->layout);
-    // }
 }
 /* }}} */
 
