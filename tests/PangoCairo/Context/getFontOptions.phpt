@@ -1,5 +1,5 @@
 --TEST--
-Pango\Context::getResolution()
+PangoCairo\Context::getFontOptions()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -10,12 +10,14 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
 var_dump($cairoContext);
 
-$pangoContext = Pango\Context::createFromCairoContext($cairoContext);
+$pangoContext = new PangoCairo\Context($cairoContext);
 var_dump($pangoContext);
-var_dump($pangoContext->getResolution());
+
+$fontOptions = $pangoContext->getFontOptions();
+var_dump($fontOptions);
 
 try {
-    $pangoContext->getResolution(1);
+    $pangoContext->getFontOptions(1);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -23,7 +25,8 @@ try {
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
 }
-object(Pango\Context)#%d (0) {
+object(PangoCairo\Context)#%d (0) {
 }
-float(-1)
-Pango\Context::getResolution() expects exactly 0 arguments, 1 given
+object(Cairo\FontOptions)#%d (0) {
+}
+PangoCairo\Context::getFontOptions() expects exactly 0 arguments, 1 given

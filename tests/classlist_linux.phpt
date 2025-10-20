@@ -13,7 +13,7 @@ $ext = new ReflectionExtension('pango');
 var_dump($ext->getClassNames());
 ?>
 --EXPECT--
-array(28) {
+array(30) {
   [0]=>
   string(11) "Pango\Pango"
   [1]=>
@@ -70,4 +70,8 @@ array(28) {
   string(16) "Pango\FontFamily"
   [27]=>
   string(14) "Pango\FontFace"
+  [28]=>
+  string(17) "PangoCairo\Layout"
+  [29]=>
+  string(18) "PangoCairo\Context"
 }

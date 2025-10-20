@@ -1,14 +1,20 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: d8c1ad6018f130d5957fb92901dc29371be83d77 */
+ * Stub hash: 51ed52b32bd5aaf9af17231142d965c85267fc34 */
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_createFromCairoContext, 0, 1, Pango\\Context, 0)
-	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Context___construct, 0, 0, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, fontmap, Pango\\FontMap, 1, "null")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getBaseDir, 0, 0, Pango\\Direction, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getBaseGravity, 0, 0, Pango\\Gravity, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getFontDescription, 0, 0, Pango\\FontDescription, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_getFontMap, 0, 0, Pango\\FontMap, 1)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Context_getGravity arginfo_class_Pango_Context_getBaseGravity
@@ -22,12 +28,19 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_getRoundGlyphPositions, 0, 0, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_listFamilies, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setBaseDir, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, direction, Pango\\Direction, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setBaseGravity, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, gravity, Pango\\Gravity, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setFontDescription, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setGravityHint, 0, 1, IS_VOID, 0)
@@ -42,49 +55,40 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setRoundGlyp
 	ZEND_ARG_TYPE_INFO(0, round, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_getResolution, 0, 0, IS_DOUBLE, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setResolution, 0, 1, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, dpi, IS_DOUBLE, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_updateContext, 0, 1, IS_VOID, 0)
-	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_METHOD(Pango_Context, createFromCairoContext);
+ZEND_METHOD(Pango_Context, __construct);
 ZEND_METHOD(Pango_Context, getBaseDir);
 ZEND_METHOD(Pango_Context, getBaseGravity);
+ZEND_METHOD(Pango_Context, getFontDescription);
+ZEND_METHOD(Pango_Context, getFontMap);
 ZEND_METHOD(Pango_Context, getGravity);
 ZEND_METHOD(Pango_Context, getGravityHint);
 ZEND_METHOD(Pango_Context, getMatrix);
 ZEND_METHOD(Pango_Context, getRoundGlyphPositions);
+ZEND_METHOD(Pango_Context, listFamilies);
 ZEND_METHOD(Pango_Context, setBaseDir);
 ZEND_METHOD(Pango_Context, setBaseGravity);
+ZEND_METHOD(Pango_Context, setFontDescription);
 ZEND_METHOD(Pango_Context, setGravityHint);
 ZEND_METHOD(Pango_Context, setMatrix);
 ZEND_METHOD(Pango_Context, setRoundGlyphPositions);
-ZEND_METHOD(Pango_Context, getResolution);
-ZEND_METHOD(Pango_Context, setResolution);
-ZEND_METHOD(Pango_Context, updateContext);
 
 static const zend_function_entry class_Pango_Context_methods[] = {
-	ZEND_ME(Pango_Context, createFromCairoContext, arginfo_class_Pango_Context_createFromCairoContext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(Pango_Context, __construct, arginfo_class_Pango_Context___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getBaseDir, arginfo_class_Pango_Context_getBaseDir, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getBaseGravity, arginfo_class_Pango_Context_getBaseGravity, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, getFontDescription, arginfo_class_Pango_Context_getFontDescription, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, getFontMap, arginfo_class_Pango_Context_getFontMap, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getGravity, arginfo_class_Pango_Context_getGravity, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getGravityHint, arginfo_class_Pango_Context_getGravityHint, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getMatrix, arginfo_class_Pango_Context_getMatrix, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, getRoundGlyphPositions, arginfo_class_Pango_Context_getRoundGlyphPositions, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, listFamilies, arginfo_class_Pango_Context_listFamilies, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setBaseDir, arginfo_class_Pango_Context_setBaseDir, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setBaseGravity, arginfo_class_Pango_Context_setBaseGravity, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Context, setFontDescription, arginfo_class_Pango_Context_setFontDescription, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setGravityHint, arginfo_class_Pango_Context_setGravityHint, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setMatrix, arginfo_class_Pango_Context_setMatrix, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setRoundGlyphPositions, arginfo_class_Pango_Context_setRoundGlyphPositions, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Context, getResolution, arginfo_class_Pango_Context_getResolution, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Context, setResolution, arginfo_class_Pango_Context_setResolution, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Context, updateContext, arginfo_class_Pango_Context_updateContext, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

@@ -44,21 +44,21 @@ pango_layout_object *pango_layout_fetch_object(zend_object *object)
     return (pango_layout_object *) ((char*)(object) - XtOffsetOf(pango_layout_object, std));
 }
 
-/* {{{ Creates a PangoLayout based on the Cairo or Pango Context object */
+/* {{{ Creates a PangoLayout based on the Pango Context object */
 PHP_METHOD(Pango_Layout, __construct)
 {
     zval *context_zval = NULL;
-    cairo_context_object *context_object;
+    pango_context_object *context_object;
     pango_layout_object *layout_object;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_OBJECT_OF_CLASS(context_zval, php_cairo_get_context_ce())
+        Z_PARAM_OBJECT_OF_CLASS(context_zval, php_pango_get_context_ce())
     ZEND_PARSE_PARAMETERS_END();
 
-    context_object = Z_CAIRO_CONTEXT_P(context_zval);
+    context_object = Z_PANGO_CONTEXT_P(context_zval);
 
     layout_object = Z_PANGO_LAYOUT_P(getThis());
-    layout_object->layout = pango_cairo_create_layout(context_object->context);
+    layout_object->layout = pango_layout_new(context_object->context);
 
     if (layout_object->layout == NULL) {
         zend_throw_exception(
@@ -69,7 +69,7 @@ PHP_METHOD(Pango_Layout, __construct)
         RETURN_THROWS();
     }
 
-    ZVAL_COPY(&layout_object->cairo_context_zv, context_zval);
+    ZVAL_COPY(&layout_object->pango_context_zv, context_zval);
 }
 /* }}} */
 
@@ -233,55 +233,6 @@ PHP_METHOD(Pango_Layout, setMarkupWithAccel)
 
     first_accel_char_len = g_unichar_to_utf8(first_accel_codepoint, first_accel_char);
     RETURN_STRINGL(first_accel_char, first_accel_char_len);
-}
-/* }}} */
-
-/* {{{ Updates the private PangoContext of a PangoLayout to match the current transformation
-       and target surface of a Cairo context. */
-PHP_METHOD(Pango_Layout, updateLayout)
-{
-    pango_layout_object *layout_object;
-    cairo_context_object *context_object;
-    zval *cairo_context_zv;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1);
-        Z_PARAM_OBJECT_OF_CLASS(cairo_context_zv, php_cairo_get_context_ce());
-    ZEND_PARSE_PARAMETERS_END();
-
-    layout_object = Z_PANGO_LAYOUT_P(getThis());
-    context_object = Z_CAIRO_CONTEXT_P(cairo_context_zv);
-    pango_cairo_update_layout(context_object->context, layout_object->layout);
-
-    zval_ptr_dtor(&layout_object->cairo_context_zv);
-    ZVAL_COPY(&layout_object->cairo_context_zv, cairo_context_zv);
-}
-/* }}} */
-
-/* {{{ Draws a PangoLayoutLine in the specified cairo context. */
-PHP_METHOD(Pango_Layout, showLayout)
-{
-    pango_layout_object *layout_object;
-    cairo_context_object *context_object;
-
-    ZEND_PARSE_PARAMETERS_NONE();
-
-    layout_object = Z_PANGO_LAYOUT_P(getThis());
-    context_object = Z_CAIRO_CONTEXT_P(&layout_object->cairo_context_zv);
-    pango_cairo_show_layout(context_object->context, layout_object->layout);
-}
-/* }}} */
-
-/* {{{ Adds the specified text to the current path in the specified cairo context. */
-PHP_METHOD(Pango_Layout, layoutPath)
-{
-    pango_layout_object *layout_object;
-    cairo_context_object *context_object;
-
-    ZEND_PARSE_PARAMETERS_NONE();
-
-    layout_object = Z_PANGO_LAYOUT_P(getThis());
-    context_object = Z_CAIRO_CONTEXT_P(&layout_object->cairo_context_zv);
-    pango_cairo_layout_path(context_object->context, layout_object->layout);
 }
 /* }}} */
 
@@ -1036,13 +987,13 @@ static void pango_layout_free_obj(zend_object *zobj)
         return;
     }
 
-    zval_ptr_dtor(&intern->cairo_context_zv);
-    zval_ptr_dtor(&intern->pango_context_zv);
-
     if (intern->layout) {
         g_object_unref(intern->layout);
         intern->layout = NULL;
     }
+
+    zval_ptr_dtor(&intern->pango_context_zv);
+    zval_ptr_dtor(&intern->cairo_context_zv);
 
     zend_object_std_dtor(&intern->std);
 }

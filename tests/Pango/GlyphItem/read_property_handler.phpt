@@ -10,7 +10,7 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
 var_dump($cairoContext);
 
-$layout = new Pango\Layout($cairoContext);
+$layout = new PangoCairo\Layout($cairoContext);
 var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
@@ -26,7 +26,7 @@ foreach ($layout->getLinesReadonly() as $line) {
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
 }
-object(Pango\Layout)#%d (0) {
+object(PangoCairo\Layout)#%d (0) {
 }
 bool(true)
 bool(true)

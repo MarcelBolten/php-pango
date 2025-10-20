@@ -1,8 +1,8 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 2601dd5a04e9babea991f7a39cdb94206a8751ba */
+ * Stub hash: 98981dedc49a07f1d97bf0d5cdae42f51659b9d2 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
-	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
+	ZEND_ARG_OBJ_INFO(0, context, Pango\\Context, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getContext, 0, 0, Pango\\Context, 0)
@@ -45,15 +45,6 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setMarkupWith
 	ZEND_ARG_TYPE_INFO(0, markup, IS_STRING, 0)
 	ZEND_ARG_TYPE_INFO(0, accelMarker, IS_STRING, 0)
 ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_updateLayout, 0, 1, IS_VOID, 0)
-	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_showLayout, 0, 0, IS_VOID, 0)
-ZEND_END_ARG_INFO()
-
-#define arginfo_class_Pango_Layout_layoutPath arginfo_class_Pango_Layout_showLayout
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)
@@ -106,7 +97,8 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_isEllipsized arginfo_class_Pango_Layout_getJustify
 
-#define arginfo_class_Pango_Layout_contextChanged arginfo_class_Pango_Layout_showLayout
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_contextChanged, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getLines arginfo_class_Pango_Layout_getSize
 
@@ -182,9 +174,6 @@ ZEND_METHOD(Pango_Layout, getHeight);
 ZEND_METHOD(Pango_Layout, setHeight);
 ZEND_METHOD(Pango_Layout, setMarkup);
 ZEND_METHOD(Pango_Layout, setMarkupWithAccel);
-ZEND_METHOD(Pango_Layout, updateLayout);
-ZEND_METHOD(Pango_Layout, showLayout);
-ZEND_METHOD(Pango_Layout, layoutPath);
 ZEND_METHOD(Pango_Layout, setFontDescription);
 ZEND_METHOD(Pango_Layout, getFontDescription);
 ZEND_METHOD(Pango_Layout, setAlignment);
@@ -244,9 +233,6 @@ static const zend_function_entry class_Pango_Layout_methods[] = {
 	ZEND_ME(Pango_Layout, setHeight, arginfo_class_Pango_Layout_setHeight, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setMarkup, arginfo_class_Pango_Layout_setMarkup, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setMarkupWithAccel, arginfo_class_Pango_Layout_setMarkupWithAccel, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Layout, updateLayout, arginfo_class_Pango_Layout_updateLayout, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Layout, showLayout, arginfo_class_Pango_Layout_showLayout, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Layout, layoutPath, arginfo_class_Pango_Layout_layoutPath, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setFontDescription, arginfo_class_Pango_Layout_setFontDescription, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, getFontDescription, arginfo_class_Pango_Layout_getFontDescription, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setAlignment, arginfo_class_Pango_Layout_setAlignment, ZEND_ACC_PUBLIC)

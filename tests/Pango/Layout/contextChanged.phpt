@@ -7,10 +7,15 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 ?>
 --FILE--
 <?php
-$cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
-var_dump($cairoContext);
+use PangoCairo\FontMap;
 
-$layout = new Pango\Layout($cairoContext);
+$fontMap = FontMap::getDefault();
+var_dump($fontMap);
+
+$pangoContext = new Pango\Context($fontMap);
+var_dump($pangoContext);
+
+$layout = new Pango\Layout($pangoContext);
 var_dump($layout);
 
 $layout->contextChanged();
@@ -22,7 +27,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Cairo\Context)#%d (0) {
+object(PangoCairo\FontMap)#%d (0) {
+}
+object(Pango\Context)#%d (0) {
 }
 object(Pango\Layout)#%d (0) {
 }

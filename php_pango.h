@@ -60,11 +60,15 @@ PHP_PANGO_API extern zend_class_entry *php_pango_get_rectangle_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_font_map_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_font_family_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_font_face_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_font_map_ce();
 
 /* Objects */
 typedef struct _pango_context_object {
     PangoContext *context;
     zval cairo_context_zv;
+    zval font_map_zv;
+    zval font_options_zv;
+    zval font_description_zv;
     zend_object std;
 } pango_context_object;
 extern pango_context_object *pango_context_fetch_object(zend_object *object);
@@ -192,6 +196,8 @@ PHP_MINIT_FUNCTION(pango_font_map);
 PHP_MINIT_FUNCTION(pango_cairo_font_map);
 PHP_MINIT_FUNCTION(pango_font_family);
 PHP_MINIT_FUNCTION(pango_font_face);
+PHP_MINIT_FUNCTION(pango_cairo_layout);
+PHP_MINIT_FUNCTION(pango_cairo_context);
 
 #ifdef ZTS
 #define PANGO_G(v) TSRMG(pango_globals_id, zend_pango_globals *, v)

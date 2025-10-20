@@ -111,6 +111,10 @@ static zval *pango_item_read_property(zend_object *zobj, zend_string *member, in
 {
     pango_item_object *item_object = pango_item_fetch_object(zobj);
 
+    if (!item_object) {
+        return rv;
+    }
+
     if (strcmp(ZSTR_VAL(member), "analysis") == 0) {
         array_init(rv);
         add_assoc_long(rv, "bidiLevel", item_object->item->analysis.level);
@@ -121,6 +125,7 @@ static zval *pango_item_read_property(zend_object *zobj, zend_string *member, in
             item_object->item->analysis.gravity,
             NULL, false
         );
+        GC_ADDREF(gravity_case);
         add_assoc_object(rv, "gravity", gravity_case);
 
         // add_assoc_long(rv, "flags", item_object->item->analysis.flags);
@@ -172,6 +177,7 @@ static HashTable *pango_item_get_properties(zend_object *object)
         item_object->item->analysis.gravity,
         NULL, false
     );
+    GC_ADDREF(gravity_case);
     add_assoc_object(&tmp, "gravity", gravity_case);
 
     // add_assoc_long(&tmp, "flags", item_object->item->analysis.flags);
@@ -192,7 +198,6 @@ static HashTable *pango_item_get_properties(zend_object *object)
         add_assoc_null(&tmp, "language");
     }
     zend_hash_str_update(props, "analysis", sizeof("analysis")-1, &tmp);
-
 
     PANGO_ADD_STRUCT_VALUE(offset, offset);
     PANGO_ADD_STRUCT_VALUE(length, length);
