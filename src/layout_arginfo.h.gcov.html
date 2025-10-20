@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-17 07:15:41</td>
+            <td class="headerValue">2025-10-20 21:04:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -61,10 +61,10 @@
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
 <span id="L1"><span class="lineNum">       1</span>              : /* This is a generated file, edit the .stub.php file instead.</span>
-<span id="L2"><span class="lineNum">       2</span>              :  * Stub hash: 2601dd5a04e9babea991f7a39cdb94206a8751ba */</span>
+<span id="L2"><span class="lineNum">       2</span>              :  * Stub hash: 98981dedc49a07f1d97bf0d5cdae42f51659b9d2 */</span>
 <span id="L3"><span class="lineNum">       3</span>              : </span>
 <span id="L4"><span class="lineNum">       4</span>              : ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)</span>
-<span id="L5"><span class="lineNum">       5</span>              :     ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)</span>
+<span id="L5"><span class="lineNum">       5</span>              :     ZEND_ARG_OBJ_INFO(0, context, Pango\\Context, 0)</span>
 <span id="L6"><span class="lineNum">       6</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L7"><span class="lineNum">       7</span>              : </span>
 <span id="L8"><span class="lineNum">       8</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getContext, 0, 0, Pango\\Context, 0)</span>
@@ -108,353 +108,339 @@
 <span id="L46"><span class="lineNum">      46</span>              :     ZEND_ARG_TYPE_INFO(0, accelMarker, IS_STRING, 0)</span>
 <span id="L47"><span class="lineNum">      47</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L48"><span class="lineNum">      48</span>              : </span>
-<span id="L49"><span class="lineNum">      49</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_updateLayout, 0, 1, IS_VOID, 0)</span>
-<span id="L50"><span class="lineNum">      50</span>              :     ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)</span>
+<span id="L49"><span class="lineNum">      49</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, IS_VOID, 0)</span>
+<span id="L50"><span class="lineNum">      50</span>              :     ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)</span>
 <span id="L51"><span class="lineNum">      51</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L52"><span class="lineNum">      52</span>              : </span>
-<span id="L53"><span class="lineNum">      53</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_showLayout, 0, 0, IS_VOID, 0)</span>
+<span id="L53"><span class="lineNum">      53</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getFontDescription, 0, 0, Pango\\FontDescription, 1)</span>
 <span id="L54"><span class="lineNum">      54</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L55"><span class="lineNum">      55</span>              : </span>
-<span id="L56"><span class="lineNum">      56</span>              : #define arginfo_class_Pango_Layout_layoutPath arginfo_class_Pango_Layout_showLayout</span>
-<span id="L57"><span class="lineNum">      57</span>              : </span>
-<span id="L58"><span class="lineNum">      58</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, IS_VOID, 0)</span>
-<span id="L59"><span class="lineNum">      59</span>              :     ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)</span>
-<span id="L60"><span class="lineNum">      60</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L61"><span class="lineNum">      61</span>              : </span>
-<span id="L62"><span class="lineNum">      62</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getFontDescription, 0, 0, Pango\\FontDescription, 1)</span>
-<span id="L63"><span class="lineNum">      63</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L64"><span class="lineNum">      64</span>              : </span>
-<span id="L65"><span class="lineNum">      65</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAlignment, 0, 1, IS_VOID, 0)</span>
-<span id="L66"><span class="lineNum">      66</span>              :     ZEND_ARG_OBJ_INFO(0, alignment, Pango\\Alignment, 0)</span>
-<span id="L67"><span class="lineNum">      67</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L68"><span class="lineNum">      68</span>              : </span>
-<span id="L69"><span class="lineNum">      69</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getAlignment, 0, 0, Pango\\Alignment, 0)</span>
-<span id="L70"><span class="lineNum">      70</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L71"><span class="lineNum">      71</span>              : </span>
-<span id="L72"><span class="lineNum">      72</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustify, 0, 1, IS_VOID, 0)</span>
-<span id="L73"><span class="lineNum">      73</span>              :     ZEND_ARG_TYPE_INFO(0, justify, _IS_BOOL, 0)</span>
-<span id="L74"><span class="lineNum">      74</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L75"><span class="lineNum">      75</span>              : </span>
-<span id="L76"><span class="lineNum">      76</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustify, 0, 0, _IS_BOOL, 0)</span>
-<span id="L77"><span class="lineNum">      77</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L56"><span class="lineNum">      56</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAlignment, 0, 1, IS_VOID, 0)</span>
+<span id="L57"><span class="lineNum">      57</span>              :     ZEND_ARG_OBJ_INFO(0, alignment, Pango\\Alignment, 0)</span>
+<span id="L58"><span class="lineNum">      58</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L59"><span class="lineNum">      59</span>              : </span>
+<span id="L60"><span class="lineNum">      60</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getAlignment, 0, 0, Pango\\Alignment, 0)</span>
+<span id="L61"><span class="lineNum">      61</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L62"><span class="lineNum">      62</span>              : </span>
+<span id="L63"><span class="lineNum">      63</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustify, 0, 1, IS_VOID, 0)</span>
+<span id="L64"><span class="lineNum">      64</span>              :     ZEND_ARG_TYPE_INFO(0, justify, _IS_BOOL, 0)</span>
+<span id="L65"><span class="lineNum">      65</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L66"><span class="lineNum">      66</span>              : </span>
+<span id="L67"><span class="lineNum">      67</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustify, 0, 0, _IS_BOOL, 0)</span>
+<span id="L68"><span class="lineNum">      68</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L69"><span class="lineNum">      69</span>              : </span>
+<span id="L70"><span class="lineNum">      70</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setWrap, 0, 1, IS_VOID, 0)</span>
+<span id="L71"><span class="lineNum">      71</span>              :     ZEND_ARG_OBJ_INFO(0, wrap, Pango\\WrapMode, 0)</span>
+<span id="L72"><span class="lineNum">      72</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L73"><span class="lineNum">      73</span>              : </span>
+<span id="L74"><span class="lineNum">      74</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getWrap, 0, 0, Pango\\WrapMode, 0)</span>
+<span id="L75"><span class="lineNum">      75</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L76"><span class="lineNum">      76</span>              : </span>
+<span id="L77"><span class="lineNum">      77</span>              : #define arginfo_class_Pango_Layout_isWrapped arginfo_class_Pango_Layout_getJustify</span>
 <span id="L78"><span class="lineNum">      78</span>              : </span>
-<span id="L79"><span class="lineNum">      79</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setWrap, 0, 1, IS_VOID, 0)</span>
-<span id="L80"><span class="lineNum">      80</span>              :     ZEND_ARG_OBJ_INFO(0, wrap, Pango\\WrapMode, 0)</span>
+<span id="L79"><span class="lineNum">      79</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setIndent, 0, 1, IS_VOID, 0)</span>
+<span id="L80"><span class="lineNum">      80</span>              :     ZEND_ARG_TYPE_INFO(0, indent, IS_LONG, 0)</span>
 <span id="L81"><span class="lineNum">      81</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L82"><span class="lineNum">      82</span>              : </span>
-<span id="L83"><span class="lineNum">      83</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getWrap, 0, 0, Pango\\WrapMode, 0)</span>
-<span id="L84"><span class="lineNum">      84</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L85"><span class="lineNum">      85</span>              : </span>
-<span id="L86"><span class="lineNum">      86</span>              : #define arginfo_class_Pango_Layout_isWrapped arginfo_class_Pango_Layout_getJustify</span>
-<span id="L87"><span class="lineNum">      87</span>              : </span>
-<span id="L88"><span class="lineNum">      88</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setIndent, 0, 1, IS_VOID, 0)</span>
-<span id="L89"><span class="lineNum">      89</span>              :     ZEND_ARG_TYPE_INFO(0, indent, IS_LONG, 0)</span>
-<span id="L90"><span class="lineNum">      90</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L91"><span class="lineNum">      91</span>              : </span>
-<span id="L92"><span class="lineNum">      92</span>              : #define arginfo_class_Pango_Layout_getIndent arginfo_class_Pango_Layout_getWidth</span>
-<span id="L93"><span class="lineNum">      93</span>              : </span>
-<span id="L94"><span class="lineNum">      94</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSpacing, 0, 1, IS_VOID, 0)</span>
-<span id="L95"><span class="lineNum">      95</span>              :     ZEND_ARG_TYPE_INFO(0, spacing, IS_LONG, 0)</span>
+<span id="L83"><span class="lineNum">      83</span>              : #define arginfo_class_Pango_Layout_getIndent arginfo_class_Pango_Layout_getWidth</span>
+<span id="L84"><span class="lineNum">      84</span>              : </span>
+<span id="L85"><span class="lineNum">      85</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSpacing, 0, 1, IS_VOID, 0)</span>
+<span id="L86"><span class="lineNum">      86</span>              :     ZEND_ARG_TYPE_INFO(0, spacing, IS_LONG, 0)</span>
+<span id="L87"><span class="lineNum">      87</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L88"><span class="lineNum">      88</span>              : </span>
+<span id="L89"><span class="lineNum">      89</span>              : #define arginfo_class_Pango_Layout_getSpacing arginfo_class_Pango_Layout_getWidth</span>
+<span id="L90"><span class="lineNum">      90</span>              : </span>
+<span id="L91"><span class="lineNum">      91</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setEllipsize, 0, 1, IS_VOID, 0)</span>
+<span id="L92"><span class="lineNum">      92</span>              :     ZEND_ARG_OBJ_INFO(0, mode, Pango\\EllipsizeMode, 0)</span>
+<span id="L93"><span class="lineNum">      93</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L94"><span class="lineNum">      94</span>              : </span>
+<span id="L95"><span class="lineNum">      95</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getEllipsize, 0, 0, Pango\\EllipsizeMode, 0)</span>
 <span id="L96"><span class="lineNum">      96</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L97"><span class="lineNum">      97</span>              : </span>
-<span id="L98"><span class="lineNum">      98</span>              : #define arginfo_class_Pango_Layout_getSpacing arginfo_class_Pango_Layout_getWidth</span>
+<span id="L98"><span class="lineNum">      98</span>              : #define arginfo_class_Pango_Layout_isEllipsized arginfo_class_Pango_Layout_getJustify</span>
 <span id="L99"><span class="lineNum">      99</span>              : </span>
-<span id="L100"><span class="lineNum">     100</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setEllipsize, 0, 1, IS_VOID, 0)</span>
-<span id="L101"><span class="lineNum">     101</span>              :     ZEND_ARG_OBJ_INFO(0, mode, Pango\\EllipsizeMode, 0)</span>
-<span id="L102"><span class="lineNum">     102</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L103"><span class="lineNum">     103</span>              : </span>
-<span id="L104"><span class="lineNum">     104</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getEllipsize, 0, 0, Pango\\EllipsizeMode, 0)</span>
-<span id="L105"><span class="lineNum">     105</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L100"><span class="lineNum">     100</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_contextChanged, 0, 0, IS_VOID, 0)</span>
+<span id="L101"><span class="lineNum">     101</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L102"><span class="lineNum">     102</span>              : </span>
+<span id="L103"><span class="lineNum">     103</span>              : #define arginfo_class_Pango_Layout_getLines arginfo_class_Pango_Layout_getSize</span>
+<span id="L104"><span class="lineNum">     104</span>              : </span>
+<span id="L105"><span class="lineNum">     105</span>              : #define arginfo_class_Pango_Layout_getLinesReadonly arginfo_class_Pango_Layout_getSize</span>
 <span id="L106"><span class="lineNum">     106</span>              : </span>
-<span id="L107"><span class="lineNum">     107</span>              : #define arginfo_class_Pango_Layout_isEllipsized arginfo_class_Pango_Layout_getJustify</span>
-<span id="L108"><span class="lineNum">     108</span>              : </span>
-<span id="L109"><span class="lineNum">     109</span>              : #define arginfo_class_Pango_Layout_contextChanged arginfo_class_Pango_Layout_showLayout</span>
+<span id="L107"><span class="lineNum">     107</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getLine, 0, 1, Pango\\LayoutLine, 1)</span>
+<span id="L108"><span class="lineNum">     108</span>              :     ZEND_ARG_TYPE_INFO(0, lineIndex, IS_LONG, 0)</span>
+<span id="L109"><span class="lineNum">     109</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L110"><span class="lineNum">     110</span>              : </span>
-<span id="L111"><span class="lineNum">     111</span>              : #define arginfo_class_Pango_Layout_getLines arginfo_class_Pango_Layout_getSize</span>
+<span id="L111"><span class="lineNum">     111</span>              : #define arginfo_class_Pango_Layout_getLineReadonly arginfo_class_Pango_Layout_getLine</span>
 <span id="L112"><span class="lineNum">     112</span>              : </span>
-<span id="L113"><span class="lineNum">     113</span>              : #define arginfo_class_Pango_Layout_getLinesReadonly arginfo_class_Pango_Layout_getSize</span>
+<span id="L113"><span class="lineNum">     113</span>              : #define arginfo_class_Pango_Layout_getLineCount arginfo_class_Pango_Layout_getWidth</span>
 <span id="L114"><span class="lineNum">     114</span>              : </span>
-<span id="L115"><span class="lineNum">     115</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getLine, 0, 1, Pango\\LayoutLine, 1)</span>
-<span id="L116"><span class="lineNum">     116</span>              :     ZEND_ARG_TYPE_INFO(0, lineIndex, IS_LONG, 0)</span>
-<span id="L117"><span class="lineNum">     117</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L118"><span class="lineNum">     118</span>              : </span>
-<span id="L119"><span class="lineNum">     119</span>              : #define arginfo_class_Pango_Layout_getLineReadonly arginfo_class_Pango_Layout_getLine</span>
+<span id="L115"><span class="lineNum">     115</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L116"><span class="lineNum">     116</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_serialize, 0, 0, IS_STRING, 0)</span>
+<span id="L117"><span class="lineNum">     117</span>              :     ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, &quot;Pango\\Pango\\Layout::SERIALIZE_DEFAULT&quot;)</span>
+<span id="L118"><span class="lineNum">     118</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L119"><span class="lineNum">     119</span>              : #endif</span>
 <span id="L120"><span class="lineNum">     120</span>              : </span>
-<span id="L121"><span class="lineNum">     121</span>              : #define arginfo_class_Pango_Layout_getLineCount arginfo_class_Pango_Layout_getWidth</span>
+<span id="L121"><span class="lineNum">     121</span>              : #define arginfo_class_Pango_Layout_getBaseline arginfo_class_Pango_Layout_getWidth</span>
 <span id="L122"><span class="lineNum">     122</span>              : </span>
-<span id="L123"><span class="lineNum">     123</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
-<span id="L124"><span class="lineNum">     124</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_serialize, 0, 0, IS_STRING, 0)</span>
-<span id="L125"><span class="lineNum">     125</span>              :     ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, &quot;Pango\\Pango\\Layout::SERIALIZE_DEFAULT&quot;)</span>
-<span id="L126"><span class="lineNum">     126</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L127"><span class="lineNum">     127</span>              : #endif</span>
+<span id="L123"><span class="lineNum">     123</span>              : #define arginfo_class_Pango_Layout_getAutoDir arginfo_class_Pango_Layout_getJustify</span>
+<span id="L124"><span class="lineNum">     124</span>              : </span>
+<span id="L125"><span class="lineNum">     125</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAutoDir, 0, 1, IS_VOID, 0)</span>
+<span id="L126"><span class="lineNum">     126</span>              :     ZEND_ARG_TYPE_INFO(0, autoDir, _IS_BOOL, 0)</span>
+<span id="L127"><span class="lineNum">     127</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L128"><span class="lineNum">     128</span>              : </span>
-<span id="L129"><span class="lineNum">     129</span>              : #define arginfo_class_Pango_Layout_getBaseline arginfo_class_Pango_Layout_getWidth</span>
+<span id="L129"><span class="lineNum">     129</span>              : #define arginfo_class_Pango_Layout_getCharacterCount arginfo_class_Pango_Layout_getWidth</span>
 <span id="L130"><span class="lineNum">     130</span>              : </span>
-<span id="L131"><span class="lineNum">     131</span>              : #define arginfo_class_Pango_Layout_getAutoDir arginfo_class_Pango_Layout_getJustify</span>
-<span id="L132"><span class="lineNum">     132</span>              : </span>
-<span id="L133"><span class="lineNum">     133</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAutoDir, 0, 1, IS_VOID, 0)</span>
-<span id="L134"><span class="lineNum">     134</span>              :     ZEND_ARG_TYPE_INFO(0, autoDir, _IS_BOOL, 0)</span>
-<span id="L135"><span class="lineNum">     135</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L131"><span class="lineNum">     131</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 46, 0)</span>
+<span id="L132"><span class="lineNum">     132</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getDirection, 0, 1, Pango\\Direction, 0)</span>
+<span id="L133"><span class="lineNum">     133</span>              :     ZEND_ARG_TYPE_INFO(0, byteIndex, IS_LONG, 0)</span>
+<span id="L134"><span class="lineNum">     134</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L135"><span class="lineNum">     135</span>              : #endif</span>
 <span id="L136"><span class="lineNum">     136</span>              : </span>
-<span id="L137"><span class="lineNum">     137</span>              : #define arginfo_class_Pango_Layout_getCharacterCount arginfo_class_Pango_Layout_getWidth</span>
-<span id="L138"><span class="lineNum">     138</span>              : </span>
-<span id="L139"><span class="lineNum">     139</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 46, 0)</span>
-<span id="L140"><span class="lineNum">     140</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getDirection, 0, 1, Pango\\Direction, 0)</span>
-<span id="L141"><span class="lineNum">     141</span>              :     ZEND_ARG_TYPE_INFO(0, byteIndex, IS_LONG, 0)</span>
-<span id="L142"><span class="lineNum">     142</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L143"><span class="lineNum">     143</span>              : #endif</span>
-<span id="L144"><span class="lineNum">     144</span>              : </span>
-<span id="L145"><span class="lineNum">     145</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
-<span id="L146"><span class="lineNum">     146</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustifyLastLine, 0, 0, _IS_BOOL, 0)</span>
-<span id="L147"><span class="lineNum">     147</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L148"><span class="lineNum">     148</span>              : </span>
-<span id="L149"><span class="lineNum">     149</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustifyLastLine, 0, 1, IS_VOID, 0)</span>
-<span id="L150"><span class="lineNum">     150</span>              :     ZEND_ARG_TYPE_INFO(0, justifyLastLine, _IS_BOOL, 0)</span>
-<span id="L151"><span class="lineNum">     151</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L152"><span class="lineNum">     152</span>              : #endif</span>
-<span id="L153"><span class="lineNum">     153</span>              : </span>
-<span id="L154"><span class="lineNum">     154</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 44, 0)</span>
-<span id="L155"><span class="lineNum">     155</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getLineSpacing, 0, 0, IS_DOUBLE, 0)</span>
-<span id="L156"><span class="lineNum">     156</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L157"><span class="lineNum">     157</span>              : </span>
-<span id="L158"><span class="lineNum">     158</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setLineSpacing, 0, 1, IS_VOID, 0)</span>
-<span id="L159"><span class="lineNum">     159</span>              :     ZEND_ARG_TYPE_INFO(0, factor, IS_DOUBLE, 0)</span>
-<span id="L160"><span class="lineNum">     160</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L161"><span class="lineNum">     161</span>              : #endif</span>
+<span id="L137"><span class="lineNum">     137</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L138"><span class="lineNum">     138</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustifyLastLine, 0, 0, _IS_BOOL, 0)</span>
+<span id="L139"><span class="lineNum">     139</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L140"><span class="lineNum">     140</span>              : </span>
+<span id="L141"><span class="lineNum">     141</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustifyLastLine, 0, 1, IS_VOID, 0)</span>
+<span id="L142"><span class="lineNum">     142</span>              :     ZEND_ARG_TYPE_INFO(0, justifyLastLine, _IS_BOOL, 0)</span>
+<span id="L143"><span class="lineNum">     143</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L144"><span class="lineNum">     144</span>              : #endif</span>
+<span id="L145"><span class="lineNum">     145</span>              : </span>
+<span id="L146"><span class="lineNum">     146</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 44, 0)</span>
+<span id="L147"><span class="lineNum">     147</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getLineSpacing, 0, 0, IS_DOUBLE, 0)</span>
+<span id="L148"><span class="lineNum">     148</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L149"><span class="lineNum">     149</span>              : </span>
+<span id="L150"><span class="lineNum">     150</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setLineSpacing, 0, 1, IS_VOID, 0)</span>
+<span id="L151"><span class="lineNum">     151</span>              :     ZEND_ARG_TYPE_INFO(0, factor, IS_DOUBLE, 0)</span>
+<span id="L152"><span class="lineNum">     152</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L153"><span class="lineNum">     153</span>              : #endif</span>
+<span id="L154"><span class="lineNum">     154</span>              : </span>
+<span id="L155"><span class="lineNum">     155</span>              : #define arginfo_class_Pango_Layout_getUnknownGlyphsCount arginfo_class_Pango_Layout_getWidth</span>
+<span id="L156"><span class="lineNum">     156</span>              : </span>
+<span id="L157"><span class="lineNum">     157</span>              : #define arginfo_class_Pango_Layout_getSingleParagraphMode arginfo_class_Pango_Layout_getJustify</span>
+<span id="L158"><span class="lineNum">     158</span>              : </span>
+<span id="L159"><span class="lineNum">     159</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSingleParagraphMode, 0, 1, IS_VOID, 0)</span>
+<span id="L160"><span class="lineNum">     160</span>              :     ZEND_ARG_TYPE_INFO(0, setting, _IS_BOOL, 0)</span>
+<span id="L161"><span class="lineNum">     161</span>              : ZEND_END_ARG_INFO()</span>
 <span id="L162"><span class="lineNum">     162</span>              : </span>
-<span id="L163"><span class="lineNum">     163</span>              : #define arginfo_class_Pango_Layout_getUnknownGlyphsCount arginfo_class_Pango_Layout_getWidth</span>
-<span id="L164"><span class="lineNum">     164</span>              : </span>
-<span id="L165"><span class="lineNum">     165</span>              : #define arginfo_class_Pango_Layout_getSingleParagraphMode arginfo_class_Pango_Layout_getJustify</span>
-<span id="L166"><span class="lineNum">     166</span>              : </span>
-<span id="L167"><span class="lineNum">     167</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSingleParagraphMode, 0, 1, IS_VOID, 0)</span>
-<span id="L168"><span class="lineNum">     168</span>              :     ZEND_ARG_TYPE_INFO(0, setting, _IS_BOOL, 0)</span>
-<span id="L169"><span class="lineNum">     169</span>              : ZEND_END_ARG_INFO()</span>
-<span id="L170"><span class="lineNum">     170</span>              : </span>
-<span id="L171"><span class="lineNum">     171</span>              : ZEND_METHOD(Pango_Layout, __construct);</span>
-<span id="L172"><span class="lineNum">     172</span>              : ZEND_METHOD(Pango_Layout, getContext);</span>
-<span id="L173"><span class="lineNum">     173</span>              : ZEND_METHOD(Pango_Layout, setText);</span>
-<span id="L174"><span class="lineNum">     174</span>              : ZEND_METHOD(Pango_Layout, getText);</span>
-<span id="L175"><span class="lineNum">     175</span>              : ZEND_METHOD(Pango_Layout, getWidth);</span>
-<span id="L176"><span class="lineNum">     176</span>              : ZEND_METHOD(Pango_Layout, getSize);</span>
-<span id="L177"><span class="lineNum">     177</span>              : ZEND_METHOD(Pango_Layout, getPixelSize);</span>
-<span id="L178"><span class="lineNum">     178</span>              : ZEND_METHOD(Pango_Layout, getExtents);</span>
-<span id="L179"><span class="lineNum">     179</span>              : ZEND_METHOD(Pango_Layout, getPixelExtents);</span>
-<span id="L180"><span class="lineNum">     180</span>              : ZEND_METHOD(Pango_Layout, setWidth);</span>
-<span id="L181"><span class="lineNum">     181</span>              : ZEND_METHOD(Pango_Layout, getHeight);</span>
-<span id="L182"><span class="lineNum">     182</span>              : ZEND_METHOD(Pango_Layout, setHeight);</span>
-<span id="L183"><span class="lineNum">     183</span>              : ZEND_METHOD(Pango_Layout, setMarkup);</span>
-<span id="L184"><span class="lineNum">     184</span>              : ZEND_METHOD(Pango_Layout, setMarkupWithAccel);</span>
-<span id="L185"><span class="lineNum">     185</span>              : ZEND_METHOD(Pango_Layout, updateLayout);</span>
-<span id="L186"><span class="lineNum">     186</span>              : ZEND_METHOD(Pango_Layout, showLayout);</span>
-<span id="L187"><span class="lineNum">     187</span>              : ZEND_METHOD(Pango_Layout, layoutPath);</span>
-<span id="L188"><span class="lineNum">     188</span>              : ZEND_METHOD(Pango_Layout, setFontDescription);</span>
-<span id="L189"><span class="lineNum">     189</span>              : ZEND_METHOD(Pango_Layout, getFontDescription);</span>
-<span id="L190"><span class="lineNum">     190</span>              : ZEND_METHOD(Pango_Layout, setAlignment);</span>
-<span id="L191"><span class="lineNum">     191</span>              : ZEND_METHOD(Pango_Layout, getAlignment);</span>
-<span id="L192"><span class="lineNum">     192</span>              : ZEND_METHOD(Pango_Layout, setJustify);</span>
-<span id="L193"><span class="lineNum">     193</span>              : ZEND_METHOD(Pango_Layout, getJustify);</span>
-<span id="L194"><span class="lineNum">     194</span>              : ZEND_METHOD(Pango_Layout, setWrap);</span>
-<span id="L195"><span class="lineNum">     195</span>              : ZEND_METHOD(Pango_Layout, getWrap);</span>
-<span id="L196"><span class="lineNum">     196</span>              : ZEND_METHOD(Pango_Layout, isWrapped);</span>
-<span id="L197"><span class="lineNum">     197</span>              : ZEND_METHOD(Pango_Layout, setIndent);</span>
-<span id="L198"><span class="lineNum">     198</span>              : ZEND_METHOD(Pango_Layout, getIndent);</span>
-<span id="L199"><span class="lineNum">     199</span>              : ZEND_METHOD(Pango_Layout, setSpacing);</span>
-<span id="L200"><span class="lineNum">     200</span>              : ZEND_METHOD(Pango_Layout, getSpacing);</span>
-<span id="L201"><span class="lineNum">     201</span>              : ZEND_METHOD(Pango_Layout, setEllipsize);</span>
-<span id="L202"><span class="lineNum">     202</span>              : ZEND_METHOD(Pango_Layout, getEllipsize);</span>
-<span id="L203"><span class="lineNum">     203</span>              : ZEND_METHOD(Pango_Layout, isEllipsized);</span>
-<span id="L204"><span class="lineNum">     204</span>              : ZEND_METHOD(Pango_Layout, contextChanged);</span>
-<span id="L205"><span class="lineNum">     205</span>              : ZEND_METHOD(Pango_Layout, getLines);</span>
-<span id="L206"><span class="lineNum">     206</span>              : ZEND_METHOD(Pango_Layout, getLinesReadonly);</span>
-<span id="L207"><span class="lineNum">     207</span>              : ZEND_METHOD(Pango_Layout, getLine);</span>
-<span id="L208"><span class="lineNum">     208</span>              : ZEND_METHOD(Pango_Layout, getLineReadonly);</span>
-<span id="L209"><span class="lineNum">     209</span>              : ZEND_METHOD(Pango_Layout, getLineCount);</span>
-<span id="L210"><span class="lineNum">     210</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
-<span id="L211"><span class="lineNum">     211</span>              : ZEND_METHOD(Pango_Layout, serialize);</span>
+<span id="L163"><span class="lineNum">     163</span>              : ZEND_METHOD(Pango_Layout, __construct);</span>
+<span id="L164"><span class="lineNum">     164</span>              : ZEND_METHOD(Pango_Layout, getContext);</span>
+<span id="L165"><span class="lineNum">     165</span>              : ZEND_METHOD(Pango_Layout, setText);</span>
+<span id="L166"><span class="lineNum">     166</span>              : ZEND_METHOD(Pango_Layout, getText);</span>
+<span id="L167"><span class="lineNum">     167</span>              : ZEND_METHOD(Pango_Layout, getWidth);</span>
+<span id="L168"><span class="lineNum">     168</span>              : ZEND_METHOD(Pango_Layout, getSize);</span>
+<span id="L169"><span class="lineNum">     169</span>              : ZEND_METHOD(Pango_Layout, getPixelSize);</span>
+<span id="L170"><span class="lineNum">     170</span>              : ZEND_METHOD(Pango_Layout, getExtents);</span>
+<span id="L171"><span class="lineNum">     171</span>              : ZEND_METHOD(Pango_Layout, getPixelExtents);</span>
+<span id="L172"><span class="lineNum">     172</span>              : ZEND_METHOD(Pango_Layout, setWidth);</span>
+<span id="L173"><span class="lineNum">     173</span>              : ZEND_METHOD(Pango_Layout, getHeight);</span>
+<span id="L174"><span class="lineNum">     174</span>              : ZEND_METHOD(Pango_Layout, setHeight);</span>
+<span id="L175"><span class="lineNum">     175</span>              : ZEND_METHOD(Pango_Layout, setMarkup);</span>
+<span id="L176"><span class="lineNum">     176</span>              : ZEND_METHOD(Pango_Layout, setMarkupWithAccel);</span>
+<span id="L177"><span class="lineNum">     177</span>              : ZEND_METHOD(Pango_Layout, setFontDescription);</span>
+<span id="L178"><span class="lineNum">     178</span>              : ZEND_METHOD(Pango_Layout, getFontDescription);</span>
+<span id="L179"><span class="lineNum">     179</span>              : ZEND_METHOD(Pango_Layout, setAlignment);</span>
+<span id="L180"><span class="lineNum">     180</span>              : ZEND_METHOD(Pango_Layout, getAlignment);</span>
+<span id="L181"><span class="lineNum">     181</span>              : ZEND_METHOD(Pango_Layout, setJustify);</span>
+<span id="L182"><span class="lineNum">     182</span>              : ZEND_METHOD(Pango_Layout, getJustify);</span>
+<span id="L183"><span class="lineNum">     183</span>              : ZEND_METHOD(Pango_Layout, setWrap);</span>
+<span id="L184"><span class="lineNum">     184</span>              : ZEND_METHOD(Pango_Layout, getWrap);</span>
+<span id="L185"><span class="lineNum">     185</span>              : ZEND_METHOD(Pango_Layout, isWrapped);</span>
+<span id="L186"><span class="lineNum">     186</span>              : ZEND_METHOD(Pango_Layout, setIndent);</span>
+<span id="L187"><span class="lineNum">     187</span>              : ZEND_METHOD(Pango_Layout, getIndent);</span>
+<span id="L188"><span class="lineNum">     188</span>              : ZEND_METHOD(Pango_Layout, setSpacing);</span>
+<span id="L189"><span class="lineNum">     189</span>              : ZEND_METHOD(Pango_Layout, getSpacing);</span>
+<span id="L190"><span class="lineNum">     190</span>              : ZEND_METHOD(Pango_Layout, setEllipsize);</span>
+<span id="L191"><span class="lineNum">     191</span>              : ZEND_METHOD(Pango_Layout, getEllipsize);</span>
+<span id="L192"><span class="lineNum">     192</span>              : ZEND_METHOD(Pango_Layout, isEllipsized);</span>
+<span id="L193"><span class="lineNum">     193</span>              : ZEND_METHOD(Pango_Layout, contextChanged);</span>
+<span id="L194"><span class="lineNum">     194</span>              : ZEND_METHOD(Pango_Layout, getLines);</span>
+<span id="L195"><span class="lineNum">     195</span>              : ZEND_METHOD(Pango_Layout, getLinesReadonly);</span>
+<span id="L196"><span class="lineNum">     196</span>              : ZEND_METHOD(Pango_Layout, getLine);</span>
+<span id="L197"><span class="lineNum">     197</span>              : ZEND_METHOD(Pango_Layout, getLineReadonly);</span>
+<span id="L198"><span class="lineNum">     198</span>              : ZEND_METHOD(Pango_Layout, getLineCount);</span>
+<span id="L199"><span class="lineNum">     199</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L200"><span class="lineNum">     200</span>              : ZEND_METHOD(Pango_Layout, serialize);</span>
+<span id="L201"><span class="lineNum">     201</span>              : #endif</span>
+<span id="L202"><span class="lineNum">     202</span>              : ZEND_METHOD(Pango_Layout, getBaseline);</span>
+<span id="L203"><span class="lineNum">     203</span>              : ZEND_METHOD(Pango_Layout, getAutoDir);</span>
+<span id="L204"><span class="lineNum">     204</span>              : ZEND_METHOD(Pango_Layout, setAutoDir);</span>
+<span id="L205"><span class="lineNum">     205</span>              : ZEND_METHOD(Pango_Layout, getCharacterCount);</span>
+<span id="L206"><span class="lineNum">     206</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 46, 0)</span>
+<span id="L207"><span class="lineNum">     207</span>              : ZEND_METHOD(Pango_Layout, getDirection);</span>
+<span id="L208"><span class="lineNum">     208</span>              : #endif</span>
+<span id="L209"><span class="lineNum">     209</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L210"><span class="lineNum">     210</span>              : ZEND_METHOD(Pango_Layout, getJustifyLastLine);</span>
+<span id="L211"><span class="lineNum">     211</span>              : ZEND_METHOD(Pango_Layout, setJustifyLastLine);</span>
 <span id="L212"><span class="lineNum">     212</span>              : #endif</span>
-<span id="L213"><span class="lineNum">     213</span>              : ZEND_METHOD(Pango_Layout, getBaseline);</span>
-<span id="L214"><span class="lineNum">     214</span>              : ZEND_METHOD(Pango_Layout, getAutoDir);</span>
-<span id="L215"><span class="lineNum">     215</span>              : ZEND_METHOD(Pango_Layout, setAutoDir);</span>
-<span id="L216"><span class="lineNum">     216</span>              : ZEND_METHOD(Pango_Layout, getCharacterCount);</span>
-<span id="L217"><span class="lineNum">     217</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 46, 0)</span>
-<span id="L218"><span class="lineNum">     218</span>              : ZEND_METHOD(Pango_Layout, getDirection);</span>
-<span id="L219"><span class="lineNum">     219</span>              : #endif</span>
-<span id="L220"><span class="lineNum">     220</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
-<span id="L221"><span class="lineNum">     221</span>              : ZEND_METHOD(Pango_Layout, getJustifyLastLine);</span>
-<span id="L222"><span class="lineNum">     222</span>              : ZEND_METHOD(Pango_Layout, setJustifyLastLine);</span>
-<span id="L223"><span class="lineNum">     223</span>              : #endif</span>
-<span id="L224"><span class="lineNum">     224</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 44, 0)</span>
-<span id="L225"><span class="lineNum">     225</span>              : ZEND_METHOD(Pango_Layout, getLineSpacing);</span>
-<span id="L226"><span class="lineNum">     226</span>              : ZEND_METHOD(Pango_Layout, setLineSpacing);</span>
-<span id="L227"><span class="lineNum">     227</span>              : #endif</span>
-<span id="L228"><span class="lineNum">     228</span>              : ZEND_METHOD(Pango_Layout, getUnknownGlyphsCount);</span>
-<span id="L229"><span class="lineNum">     229</span>              : ZEND_METHOD(Pango_Layout, getSingleParagraphMode);</span>
-<span id="L230"><span class="lineNum">     230</span>              : ZEND_METHOD(Pango_Layout, setSingleParagraphMode);</span>
-<span id="L231"><span class="lineNum">     231</span>              : </span>
-<span id="L232"><span class="lineNum">     232</span>              : static const zend_function_entry class_Pango_Layout_methods[] = {</span>
-<span id="L233"><span class="lineNum">     233</span>              :     ZEND_ME(Pango_Layout, __construct, arginfo_class_Pango_Layout___construct, ZEND_ACC_PUBLIC)</span>
-<span id="L234"><span class="lineNum">     234</span>              :     ZEND_ME(Pango_Layout, getContext, arginfo_class_Pango_Layout_getContext, ZEND_ACC_PUBLIC)</span>
-<span id="L235"><span class="lineNum">     235</span>              :     ZEND_ME(Pango_Layout, setText, arginfo_class_Pango_Layout_setText, ZEND_ACC_PUBLIC)</span>
-<span id="L236"><span class="lineNum">     236</span>              :     ZEND_ME(Pango_Layout, getText, arginfo_class_Pango_Layout_getText, ZEND_ACC_PUBLIC)</span>
-<span id="L237"><span class="lineNum">     237</span>              :     ZEND_ME(Pango_Layout, getWidth, arginfo_class_Pango_Layout_getWidth, ZEND_ACC_PUBLIC)</span>
-<span id="L238"><span class="lineNum">     238</span>              :     ZEND_ME(Pango_Layout, getSize, arginfo_class_Pango_Layout_getSize, ZEND_ACC_PUBLIC)</span>
-<span id="L239"><span class="lineNum">     239</span>              :     ZEND_ME(Pango_Layout, getPixelSize, arginfo_class_Pango_Layout_getPixelSize, ZEND_ACC_PUBLIC)</span>
-<span id="L240"><span class="lineNum">     240</span>              :     ZEND_ME(Pango_Layout, getExtents, arginfo_class_Pango_Layout_getExtents, ZEND_ACC_PUBLIC)</span>
-<span id="L241"><span class="lineNum">     241</span>              :     ZEND_ME(Pango_Layout, getPixelExtents, arginfo_class_Pango_Layout_getPixelExtents, ZEND_ACC_PUBLIC)</span>
-<span id="L242"><span class="lineNum">     242</span>              :     ZEND_ME(Pango_Layout, setWidth, arginfo_class_Pango_Layout_setWidth, ZEND_ACC_PUBLIC)</span>
-<span id="L243"><span class="lineNum">     243</span>              :     ZEND_ME(Pango_Layout, getHeight, arginfo_class_Pango_Layout_getHeight, ZEND_ACC_PUBLIC)</span>
-<span id="L244"><span class="lineNum">     244</span>              :     ZEND_ME(Pango_Layout, setHeight, arginfo_class_Pango_Layout_setHeight, ZEND_ACC_PUBLIC)</span>
-<span id="L245"><span class="lineNum">     245</span>              :     ZEND_ME(Pango_Layout, setMarkup, arginfo_class_Pango_Layout_setMarkup, ZEND_ACC_PUBLIC)</span>
-<span id="L246"><span class="lineNum">     246</span>              :     ZEND_ME(Pango_Layout, setMarkupWithAccel, arginfo_class_Pango_Layout_setMarkupWithAccel, ZEND_ACC_PUBLIC)</span>
-<span id="L247"><span class="lineNum">     247</span>              :     ZEND_ME(Pango_Layout, updateLayout, arginfo_class_Pango_Layout_updateLayout, ZEND_ACC_PUBLIC)</span>
-<span id="L248"><span class="lineNum">     248</span>              :     ZEND_ME(Pango_Layout, showLayout, arginfo_class_Pango_Layout_showLayout, ZEND_ACC_PUBLIC)</span>
-<span id="L249"><span class="lineNum">     249</span>              :     ZEND_ME(Pango_Layout, layoutPath, arginfo_class_Pango_Layout_layoutPath, ZEND_ACC_PUBLIC)</span>
-<span id="L250"><span class="lineNum">     250</span>              :     ZEND_ME(Pango_Layout, setFontDescription, arginfo_class_Pango_Layout_setFontDescription, ZEND_ACC_PUBLIC)</span>
-<span id="L251"><span class="lineNum">     251</span>              :     ZEND_ME(Pango_Layout, getFontDescription, arginfo_class_Pango_Layout_getFontDescription, ZEND_ACC_PUBLIC)</span>
-<span id="L252"><span class="lineNum">     252</span>              :     ZEND_ME(Pango_Layout, setAlignment, arginfo_class_Pango_Layout_setAlignment, ZEND_ACC_PUBLIC)</span>
-<span id="L253"><span class="lineNum">     253</span>              :     ZEND_ME(Pango_Layout, getAlignment, arginfo_class_Pango_Layout_getAlignment, ZEND_ACC_PUBLIC)</span>
-<span id="L254"><span class="lineNum">     254</span>              :     ZEND_ME(Pango_Layout, setJustify, arginfo_class_Pango_Layout_setJustify, ZEND_ACC_PUBLIC)</span>
-<span id="L255"><span class="lineNum">     255</span>              :     ZEND_ME(Pango_Layout, getJustify, arginfo_class_Pango_Layout_getJustify, ZEND_ACC_PUBLIC)</span>
-<span id="L256"><span class="lineNum">     256</span>              :     ZEND_ME(Pango_Layout, setWrap, arginfo_class_Pango_Layout_setWrap, ZEND_ACC_PUBLIC)</span>
-<span id="L257"><span class="lineNum">     257</span>              :     ZEND_ME(Pango_Layout, getWrap, arginfo_class_Pango_Layout_getWrap, ZEND_ACC_PUBLIC)</span>
-<span id="L258"><span class="lineNum">     258</span>              :     ZEND_ME(Pango_Layout, isWrapped, arginfo_class_Pango_Layout_isWrapped, ZEND_ACC_PUBLIC)</span>
-<span id="L259"><span class="lineNum">     259</span>              :     ZEND_ME(Pango_Layout, setIndent, arginfo_class_Pango_Layout_setIndent, ZEND_ACC_PUBLIC)</span>
-<span id="L260"><span class="lineNum">     260</span>              :     ZEND_ME(Pango_Layout, getIndent, arginfo_class_Pango_Layout_getIndent, ZEND_ACC_PUBLIC)</span>
-<span id="L261"><span class="lineNum">     261</span>              :     ZEND_ME(Pango_Layout, setSpacing, arginfo_class_Pango_Layout_setSpacing, ZEND_ACC_PUBLIC)</span>
-<span id="L262"><span class="lineNum">     262</span>              :     ZEND_ME(Pango_Layout, getSpacing, arginfo_class_Pango_Layout_getSpacing, ZEND_ACC_PUBLIC)</span>
-<span id="L263"><span class="lineNum">     263</span>              :     ZEND_ME(Pango_Layout, setEllipsize, arginfo_class_Pango_Layout_setEllipsize, ZEND_ACC_PUBLIC)</span>
-<span id="L264"><span class="lineNum">     264</span>              :     ZEND_ME(Pango_Layout, getEllipsize, arginfo_class_Pango_Layout_getEllipsize, ZEND_ACC_PUBLIC)</span>
-<span id="L265"><span class="lineNum">     265</span>              :     ZEND_ME(Pango_Layout, isEllipsized, arginfo_class_Pango_Layout_isEllipsized, ZEND_ACC_PUBLIC)</span>
-<span id="L266"><span class="lineNum">     266</span>              :     ZEND_ME(Pango_Layout, contextChanged, arginfo_class_Pango_Layout_contextChanged, ZEND_ACC_PUBLIC)</span>
-<span id="L267"><span class="lineNum">     267</span>              :     ZEND_ME(Pango_Layout, getLines, arginfo_class_Pango_Layout_getLines, ZEND_ACC_PUBLIC)</span>
-<span id="L268"><span class="lineNum">     268</span>              :     ZEND_ME(Pango_Layout, getLinesReadonly, arginfo_class_Pango_Layout_getLinesReadonly, ZEND_ACC_PUBLIC)</span>
-<span id="L269"><span class="lineNum">     269</span>              :     ZEND_ME(Pango_Layout, getLine, arginfo_class_Pango_Layout_getLine, ZEND_ACC_PUBLIC)</span>
-<span id="L270"><span class="lineNum">     270</span>              :     ZEND_ME(Pango_Layout, getLineReadonly, arginfo_class_Pango_Layout_getLineReadonly, ZEND_ACC_PUBLIC)</span>
-<span id="L271"><span class="lineNum">     271</span>              :     ZEND_ME(Pango_Layout, getLineCount, arginfo_class_Pango_Layout_getLineCount, ZEND_ACC_PUBLIC)</span>
-<span id="L272"><span class="lineNum">     272</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
-<span id="L273"><span class="lineNum">     273</span>              :     ZEND_ME(Pango_Layout, serialize, arginfo_class_Pango_Layout_serialize, ZEND_ACC_PUBLIC)</span>
-<span id="L274"><span class="lineNum">     274</span>              : #endif</span>
-<span id="L275"><span class="lineNum">     275</span>              :     ZEND_ME(Pango_Layout, getBaseline, arginfo_class_Pango_Layout_getBaseline, ZEND_ACC_PUBLIC)</span>
-<span id="L276"><span class="lineNum">     276</span>              :     ZEND_ME(Pango_Layout, getAutoDir, arginfo_class_Pango_Layout_getAutoDir, ZEND_ACC_PUBLIC)</span>
-<span id="L277"><span class="lineNum">     277</span>              :     ZEND_ME(Pango_Layout, setAutoDir, arginfo_class_Pango_Layout_setAutoDir, ZEND_ACC_PUBLIC)</span>
-<span id="L278"><span class="lineNum">     278</span>              :     ZEND_ME(Pango_Layout, getCharacterCount, arginfo_class_Pango_Layout_getCharacterCount, ZEND_ACC_PUBLIC)</span>
-<span id="L279"><span class="lineNum">     279</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 46, 0)</span>
-<span id="L280"><span class="lineNum">     280</span>              :     ZEND_ME(Pango_Layout, getDirection, arginfo_class_Pango_Layout_getDirection, ZEND_ACC_PUBLIC)</span>
-<span id="L281"><span class="lineNum">     281</span>              : #endif</span>
-<span id="L282"><span class="lineNum">     282</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
-<span id="L283"><span class="lineNum">     283</span>              :     ZEND_ME(Pango_Layout, getJustifyLastLine, arginfo_class_Pango_Layout_getJustifyLastLine, ZEND_ACC_PUBLIC)</span>
-<span id="L284"><span class="lineNum">     284</span>              :     ZEND_ME(Pango_Layout, setJustifyLastLine, arginfo_class_Pango_Layout_setJustifyLastLine, ZEND_ACC_PUBLIC)</span>
-<span id="L285"><span class="lineNum">     285</span>              : #endif</span>
-<span id="L286"><span class="lineNum">     286</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 44, 0)</span>
-<span id="L287"><span class="lineNum">     287</span>              :     ZEND_ME(Pango_Layout, getLineSpacing, arginfo_class_Pango_Layout_getLineSpacing, ZEND_ACC_PUBLIC)</span>
-<span id="L288"><span class="lineNum">     288</span>              :     ZEND_ME(Pango_Layout, setLineSpacing, arginfo_class_Pango_Layout_setLineSpacing, ZEND_ACC_PUBLIC)</span>
-<span id="L289"><span class="lineNum">     289</span>              : #endif</span>
-<span id="L290"><span class="lineNum">     290</span>              :     ZEND_ME(Pango_Layout, getUnknownGlyphsCount, arginfo_class_Pango_Layout_getUnknownGlyphsCount, ZEND_ACC_PUBLIC)</span>
-<span id="L291"><span class="lineNum">     291</span>              :     ZEND_ME(Pango_Layout, getSingleParagraphMode, arginfo_class_Pango_Layout_getSingleParagraphMode, ZEND_ACC_PUBLIC)</span>
-<span id="L292"><span class="lineNum">     292</span>              :     ZEND_ME(Pango_Layout, setSingleParagraphMode, arginfo_class_Pango_Layout_setSingleParagraphMode, ZEND_ACC_PUBLIC)</span>
-<span id="L293"><span class="lineNum">     293</span>              :     ZEND_FE_END</span>
-<span id="L294"><span class="lineNum">     294</span>              : };</span>
-<span id="L295"><span class="lineNum">     295</span>              : </span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC tlaBgGNC">         181 : static zend_class_entry *register_class_Pango_Layout(void)</span></span>
-<span id="L297"><span class="lineNum">     297</span>              : {</span>
-<span id="L298"><span class="lineNum">     298</span>              :     zend_class_entry ce, *class_entry;</span>
+<span id="L213"><span class="lineNum">     213</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 44, 0)</span>
+<span id="L214"><span class="lineNum">     214</span>              : ZEND_METHOD(Pango_Layout, getLineSpacing);</span>
+<span id="L215"><span class="lineNum">     215</span>              : ZEND_METHOD(Pango_Layout, setLineSpacing);</span>
+<span id="L216"><span class="lineNum">     216</span>              : #endif</span>
+<span id="L217"><span class="lineNum">     217</span>              : ZEND_METHOD(Pango_Layout, getUnknownGlyphsCount);</span>
+<span id="L218"><span class="lineNum">     218</span>              : ZEND_METHOD(Pango_Layout, getSingleParagraphMode);</span>
+<span id="L219"><span class="lineNum">     219</span>              : ZEND_METHOD(Pango_Layout, setSingleParagraphMode);</span>
+<span id="L220"><span class="lineNum">     220</span>              : </span>
+<span id="L221"><span class="lineNum">     221</span>              : static const zend_function_entry class_Pango_Layout_methods[] = {</span>
+<span id="L222"><span class="lineNum">     222</span>              :     ZEND_ME(Pango_Layout, __construct, arginfo_class_Pango_Layout___construct, ZEND_ACC_PUBLIC)</span>
+<span id="L223"><span class="lineNum">     223</span>              :     ZEND_ME(Pango_Layout, getContext, arginfo_class_Pango_Layout_getContext, ZEND_ACC_PUBLIC)</span>
+<span id="L224"><span class="lineNum">     224</span>              :     ZEND_ME(Pango_Layout, setText, arginfo_class_Pango_Layout_setText, ZEND_ACC_PUBLIC)</span>
+<span id="L225"><span class="lineNum">     225</span>              :     ZEND_ME(Pango_Layout, getText, arginfo_class_Pango_Layout_getText, ZEND_ACC_PUBLIC)</span>
+<span id="L226"><span class="lineNum">     226</span>              :     ZEND_ME(Pango_Layout, getWidth, arginfo_class_Pango_Layout_getWidth, ZEND_ACC_PUBLIC)</span>
+<span id="L227"><span class="lineNum">     227</span>              :     ZEND_ME(Pango_Layout, getSize, arginfo_class_Pango_Layout_getSize, ZEND_ACC_PUBLIC)</span>
+<span id="L228"><span class="lineNum">     228</span>              :     ZEND_ME(Pango_Layout, getPixelSize, arginfo_class_Pango_Layout_getPixelSize, ZEND_ACC_PUBLIC)</span>
+<span id="L229"><span class="lineNum">     229</span>              :     ZEND_ME(Pango_Layout, getExtents, arginfo_class_Pango_Layout_getExtents, ZEND_ACC_PUBLIC)</span>
+<span id="L230"><span class="lineNum">     230</span>              :     ZEND_ME(Pango_Layout, getPixelExtents, arginfo_class_Pango_Layout_getPixelExtents, ZEND_ACC_PUBLIC)</span>
+<span id="L231"><span class="lineNum">     231</span>              :     ZEND_ME(Pango_Layout, setWidth, arginfo_class_Pango_Layout_setWidth, ZEND_ACC_PUBLIC)</span>
+<span id="L232"><span class="lineNum">     232</span>              :     ZEND_ME(Pango_Layout, getHeight, arginfo_class_Pango_Layout_getHeight, ZEND_ACC_PUBLIC)</span>
+<span id="L233"><span class="lineNum">     233</span>              :     ZEND_ME(Pango_Layout, setHeight, arginfo_class_Pango_Layout_setHeight, ZEND_ACC_PUBLIC)</span>
+<span id="L234"><span class="lineNum">     234</span>              :     ZEND_ME(Pango_Layout, setMarkup, arginfo_class_Pango_Layout_setMarkup, ZEND_ACC_PUBLIC)</span>
+<span id="L235"><span class="lineNum">     235</span>              :     ZEND_ME(Pango_Layout, setMarkupWithAccel, arginfo_class_Pango_Layout_setMarkupWithAccel, ZEND_ACC_PUBLIC)</span>
+<span id="L236"><span class="lineNum">     236</span>              :     ZEND_ME(Pango_Layout, setFontDescription, arginfo_class_Pango_Layout_setFontDescription, ZEND_ACC_PUBLIC)</span>
+<span id="L237"><span class="lineNum">     237</span>              :     ZEND_ME(Pango_Layout, getFontDescription, arginfo_class_Pango_Layout_getFontDescription, ZEND_ACC_PUBLIC)</span>
+<span id="L238"><span class="lineNum">     238</span>              :     ZEND_ME(Pango_Layout, setAlignment, arginfo_class_Pango_Layout_setAlignment, ZEND_ACC_PUBLIC)</span>
+<span id="L239"><span class="lineNum">     239</span>              :     ZEND_ME(Pango_Layout, getAlignment, arginfo_class_Pango_Layout_getAlignment, ZEND_ACC_PUBLIC)</span>
+<span id="L240"><span class="lineNum">     240</span>              :     ZEND_ME(Pango_Layout, setJustify, arginfo_class_Pango_Layout_setJustify, ZEND_ACC_PUBLIC)</span>
+<span id="L241"><span class="lineNum">     241</span>              :     ZEND_ME(Pango_Layout, getJustify, arginfo_class_Pango_Layout_getJustify, ZEND_ACC_PUBLIC)</span>
+<span id="L242"><span class="lineNum">     242</span>              :     ZEND_ME(Pango_Layout, setWrap, arginfo_class_Pango_Layout_setWrap, ZEND_ACC_PUBLIC)</span>
+<span id="L243"><span class="lineNum">     243</span>              :     ZEND_ME(Pango_Layout, getWrap, arginfo_class_Pango_Layout_getWrap, ZEND_ACC_PUBLIC)</span>
+<span id="L244"><span class="lineNum">     244</span>              :     ZEND_ME(Pango_Layout, isWrapped, arginfo_class_Pango_Layout_isWrapped, ZEND_ACC_PUBLIC)</span>
+<span id="L245"><span class="lineNum">     245</span>              :     ZEND_ME(Pango_Layout, setIndent, arginfo_class_Pango_Layout_setIndent, ZEND_ACC_PUBLIC)</span>
+<span id="L246"><span class="lineNum">     246</span>              :     ZEND_ME(Pango_Layout, getIndent, arginfo_class_Pango_Layout_getIndent, ZEND_ACC_PUBLIC)</span>
+<span id="L247"><span class="lineNum">     247</span>              :     ZEND_ME(Pango_Layout, setSpacing, arginfo_class_Pango_Layout_setSpacing, ZEND_ACC_PUBLIC)</span>
+<span id="L248"><span class="lineNum">     248</span>              :     ZEND_ME(Pango_Layout, getSpacing, arginfo_class_Pango_Layout_getSpacing, ZEND_ACC_PUBLIC)</span>
+<span id="L249"><span class="lineNum">     249</span>              :     ZEND_ME(Pango_Layout, setEllipsize, arginfo_class_Pango_Layout_setEllipsize, ZEND_ACC_PUBLIC)</span>
+<span id="L250"><span class="lineNum">     250</span>              :     ZEND_ME(Pango_Layout, getEllipsize, arginfo_class_Pango_Layout_getEllipsize, ZEND_ACC_PUBLIC)</span>
+<span id="L251"><span class="lineNum">     251</span>              :     ZEND_ME(Pango_Layout, isEllipsized, arginfo_class_Pango_Layout_isEllipsized, ZEND_ACC_PUBLIC)</span>
+<span id="L252"><span class="lineNum">     252</span>              :     ZEND_ME(Pango_Layout, contextChanged, arginfo_class_Pango_Layout_contextChanged, ZEND_ACC_PUBLIC)</span>
+<span id="L253"><span class="lineNum">     253</span>              :     ZEND_ME(Pango_Layout, getLines, arginfo_class_Pango_Layout_getLines, ZEND_ACC_PUBLIC)</span>
+<span id="L254"><span class="lineNum">     254</span>              :     ZEND_ME(Pango_Layout, getLinesReadonly, arginfo_class_Pango_Layout_getLinesReadonly, ZEND_ACC_PUBLIC)</span>
+<span id="L255"><span class="lineNum">     255</span>              :     ZEND_ME(Pango_Layout, getLine, arginfo_class_Pango_Layout_getLine, ZEND_ACC_PUBLIC)</span>
+<span id="L256"><span class="lineNum">     256</span>              :     ZEND_ME(Pango_Layout, getLineReadonly, arginfo_class_Pango_Layout_getLineReadonly, ZEND_ACC_PUBLIC)</span>
+<span id="L257"><span class="lineNum">     257</span>              :     ZEND_ME(Pango_Layout, getLineCount, arginfo_class_Pango_Layout_getLineCount, ZEND_ACC_PUBLIC)</span>
+<span id="L258"><span class="lineNum">     258</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L259"><span class="lineNum">     259</span>              :     ZEND_ME(Pango_Layout, serialize, arginfo_class_Pango_Layout_serialize, ZEND_ACC_PUBLIC)</span>
+<span id="L260"><span class="lineNum">     260</span>              : #endif</span>
+<span id="L261"><span class="lineNum">     261</span>              :     ZEND_ME(Pango_Layout, getBaseline, arginfo_class_Pango_Layout_getBaseline, ZEND_ACC_PUBLIC)</span>
+<span id="L262"><span class="lineNum">     262</span>              :     ZEND_ME(Pango_Layout, getAutoDir, arginfo_class_Pango_Layout_getAutoDir, ZEND_ACC_PUBLIC)</span>
+<span id="L263"><span class="lineNum">     263</span>              :     ZEND_ME(Pango_Layout, setAutoDir, arginfo_class_Pango_Layout_setAutoDir, ZEND_ACC_PUBLIC)</span>
+<span id="L264"><span class="lineNum">     264</span>              :     ZEND_ME(Pango_Layout, getCharacterCount, arginfo_class_Pango_Layout_getCharacterCount, ZEND_ACC_PUBLIC)</span>
+<span id="L265"><span class="lineNum">     265</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 46, 0)</span>
+<span id="L266"><span class="lineNum">     266</span>              :     ZEND_ME(Pango_Layout, getDirection, arginfo_class_Pango_Layout_getDirection, ZEND_ACC_PUBLIC)</span>
+<span id="L267"><span class="lineNum">     267</span>              : #endif</span>
+<span id="L268"><span class="lineNum">     268</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L269"><span class="lineNum">     269</span>              :     ZEND_ME(Pango_Layout, getJustifyLastLine, arginfo_class_Pango_Layout_getJustifyLastLine, ZEND_ACC_PUBLIC)</span>
+<span id="L270"><span class="lineNum">     270</span>              :     ZEND_ME(Pango_Layout, setJustifyLastLine, arginfo_class_Pango_Layout_setJustifyLastLine, ZEND_ACC_PUBLIC)</span>
+<span id="L271"><span class="lineNum">     271</span>              : #endif</span>
+<span id="L272"><span class="lineNum">     272</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 44, 0)</span>
+<span id="L273"><span class="lineNum">     273</span>              :     ZEND_ME(Pango_Layout, getLineSpacing, arginfo_class_Pango_Layout_getLineSpacing, ZEND_ACC_PUBLIC)</span>
+<span id="L274"><span class="lineNum">     274</span>              :     ZEND_ME(Pango_Layout, setLineSpacing, arginfo_class_Pango_Layout_setLineSpacing, ZEND_ACC_PUBLIC)</span>
+<span id="L275"><span class="lineNum">     275</span>              : #endif</span>
+<span id="L276"><span class="lineNum">     276</span>              :     ZEND_ME(Pango_Layout, getUnknownGlyphsCount, arginfo_class_Pango_Layout_getUnknownGlyphsCount, ZEND_ACC_PUBLIC)</span>
+<span id="L277"><span class="lineNum">     277</span>              :     ZEND_ME(Pango_Layout, getSingleParagraphMode, arginfo_class_Pango_Layout_getSingleParagraphMode, ZEND_ACC_PUBLIC)</span>
+<span id="L278"><span class="lineNum">     278</span>              :     ZEND_ME(Pango_Layout, setSingleParagraphMode, arginfo_class_Pango_Layout_setSingleParagraphMode, ZEND_ACC_PUBLIC)</span>
+<span id="L279"><span class="lineNum">     279</span>              :     ZEND_FE_END</span>
+<span id="L280"><span class="lineNum">     280</span>              : };</span>
+<span id="L281"><span class="lineNum">     281</span>              : </span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC tlaBgGNC">         194 : static zend_class_entry *register_class_Pango_Layout(void)</span></span>
+<span id="L283"><span class="lineNum">     283</span>              : {</span>
+<span id="L284"><span class="lineNum">     284</span>              :     zend_class_entry ce, *class_entry;</span>
+<span id="L285"><span class="lineNum">     285</span>              : </span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">         194 :     INIT_NS_CLASS_ENTRY(ce, &quot;Pango&quot;, &quot;Layout&quot;, class_Pango_Layout_methods);</span></span>
+<span id="L287"><span class="lineNum">     287</span>              : #if (PHP_VERSION_ID &gt;= 80400)</span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">         194 :     class_entry = zend_register_internal_class_with_flags(&amp;ce, NULL, 0);</span></span>
+<span id="L289"><span class="lineNum">     289</span>              : #else</span>
+<span id="L290"><span class="lineNum">     290</span>              :     class_entry = zend_register_internal_class_ex(&amp;ce, NULL);</span>
+<span id="L291"><span class="lineNum">     291</span>              : #endif</span>
+<span id="L292"><span class="lineNum">     292</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
+<span id="L293"><span class="lineNum">     293</span>              : </span>
+<span id="L294"><span class="lineNum">     294</span>              :     zval const_SERIALIZE_DEFAULT_value;</span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;const_SERIALIZE_DEFAULT_value, PANGO_LAYOUT_SERIALIZE_DEFAULT);</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">         194 :     zend_string *const_SERIALIZE_DEFAULT_name = zend_string_init_interned(&quot;SERIALIZE_DEFAULT&quot;, sizeof(&quot;SERIALIZE_DEFAULT&quot;) - 1, 1);</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">         194 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_DEFAULT_name, &amp;const_SERIALIZE_DEFAULT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L298"><span class="lineNum">     298</span>              :     zend_string_release(const_SERIALIZE_DEFAULT_name);</span>
 <span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">         181 :     INIT_NS_CLASS_ENTRY(ce, &quot;Pango&quot;, &quot;Layout&quot;, class_Pango_Layout_methods);</span></span>
-<span id="L301"><span class="lineNum">     301</span>              : #if (PHP_VERSION_ID &gt;= 80400)</span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         181 :     class_entry = zend_register_internal_class_with_flags(&amp;ce, NULL, 0);</span></span>
-<span id="L303"><span class="lineNum">     303</span>              : #else</span>
-<span id="L304"><span class="lineNum">     304</span>              :     class_entry = zend_register_internal_class_ex(&amp;ce, NULL);</span>
-<span id="L305"><span class="lineNum">     305</span>              : #endif</span>
-<span id="L306"><span class="lineNum">     306</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 50, 0)</span>
-<span id="L307"><span class="lineNum">     307</span>              : </span>
-<span id="L308"><span class="lineNum">     308</span>              :     zval const_SERIALIZE_DEFAULT_value;</span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;const_SERIALIZE_DEFAULT_value, PANGO_LAYOUT_SERIALIZE_DEFAULT);</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         181 :     zend_string *const_SERIALIZE_DEFAULT_name = zend_string_init_interned(&quot;SERIALIZE_DEFAULT&quot;, sizeof(&quot;SERIALIZE_DEFAULT&quot;) - 1, 1);</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">         181 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_DEFAULT_name, &amp;const_SERIALIZE_DEFAULT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
-<span id="L312"><span class="lineNum">     312</span>              :     zend_string_release(const_SERIALIZE_DEFAULT_name);</span>
-<span id="L313"><span class="lineNum">     313</span>              : </span>
-<span id="L314"><span class="lineNum">     314</span>              :     zval const_SERIALIZE_CONTEXT_value;</span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;const_SERIALIZE_CONTEXT_value, PANGO_LAYOUT_SERIALIZE_CONTEXT);</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         181 :     zend_string *const_SERIALIZE_CONTEXT_name = zend_string_init_interned(&quot;SERIALIZE_CONTEXT&quot;, sizeof(&quot;SERIALIZE_CONTEXT&quot;) - 1, 1);</span></span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         181 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_CONTEXT_name, &amp;const_SERIALIZE_CONTEXT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
-<span id="L318"><span class="lineNum">     318</span>              :     zend_string_release(const_SERIALIZE_CONTEXT_name);</span>
+<span id="L300"><span class="lineNum">     300</span>              :     zval const_SERIALIZE_CONTEXT_value;</span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;const_SERIALIZE_CONTEXT_value, PANGO_LAYOUT_SERIALIZE_CONTEXT);</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         194 :     zend_string *const_SERIALIZE_CONTEXT_name = zend_string_init_interned(&quot;SERIALIZE_CONTEXT&quot;, sizeof(&quot;SERIALIZE_CONTEXT&quot;) - 1, 1);</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">         194 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_CONTEXT_name, &amp;const_SERIALIZE_CONTEXT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L304"><span class="lineNum">     304</span>              :     zend_string_release(const_SERIALIZE_CONTEXT_name);</span>
+<span id="L305"><span class="lineNum">     305</span>              : </span>
+<span id="L306"><span class="lineNum">     306</span>              :     zval const_SERIALIZE_OUTPUT_value;</span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;const_SERIALIZE_OUTPUT_value, PANGO_LAYOUT_SERIALIZE_OUTPUT);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">         194 :     zend_string *const_SERIALIZE_OUTPUT_name = zend_string_init_interned(&quot;SERIALIZE_OUTPUT&quot;, sizeof(&quot;SERIALIZE_OUTPUT&quot;) - 1, 1);</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         194 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_OUTPUT_name, &amp;const_SERIALIZE_OUTPUT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L310"><span class="lineNum">     310</span>              :     zend_string_release(const_SERIALIZE_OUTPUT_name);</span>
+<span id="L311"><span class="lineNum">     311</span>              : #endif</span>
+<span id="L312"><span class="lineNum">     312</span>              : </span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         194 :     return class_entry;</span></span>
+<span id="L314"><span class="lineNum">     314</span>              : }</span>
+<span id="L315"><span class="lineNum">     315</span>              : </span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         194 : static zend_class_entry *register_class_Pango_Alignment(void)</span></span>
+<span id="L317"><span class="lineNum">     317</span>              : {</span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">         194 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\Alignment&quot;, IS_LONG, NULL);</span></span>
 <span id="L319"><span class="lineNum">     319</span>              : </span>
-<span id="L320"><span class="lineNum">     320</span>              :     zval const_SERIALIZE_OUTPUT_value;</span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;const_SERIALIZE_OUTPUT_value, PANGO_LAYOUT_SERIALIZE_OUTPUT);</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         181 :     zend_string *const_SERIALIZE_OUTPUT_name = zend_string_init_interned(&quot;SERIALIZE_OUTPUT&quot;, sizeof(&quot;SERIALIZE_OUTPUT&quot;) - 1, 1);</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         181 :     zend_declare_class_constant_ex(class_entry, const_SERIALIZE_OUTPUT_name, &amp;const_SERIALIZE_OUTPUT_value, ZEND_ACC_PUBLIC, NULL);</span></span>
-<span id="L324"><span class="lineNum">     324</span>              :     zend_string_release(const_SERIALIZE_OUTPUT_name);</span>
-<span id="L325"><span class="lineNum">     325</span>              : #endif</span>
-<span id="L326"><span class="lineNum">     326</span>              : </span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">         181 :     return class_entry;</span></span>
-<span id="L328"><span class="lineNum">     328</span>              : }</span>
-<span id="L329"><span class="lineNum">     329</span>              : </span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         181 : static zend_class_entry *register_class_Pango_Alignment(void)</span></span>
-<span id="L331"><span class="lineNum">     331</span>              : {</span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         181 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\Alignment&quot;, IS_LONG, NULL);</span></span>
-<span id="L333"><span class="lineNum">     333</span>              : </span>
-<span id="L334"><span class="lineNum">     334</span>              :     zval enum_case_Left_value;</span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_Left_value, PANGO_ALIGN_LEFT);</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;Left&quot;, &amp;enum_case_Left_value);</span></span>
-<span id="L337"><span class="lineNum">     337</span>              : </span>
-<span id="L338"><span class="lineNum">     338</span>              :     zval enum_case_Center_value;</span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_Center_value, PANGO_ALIGN_CENTER);</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;Center&quot;, &amp;enum_case_Center_value);</span></span>
-<span id="L341"><span class="lineNum">     341</span>              : </span>
-<span id="L342"><span class="lineNum">     342</span>              :     zval enum_case_Right_value;</span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_Right_value, PANGO_ALIGN_RIGHT);</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;Right&quot;, &amp;enum_case_Right_value);</span></span>
-<span id="L345"><span class="lineNum">     345</span>              : </span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         181 :     return class_entry;</span></span>
-<span id="L347"><span class="lineNum">     347</span>              : }</span>
-<span id="L348"><span class="lineNum">     348</span>              : </span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         181 : static zend_class_entry *register_class_Pango_WrapMode(void)</span></span>
-<span id="L350"><span class="lineNum">     350</span>              : {</span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         181 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\WrapMode&quot;, IS_LONG, NULL);</span></span>
-<span id="L352"><span class="lineNum">     352</span>              : </span>
-<span id="L353"><span class="lineNum">     353</span>              :     zval enum_case_Word_value;</span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_Word_value, PANGO_WRAP_WORD);</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;Word&quot;, &amp;enum_case_Word_value);</span></span>
+<span id="L320"><span class="lineNum">     320</span>              :     zval enum_case_Left_value;</span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_Left_value, PANGO_ALIGN_LEFT);</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;Left&quot;, &amp;enum_case_Left_value);</span></span>
+<span id="L323"><span class="lineNum">     323</span>              : </span>
+<span id="L324"><span class="lineNum">     324</span>              :     zval enum_case_Center_value;</span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_Center_value, PANGO_ALIGN_CENTER);</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;Center&quot;, &amp;enum_case_Center_value);</span></span>
+<span id="L327"><span class="lineNum">     327</span>              : </span>
+<span id="L328"><span class="lineNum">     328</span>              :     zval enum_case_Right_value;</span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_Right_value, PANGO_ALIGN_RIGHT);</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;Right&quot;, &amp;enum_case_Right_value);</span></span>
+<span id="L331"><span class="lineNum">     331</span>              : </span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         194 :     return class_entry;</span></span>
+<span id="L333"><span class="lineNum">     333</span>              : }</span>
+<span id="L334"><span class="lineNum">     334</span>              : </span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         194 : static zend_class_entry *register_class_Pango_WrapMode(void)</span></span>
+<span id="L336"><span class="lineNum">     336</span>              : {</span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         194 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\WrapMode&quot;, IS_LONG, NULL);</span></span>
+<span id="L338"><span class="lineNum">     338</span>              : </span>
+<span id="L339"><span class="lineNum">     339</span>              :     zval enum_case_Word_value;</span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_Word_value, PANGO_WRAP_WORD);</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;Word&quot;, &amp;enum_case_Word_value);</span></span>
+<span id="L342"><span class="lineNum">     342</span>              : </span>
+<span id="L343"><span class="lineNum">     343</span>              :     zval enum_case_Char_value;</span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_Char_value, PANGO_WRAP_CHAR);</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;Char&quot;, &amp;enum_case_Char_value);</span></span>
+<span id="L346"><span class="lineNum">     346</span>              : </span>
+<span id="L347"><span class="lineNum">     347</span>              :     zval enum_case_WordChar_value;</span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_WordChar_value, PANGO_WRAP_WORD_CHAR);</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;WordChar&quot;, &amp;enum_case_WordChar_value);</span></span>
+<span id="L350"><span class="lineNum">     350</span>              : </span>
+<span id="L351"><span class="lineNum">     351</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 56, 0)</span>
+<span id="L352"><span class="lineNum">     352</span>              :     zval enum_case_None_value;</span>
+<span id="L353"><span class="lineNum">     353</span>              :     ZVAL_LONG(&amp;enum_case_None_value, PANGO_WRAP_NONE);</span>
+<span id="L354"><span class="lineNum">     354</span>              :     zend_enum_add_case_cstr(class_entry, &quot;None&quot;, &amp;enum_case_None_value);</span>
+<span id="L355"><span class="lineNum">     355</span>              : #endif</span>
 <span id="L356"><span class="lineNum">     356</span>              : </span>
-<span id="L357"><span class="lineNum">     357</span>              :     zval enum_case_Char_value;</span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_Char_value, PANGO_WRAP_CHAR);</span></span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;Char&quot;, &amp;enum_case_Char_value);</span></span>
-<span id="L360"><span class="lineNum">     360</span>              : </span>
-<span id="L361"><span class="lineNum">     361</span>              :     zval enum_case_WordChar_value;</span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_WordChar_value, PANGO_WRAP_WORD_CHAR);</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;WordChar&quot;, &amp;enum_case_WordChar_value);</span></span>
-<span id="L364"><span class="lineNum">     364</span>              : </span>
-<span id="L365"><span class="lineNum">     365</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 56, 0)</span>
-<span id="L366"><span class="lineNum">     366</span>              :     zval enum_case_None_value;</span>
-<span id="L367"><span class="lineNum">     367</span>              :     ZVAL_LONG(&amp;enum_case_None_value, PANGO_WRAP_NONE);</span>
-<span id="L368"><span class="lineNum">     368</span>              :     zend_enum_add_case_cstr(class_entry, &quot;None&quot;, &amp;enum_case_None_value);</span>
-<span id="L369"><span class="lineNum">     369</span>              : #endif</span>
-<span id="L370"><span class="lineNum">     370</span>              : </span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">         181 :     return class_entry;</span></span>
-<span id="L372"><span class="lineNum">     372</span>              : }</span>
-<span id="L373"><span class="lineNum">     373</span>              : </span>
-<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">         181 : static zend_class_entry *register_class_Pango_EllipsizeMode(void)</span></span>
-<span id="L375"><span class="lineNum">     375</span>              : {</span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         181 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\EllipsizeMode&quot;, IS_LONG, NULL);</span></span>
-<span id="L377"><span class="lineNum">     377</span>              : </span>
-<span id="L378"><span class="lineNum">     378</span>              :     zval enum_case_None_value;</span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_None_value, PANGO_ELLIPSIZE_NONE);</span></span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;None&quot;, &amp;enum_case_None_value);</span></span>
-<span id="L381"><span class="lineNum">     381</span>              : </span>
-<span id="L382"><span class="lineNum">     382</span>              :     zval enum_case_Start_value;</span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_Start_value, PANGO_ELLIPSIZE_START);</span></span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;Start&quot;, &amp;enum_case_Start_value);</span></span>
-<span id="L385"><span class="lineNum">     385</span>              : </span>
-<span id="L386"><span class="lineNum">     386</span>              :     zval enum_case_Middle_value;</span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_Middle_value, PANGO_ELLIPSIZE_MIDDLE);</span></span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;Middle&quot;, &amp;enum_case_Middle_value);</span></span>
-<span id="L389"><span class="lineNum">     389</span>              : </span>
-<span id="L390"><span class="lineNum">     390</span>              :     zval enum_case_End_value;</span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         181 :     ZVAL_LONG(&amp;enum_case_End_value, PANGO_ELLIPSIZE_END);</span></span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         181 :     zend_enum_add_case_cstr(class_entry, &quot;End&quot;, &amp;enum_case_End_value);</span></span>
-<span id="L393"><span class="lineNum">     393</span>              : </span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         181 :     return class_entry;</span></span>
-<span id="L395"><span class="lineNum">     395</span>              : }</span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">         194 :     return class_entry;</span></span>
+<span id="L358"><span class="lineNum">     358</span>              : }</span>
+<span id="L359"><span class="lineNum">     359</span>              : </span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">         194 : static zend_class_entry *register_class_Pango_EllipsizeMode(void)</span></span>
+<span id="L361"><span class="lineNum">     361</span>              : {</span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         194 :     zend_class_entry *class_entry = zend_register_internal_enum(&quot;Pango\\EllipsizeMode&quot;, IS_LONG, NULL);</span></span>
+<span id="L363"><span class="lineNum">     363</span>              : </span>
+<span id="L364"><span class="lineNum">     364</span>              :     zval enum_case_None_value;</span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_None_value, PANGO_ELLIPSIZE_NONE);</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;None&quot;, &amp;enum_case_None_value);</span></span>
+<span id="L367"><span class="lineNum">     367</span>              : </span>
+<span id="L368"><span class="lineNum">     368</span>              :     zval enum_case_Start_value;</span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_Start_value, PANGO_ELLIPSIZE_START);</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;Start&quot;, &amp;enum_case_Start_value);</span></span>
+<span id="L371"><span class="lineNum">     371</span>              : </span>
+<span id="L372"><span class="lineNum">     372</span>              :     zval enum_case_Middle_value;</span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_Middle_value, PANGO_ELLIPSIZE_MIDDLE);</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;Middle&quot;, &amp;enum_case_Middle_value);</span></span>
+<span id="L375"><span class="lineNum">     375</span>              : </span>
+<span id="L376"><span class="lineNum">     376</span>              :     zval enum_case_End_value;</span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         194 :     ZVAL_LONG(&amp;enum_case_End_value, PANGO_ELLIPSIZE_END);</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         194 :     zend_enum_add_case_cstr(class_entry, &quot;End&quot;, &amp;enum_case_End_value);</span></span>
+<span id="L379"><span class="lineNum">     379</span>              : </span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         194 :     return class_entry;</span></span>
+<span id="L381"><span class="lineNum">     381</span>              : }</span>
         </pre>
               </td>
             </tr>
