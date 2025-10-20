@@ -174,7 +174,11 @@ PHP_MINIT_FUNCTION(pango)
 /* {{{ PHP_MSHUTDOWN_FUNCTION */
 PHP_MSHUTDOWN_FUNCTION(pango)
 {
-    // FcFini();
+    // This is a hack, but if we don't wait a bit here, tests sometimes
+    // fail with segfaults and I don't know why. Probably some race condition.
+    // Todo: investigate further, fix it, and remove this.
+    usleep(10000);
+
     /* uncomment this line if you have INI entries
     UNREGISTER_INI_ENTRIES();
     */
