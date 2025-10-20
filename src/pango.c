@@ -174,7 +174,7 @@ PHP_MINIT_FUNCTION(pango)
 /* {{{ PHP_MSHUTDOWN_FUNCTION */
 PHP_MSHUTDOWN_FUNCTION(pango)
 {
-    // Properly clean up fontconfig to avoid race conditions during parallel test execution
+    // Properly clean up fontconfig to avoid race conditions during parallel test execution.
     FcFini();
 
     /* uncomment this line if you have INI entries
