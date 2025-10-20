@@ -23,12 +23,12 @@ class Context
     /**
      * Retrieve the default FontDescription for the context.
      */
-    public function getFontDescription(): FontDescription {}
+    public function getFontDescription(): null|FontDescription {}
 
     /**
      * Gets the FontMap used to look up fonts for this context.
      */
-    public function getFontMap(): FontMap {}
+    public function getFontMap(): null|FontMap {}
 
     public function getGravity(): Gravity {}
 
@@ -96,12 +96,12 @@ class Context
         null|FontDescription $desc
     ): void {}
 
-    /**
-     * Sets the font map to be searched when fonts are looked-up in this context.
-     */
-    public function setFontMap(
-        null|FontMap $fontmap
-    ): void {}
+    // /**
+    //  * Sets the font map to be searched when fonts are looked-up in this context.
+    //  */
+    // public function setFontMap(
+    //     null|FontMap $fontmap
+    // ): void {}
 
     /**
      * Sets the gravity hint for the context.

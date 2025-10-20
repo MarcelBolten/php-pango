@@ -66,57 +66,112 @@ PHP_METHOD(Pango_Context, __construct)
     if (font_map_zv && Z_TYPE_P(font_map_zv) != IS_NULL) {
         font_map_object = Z_PANGO_FONT_MAP_P(font_map_zv);
         context_object->context = pango_font_map_create_context(font_map_object->font_map);
-    } else {
-        context_object->context = pango_context_new();
+
+        // keep a reference of the font map zval in the pango context object
+        ZVAL_COPY(&context_object->font_map_zv, font_map_zv);
+        return;
     }
 
-    // Todo: store the font map object in the pango context object to keep a reference?
+    context_object->context = pango_context_new();
 }
 
 /* {{{ */
 PHP_METHOD(Pango_Context, getFontDescription)
 {
+    pango_context_object *context_object;
+
     ZEND_PARSE_PARAMETERS_NONE();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+
+    if (Z_TYPE(context_object->font_description_zv) != IS_UNDEF) {
+        RETURN_COPY(&context_object->font_description_zv);
+    }
+
+    RETURN_NULL();
 }
 /* }}} */
 
 /* {{{ */
 PHP_METHOD(Pango_Context, setFontDescription)
 {
-    zval *font_desc_zv = NULL;
+    zval *font_desc_zv;
+    pango_context_object *context_object;
+    PangoFontDescription *font_description = NULL;
 
-    ZEND_PARSE_PARAMETERS_START(0, 1);
-        Z_PARAM_OPTIONAL
+    ZEND_PARSE_PARAMETERS_START(1, 1);
         Z_PARAM_OBJECT_OF_CLASS_OR_NULL(font_desc_zv, php_pango_get_font_description_ce())
     ZEND_PARSE_PARAMETERS_END();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+    zval_ptr_dtor(&context_object->font_description_zv);
+
+    if (font_desc_zv && Z_TYPE_P(font_desc_zv) != IS_NULL) {
+        ZVAL_COPY(&context_object->font_description_zv, font_desc_zv);
+        font_description = Z_PANGO_FONT_DESC_P(font_desc_zv)->font_description;
+    } else {
+        ZVAL_NULL(&context_object->font_description_zv);
+    }
+
+    pango_context_set_font_description(context_object->context, font_description);
 }
 /* }}} */
 
 /* {{{ */
 PHP_METHOD(Pango_Context, getFontMap)
 {
+    pango_context_object *context_object;
+
     ZEND_PARSE_PARAMETERS_NONE();
+
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+
+    if (Z_TYPE(context_object->font_map_zv) != IS_UNDEF) {
+        RETURN_COPY(&context_object->font_map_zv);
+    }
+
+    RETURN_NULL();
 }
 /* }}} */
 
-/* {{{ */
-PHP_METHOD(Pango_Context, setFontMap)
-{
-    zval *font_map_zv = NULL;
+// /* {{{ Sets the font map to be searched when fonts are looked-up in this context.
+//        This is only for internal use by Pango backends, a PangoContext obtained
+//        via one of the recommended methods should already have a suitable font map. */
+// PHP_METHOD(Pango_Context, setFontMap)
+// {
+//     zval *font_map_zv = NULL;
 
-    ZEND_PARSE_PARAMETERS_START(0, 1);
-        Z_PARAM_OPTIONAL
-        Z_PARAM_OBJECT_OF_CLASS_OR_NULL(font_map_zv, php_pango_get_font_map_ce())
-    ZEND_PARSE_PARAMETERS_END();
-}
-/* }}} */
+//     ZEND_PARSE_PARAMETERS_START(0, 1);
+//         Z_PARAM_OPTIONAL
+//         Z_PARAM_OBJECT_OF_CLASS_OR_NULL(font_map_zv, php_pango_get_font_map_ce())
+//     ZEND_PARSE_PARAMETERS_END();
+// }
+// /* }}} */
 
 /* {{{ */
 PHP_METHOD(Pango_Context, listFamilies)
 {
+    pango_context_object *context_object;
+    PangoFontFamily** families;
+    int num_families;
+    zval family_zv;
+    pango_font_family_object *font_family_object;
+
     ZEND_PARSE_PARAMETERS_NONE();
 
-    RETURN_EMPTY_ARRAY();
+    context_object = Z_PANGO_CONTEXT_P(getThis());
+
+    pango_context_list_families(context_object->context, &families, &num_families);
+
+    array_init(return_value);
+    for (int i = 0; i < num_families; i++) {
+        object_init_ex(&family_zv, php_pango_get_font_family_ce());
+        font_family_object = Z_PANGO_FONT_FAMILY_P(&family_zv);
+        font_family_object->font_family = g_object_ref(families[i]);
+        add_next_index_zval(return_value, &family_zv);
+    }
+
+    g_free(families);
 }
 /* }}} */
 
@@ -340,6 +395,9 @@ static void pango_context_free_obj(zend_object *zobj)
         return;
     }
 
+    zval_ptr_dtor(&intern->font_map_zv);
+    zval_ptr_dtor(&intern->font_options_zv);
+    zval_ptr_dtor(&intern->font_description_zv);
     zval_ptr_dtor(&intern->cairo_context_zv);
 
     if (intern->context) {
@@ -355,7 +413,11 @@ static zend_object* pango_context_obj_ctor(zend_class_entry *ce, pango_context_o
     pango_context_object *object = ecalloc(1, sizeof(pango_context_object) + zend_object_properties_size(ce));
 
     object->context = NULL;
+
     ZVAL_UNDEF(&object->cairo_context_zv);
+    ZVAL_UNDEF(&object->font_map_zv);
+    ZVAL_UNDEF(&object->font_options_zv);
+    ZVAL_UNDEF(&object->font_description_zv);
 
     zend_object_std_init(&object->std, ce);
 

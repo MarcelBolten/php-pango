@@ -7,12 +7,10 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 ?>
 --FILE--
 <?php
-use PangoCairo\Context;
-
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
 var_dump($cairoContext);
 
-$pangoContext = new Context($cairoContext);
+$pangoContext = new PangoCairo\Context($cairoContext);
 var_dump($pangoContext);
 var_dump($pangoContext->getResolution());
 

@@ -11,6 +11,8 @@ class Context extends \Pango\Context
 {
     /**
      * Creates a context object set up to match the current transformation and target surface of the Cairo context.
+     *
+     * @param \Cairo\Context $context A Cairo context.
      */
     public function __construct(
         \Cairo\Context $context

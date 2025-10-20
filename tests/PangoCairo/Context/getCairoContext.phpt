@@ -1,5 +1,5 @@
 --TEST--
-PangoCairo\Context::updateContext()
+PangoCairo\Context::getCairoContext()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -13,12 +13,12 @@ var_dump($cairoContext);
 $pangoContext = new PangoCairo\Context($cairoContext);
 var_dump($pangoContext);
 
-$cairoContext->setMatrix((new Cairo\Matrix(2, 0, 0, 2, 0, 0)));
-$pangoContext->updateContext();
-var_dump($pangoContext->getMatrix());
+$cairoContextRetrieved = $pangoContext->getCairoContext();
+var_dump($cairoContextRetrieved);
+var_dump($cairoContext === $cairoContextRetrieved);
 
 try {
-    $pangoContext->updateContext(1);
+    $pangoContext->getCairoContext(1);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -28,18 +28,7 @@ object(Cairo\Context)#%d (0) {
 }
 object(PangoCairo\Context)#%d (0) {
 }
-object(Pango\Matrix)#%d (6) {
-  ["xx"]=>
-  float(2)
-  ["yx"]=>
-  float(0)
-  ["xy"]=>
-  float(0)
-  ["yy"]=>
-  float(2)
-  ["x0"]=>
-  float(0)
-  ["y0"]=>
-  float(0)
+object(Cairo\Context)#%d (0) {
 }
-PangoCairo\Context::updateContext() expects exactly 0 arguments, 1 given
+bool(true)
+PangoCairo\Context::getCairoContext() expects exactly 0 arguments, 1 given
