@@ -133,29 +133,6 @@ class Context
     public function setRoundGlyphPositions(
         bool $round
     ): void {}
-
-    /**
-     * Gets the resolution for the context.
-     *
-     * The resolution in “dots per inch”. A negative value will be returned if no resolution has previously been set.
-     */
-    public function getResolution(): float {}
-
-    /**
-     * Sets the resolution for the context.
-     *
-     * This is a scale factor between points specified in a FontDescription and
-     * Cairo units. The default value is 96, meaning that a 10 point font will
-     * be 13 units high. (10 * 96. / 72. = 13.3).
-     *
-     * @param float $dpi The resolution in “dots per inch”.
-     *
-     * (Physical inches aren’t actually involved; the terminology is conventional.)
-     * A 0 or negative value means to use the resolution from the font map.
-     */
-    public function setResolution(
-        float $dpi
-    ): void {}
 }
 
 enum Gravity: int

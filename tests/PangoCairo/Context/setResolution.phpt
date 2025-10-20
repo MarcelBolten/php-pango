@@ -1,5 +1,5 @@
 --TEST--
-Pango\Context::createFromCairoContext()
+PangoCairo\Context::setResolution()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -7,26 +7,29 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 ?>
 --FILE--
 <?php
+use PangoCairo\Context;
+
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
 var_dump($cairoContext);
 
-$pangoContext = Pango\Context::createFromCairoContext($cairoContext);
+$pangoContext = new Context($cairoContext);
 var_dump($pangoContext);
+$pangoContext->setResolution(300);
 
 try {
-    Pango\Context::createFromCairoContext();
+    $pangoContext->setResolution();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    Pango\Context::createFromCairoContext($cairoContext, 1);
+    $pangoContext->setResolution(1, 1);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    Pango\Context::createFromCairoContext(array());
+    $pangoContext->setResolution(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -34,8 +37,8 @@ try {
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
 }
-object(Pango\Context)#%d (0) {
+object(PangoCairo\Context)#%d (0) {
 }
-Pango\Context::createFromCairoContext() expects exactly 1 argument, 0 given
-Pango\Context::createFromCairoContext() expects exactly 1 argument, 2 given
-Pango\Context::createFromCairoContext(): Argument #1 ($context) must be of type Cairo\Context, array given
+PangoCairo\Context::setResolution() expects exactly 1 argument, 0 given
+PangoCairo\Context::setResolution() expects exactly 1 argument, 2 given
+PangoCairo\Context::setResolution(): Argument #1 ($dpi) must be of type float, array given

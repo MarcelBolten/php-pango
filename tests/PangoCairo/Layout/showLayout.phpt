@@ -1,5 +1,5 @@
 --TEST--
-Pango\Layout::showLayout()
+PangoCairo\Layout::showLayout()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -10,7 +10,7 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
 var_dump($cairoContext);
 
-$layout = new Pango\Layout($cairoContext);
+$layout = new PangoCairo\Layout($cairoContext);
 var_dump($layout);
 
 $layout->setText('Hello, Παν語!');
@@ -25,6 +25,6 @@ try {
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
 }
-object(Pango\Layout)#%d (0) {
+object(PangoCairo\Layout)#%d (0) {
 }
-Pango\Layout::showLayout() expects exactly 0 arguments, 1 given
+PangoCairo\Layout::showLayout() expects exactly 0 arguments, 1 given

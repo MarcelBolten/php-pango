@@ -24,12 +24,12 @@ class Context extends \Pango\Context
     /**
      * Retrieves any font rendering options previously set with setFontOptions().
      */
-    public function getFontOptions(): \Cairo\FontOptions {}
+    public function getFontOptions(): null|\Cairo\FontOptions {}
 
     /**
      * Sets the font options used when rendering text with this context.
      *
-     * These options override any options that pango_cairo_update_context() derives from the target surface.
+     * These options override any options that updateContext() derives from the target surface.
      *
      * @param null|\Cairo\FontOptions $options The font options to set, or null to clear any previously set options.
      */

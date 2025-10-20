@@ -43,9 +43,7 @@ class Layout extends \Pango\Layout
      * transformation and target surface of the Cairo context used to create
      * this Layout.
      */
-    public function updateLayout(
-        \Cairo\Context $context
-    ): void {}
+    public function updateLayout(): void {}
 
     /**
      * Gets the Cairo context associated with this Layout.

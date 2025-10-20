@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: dc4cd675b344ce312491a482985fe1dde008f85e */
+ * Stub hash: 7fe4dce5126b5bf71e3b38b302e07e4583fa686d */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Context___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, fontmap, Pango\\FontMap, 1, "null")
@@ -59,13 +59,6 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setRoundGlyp
 	ZEND_ARG_TYPE_INFO(0, round, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_getResolution, 0, 0, IS_DOUBLE, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setResolution, 0, 1, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, dpi, IS_DOUBLE, 0)
-ZEND_END_ARG_INFO()
-
 ZEND_METHOD(Pango_Context, __construct);
 ZEND_METHOD(Pango_Context, getBaseDir);
 ZEND_METHOD(Pango_Context, getBaseGravity);
@@ -83,8 +76,6 @@ ZEND_METHOD(Pango_Context, setFontMap);
 ZEND_METHOD(Pango_Context, setGravityHint);
 ZEND_METHOD(Pango_Context, setMatrix);
 ZEND_METHOD(Pango_Context, setRoundGlyphPositions);
-ZEND_METHOD(Pango_Context, getResolution);
-ZEND_METHOD(Pango_Context, setResolution);
 
 static const zend_function_entry class_Pango_Context_methods[] = {
 	ZEND_ME(Pango_Context, __construct, arginfo_class_Pango_Context___construct, ZEND_ACC_PUBLIC)
@@ -104,8 +95,6 @@ static const zend_function_entry class_Pango_Context_methods[] = {
 	ZEND_ME(Pango_Context, setGravityHint, arginfo_class_Pango_Context_setGravityHint, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setMatrix, arginfo_class_Pango_Context_setMatrix, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Context, setRoundGlyphPositions, arginfo_class_Pango_Context_setRoundGlyphPositions, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Context, getResolution, arginfo_class_Pango_Context_getResolution, ZEND_ACC_PUBLIC)
-	ZEND_ME(Pango_Context, setResolution, arginfo_class_Pango_Context_setResolution, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

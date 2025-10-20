@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: ccb7e74aac3f047d736ac284d6488d9522b2b6c3 */
+ * Stub hash: afb407802cf371121d7da36977fce1451700593e */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_Context___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
@@ -8,7 +8,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Context_getCairoContext, 0, 0, Cairo\\Context, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Context_getFontOptions, 0, 0, Cairo\\FontOptions, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Context_getFontOptions, 0, 0, Cairo\\FontOptions, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_Context_setFontOptions, 0, 1, IS_VOID, 0)

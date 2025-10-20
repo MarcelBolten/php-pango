@@ -1,5 +1,5 @@
 --TEST--
-Pango\Context::setResolution()
+PangoCairo\Context::getResolution()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -7,12 +7,14 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 ?>
 --FILE--
 <?php
+use PangoCairo\Context;
+
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
 var_dump($cairoContext);
 
-$pangoContext = Pango\Context::createFromCairoContext($cairoContext);
+$pangoContext = new Context($cairoContext);
 var_dump($pangoContext);
-$pangoContext->setResolution(300);
+var_dump($pangoContext->getResolution());
 
 try {
     $pangoContext->getResolution(1);
@@ -23,6 +25,7 @@ try {
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
 }
-object(Pango\Context)#%d (0) {
+object(PangoCairo\Context)#%d (0) {
 }
-Pango\Context::getResolution() expects exactly 0 arguments, 1 given
+float(-1)
+PangoCairo\Context::getResolution() expects exactly 0 arguments, 1 given

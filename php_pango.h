@@ -192,6 +192,8 @@ PHP_MINIT_FUNCTION(pango_font_map);
 PHP_MINIT_FUNCTION(pango_cairo_font_map);
 PHP_MINIT_FUNCTION(pango_font_family);
 PHP_MINIT_FUNCTION(pango_font_face);
+PHP_MINIT_FUNCTION(pango_cairo_layout);
+PHP_MINIT_FUNCTION(pango_cairo_context);
 
 #ifdef ZTS
 #define PANGO_G(v) TSRMG(pango_globals_id, zend_pango_globals *, v)

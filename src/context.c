@@ -49,27 +49,77 @@ pango_context_object *pango_context_fetch_object(zend_object *object)
     return (pango_context_object *) ((char*)(object) - XtOffsetOf(pango_context_object, std));
 }
 
-/* {{{ Creates a context object set up to match the current transformation and target surface of the Cairo context. */
-PHP_METHOD(Pango_Context, createFromCairoContext)
+/* {{{ Creates a new PangoContext initialized to default values. */
+PHP_METHOD(Pango_Context, __construct)
 {
     pango_context_object *context_object;
-    zval *cairo_context_zv;
-    cairo_context_object *cairo_context_object;
+    zval *font_map_zv = NULL;
+    pango_font_map_object *font_map_object;
 
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_OBJECT_OF_CLASS(cairo_context_zv, php_cairo_get_context_ce())
+    ZEND_PARSE_PARAMETERS_START(0, 1)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_OBJECT_OF_CLASS_OR_NULL(font_map_zv, php_pango_get_font_map_ce())
     ZEND_PARSE_PARAMETERS_END();
 
-    cairo_context_object = Z_CAIRO_CONTEXT_P(cairo_context_zv);
+    context_object = Z_PANGO_CONTEXT_P(getThis());
 
-    object_init_ex(return_value, pango_ce_pango_context);
-    context_object = Z_PANGO_CONTEXT_P(return_value);
-    context_object->context = pango_cairo_create_context(cairo_context_object->context);
+    if (font_map_zv && Z_TYPE_P(font_map_zv) != IS_NULL) {
+        font_map_object = Z_PANGO_FONT_MAP_P(font_map_zv);
+        context_object->context = pango_font_map_create_context(font_map_object->font_map);
+    } else {
+        context_object->context = pango_context_new();
+    }
 
-    // store the cairo context zv in the pango context object to keep a reference
-    ZVAL_COPY(&context_object->cairo_context_zv, cairo_context_zv);
+    // Todo: store the font map object in the pango context object to keep a reference?
+}
+
+/* {{{ */
+PHP_METHOD(Pango_Context, getFontDescription)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
 }
 /* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Context, setFontDescription)
+{
+    zval *font_desc_zv = NULL;
+
+    ZEND_PARSE_PARAMETERS_START(0, 1);
+        Z_PARAM_OPTIONAL
+        Z_PARAM_OBJECT_OF_CLASS_OR_NULL(font_desc_zv, php_pango_get_font_description_ce())
+    ZEND_PARSE_PARAMETERS_END();
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Context, getFontMap)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Context, setFontMap)
+{
+    zval *font_map_zv = NULL;
+
+    ZEND_PARSE_PARAMETERS_START(0, 1);
+        Z_PARAM_OPTIONAL
+        Z_PARAM_OBJECT_OF_CLASS_OR_NULL(font_map_zv, php_pango_get_font_map_ce())
+    ZEND_PARSE_PARAMETERS_END();
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Context, listFamilies)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    RETURN_EMPTY_ARRAY();
+}
+/* }}} */
+
 
 /* {{{ Retrieves the base direction for the context. */
 PHP_METHOD(Pango_Context, getBaseDir)
@@ -163,11 +213,16 @@ PHP_METHOD(Pango_Context, getMatrix)
     context_object = Z_PANGO_CONTEXT_P(getThis());
     matrix_pango = pango_context_get_matrix(context_object->context);
 
+    // start with a new identity matrix
     object_init_ex(return_value, php_pango_get_matrix_ce());
-    // TODO: check if a copy is wanted here, perhaps just assign the pointer?
-    // but the returned matrix is const so probably a copy is better
-    matrix_php = pango_matrix_object_get_matrix(return_value);
-    *matrix_php = *matrix_pango;
+
+    // if the context has a matrix set, copy its values to the php matrix object
+    if (matrix_pango != NULL) {
+        // TODO: check if a copy is wanted here, perhaps just assign the pointer?
+        // but the returned matrix is const so probably a copy is better
+        matrix_php = pango_matrix_object_get_matrix(return_value);
+        *matrix_php = *matrix_pango;
+    }
 }
 /* }}} */
 
@@ -246,7 +301,7 @@ PHP_METHOD(Pango_Context, setMatrix)
     PangoMatrix *matrix;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_OBJECT_OF_CLASS(matrix_zval, php_pango_get_matrix_ce())
+        Z_PARAM_OBJECT_OF_CLASS_OR_NULL(matrix_zval, php_pango_get_matrix_ce())
     ZEND_PARSE_PARAMETERS_END();
 
     context_object = Z_PANGO_CONTEXT_P(getThis());
@@ -268,55 +323,6 @@ PHP_METHOD(Pango_Context, setRoundGlyphPositions)
 
     context_object = Z_PANGO_CONTEXT_P(getThis());
     pango_context_set_round_glyph_positions(context_object->context, round);
-}
-/* }}} */
-
-/* {{{ */
-PHP_METHOD(Pango_Context, getResolution)
-{
-    pango_context_object *context_object;
-
-    ZEND_PARSE_PARAMETERS_NONE();
-
-    context_object = Z_PANGO_CONTEXT_P(getThis());
-
-    RETURN_DOUBLE(pango_cairo_context_get_resolution(context_object->context));
-}
-/* }}} */
-
-/* {{{ */
-PHP_METHOD(Pango_Context, setResolution)
-{
-    pango_context_object *context_object;
-    double resolution;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_DOUBLE(resolution)
-    ZEND_PARSE_PARAMETERS_END();
-
-    context_object = Z_PANGO_CONTEXT_P(getThis());
-    pango_cairo_context_set_resolution(context_object->context, resolution);
-}
-/* }}} */
-
-/* {{{ Updates the private PangoContext previously created for use with Cairo
-       to match the current transformation and target surface of a Cairo context. */
-PHP_METHOD(Pango_Context, updateContext)
-{
-    pango_context_object *pango_context_object;
-    cairo_context_object *cairo_context_object;
-    zval *cairo_context_zv;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1);
-        Z_PARAM_OBJECT_OF_CLASS(cairo_context_zv, php_cairo_get_context_ce())
-    ZEND_PARSE_PARAMETERS_END();
-
-    pango_context_object = Z_PANGO_CONTEXT_P(getThis());
-    cairo_context_object = Z_CAIRO_CONTEXT_P(cairo_context_zv);
-    pango_cairo_update_context(cairo_context_object->context, pango_context_object->context);
-
-    zval_ptr_dtor(&pango_context_object->cairo_context_zv);
-    ZVAL_COPY(&pango_context_object->cairo_context_zv, cairo_context_zv);
 }
 /* }}} */
 

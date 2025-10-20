@@ -1,5 +1,5 @@
 --TEST--
-Pango\Context::getResolution()
+PangoCairo\Layout::layoutPath()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -10,12 +10,14 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
 var_dump($cairoContext);
 
-$pangoContext = Pango\Context::createFromCairoContext($cairoContext);
-var_dump($pangoContext);
-var_dump($pangoContext->getResolution());
+$layout = new PangoCairo\Layout($cairoContext);
+var_dump($layout);
+
+$layout->setText('Hello, Παν語!');
+$layout->layoutPath();
 
 try {
-    $pangoContext->getResolution(1);
+    $layout->layoutPath('wrong');
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -23,7 +25,6 @@ try {
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
 }
-object(Pango\Context)#%d (0) {
+object(PangoCairo\Layout)#%d (0) {
 }
-float(-1)
-Pango\Context::getResolution() expects exactly 0 arguments, 1 given
+PangoCairo\Layout::layoutPath() expects exactly 0 arguments, 1 given

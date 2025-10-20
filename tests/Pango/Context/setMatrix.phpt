@@ -7,13 +7,12 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 ?>
 --FILE--
 <?php
-$cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
-var_dump($cairoContext);
+use Pango\Context;
+use PangoCairo\FontMap;
 
-$layout = new Pango\Layout($cairoContext);
-var_dump($layout);
-
-$context = $layout->getContext();
+$fontMap = FontMap::getDefault();
+var_dump($fontMap);
+$context = new Context($fontMap);
 var_dump($context);
 $matrix = $context->getMatrix();
 var_dump($matrix);
@@ -41,9 +40,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Cairo\Context)#%d (0) {
-}
-object(Pango\Layout)#%d (0) {
+object(PangoCairo\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }
@@ -61,7 +58,7 @@ object(Pango\Matrix)#%d (6) {
   ["y0"]=>
   float(0)
 }
-object(Pango\Matrix)#%d (6) {
+object(Pango\Matrix)#4 (6) {
   ["xx"]=>
   float(2)
   ["yx"]=>
@@ -77,4 +74,4 @@ object(Pango\Matrix)#%d (6) {
 }
 Pango\Context::setMatrix() expects exactly 1 argument, 0 given
 Pango\Context::setMatrix() expects exactly 1 argument, 2 given
-Pango\Context::setMatrix(): Argument #1 ($matrix) must be of type Pango\Matrix, array given
+Pango\Context::setMatrix(): Argument #1 ($matrix) must be of type ?Pango\Matrix, array given

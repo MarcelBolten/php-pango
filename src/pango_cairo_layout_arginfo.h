@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: af8ed19a0266e0fbcfa5255bacdad3f0daad515a */
+ * Stub hash: a83551668f1da73a8a4be690385b20dcb2b79132 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
@@ -10,9 +10,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_PangoCairo_Layout_showLayout arginfo_class_PangoCairo_Layout_layoutPath
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_Layout_updateLayout, 0, 1, IS_VOID, 0)
-	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_PangoCairo_Layout_updateLayout arginfo_class_PangoCairo_Layout_layoutPath
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Layout_getCairoContext, 0, 0, Cairo\\Context, 0)
 ZEND_END_ARG_INFO()
