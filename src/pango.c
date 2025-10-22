@@ -135,7 +135,7 @@ PHP_MINIT_FUNCTION(pango)
     // init fontconfig to avoid potential race conditions later
     // TODO: maybe need to do it only on linux systems?
     // pango_setup_font_config();
-    PangoFontMap *fontmap = pango_cairo_font_map_get_default();
+    // PangoFontMap *fontmap = pango_cairo_font_map_get_default();
     // FcInit();
 
     memcpy(
@@ -167,6 +167,9 @@ PHP_MINIT_FUNCTION(pango)
     PHP_MINIT(pango_font_face)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_cairo_layout)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_cairo_context)(INIT_FUNC_ARGS_PASSTHRU);
+
+
+    PangoFontMap *fontmap = pango_cairo_font_map_get_default();
 
     return SUCCESS;
 }
