@@ -25,7 +25,7 @@
 #include "php_ini.h"
 #include "ext/standard/info.h"
 
-// #include <fontconfig/fontconfig.h>
+#include <fontconfig/fontconfig.h>
 // #include <sys/stat.h>
 // #include <sys/types.h>
 // #include <limits.h>
@@ -132,6 +132,21 @@ ZEND_GET_MODULE(pango)
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(pango)
 {
+    // Initialize fontconfig synchronously
+    if (!FcInit()) {
+        php_error(E_WARNING, 
+            "Failed to initialize Fontconfig");
+        return FAILURE;
+    }
+    
+    // Force fontconfig to finish scanning fonts
+    FcConfig *config = FcConfigGetCurrent();
+    if (config) {
+        // This ensures font cache is built
+        FcConfigBuildFonts(config);
+    }
+
+
     // init fontconfig to avoid potential race conditions later
     // TODO: maybe need to do it only on linux systems?
     // pango_setup_font_config();
@@ -169,7 +184,7 @@ PHP_MINIT_FUNCTION(pango)
     PHP_MINIT(pango_cairo_context)(INIT_FUNC_ARGS_PASSTHRU);
 
 
-    PangoFontMap *fontmap = pango_cairo_font_map_get_default();
+    // PangoFontMap *fontmap = pango_cairo_font_map_get_default();
 
     return SUCCESS;
 }
