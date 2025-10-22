@@ -25,7 +25,7 @@
 #include "php_ini.h"
 #include "ext/standard/info.h"
 
-#include <fontconfig/fontconfig.h>
+// #include <fontconfig/fontconfig.h>
 // #include <sys/stat.h>
 // #include <sys/types.h>
 // #include <limits.h>
@@ -135,7 +135,8 @@ PHP_MINIT_FUNCTION(pango)
     // init fontconfig to avoid potential race conditions later
     // TODO: maybe need to do it only on linux systems?
     // pango_setup_font_config();
-    FcInit();
+    PangoFontMap *fontmap = pango_cairo_font_map_get_default();
+    // FcInit();
 
     memcpy(
         &pango_std_object_handlers,
