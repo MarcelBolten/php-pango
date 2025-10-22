@@ -184,7 +184,10 @@ PHP_MINIT_FUNCTION(pango)
     PHP_MINIT(pango_cairo_context)(INIT_FUNC_ARGS_PASSTHRU);
 
 
-    // PangoFontMap *fontmap = pango_cairo_font_map_get_default();
+    PangoFontMap *fontmap = pango_cairo_font_map_get_default();
+    if (!fontmap) {
+        return FAILURE;
+    }
 
     return SUCCESS;
 }
