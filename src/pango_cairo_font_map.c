@@ -186,7 +186,6 @@ static void pango_cairo_font_map_free_obj(zend_object *zobj)
 
     if (intern->font_map && !intern->is_default) {
         g_object_unref(intern->font_map);
-        intern->font_map = NULL;
     }
 
     zend_object_std_dtor(&intern->std);

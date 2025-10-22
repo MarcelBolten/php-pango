@@ -144,7 +144,6 @@ static void pango_cairo_layout_free_obj(zend_object *zobj)
 
     if (intern->layout) {
         g_object_unref(intern->layout);
-        intern->layout = NULL;
     }
 
     zval_ptr_dtor(&intern->pango_context_zv);

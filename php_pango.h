@@ -146,7 +146,7 @@ extern pango_rectangle_object *pango_rectangle_fetch_object(zend_object *object)
 #define Z_PANGO_RECTANGLE_P(zv) pango_rectangle_fetch_object(Z_OBJ_P(zv))
 extern PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv);
 
-// if FontMap is obtained via pango_cairo_font_map_get_default it should not be
+// if font_map is obtained via pango_cairo_font_map_get_default it should not be
 // freed, so we track it in is_default
 typedef struct _pango_font_map_object {
     PangoFontMap *font_map;
