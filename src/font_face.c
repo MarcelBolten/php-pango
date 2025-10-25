@@ -87,8 +87,8 @@ PHP_METHOD(Pango_FontFace, getFamily)
 
     object_init_ex(return_value, php_pango_get_font_family_ce());
     font_family_object = Z_PANGO_FONT_FAMILY_P(return_value);
-    font_family_object->font_family = pango_font_face_get_family(
-        pango_font_face_object_get_font_face(getThis())
+    font_family_object->font_family = g_object_ref(pango_font_face_get_family(
+        pango_font_face_object_get_font_face(getThis()))
     );
 }
 /* }}} */
