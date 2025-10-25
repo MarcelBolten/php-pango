@@ -179,6 +179,8 @@ extern PangoFontFace *pango_font_face_object_get_font_face(zval *zv);
 
 PHP_MINIT_FUNCTION(pango);
 PHP_MSHUTDOWN_FUNCTION(pango);
+PHP_RINIT_FUNCTION(pango);
+PHP_RSHUTDOWN_FUNCTION(pango);
 PHP_MINFO_FUNCTION(pango);
 
 PHP_MINIT_FUNCTION(pango_exception);
