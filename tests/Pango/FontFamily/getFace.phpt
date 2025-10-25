@@ -12,7 +12,7 @@ use PangoCairo\FontMap;
 $fontMap = FontMap::getDefault();
 var_dump($fontMap);
 
-$family = $fontMap->listFamilies()[0];
+$family = $fontMap->getFamily("Sans");
 var_dump($family);
 
 $defaultFace = $family->getFace();
