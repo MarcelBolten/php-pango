@@ -25,65 +25,11 @@
 #include "php_ini.h"
 #include "ext/standard/info.h"
 
-#include <fontconfig/fontconfig.h>
-// #include <sys/stat.h>
-// #include <sys/types.h>
-// #include <limits.h>
-// #include "php_open_temporary_file.h"
-// #include <sys/file.h>
-// #include <fcntl.h>
-// #include <unistd.h>
-
 #include "php_pango.h"
 #include "pango_arginfo.h"
 
 zend_class_entry *pango_ce_pango;
 zend_object_handlers pango_std_object_handlers;
-
-// TODO: move to separate file with corresponding headers
-// void pango_setup_font_config(void)
-// {
-//     char cache_dir[MAXPATHLEN];
-//     const char *temp_dir = php_get_temporary_directory();
-//     char lock_file[MAXPATHLEN];
-//     int lock_fd = -1;
-
-//     snprintf(cache_dir, sizeof(cache_dir), "%s/php-pango-fontconfig", temp_dir);
-
-//     #ifdef PHP_WIN32
-//         _mkdir(cache_dir);
-//     #else
-//         mkdir(cache_dir, 0755);
-//     #endif
-
-//     setenv("XDG_CACHE_HOME", cache_dir, 0);
-
-//     #ifndef PHP_WIN32
-//     snprintf(lock_file, sizeof(lock_file), "%s/init.lock", cache_dir);
-//     lock_fd = open(lock_file, O_CREAT | O_RDWR, 0644);
-
-//     if (lock_fd >= 0) {
-//         flock(lock_fd, LOCK_EX);  // Block until lock acquired
-//     }
-//     #endif
-
-//     FcBool result = FcInit();
-
-//     // Pre-build font cache
-//     if (result) {
-//         FcConfig *config = FcConfigGetCurrent();
-//         if (config) {
-//             FcConfigBuildFonts(config);
-//         }
-//     }
-
-//     #ifndef PHP_WIN32
-//     if (lock_fd >= 0) {
-//         flock(lock_fd, LOCK_UN);
-//         close(lock_fd);
-//     }
-//     #endif
-// }
 
 /* {{{ returns the Pango version */
 ZEND_METHOD(Pango_Pango, version)
@@ -117,8 +63,8 @@ zend_module_entry pango_module_entry = {
     NULL,
     PHP_MINIT(pango),
     PHP_MSHUTDOWN(pango),
-    NULL,
-    NULL,
+    PHP_RINIT(pango),
+    PHP_RSHUTDOWN(pango),
     PHP_MINFO(pango),
     PHP_PANGO_VERSION,
     STANDARD_MODULE_PROPERTIES
@@ -132,11 +78,6 @@ ZEND_GET_MODULE(pango)
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(pango)
 {
-    // init fontconfig to avoid potential race conditions later
-    // TODO: maybe need to do it only on linux systems?
-    // pango_setup_font_config();
-    FcInit();
-
     memcpy(
         &pango_std_object_handlers,
         zend_get_std_object_handlers(),
@@ -174,11 +115,6 @@ PHP_MINIT_FUNCTION(pango)
 /* {{{ PHP_MSHUTDOWN_FUNCTION */
 PHP_MSHUTDOWN_FUNCTION(pango)
 {
-    // This is a hack, but if we don't wait a bit here, tests sometimes
-    // fail with segfaults and I don't know why. Probably some race condition.
-    // Todo: investigate further, fix it, and remove this.
-    usleep(10000);
-
     /* uncomment this line if you have INI entries
     UNREGISTER_INI_ENTRIES();
     */
@@ -186,6 +122,39 @@ PHP_MSHUTDOWN_FUNCTION(pango)
 }
 /* }}} */
 
+PHP_RINIT_FUNCTION(pango)
+{
+    /**
+     * Initialize fontconfig via pango_cairo_font_map_get_default on request
+     * start and load the default font map to ensure fontconfig is ready to use.
+     *
+     * If there would be a way to wait for the shutdown of the worker thread
+     * started by the fontconfig backend, we could avoid the race conditions
+     * and the default font map could be lazy-loaded when needed.
+     * TODO: only load if fontconfig backend is used
+     */
+    PangoFontMap *font_map = pango_cairo_font_map_get_default();
+    // This will block internally until fontconfig is initialized
+    pango_fc_font_map_get_config((PangoFcFontMap *)font_map);
+
+    return SUCCESS;
+}
+
+PHP_RSHUTDOWN_FUNCTION(pango)
+{
+    /**
+     * This is a hack, but if we don't wait a bit here, tests sometimes
+     * fail with segfaults.  There is a race condition between the php shutdown
+     * and an asynchronous worker thread started by pango if a fontconfig
+     * backend is used that only gets cleaned up properly if we wait a bit here.
+     * There is no alternative way I'm aware of to ensure the worker thread is closed.
+     * TODO: investigate further, fix it, and remove this.
+     * TODO: make it an ini setting to configure the wait time
+     */
+    usleep(50000);
+
+    return SUCCESS;
+}
 
 /* {{{ PHP_MINFO_FUNCTION */
 PHP_MINFO_FUNCTION(pango)

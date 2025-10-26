@@ -43,6 +43,7 @@ extern zend_object_handlers pango_std_object_handlers;
 
 #include <pango/pango.h>
 #include <pango/pangocairo.h>
+#include <pango/pangofc-fontmap.h>
 #include "src/php_cairo_internal.h"
 
 PHP_PANGO_API extern zend_class_entry *php_pango_get_context_ce();
@@ -146,7 +147,7 @@ extern pango_rectangle_object *pango_rectangle_fetch_object(zend_object *object)
 #define Z_PANGO_RECTANGLE_P(zv) pango_rectangle_fetch_object(Z_OBJ_P(zv))
 extern PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv);
 
-// if FontMap is obtained via pango_cairo_font_map_get_default it should not be
+// if font_map is obtained via pango_cairo_font_map_get_default it should not be
 // freed, so we track it in is_default
 typedef struct _pango_font_map_object {
     PangoFontMap *font_map;
@@ -179,6 +180,8 @@ extern PangoFontFace *pango_font_face_object_get_font_face(zval *zv);
 
 PHP_MINIT_FUNCTION(pango);
 PHP_MSHUTDOWN_FUNCTION(pango);
+PHP_RINIT_FUNCTION(pango);
+PHP_RSHUTDOWN_FUNCTION(pango);
 PHP_MINFO_FUNCTION(pango);
 
 PHP_MINIT_FUNCTION(pango_exception);

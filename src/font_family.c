@@ -155,7 +155,6 @@ static void pango_font_family_free_obj(zend_object *zobj)
 
     if (intern->font_family != NULL) {
         g_object_unref(intern->font_family);
-        intern->font_family = NULL;
     }
 
     zend_object_std_dtor(&intern->std);
