@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">96.9&nbsp;%</td>
-            <td class="headerCovTableEntry">388</td>
-            <td class="headerCovTableEntry">376</td>
+            <td class="headerCovTableEntry">387</td>
+            <td class="headerCovTableEntry">375</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-20 21:04:55</td>
+            <td class="headerValue">2025-10-26 00:52:08</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -1051,66 +1051,65 @@
 <span id="L989"><span class="lineNum">     989</span>              : </span>
 <span id="L990"><span class="lineNum">     990</span> <span class="tlaGNC tlaBgGNC">          60 :     if (intern-&gt;layout) {</span></span>
 <span id="L991"><span class="lineNum">     991</span> <span class="tlaGNC">          57 :         g_object_unref(intern-&gt;layout);</span></span>
-<span id="L992"><span class="lineNum">     992</span> <span class="tlaGNC">          57 :         intern-&gt;layout = NULL;</span></span>
-<span id="L993"><span class="lineNum">     993</span>              :     }</span>
-<span id="L994"><span class="lineNum">     994</span>              : </span>
-<span id="L995"><span class="lineNum">     995</span> <span class="tlaGNC">          60 :     zval_ptr_dtor(&amp;intern-&gt;pango_context_zv);</span></span>
-<span id="L996"><span class="lineNum">     996</span> <span class="tlaGNC">          60 :     zval_ptr_dtor(&amp;intern-&gt;cairo_context_zv);</span></span>
-<span id="L997"><span class="lineNum">     997</span>              : </span>
-<span id="L998"><span class="lineNum">     998</span> <span class="tlaGNC">          60 :     zend_object_std_dtor(&amp;intern-&gt;std);</span></span>
-<span id="L999"><span class="lineNum">     999</span>              : }</span>
-<span id="L1000"><span class="lineNum">    1000</span>              : /* }}} */</span>
-<span id="L1001"><span class="lineNum">    1001</span>              : </span>
-<span id="L1002"><span class="lineNum">    1002</span>              : /* {{{ */</span>
-<span id="L1003"><span class="lineNum">    1003</span> <span class="tlaGNC">          60 : static zend_object* pango_layout_obj_ctor(zend_class_entry *ce, pango_layout_object **intern)</span></span>
-<span id="L1004"><span class="lineNum">    1004</span>              : {</span>
-<span id="L1005"><span class="lineNum">    1005</span> <span class="tlaGNC">          60 :     pango_layout_object *object = ecalloc(1, sizeof(pango_layout_object) + zend_object_properties_size(ce));</span></span>
-<span id="L1006"><span class="lineNum">    1006</span>              : </span>
-<span id="L1007"><span class="lineNum">    1007</span> <span class="tlaGNC">          60 :     ZVAL_UNDEF(&amp;object-&gt;cairo_context_zv);</span></span>
-<span id="L1008"><span class="lineNum">    1008</span> <span class="tlaGNC">          60 :     ZVAL_UNDEF(&amp;object-&gt;pango_context_zv);</span></span>
-<span id="L1009"><span class="lineNum">    1009</span>              : </span>
-<span id="L1010"><span class="lineNum">    1010</span> <span class="tlaGNC">          60 :     zend_object_std_init(&amp;object-&gt;std, ce);</span></span>
-<span id="L1011"><span class="lineNum">    1011</span>              : </span>
-<span id="L1012"><span class="lineNum">    1012</span> <span class="tlaGNC">          60 :     object-&gt;std.handlers = &amp;pango_layout_object_handlers;</span></span>
-<span id="L1013"><span class="lineNum">    1013</span> <span class="tlaGNC">          60 :     *intern = object;</span></span>
-<span id="L1014"><span class="lineNum">    1014</span>              : </span>
-<span id="L1015"><span class="lineNum">    1015</span> <span class="tlaGNC">          60 :     return &amp;object-&gt;std;</span></span>
-<span id="L1016"><span class="lineNum">    1016</span>              : }</span>
-<span id="L1017"><span class="lineNum">    1017</span>              : /* }}} */</span>
-<span id="L1018"><span class="lineNum">    1018</span>              : </span>
-<span id="L1019"><span class="lineNum">    1019</span>              : /* {{{ */</span>
-<span id="L1020"><span class="lineNum">    1020</span> <span class="tlaGNC">          60 : static zend_object* pango_layout_create_object(zend_class_entry *ce)</span></span>
-<span id="L1021"><span class="lineNum">    1021</span>              : {</span>
-<span id="L1022"><span class="lineNum">    1022</span> <span class="tlaGNC">          60 :     pango_layout_object *intern = NULL;</span></span>
-<span id="L1023"><span class="lineNum">    1023</span> <span class="tlaGNC">          60 :     zend_object *return_value = pango_layout_obj_ctor(ce, &amp;intern);</span></span>
-<span id="L1024"><span class="lineNum">    1024</span>              : </span>
-<span id="L1025"><span class="lineNum">    1025</span> <span class="tlaGNC">          60 :     object_properties_init(&amp;intern-&gt;std, ce);</span></span>
-<span id="L1026"><span class="lineNum">    1026</span> <span class="tlaGNC">          60 :     return return_value;</span></span>
-<span id="L1027"><span class="lineNum">    1027</span>              : }</span>
-<span id="L1028"><span class="lineNum">    1028</span>              : /* }}} */</span>
-<span id="L1029"><span class="lineNum">    1029</span>              : </span>
-<span id="L1030"><span class="lineNum">    1030</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L1031"><span class="lineNum">    1031</span> <span class="tlaGNC">         194 : PHP_MINIT_FUNCTION(pango_layout)</span></span>
-<span id="L1032"><span class="lineNum">    1032</span>              : {</span>
-<span id="L1033"><span class="lineNum">    1033</span> <span class="tlaGNC">         194 :     memcpy(</span></span>
-<span id="L1034"><span class="lineNum">    1034</span>              :         &amp;pango_layout_object_handlers,</span>
-<span id="L1035"><span class="lineNum">    1035</span>              :         zend_get_std_object_handlers(),</span>
-<span id="L1036"><span class="lineNum">    1036</span>              :         sizeof(zend_object_handlers)</span>
-<span id="L1037"><span class="lineNum">    1037</span>              :     );</span>
-<span id="L1038"><span class="lineNum">    1038</span>              : </span>
-<span id="L1039"><span class="lineNum">    1039</span> <span class="tlaGNC">         194 :     pango_layout_object_handlers.offset = XtOffsetOf(pango_layout_object, std);</span></span>
-<span id="L1040"><span class="lineNum">    1040</span> <span class="tlaGNC">         194 :     pango_layout_object_handlers.free_obj = pango_layout_free_obj;</span></span>
-<span id="L1041"><span class="lineNum">    1041</span>              : </span>
-<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaGNC">         194 :     pango_ce_pango_layout = register_class_Pango_Layout();</span></span>
-<span id="L1043"><span class="lineNum">    1043</span> <span class="tlaGNC">         194 :     pango_ce_pango_layout-&gt;create_object = pango_layout_create_object;</span></span>
-<span id="L1044"><span class="lineNum">    1044</span>              : </span>
-<span id="L1045"><span class="lineNum">    1045</span> <span class="tlaGNC">         194 :     pango_ce_pango_alignment = register_class_Pango_Alignment();</span></span>
-<span id="L1046"><span class="lineNum">    1046</span> <span class="tlaGNC">         194 :     pango_ce_pango_wrap_mode = register_class_Pango_WrapMode();</span></span>
-<span id="L1047"><span class="lineNum">    1047</span> <span class="tlaGNC">         194 :     pango_ce_pango_ellipsize_mode = register_class_Pango_EllipsizeMode();</span></span>
-<span id="L1048"><span class="lineNum">    1048</span>              : </span>
-<span id="L1049"><span class="lineNum">    1049</span> <span class="tlaGNC">         194 :     return SUCCESS;</span></span>
-<span id="L1050"><span class="lineNum">    1050</span>              : }</span>
-<span id="L1051"><span class="lineNum">    1051</span>              : /* }}} */</span>
+<span id="L992"><span class="lineNum">     992</span>              :     }</span>
+<span id="L993"><span class="lineNum">     993</span>              : </span>
+<span id="L994"><span class="lineNum">     994</span> <span class="tlaGNC">          60 :     zval_ptr_dtor(&amp;intern-&gt;pango_context_zv);</span></span>
+<span id="L995"><span class="lineNum">     995</span> <span class="tlaGNC">          60 :     zval_ptr_dtor(&amp;intern-&gt;cairo_context_zv);</span></span>
+<span id="L996"><span class="lineNum">     996</span>              : </span>
+<span id="L997"><span class="lineNum">     997</span> <span class="tlaGNC">          60 :     zend_object_std_dtor(&amp;intern-&gt;std);</span></span>
+<span id="L998"><span class="lineNum">     998</span>              : }</span>
+<span id="L999"><span class="lineNum">     999</span>              : /* }}} */</span>
+<span id="L1000"><span class="lineNum">    1000</span>              : </span>
+<span id="L1001"><span class="lineNum">    1001</span>              : /* {{{ */</span>
+<span id="L1002"><span class="lineNum">    1002</span> <span class="tlaGNC">          60 : static zend_object* pango_layout_obj_ctor(zend_class_entry *ce, pango_layout_object **intern)</span></span>
+<span id="L1003"><span class="lineNum">    1003</span>              : {</span>
+<span id="L1004"><span class="lineNum">    1004</span> <span class="tlaGNC">          60 :     pango_layout_object *object = ecalloc(1, sizeof(pango_layout_object) + zend_object_properties_size(ce));</span></span>
+<span id="L1005"><span class="lineNum">    1005</span>              : </span>
+<span id="L1006"><span class="lineNum">    1006</span> <span class="tlaGNC">          60 :     ZVAL_UNDEF(&amp;object-&gt;cairo_context_zv);</span></span>
+<span id="L1007"><span class="lineNum">    1007</span> <span class="tlaGNC">          60 :     ZVAL_UNDEF(&amp;object-&gt;pango_context_zv);</span></span>
+<span id="L1008"><span class="lineNum">    1008</span>              : </span>
+<span id="L1009"><span class="lineNum">    1009</span> <span class="tlaGNC">          60 :     zend_object_std_init(&amp;object-&gt;std, ce);</span></span>
+<span id="L1010"><span class="lineNum">    1010</span>              : </span>
+<span id="L1011"><span class="lineNum">    1011</span> <span class="tlaGNC">          60 :     object-&gt;std.handlers = &amp;pango_layout_object_handlers;</span></span>
+<span id="L1012"><span class="lineNum">    1012</span> <span class="tlaGNC">          60 :     *intern = object;</span></span>
+<span id="L1013"><span class="lineNum">    1013</span>              : </span>
+<span id="L1014"><span class="lineNum">    1014</span> <span class="tlaGNC">          60 :     return &amp;object-&gt;std;</span></span>
+<span id="L1015"><span class="lineNum">    1015</span>              : }</span>
+<span id="L1016"><span class="lineNum">    1016</span>              : /* }}} */</span>
+<span id="L1017"><span class="lineNum">    1017</span>              : </span>
+<span id="L1018"><span class="lineNum">    1018</span>              : /* {{{ */</span>
+<span id="L1019"><span class="lineNum">    1019</span> <span class="tlaGNC">          60 : static zend_object* pango_layout_create_object(zend_class_entry *ce)</span></span>
+<span id="L1020"><span class="lineNum">    1020</span>              : {</span>
+<span id="L1021"><span class="lineNum">    1021</span> <span class="tlaGNC">          60 :     pango_layout_object *intern = NULL;</span></span>
+<span id="L1022"><span class="lineNum">    1022</span> <span class="tlaGNC">          60 :     zend_object *return_value = pango_layout_obj_ctor(ce, &amp;intern);</span></span>
+<span id="L1023"><span class="lineNum">    1023</span>              : </span>
+<span id="L1024"><span class="lineNum">    1024</span> <span class="tlaGNC">          60 :     object_properties_init(&amp;intern-&gt;std, ce);</span></span>
+<span id="L1025"><span class="lineNum">    1025</span> <span class="tlaGNC">          60 :     return return_value;</span></span>
+<span id="L1026"><span class="lineNum">    1026</span>              : }</span>
+<span id="L1027"><span class="lineNum">    1027</span>              : /* }}} */</span>
+<span id="L1028"><span class="lineNum">    1028</span>              : </span>
+<span id="L1029"><span class="lineNum">    1029</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
+<span id="L1030"><span class="lineNum">    1030</span> <span class="tlaGNC">         194 : PHP_MINIT_FUNCTION(pango_layout)</span></span>
+<span id="L1031"><span class="lineNum">    1031</span>              : {</span>
+<span id="L1032"><span class="lineNum">    1032</span> <span class="tlaGNC">         194 :     memcpy(</span></span>
+<span id="L1033"><span class="lineNum">    1033</span>              :         &amp;pango_layout_object_handlers,</span>
+<span id="L1034"><span class="lineNum">    1034</span>              :         zend_get_std_object_handlers(),</span>
+<span id="L1035"><span class="lineNum">    1035</span>              :         sizeof(zend_object_handlers)</span>
+<span id="L1036"><span class="lineNum">    1036</span>              :     );</span>
+<span id="L1037"><span class="lineNum">    1037</span>              : </span>
+<span id="L1038"><span class="lineNum">    1038</span> <span class="tlaGNC">         194 :     pango_layout_object_handlers.offset = XtOffsetOf(pango_layout_object, std);</span></span>
+<span id="L1039"><span class="lineNum">    1039</span> <span class="tlaGNC">         194 :     pango_layout_object_handlers.free_obj = pango_layout_free_obj;</span></span>
+<span id="L1040"><span class="lineNum">    1040</span>              : </span>
+<span id="L1041"><span class="lineNum">    1041</span> <span class="tlaGNC">         194 :     pango_ce_pango_layout = register_class_Pango_Layout();</span></span>
+<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaGNC">         194 :     pango_ce_pango_layout-&gt;create_object = pango_layout_create_object;</span></span>
+<span id="L1043"><span class="lineNum">    1043</span>              : </span>
+<span id="L1044"><span class="lineNum">    1044</span> <span class="tlaGNC">         194 :     pango_ce_pango_alignment = register_class_Pango_Alignment();</span></span>
+<span id="L1045"><span class="lineNum">    1045</span> <span class="tlaGNC">         194 :     pango_ce_pango_wrap_mode = register_class_Pango_WrapMode();</span></span>
+<span id="L1046"><span class="lineNum">    1046</span> <span class="tlaGNC">         194 :     pango_ce_pango_ellipsize_mode = register_class_Pango_EllipsizeMode();</span></span>
+<span id="L1047"><span class="lineNum">    1047</span>              : </span>
+<span id="L1048"><span class="lineNum">    1048</span> <span class="tlaGNC">         194 :     return SUCCESS;</span></span>
+<span id="L1049"><span class="lineNum">    1049</span>              : }</span>
+<span id="L1050"><span class="lineNum">    1050</span>              : /* }}} */</span>
         </pre>
               </td>
             </tr>

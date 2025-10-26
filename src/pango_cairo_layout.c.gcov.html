@@ -31,13 +31,13 @@
             <td class="headerValue">PHP Pango Extension Coverage</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">92.3&nbsp;%</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">60</td>
+            <td class="headerCovTableEntryHi">92.2&nbsp;%</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">59</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-20 21:04:55</td>
+            <td class="headerValue">2025-10-26 00:52:08</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">90.9&nbsp;%</td>
@@ -206,62 +206,61 @@
 <span id="L144"><span class="lineNum">     144</span>              : </span>
 <span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC tlaBgGNC">          17 :     if (intern-&gt;layout) {</span></span>
 <span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">          14 :         g_object_unref(intern-&gt;layout);</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          14 :         intern-&gt;layout = NULL;</span></span>
-<span id="L148"><span class="lineNum">     148</span>              :     }</span>
-<span id="L149"><span class="lineNum">     149</span>              : </span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          17 :     zval_ptr_dtor(&amp;intern-&gt;pango_context_zv);</span></span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          17 :     zval_ptr_dtor(&amp;intern-&gt;cairo_context_zv);</span></span>
-<span id="L152"><span class="lineNum">     152</span>              : </span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          17 :     zend_object_std_dtor(&amp;intern-&gt;std);</span></span>
-<span id="L154"><span class="lineNum">     154</span>              : }</span>
-<span id="L155"><span class="lineNum">     155</span>              : /* }}} */</span>
-<span id="L156"><span class="lineNum">     156</span>              : </span>
-<span id="L157"><span class="lineNum">     157</span>              : /* {{{ */</span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">          17 : static zend_object* pango_cairo_layout_obj_ctor(zend_class_entry *ce, pango_layout_object **intern)</span></span>
-<span id="L159"><span class="lineNum">     159</span>              : {</span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">          17 :     pango_layout_object *object = ecalloc(1, sizeof(pango_layout_object) + zend_object_properties_size(ce));</span></span>
-<span id="L161"><span class="lineNum">     161</span>              : </span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          17 :     ZVAL_UNDEF(&amp;object-&gt;cairo_context_zv);</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          17 :     ZVAL_UNDEF(&amp;object-&gt;pango_context_zv);</span></span>
-<span id="L164"><span class="lineNum">     164</span>              : </span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          17 :     zend_object_std_init(&amp;object-&gt;std, ce);</span></span>
-<span id="L166"><span class="lineNum">     166</span>              : </span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          17 :     object-&gt;std.handlers = &amp;pango_cairo_layout_object_handlers;</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          17 :     *intern = object;</span></span>
-<span id="L169"><span class="lineNum">     169</span>              : </span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          17 :     return &amp;object-&gt;std;</span></span>
-<span id="L171"><span class="lineNum">     171</span>              : }</span>
-<span id="L172"><span class="lineNum">     172</span>              : /* }}} */</span>
-<span id="L173"><span class="lineNum">     173</span>              : </span>
-<span id="L174"><span class="lineNum">     174</span>              : /* {{{ */</span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          17 : static zend_object* pango_cairo_layout_create_object(zend_class_entry *ce)</span></span>
-<span id="L176"><span class="lineNum">     176</span>              : {</span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          17 :     pango_layout_object *intern = NULL;</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          17 :     zend_object *return_value = pango_cairo_layout_obj_ctor(ce, &amp;intern);</span></span>
-<span id="L179"><span class="lineNum">     179</span>              : </span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          17 :     object_properties_init(&amp;intern-&gt;std, ce);</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          17 :     return return_value;</span></span>
-<span id="L182"><span class="lineNum">     182</span>              : }</span>
-<span id="L183"><span class="lineNum">     183</span>              : /* }}} */</span>
-<span id="L184"><span class="lineNum">     184</span>              : </span>
-<span id="L185"><span class="lineNum">     185</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">         194 : PHP_MINIT_FUNCTION(pango_cairo_layout)</span></span>
-<span id="L187"><span class="lineNum">     187</span>              : {</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">         194 :     memcpy(</span></span>
-<span id="L189"><span class="lineNum">     189</span>              :         &amp;pango_cairo_layout_object_handlers,</span>
-<span id="L190"><span class="lineNum">     190</span>              :         zend_get_std_object_handlers(),</span>
-<span id="L191"><span class="lineNum">     191</span>              :         sizeof(zend_object_handlers)</span>
-<span id="L192"><span class="lineNum">     192</span>              :     );</span>
-<span id="L193"><span class="lineNum">     193</span>              : </span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         194 :     pango_cairo_layout_object_handlers.offset = XtOffsetOf(pango_layout_object, std);</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">         194 :     pango_cairo_layout_object_handlers.free_obj = pango_cairo_layout_free_obj;</span></span>
-<span id="L196"><span class="lineNum">     196</span>              : </span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         194 :     pango_ce_pango_cairo_layout = register_class_PangoCairo_Layout(php_pango_get_layout_ce());</span></span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">         194 :     pango_ce_pango_cairo_layout-&gt;create_object = pango_cairo_layout_create_object;</span></span>
-<span id="L199"><span class="lineNum">     199</span>              : </span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">         194 :     return SUCCESS;</span></span>
-<span id="L201"><span class="lineNum">     201</span>              : }</span>
-<span id="L202"><span class="lineNum">     202</span>              : /* }}} */</span>
+<span id="L147"><span class="lineNum">     147</span>              :     }</span>
+<span id="L148"><span class="lineNum">     148</span>              : </span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          17 :     zval_ptr_dtor(&amp;intern-&gt;pango_context_zv);</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          17 :     zval_ptr_dtor(&amp;intern-&gt;cairo_context_zv);</span></span>
+<span id="L151"><span class="lineNum">     151</span>              : </span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          17 :     zend_object_std_dtor(&amp;intern-&gt;std);</span></span>
+<span id="L153"><span class="lineNum">     153</span>              : }</span>
+<span id="L154"><span class="lineNum">     154</span>              : /* }}} */</span>
+<span id="L155"><span class="lineNum">     155</span>              : </span>
+<span id="L156"><span class="lineNum">     156</span>              : /* {{{ */</span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">          17 : static zend_object* pango_cairo_layout_obj_ctor(zend_class_entry *ce, pango_layout_object **intern)</span></span>
+<span id="L158"><span class="lineNum">     158</span>              : {</span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          17 :     pango_layout_object *object = ecalloc(1, sizeof(pango_layout_object) + zend_object_properties_size(ce));</span></span>
+<span id="L160"><span class="lineNum">     160</span>              : </span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">          17 :     ZVAL_UNDEF(&amp;object-&gt;cairo_context_zv);</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          17 :     ZVAL_UNDEF(&amp;object-&gt;pango_context_zv);</span></span>
+<span id="L163"><span class="lineNum">     163</span>              : </span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          17 :     zend_object_std_init(&amp;object-&gt;std, ce);</span></span>
+<span id="L165"><span class="lineNum">     165</span>              : </span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          17 :     object-&gt;std.handlers = &amp;pango_cairo_layout_object_handlers;</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          17 :     *intern = object;</span></span>
+<span id="L168"><span class="lineNum">     168</span>              : </span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          17 :     return &amp;object-&gt;std;</span></span>
+<span id="L170"><span class="lineNum">     170</span>              : }</span>
+<span id="L171"><span class="lineNum">     171</span>              : /* }}} */</span>
+<span id="L172"><span class="lineNum">     172</span>              : </span>
+<span id="L173"><span class="lineNum">     173</span>              : /* {{{ */</span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          17 : static zend_object* pango_cairo_layout_create_object(zend_class_entry *ce)</span></span>
+<span id="L175"><span class="lineNum">     175</span>              : {</span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          17 :     pango_layout_object *intern = NULL;</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          17 :     zend_object *return_value = pango_cairo_layout_obj_ctor(ce, &amp;intern);</span></span>
+<span id="L178"><span class="lineNum">     178</span>              : </span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          17 :     object_properties_init(&amp;intern-&gt;std, ce);</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          17 :     return return_value;</span></span>
+<span id="L181"><span class="lineNum">     181</span>              : }</span>
+<span id="L182"><span class="lineNum">     182</span>              : /* }}} */</span>
+<span id="L183"><span class="lineNum">     183</span>              : </span>
+<span id="L184"><span class="lineNum">     184</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">         194 : PHP_MINIT_FUNCTION(pango_cairo_layout)</span></span>
+<span id="L186"><span class="lineNum">     186</span>              : {</span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">         194 :     memcpy(</span></span>
+<span id="L188"><span class="lineNum">     188</span>              :         &amp;pango_cairo_layout_object_handlers,</span>
+<span id="L189"><span class="lineNum">     189</span>              :         zend_get_std_object_handlers(),</span>
+<span id="L190"><span class="lineNum">     190</span>              :         sizeof(zend_object_handlers)</span>
+<span id="L191"><span class="lineNum">     191</span>              :     );</span>
+<span id="L192"><span class="lineNum">     192</span>              : </span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">         194 :     pango_cairo_layout_object_handlers.offset = XtOffsetOf(pango_layout_object, std);</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         194 :     pango_cairo_layout_object_handlers.free_obj = pango_cairo_layout_free_obj;</span></span>
+<span id="L195"><span class="lineNum">     195</span>              : </span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         194 :     pango_ce_pango_cairo_layout = register_class_PangoCairo_Layout(php_pango_get_layout_ce());</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         194 :     pango_ce_pango_cairo_layout-&gt;create_object = pango_cairo_layout_create_object;</span></span>
+<span id="L198"><span class="lineNum">     198</span>              : </span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">         194 :     return SUCCESS;</span></span>
+<span id="L200"><span class="lineNum">     200</span>              : }</span>
+<span id="L201"><span class="lineNum">     201</span>              : /* }}} */</span>
         </pre>
               </td>
             </tr>
