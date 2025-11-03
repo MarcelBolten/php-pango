@@ -1,9 +1,7 @@
 --TEST--
 Pango\Rectangle read_property handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $rectangle = new Pango\Rectangle(4, 3, 2, 1);

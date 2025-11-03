@@ -1,9 +1,7 @@
 --TEST--
 Pango\WrapMode enum
---SKIPIF--
-<?php
-include __DIR__ . '/../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 // case "None" is only available since 1.56.0

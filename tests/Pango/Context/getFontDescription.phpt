@@ -1,9 +1,7 @@
 --TEST--
 Pango\Context::getFontDescription()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $context = new Pango\Context();

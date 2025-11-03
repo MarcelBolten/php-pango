@@ -1,9 +1,7 @@
 --TEST--
 Pango\Gravity enum
---SKIPIF--
-<?php
-include __DIR__ . '/../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 var_dump(Pango\Gravity::cases());

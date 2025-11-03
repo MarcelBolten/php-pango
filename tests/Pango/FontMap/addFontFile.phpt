@@ -1,9 +1,10 @@
 --TEST--
 Pango\FontMap::addFontFile()
+--EXTENSIONS--
+pango
+cairo
 --SKIPIF--
 <?php
-include __DIR__ . '/../../skipif.php.inc';
-include __DIR__ . '/../../skipif_cairo.php.inc';
 if (version_compare(Pango\Pango::versionString(), '1.56.0', '<')) {
     die("skip Pango version < 1.56.0");
 }

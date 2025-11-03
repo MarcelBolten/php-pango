@@ -1,10 +1,8 @@
 --TEST--
 Pango\LayoutLine::showLayoutLine()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-include __DIR__ . '/../../skipif_cairo.php.inc';
-?>
+--EXTENSIONS--
+pango
+cairo
 --FILE--
 <?php
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
