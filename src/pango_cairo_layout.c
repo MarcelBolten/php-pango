@@ -93,7 +93,7 @@ PHP_METHOD(PangoCairo_Layout, getCairoContext)
 
     layout_object = Z_PANGO_LAYOUT_P(getThis());
 
-    RETURN_ZVAL(&layout_object->cairo_context_zv, 1, 0);
+    RETURN_COPY(&layout_object->cairo_context_zv);
 }
 /* }}} */
 
