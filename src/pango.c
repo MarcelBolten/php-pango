@@ -54,6 +54,13 @@ static const zend_module_dep pango_module_deps[] = {
     ZEND_MOD_END
 };
 
+ZEND_DECLARE_MODULE_GLOBALS(pango)
+
+PHP_GINIT_FUNCTION(pango)
+{
+    ZEND_SECURE_ZERO(pango_globals, sizeof(*pango_globals));
+}
+
 /* {{{ pango_module_entry */
 zend_module_entry pango_module_entry = {
     STANDARD_MODULE_HEADER_EX,
@@ -63,11 +70,15 @@ zend_module_entry pango_module_entry = {
     NULL,
     PHP_MINIT(pango),
     PHP_MSHUTDOWN(pango),
-    PHP_RINIT(pango),
+    NULL,
     PHP_RSHUTDOWN(pango),
     PHP_MINFO(pango),
     PHP_PANGO_VERSION,
-    STANDARD_MODULE_PROPERTIES
+    PHP_MODULE_GLOBALS(pango),
+    PHP_GINIT(pango),
+    NULL,
+    NULL,
+    STANDARD_MODULE_PROPERTIES_EX
 };
 /* }}} */
 
@@ -122,24 +133,6 @@ PHP_MSHUTDOWN_FUNCTION(pango)
 }
 /* }}} */
 
-PHP_RINIT_FUNCTION(pango)
-{
-    /**
-     * Initialize fontconfig via pango_cairo_font_map_get_default on request
-     * start and load the default font map to ensure fontconfig is ready to use.
-     *
-     * If there would be a way to wait for the shutdown of the worker thread
-     * started by the fontconfig backend, we could avoid the race conditions
-     * and the default font map could be lazy-loaded when needed.
-     * TODO: only load if fontconfig backend is used
-     */
-    PangoFontMap *font_map = pango_cairo_font_map_get_default();
-    // This will block internally until fontconfig is initialized
-    pango_fc_font_map_get_config((PangoFcFontMap *)font_map);
-
-    return SUCCESS;
-}
-
 PHP_RSHUTDOWN_FUNCTION(pango)
 {
     /**
@@ -151,7 +144,13 @@ PHP_RSHUTDOWN_FUNCTION(pango)
      * TODO: investigate further, fix it, and remove this.
      * TODO: make it an ini setting to configure the wait time
      */
-    usleep(50000);
+
+    if (PANGO_G(default_font_map)) {
+        pango_unref_font_map(PANGO_G(default_font_map));
+
+        // wait 10ms for the fontconfig worker thread spawned by our default font map to finish
+        usleep(10000);
+    }
 
     return SUCCESS;
 }

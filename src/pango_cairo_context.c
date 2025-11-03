@@ -45,6 +45,8 @@ PHP_METHOD(PangoCairo_Context, __construct)
     zval *cairo_context_zv;
     cairo_context_object *cairo_context_object;
     pango_font_map_object *font_map_object;
+    PangoFontMap *font_map;
+    PangoContext *context;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_OBJECT_OF_CLASS(cairo_context_zv, php_cairo_get_context_ce())
@@ -53,7 +55,14 @@ PHP_METHOD(PangoCairo_Context, __construct)
     cairo_context_object = Z_CAIRO_CONTEXT_P(cairo_context_zv);
 
     context_object = Z_PANGO_CONTEXT_P(getThis());
-    context_object->context = pango_cairo_create_context(cairo_context_object->context);
+
+    // create a default font map if it does not exist
+    pango_initialize_default_font_map();
+
+    font_map = PANGO_G(default_font_map);
+    context = pango_font_map_create_context(font_map);
+    pango_cairo_update_context(cairo_context_object->context, context);
+    context_object->context = context;
 
     // store the cairo context zv in the pango context object to keep a reference
     ZVAL_COPY(&context_object->cairo_context_zv, cairo_context_zv);
@@ -61,7 +70,7 @@ PHP_METHOD(PangoCairo_Context, __construct)
     // create and store the font map zv associated with the pango context
     object_init_ex(&context_object->font_map_zv, php_pango_cairo_get_font_map_ce());
     font_map_object = Z_PANGO_FONT_MAP_P(&context_object->font_map_zv);
-    font_map_object->font_map = pango_context_get_font_map(context_object->context);
+    font_map_object->font_map = font_map;
     font_map_object->is_default = true;
 }
 /* }}} */

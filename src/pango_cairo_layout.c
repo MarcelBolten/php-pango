@@ -47,6 +47,9 @@ PHP_METHOD(PangoCairo_Layout, __construct)
     zval *cairo_context_zval = NULL;
     cairo_context_object *cairo_context_object;
     pango_layout_object *layout_object;
+    PangoFontMap *font_map;
+    PangoContext *context;
+    PangoLayout *layout;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_OBJECT_OF_CLASS(cairo_context_zval, php_cairo_get_context_ce())
@@ -55,7 +58,18 @@ PHP_METHOD(PangoCairo_Layout, __construct)
     cairo_context_object = Z_CAIRO_CONTEXT_P(cairo_context_zval);
 
     layout_object = Z_PANGO_LAYOUT_P(getThis());
-    layout_object->layout = pango_cairo_create_layout(cairo_context_object->context);
+    // TODO: dont use pango_cairo_create_layout but create our own layout based on a pango context and a font map
+    // layout_object->layout = pango_cairo_create_layout(cairo_context_object->context);
+
+    // create a default font map if it does not exist yet
+    pango_initialize_default_font_map();
+
+    font_map = PANGO_G(default_font_map);
+    context = pango_font_map_create_context(font_map);
+    pango_cairo_update_context(cairo_context_object->context, context);
+    layout = pango_layout_new(context);
+    g_object_unref(context);
+    layout_object->layout = layout;
 
     if (layout_object->layout == NULL) {
         zend_throw_exception(

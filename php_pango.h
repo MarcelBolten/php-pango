@@ -162,6 +162,10 @@ extern pango_font_map_object *pango_cairo_font_map_fetch_object(zend_object *obj
 #define Z_PANGO_CAIRO_FONT_MAP_P(zv) pango_cairo_font_map_fetch_object(Z_OBJ_P(zv))
 extern PangoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv);
 
+extern void pango_wait_for_font_map_to_be_initialized(PangoFontMap *font_map);
+extern void pango_initialize_default_font_map();
+extern void pango_unref_font_map(PangoFontMap *font_map);
+
 typedef struct _pango_font_family_object {
     PangoFontFamily *font_family;
     zend_object std;
@@ -180,9 +184,14 @@ extern PangoFontFace *pango_font_face_object_get_font_face(zval *zv);
 
 PHP_MINIT_FUNCTION(pango);
 PHP_MSHUTDOWN_FUNCTION(pango);
-PHP_RINIT_FUNCTION(pango);
 PHP_RSHUTDOWN_FUNCTION(pango);
 PHP_MINFO_FUNCTION(pango);
+
+ZEND_BEGIN_MODULE_GLOBALS(pango)
+    PangoFontMap *default_font_map;
+ZEND_END_MODULE_GLOBALS(pango)
+
+ZEND_EXTERN_MODULE_GLOBALS(pango)
 
 PHP_MINIT_FUNCTION(pango_exception);
 PHP_MINIT_FUNCTION(pango_context);
@@ -203,9 +212,9 @@ PHP_MINIT_FUNCTION(pango_cairo_layout);
 PHP_MINIT_FUNCTION(pango_cairo_context);
 
 #ifdef ZTS
-#define PANGO_G(v) TSRMG(pango_globals_id, zend_pango_globals *, v)
+#    define PANGO_G(v) TSRMG(pango_globals_id, zend_pango_globals *, v)
 #else
-#define PANGO_G(v) (pango_globals.v)
+#    define PANGO_G(v) (pango_globals.v)
 #endif
 
 #endif /* PHP_PANGO_H */

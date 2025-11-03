@@ -47,6 +47,47 @@ PHP_PANGO_API PangoFontMap* pango_cairo_font_map_object_get_font_map(zval *zv)
     return obj->font_map;
 }
 
+/* {{{ wait for font map to be initialized */
+void pango_wait_for_font_map_to_be_initialized(PangoFontMap *font_map) {
+    if (strcmp(G_OBJECT_TYPE_NAME(font_map), "PangoCairoFcFontMap") == 0) {
+        // this will block until the font map is initialized (it calls wait_for_fc_init() internally)
+        pango_fc_font_map_get_config((PangoFcFontMap *)font_map);
+    }
+}
+/* }}} */
+
+/* {{{ create a font map if it does not exist yet */
+void pango_initialize_default_font_map() {
+    if (!PANGO_G(default_font_map)) {
+        PANGO_G(default_font_map) = pango_cairo_font_map_new();
+        pango_wait_for_font_map_to_be_initialized(PANGO_G(default_font_map));
+    }
+}
+/* }}} */
+
+/* {{{ unreference a font map */
+void pango_unref_font_map(PangoFontMap *font_map)
+{
+    GWeakRef weak_ref;
+    GObject *tmp_font_map;
+    g_weak_ref_init(&weak_ref, font_map);
+
+    g_object_unref(font_map);
+
+    int count = 0;
+    while (
+        (tmp_font_map = g_weak_ref_get(&weak_ref)) != NULL
+        // not more than 200 iterations (~1s) to avoid infinite loop
+        && ++count < 200
+    ) {
+        g_object_unref(tmp_font_map);
+        usleep(5000);
+    }
+
+    g_weak_ref_clear(&weak_ref);
+}
+/* }}} */
+
 /* {{{ */
 PHP_METHOD(PangoCairo_FontMap, __construct)
 {
@@ -56,6 +97,7 @@ PHP_METHOD(PangoCairo_FontMap, __construct)
 
     font_map_object = Z_PANGO_CAIRO_FONT_MAP_P(getThis());
     font_map_object->font_map = pango_cairo_font_map_new();
+    pango_wait_for_font_map_to_be_initialized(font_map_object->font_map);
     font_map_object->is_default = false;
 }
 /* }}} */
@@ -67,9 +109,11 @@ PHP_METHOD(PangoCairo_FontMap, getDefault)
 
     ZEND_PARSE_PARAMETERS_NONE();
 
+    pango_initialize_default_font_map();
+
     object_init_ex(return_value, pango_ce_pango_cairo_font_map);
     font_map_object = Z_PANGO_CAIRO_FONT_MAP_P(return_value);
-    font_map_object->font_map = pango_cairo_font_map_get_default();
+    font_map_object->font_map = PANGO_G(default_font_map);
     font_map_object->is_default = true;
 }
 /* }}} */
@@ -85,11 +129,13 @@ PHP_METHOD(PangoCairo_FontMap, newForFontType)
         Z_PARAM_OBJ_OF_CLASS(font_type_object, ce_cairo_fonttype)
     ZEND_PARSE_PARAMETERS_END();
 
-
     object_init_ex(return_value, pango_ce_pango_cairo_font_map);
     font_map_object = Z_PANGO_CAIRO_FONT_MAP_P(return_value);
     font_type = Z_LVAL_P(zend_enum_fetch_case_value(font_type_object));
     font_map_object->font_map = pango_cairo_font_map_new_for_font_type(font_type);
+    if (font_type == CAIRO_FONT_TYPE_FT) {
+        pango_fc_font_map_get_config((PangoFcFontMap *)font_map_object->font_map);
+    }
     font_map_object->is_default = false;
 
     if (!font_map_object->font_map) {
@@ -150,7 +196,11 @@ PHP_METHOD(PangoCairo_FontMap, setDefault)
 
     font_map_object = Z_PANGO_CAIRO_FONT_MAP_P(font_map_zv);
 
-    pango_cairo_font_map_set_default((PangoCairoFontMap *) font_map_object->font_map);
+    // TODO: need to keep a reference to the new default font map
+
+    // probably need to use a mutex here
+    // and unref the previous default font map
+    PANGO_G(default_font_map) = font_map_object->font_map;
 }
 /* }}} */
 
@@ -185,7 +235,7 @@ static void pango_cairo_font_map_free_obj(zend_object *zobj)
     }
 
     if (intern->font_map && !intern->is_default) {
-        g_object_unref(intern->font_map);
+        pango_unref_font_map(intern->font_map);
     }
 
     zend_object_std_dtor(&intern->std);
