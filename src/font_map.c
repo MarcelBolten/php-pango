@@ -85,18 +85,15 @@ PHP_METHOD(Pango_FontMap, addFontFile)
 PHP_METHOD(Pango_FontMap, createContext)
 {
     PangoFontMap* font_map;
-    zval context_zv;
     pango_context_object *context_object;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     font_map = pango_font_map_object_get_font_map(getThis());
 
-    object_init_ex(&context_zv, php_pango_get_context_ce());
-    context_object = Z_PANGO_CONTEXT_P(&context_zv);
+    object_init_ex(return_value, php_pango_get_context_ce());
+    context_object = Z_PANGO_CONTEXT_P(return_value);
     context_object->context = pango_font_map_create_context(font_map);
-
-    RETURN_ZVAL(&context_zv, 0, 0);
 }
 /* }}} */
 
