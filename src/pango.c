@@ -63,6 +63,8 @@ zend_module_entry pango_module_entry = {
     NULL,
     PHP_MINIT(pango),
     PHP_MSHUTDOWN(pango),
+    // NULL,
+    // NULL,
     PHP_RINIT(pango),
     PHP_RSHUTDOWN(pango),
     PHP_MINFO(pango),
@@ -118,6 +120,11 @@ PHP_MSHUTDOWN_FUNCTION(pango)
     /* uncomment this line if you have INI entries
     UNREGISTER_INI_ENTRIES();
     */
+    PangoFontMap *font_map = pango_cairo_font_map_get_default();
+
+    if (strcmp(G_OBJECT_TYPE_NAME(font_map), "PangoCairoFcFontMap") == 0) {
+        pango_fc_font_map_shutdown((PangoFcFontMap *)font_map);
+    }
     return SUCCESS;
 }
 /* }}} */
@@ -151,7 +158,13 @@ PHP_RSHUTDOWN_FUNCTION(pango)
      * TODO: investigate further, fix it, and remove this.
      * TODO: make it an ini setting to configure the wait time
      */
-    usleep(50000);
+    PangoFontMap *font_map = pango_cairo_font_map_get_default();
+
+    if (strcmp(G_OBJECT_TYPE_NAME(font_map), "PangoCairoFcFontMap") == 0) {
+        pango_fc_font_map_cache_clear((PangoFcFontMap *)font_map);
+        // pango_fc_font_map_shutdown((PangoFcFontMap *)font_map);
+    }
+    // usleep(50000);
 
     return SUCCESS;
 }
