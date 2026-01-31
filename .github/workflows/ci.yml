@@ -26,10 +26,10 @@ jobs:
                 libssl-dev libxml2-dev libcairo2-dev \
                 libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
                 fonts-noto-cjk gdb \
-                meson ninja \
+                meson ninja-build \
                 libglib2.0-dev \
                 libfontconfig1-dev \
-                libfreetype6-dev \
+                libfreetype-dev \
                 libharfbuzz-dev \
                 libthai-dev \
                 libxft-dev \
