@@ -98,7 +98,7 @@ jobs:
 
             - name: "Run Tests"
               run: |
-                php ./run-tests.php -j$(nproc) -q --show-diff
+                php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
