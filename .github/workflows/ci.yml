@@ -51,6 +51,16 @@ jobs:
                 meson compile -C build
                 sudo meson install -C build
 
+            - name: "Setup fontconfig cache"
+              run: |
+                mkdir -p ~/.cache/fontconfig
+                mkdir -p ~/.fontconfig
+                # Set fontconfig cache location
+                echo "FONTCONFIG_PATH=/etc/fonts" >> $GITHUB_ENV
+                echo "XDG_CACHE_HOME=$HOME/.cache" >> $GITHUB_ENV
+                # Build font cache
+                fc-cache -fv
+
             - name: "Set up PHP"
               uses: shivammathur/setup-php@v2
               with:
@@ -84,16 +94,6 @@ jobs:
                 php --ri cairo
                 php --ri pango
               continue-on-error: true
-
-            - name: "Setup fontconfig cache"
-              run: |
-                mkdir -p ~/.cache/fontconfig
-                mkdir -p ~/.fontconfig
-                # Set fontconfig cache location
-                echo "FONTCONFIG_PATH=/etc/fonts" >> $GITHUB_ENV
-                echo "XDG_CACHE_HOME=$HOME/.cache" >> $GITHUB_ENV
-                # Build font cache
-                fc-cache -fv
 
             - name: "Run Tests"
               run: |
