@@ -90,8 +90,9 @@ jobs:
 
             - name: "Show versions"
               run: |
-                php -v
-                php --ri cairo
+                php -v || \
+                php -i || \
+                php --ri cairo || \
                 php --ri pango
               continue-on-error: true
 
