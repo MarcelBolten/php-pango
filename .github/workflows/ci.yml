@@ -46,8 +46,7 @@ jobs:
                 cd pango
                 meson setup build \
                   -Dintrospection=enabled \
-                  -Dgtk_doc=false \
-                  -Dinstalled_tests=false
+                  -Dgtk_doc=false
 
                 meson compile -C build
                 meson install -C build
