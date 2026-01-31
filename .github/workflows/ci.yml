@@ -45,7 +45,7 @@ jobs:
                   https://github.com/MarcelBolten/pango.git
                 cd pango
                 meson setup build \
-                  -Dintrospection=disable \
+                  -Dintrospection=disabled \
                   -Dgtk_doc=false
 
                 meson compile -C build
