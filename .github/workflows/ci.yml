@@ -49,7 +49,7 @@ jobs:
                   -Dgtk_doc=false
 
                 meson compile -C build
-                meson install -C build
+                sudo meson install -C build
 
             - name: "Set up PHP"
               uses: shivammathur/setup-php@v2
