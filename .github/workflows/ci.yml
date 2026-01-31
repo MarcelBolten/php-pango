@@ -23,12 +23,34 @@ jobs:
                 sudo apt-get update
                 sudo apt-get install -y --no-install-recommends \
                 build-essential autoconf libtool bison re2c pkg-config \
-                libssl-dev libxml2-dev libcairo2-dev libpango1.0-dev \
+                libssl-dev libxml2-dev libcairo2-dev \
                 libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
-                fonts-noto-cjk gdb
+                fonts-noto-cjk gdb \
+                meson ninja \
+                libglib2.0-dev \
+                libfontconfig1-dev \
+                libfreetype6-dev \
+                libharfbuzz-dev \
+                libthai-dev \
+                libxft-dev \
+                libxrender-dev \
+                libx11-dev
 
             # perhaps need to install some fonts but ubuntu loads too many by default in fonts-noto
             # fonts-noto fonts-noto-cjk fonts-noto-color-emoji
+
+            - name: Build modified Pango
+              run: |
+                git clone --depth 1 --branch marcel-1.52.1-join-fc-thread \
+                  https://github.com/MarcelBolten/pango.git
+                cd pango
+                meson setup build \
+                  -Dintrospection=enabled \
+                  -Dgtk_doc=false \
+                  -Dinstalled_tests=false
+
+                meson compile -C build
+                meson install -C build
 
             - name: "Set up PHP"
               uses: shivammathur/setup-php@v2
