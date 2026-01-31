@@ -4,7 +4,7 @@ echo "Resetting coverage counters..."
 lcov --zerocounters --directory src/.libs --quiet
 
 echo "Running tests..."
-php run-tests.php -q -j$(nproc) --no-color --show-diff > test_results.txt
+php run-tests.php -q -j$(nproc) --repeat 2 --no-color --show-diff > test_results.txt
 
 if [ $? -eq 0 ]; then
     echo "✓ Tests passed"
