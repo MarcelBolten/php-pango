@@ -66,7 +66,6 @@ jobs:
               with:
                   php-version: ${{ matrix.php-version }}
                   tools: pie
-                  # ini-values: extension=pango.so
               env:
                 debug: true
                 phpts: ${{ matrix.phpts }}
@@ -97,7 +96,22 @@ jobs:
               continue-on-error: true
 
             - name: "enable pango extension"
-              run: echo "extension=pango.so" >> $(php -r "echo php_ini_loaded_file();")
+              run: |
+                # Extract the additional ini files directory from PHP configuration
+                INI_DIR=$(php -i | grep "Scan this dir for additional .ini files" | awk -F ' => ' '{print $2}')
+                if [ -z "$INI_DIR" ] || [ "$INI_DIR" = "(none)" ]; then
+                  echo "Error: Could not determine additional ini directory from php -i"
+                  php -i | grep -i "scan\|additional"
+                  exit 1
+                fi
+                if [ ! -d "$INI_DIR" ]; then
+                  echo "Error: Directory $INI_DIR does not exist"
+                  exit 1
+                fi
+                echo "Additional ini directory: $INI_DIR"
+                # Create 25-pango.ini to ensure pango loads after cairo (20-cairo.ini)
+                echo "extension=pango.so" | sudo tee "$INI_DIR/25-pango.ini"
+                echo "Created $INI_DIR/25-pango.ini"
 
             - name: "Run Tests"
               run: php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff
