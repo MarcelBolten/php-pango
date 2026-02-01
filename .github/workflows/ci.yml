@@ -56,7 +56,7 @@ jobs:
                 ls -la /usr/local/lib/x86_64-linux-gnu/libpango*
                 ls -la /usr/local/lib/x86_64-linux-gnu/pkgconfig/pango*
 
-                ldconfig
+                sudo ldconfig
 
             - name: "Setup fontconfig cache"
               run: |
