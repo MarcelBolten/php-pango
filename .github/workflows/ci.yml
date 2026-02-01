@@ -65,6 +65,10 @@ jobs:
                   php -i | grep -i "scan\|additional"
                   exit 1
                 fi
+                if [ ! -d "$INI_DIR" ]; then
+                  echo "Error: Directory $INI_DIR does not exist"
+                  exit 1
+                fi
                 echo "Additional ini directory: $INI_DIR"
                 # Create 25-pango.ini to ensure pango loads after cairo (20-cairo.ini)
                 echo "extension=pango.so" | sudo tee "$INI_DIR/25-pango.ini"
