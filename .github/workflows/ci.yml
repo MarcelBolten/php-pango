@@ -59,7 +59,12 @@ jobs:
             - name: "Enable Pango extension"
               run: |
                 # Extract the additional ini files directory from PHP configuration
-                INI_DIR=$(php -i | grep "Scan this dir for additional .ini files" | sed 's/.*=> //')
+                INI_DIR=$(php -i | grep "Scan this dir for additional .ini files" | awk -F ' => ' '{print $2}')
+                if [ -z "$INI_DIR" ] || [ "$INI_DIR" = "(none)" ]; then
+                  echo "Error: Could not determine additional ini directory from php -i"
+                  php -i | grep -i "scan\|additional"
+                  exit 1
+                fi
                 echo "Additional ini directory: $INI_DIR"
                 # Create 25-pango.ini to ensure pango loads after cairo (20-cairo.ini)
                 echo "extension=pango.so" | sudo tee "$INI_DIR/25-pango.ini"
