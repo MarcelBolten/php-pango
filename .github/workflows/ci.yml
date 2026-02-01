@@ -97,12 +97,10 @@ jobs:
               continue-on-error: true
 
             - name: "enable pango extension"
-              run: |
-                echo "extension=pango.so" >> $(php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||")
+              run: echo "extension=pango.so" >> $(php -r "echo php_ini_loaded_file();")
 
             - name: "Run Tests"
-              run: |
-                php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff
+              run: php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
