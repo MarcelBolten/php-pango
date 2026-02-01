@@ -38,9 +38,6 @@ jobs:
                 libx11-dev \
                 libfreetype6-dev
 
-            - name: test if all dependencies are installed
-              run: pkg-config --debug pango 2>&1
-
             # perhaps need to install some fonts but ubuntu loads too many by default in fonts-noto
             # fonts-noto fonts-noto-cjk fonts-noto-color-emoji
 
@@ -65,6 +62,9 @@ jobs:
                 echo "XDG_CACHE_HOME=$HOME/.cache" >> $GITHUB_ENV
                 # Build font cache
                 fc-cache -fv
+
+            - name: test if all dependencies are installed
+              run: pkg-config --debug pango 2>&1
 
             - name: "Set up PHP"
               uses: shivammathur/setup-php@v2
