@@ -66,7 +66,7 @@ jobs:
               with:
                   php-version: ${{ matrix.php-version }}
                   tools: pie
-                  ini-values: extension=pango.so
+                  # ini-values: extension=pango.so
               env:
                 debug: true
                 phpts: ${{ matrix.phpts }}
@@ -91,14 +91,13 @@ jobs:
             - name: "Show versions"
               run: |
                 php -v || \
-                php -i || \
                 php --ri cairo || \
-                php --ri pango
+                php -d extension=pango.so --ri pango
               continue-on-error: true
 
             - name: "Run Tests"
               run: |
-                php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff
+                php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff -d extension=pango.so
 
             - name: "Upload test outputs"
               if: ${{ always() }}
