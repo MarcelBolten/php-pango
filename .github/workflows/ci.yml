@@ -96,9 +96,13 @@ jobs:
                 php -d extension=pango.so --ri pango || true
               continue-on-error: true
 
+            - name: "enable pango extension"
+              run: |
+                echo "extension=pango.so" >> $(php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||")
+
             - name: "Run Tests"
               run: |
-                php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff -d extension=pango.so
+                php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
