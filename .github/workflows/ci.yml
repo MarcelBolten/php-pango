@@ -124,7 +124,7 @@ jobs:
                 fi
                 echo "Additional ini directory: $INI_DIR"
                 # Create 25-pango.ini to ensure pango loads after cairo (20-cairo.ini)
-                echo "extension=pango.so" | sudo tee "$INI_DIR/25-pango.ini"
+                sudo sh -c "echo 'extension=pango.so' > $INI_DIR/25-pango.ini"
                 echo "Created $INI_DIR/25-pango.ini"
                 php -i | grep pango
                 php --ri pango
