@@ -35,7 +35,7 @@ jobs:
                 libxft-dev \
                 libxrender-dev \
                 libfribidi-dev \
-                libx11-dev
+                libx11-dev \
                 libfreetype6-dev
 
             - name: test if all dependencies are installed
