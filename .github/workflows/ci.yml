@@ -34,7 +34,12 @@ jobs:
                 libthai-dev \
                 libxft-dev \
                 libxrender-dev \
+                libfribidi-dev \
                 libx11-dev
+                libfreetype6-dev
+
+            - name: test if all dependencies are installed
+              run: pkg-config --debug pango 2>&1
 
             # perhaps need to install some fonts but ubuntu loads too many by default in fonts-noto
             # fonts-noto fonts-noto-cjk fonts-noto-color-emoji
@@ -112,6 +117,8 @@ jobs:
                 # Create 25-pango.ini to ensure pango loads after cairo (20-cairo.ini)
                 echo "extension=pango.so" | sudo tee "$INI_DIR/25-pango.ini"
                 echo "Created $INI_DIR/25-pango.ini"
+                php -i | grep pango
+                php --ri pango
 
             - name: "Run Tests"
               run: php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff
