@@ -53,6 +53,11 @@ jobs:
                 meson compile -C build
                 sudo meson install -C build
 
+                ls -la /usr/local/lib/x86_64-linux-gnu/libpango*
+                ls -la /usr/local/lib/x86_64-linux-gnu/pkgconfig/pango*
+
+                ldconfig
+
             - name: "Setup fontconfig cache"
               run: |
                 mkdir -p ~/.cache/fontconfig
@@ -64,7 +69,11 @@ jobs:
                 fc-cache -fv
 
             - name: test if all dependencies are installed
-              run: pkg-config --debug pango 2>&1
+              run: |
+                pkg-config --modversion pango
+                pkg-config --cflags pango
+                pkg-config --libs pango
+                pkg-config --debug pango 2>&1
 
             - name: "Set up PHP"
               uses: shivammathur/setup-php@v2
