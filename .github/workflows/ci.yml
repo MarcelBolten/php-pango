@@ -90,9 +90,10 @@ jobs:
 
             - name: "Show versions"
               run: |
-                php -v || \
-                php --ri cairo || \
-                php -d extension=pango.so --ri pango
+                php -v || true
+                php -i || true
+                php --ri cairo || true
+                php -d extension=pango.so --ri pango || true
               continue-on-error: true
 
             - name: "Run Tests"
