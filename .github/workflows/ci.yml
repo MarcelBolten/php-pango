@@ -86,7 +86,7 @@ jobs:
 
             - name: "Build Cairo dependency with PIE"
               # Todo: use a stable version after it is released not dev-overhaul branch
-              run: sudo pie install marcelbolten/php-cairo:dev-overhaul#1add05181f7f89c26c40bc69ebb2d9886476777d
+              run: sudo pie install marcelbolten/php-cairo:dev-overhaul
 
             - name: "Checkout"
               uses: actions/checkout@v5
