@@ -24,9 +24,7 @@ try {
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
-// TODO: investigate memory leak if unset is removed
-unset($layout);
-// only calling the code below without previous call to PangoCairo\Layout::__construct() works fine
+
 try {
     new PangoCairo\Layout(array());
 } catch (TypeError $e) {
