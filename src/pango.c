@@ -63,8 +63,8 @@ zend_module_entry pango_module_entry = {
     NULL,
     PHP_MINIT(pango),
     PHP_MSHUTDOWN(pango),
-    PHP_RINIT(pango),
-    PHP_RSHUTDOWN(pango),
+    NULL,
+    NULL,
     PHP_MINFO(pango),
     PHP_PANGO_VERSION,
     STANDARD_MODULE_PROPERTIES
@@ -120,42 +120,13 @@ PHP_MSHUTDOWN_FUNCTION(pango)
     */
     // TODO: add lazy loading and store global reference to font map, only shutdown if we created it
     PangoFontMap *font_map = pango_cairo_font_map_get_default();
-
     if (PANGO_IS_FC_FONT_MAP(font_map)) {
         pango_fc_font_map_shutdown((PangoFcFontMap *)font_map);
     }
+
     return SUCCESS;
 }
 /* }}} */
-
-PHP_RINIT_FUNCTION(pango)
-{
-    /**
-     * Initialize fontconfig via pango_cairo_font_map_get_default on request
-     * start and load the default font map to ensure fontconfig is ready to use.
-     *
-     * If there would be a way to wait for the shutdown of the worker thread
-     * started by the fontconfig backend, we could avoid the race conditions
-     * and the default font map could be lazy-loaded when needed.
-     * TODO: only load if fontconfig backend is used
-     */
-    // PangoFontMap *font_map = pango_cairo_font_map_get_default();
-    // This will block internally until fontconfig is initialized
-    // pango_fc_font_map_get_config((PangoFcFontMap *)font_map);
-
-    return SUCCESS;
-}
-
-PHP_RSHUTDOWN_FUNCTION(pango)
-{
-    // PangoFontMap *font_map = pango_cairo_font_map_get_default();
-
-    // if (PANGO_IS_FC_FONT_MAP(font_map)) {
-    //     pango_fc_font_map_cache_clear((PangoFcFontMap *)font_map);
-    // }
-
-    return SUCCESS;
-}
 
 /* {{{ PHP_MINFO_FUNCTION */
 PHP_MINFO_FUNCTION(pango)
