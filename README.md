@@ -10,12 +10,20 @@ This extension provides access to Pango functionality in PHP 8.2+ in the Pango a
 Requirements
 =============
  * PHP 8.2+
- * Pango 1.40+
+ * Pango 1.51.2+, patched with `pangofc-fontmap-patch.diff`
  * ext-cairo
 
 Features are enabled at compile time based on the library version they are compiled against.
 
 Documentation and information about the underlying library can be found at https://docs.gtk.org/Pango/.
+
+## Important: Pango Patch Required
+
+Pango [introduced a single worker thread for fontconfig operations](https://gitlab.gnome.org/GNOME/pango/-/blob/1.51.2/NEWS?ref_type=tags) in version 1.51.2. However, the thread cannot be joined explicitly, which causes [segmentation faults when PHP shuts down](https://gitlab.gnome.org/GNOME/pango/-/issues/872).
+
+**The pango extension requires Pango >= 1.51.2 built with [this patch](https://github.com/MarcelBolten/php-pango/blob/pango-can-join-thread-now/pangofc-fontmap-patch.diff) applied.**
+
+You can have a look at `.github/workflows/ci.yml` for more details on how to build pango.
 
 Installation
 =============
