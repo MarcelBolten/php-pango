@@ -120,7 +120,6 @@ if test "$PHP_PANGO" != "no"; then
       LDFLAGS="$LDFLAGS --coverage"
   fi
 
-  PHP_ADD_INCLUDE([$phpincludedir/ext/cairo])
   AC_DEFINE([CAIRO], [1], [whether cairo exists in the system])
   AC_MSG_RESULT([yes])
 fi
