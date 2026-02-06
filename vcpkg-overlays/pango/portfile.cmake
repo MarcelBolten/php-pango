@@ -10,6 +10,7 @@ vcpkg_extract_source_archive(SOURCE_PATH
     ARCHIVE "${SOURCE_ARCHIVE}"
     PATCHES
         relax-gi-requirement.diff
+        pangofc-fontmap-patch.diff
 )
 
 if("introspection" IN_LIST FEATURES)

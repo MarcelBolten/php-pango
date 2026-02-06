@@ -1,0 +1,53 @@
+diff --git a/pango/pangofc-fontmap.c b/pango/pangofc-fontmap.c
+index 7ed89b34..ebb4362b 100644
+--- a/pango/pangofc-fontmap.c
++++ b/pango/pangofc-fontmap.c
+@@ -170,6 +170,9 @@ struct _PangoFcFontMapPrivate
+   FcConfig *config;
+   FcFontSet *fonts;
+
++  /* fontconfig worker thread */
++  GThread *fc_thread;
++
+   GAsyncQueue *queue;
+ };
+
+@@ -1521,12 +1524,11 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (PangoFcFontMap, pango_fc_font_map, PANGO_TYPE_
+ static void
+ start_fontconfig_thread (PangoFcFontMap *fcfontmap)
+ {
+-  GThread *thread;
+-
+   g_mutex_lock (&fc_init_mutex);
+
+-  thread = g_thread_new ("[pango] fontconfig", fc_thread_func, g_async_queue_ref (fcfontmap->priv->queue));
+-  g_thread_unref (thread);
++  fcfontmap->priv->fc_thread = g_thread_new ("[pango] fontconfig",
++                                             fc_thread_func,
++                                             g_async_queue_ref (fcfontmap->priv->queue));
+
+   if (fc_initialized == DEFAULT_CONFIG_NOT_INITIALIZED)
+     {
+@@ -1589,6 +1591,8 @@ pango_fc_font_map_init (PangoFcFontMap *fcfontmap)
+ 						     NULL);
+   priv->dpi = -1;
+
++  priv->fc_thread = NULL;
++
+   priv->queue = g_async_queue_new ();
+
+   start_fontconfig_thread (fcfontmap);
+@@ -1628,6 +1632,13 @@ pango_fc_font_map_fini (PangoFcFontMap *fcfontmap)
+
+   g_async_queue_push (fcfontmap->priv->queue, thread_data_new (FC_END, NULL));
+
++  if (fcfontmap->priv->fc_thread)
++    {
++      if (g_thread_self() != fcfontmap->priv->fc_thread)
++        g_thread_join (fcfontmap->priv->fc_thread);
++      fcfontmap->priv->fc_thread = NULL;
++    }
++
+   g_async_queue_unref (priv->queue);
+   priv->queue = NULL;
+ }
