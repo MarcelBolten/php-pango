@@ -63,8 +63,6 @@ zend_module_entry pango_module_entry = {
     NULL,
     PHP_MINIT(pango),
     PHP_MSHUTDOWN(pango),
-    // NULL,
-    // NULL,
     PHP_RINIT(pango),
     PHP_RSHUTDOWN(pango),
     PHP_MINFO(pango),
@@ -120,9 +118,10 @@ PHP_MSHUTDOWN_FUNCTION(pango)
     /* uncomment this line if you have INI entries
     UNREGISTER_INI_ENTRIES();
     */
+    // TODO: add lazy loading and store global reference to font map, only shutdown if we created it
     PangoFontMap *font_map = pango_cairo_font_map_get_default();
 
-    if (strcmp(G_OBJECT_TYPE_NAME(font_map), "PangoCairoFcFontMap") == 0) {
+    if (PANGO_IS_FC_FONT_MAP(font_map)) {
         pango_fc_font_map_shutdown((PangoFcFontMap *)font_map);
     }
     return SUCCESS;
@@ -140,31 +139,20 @@ PHP_RINIT_FUNCTION(pango)
      * and the default font map could be lazy-loaded when needed.
      * TODO: only load if fontconfig backend is used
      */
-    PangoFontMap *font_map = pango_cairo_font_map_get_default();
+    // PangoFontMap *font_map = pango_cairo_font_map_get_default();
     // This will block internally until fontconfig is initialized
-    pango_fc_font_map_get_config((PangoFcFontMap *)font_map);
+    // pango_fc_font_map_get_config((PangoFcFontMap *)font_map);
 
     return SUCCESS;
 }
 
 PHP_RSHUTDOWN_FUNCTION(pango)
 {
-    /**
-     * This is a hack, but if we don't wait a bit here, tests sometimes
-     * fail with segfaults.  There is a race condition between the php shutdown
-     * and an asynchronous worker thread started by pango if a fontconfig
-     * backend is used that only gets cleaned up properly if we wait a bit here.
-     * There is no alternative way I'm aware of to ensure the worker thread is closed.
-     * TODO: investigate further, fix it, and remove this.
-     * TODO: make it an ini setting to configure the wait time
-     */
-    PangoFontMap *font_map = pango_cairo_font_map_get_default();
+    // PangoFontMap *font_map = pango_cairo_font_map_get_default();
 
-    if (strcmp(G_OBJECT_TYPE_NAME(font_map), "PangoCairoFcFontMap") == 0) {
-        pango_fc_font_map_cache_clear((PangoFcFontMap *)font_map);
-        // pango_fc_font_map_shutdown((PangoFcFontMap *)font_map);
-    }
-    // usleep(50000);
+    // if (PANGO_IS_FC_FONT_MAP(font_map)) {
+    //     pango_fc_font_map_cache_clear((PangoFcFontMap *)font_map);
+    // }
 
     return SUCCESS;
 }
