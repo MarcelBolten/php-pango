@@ -25,7 +25,7 @@ jobs:
     build:
         needs: get-extension-matrix
         strategy:
-            fail-fast: true
+            fail-fast: false
             matrix: ${{ fromJson(needs.get-extension-matrix.outputs.matrix) }}
 
         runs-on: ${{ matrix.os }}
