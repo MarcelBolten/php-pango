@@ -103,10 +103,10 @@ jobs:
 
             - name: "Show versions"
               run: |
-                php -v || true
-                php -i || true
-                php --ri cairo || true
-                php -d extension=pango.so --ri pango || true
+                php -v
+                php -i
+                php --ri cairo
+                php -d extension=pango.so --ri pango
               continue-on-error: true
 
             - name: "enable pango extension"
@@ -123,9 +123,9 @@ jobs:
                   exit 1
                 fi
                 echo "Additional ini directory: $INI_DIR"
-                # Create 91-pango.ini to ensure pango loads after cairo (20-cairo.ini)
-                sudo sh -c "echo 'extension=pango.so' > $INI_DIR/91-pango.ini"
-                echo "Created $INI_DIR/91-pango.ini"
+                # Create 30-pango.ini to ensure pango loads after cairo (30-cairo.ini)
+                sudo sh -c "echo 'extension=pango.so' > $INI_DIR/30-pango.ini"
+                echo "Created $INI_DIR/30-pango.ini"
                 php -i | grep pango
                 php --ri pango
 
