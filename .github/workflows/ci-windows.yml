@@ -20,7 +20,7 @@ jobs:
             extension-url: https://github.com/MarcelBolten/php-pango
             php-version-list: '8.5'
             arch-list: 'x86'
-            ts-list: 'nts, ts'
+            ts-list: 'nts'
 
     build:
         needs: get-extension-matrix
@@ -108,6 +108,13 @@ jobs:
                   C:\vcpkg\installed
                   C:\vcpkg\buildtrees
                 key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
+
+            - name: Install cairo via PIE
+              run: |
+                which pie || true
+                wget -O /usr/local/bin/pie https://github.com/php/pie/releases/download/1.3.8/pie.phar
+                chmod +x /usr/local/bin/pie
+                sudo pie install marcelbolten/php-cairo:2.0.0-dev-1
 
             - name: Build the extension
               uses: php/php-windows-builder/extension@v1
