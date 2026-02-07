@@ -4,7 +4,7 @@ ARG_WITH("pango", "Pango Library Bindings", "no");
 if (PHP_PANGO != "no") {
     STDOUT.WriteLine("PHP_PANGO is set to " + PHP_PANGO);
     STDOUT.WriteLine("PHP_PHP_BUILD is set to " + PHP_PHP_BUILD);
-    if (CHECK_HEADER_ADD_INCLUDE("pango.h", "CFLAGS_PANGO", PHP_PANGO + "\\include;" + PHP_PHP_BUILD + "\\include\\pango")
+    if (CHECK_HEADER_ADD_INCLUDE("pango/pango.h", "CFLAGS_PANGO", PHP_PANGO + "\\include;" + PHP_PHP_BUILD + "\\include")
         // && CHECK_HEADER_ADD_INCLUDE("glib.h", "CFLAGS_PANGO", PHP_PANGO + "\\include;" + PHP_PHP_BUILD + "\\include\\glib-pango")
         // && CHECK_HEADER_ADD_INCLUDE("glib-object.h", "CFLAGS_PANGO", PHP_PANGO + "\\include;" + PHP_PHP_BUILD + "\\include\\glib-pango")
 
