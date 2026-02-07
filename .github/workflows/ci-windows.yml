@@ -99,7 +99,7 @@ jobs:
                 $depsPath = "C:\vcpkg\installed\$triplet"
 
                 Write-Host "Libraries build:"
-                Get-ChildItem $depsPath | ForEach-Object { Write-Host $_.Name }
+                Get-ChildItem $depsPath -Recurse | ForEach-Object { Write-Host $_.FullName }
 
                 # Export the path so it can be used in the extension build step
                 echo "PANGO_DEPS_PATH=$depsPath" >> $env:GITHUB_OUTPUT
