@@ -128,7 +128,7 @@ jobs:
                 php-version: ${{ matrix.php-version }}
                 arch: ${{ matrix.arch }}
                 ts: ${{ matrix.ts }}
-                args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }} --prefix=${{ env.PHPROOT }}
+                args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }} --prefix=c:\tools\php
 
             - name: "Upload test outputs"
               if: ${{ always() }}
