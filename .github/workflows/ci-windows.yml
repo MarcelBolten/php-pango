@@ -34,6 +34,9 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v5
 
+            - name: php -i
+              run: php -i
+
             - name: Restore vcpkg cache
               uses: actions/cache/restore@v4
               with:
