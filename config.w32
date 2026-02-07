@@ -19,6 +19,9 @@ if (PHP_PANGO != "no") {
 
         // && ADD_EXTENSION_DEP('cairo')
     ) {
+        ADD_FLAG("CFLAGS_PANGO", "/I " + configure_module_dirname);
+        ADD_FLAG("CFLAGS_PANGO", "/I " + configure_module_dirname + "\\src");
+
         EXTENSION("pango", "src/pango.c src/exception.c src/context.c src/layout.c src/font_description.c src/layout_line.c src/glyph_item.c src/item.c src/glyph_string.c src/glyph_info.c src/matrix.c src/rectangle.c src/font_map.c src/pango_cairo_font_map.c src/font_family.c src/font_face.c src/pango_cairo_layout.c src/pango_cairo_context.c");
         AC_DEFINE("HAVE_PANGO", 1);
         // PHP_INSTALL_HEADERS("ext/pango", "php-pango.h");
