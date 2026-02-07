@@ -25,7 +25,7 @@ if (PHP_PANGO != "no") {
         && CHECK_LIB("freetype.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("fontconfig.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("pixman-1.lib", "pango", PHP_PANGO + "\\lib")
-        && CHECK_LIB("png16.lib", "pango", PHP_PANGO + "\\lib")
+        && CHECK_LIB("libpng16.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("ffi.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("intl.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("pcre2-8.lib", "pango", PHP_PANGO + "\\lib")
@@ -35,7 +35,7 @@ if (PHP_PANGO != "no") {
         && CHECK_LIB("bz2.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("brotlidec.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("brotlicommon.lib", "pango", PHP_PANGO + "\\lib")
-        && CHECK_LIB("expat.lib", "pango", PHP_PANGO + "\\lib")
+        && CHECK_LIB("libexpatMD.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("Gdi32.lib", "pango", "")
 
         // && ADD_EXTENSION_DEP('cairo')
