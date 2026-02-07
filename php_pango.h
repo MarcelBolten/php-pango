@@ -176,7 +176,7 @@ typedef struct _pango_font_face_object {
 } pango_font_face_object;
 extern pango_font_face_object *pango_font_face_fetch_object(zend_object *object);
 #define Z_PANGO_FONT_FACE_P(zv) pango_font_face_fetch_object(Z_OBJ_P(zv))
-extern PangoFontFace *pango_font_face_object_get_font_face(zval *zv);
+PHP_PANGO_API extern PangoFontFace *pango_font_face_object_get_font_face(zval *zv);
 
 PHP_MINIT_FUNCTION(pango);
 PHP_MSHUTDOWN_FUNCTION(pango);
