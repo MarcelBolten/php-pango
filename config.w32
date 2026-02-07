@@ -1,5 +1,5 @@
 
-ARG_ENABLE("pango", "enable pango support", "no");
+ARG_WITH("pango", "Pango Library Bindings", "no");
 
 if (PHP_PANGO != "no") {
     STDOUT.WriteLine("PHP_PANGO is set to " + PHP_PANGO);
