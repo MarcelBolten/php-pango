@@ -80,7 +80,7 @@ static inline double pango_matrix_get_property_value(zend_object *object, char *
 ------------------------------------------------------------------*/
 
 /* {{{ */
-PangoMatrix *pango_matrix_object_get_matrix(zval *zv)
+PHP_PANGO_API PangoMatrix *pango_matrix_object_get_matrix(zval *zv)
 {
     pango_matrix_object *matrix_object = Z_PANGO_MATRIX_P(zv);
 

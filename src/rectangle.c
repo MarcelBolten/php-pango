@@ -60,7 +60,7 @@ pango_rectangle_object *pango_rectangle_fetch_object(zend_object *object)
 ------------------------------------------------------------------*/
 
 /* {{{ */
-PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv)
+PHP_PANGO_API PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv)
 {
     pango_rectangle_object *rect_object = Z_PANGO_RECTANGLE_P(zv);
 

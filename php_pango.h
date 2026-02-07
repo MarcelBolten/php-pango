@@ -137,7 +137,7 @@ typedef struct _pango_matrix_object {
 } pango_matrix_object;
 extern pango_matrix_object *pango_matrix_fetch_object(zend_object *object);
 #define Z_PANGO_MATRIX_P(zv) pango_matrix_fetch_object(Z_OBJ_P(zv))
-extern PangoMatrix *pango_matrix_object_get_matrix(zval *zv);
+PHP_PANGO_API extern PangoMatrix *pango_matrix_object_get_matrix(zval *zv);
 
 typedef struct _pango_rectangle_object {
     PangoRectangle *rect;
@@ -145,7 +145,7 @@ typedef struct _pango_rectangle_object {
 } pango_rectangle_object;
 extern pango_rectangle_object *pango_rectangle_fetch_object(zend_object *object);
 #define Z_PANGO_RECTANGLE_P(zv) pango_rectangle_fetch_object(Z_OBJ_P(zv))
-extern PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv);
+PHP_PANGO_API extern PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv);
 
 // if font_map is obtained via pango_cairo_font_map_get_default it should not be
 // freed, so we track it in is_default
@@ -156,11 +156,11 @@ typedef struct _pango_font_map_object {
 } pango_font_map_object;
 extern pango_font_map_object *pango_font_map_fetch_object(zend_object *object);
 #define Z_PANGO_FONT_MAP_P(zv) pango_font_map_fetch_object(Z_OBJ_P(zv))
-extern PangoFontMap *pango_font_map_object_get_font_map(zval *zv);
+PHP_PANGO_API extern PangoFontMap *pango_font_map_object_get_font_map(zval *zv);
 
 extern pango_font_map_object *pango_cairo_font_map_fetch_object(zend_object *object);
 #define Z_PANGO_CAIRO_FONT_MAP_P(zv) pango_cairo_font_map_fetch_object(Z_OBJ_P(zv))
-extern PangoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv);
+PHP_PANGO_API extern PangoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv);
 
 typedef struct _pango_font_family_object {
     PangoFontFamily *font_family;
@@ -168,7 +168,7 @@ typedef struct _pango_font_family_object {
 } pango_font_family_object;
 extern pango_font_family_object *pango_font_family_fetch_object(zend_object *object);
 #define Z_PANGO_FONT_FAMILY_P(zv) pango_font_family_fetch_object(Z_OBJ_P(zv))
-extern PangoFontFamily *pango_font_family_object_get_font_family(zval *zv);
+PHP_PANGO_API extern PangoFontFamily *pango_font_family_object_get_font_family(zval *zv);
 
 typedef struct _pango_font_face_object {
     PangoFontFace *font_face;
