@@ -101,8 +101,8 @@ jobs:
 
                 $depsPath = "C:\vcpkg\installed\$triplet"
 
-                Write-Host "Libraries build:"
-                Get-ChildItem $depsPath -Recurse | ForEach-Object { Write-Host $_.FullName }
+                # Write-Host "Libraries build:"
+                # Get-ChildItem $depsPath -Recurse | ForEach-Object { Write-Host $_.FullName }
 
                 # Export the path so it can be used in the extension build step
                 echo "PANGO_DEPS_PATH=$depsPath" >> $env:GITHUB_OUTPUT
@@ -128,7 +128,7 @@ jobs:
                 php-version: ${{ matrix.php-version }}
                 arch: ${{ matrix.arch }}
                 ts: ${{ matrix.ts }}
-                args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }}
+                args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }} --prefix=${{ env.PHPROOT }}
 
             - name: "Upload test outputs"
               if: ${{ always() }}
