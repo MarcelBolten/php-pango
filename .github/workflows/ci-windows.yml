@@ -119,7 +119,7 @@ jobs:
               shell: cmd
               run: |
                 curl -L -o pie.phar https://github.com/php/pie/releases/download/1.3.8/pie.phar
-                php pie.phar install marcelbolten/php-cairo:^2.0.0alpha1
+                php pie.phar install marcelbolten/php-cairo:^2.0.0alpha2
                 php --ri cairo
 
             - name: Build the extension
