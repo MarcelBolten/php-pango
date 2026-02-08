@@ -44,7 +44,7 @@ extern zend_object_handlers pango_std_object_handlers;
 #include <pango/pango.h>
 #include <pango/pangocairo.h>
 #include <pango/pangofc-fontmap.h>
-#include "src/php_cairo_internal.h"
+#include "php_cairo_internal.h"
 
 PHP_PANGO_API extern zend_class_entry *php_pango_get_context_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_get_direction_ce();
