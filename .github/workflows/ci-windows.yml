@@ -124,16 +124,6 @@ jobs:
                 php pie.phar install marcelbolten/php-cairo:^2.0.0alpha2
                 php --ri cairo
 
-            - name: Build Cairo extension first
-              uses: php/php-windows-builder/extension@v1
-              with:
-                extension-url: https://github.com/MarcelBolten/php-cairo
-                extension-ref: '2.0.0alpha2'
-                php-version: ${{ matrix.php-version }}
-                arch: ${{ matrix.arch }}
-                ts: ${{ matrix.ts }}
-                args: --with-cairo=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }}
-
             - name: Build the extension
               uses: php/php-windows-builder/extension@v1
               with:
@@ -141,6 +131,7 @@ jobs:
                 arch: ${{ matrix.arch }}
                 ts: ${{ matrix.ts }}
                 args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }}
+                test-runner-args: -d extension=c:\\tools\\php\\ext\\php_cairo.dll -d extension=php_pango.dll
 
             - name: "Upload test outputs"
               if: ${{ always() }}
