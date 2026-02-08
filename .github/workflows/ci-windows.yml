@@ -38,6 +38,7 @@ jobs:
               run: php -i
 
             - name: Restore vcpkg cache
+              id: restore-vcpkg-cache
               uses: actions/cache/restore@v4
               with:
                 path: |
@@ -108,6 +109,7 @@ jobs:
                 echo "PANGO_DEPS_PATH=$depsPath" >> $env:GITHUB_OUTPUT
 
             - name: Save vcpkg cache
+              if: steps.restore-vcpkg-cache.outputs.cache-hit != 'true'
               uses: actions/cache/save@v4
               with:
                 path: |
