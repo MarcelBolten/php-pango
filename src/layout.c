@@ -541,7 +541,7 @@ PHP_METHOD(Pango_Layout, isWrapped)
 PHP_METHOD(Pango_Layout, setIndent)
 {
     pango_layout_object *layout_object;
-    long indent;
+    zend_long indent;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_LONG(indent)
@@ -568,7 +568,7 @@ PHP_METHOD(Pango_Layout, getIndent)
 PHP_METHOD(Pango_Layout, setSpacing)
 {
     pango_layout_object *layout_object;
-    long spacing;
+    zend_long spacing;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_LONG(spacing)
