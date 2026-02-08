@@ -147,11 +147,9 @@ jobs:
                   exit 1
                 }
 
-            - name: "Run tests"
+            - name: "php -i"
               shell: cmd
-              run: |
-                php -i
-                php -d extension=${{ steps.pango-dll.outputs.path }} -i
+              run: php -d extension=${{ steps.pango-dll.outputs.path }} --ri pango
 
             - name: "Upload test outputs"
               if: ${{ always() }}

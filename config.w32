@@ -46,8 +46,6 @@ if (PHP_PANGO != "no") {
         && CHECK_LIB("libexpatMD.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("Gdi32.lib", "pango", "")
         && CHECK_LIB("Dwrite.lib", "pango", "")
-
-        // && ADD_EXTENSION_DEP('pango', 'cairo')
     ) {
         ADD_FLAG("CFLAGS_PANGO", "/I " + configure_module_dirname);
         ADD_FLAG("CFLAGS_PANGO", "/I " + configure_module_dirname + "\\src");
