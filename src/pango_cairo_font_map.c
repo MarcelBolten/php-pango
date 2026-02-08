@@ -82,7 +82,7 @@ PHP_METHOD(PangoCairo_FontMap, newForFontType)
     cairo_font_type_t font_type;
 
     ZEND_PARSE_PARAMETERS_START(1, 1);
-        Z_PARAM_OBJ_OF_CLASS(font_type_object, ce_cairo_fonttype)
+        Z_PARAM_OBJ_OF_CLASS(font_type_object, php_cairo_get_fonttype_ce())
     ZEND_PARSE_PARAMETERS_END();
 
 
@@ -116,7 +116,7 @@ PHP_METHOD(PangoCairo_FontMap, getFontType)
     font_map = pango_cairo_font_map_object_get_font_map(getThis());
 
     zend_enum_get_case_by_value(
-        &font_type_case, ce_cairo_fonttype,
+        &font_type_case, php_cairo_get_fonttype_ce(),
         pango_cairo_font_map_get_font_type((PangoCairoFontMap *) font_map),
         NULL, false
     );
