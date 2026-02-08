@@ -131,7 +131,7 @@ jobs:
                 arch: ${{ matrix.arch }}
                 ts: ${{ matrix.ts }}
                 args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }}
-                test-runner-args: -d extension=c:\\tools\\php\\ext\\php_cairo.dll -d extension=php_pango.dll
+                test-runner-args: -d open_basedir= -d output_buffering=0 -d extension=c:\tools\php\ext\php_cairo.dll -d extension=php_pango.dll -q --offline --show-diff --show-slow 1000 --set-timeout 120 -g FAIL,XFAIL,BORK,WARN,LEAK,SKIP
 
             - name: "Upload test outputs"
               if: ${{ always() }}
