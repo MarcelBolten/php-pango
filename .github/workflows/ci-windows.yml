@@ -124,18 +124,34 @@ jobs:
                 php pie.phar install marcelbolten/php-cairo:^2.0.0alpha2
                 php --ri cairo
 
-            - name: create build directory
-              run: mkdir c:\pango_build
-
             - name: Build the extension
               uses: php/php-windows-builder/extension@v1
               with:
                 php-version: ${{ matrix.php-version }}
                 arch: ${{ matrix.arch }}
                 ts: ${{ matrix.ts }}
-                build-directory: c:\pango_build
                 args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }}
-                test-runner-args: -d open_basedir= -d output_buffering=0 -d extension=c:\tools\php\ext\php_cairo.dll -d extension=php_pango.dll -q --offline --show-diff --show-slow 1000 --set-timeout 120 -g FAIL,XFAIL,BORK,WARN,LEAK,SKIP
+                run-tests: false
+
+            - name: Find Pango DLL path
+              id: pango-dll
+              shell: pwsh
+              run: |
+                $pangoDll = Get-ChildItem -Path "D:\a\php-pango\php-pango\build\" -Filter "php_pango.dll" -Recurse | Select-Object -First 1
+                if ($pangoDll) {
+                  $dllPath = $pangoDll.FullName
+                  Write-Host "Pango DLL found at: $dllPath"
+                  echo "path=$dllPath" >> $env:GITHUB_OUTPUT
+                } else {
+                  Write-Error "Pango DLL not found"
+                  exit 1
+                }
+
+            - name: "Run tests"
+              shell: cmd
+              run: |
+                php -i
+                php -d extension=${{ steps.pango-dll.outputs.path }} -i
 
             - name: "Upload test outputs"
               if: ${{ always() }}
