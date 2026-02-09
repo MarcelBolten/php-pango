@@ -14,7 +14,7 @@ if (PHP_PANGO != "no") {
         && CHECK_HEADER_ADD_INCLUDE("fontconfig\\fontconfig.h", "CFLAGS_PANGO", PHP_PANGO + "\\include;" + PHP_PHP_BUILD + "\\include")
 
         && CHECK_HEADER_ADD_INCLUDE("cairo.h", "CFLAGS_PANGO", PHP_PANGO + "\\include\\cairo;" + PHP_PHP_BUILD + "\\include\\cairo")
-        && CHECK_HEADER_ADD_INCLUDE("php_cairo_internal.h", "CFLAGS_PANGO", PHP_PANGO + "\\include;" + PHP_PHP_BUILD + "\\include\\cairo\\src;" + configure_module_dirname + "\\..\\extras\\cairo;" + "C:\\tools\\php\\extras\\cairo")
+        && CHECK_HEADER_ADD_INCLUDE("php_cairo_internal.h", "CFLAGS_PANGO", PHP_PANGO + "\\include;" + PHP_PHP_BUILD + "\\include\\cairo\\src;" + configure_module_dirname + "\\..\\php-cairo\\src;" + "C:\\tools\\php\\extras\\cairo")
 
         && CHECK_LIB("pango-1.0.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("pangocairo-1.0.lib", "pango", PHP_PANGO + "\\lib")
@@ -22,7 +22,7 @@ if (PHP_PANGO != "no") {
         && CHECK_LIB("pangoft2-1.0.lib", "pango", PHP_PANGO + "\\lib")
 
         && CHECK_LIB("cairo.lib", "pango", PHP_PANGO + "\\lib")
-        && CHECK_LIB("php_cairo.lib", "pango", PHP_PANGO + "\\lib;C:\\tools\\php\\extras\\cairo")
+        && CHECK_LIB("php_cairo.lib", "pango", PHP_PANGO + "\\lib;C:\\tools\\php\\extras\\cairo;C:\\php\\SDK\\lib")
 
         && CHECK_LIB("gobject-2.0.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("glib-2.0.lib", "pango", PHP_PANGO + "\\lib")
