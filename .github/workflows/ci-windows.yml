@@ -120,10 +120,10 @@ jobs:
             - run: nmake install
               shell: cmd
               working-directory: ../php-cairo
-            # - name: Verify cairo installation
-            #   shell: pwsh
-            #   run: |
-            #     get-childitem ${{ steps.setup-php-sdk.outputs.prefix }} -Recurse
+            - name: List installed files for debugging
+              shell: pwsh
+              run: |
+                get-childitem ${{ steps.setup-php-sdk.outputs.prefix }}\..\php* -Recurse
             - name: Verify cairo extension
               shell: cmd
               working-directory: ../php-cairo
