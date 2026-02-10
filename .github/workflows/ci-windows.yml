@@ -76,6 +76,8 @@ jobs:
                   $triplet = "x86-windows-php"
                 }
 
+                cd vcpkg
+
                 vcpkg install --triplet=$triplet --overlay-ports=${{ github.workspace }}/vcpkg/overlays
 
                 $depsPath = "${{ github.workspace }}\installed\$triplet"
