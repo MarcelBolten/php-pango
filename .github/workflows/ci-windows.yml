@@ -106,14 +106,14 @@ jobs:
               working-directory: ./..
               run: |
                 md php-cairo
-                git clone --depth 1 https://github.com/marcelbolten/php-cairo.git php-cairo
+                git clone --depth 0 https://github.com/marcelbolten/php-cairo.git php-cairo
             - run: phpize
               shell: cmd
               working-directory: ../php-cairo
             - name: Run configure for cairo extension
-              run: configure --with-cairo=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
               shell: cmd
               working-directory: ../php-cairo
+              run: configure --with-cairo=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
             - run: nmake
               shell: cmd
               working-directory: ../php-cairo
@@ -121,9 +121,11 @@ jobs:
               shell: cmd
               working-directory: ../php-cairo
             - name: Verify cairo extension
-              run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo --ri cairo
               shell: cmd
               working-directory: ../php-cairo
+              run: |
+                ${{ steps.setup-php-sdk.outputs.prefix }}\php -i
+                ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo --ri cairo
 
             - name: Build pango extension
               shell: cmd
