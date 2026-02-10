@@ -13,6 +13,7 @@ jobs:
         steps:
         - name: Checkout
           uses: actions/checkout@v5
+
         - name: Get the extension matrix
           id: extension-matrix
           uses: php/php-windows-builder/extension-matrix@v1
@@ -47,7 +48,7 @@ jobs:
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-
 
-            - name: install dependencies via vcpkg
+            - name: Install dependencies via vcpkg
               id: build-deps
               shell: pwsh
               run: |
@@ -74,6 +75,9 @@ jobs:
                 # Export the path so it can be used in the extension build step
                 echo "pangoDepsPath=$depsPath" >> $env:GITHUB_OUTPUT
 
+                # list all file in the current directory for debugging
+                Get-ChildItem
+
             - name: Save vcpkg cache
               if: steps.restore-vcpkg-cache.outputs.cache-hit != 'true'
               uses: actions/cache/save@v5
@@ -99,25 +103,39 @@ jobs:
                 arch: ${{ matrix.arch }}
                 toolset: ${{ steps.setup-php-sdk.outputs.toolset }}
 
-            - name: Build cairo extension
+            - name: Clone cairo extension
+              shell: cmd
+              working-directory: ./..
               run: |
-                cd ..
                 md php-cairo
                 git clone --depth 1 https://github.com/marcelbolten/php-cairo.git php-cairo
-                cd php-cairo
-                phpize
-                configure --with-cairo=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
-                nmake
-                nmake install
-                ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo --ri cairo
+            - run: phpize
+              shell: cmd
+              working-directory: ../php-cairo
+            - run: configure --with-cairo=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
+              shell: cmd
+              working-directory: ../php-cairo
+            - run: nmake
+              shell: cmd
+              working-directory: ../php-cairo
+            - run: nmake install
+              shell: cmd
+              working-directory: ../php-cairo
+            - run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo --ri cairo
+              shell: cmd
+              working-directory: ../php-cairo
 
-            - name: Build pango extension
-              run: |
-                phpize
-                configure --with-pango=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
-                nmake
-                nmake install
-                ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo -d extension=php_pango --ri pango
+            - name: "Build pango extension"
+              shell: cmd
+              run: phpize
+            - run: configure --with-pango=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
+              shell: cmd
+            - run: nmake
+              shell: cmd
+            - run: nmake install
+              shell: cmd
+            - run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo -d extension=php_pango --ri pango
+              shell: cmd
 
             - name: "Run tests"
               run: |
