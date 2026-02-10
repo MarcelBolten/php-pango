@@ -54,8 +54,9 @@ jobs:
               uses: actions/cache/restore@v5
               with:
                 path: |
-                  ${{ github.workspace }}\installed
-                  ${{ github.workspace }}\buildtrees
+                  c:\vcpkg\installed
+                  c:\vcpkg\buildtrees
+                  c:\vcpkg\downloads
                 key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
                 restore-keys: |
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
@@ -80,7 +81,7 @@ jobs:
 
                 vcpkg install --triplet=$triplet --overlay-ports=${{ github.workspace }}/vcpkg/overlays
 
-                $depsPath = "${{ github.workspace }}\installed\$triplet"
+                $depsPath = "c:\vcpkg\installed\$triplet"
 
                 # Write-Host "Libraries build:"
                 # Get-ChildItem $depsPath -Recurse | ForEach-Object { Write-Host $_.FullName }
@@ -93,8 +94,9 @@ jobs:
               uses: actions/cache/save@v5
               with:
                 path: |
-                  ${{ github.workspace }}\installed
-                  ${{ github.workspace }}\buildtrees
+                  c:\vcpkg\installed
+                  c:\vcpkg\buildtrees
+                  c:\vcpkg\downloads
                 key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
 
             - name: Install cairo extension
