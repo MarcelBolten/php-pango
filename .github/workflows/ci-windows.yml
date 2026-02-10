@@ -40,7 +40,6 @@ jobs:
               uses: actions/cache/restore@v5
               with:
                 path: |
-                  c:\vcpkg\installed
                   ${{ github.workspace }}/vcpkg/vcpkg_installed
                   c:\vcpkg\packages
                   c:\vcpkg\downloads
@@ -84,7 +83,6 @@ jobs:
               uses: actions/cache/save@v5
               with:
                 path: |
-                  c:\vcpkg\installed
                   ${{ github.workspace }}/vcpkg/vcpkg_installed
                   c:\vcpkg\packages
                   c:\vcpkg\downloads
