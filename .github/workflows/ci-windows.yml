@@ -146,6 +146,8 @@ jobs:
 
             - name: Run tests
               run: |
+                set FONTCONFIG_FILE=${{ steps.build-deps.outputs.pangoDepsPath }}\etc\fonts\fonts.conf
+                set FONTCONFIG_PATH=${{ steps.build-deps.outputs.pangoDepsPath }}\etc\fonts
                 ${{ steps.setup-php-sdk.outputs.prefix }}\php run-tests.php -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_cairo.dll -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.dll -q -j8 --show-diff
 
             - name: Upload test outputs
