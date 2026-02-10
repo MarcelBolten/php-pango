@@ -41,6 +41,7 @@ jobs:
               with:
                 path: |
                   c:\vcpkg\installed
+                  ${{ github.workspace }}/vcpkg/vcpkg_installed
                   c:\vcpkg\packages
                   c:\vcpkg\downloads
                 key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
@@ -84,6 +85,7 @@ jobs:
               with:
                 path: |
                   c:\vcpkg\installed
+                  ${{ github.workspace }}/vcpkg/vcpkg_installed
                   c:\vcpkg\packages
                   c:\vcpkg\downloads
                 key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
