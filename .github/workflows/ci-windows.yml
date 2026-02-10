@@ -43,7 +43,7 @@ jobs:
                   ${{ github.workspace }}/vcpkg/vcpkg_installed
                   c:\vcpkg\packages
                   c:\vcpkg\downloads
-                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
+                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}-${{ hashFiles('vcpkg/**/*.json', '!vcpkg/vcpkg_installed/**/*.json') }}
                 restore-keys: |
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-
@@ -84,7 +84,7 @@ jobs:
                   ${{ github.workspace }}/vcpkg/vcpkg_installed
                   c:\vcpkg\packages
                   c:\vcpkg\downloads
-                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
+                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}-${{ hashFiles('vcpkg/**/*.json', '!vcpkg/vcpkg_installed/**/*.json') }}
 
             - name: Setup PHP SDK
               id: setup-php-sdk
@@ -120,10 +120,10 @@ jobs:
             - run: nmake install
               shell: cmd
               working-directory: ../php-cairo
-            - name: List installed files for debugging
-              shell: pwsh
-              run: |
-                get-childitem ${{ steps.setup-php-sdk.outputs.prefix }}\..\php* -Recurse
+            # - name: List installed files for debugging
+            #   shell: pwsh
+            #   run: |
+            #     get-childitem ${{ steps.setup-php-sdk.outputs.prefix }}\..\php* -Recurse
             - name: Verify cairo extension
               shell: cmd
               working-directory: ../php-cairo
