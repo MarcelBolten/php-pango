@@ -51,6 +51,7 @@ jobs:
             - name: Install dependencies via vcpkg
               id: build-deps
               shell: pwsh
+              working-directory: vcpkg
               run: |
                 # Set architecture
                 $triplet = "${{ matrix.arch }}-windows-static-md"
@@ -63,20 +64,17 @@ jobs:
                   $triplet = "x86-windows-php"
                 }
 
-                cd vcpkg
+                vcpkg install --triplet=$triplet
 
-                vcpkg install --triplet=$triplet --overlay-ports=${{ github.workspace }}/vcpkg/overlays
+                $depsPath = "${{ github.workspace }}\vcpkg\vcpkg_installed\$triplet"
 
-                $depsPath = "c:\vcpkg\installed\$triplet"
-
+                # list all file in the current directory for debugging
+                # Get-ChildItem
                 # Write-Host "Libraries build:"
                 # Get-ChildItem $depsPath -Recurse | ForEach-Object { Write-Host $_.FullName }
 
                 # Export the path so it can be used in the extension build step
                 echo "pangoDepsPath=$depsPath" >> $env:GITHUB_OUTPUT
-
-                # list all file in the current directory for debugging
-                Get-ChildItem
 
             - name: Save vcpkg cache
               if: steps.restore-vcpkg-cache.outputs.cache-hit != 'true'
@@ -112,7 +110,8 @@ jobs:
             - run: phpize
               shell: cmd
               working-directory: ../php-cairo
-            - run: configure --with-cairo=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
+            - name: Run configure for cairo extension
+              run: configure --with-cairo=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
               shell: cmd
               working-directory: ../php-cairo
             - run: nmake
@@ -121,27 +120,30 @@ jobs:
             - run: nmake install
               shell: cmd
               working-directory: ../php-cairo
-            - run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo --ri cairo
+            - name: Verify cairo extension
+              run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo --ri cairo
               shell: cmd
               working-directory: ../php-cairo
 
-            - name: "Build pango extension"
+            - name: Build pango extension
               shell: cmd
               run: phpize
-            - run: configure --with-pango=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
+            - name: Run configure for pango extension
+              run: configure --with-pango=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
               shell: cmd
             - run: nmake
               shell: cmd
             - run: nmake install
               shell: cmd
-            - run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo -d extension=php_pango --ri pango
+            - name: Verify pango extension
+              run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo -d extension=php_pango --ri pango
               shell: cmd
 
-            - name: "Run tests"
+            - name: Run tests
               run: |
                 ${{ steps.setup-php-sdk.outputs.prefix }}\php run-tests.php -d extension=php_cairo -d extension=php_pango -q -j8 --show-diff
 
-            - name: "Upload test outputs"
+            - name: Upload test outputs
               if: ${{ always() }}
               uses: actions/upload-artifact@v6
               with:
