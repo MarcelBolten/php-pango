@@ -1,0 +1,20 @@
+{
+  "dependencies": [
+    "brotli",
+    "bzip2",
+    "cairo",
+    "expat",
+    "fontconfig",
+    "freetype",
+    {
+      "name": "harfbuzz",
+      "features": ["directwrite", "freetype"]
+    },
+    "libiconv",
+    "libjpeg-turbo",
+    "libpng",
+    "pango",
+    "pixman",
+    "zlib"
+  ]
+}

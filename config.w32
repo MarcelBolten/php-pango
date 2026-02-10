@@ -22,7 +22,7 @@ if (PHP_PANGO != "no") {
         && CHECK_LIB("pangoft2-1.0.lib", "pango", PHP_PANGO + "\\lib")
 
         && CHECK_LIB("cairo.lib", "pango", PHP_PANGO + "\\lib")
-        && CHECK_LIB("php_cairo.lib", "pango", PHP_PANGO + "\\lib;C:\\tools\\php\\extras\\cairo;C:\\php\\SDK\\lib")
+        && CHECK_LIB("php_cairo.lib", "pango", PHP_PANGO + "\\lib;C:\\tools\\php\\extras\\cairo;C:\\php\\SDK\\lib;" + PHP_PREFIX + "\\SDK\\lib")
 
         && CHECK_LIB("gobject-2.0.lib", "pango", PHP_PANGO + "\\lib")
         && CHECK_LIB("glib-2.0.lib", "pango", PHP_PANGO + "\\lib")
