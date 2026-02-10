@@ -99,7 +99,7 @@ jobs:
                   c:\vcpkg\downloads
                 key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
 
-            - name: Install cairo extension
+            - name: Build cairo extension
               shell: cmd
               run: |
                 cd ..
@@ -124,7 +124,7 @@ jobs:
             - name: "Run tests"
               shell: cmd
               run: |
-                ${{ steps.setup-php-sdk.outputs.prefix }}\php run-tests.php -d extension=php_cairo -d extension=php_pango -q -j$(nproc) --show-diff
+                ${{ steps.setup-php-sdk.outputs.prefix }}\php run-tests.php -d extension=php_cairo -d extension=php_pango -q -j8 --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
