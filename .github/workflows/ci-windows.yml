@@ -106,7 +106,7 @@ jobs:
               working-directory: ./..
               run: |
                 md php-cairo
-                git clone --depth 0 https://github.com/marcelbolten/php-cairo.git php-cairo
+                git clone --depth 1 https://github.com/marcelbolten/php-cairo.git php-cairo
             - run: phpize
               shell: cmd
               working-directory: ../php-cairo
