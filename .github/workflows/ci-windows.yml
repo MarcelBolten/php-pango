@@ -145,6 +145,7 @@ jobs:
               shell: cmd
 
             - name: Run tests
+              shell: cmd
               run: |
                 set FONTCONFIG_FILE=${{ steps.build-deps.outputs.pangoDepsPath }}\etc\fonts\fonts.conf
                 set FONTCONFIG_PATH=${{ steps.build-deps.outputs.pangoDepsPath }}\etc\fonts
