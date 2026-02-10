@@ -97,7 +97,7 @@ jobs:
               uses: ilammy/msvc-dev-cmd@v1
               with:
                 arch: ${{ matrix.arch }}
-                toolset: ${{steps.setup-php-sdk.outputs.toolset}}
+                toolset: ${{ steps.setup-php-sdk.outputs.toolset }}
 
             - name: Build cairo extension
               run: |
