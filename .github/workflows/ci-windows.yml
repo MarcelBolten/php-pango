@@ -120,18 +120,15 @@ jobs:
             - run: nmake install
               shell: cmd
               working-directory: ../php-cairo
-            - name: Verify cairo installation
-              shell: pwsh
-              run: |
-                get-childitem ${{ steps.setup-php-sdk.outputs.prefix }} -Recurse
-                get-childitem C:\php\ext -Recurse
-
+            # - name: Verify cairo installation
+            #   shell: pwsh
+            #   run: |
+            #     get-childitem ${{ steps.setup-php-sdk.outputs.prefix }} -Recurse
             - name: Verify cairo extension
               shell: cmd
               working-directory: ../php-cairo
               run: |
-                ${{ steps.setup-php-sdk.outputs.prefix }}\php -i
-                ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo.dll --ri cairo
+                ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_cairo.dll --ri cairo
 
             - name: Build pango extension
               shell: cmd
@@ -144,12 +141,12 @@ jobs:
             - run: nmake install
               shell: cmd
             - name: Verify pango extension
-              run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=php_cairo.dll -d extension=php_pango.dll --ri pango
+              run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_cairo.dll -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.dll --ri pango
               shell: cmd
 
             - name: Run tests
               run: |
-                ${{ steps.setup-php-sdk.outputs.prefix }}\php run-tests.php -d extension=php_cairo -d extension=php_pango -q -j8 --show-diff
+                ${{ steps.setup-php-sdk.outputs.prefix }}\php run-tests.php -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_cairo.dll -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.dll -q -j8 --show-diff
 
             - name: Upload test outputs
               if: ${{ always() }}
