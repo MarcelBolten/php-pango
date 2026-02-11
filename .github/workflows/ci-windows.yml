@@ -165,12 +165,15 @@ jobs:
               run: |
                 # Determine compiler version
                 $compiler = "vs17"
-                if ("${{ matrix.php-version }}" -ne "master" -and [version]"${{ matrix.php-version }}" -le [version]"8.3") {
+                if ([version]"${{ matrix.php-version }}" -le [version]"8.3") {
                   $compiler = "vs16"
                 }
 
                 # Normalize architecture for PIE
-                $pieArch = if ("${{ matrix.arch }}" -eq "x64") { "x86_64" } else { "x86" }
+                $pieArch = ${{ matrix.arch }}
+                if ("${{ matrix.arch }}" -eq "x64") {
+                  $pieArch = "x86_64"
+                }
 
                 # Get version tag (you may want to customize this based on your versioning)
                 $tag = "${{ github.ref_name }}"
@@ -180,15 +183,13 @@ jobs:
 
                 # Create base filename
                 $baseName = "php_pango-${tag}-${{ matrix.php-version }}-${{ matrix.ts }}-${compiler}-${pieArch}"
-                $zipName = "${baseName}.zip"
 
                 # Create temporary directory for packaging
                 $tempDir = "$env:RUNNER_TEMP\pie-package"
                 New-Item -ItemType Directory -Force -Path $tempDir
 
                 # Copy DLL with PIE-compliant name
-                Copy-Item "${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.dll" `
-                          "$tempDir\${baseName}.dll"
+                Copy-Item "${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.dll" "$tempDir\${baseName}.dll"
 
                 # Copy PDB if it exists (debug symbols)
                 $pdbPath = "${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.pdb"
@@ -199,27 +200,22 @@ jobs:
                 # Copy php_pango.h
                 Copy-Item "php_pango.h" $tempDir
 
-                # Copy .lib file for linking
-                $libPath = "${{ steps.setup-php-sdk.outputs.prefix }}\lib\php_pango.lib"
+                # Copy .lib
+                $libPath = "${{ steps.setup-php-sdk.outputs.prefix }}\..\php-dev\lib\php_pango.lib"
                 if (Test-Path $libPath) {
                   Copy-Item $libPath "$tempDir\php_pango.lib"
                 }
 
-                # Copy extension's license/readme
+                # Copy license/readme
                 Copy-Item "LICENSE" $tempDir
                 Copy-Item "README.md" $tempDir
 
-                # Create ZIP archive
-                Compress-Archive -Path "$tempDir\*" -DestinationPath $zipName
-
-                Write-Host "Created PIE package: $zipName"
-
                 # Output for use in upload step
-                echo "pie-zip-name=$zipName" >> $env:GITHUB_OUTPUT
-                echo "pie-zip-path=${{ github.workspace }}\$zipName" >> $env:GITHUB_OUTPUT
+                echo "pie-baseName=$baseName" >> $env:GITHUB_OUTPUT
+                echo "pie-tempDir=$tempDir" >> $env:GITHUB_OUTPUT
 
             - name: Upload PIE package
               uses: actions/upload-artifact@v6
               with:
-                name: ${{ steps.package-pie.outputs.pie-zip-name }}
-                path: ${{ steps.package-pie.outputs.pie-zip-path }}
+                name: ${{ steps.package-pie.outputs.pie-baseName }}
+                path: ${{ steps.package-pie.outputs.pie-tempDir }}
