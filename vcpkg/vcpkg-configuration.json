@@ -12,6 +12,9 @@
     }
   ],
   "overlay-ports": [
-    ".\\overlays"
+    "./overlays"
+  ],
+  "overlay-triplets": [
+    "./triplets"
   ]
 }
