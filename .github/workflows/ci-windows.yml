@@ -170,7 +170,7 @@ jobs:
                 }
 
                 # Normalize architecture for PIE
-                $pieArch = ${{ matrix.arch }}
+                $pieArch = "${{ matrix.arch }}"
                 if ("${{ matrix.arch }}" -eq "x64") {
                   $pieArch = "x86_64"
                 }
