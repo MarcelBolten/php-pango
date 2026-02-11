@@ -46,7 +46,8 @@ jobs:
                 key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}-${{ hashFiles('vcpkg/**/*.json', '!vcpkg/vcpkg_installed/**/*.json') }}
                 restore-keys: |
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
-                  vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-
+                  vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}
+                  vcpkg-${{ matrix.arch }}
 
             - name: Install dependencies via vcpkg
               id: build-deps
