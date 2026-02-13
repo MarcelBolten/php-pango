@@ -13,14 +13,15 @@ jobs:
         steps:
         - name: Checkout
           uses: actions/checkout@v5
+
         - name: Get the extension matrix
           id: extension-matrix
           uses: php/php-windows-builder/extension-matrix@v1
           with:
             extension-url: https://github.com/MarcelBolten/php-pango
-            php-version-list: '8.5'
-            arch-list: 'x64'
-            ts-list: 'nts'
+            php-version-list: '8.2, 8.3, 8.4, 8.5'
+            arch-list: 'x64, x86'
+            ts-list: 'nts, ts'
 
     build:
         needs: get-extension-matrix
@@ -34,36 +35,25 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v5
 
-            - name: php -i
-              run: php -i
-
             - name: Restore vcpkg cache
               id: restore-vcpkg-cache
-              uses: actions/cache/restore@v4
+              uses: actions/cache/restore@v5
               with:
                 path: |
-                  C:\vcpkg\installed
-                  C:\vcpkg\buildtrees
-                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
+                  ${{ github.workspace }}/vcpkg/vcpkg_installed
+                  c:\vcpkg\packages
+                  c:\vcpkg\downloads
+                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}-${{ hashFiles('vcpkg/**/*.json', '!vcpkg/vcpkg_installed/**/*.json') }}
                 restore-keys: |
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
-                  vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-
+                  vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}
+                  vcpkg-${{ matrix.arch }}
 
-            - name: Setup vcpkg and install dependencies
+            - name: Install dependencies via vcpkg
               id: build-deps
               shell: pwsh
+              working-directory: vcpkg
               run: |
-                # Clone vcpkg if not cached
-                if (!(Test-Path "C:\vcpkg")) {
-                    git clone https://github.com/Microsoft/vcpkg.git C:\vcpkg
-                }
-                cd C:\vcpkg
-
-                # Bootstrap if needed
-                if (!(Test-Path ".\vcpkg.exe")) {
-                    .\bootstrap-vcpkg.bat
-                }
-
                 # Set architecture
                 $triplet = "${{ matrix.arch }}-windows-static-md"
 
@@ -73,87 +63,159 @@ jobs:
                     -and [version]"${{ matrix.php-version }}" -le [version]"8.3" `
                 ) {
                   $triplet = "x86-windows-php"
-
-                  $tripletContent = @(
-                    "set(VCPKG_TARGET_ARCHITECTURE x86)"
-                    "set(VCPKG_CRT_LINKAGE dynamic)"
-                    "set(VCPKG_LIBRARY_LINKAGE static)"
-                    "set(VCPKG_PLATFORM_TOOLSET v142)"
-                  ) -join "`n"
-
-                  New-Item -Path "C:\vcpkg\triplets\community" -Name "$triplet.cmake" -Value $tripletContent -Force
                 }
 
-                # Install all required packages
-                $packages = @(
-                    "cairo:$triplet",
-                    "pango:$triplet",
-                    "libpng:$triplet",
-                    "freetype:$triplet",
-                    "fontconfig:$triplet",
-                    "pixman:$triplet",
-                    "libjpeg-turbo:$triplet",
-                    "zlib:$triplet",
-                    "bzip2:$triplet",
-                    "brotli:$triplet",
-                    "expat:$triplet"
-                )
-                & .\vcpkg install @packages --overlay-ports=${{ github.workspace }}/vcpkg-overlays
+                vcpkg install --triplet=$triplet
 
-                $depsPath = "C:\vcpkg\installed\$triplet"
+                $depsPath = "${{ github.workspace }}\vcpkg\vcpkg_installed\$triplet"
 
+                # list all file in the current directory for debugging
+                # Get-ChildItem
                 # Write-Host "Libraries build:"
                 # Get-ChildItem $depsPath -Recurse | ForEach-Object { Write-Host $_.FullName }
 
                 # Export the path so it can be used in the extension build step
-                echo "PANGO_DEPS_PATH=$depsPath" >> $env:GITHUB_OUTPUT
+                echo "pangoDepsPath=$depsPath" >> $env:GITHUB_OUTPUT
 
             - name: Save vcpkg cache
               if: steps.restore-vcpkg-cache.outputs.cache-hit != 'true'
-              uses: actions/cache/save@v4
+              uses: actions/cache/save@v5
               with:
                 path: |
-                  C:\vcpkg\installed
-                  C:\vcpkg\buildtrees
-                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
+                  ${{ github.workspace }}/vcpkg/vcpkg_installed
+                  c:\vcpkg\packages
+                  c:\vcpkg\downloads
+                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}-${{ hashFiles('vcpkg/**/*.json', '!vcpkg/vcpkg_installed/**/*.json') }}
 
-            - name: Install cairo via PIE
-              shell: cmd
-              run: |
-                curl -L -o pie.phar https://github.com/php/pie/releases/download/1.3.8/pie.phar
-                php pie.phar install marcelbolten/php-cairo:^2.0.0alpha2
-                php --ri cairo
-
-            - name: Build the extension
-              uses: php/php-windows-builder/extension@v1
+            - name: Setup PHP SDK
+              id: setup-php-sdk
+              uses: php/setup-php-sdk@v0.12
               with:
-                php-version: ${{ matrix.php-version }}
+                version: ${{ matrix.php-version }}
                 arch: ${{ matrix.arch }}
                 ts: ${{ matrix.ts }}
-                args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }}
-                run-tests: false
+                cache: true
 
-            - name: Find Pango DLL path
-              id: pango-dll
-              shell: pwsh
-              run: |
-                $pangoDll = Get-ChildItem -Path "D:\a\php-pango\php-pango\build\" -Filter "php_pango.dll" -Recurse | Select-Object -First 1
-                if ($pangoDll) {
-                  $dllPath = $pangoDll.FullName
-                  Write-Host "Pango DLL found at: $dllPath"
-                  echo "path=$dllPath" >> $env:GITHUB_OUTPUT
-                } else {
-                  Write-Error "Pango DLL not found"
-                  exit 1
-                }
+            - name: Setup MSVC Build Environment
+              uses: ilammy/msvc-dev-cmd@v1
+              with:
+                arch: ${{ matrix.arch }}
+                toolset: ${{ steps.setup-php-sdk.outputs.toolset }}
 
-            - name: "php -i"
+            - name: Clone cairo extension
               shell: cmd
-              run: php -d extension=${{ steps.pango-dll.outputs.path }} --ri pango
+              working-directory: ./..
+              run: |
+                md php-cairo
+                git clone --depth 1 https://github.com/marcelbolten/php-cairo.git php-cairo
+            - run: phpize
+              shell: cmd
+              working-directory: ../php-cairo
+            - name: Run configure for cairo extension
+              shell: cmd
+              working-directory: ../php-cairo
+              run: configure --with-cairo=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
+            - run: nmake
+              shell: cmd
+              working-directory: ../php-cairo
+            - run: nmake install
+              shell: cmd
+              working-directory: ../php-cairo
+            # - name: List installed files for debugging
+            #   shell: pwsh
+            #   run: |
+            #     get-childitem ${{ steps.setup-php-sdk.outputs.prefix }}\..\php* -Recurse
+            - name: Verify cairo extension
+              shell: cmd
+              working-directory: ../php-cairo
+              run: |
+                ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_cairo.dll --ri cairo
 
-            - name: "Upload test outputs"
+            - name: Build pango extension
+              shell: cmd
+              run: phpize
+            - name: Run configure for pango extension
+              run: configure --with-pango=${{ steps.build-deps.outputs.pangoDepsPath }} --with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
+              shell: cmd
+            - run: nmake
+              shell: cmd
+            - run: nmake install
+              shell: cmd
+            - name: Verify pango extension
+              run: ${{ steps.setup-php-sdk.outputs.prefix }}\php -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_cairo.dll -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.dll --ri pango
+              shell: cmd
+
+            - name: Run tests
+              shell: cmd
+              run: |
+                set FONTCONFIG_FILE=${{ steps.build-deps.outputs.pangoDepsPath }}\etc\fonts\fonts.conf
+                set FONTCONFIG_PATH=${{ steps.build-deps.outputs.pangoDepsPath }}\etc\fonts
+                ${{ steps.setup-php-sdk.outputs.prefix }}\php run-tests.php -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_cairo.dll -d extension=${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.dll -q -j8 --show-diff
+
+            - name: Upload test outputs
               if: ${{ always() }}
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: pango-test-${{ matrix.php-version }}-${{ matrix.arch }}-${{ matrix.ts }}
                 path: tests/**/*.log
+
+            - name: Package extension for PIE
+              id: package-pie
+              shell: pwsh
+              run: |
+                # Determine compiler version
+                $compiler = "vs17"
+                if ([version]"${{ matrix.php-version }}" -le [version]"8.3") {
+                  $compiler = "vs16"
+                }
+
+                # Normalize architecture for PIE
+                $pieArch = "${{ matrix.arch }}"
+                if ("${{ matrix.arch }}" -eq "x64") {
+                  $pieArch = "x86_64"
+                }
+
+                # Get version tag (you may want to customize this based on your versioning)
+                $tag = "${{ github.ref_name }}"
+                if ($tag -eq "main" -or $tag -eq "master") {
+                  $tag = "dev-${{ github.sha }}".Substring(0, 15)
+                }
+
+                # Create base filename
+                $baseName = "php_pango-${tag}-${{ matrix.php-version }}-${{ matrix.ts }}-${compiler}-${pieArch}"
+
+                # Create temporary directory for packaging
+                $tempDir = "$env:RUNNER_TEMP\pie-package"
+                New-Item -ItemType Directory -Force -Path $tempDir
+
+                # Copy DLL with PIE-compliant name
+                Copy-Item "${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.dll" "$tempDir\${baseName}.dll"
+
+                # Copy PDB if it exists (debug symbols)
+                $pdbPath = "${{ steps.setup-php-sdk.outputs.prefix }}\ext\php_pango.pdb"
+                if (Test-Path $pdbPath) {
+                  Copy-Item $pdbPath "$tempDir\${baseName}.pdb"
+                }
+
+                # Copy php_pango.h
+                Copy-Item "php_pango.h" $tempDir
+
+                # Copy .lib
+                $libPath = "${{ steps.setup-php-sdk.outputs.prefix }}\..\php-dev\lib\php_pango.lib"
+                if (Test-Path $libPath) {
+                  Copy-Item $libPath "$tempDir\php_pango.lib"
+                }
+
+                # Copy license/readme
+                Copy-Item "LICENSE" $tempDir
+                Copy-Item "README.md" $tempDir
+
+                # Output for use in upload step
+                echo "pie-baseName=$baseName" >> $env:GITHUB_OUTPUT
+                echo "pie-tempDir=$tempDir" >> $env:GITHUB_OUTPUT
+
+            - name: Upload PIE package
+              uses: actions/upload-artifact@v6
+              with:
+                name: ${{ steps.package-pie.outputs.pie-baseName }}
+                path: ${{ steps.package-pie.outputs.pie-tempDir }}

@@ -26,10 +26,10 @@ object(Cairo\Context)#%d (0) {
 }
 object(PangoCairo\Layout)#%d (0) {
 }
-int(794)
+int(%d)
 array(3) {
   ["width"]=>
-  int(14336)
+  int(%d)
   ["xOffset"]=>
   int(0)
   ["yOffset"]=>

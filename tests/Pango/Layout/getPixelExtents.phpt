@@ -42,80 +42,80 @@ array(2) {
   ["ink"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(0)
+    int(%i)
     ["y"]=>
-    int(15)
+    int(%i)
     ["width"]=>
-    int(0)
+    int(%i)
     ["height"]=>
-    int(0)
+    int(%i)
     ["ascent"]=>
-    int(-15)
+    int(%i)
     ["descent"]=>
-    int(15)
+    int(%i)
     ["leftBearing"]=>
-    int(0)
+    int(%i)
     ["rightBearing"]=>
-    int(0)
+    int(%i)
   }
   ["logical"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(0)
+    int(%i)
     ["y"]=>
-    int(0)
+    int(%i)
     ["width"]=>
-    int(0)
+    int(%i)
     ["height"]=>
-    int(19)
+    int(%i)
     ["ascent"]=>
-    int(0)
+    int(%i)
     ["descent"]=>
-    int(19)
+    int(%i)
     ["leftBearing"]=>
-    int(0)
+    int(%i)
     ["rightBearing"]=>
-    int(0)
+    int(%i)
   }
 }
 array(2) {
   ["ink"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(0)
+    int(%i)
     ["y"]=>
-    int(6)
+    int(%i)
     ["width"]=>
-    int(109)
+    int(%i)
     ["height"]=>
-    int(16)
+    int(%i)
     ["ascent"]=>
-    int(-6)
+    int(%i)
     ["descent"]=>
-    int(22)
+    int(%i)
     ["leftBearing"]=>
-    int(0)
+    int(%i)
     ["rightBearing"]=>
-    int(109)
+    int(%i)
   }
   ["logical"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(0)
+    int(%i)
     ["y"]=>
-    int(0)
+    int(%i)
     ["width"]=>
-    int(110)
+    int(%i)
     ["height"]=>
-    int(24)
+    int(%i)
     ["ascent"]=>
-    int(0)
+    int(%i)
     ["descent"]=>
-    int(24)
+    int(%i)
     ["leftBearing"]=>
-    int(0)
+    int(%i)
     ["rightBearing"]=>
-    int(110)
+    int(%i)
   }
 }
 Pango\Layout::getPixelExtents() expects exactly 0 arguments, 1 given

@@ -17,6 +17,8 @@ var_dump($fontMap);
 var_dump($fontMap->addFontFile(__DIR__ . "/Cantarell-VF.otf"));
 
 try {
+    // could be "Adding font /wrong/path/Cantarell-VF.otf to fontconfig configuration failed"
+    // or "Specified font file '/wrong/path/Cantarell-VF.otf' does not exist"
     $fontMap->addFontFile("/wrong/path/Cantarell-VF.otf");
 } catch (Pango\Exception $e) {
     echo $e->getMessage(), "\n";
@@ -44,7 +46,7 @@ try {
 object(PangoCairo\FontMap)#%d (0) {
 }
 bool(true)
-Error adding font file '/wrong/path/Cantarell-VF.otf': Adding font /wrong/path/Cantarell-VF.otf to fontconfig configuration failed
+Error adding font file '/wrong/path/Cantarell-VF.otf': %s/wrong/path/Cantarell-VF.otf%s
 Pango\FontMap::addFontFile() expects exactly 1 argument, 0 given
 Pango\FontMap::addFontFile() expects exactly 1 argument, 2 given
 Pango\FontMap::addFontFile(): Argument #1 ($file) must be of type string, array given

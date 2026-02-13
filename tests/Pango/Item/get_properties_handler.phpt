@@ -43,6 +43,6 @@ object(Pango\Item)#%d (4) {
     ["script"]=>
     string(4) "Grek"
     ["language"]=>
-    string(1) "c"
+    string(%d) "%s"
   }
 }

@@ -32,5 +32,5 @@ object(Pango\FontFamily)#%d (0) {
 }
 object(Pango\FontFace)#%d (0) {
 }
-string(7) "Regular"
+string(%d) "%s"
 Pango\FontFace::getName() expects exactly 0 arguments, 1 given

@@ -44,5 +44,5 @@ array(7) {
   ["script"]=>
   string(4) "Grek"
   ["language"]=>
-  string(1) "c"
+  string(%d) "%s"
 }

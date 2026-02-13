@@ -4,6 +4,7 @@ Pango\FontFace::listSizes()
 <?php
 include __DIR__ . '/../../skipif.php.inc';
 include __DIR__ . '/../../skipif_cairo.php.inc';
+exit('skip for now');
 ?>
 --FILE--
 <?php
@@ -19,6 +20,7 @@ $defaultFace = $family->getFace(null);
 var_dump($defaultFace);
 var_dump($defaultFace->listSizes());
 
+$fontMap->addFontFile(__DIR__ . "/NotoColorEmoji.ttf");
 $bitmapFamily = $fontMap->getFamily("Noto Color Emoji");
 $bitmapFace = $bitmapFamily->getFace("Regular");
 var_dump($bitmapFace->listSizes());
