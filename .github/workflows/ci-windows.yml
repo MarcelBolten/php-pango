@@ -86,17 +86,17 @@ jobs:
 
                 # Install all required packages
                 $packages = @(
-                    "cairo:$triplet",
-                    "pango:$triplet",
-                    "libpng:$triplet",
-                    "freetype:$triplet",
-                    "fontconfig:$triplet",
-                    "pixman:$triplet",
-                    "libjpeg-turbo:$triplet",
-                    "zlib:$triplet",
-                    "bzip2:$triplet",
                     "brotli:$triplet",
+                    "bzip2:$triplet",
+                    "cairo:$triplet",
                     "expat:$triplet"
+                    "fontconfig:$triplet",
+                    "freetype:$triplet",
+                    "libjpeg-turbo:$triplet",
+                    "libpng:$triplet",
+                    "pango:$triplet",
+                    "pixman:$triplet",
+                    "zlib:$triplet",
                 )
                 & .\vcpkg install @packages --overlay-ports=${{ github.workspace }}/vcpkg-overlays
 
@@ -149,7 +149,8 @@ jobs:
 
             - name: "php -i"
               shell: cmd
-              run: php -d extension=${{ steps.pango-dll.outputs.path }} --ri pango
+              run: |
+                php -d extension=${{ steps.pango-dll.outputs.path }} --ri pango
 
             - name: "Upload test outputs"
               if: ${{ always() }}
