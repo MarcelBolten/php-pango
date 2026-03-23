@@ -97,21 +97,17 @@ PHP_METHOD(Pango_Context, setFontDescription)
 {
     zval *font_desc_zv;
     pango_context_object *context_object;
-    PangoFontDescription *font_description = NULL;
+    PangoFontDescription *font_description;
 
     ZEND_PARSE_PARAMETERS_START(1, 1);
-        Z_PARAM_OBJECT_OF_CLASS_OR_NULL(font_desc_zv, php_pango_get_font_description_ce())
+        Z_PARAM_OBJECT_OF_CLASS(font_desc_zv, php_pango_get_font_description_ce())
     ZEND_PARSE_PARAMETERS_END();
 
     context_object = Z_PANGO_CONTEXT_P(getThis());
     zval_ptr_dtor(&context_object->font_description_zv);
 
-    if (font_desc_zv && Z_TYPE_P(font_desc_zv) != IS_NULL) {
-        ZVAL_COPY(&context_object->font_description_zv, font_desc_zv);
-        font_description = Z_PANGO_FONT_DESC_P(font_desc_zv)->font_description;
-    } else {
-        ZVAL_NULL(&context_object->font_description_zv);
-    }
+    ZVAL_COPY(&context_object->font_description_zv, font_desc_zv);
+    font_description = Z_PANGO_FONT_DESC_P(font_desc_zv)->font_description;
 
     pango_context_set_font_description(context_object->context, font_description);
 }
