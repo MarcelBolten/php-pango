@@ -93,7 +93,7 @@ class Context
      * Set the default font description for the context.
      */
     public function setFontDescription(
-        null|FontDescription $desc
+        FontDescription $desc
     ): void {}
 
     // /**

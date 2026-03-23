@@ -397,6 +397,7 @@ PHP_METHOD(Pango_Layout, setFontDescription)
 
     layout_object = Z_PANGO_LAYOUT_P(getThis());
     font_description_object = Z_PANGO_FONT_DESC_P(font_desc_zv);
+
     pango_layout_set_font_description(layout_object->layout, font_description_object->font_description);
 }
 /* }}} */
