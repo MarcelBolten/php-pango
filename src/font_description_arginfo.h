@@ -1,4 +1,4 @@
-/* This is a generated file, edit the .stub.php file instead.
+/* This is a generated file, edit font_description.stub.php instead.
  * Stub hash: f6bb81ea30dc77d4c9723fde4bdebbb406005250 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_FontDescription___construct, 0, 0, 0)
@@ -278,68 +278,68 @@ static zend_class_entry *register_class_Pango_FontMask(void)
 
 	zval const_FAMILY_value;
 	ZVAL_LONG(&const_FAMILY_value, PANGO_FONT_MASK_FAMILY);
-	zend_string *const_FAMILY_name = zend_string_init_interned("FAMILY", sizeof("FAMILY") - 1, 1);
+	zend_string *const_FAMILY_name = zend_string_init_interned("FAMILY", sizeof("FAMILY") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_FAMILY_name, &const_FAMILY_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_FAMILY_name);
+	zend_string_release_ex(const_FAMILY_name, true);
 
 	zval const_STYLE_value;
 	ZVAL_LONG(&const_STYLE_value, PANGO_FONT_MASK_STYLE);
-	zend_string *const_STYLE_name = zend_string_init_interned("STYLE", sizeof("STYLE") - 1, 1);
+	zend_string *const_STYLE_name = zend_string_init_interned("STYLE", sizeof("STYLE") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_STYLE_name, &const_STYLE_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_STYLE_name);
+	zend_string_release_ex(const_STYLE_name, true);
 
 	zval const_VARIANT_value;
 	ZVAL_LONG(&const_VARIANT_value, PANGO_FONT_MASK_VARIANT);
-	zend_string *const_VARIANT_name = zend_string_init_interned("VARIANT", sizeof("VARIANT") - 1, 1);
+	zend_string *const_VARIANT_name = zend_string_init_interned("VARIANT", sizeof("VARIANT") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_VARIANT_name, &const_VARIANT_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_VARIANT_name);
+	zend_string_release_ex(const_VARIANT_name, true);
 
 	zval const_WEIGHT_value;
 	ZVAL_LONG(&const_WEIGHT_value, PANGO_FONT_MASK_WEIGHT);
-	zend_string *const_WEIGHT_name = zend_string_init_interned("WEIGHT", sizeof("WEIGHT") - 1, 1);
+	zend_string *const_WEIGHT_name = zend_string_init_interned("WEIGHT", sizeof("WEIGHT") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_WEIGHT_name, &const_WEIGHT_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_WEIGHT_name);
+	zend_string_release_ex(const_WEIGHT_name, true);
 
 	zval const_STRETCH_value;
 	ZVAL_LONG(&const_STRETCH_value, PANGO_FONT_MASK_STRETCH);
-	zend_string *const_STRETCH_name = zend_string_init_interned("STRETCH", sizeof("STRETCH") - 1, 1);
+	zend_string *const_STRETCH_name = zend_string_init_interned("STRETCH", sizeof("STRETCH") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_STRETCH_name, &const_STRETCH_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_STRETCH_name);
+	zend_string_release_ex(const_STRETCH_name, true);
 
 	zval const_SIZE_value;
 	ZVAL_LONG(&const_SIZE_value, PANGO_FONT_MASK_SIZE);
-	zend_string *const_SIZE_name = zend_string_init_interned("SIZE", sizeof("SIZE") - 1, 1);
+	zend_string *const_SIZE_name = zend_string_init_interned("SIZE", sizeof("SIZE") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_SIZE_name, &const_SIZE_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_SIZE_name);
+	zend_string_release_ex(const_SIZE_name, true);
 
 	zval const_GRAVITY_value;
 	ZVAL_LONG(&const_GRAVITY_value, PANGO_FONT_MASK_GRAVITY);
-	zend_string *const_GRAVITY_name = zend_string_init_interned("GRAVITY", sizeof("GRAVITY") - 1, 1);
+	zend_string *const_GRAVITY_name = zend_string_init_interned("GRAVITY", sizeof("GRAVITY") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_GRAVITY_name, &const_GRAVITY_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_GRAVITY_name);
+	zend_string_release_ex(const_GRAVITY_name, true);
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 42, 0)
 
 	zval const_VARIATIONS_value;
 	ZVAL_LONG(&const_VARIATIONS_value, PANGO_FONT_MASK_VARIATIONS);
-	zend_string *const_VARIATIONS_name = zend_string_init_interned("VARIATIONS", sizeof("VARIATIONS") - 1, 1);
+	zend_string *const_VARIATIONS_name = zend_string_init_interned("VARIATIONS", sizeof("VARIATIONS") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_VARIATIONS_name, &const_VARIATIONS_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_VARIATIONS_name);
+	zend_string_release_ex(const_VARIATIONS_name, true);
 #endif
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 
 	zval const_FEATURES_value;
 	ZVAL_LONG(&const_FEATURES_value, PANGO_FONT_MASK_FEATURES);
-	zend_string *const_FEATURES_name = zend_string_init_interned("FEATURES", sizeof("FEATURES") - 1, 1);
+	zend_string *const_FEATURES_name = zend_string_init_interned("FEATURES", sizeof("FEATURES") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_FEATURES_name, &const_FEATURES_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_FEATURES_name);
+	zend_string_release_ex(const_FEATURES_name, true);
 #endif
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
 
 	zval const_COLOR_value;
 	ZVAL_LONG(&const_COLOR_value, PANGO_FONT_MASK_COLOR);
-	zend_string *const_COLOR_name = zend_string_init_interned("COLOR", sizeof("COLOR") - 1, 1);
+	zend_string *const_COLOR_name = zend_string_init_interned("COLOR", sizeof("COLOR") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_COLOR_name, &const_COLOR_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_COLOR_name);
+	zend_string_release_ex(const_COLOR_name, true);
 #endif
 
 	return class_entry;

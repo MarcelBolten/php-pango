@@ -1,4 +1,4 @@
-/* This is a generated file, edit the .stub.php file instead.
+/* This is a generated file, edit font_face.stub.php instead.
  * Stub hash: 4e873862d6ba4ce68da8b6cb2218a3f287a29284 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontFace_describe, 0, 0, Pango\\FontDescription, 0)

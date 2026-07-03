@@ -1,4 +1,4 @@
-/* This is a generated file, edit the .stub.php file instead.
+/* This is a generated file, edit exception.stub.php instead.
  * Stub hash: 7ca34e321751bb47f7011c7646f8ea44620c3de4 */
 
 static zend_class_entry *register_class_Pango_Exception(zend_class_entry *class_entry_Exception)

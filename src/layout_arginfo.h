@@ -1,4 +1,4 @@
-/* This is a generated file, edit the .stub.php file instead.
+/* This is a generated file, edit layout.stub.php instead.
  * Stub hash: 98981dedc49a07f1d97bf0d5cdae42f51659b9d2 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
@@ -293,21 +293,21 @@ static zend_class_entry *register_class_Pango_Layout(void)
 
 	zval const_SERIALIZE_DEFAULT_value;
 	ZVAL_LONG(&const_SERIALIZE_DEFAULT_value, PANGO_LAYOUT_SERIALIZE_DEFAULT);
-	zend_string *const_SERIALIZE_DEFAULT_name = zend_string_init_interned("SERIALIZE_DEFAULT", sizeof("SERIALIZE_DEFAULT") - 1, 1);
+	zend_string *const_SERIALIZE_DEFAULT_name = zend_string_init_interned("SERIALIZE_DEFAULT", sizeof("SERIALIZE_DEFAULT") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_SERIALIZE_DEFAULT_name, &const_SERIALIZE_DEFAULT_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_SERIALIZE_DEFAULT_name);
+	zend_string_release_ex(const_SERIALIZE_DEFAULT_name, true);
 
 	zval const_SERIALIZE_CONTEXT_value;
 	ZVAL_LONG(&const_SERIALIZE_CONTEXT_value, PANGO_LAYOUT_SERIALIZE_CONTEXT);
-	zend_string *const_SERIALIZE_CONTEXT_name = zend_string_init_interned("SERIALIZE_CONTEXT", sizeof("SERIALIZE_CONTEXT") - 1, 1);
+	zend_string *const_SERIALIZE_CONTEXT_name = zend_string_init_interned("SERIALIZE_CONTEXT", sizeof("SERIALIZE_CONTEXT") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_SERIALIZE_CONTEXT_name, &const_SERIALIZE_CONTEXT_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_SERIALIZE_CONTEXT_name);
+	zend_string_release_ex(const_SERIALIZE_CONTEXT_name, true);
 
 	zval const_SERIALIZE_OUTPUT_value;
 	ZVAL_LONG(&const_SERIALIZE_OUTPUT_value, PANGO_LAYOUT_SERIALIZE_OUTPUT);
-	zend_string *const_SERIALIZE_OUTPUT_name = zend_string_init_interned("SERIALIZE_OUTPUT", sizeof("SERIALIZE_OUTPUT") - 1, 1);
+	zend_string *const_SERIALIZE_OUTPUT_name = zend_string_init_interned("SERIALIZE_OUTPUT", sizeof("SERIALIZE_OUTPUT") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_SERIALIZE_OUTPUT_name, &const_SERIALIZE_OUTPUT_value, ZEND_ACC_PUBLIC, NULL);
-	zend_string_release(const_SERIALIZE_OUTPUT_name);
+	zend_string_release_ex(const_SERIALIZE_OUTPUT_name, true);
 #endif
 
 	return class_entry;

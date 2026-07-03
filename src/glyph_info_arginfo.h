@@ -1,4 +1,4 @@
-/* This is a generated file, edit the .stub.php file instead.
+/* This is a generated file, edit glyph_info.stub.php instead.
  * Stub hash: 085539282c0504a2d2eb142260c656dfeb689508 */
 
 static zend_class_entry *register_class_Pango_GlyphInfo(void)
@@ -14,21 +14,21 @@ static zend_class_entry *register_class_Pango_GlyphInfo(void)
 
 	zval property_glyph_default_value;
 	ZVAL_UNDEF(&property_glyph_default_value);
-	zend_string *property_glyph_name = zend_string_init("glyph", sizeof("glyph") - 1, 1);
+	zend_string *property_glyph_name = zend_string_init("glyph", sizeof("glyph") - 1, true);
 	zend_declare_typed_property(class_entry, property_glyph_name, &property_glyph_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
-	zend_string_release(property_glyph_name);
+	zend_string_release_ex(property_glyph_name, true);
 
 	zval property_geometry_default_value;
 	ZVAL_UNDEF(&property_geometry_default_value);
-	zend_string *property_geometry_name = zend_string_init("geometry", sizeof("geometry") - 1, 1);
+	zend_string *property_geometry_name = zend_string_init("geometry", sizeof("geometry") - 1, true);
 	zend_declare_typed_property(class_entry, property_geometry_name, &property_geometry_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_ARRAY));
-	zend_string_release(property_geometry_name);
+	zend_string_release_ex(property_geometry_name, true);
 
 	zval property_attributes_default_value;
 	ZVAL_UNDEF(&property_attributes_default_value);
-	zend_string *property_attributes_name = zend_string_init("attributes", sizeof("attributes") - 1, 1);
+	zend_string *property_attributes_name = zend_string_init("attributes", sizeof("attributes") - 1, true);
 	zend_declare_typed_property(class_entry, property_attributes_name, &property_attributes_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_ARRAY));
-	zend_string_release(property_attributes_name);
+	zend_string_release_ex(property_attributes_name, true);
 
 	return class_entry;
 }

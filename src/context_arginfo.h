@@ -1,5 +1,5 @@
-/* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 51ed52b32bd5aaf9af17231142d965c85267fc34 */
+/* This is a generated file, edit context.stub.php instead.
+ * Stub hash: 99148f6f346714daee6e73b8b50c1459be03205f */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Context___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, fontmap, Pango\\FontMap, 1, "null")
@@ -40,7 +40,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setBaseGravi
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setFontDescription, 0, 1, IS_VOID, 0)
-	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 1)
+	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setGravityHint, 0, 1, IS_VOID, 0)

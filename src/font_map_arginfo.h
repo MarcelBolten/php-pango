@@ -1,4 +1,4 @@
-/* This is a generated file, edit the .stub.php file instead.
+/* This is a generated file, edit font_map.stub.php instead.
  * Stub hash: d492d83cb740a6c242b92bc9d43fb23fc324abb1 */
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)

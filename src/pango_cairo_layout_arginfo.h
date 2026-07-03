@@ -1,4 +1,4 @@
-/* This is a generated file, edit the .stub.php file instead.
+/* This is a generated file, edit pango_cairo_layout.stub.php instead.
  * Stub hash: a83551668f1da73a8a4be690385b20dcb2b79132 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_Layout___construct, 0, 0, 1)

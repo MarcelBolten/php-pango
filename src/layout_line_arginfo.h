@@ -1,4 +1,4 @@
-/* This is a generated file, edit the .stub.php file instead.
+/* This is a generated file, edit layout_line.stub.php instead.
  * Stub hash: 9bd6618f0c9b4f8e9a64ffaea73ee3fafb154c8d */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_LayoutLine_getExtents, 0, 0, IS_ARRAY, 0)
