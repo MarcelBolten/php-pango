@@ -28,7 +28,7 @@ static zend_object_handlers pango_matrix_object_handlers;
 
 pango_matrix_object *pango_matrix_fetch_object(zend_object *object)
 {
-    return (pango_matrix_object *) ((char*)(object) - XtOffsetOf(pango_matrix_object, std));
+    return (pango_matrix_object *) ((char*)(object) - offsetof(pango_matrix_object, std));
 }
 
 static inline double pango_matrix_get_property_default(zend_class_entry *ce, char * name) {
@@ -456,7 +456,7 @@ PHP_MINIT_FUNCTION(pango_matrix)
         sizeof(zend_object_handlers)
     );
 
-    pango_matrix_object_handlers.offset = XtOffsetOf(pango_matrix_object, std);
+    pango_matrix_object_handlers.offset = offsetof(pango_matrix_object, std);
     pango_matrix_object_handlers.free_obj = pango_matrix_free_obj;
     pango_matrix_object_handlers.clone_obj = pango_matrix_clone_obj;
     pango_matrix_object_handlers.read_property = pango_matrix_object_read_property;

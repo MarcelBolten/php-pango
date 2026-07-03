@@ -33,7 +33,7 @@ static zend_object_handlers pango_font_map_object_handlers;
 
 pango_font_map_object *pango_font_map_fetch_object(zend_object *object)
 {
-    return (pango_font_map_object *) ((char*)(object) - XtOffsetOf(pango_font_map_object, std));
+    return (pango_font_map_object *) ((char*)(object) - offsetof(pango_font_map_object, std));
 }
 
 PHP_PANGO_API zend_class_entry* php_pango_get_font_map_ce()
@@ -217,7 +217,7 @@ PHP_MINIT_FUNCTION(pango_font_map)
         sizeof(zend_object_handlers)
     );
 
-    pango_font_map_object_handlers.offset = XtOffsetOf(pango_font_map_object, std);
+    pango_font_map_object_handlers.offset = offsetof(pango_font_map_object, std);
     // pango_font_map_object_handlers.free_obj = pango_font_map_free_obj;
 
     pango_ce_pango_font_map = register_class_Pango_FontMap();

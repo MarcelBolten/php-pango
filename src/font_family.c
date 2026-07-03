@@ -33,7 +33,7 @@ static zend_object_handlers pango_font_family_object_handlers;
 
 pango_font_family_object *pango_font_family_fetch_object(zend_object *object)
 {
-    return (pango_font_family_object *) ((char*)(object) - XtOffsetOf(pango_font_family_object, std));
+    return (pango_font_family_object *) ((char*)(object) - offsetof(pango_font_family_object, std));
 }
 
 PHP_PANGO_API zend_class_entry* php_pango_get_font_family_ce()
@@ -195,7 +195,7 @@ PHP_MINIT_FUNCTION(pango_font_family)
         sizeof(zend_object_handlers)
     );
 
-    pango_font_family_object_handlers.offset = XtOffsetOf(pango_font_family_object, std);
+    pango_font_family_object_handlers.offset = offsetof(pango_font_family_object, std);
     pango_font_family_object_handlers.free_obj = pango_font_family_free_obj;
 
     pango_ce_pango_font_family = register_class_Pango_FontFamily();

@@ -29,7 +29,7 @@ static zend_object_handlers pango_rectangle_object_handlers;
 
 pango_rectangle_object *pango_rectangle_fetch_object(zend_object *object)
 {
-    return (pango_rectangle_object *) ((char*)(object) - XtOffsetOf(pango_rectangle_object, std));
+    return (pango_rectangle_object *) ((char*)(object) - offsetof(pango_rectangle_object, std));
 }
 
 #define PANGO_ALLOC_RECT(rect_value) if (!rect_value) \
@@ -264,7 +264,7 @@ PHP_MINIT_FUNCTION(pango_rectangle)
         sizeof(zend_object_handlers)
     );
 
-    pango_rectangle_object_handlers.offset = XtOffsetOf(pango_rectangle_object, std);
+    pango_rectangle_object_handlers.offset = offsetof(pango_rectangle_object, std);
     pango_rectangle_object_handlers.free_obj = pango_rectangle_free_obj;
     pango_rectangle_object_handlers.clone_obj = pango_rectangle_clone_obj;
     pango_rectangle_object_handlers.read_property = pango_rectangle_object_read_property;

@@ -46,7 +46,7 @@ static zend_object_handlers pango_context_object_handlers;
 
 pango_context_object *pango_context_fetch_object(zend_object *object)
 {
-    return (pango_context_object *) ((char*)(object) - XtOffsetOf(pango_context_object, std));
+    return (pango_context_object *) ((char*)(object) - offsetof(pango_context_object, std));
 }
 
 /* {{{ Creates a new PangoContext initialized to default values. */
@@ -444,7 +444,7 @@ PHP_MINIT_FUNCTION(pango_context)
         sizeof(zend_object_handlers)
     );
 
-    pango_context_object_handlers.offset = XtOffsetOf(pango_context_object, std);
+    pango_context_object_handlers.offset = offsetof(pango_context_object, std);
     pango_context_object_handlers.free_obj = pango_context_free_obj;
 
     pango_ce_pango_context = register_class_Pango_Context();

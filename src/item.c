@@ -34,7 +34,7 @@ static zend_object_handlers pango_item_object_handlers;
 
 pango_item_object *pango_item_fetch_object(zend_object *object)
 {
-    return (pango_item_object *) ((char*)(object) - XtOffsetOf(pango_item_object, std));
+    return (pango_item_object *) ((char*)(object) - offsetof(pango_item_object, std));
 }
 
 #define PANGO_VALUE_FROM_STRUCT(php_name, c_name) \
@@ -216,7 +216,7 @@ PHP_MINIT_FUNCTION(pango_item)
         sizeof(zend_object_handlers)
     );
 
-    pango_item_object_handlers.offset = XtOffsetOf(pango_item_object, std);
+    pango_item_object_handlers.offset = offsetof(pango_item_object, std);
     pango_item_object_handlers.free_obj = pango_item_free_obj;
     pango_item_object_handlers.read_property = pango_item_read_property;
     pango_item_object_handlers.get_property_ptr_ptr = NULL;

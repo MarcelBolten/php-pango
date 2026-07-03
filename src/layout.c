@@ -41,7 +41,7 @@ static zend_object_handlers pango_layout_object_handlers;
 
 pango_layout_object *pango_layout_fetch_object(zend_object *object)
 {
-    return (pango_layout_object *) ((char*)(object) - XtOffsetOf(pango_layout_object, std));
+    return (pango_layout_object *) ((char*)(object) - offsetof(pango_layout_object, std));
 }
 
 /* {{{ Creates a PangoLayout based on the Pango Context object */
@@ -1036,7 +1036,7 @@ PHP_MINIT_FUNCTION(pango_layout)
         sizeof(zend_object_handlers)
     );
 
-    pango_layout_object_handlers.offset = XtOffsetOf(pango_layout_object, std);
+    pango_layout_object_handlers.offset = offsetof(pango_layout_object, std);
     pango_layout_object_handlers.free_obj = pango_layout_free_obj;
 
     pango_ce_pango_layout = register_class_Pango_Layout();

@@ -33,7 +33,7 @@ static zend_object_handlers pango_glyph_item_object_handlers;
 
 pango_glyph_item_object *pango_glyph_item_fetch_object(zend_object *object)
 {
-    return (pango_glyph_item_object *) ((char*)(object) - XtOffsetOf(pango_glyph_item_object, std));
+    return (pango_glyph_item_object *) ((char*)(object) - offsetof(pango_glyph_item_object, std));
 }
 
 #define PANGO_VALUE_FROM_STRUCT(php_name, c_name) \
@@ -194,7 +194,7 @@ PHP_MINIT_FUNCTION(pango_glyph_item)
         sizeof(zend_object_handlers)
     );
 
-    pango_glyph_item_object_handlers.offset = XtOffsetOf(pango_glyph_item_object, std);
+    pango_glyph_item_object_handlers.offset = offsetof(pango_glyph_item_object, std);
     pango_glyph_item_object_handlers.free_obj = pango_glyph_item_free_obj;
     pango_glyph_item_object_handlers.read_property = pango_glyph_item_read_property;
     pango_glyph_item_object_handlers.get_property_ptr_ptr = NULL;
