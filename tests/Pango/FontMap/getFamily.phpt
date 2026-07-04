@@ -12,12 +12,7 @@ use PangoCairo\FontMap;
 $fontMap = FontMap::getDefault();
 var_dump($fontMap);
 var_dump($fontMap->getFamily("Sans"));
-
-try {
-    $fontMap->getFamily("This family does not exist");
-} catch (Pango\Exception $e) {
-    echo $e->getMessage(), "\n";
-}
+var_dump($fontMap->getFamily("This family does not exist"));
 
 try {
     $fontMap->getFamily();
@@ -42,7 +37,7 @@ object(PangoCairo\FontMap)#%d (0) {
 }
 object(Pango\FontFamily)#%d (0) {
 }
-Font family 'This family does not exist' not found.
+NULL
 Pango\FontMap::getFamily() expects exactly 1 argument, 0 given
 Pango\FontMap::getFamily() expects exactly 1 argument, 2 given
 Pango\FontMap::getFamily(): Argument #1 ($name) must be of type string, array given

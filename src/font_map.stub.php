@@ -35,7 +35,7 @@ abstract class FontMap
      */
     public function getFamily(
         string $name
-    ): FontFamily {}
+    ): ?FontFamily {}
 #endif
 
     /**

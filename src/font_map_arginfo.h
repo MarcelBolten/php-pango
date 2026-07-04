@@ -1,5 +1,5 @@
 /* This is a generated file, edit font_map.stub.php instead.
- * Stub hash: d492d83cb740a6c242b92bc9d43fb23fc324abb1 */
+ * Stub hash: 3ea614d730250c19bb9e85350cf364be1d592dd5 */
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontMap_addFontFile, 0, 1, _IS_BOOL, 0)
@@ -11,7 +11,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontMap_createContext
 ZEND_END_ARG_INFO()
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontMap_getFamily, 0, 1, Pango\\FontFamily, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontMap_getFamily, 0, 1, Pango\\FontFamily, 1)
 	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 #endif

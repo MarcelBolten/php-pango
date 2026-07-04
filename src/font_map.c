@@ -118,13 +118,7 @@ PHP_METHOD(Pango_FontMap, getFamily)
 
     font_family = pango_font_map_get_family(font_map, name);
     if (!font_family) {
-        zend_throw_exception_ex(
-            pango_ce_pango_exception,
-            0,
-            "Font family '%s' not found.",
-            name
-        );
-        RETURN_THROWS();
+        RETURN_NULL();
     }
 
     object_init_ex(return_value, php_pango_get_font_family_ce());
