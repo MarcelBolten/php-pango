@@ -47,4 +47,4 @@ object(Pango\FontDescription)#%d (0) {
 bool(true)
 Pango\Context::setFontDescription() expects exactly 1 argument, 0 given
 Pango\Context::setFontDescription() expects exactly 1 argument, 2 given
-Pango\Context::setFontDescription(): Argument #1 ($desc) must be of type ?Pango\FontDescription, array given
+Pango\Context::setFontDescription(): Argument #1 ($desc) must be of type Pango\FontDescription, array given
