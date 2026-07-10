@@ -274,8 +274,8 @@ enum AttrType: int
  * Each attribute applies to a byte range in the text defined by
  * startIndex and endIndex.
  *
- * Use the static factory methods (e.g., family(), style(), foreground())
- * to create specific attribute instances.
+ * Instantiate one of the concrete subclasses (e.g., AttrString, AttrInt,
+ * AttrColor) to create a specific attribute.
  */
 abstract class Attribute
 {
@@ -298,277 +298,6 @@ abstract class Attribute
      * Returns the type of this attribute.
      */
     public function getAttrType(): AttrType {}
-
-    /**
-     * Create a new language tag attribute.
-     *
-     * @param string $language A BCP 47 language tag string (e.g., "en", "de", "zh-cn").
-     */
-    public static function language(string $language): AttrString {}
-
-    /**
-     * Create a new font-family attribute.
-     *
-     * @param string $family The font family name.
-     */
-    public static function family(string $family): AttrString {}
-
-    /**
-     * Create a new font-style attribute.
-     */
-    public static function style(Style $style): AttrInt {}
-
-    /**
-     * Create a new font-weight attribute.
-     */
-    public static function weight(Weight $weight): AttrInt {}
-
-    /**
-     * Create a new font-variant attribute.
-     */
-    public static function variant(Variant $variant): AttrInt {}
-
-    /**
-     * Create a new font-stretch attribute.
-     */
-    public static function stretch(Stretch $stretch): AttrInt {}
-
-    /**
-     * Create a new font-size attribute in Pango units.
-     *
-     * @param int $size The font size in Pango units (use Pango\Pango::SCALE * points).
-     */
-    public static function size(int $size): AttrSize {}
-
-    /**
-     * Create a new font-size attribute in device units.
-     *
-     * @param int $size The font size in Pango units (absolute, not scaled with the DPI).
-     */
-    public static function sizeAbsolute(int $size): AttrSize {}
-
-    /**
-     * Create a new font-description attribute.
-     *
-     * This attribute allows setting all font properties in one step using a
-     * FontDescription object.
-     */
-    public static function fontDescription(FontDescription $desc): AttrFontDesc {}
-
-    /**
-     * Create a new foreground color attribute.
-     *
-     * @param int $red Red component, range 0-65535.
-     * @param int $green Green component, range 0-65535.
-     * @param int $blue Blue component, range 0-65535.
-     */
-    public static function foreground(int $red, int $green, int $blue): AttrColor {}
-
-    /**
-     * Create a new background color attribute.
-     *
-     * @param int $red Red component, range 0-65535.
-     * @param int $green Green component, range 0-65535.
-     * @param int $blue Blue component, range 0-65535.
-     */
-    public static function background(int $red, int $green, int $blue): AttrColor {}
-
-    /**
-     * Create a new underline-style attribute.
-     */
-    public static function underline(Underline $underline): AttrInt {}
-
-    /**
-     * Create a new underline color attribute.
-     *
-     * This attribute modifies the color of underlines. If not set, underlines
-     * will use the foreground color.
-     *
-     * @param int $red Red component, range 0-65535.
-     * @param int $green Green component, range 0-65535.
-     * @param int $blue Blue component, range 0-65535.
-     */
-    public static function underlineColor(int $red, int $green, int $blue): AttrColor {}
-
-    /**
-     * Create a new strikethrough attribute.
-     *
-     * @param bool $strikethrough True if the text should be struck-through.
-     */
-    public static function strikethrough(bool $strikethrough): AttrInt {}
-
-    /**
-     * Create a new strikethrough color attribute.
-     *
-     * This attribute modifies the color of strikethroughs. If not set,
-     * strikethroughs will use the foreground color.
-     *
-     * @param int $red Red component, range 0-65535.
-     * @param int $green Green component, range 0-65535.
-     * @param int $blue Blue component, range 0-65535.
-     */
-    public static function strikethroughColor(int $red, int $green, int $blue): AttrColor {}
-
-    /**
-     * Create a new baseline displacement attribute.
-     *
-     * @param int $rise The amount that the text should be displaced vertically, in Pango
-     *                  units. Positive values displace the text upwards.
-     */
-    public static function rise(int $rise): AttrInt {}
-
-    /**
-     * Create a new font-scale-factor attribute.
-     *
-     * @param float $scaleFactor The factor to scale the font by relative to the base font.
-     */
-    public static function scale(float $scaleFactor): AttrFloat {}
-
-    /**
-     * Create a new font-fallback attribute.
-     *
-     * If fallback is disabled, characters will only be used from the closest
-     * matching font on the system. No fallback will be done to other fonts on the
-     * system that might contain the characters in the text.
-     *
-     * @param bool $enableFallback True to enable fallback, false to disable.
-     */
-    public static function fallback(bool $enableFallback): AttrInt {}
-
-    /**
-     * Create a new letter-spacing attribute.
-     *
-     * @param int $letterSpacing The amount of extra space to add between graphemes of the
-     *                           text, in Pango units.
-     */
-    public static function letterSpacing(int $letterSpacing): AttrInt {}
-
-    /**
-     * Create a new glyph-gravity attribute.
-     */
-    public static function gravity(Gravity $gravity): AttrInt {}
-
-    /**
-     * Create a new gravity-hint attribute.
-     */
-    public static function gravityHint(GravityHint $hint): AttrInt {}
-
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 38, 0)
-    /**
-     * Create a new font-features attribute.
-     *
-     * @param string $features A string of font features in CSS syntax, e.g. "dlig=1".
-     */
-    public static function fontFeatures(string $features): AttrString {}
-
-    /**
-     * Create a new foreground-alpha attribute.
-     *
-     * @param int $alpha The alpha value, range 1-65536.
-     */
-    public static function foregroundAlpha(int $alpha): AttrInt {}
-
-    /**
-     * Create a new background-alpha attribute.
-     *
-     * @param int $alpha The alpha value, range 1-65536.
-     */
-    public static function backgroundAlpha(int $alpha): AttrInt {}
-#endif
-
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
-    /**
-     * Create a new allow-breaks attribute.
-     *
-     * If breaks are disabled, the range will be kept in a single run as far as possible.
-     *
-     * @param bool $allowBreaks True if line breaks are allowed.
-     */
-    public static function allowBreaks(bool $allowBreaks): AttrInt {}
-
-    /**
-     * Create a new attribute to control the display of invisible characters.
-     *
-     * @param int $flags Bitwise OR of ShowFlags constants.
-     */
-    public static function show(int $flags): AttrInt {}
-
-    /**
-     * Create a new insert-hyphens attribute.
-     *
-     * Pango will insert hyphens when breaking lines in the middle of a word.
-     * This attribute can be used to suppress the hyphen.
-     *
-     * @param bool $insertHyphens True if hyphens should be inserted.
-     */
-    public static function insertHyphens(bool $insertHyphens): AttrInt {}
-#endif
-
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
-    /**
-     * Create a new overline-style attribute.
-     */
-    public static function overline(Overline $overline): AttrInt {}
-
-    /**
-     * Create a new overline-color attribute.
-     *
-     * This attribute modifies the color of overlines. If not set, overlines
-     * will use the foreground color.
-     *
-     * @param int $red Red component, range 0-65535.
-     * @param int $green Green component, range 0-65535.
-     * @param int $blue Blue component, range 0-65535.
-     */
-    public static function overlineColor(int $red, int $green, int $blue): AttrColor {}
-#endif
-
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-    /**
-     * Create a new line-height attribute that changes line spacing by a factor.
-     *
-     * @param float $factor The factor to scale the line height by.
-     */
-    public static function lineHeight(float $factor): AttrFloat {}
-
-    /**
-     * Create a new line-height attribute with an absolute line height in Pango units.
-     *
-     * @param int $height The line height in Pango units.
-     */
-    public static function lineHeightAbsolute(int $height): AttrInt {}
-
-    /**
-     * Create a new attribute that marks its range as a single word.
-     *
-     * Note that this may conflict with line breaking rules, so you can't use this
-     * except for specially controlled text.
-     */
-    public static function word(): AttrInt {}
-
-    /**
-     * Create a new attribute that marks its range as a single sentence.
-     *
-     * Note that this may conflict with line breaking rules, so you can't use this
-     * except for specially controlled text.
-     */
-    public static function sentence(): AttrInt {}
-
-    /**
-     * Create a new baseline-shift attribute.
-     */
-    public static function baselineShift(BaselineShift $shift): AttrInt {}
-
-    /**
-     * Create a new font-scale attribute.
-     */
-    public static function fontScale(FontScale $scale): AttrInt {}
-
-    /**
-     * Create a new text-transform attribute.
-     */
-    public static function textTransform(TextTransform $transform): AttrInt {}
-#endif
 }
 
 /**
@@ -583,6 +312,16 @@ final class AttrString extends Attribute
      * The string value of the attribute.
      */
     public string $value;
+
+    /**
+     * Create a new string attribute.
+     *
+     * @param AttrType $type The attribute type. Must be one of:
+     *                       AttrType::Language, AttrType::Family,
+     *                       or (>= 1.38) AttrType::FontFeatures.
+     * @param string $value The string value.
+     */
+    public function __construct(AttrType $type, string $value) {}
 }
 
 /**
@@ -596,6 +335,16 @@ final class AttrInt extends Attribute
      * The integer value of the attribute.
      */
     public int $value;
+
+    /**
+     * Create a new integer attribute.
+     *
+     * @param AttrType $type The attribute type. Must be one of the integer-valued
+     *                       attribute types (e.g. AttrType::Style, AttrType::Weight,
+     *                       AttrType::Underline, AttrType::Rise, etc.).
+     * @param int $value The integer value.
+     */
+    public function __construct(AttrType $type, int $value) {}
 }
 
 /**
@@ -609,6 +358,15 @@ final class AttrFloat extends Attribute
      * The float value of the attribute.
      */
     public float $value;
+
+    /**
+     * Create a new float attribute.
+     *
+     * @param AttrType $type The attribute type. Must be one of:
+     *                       AttrType::Scale, or (>= 1.50) AttrType::LineHeight.
+     * @param float $value The float value.
+     */
+    public function __construct(AttrType $type, float $value) {}
 }
 
 /**
@@ -624,6 +382,19 @@ final class AttrColor extends Attribute
      * The color value of the attribute.
      */
     public Color $color;
+
+    /**
+     * Create a new color attribute.
+     *
+     * @param AttrType $type The attribute type. Must be one of:
+     *                       AttrType::Foreground, AttrType::Background,
+     *                       AttrType::UnderlineColor, AttrType::StrikethroughColor,
+     *                       or (>= 1.46) AttrType::OverlineColor.
+     * @param int $red Red component, range 0-65535.
+     * @param int $green Green component, range 0-65535.
+     * @param int $blue Blue component, range 0-65535.
+     */
+    public function __construct(AttrType $type, int $red, int $green, int $blue) {}
 }
 
 /**
@@ -642,6 +413,17 @@ final class AttrSize extends Attribute
      * Whether this is an absolute size (device units) rather than a scaled size.
      */
     public bool $absolute;
+
+    /**
+     * Create a new font-size attribute.
+     *
+     * @param int $value The font size in Pango units.
+     * @param bool $absolute Whether to use absolute (device) units.
+     *                       If false, the size is scaled relative to the font's normal size
+     *                       (PANGO_ATTR_SIZE). If true, the size is in device units
+     *                       (PANGO_ATTR_ABSOLUTE_SIZE).
+     */
+    public function __construct(int $value, bool $absolute = false) {}
 }
 
 /**
@@ -655,6 +437,16 @@ final class AttrFontDesc extends Attribute
      * The font description.
      */
     public FontDescription $desc;
+
+    /**
+     * Create a new font-description attribute.
+     *
+     * This attribute allows setting all font properties in one step using a
+     * FontDescription object.
+     *
+     * @param FontDescription $desc The font description.
+     */
+    public function __construct(FontDescription $desc) {}
 }
 
 /**
