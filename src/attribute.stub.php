@@ -60,7 +60,7 @@ final readonly class Color
      * The string is in the hexadecimal form #rrrrggggbbbb, where r, g and b are hex digits
      * representing the red, green, and blue components respectively.
      */
-    public function toString(): string {}
+    public function __toString(): string {}
 }
 
 /**
