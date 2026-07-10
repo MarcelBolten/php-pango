@@ -487,7 +487,7 @@ abstract class Attribute
     public static function allowBreaks(bool $allowBreaks): AttrInt {}
 
     /**
-     * Create a new attribute to control what the display of invisible characters.
+     * Create a new attribute to control the display of invisible characters.
      *
      * @param int $flags Bitwise OR of ShowFlags constants.
      */
@@ -542,7 +542,7 @@ abstract class Attribute
      * Create a new attribute that marks its range as a single word.
      *
      * Note that this may conflict with line breaking rules, so you can't use this
-     * expect for specially controlled text.
+     * except for specially controlled text.
      */
     public static function word(): AttrInt {}
 
@@ -743,7 +743,7 @@ enum Overline: int
     case None = UNKNOWN;
 
     /**
-     * Draw a single overline above the ink extents of the text being underlined.
+     * Draw a single overline above the ink extents of the text being overlined.
      *
      * @cvalue PANGO_OVERLINE_SINGLE
      */
@@ -952,9 +952,11 @@ class AttrList
     public function equal(AttrList $otherList): bool {}
 
     /**
-     * Insert the given attributes in other into list.
+     * Splice the given attributes from $other into this list.
      *
-     * The two lists must have the same attributes. If not, the behavior is undefined.
+     * The splice point is specified by $pos and $len. Attributes in $other are
+     * adjusted to apply to the new range. Attributes in this list that overlap
+     * the range [$pos, $pos + $len) are adjusted accordingly.
      *
      * @param AttrList $other The AttrList to splice into this list.
      * @param int $pos The position in this list at which to insert other.
