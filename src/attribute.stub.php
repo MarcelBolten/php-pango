@@ -513,7 +513,7 @@ enum Type: int
  * startIndex and endIndex.
  *
  * Instantiate one of the concrete subclasses (e.g., StringAttribute, IntAttribute,
- * ColorAttribute) to create a specific attribute.
+ * Color) to create a specific attribute.
  */
 abstract class Attribute
 {
@@ -608,13 +608,13 @@ final class FloatAttribute extends Attribute
 }
 
 /**
- * ColorAttribute is an Attribute that holds a Color value.
+ * Color is an Attribute that holds a Color value.
  *
  * It is used for: Type::Foreground, Type::Background,
  * Type::UnderlineColor, Type::StrikethroughColor,
  * and (>= 1.46) Type::OverlineColor.
  */
-final class ColorAttribute extends Attribute
+final class Color extends Attribute
 {
     /**
      * The color value of the attribute.
@@ -636,11 +636,11 @@ final class ColorAttribute extends Attribute
 }
 
 /**
- * SizeAttribute is an Attribute that holds a font size.
+ * Size is an Attribute that holds a font size.
  *
  * It is used for: Type::Size and Type::AbsoluteSize.
  */
-final class SizeAttribute extends Attribute
+final class Size extends Attribute
 {
     /**
      * The font size in Pango units.
@@ -665,11 +665,11 @@ final class SizeAttribute extends Attribute
 }
 
 /**
- * FontDescriptionAttribute is an Attribute that holds a FontDescription.
+ * FontDescription is an Attribute that holds a FontDescription.
  *
  * It is used for: Type::FontDesc.
  */
-final class FontDescriptionAttribute extends Attribute
+final class FontDescription extends Attribute
 {
     /**
      * The font description.
