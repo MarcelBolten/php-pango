@@ -512,8 +512,8 @@ enum Type: int
  * Each attribute applies to a byte range in the text defined by
  * startIndex and endIndex.
  *
- * Instantiate one of the concrete subclasses (e.g., StringAttribute, IntAttribute,
- * Color) to create a specific attribute.
+ * Instantiate one of the concrete subclasses (e.g., Language, Style,
+ * Foreground) to create a specific attribute.
  */
 abstract class Attribute
 {
@@ -539,137 +539,171 @@ abstract class Attribute
 }
 
 /**
- * StringAttribute is an Attribute that holds a string value.
+ * Language is an Attribute that holds a language tag.
  *
- * It is used for: Type::Family, Type::Language,
- * and (>= 1.38) Type::FontFeatures.
+ * It is used for: Type::Language.
  */
-final class StringAttribute extends Attribute
+final class Language extends Attribute
 {
     /**
-     * The string value of the attribute.
+     * The language tag (e.g., "en", "fr").
      */
     public string $value;
 
     /**
-     * Create a new string attribute.
+     * Create a new language attribute.
      *
-     * @param Type $type The attribute type. Must be one of:
-     *                   Type::Language, Type::Family,
-     *                   or (>= 1.38) Type::FontFeatures.
-     * @param string $value The string value.
+     * @param string $value The language tag.
      */
-    public function __construct(Type $type, string $value) {}
+    public function __construct(string $value) {}
 }
 
 /**
- * IntAttribute is an Attribute that holds an integer value.
+ * Family is an Attribute that holds a font family name.
  *
- * It is used for many attribute types including style, weight, underline, rise, etc.
+ * It is used for: Type::Family.
  */
-final class IntAttribute extends Attribute
+final class Family extends Attribute
 {
     /**
-     * The integer value of the attribute.
+     * The font family name.
+     */
+    public string $value;
+
+    /**
+     * Create a new font family attribute.
+     *
+     * @param string $value The font family name.
+     */
+    public function __construct(string $value) {}
+}
+
+/**
+ * Style is an Attribute that holds a font style value.
+ *
+ * It is used for: Type::Style.
+ */
+final class Style extends Attribute
+{
+    /**
+     * The font style value (e.g., PANGO_STYLE_NORMAL, PANGO_STYLE_ITALIC).
      */
     public int $value;
 
     /**
-     * Create a new integer attribute.
+     * Create a new font style attribute.
      *
-     * @param Type $type The attribute type. Must be one of the integer-valued
-     *                   attribute types (e.g. Type::Style, Type::Weight,
-     *                   Type::Underline, Type::Rise, etc.).
-     * @param int $value The integer value.
+     * @param int $value The font style value.
      */
-    public function __construct(Type $type, int $value) {}
+    public function __construct(int $value) {}
 }
 
 /**
- * FloatAttribute is an Attribute that holds a floating-point value.
+ * Weight is an Attribute that holds a font weight value.
  *
- * It is used for: Type::Scale, and (>= 1.50) Type::LineHeight.
+ * It is used for: Type::Weight.
  */
-final class FloatAttribute extends Attribute
+final class Weight extends Attribute
 {
     /**
-     * The float value of the attribute.
+     * The font weight value (e.g., PANGO_WEIGHT_NORMAL, PANGO_WEIGHT_BOLD).
      */
-    public float $value;
+    public int $value;
 
     /**
-     * Create a new float attribute.
+     * Create a new font weight attribute.
      *
-     * @param Type $type The attribute type. Must be one of:
-     *                   Type::Scale, or (>= 1.50) Type::LineHeight.
-     * @param float $value The float value.
+     * @param int $value The font weight value.
      */
-    public function __construct(Type $type, float $value) {}
+    public function __construct(int $value) {}
 }
 
 /**
- * Color is an Attribute that holds a Color value.
+ * Variant is an Attribute that holds a font variant value.
  *
- * It is used for: Type::Foreground, Type::Background,
- * Type::UnderlineColor, Type::StrikethroughColor,
- * and (>= 1.46) Type::OverlineColor.
+ * It is used for: Type::Variant.
  */
-final class Color extends Attribute
+final class Variant extends Attribute
 {
     /**
-     * The color value of the attribute.
+     * The font variant value (e.g., PANGO_VARIANT_NORMAL, PANGO_VARIANT_SMALL_CAPS).
      */
-    public \Pango\Color $color;
+    public int $value;
 
     /**
-     * Create a new color attribute.
+     * Create a new font variant attribute.
      *
-     * @param Type $type The attribute type. Must be one of:
-     *                   Type::Foreground, Type::Background,
-     *                   Type::UnderlineColor, Type::StrikethroughColor,
-     *                   or (>= 1.46) Type::OverlineColor.
-     * @param int $red Red component, range 0-65535.
-     * @param int $green Green component, range 0-65535.
-     * @param int $blue Blue component, range 0-65535.
+     * @param int $value The font variant value.
      */
-    public function __construct(Type $type, int $red, int $green, int $blue) {}
+    public function __construct(int $value) {}
 }
 
 /**
- * Size is an Attribute that holds a font size.
+ * Stretch is an Attribute that holds a font stretch value.
  *
- * It is used for: Type::Size and Type::AbsoluteSize.
+ * It is used for: Type::Stretch.
+ */
+final class Stretch extends Attribute
+{
+    /**
+     * The font stretch value (e.g., PANGO_STRETCH_NORMAL, PANGO_STRETCH_CONDENSED).
+     */
+    public int $value;
+
+    /**
+     * Create a new font stretch attribute.
+     *
+     * @param int $value The font stretch value.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * Size is an Attribute that holds a font size in Pango units.
+ *
+ * It is used for: Type::Size.
  */
 final class Size extends Attribute
 {
     /**
-     * The font size in Pango units.
+     * The font size in Pango units (1/PANGO_SCALE points).
      */
     public int $value;
 
     /**
-     * Whether this is an absolute size (device units) rather than a scaled size.
-     */
-    public bool $absolute;
-
-    /**
-     * Create a new font-size attribute.
+     * Create a new font size attribute.
      *
      * @param int $value The font size in Pango units.
-     * @param bool $absolute Whether to use absolute (device) units.
-     *                       If false, the size is scaled relative to the font's normal size
-     *                       (PANGO_ATTR_SIZE). If true, the size is in device units
-     *                       (PANGO_ATTR_ABSOLUTE_SIZE).
      */
-    public function __construct(int $value, bool $absolute = false) {}
+    public function __construct(int $value) {}
 }
 
 /**
- * FontDescription is an Attribute that holds a FontDescription.
+ * AbsoluteSize is an Attribute that holds a font size in device units.
+ *
+ * It is used for: Type::AbsoluteSize.
+ */
+final class AbsoluteSize extends Attribute
+{
+    /**
+     * The font size in device units (1/PANGO_SCALE pixels).
+     */
+    public int $value;
+
+    /**
+     * Create a new absolute font size attribute.
+     *
+     * @param int $value The font size in device units.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * FontDesc is an Attribute that holds a font description.
  *
  * It is used for: Type::FontDesc.
  */
-final class FontDescription extends Attribute
+final class FontDesc extends Attribute
 {
     /**
      * The font description.
@@ -677,7 +711,7 @@ final class FontDescription extends Attribute
     public \Pango\FontDescription $desc;
 
     /**
-     * Create a new font-description attribute.
+     * Create a new font description attribute.
      *
      * This attribute allows setting all font properties in one step using a
      * FontDescription object.
@@ -686,6 +720,566 @@ final class FontDescription extends Attribute
      */
     public function __construct(\Pango\FontDescription $desc) {}
 }
+
+/**
+ * Foreground is an Attribute that holds the foreground color.
+ *
+ * It is used for: Type::Foreground.
+ */
+final class Foreground extends Attribute
+{
+    /**
+     * The foreground color.
+     */
+    public \Pango\Color $color;
+
+    /**
+     * Create a new foreground color attribute.
+     *
+     * @param \Pango\Color $color The foreground color.
+     */
+    public function __construct(\Pango\Color $color) {}
+}
+
+/**
+ * Background is an Attribute that holds the background color.
+ *
+ * It is used for: Type::Background.
+ */
+final class Background extends Attribute
+{
+    /**
+     * The background color.
+     */
+    public \Pango\Color $color;
+
+    /**
+     * Create a new background color attribute.
+     *
+     * @param \Pango\Color $color The background color.
+     */
+    public function __construct(\Pango\Color $color) {}
+}
+
+/**
+ * Underline is an Attribute that holds an underline style.
+ *
+ * It is used for: Type::Underline.
+ */
+final class Underline extends Attribute
+{
+    /**
+     * The underline style value (e.g., PANGO_UNDERLINE_SINGLE).
+     */
+    public int $value;
+
+    /**
+     * Create a new underline attribute.
+     *
+     * @param int $value The underline style value.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * Strikethrough is an Attribute that holds a strikethrough flag.
+ *
+ * It is used for: Type::Strikethrough.
+ */
+final class Strikethrough extends Attribute
+{
+    /**
+     * Whether strikethrough is enabled.
+     */
+    public int $value;
+
+    /**
+     * Create a new strikethrough attribute.
+     *
+     * @param int $value Non-zero to enable strikethrough.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * Rise is an Attribute that holds a baseline shift in Pango units.
+ *
+ * It is used for: Type::Rise.
+ */
+final class Rise extends Attribute
+{
+    /**
+     * The rise value in Pango units. Positive values shift the baseline up.
+     */
+    public int $value;
+
+    /**
+     * Create a new rise attribute.
+     *
+     * @param int $value The rise value in Pango units.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * Shape is an Attribute that holds ink and logical rectangles for a custom glyph shape.
+ *
+ * It is used for: Type::Shape.
+ */
+final class Shape extends Attribute
+{
+    /**
+     * The ink rectangle of the glyph.
+     */
+    public \Pango\Rectangle $inkRect;
+
+    /**
+     * The logical rectangle of the glyph.
+     */
+    public \Pango\Rectangle $logicalRect;
+
+    /**
+     * Create a new shape attribute.
+     *
+     * @param \Pango\Rectangle $inkRect The ink rectangle.
+     * @param \Pango\Rectangle $logicalRect The logical rectangle.
+     */
+    public function __construct(\Pango\Rectangle $inkRect, \Pango\Rectangle $logicalRect) {}
+}
+
+/**
+ * Scale is an Attribute that holds a font scale factor.
+ *
+ * It is used for: Type::Scale.
+ */
+final class Scale extends Attribute
+{
+    /**
+     * The scale factor.
+     */
+    public float $value;
+
+    /**
+     * Create a new scale attribute.
+     *
+     * @param float $value The scale factor.
+     */
+    public function __construct(float $value) {}
+}
+
+/**
+ * Fallback is an Attribute that holds a fallback flag.
+ *
+ * It is used for: Type::Fallback.
+ */
+final class Fallback extends Attribute
+{
+    /**
+     * Whether fallback to other fonts is enabled.
+     */
+    public int $value;
+
+    /**
+     * Create a new fallback attribute.
+     *
+     * @param int $value Non-zero to enable fallback to other fonts.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * LetterSpacing is an Attribute that holds extra spacing between graphemes in Pango units.
+ *
+ * It is used for: Type::LetterSpacing.
+ */
+final class LetterSpacing extends Attribute
+{
+    /**
+     * The extra letter spacing in Pango units.
+     */
+    public int $value;
+
+    /**
+     * Create a new letter spacing attribute.
+     *
+     * @param int $value The extra spacing in Pango units.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * UnderlineColor is an Attribute that holds the color of the underline decoration.
+ *
+ * It is used for: Type::UnderlineColor.
+ */
+final class UnderlineColor extends Attribute
+{
+    /**
+     * The underline color.
+     */
+    public \Pango\Color $color;
+
+    /**
+     * Create a new underline color attribute.
+     *
+     * @param \Pango\Color $color The underline color.
+     */
+    public function __construct(\Pango\Color $color) {}
+}
+
+/**
+ * StrikethroughColor is an Attribute that holds the color of the strikethrough decoration.
+ *
+ * It is used for: Type::StrikethroughColor.
+ */
+final class StrikethroughColor extends Attribute
+{
+    /**
+     * The strikethrough color.
+     */
+    public \Pango\Color $color;
+
+    /**
+     * Create a new strikethrough color attribute.
+     *
+     * @param \Pango\Color $color The strikethrough color.
+     */
+    public function __construct(\Pango\Color $color) {}
+}
+
+/**
+ * Gravity is an Attribute that holds a glyph orientation.
+ *
+ * It is used for: Type::Gravity.
+ */
+final class Gravity extends Attribute
+{
+    /**
+     * The gravity value (e.g., PANGO_GRAVITY_SOUTH).
+     */
+    public int $value;
+
+    /**
+     * Create a new gravity attribute.
+     *
+     * @param int $value The gravity value.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * GravityHint is an Attribute that holds a gravity hint.
+ *
+ * It is used for: Type::GravityHint.
+ */
+final class GravityHint extends Attribute
+{
+    /**
+     * The gravity hint value (e.g., PANGO_GRAVITY_HINT_NATURAL).
+     */
+    public int $value;
+
+    /**
+     * Create a new gravity hint attribute.
+     *
+     * @param int $value The gravity hint value.
+     */
+    public function __construct(int $value) {}
+}
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 38, 0)
+/**
+ * FontFeatures is an Attribute that holds OpenType font features.
+ *
+ * It is used for: Type::FontFeatures.
+ */
+final class FontFeatures extends Attribute
+{
+    /**
+     * The font features string in CSS format (e.g., "dlig=1, kern=0").
+     */
+    public string $value;
+
+    /**
+     * Create a new font features attribute.
+     *
+     * @param string $value The font features string.
+     */
+    public function __construct(string $value) {}
+}
+
+/**
+ * ForegroundAlpha is an Attribute that holds the opacity of the foreground color.
+ *
+ * It is used for: Type::ForegroundAlpha.
+ */
+final class ForegroundAlpha extends Attribute
+{
+    /**
+     * The alpha value, range 1-65535.
+     */
+    public int $value;
+
+    /**
+     * Create a new foreground alpha attribute.
+     *
+     * @param int $value The alpha value (1 = nearly transparent, 65535 = opaque).
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * BackgroundAlpha is an Attribute that holds the opacity of the background color.
+ *
+ * It is used for: Type::BackgroundAlpha.
+ */
+final class BackgroundAlpha extends Attribute
+{
+    /**
+     * The alpha value, range 1-65535.
+     */
+    public int $value;
+
+    /**
+     * Create a new background alpha attribute.
+     *
+     * @param int $value The alpha value (1 = nearly transparent, 65535 = opaque).
+     */
+    public function __construct(int $value) {}
+}
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
+/**
+ * AllowBreaks is an Attribute that controls whether line breaks are allowed.
+ *
+ * It is used for: Type::AllowBreaks.
+ */
+final class AllowBreaks extends Attribute
+{
+    /**
+     * Whether line breaks are allowed.
+     */
+    public int $value;
+
+    /**
+     * Create a new allow-breaks attribute.
+     *
+     * @param int $value Non-zero to allow line breaks.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * Show is an Attribute that controls the display of invisible characters.
+ *
+ * It is used for: Type::Show.
+ */
+final class Show extends Attribute
+{
+    /**
+     * A combination of ShowFlags constants.
+     */
+    public int $value;
+
+    /**
+     * Create a new show attribute.
+     *
+     * @param int $value A combination of ShowFlags constants.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * InsertHyphens is an Attribute that controls automatic hyphen insertion.
+ *
+ * It is used for: Type::InsertHyphens.
+ */
+final class InsertHyphens extends Attribute
+{
+    /**
+     * Whether automatic hyphen insertion is enabled.
+     */
+    public int $value;
+
+    /**
+     * Create a new insert-hyphens attribute.
+     *
+     * @param int $value Non-zero to enable automatic hyphen insertion.
+     */
+    public function __construct(int $value) {}
+}
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
+/**
+ * Overline is an Attribute that holds an overline style.
+ *
+ * It is used for: Type::Overline.
+ */
+final class Overline extends Attribute
+{
+    /**
+     * The overline style value (e.g., PANGO_OVERLINE_SINGLE).
+     */
+    public int $value;
+
+    /**
+     * Create a new overline attribute.
+     *
+     * @param int $value The overline style value.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * OverlineColor is an Attribute that holds the color of the overline decoration.
+ *
+ * It is used for: Type::OverlineColor.
+ */
+final class OverlineColor extends Attribute
+{
+    /**
+     * The overline color.
+     */
+    public \Pango\Color $color;
+
+    /**
+     * Create a new overline color attribute.
+     *
+     * @param \Pango\Color $color The overline color.
+     */
+    public function __construct(\Pango\Color $color) {}
+}
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
+/**
+ * LineHeight is an Attribute that holds a line height scale factor.
+ *
+ * It is used for: Type::LineHeight.
+ */
+final class LineHeight extends Attribute
+{
+    /**
+     * The line height scale factor.
+     */
+    public float $value;
+
+    /**
+     * Create a new line height attribute.
+     *
+     * @param float $value The line height scale factor.
+     */
+    public function __construct(float $value) {}
+}
+
+/**
+ * AbsoluteLineHeight is an Attribute that holds an absolute line height in Pango units.
+ *
+ * It is used for: Type::AbsoluteLineHeight.
+ */
+final class AbsoluteLineHeight extends Attribute
+{
+    /**
+     * The absolute line height in Pango units.
+     */
+    public int $value;
+
+    /**
+     * Create a new absolute line height attribute.
+     *
+     * @param int $value The absolute line height in Pango units.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * TextTransform is an Attribute that holds a text transformation.
+ *
+ * It is used for: Type::TextTransform.
+ */
+final class TextTransform extends Attribute
+{
+    /**
+     * The text transform value (e.g., PANGO_TEXT_TRANSFORM_UPPERCASE).
+     */
+    public int $value;
+
+    /**
+     * Create a new text transform attribute.
+     *
+     * @param int $value The text transform value.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * Word is an Attribute that marks word boundaries.
+ *
+ * It is used for: Type::Word.
+ */
+final class Word extends Attribute
+{
+    /**
+     * Create a new word boundary attribute.
+     */
+    public function __construct() {}
+}
+
+/**
+ * Sentence is an Attribute that marks sentence boundaries.
+ *
+ * It is used for: Type::Sentence.
+ */
+final class Sentence extends Attribute
+{
+    /**
+     * Create a new sentence boundary attribute.
+     */
+    public function __construct() {}
+}
+
+/**
+ * BaselineShift is an Attribute that holds a baseline shift.
+ *
+ * It is used for: Type::BaselineShift.
+ */
+final class BaselineShift extends Attribute
+{
+    /**
+     * The baseline shift value (e.g., PANGO_BASELINE_SHIFT_SUPERSCRIPT).
+     */
+    public int $value;
+
+    /**
+     * Create a new baseline shift attribute.
+     *
+     * @param int $value The baseline shift value.
+     */
+    public function __construct(int $value) {}
+}
+
+/**
+ * FontScale is an Attribute that holds a font scale.
+ *
+ * It is used for: Type::FontScale.
+ */
+final class FontScale extends Attribute
+{
+    /**
+     * The font scale value (e.g., PANGO_FONT_SCALE_SUPERSCRIPT).
+     */
+    public int $value;
+
+    /**
+     * Create a new font scale attribute.
+     *
+     * @param int $value The font scale value.
+     */
+    public function __construct(int $value) {}
+}
+#endif
 
 /**
  * AttributeList represents a list of attributes (PangoAttrList) that apply to a section of text.
