@@ -1,5 +1,5 @@
 /* This is a generated file, edit context.stub.php instead.
- * Stub hash: 99148f6f346714daee6e73b8b50c1459be03205f */
+ * Stub hash: 58abb50bfdbd6579cf5f0c96102bc020314e989a */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Context___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, fontmap, Pango\\FontMap, 1, "null")

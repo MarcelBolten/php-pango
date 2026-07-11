@@ -2,7 +2,7 @@
 
 /**
  * @generate-class-entries
- * @generate-legacy-arginfo 80100
+ * @generate-legacy-arginfo 80200
  */
 
 namespace Pango;

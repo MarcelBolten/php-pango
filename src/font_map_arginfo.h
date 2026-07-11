@@ -1,5 +1,5 @@
 /* This is a generated file, edit font_map.stub.php instead.
- * Stub hash: 3ea614d730250c19bb9e85350cf364be1d592dd5 */
+ * Stub hash: a2c281b53c678b27d99cd8b94eca866030d2ddcf */
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontMap_addFontFile, 0, 1, _IS_BOOL, 0)

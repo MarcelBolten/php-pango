@@ -1,5 +1,5 @@
 /* This is a generated file, edit matrix.stub.php instead.
- * Stub hash: 5cad349e2628067a9d2e30a4b56435795c881dc3 */
+ * Stub hash: cf9242192e4708249ae64b94e5bbbcf2f14b82f2 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Matrix___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, xx, IS_DOUBLE, 0, "1.0")

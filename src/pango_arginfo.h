@@ -1,5 +1,5 @@
 /* This is a generated file, edit pango.stub.php instead.
- * Stub hash: 314a7cb7ae41ca852595c88b36d7e7d4ad26c0d8 */
+ * Stub hash: c85dae2972d0d377904e6afc7e463c53e30ddcd2 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Pango_version, 0, 0, IS_LONG, 0)
 ZEND_END_ARG_INFO()

@@ -1,5 +1,5 @@
 /* This is a generated file, edit font_description.stub.php instead.
- * Stub hash: f6bb81ea30dc77d4c9723fde4bdebbb406005250 */
+ * Stub hash: 30d53568ab0cdf4eff7b860790bc515f27a28ab6 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_FontDescription___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, description, IS_STRING, 1, "null")

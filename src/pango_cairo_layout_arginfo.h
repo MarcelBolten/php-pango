@@ -1,5 +1,5 @@
 /* This is a generated file, edit pango_cairo_layout.stub.php instead.
- * Stub hash: a83551668f1da73a8a4be690385b20dcb2b79132 */
+ * Stub hash: 8c2afc48fa2994d8656b4b90813abef06f03e971 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)

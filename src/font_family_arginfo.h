@@ -1,5 +1,5 @@
 /* This is a generated file, edit font_family.stub.php instead.
- * Stub hash: 4b90b2dace5e414ec2fa2135f0a4b9bc62368886 */
+ * Stub hash: 06a3c554444c42fc0e1cad375b2b0333ee0294e3 */
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontFamily_getFace, 0, 0, Pango\\FontFace, 1)

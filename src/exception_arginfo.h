@@ -1,5 +1,5 @@
 /* This is a generated file, edit exception.stub.php instead.
- * Stub hash: 7ca34e321751bb47f7011c7646f8ea44620c3de4 */
+ * Stub hash: bdbbee11128049b82c7d110d3f211ff2c09889c0 */
 
 static zend_class_entry *register_class_Pango_Exception(zend_class_entry *class_entry_Exception)
 {
