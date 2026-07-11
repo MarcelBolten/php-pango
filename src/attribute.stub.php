@@ -586,16 +586,16 @@ final class Family extends Attribute
 final class Style extends Attribute
 {
     /**
-     * The font style value (e.g., PANGO_STYLE_NORMAL, PANGO_STYLE_ITALIC).
+     * The font style value.
      */
-    public int $value;
+    public \Pango\Style $value;
 
     /**
      * Create a new font style attribute.
      *
-     * @param int $value The font style value.
+     * @param \Pango\Style $value The font style value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\Style $value) {}
 }
 
 /**
