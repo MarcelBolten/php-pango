@@ -606,16 +606,16 @@ final class Style extends Attribute
 final class Weight extends Attribute
 {
     /**
-     * The font weight value (e.g., PANGO_WEIGHT_NORMAL, PANGO_WEIGHT_BOLD).
+     * The font weight value.
      */
-    public int $value;
+    public \Pango\Weight $value;
 
     /**
      * Create a new font weight attribute.
      *
-     * @param int $value The font weight value.
+     * @param \Pango\Weight $value The font weight value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\Weight $value) {}
 }
 
 /**
@@ -646,16 +646,16 @@ final class Variant extends Attribute
 final class Stretch extends Attribute
 {
     /**
-     * The font stretch value (e.g., PANGO_STRETCH_NORMAL, PANGO_STRETCH_CONDENSED).
+     * The font stretch value.
      */
-    public int $value;
+    public \Pango\Stretch $value;
 
     /**
      * Create a new font stretch attribute.
      *
-     * @param int $value The font stretch value.
+     * @param \Pango\Stretch $value The font stretch value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\Stretch $value) {}
 }
 
 /**
@@ -769,16 +769,16 @@ final class Background extends Attribute
 final class Underline extends Attribute
 {
     /**
-     * The underline style value (e.g., PANGO_UNDERLINE_SINGLE).
+     * The underline style value.
      */
-    public int $value;
+    public \Pango\Underline $value;
 
     /**
      * Create a new underline attribute.
      *
-     * @param int $value The underline style value.
+     * @param \Pango\Underline $value The underline style value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\Underline $value) {}
 }
 
 /**
@@ -955,16 +955,16 @@ final class StrikethroughColor extends Attribute
 final class Gravity extends Attribute
 {
     /**
-     * The gravity value (e.g., PANGO_GRAVITY_SOUTH).
+     * The gravity value.
      */
-    public int $value;
+    public \Pango\Gravity $value;
 
     /**
      * Create a new gravity attribute.
      *
-     * @param int $value The gravity value.
+     * @param \Pango\Gravity $value The gravity value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\Gravity $value) {}
 }
 
 /**
@@ -975,16 +975,16 @@ final class Gravity extends Attribute
 final class GravityHint extends Attribute
 {
     /**
-     * The gravity hint value (e.g., PANGO_GRAVITY_HINT_NATURAL).
+     * The gravity hint value.
      */
-    public int $value;
+    public \Pango\GravityHint $value;
 
     /**
      * Create a new gravity hint attribute.
      *
-     * @param int $value The gravity hint value.
+     * @param \Pango\GravityHint $value The gravity hint value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\GravityHint $value) {}
 }
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 38, 0)
@@ -1120,16 +1120,16 @@ final class InsertHyphens extends Attribute
 final class Overline extends Attribute
 {
     /**
-     * The overline style value (e.g., PANGO_OVERLINE_SINGLE).
+     * The overline style value.
      */
-    public int $value;
+    public \Pango\Overline $value;
 
     /**
      * Create a new overline attribute.
      *
-     * @param int $value The overline style value.
+     * @param \Pango\Overline $value The overline style value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\Overline $value) {}
 }
 
 /**
@@ -1202,16 +1202,16 @@ final class AbsoluteLineHeight extends Attribute
 final class TextTransform extends Attribute
 {
     /**
-     * The text transform value (e.g., PANGO_TEXT_TRANSFORM_UPPERCASE).
+     * The text transform value.
      */
-    public int $value;
+    public \Pango\TextTransform $value;
 
     /**
      * Create a new text transform attribute.
      *
-     * @param int $value The text transform value.
+     * @param \Pango\TextTransform $value The text transform value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\TextTransform $value) {}
 }
 
 /**
@@ -1248,16 +1248,16 @@ final class Sentence extends Attribute
 final class BaselineShift extends Attribute
 {
     /**
-     * The baseline shift value (e.g., PANGO_BASELINE_SHIFT_SUPERSCRIPT).
+     * The baseline shift value.
      */
-    public int $value;
+    public \Pango\BaselineShift $value;
 
     /**
      * Create a new baseline shift attribute.
      *
-     * @param int $value The baseline shift value.
+     * @param \Pango\BaselineShift $value The baseline shift value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\BaselineShift $value) {}
 }
 
 /**
@@ -1268,16 +1268,16 @@ final class BaselineShift extends Attribute
 final class FontScale extends Attribute
 {
     /**
-     * The font scale value (e.g., PANGO_FONT_SCALE_SUPERSCRIPT).
+     * The font scale value.
      */
-    public int $value;
+    public \Pango\FontScale $value;
 
     /**
      * Create a new font scale attribute.
      *
-     * @param int $value The font scale value.
+     * @param \Pango\FontScale $value The font scale value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\FontScale $value) {}
 }
 #endif
 
