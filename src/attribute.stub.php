@@ -791,14 +791,14 @@ final class Strikethrough extends Attribute
     /**
      * Whether strikethrough is enabled.
      */
-    public int $value;
+    public bool $value;
 
     /**
      * Create a new strikethrough attribute.
      *
-     * @param int $value Non-zero to enable strikethrough.
+     * @param bool $value True to enable strikethrough.
      */
-    public function __construct(int $value) {}
+    public function __construct(bool $value) {}
 }
 
 /**
@@ -877,14 +877,14 @@ final class Fallback extends Attribute
     /**
      * Whether fallback to other fonts is enabled.
      */
-    public int $value;
+    public bool $value;
 
     /**
      * Create a new fallback attribute.
      *
-     * @param int $value Non-zero to enable fallback to other fonts.
+     * @param bool $value True to enable fallback to other fonts.
      */
-    public function __construct(int $value) {}
+    public function __construct(bool $value) {}
 }
 
 /**
@@ -1060,14 +1060,14 @@ final class AllowBreaks extends Attribute
     /**
      * Whether line breaks are allowed.
      */
-    public int $value;
+    public bool $value;
 
     /**
      * Create a new allow-breaks attribute.
      *
-     * @param int $value Non-zero to allow line breaks.
+     * @param bool $value True to allow line breaks.
      */
-    public function __construct(int $value) {}
+    public function __construct(bool $value) {}
 }
 
 /**
@@ -1100,14 +1100,14 @@ final class InsertHyphens extends Attribute
     /**
      * Whether automatic hyphen insertion is enabled.
      */
-    public int $value;
+    public bool $value;
 
     /**
      * Create a new insert-hyphens attribute.
      *
-     * @param int $value Non-zero to enable automatic hyphen insertion.
+     * @param bool $value True to enable automatic hyphen insertion.
      */
-    public function __construct(int $value) {}
+    public function __construct(bool $value) {}
 }
 #endif
 
