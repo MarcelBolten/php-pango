@@ -626,16 +626,16 @@ final class Weight extends Attribute
 final class Variant extends Attribute
 {
     /**
-     * The font variant value (e.g., PANGO_VARIANT_NORMAL, PANGO_VARIANT_SMALL_CAPS).
+     * The font variant value.
      */
-    public int $value;
+    public \Pango\Variant $value;
 
     /**
      * Create a new font variant attribute.
      *
-     * @param int $value The font variant value.
+     * @param \Pango\Variant $value The font variant value.
      */
-    public function __construct(int $value) {}
+    public function __construct(\Pango\Variant $value) {}
 }
 
 /**
