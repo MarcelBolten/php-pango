@@ -539,23 +539,23 @@ abstract class Attribute
 }
 
 /**
- * Language is an Attribute that holds a language tag.
+ * Language is an Attribute that holds a Pango language.
  *
  * It is used for: Type::Language.
  */
 final class Language extends Attribute
 {
     /**
-     * The language tag (e.g., "en", "fr").
+     * The language.
      */
-    public string $value;
+    public \Pango\Language $value;
 
     /**
      * Create a new language attribute.
      *
-     * @param string $value The language tag.
+     * @param \Pango\Language $value The language.
      */
-    public function __construct(string $value) {}
+    public function __construct(\Pango\Language $value) {}
 }
 
 /**
