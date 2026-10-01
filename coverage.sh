@@ -1,7 +1,13 @@
 #!/bin/bash
 
 echo "Resetting coverage counters..."
-lcov --zerocounters --directory src/.libs --quiet
+lcov --zerocounters \
+  --directory src/.libs \
+  --directory src/attribute/.libs \
+  --directory src/cairo/.libs \
+  --directory src/fc/.libs \
+  --directory src/ft2/.libs \
+  --quiet
 
 echo "Running tests..."
 php run-tests.php -q -j$(nproc) --repeat 2 --no-color --show-diff > test_results.txt
@@ -15,6 +21,10 @@ fi
 echo "Generating coverage report..."
 lcov --capture \
   --directory src/.libs \
+  --directory src/attribute/.libs \
+  --directory src/cairo/.libs \
+  --directory src/fc/.libs \
+  --directory src/ft2/.libs \
   --rc geninfo_unexecuted_blocks=1 \
   --output-file coverage_raw.info \
   --quiet \
@@ -23,7 +33,7 @@ lcov --capture \
 echo "Filtering coverage data..."
 lcov --remove coverage_raw.info \
   '/usr/local/include/php/*' \
-  '/usr/include/php/*' \
+  '/usr/include/*' \
   --ignore-errors unused \
   --output-file coverage.info \
   --quiet \

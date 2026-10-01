@@ -9,12 +9,11 @@ include __DIR__ . '/../../skipif.php.inc';
 namespace Pango;
 
 $params = [2, 5, 132, 44];
-array_walk($params, fn(&$v) => $v = $v * Pango::SCALE);
+array_walk($params, fn(&$v) => $v = $v * SCALE);
 $rectangle = new Rectangle(...$params);
 
 $matrix = new Matrix();
 $matrix->rotate(45);
-
 
 $rectangle = $matrix->transformRectangle($rectangle);
 var_dump($rectangle);

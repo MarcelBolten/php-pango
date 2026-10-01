@@ -20,12 +20,12 @@
 #include "config.h"
 #endif
 
-#include "php.h"
-#include "php_pango.h"
-#include "font_family_arginfo.h"
+#include <php.h>
 
-#include <string.h>
-#include "zend_exceptions.h"
+#include "../php_pango.h"
+#include "font_face.h"
+#include "font_family.h"
+#include "font_family_arginfo.h"
 
 zend_class_entry *pango_ce_pango_font_family;
 
@@ -47,24 +47,32 @@ PHP_PANGO_API PangoFontFamily* pango_font_family_object_get_font_family(zval *zv
     return obj->font_family;
 }
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 /* {{{ */
 PHP_METHOD(Pango_FontFamily, getFace)
 {
-    char *name = NULL;
+    zend_string *name = NULL;
     size_t name_len = 0;
-    PangoFontFamily *font_family;
     PangoFontFace *font_face;
     pango_font_face_object *font_face_object;
 
     ZEND_PARSE_PARAMETERS_START(0, 1)
         Z_PARAM_OPTIONAL
-        Z_PARAM_STRING_OR_NULL(name, name_len);
+        Z_PARAM_STR_OR_NULL(name)
     ZEND_PARSE_PARAMETERS_END();
 
-    font_family = pango_font_family_object_get_font_family(getThis());
-    font_face = pango_font_family_get_face(font_family, (const char*)name);
-    if(!font_face) {
+    if (name && zend_str_has_nul_byte(name)) {
+        zend_argument_value_error(1, "must not contain NUL bytes");
+        RETURN_THROWS();
+    }
+
+    font_face = pango_font_family_get_face(
+        pango_font_family_object_get_font_family(ZEND_THIS),
+        name
+            ? ZSTR_VAL(name)
+            : NULL
+    );
+
+    if (!font_face) {
         RETURN_NULL();
     }
 
@@ -73,7 +81,6 @@ PHP_METHOD(Pango_FontFamily, getFace)
     font_face_object->font_face = g_object_ref(font_face);
 }
 /* }}} */
-#endif
 
 /* {{{ */
 PHP_METHOD(Pango_FontFamily, getName)
@@ -81,7 +88,7 @@ PHP_METHOD(Pango_FontFamily, getName)
     ZEND_PARSE_PARAMETERS_NONE();
 
     RETURN_STRING((char *)pango_font_family_get_name(
-        pango_font_family_object_get_font_family(getThis())
+        pango_font_family_object_get_font_family(ZEND_THIS)
     ));
 }
 /* }}} */
@@ -92,23 +99,21 @@ PHP_METHOD(Pango_FontFamily, isMonospace)
     ZEND_PARSE_PARAMETERS_NONE();
 
     RETURN_BOOL(pango_font_family_is_monospace(
-        pango_font_family_object_get_font_family(getThis())
+        pango_font_family_object_get_font_family(ZEND_THIS)
     ));
 }
 /* }}} */
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
 /* {{{ */
 PHP_METHOD(Pango_FontFamily, isVariable)
 {
     ZEND_PARSE_PARAMETERS_NONE();
 
     RETURN_BOOL(pango_font_family_is_variable(
-        pango_font_family_object_get_font_family(getThis())
+        pango_font_family_object_get_font_family(ZEND_THIS)
     ));
 }
 /* }}} */
-#endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 /* {{{ */
@@ -122,7 +127,7 @@ PHP_METHOD(Pango_FontFamily, listFaces)
     ZEND_PARSE_PARAMETERS_NONE();
 
     pango_font_family_list_faces(
-        pango_font_family_object_get_font_family(getThis()),
+        pango_font_family_object_get_font_family(ZEND_THIS),
         &faces,
         &num_faces
     );

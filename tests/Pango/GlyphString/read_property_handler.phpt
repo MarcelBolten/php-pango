@@ -14,11 +14,14 @@ $layout = new PangoCairo\Layout($cairoContext);
 var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
-foreach ($layout->getLinesReadonly() as $line) {
-    $glyphs = $line->getRuns()[1]->glyphs;
-    var_dump($glyphs->numGlyphs);
-    var_dump(is_array($glyphs->glyphs));
-}
+$glyphString = $layout
+    ->getLinesReadonly()[0] // there is only one line
+    ->getRuns()[1] // the second run contains 3 Greek characters
+    ->glyphs;
+
+var_dump($glyphString->numGlyphs);
+var_dump(is_array($glyphString->glyphs));
+
 ?>
 --EXPECTF--
 object(Cairo\Context)#%d (0) {

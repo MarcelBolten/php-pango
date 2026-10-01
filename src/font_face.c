@@ -20,12 +20,13 @@
 #include "config.h"
 #endif
 
-#include "php.h"
-#include "php_pango.h"
-#include "font_face_arginfo.h"
+#include <php.h>
 
-#include <string.h>
-#include "zend_exceptions.h"
+#include "../php_pango.h"
+#include "font_face.h"
+#include "font_description.h"
+#include "font_family.h"
+#include "font_face_arginfo.h"
 
 zend_class_entry *pango_ce_pango_font_face;
 
@@ -56,7 +57,7 @@ PHP_METHOD(Pango_FontFace, describe)
     ZEND_PARSE_PARAMETERS_NONE();
 
     font_desc = pango_font_face_describe(
-        pango_font_face_object_get_font_face(getThis())
+        pango_font_face_object_get_font_face(ZEND_THIS)
     );
 
     object_init_ex(return_value, php_pango_get_font_description_ce());
@@ -71,12 +72,11 @@ PHP_METHOD(Pango_FontFace, getName)
     ZEND_PARSE_PARAMETERS_NONE();
 
     RETURN_STRING((char *)pango_font_face_get_face_name(
-        pango_font_face_object_get_font_face(getThis())
+        pango_font_face_object_get_font_face(ZEND_THIS)
     ));
 }
 /* }}} */
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 /* {{{ */
 PHP_METHOD(Pango_FontFace, getFamily)
 {
@@ -88,11 +88,10 @@ PHP_METHOD(Pango_FontFace, getFamily)
     object_init_ex(return_value, php_pango_get_font_family_ce());
     font_family_object = Z_PANGO_FONT_FAMILY_P(return_value);
     font_family_object->font_family = g_object_ref(pango_font_face_get_family(
-        pango_font_face_object_get_font_face(getThis()))
+        pango_font_face_object_get_font_face(ZEND_THIS))
     );
 }
 /* }}} */
-#endif
 
 /* {{{ */
 PHP_METHOD(Pango_FontFace, isSynthesized)
@@ -100,7 +99,7 @@ PHP_METHOD(Pango_FontFace, isSynthesized)
     ZEND_PARSE_PARAMETERS_NONE();
 
     RETURN_BOOL(pango_font_face_is_synthesized(
-        pango_font_face_object_get_font_face(getThis())
+        pango_font_face_object_get_font_face(ZEND_THIS)
     ));
 }
 /* }}} */
@@ -114,7 +113,7 @@ PHP_METHOD(Pango_FontFace, listSizes)
     ZEND_PARSE_PARAMETERS_NONE();
 
     pango_font_face_list_sizes(
-        pango_font_face_object_get_font_face(getThis()),
+        pango_font_face_object_get_font_face(ZEND_THIS),
         &sizes,
         &num_sizes
     );

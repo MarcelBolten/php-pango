@@ -8,9 +8,9 @@
 namespace Pango;
 
 /**
- * GlyphInfo structure represents a single glyph with positioning information and visual attributes.
+ * GlyphInfo represents a single glyph with positioning information and visual attributes.
  */
-class GlyphInfo
+final readonly class GlyphInfo
 {
     /**
      * The glyph itself, a numeric ID.
@@ -22,18 +22,11 @@ class GlyphInfo
 
     /**
      * The positional information about the glyph.
-     *
-     * width: The logical width to use for the the character. \
-     * xOffset: Horizontal offset from nominal character position. \
-     * yOffset: Vertical offset from nominal character position.
-     *
-     * @var array{width: int, xOffset: int, yOffset: int}
      */
-    public array $geometry;
+    public GlyphGeometry $geometry;
 
     /**
      * The visual attributes of the glyph.
-     * @var array{isClusterStart: bool, isColor: bool}
      */
-    public array $attributes;
+    public GlyphVisAttr $attributes;
 }

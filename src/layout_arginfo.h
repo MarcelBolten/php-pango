@@ -1,5 +1,5 @@
 /* This is a generated file, edit layout.stub.php instead.
- * Stub hash: 134605d8a7649ce945521db541326fb8c56a5c02 */
+ * Stub hash: 524494ae9fbe5968c9b635afdbb1e7adcccaac63 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Pango\\Context, 0)
@@ -8,7 +8,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getContext, 0, 0, Pango\\Context, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setText, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setText, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
@@ -27,47 +27,49 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getPixelExtents arginfo_class_Pango_Layout_getSize
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setWidth, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setWidth, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getHeight arginfo_class_Pango_Layout_getWidth
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setHeight, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setHeight, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setMarkup, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setMarkup, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, markup, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setMarkupWithAccel, 0, 2, IS_STRING, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setMarkupWithAccel, 0, 2, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, markup, IS_STRING, 0)
 	ZEND_ARG_TYPE_INFO(0, accelMarker, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, IS_VOID, 0)
+#define arginfo_class_Pango_Layout_getAccelChar arginfo_class_Pango_Layout_getText
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getFontDescription, 0, 0, Pango\\FontDescription, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAlignment, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setAlignment, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_OBJ_INFO(0, alignment, Pango\\Alignment, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getAlignment, 0, 0, Pango\\Alignment, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustify, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setJustify, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, justify, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustify, 0, 0, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setWrap, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setWrap, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_OBJ_INFO(0, wrap, Pango\\WrapMode, 0)
 ZEND_END_ARG_INFO()
 
@@ -76,19 +78,19 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_isWrapped arginfo_class_Pango_Layout_getJustify
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setIndent, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setIndent, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, indent, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getIndent arginfo_class_Pango_Layout_getWidth
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSpacing, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setSpacing, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, spacing, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getSpacing arginfo_class_Pango_Layout_getWidth
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setEllipsize, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setEllipsize, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_OBJ_INFO(0, mode, Pango\\EllipsizeMode, 0)
 ZEND_END_ARG_INFO()
 
@@ -122,42 +124,60 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getAutoDir arginfo_class_Pango_Layout_getJustify
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAutoDir, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setAutoDir, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, autoDir, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getCharacterCount arginfo_class_Pango_Layout_getWidth
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getDirection, 0, 1, Pango\\Direction, 0)
 	ZEND_ARG_TYPE_INFO(0, byteIndex, IS_LONG, 0)
 ZEND_END_ARG_INFO()
-#endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustifyLastLine, 0, 0, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustifyLastLine, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setJustifyLastLine, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, justifyLastLine, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 #endif
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getLineSpacing, 0, 0, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setLineSpacing, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setLineSpacing, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, factor, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
-#endif
 
 #define arginfo_class_Pango_Layout_getUnknownGlyphsCount arginfo_class_Pango_Layout_getWidth
 
 #define arginfo_class_Pango_Layout_getSingleParagraphMode arginfo_class_Pango_Layout_getJustify
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSingleParagraphMode, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setSingleParagraphMode, 0, 1, Pango\\Layout, 0)
 	ZEND_ARG_TYPE_INFO(0, setting, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getLogAttrs, 0, 0, Pango\\LogAttrList, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_Pango_Layout_getSerial arginfo_class_Pango_Layout_getWidth
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getAttributes, 0, 0, Pango\\Attribute\\AttributeList, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setAttributes, 0, 0, Pango\\Layout, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, attributes, Pango\\Attribute\\AttributeList, 1, "NULL")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getTabStops, 0, 0, Pango\\TabStops, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setTabStops, 0, 0, Pango\\Layout, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, tabStops, Pango\\TabStops, 1, "NULL")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getIter, 0, 0, Pango\\LayoutIter, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_METHOD(Pango_Layout, __construct);
@@ -174,6 +194,7 @@ ZEND_METHOD(Pango_Layout, getHeight);
 ZEND_METHOD(Pango_Layout, setHeight);
 ZEND_METHOD(Pango_Layout, setMarkup);
 ZEND_METHOD(Pango_Layout, setMarkupWithAccel);
+ZEND_METHOD(Pango_Layout, getAccelChar);
 ZEND_METHOD(Pango_Layout, setFontDescription);
 ZEND_METHOD(Pango_Layout, getFontDescription);
 ZEND_METHOD(Pango_Layout, setAlignment);
@@ -203,20 +224,23 @@ ZEND_METHOD(Pango_Layout, getBaseline);
 ZEND_METHOD(Pango_Layout, getAutoDir);
 ZEND_METHOD(Pango_Layout, setAutoDir);
 ZEND_METHOD(Pango_Layout, getCharacterCount);
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 ZEND_METHOD(Pango_Layout, getDirection);
-#endif
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 ZEND_METHOD(Pango_Layout, getJustifyLastLine);
 ZEND_METHOD(Pango_Layout, setJustifyLastLine);
 #endif
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
 ZEND_METHOD(Pango_Layout, getLineSpacing);
 ZEND_METHOD(Pango_Layout, setLineSpacing);
-#endif
 ZEND_METHOD(Pango_Layout, getUnknownGlyphsCount);
 ZEND_METHOD(Pango_Layout, getSingleParagraphMode);
 ZEND_METHOD(Pango_Layout, setSingleParagraphMode);
+ZEND_METHOD(Pango_Layout, getLogAttrs);
+ZEND_METHOD(Pango_Layout, getSerial);
+ZEND_METHOD(Pango_Layout, getAttributes);
+ZEND_METHOD(Pango_Layout, setAttributes);
+ZEND_METHOD(Pango_Layout, getTabStops);
+ZEND_METHOD(Pango_Layout, setTabStops);
+ZEND_METHOD(Pango_Layout, getIter);
 
 static const zend_function_entry class_Pango_Layout_methods[] = {
 	ZEND_ME(Pango_Layout, __construct, arginfo_class_Pango_Layout___construct, ZEND_ACC_PUBLIC)
@@ -233,6 +257,7 @@ static const zend_function_entry class_Pango_Layout_methods[] = {
 	ZEND_ME(Pango_Layout, setHeight, arginfo_class_Pango_Layout_setHeight, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setMarkup, arginfo_class_Pango_Layout_setMarkup, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setMarkupWithAccel, arginfo_class_Pango_Layout_setMarkupWithAccel, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getAccelChar, arginfo_class_Pango_Layout_getAccelChar, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setFontDescription, arginfo_class_Pango_Layout_setFontDescription, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, getFontDescription, arginfo_class_Pango_Layout_getFontDescription, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setAlignment, arginfo_class_Pango_Layout_setAlignment, ZEND_ACC_PUBLIC)
@@ -262,20 +287,23 @@ static const zend_function_entry class_Pango_Layout_methods[] = {
 	ZEND_ME(Pango_Layout, getAutoDir, arginfo_class_Pango_Layout_getAutoDir, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setAutoDir, arginfo_class_Pango_Layout_setAutoDir, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, getCharacterCount, arginfo_class_Pango_Layout_getCharacterCount, ZEND_ACC_PUBLIC)
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 	ZEND_ME(Pango_Layout, getDirection, arginfo_class_Pango_Layout_getDirection, ZEND_ACC_PUBLIC)
-#endif
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 	ZEND_ME(Pango_Layout, getJustifyLastLine, arginfo_class_Pango_Layout_getJustifyLastLine, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setJustifyLastLine, arginfo_class_Pango_Layout_setJustifyLastLine, ZEND_ACC_PUBLIC)
 #endif
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
 	ZEND_ME(Pango_Layout, getLineSpacing, arginfo_class_Pango_Layout_getLineSpacing, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setLineSpacing, arginfo_class_Pango_Layout_setLineSpacing, ZEND_ACC_PUBLIC)
-#endif
 	ZEND_ME(Pango_Layout, getUnknownGlyphsCount, arginfo_class_Pango_Layout_getUnknownGlyphsCount, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, getSingleParagraphMode, arginfo_class_Pango_Layout_getSingleParagraphMode, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Layout, setSingleParagraphMode, arginfo_class_Pango_Layout_setSingleParagraphMode, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getLogAttrs, arginfo_class_Pango_Layout_getLogAttrs, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getSerial, arginfo_class_Pango_Layout_getSerial, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getAttributes, arginfo_class_Pango_Layout_getAttributes, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, setAttributes, arginfo_class_Pango_Layout_setAttributes, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getTabStops, arginfo_class_Pango_Layout_getTabStops, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, setTabStops, arginfo_class_Pango_Layout_setTabStops, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Layout, getIter, arginfo_class_Pango_Layout_getIter, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

@@ -1,5 +1,5 @@
 /* This is a generated file, edit font_face.stub.php instead.
- * Stub hash: c956428755d0ff6ecc429aaabec7e31c73b7a808 */
+ * Stub hash: 8eb22e269cbcea3706f1d3dd971e4db85023b895 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontFace_describe, 0, 0, Pango\\FontDescription, 0)
 ZEND_END_ARG_INFO()
@@ -7,10 +7,8 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontFace_getName, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontFace_getFamily, 0, 0, Pango\\FontFamily, 0)
 ZEND_END_ARG_INFO()
-#endif
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontFace_isSynthesized, 0, 0, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
@@ -20,18 +18,14 @@ ZEND_END_ARG_INFO()
 
 ZEND_METHOD(Pango_FontFace, describe);
 ZEND_METHOD(Pango_FontFace, getName);
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 ZEND_METHOD(Pango_FontFace, getFamily);
-#endif
 ZEND_METHOD(Pango_FontFace, isSynthesized);
 ZEND_METHOD(Pango_FontFace, listSizes);
 
 static const zend_function_entry class_Pango_FontFace_methods[] = {
 	ZEND_ME(Pango_FontFace, describe, arginfo_class_Pango_FontFace_describe, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontFace, getName, arginfo_class_Pango_FontFace_getName, ZEND_ACC_PUBLIC)
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 	ZEND_ME(Pango_FontFace, getFamily, arginfo_class_Pango_FontFace_getFamily, ZEND_ACC_PUBLIC)
-#endif
 	ZEND_ME(Pango_FontFace, isSynthesized, arginfo_class_Pango_FontFace_isSynthesized, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontFace, listSizes, arginfo_class_Pango_FontFace_listSizes, ZEND_ACC_PUBLIC)
 	ZEND_FE_END

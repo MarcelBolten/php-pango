@@ -1,0 +1,45 @@
+--TEST--
+Pango\FontDescription::setAbsoluteSize()
+--SKIPIF--
+<?php
+include __DIR__ . '/../../skipif.php.inc';
+?>
+--FILE--
+<?php
+namespace Pango;
+
+$fontDesc = new FontDescription();
+var_dump($fontDesc);
+
+$fontDesc->setAbsoluteSize(10.3 * SCALE);
+var_dump($fontDesc->getSize());
+
+$fontDesc->setAbsoluteSize(0);
+var_dump($fontDesc->getSize());
+
+try {
+    $fontDesc->setAbsoluteSize();
+} catch (\ArgumentCountError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $fontDesc->setAbsoluteSize(1, 2);
+} catch (\ArgumentCountError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $fontDesc->setAbsoluteSize(array());
+} catch (\TypeError $e) {
+    echo $e->getMessage(), "\n";
+}
+?>
+--EXPECTF--
+object(Pango\FontDescription)#%d (0) {
+}
+int(10547)
+int(0)
+Pango\FontDescription::setAbsoluteSize() expects exactly 1 argument, 0 given
+Pango\FontDescription::setAbsoluteSize() expects exactly 1 argument, 2 given
+Pango\FontDescription::setAbsoluteSize(): Argument #1 ($size) must be of type float, array given

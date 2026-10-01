@@ -1,11 +1,9 @@
 /* This is a generated file, edit font_family.stub.php instead.
- * Stub hash: 06a3c554444c42fc0e1cad375b2b0333ee0294e3 */
+ * Stub hash: 82c3b202ea9022ed3bbd8f5ad5d68e42fb06612f */
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontFamily_getFace, 0, 0, Pango\\FontFace, 1)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, name, IS_STRING, 1, "null")
 ZEND_END_ARG_INFO()
-#endif
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontFamily_getName, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
@@ -13,34 +11,29 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontFamily_isMonospace, 0, 0, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontFamily_isVariable, 0, 0, _IS_BOOL, 0)
-ZEND_END_ARG_INFO()
-#endif
+#define arginfo_class_Pango_FontFamily_isVariable arginfo_class_Pango_FontFamily_isMonospace
 
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontFamily_listFaces, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
-
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
-ZEND_METHOD(Pango_FontFamily, getFace);
 #endif
+
+ZEND_METHOD(Pango_FontFamily, getFace);
 ZEND_METHOD(Pango_FontFamily, getName);
 ZEND_METHOD(Pango_FontFamily, isMonospace);
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
 ZEND_METHOD(Pango_FontFamily, isVariable);
-#endif
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 ZEND_METHOD(Pango_FontFamily, listFaces);
+#endif
 
 static const zend_function_entry class_Pango_FontFamily_methods[] = {
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
 	ZEND_ME(Pango_FontFamily, getFace, arginfo_class_Pango_FontFamily_getFace, ZEND_ACC_PUBLIC)
-#endif
 	ZEND_ME(Pango_FontFamily, getName, arginfo_class_Pango_FontFamily_getName, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontFamily, isMonospace, arginfo_class_Pango_FontFamily_isMonospace, ZEND_ACC_PUBLIC)
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
 	ZEND_ME(Pango_FontFamily, isVariable, arginfo_class_Pango_FontFamily_isVariable, ZEND_ACC_PUBLIC)
-#endif
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 	ZEND_ME(Pango_FontFamily, listFaces, arginfo_class_Pango_FontFamily_listFaces, ZEND_ACC_PUBLIC)
+#endif
 	ZEND_FE_END
 };
 

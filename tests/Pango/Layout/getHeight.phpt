@@ -24,7 +24,7 @@ $layout->setHeight(-2);
 var_dump($layout->getHeight());
 
 // Set in terms of Pango units (10 * Pango::SCALE)
-$layout->setHeight(10 * Pango\Pango::SCALE);
+$layout->setHeight(10 * Pango\SCALE);
 var_dump($layout->getHeight());
 
 try {

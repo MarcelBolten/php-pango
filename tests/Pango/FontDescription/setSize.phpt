@@ -11,9 +11,8 @@ namespace Pango;
 $fontDesc = new FontDescription();
 var_dump($fontDesc);
 
-$fontDesc->setSize(10 * Pango::SCALE);
+$fontDesc->setSize(10 * SCALE);
 var_dump($fontDesc->getSize());
-
 
 $fontDesc->setSize(0);
 var_dump($fontDesc->getSize());

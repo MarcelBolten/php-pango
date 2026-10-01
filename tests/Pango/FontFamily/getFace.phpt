@@ -28,6 +28,12 @@ $regularFace = $family->getFace("Does not exist");
 var_dump($regularFace);
 
 try {
+    $family->getFace("Regular\0");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $family->getFace(null, 1);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -51,5 +57,6 @@ object(Pango\FontFace)#%d (0) {
 object(Pango\FontFace)#%d (0) {
 }
 NULL
+Pango\FontFamily::getFace(): Argument #1 ($name) must not contain NUL bytes
 Pango\FontFamily::getFace() expects at most 1 argument, 2 given
 Pango\FontFamily::getFace(): Argument #1 ($name) must be of type ?string, array given

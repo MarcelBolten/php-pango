@@ -10,8 +10,7 @@ namespace Pango;
 /**
  * Represents one of the lines resulting from laying out a paragraph via Layout.
  */
-// make it readonly
-final class LayoutLine
+class LayoutLine
 {
     /**
      * Computes the logical and ink extents of a layout line.
@@ -38,15 +37,6 @@ final class LayoutLine
      * @return array{ink: Rectangle, logical: Rectangle}
      */
     public function getPixelExtents(): array {}
-
-    /**
-     * Draws a LayoutLine in a cairo context.
-     *
-     * If no context is specified, it uses the cached one from when the LayoutLine (the corresponding Layout) was created.
-     */
-    public function showLayoutLine(
-        \Cairo\Context|null $context = null
-    ): void {}
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
     /**
@@ -75,4 +65,32 @@ final class LayoutLine
      * @return GlyphItem[] An array of GlyphItem objects.
      */
     public function getRuns(): array {}
+
+    /**
+     * Gets a list of visual ranges corresponding to a given logical range.
+     *
+     * This list is not necessarily minimal - there may be consecutive ranges
+     * which are adjacent. The ranges will be sorted from left to right. The
+     * ranges are with respect to the left edge of the entire layout, not
+     * with respect to the line.
+     *
+     * @param null|int $byteStart Start byte index of the layout’s logical range. Defaults to the start index of the line. If this
+     *                       value is less than the start index for the line,
+     *                       then the first range will extend all the way to
+     *                       the leading edge of the layout. Otherwise, it
+     *                       will start at the leading edge of the first
+     *                       character.
+     * @param null|int $byteEnd Ending byte index of the layout’s logical range. Defaults to the end index of the line. If this
+     *                     value is greater than the end index for the line,
+     *                     then the last range will extend all the way to the
+     *                     trailing edge of the layout. Otherwise, it will
+     *                     end at the trailing edge of the last character.
+     *
+     * @return array<int, array{start: int, end: int, width: int}> The coordinates
+     *                       are relative to the layout and are in Pango units.
+     */
+    public function getXRanges(
+        null|int $byteStart = null,
+        null|int $byteEnd = null,
+    ): array {}
 }

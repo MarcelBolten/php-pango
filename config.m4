@@ -11,12 +11,12 @@ if test "$PHP_PANGO" != "no"; then
   AC_MSG_CHECKING([PHP version])
   AC_COMPILE_IFELSE(
   [AC_LANG_PROGRAM([#include <php_version.h>], [
-#if PHP_VERSION_ID < 80100
-#error this extension requires at least PHP version 8.1.0
+#if PHP_VERSION_ID < 80200
+#error this extension requires at least PHP version 8.2.0
 #endif
     ])],
     [AC_MSG_RESULT(ok)],
-    [AC_MSG_ERROR([need at least PHP 8.1.0])]
+    [AC_MSG_ERROR([need at least PHP 8.2.0])]
   )
 
   export CPPFLAGS="$OLD_CPPFLAGS"
@@ -25,27 +25,89 @@ if test "$PHP_PANGO" != "no"; then
   AC_DEFINE([HAVE_PANGO], [1], [ ])
 
   PHP_NEW_EXTENSION([pango], m4_normalize([
-    src/pango.c
-    src/exception.c
+    src/analysis.c
+    src/color.c
     src/context.c
-    src/layout.c
+    src/coverage.c
+    src/exception.c
+    src/font.c
     src/font_description.c
-    src/layout_line.c
-    src/glyph_item.c
-    src/item.c
-    src/glyph_string.c
-    src/glyph_info.c
-    src/matrix.c
-    src/rectangle.c
-    src/font_map.c
-    src/pango_cairo_font_map.c
-    src/font_family.c
     src/font_face.c
-    src/pango_cairo_layout.c
-    src/pango_cairo_context.c]), [$ext_shared])
-    # src/ft2_font_map.c
+    src/font_family.c
+    src/font_metrics.c
+    src/font_map.c
+    src/font_set.c
+    src/font_set_simple.c
+    src/glyph_geometry.c
+    src/glyph_info.c
+    src/glyph_item.c
+    src/glyph_string.c
+    src/glyph_vis_attr.c
+    src/item.c
+    src/language.c
+    src/layout_line.c
+    src/layout_iter.c
+    src/layout.c
+    src/logattr.c
+    src/logattr_list.c
+    src/matrix.c
+    src/pango.c
+    src/rectangle.c
+    src/script_iter.c
+    src/script_iter_range.c
+    src/tabstop.c
+    src/tabstops.c
+    src/attribute/attr_absolute_line_height.c
+    src/attribute/attr_absolute_size.c
+    src/attribute/attr_allow_breaks.c
+    src/attribute/attr_background_alpha.c
+    src/attribute/attr_background.c
+    src/attribute/attr_baseline_shift.c
+    src/attribute/attr_common.c
+    src/attribute/attr_fallback.c
+    src/attribute/attr_family.c
+    src/attribute/attr_font_description.c
+    src/attribute/attr_font_features.c
+    src/attribute/attr_font_scale.c
+    src/attribute/attr_foreground_alpha.c
+    src/attribute/attr_foreground.c
+    src/attribute/attr_gravity_hint.c
+    src/attribute/attr_gravity.c
+    src/attribute/attr_insert_hyphens.c
+    src/attribute/attr_iter.c
+    src/attribute/attr_language.c
+    src/attribute/attr_letter_spacing.c
+    src/attribute/attr_line_height.c
+    src/attribute/attr_list.c
+    src/attribute/attr_overline_color.c
+    src/attribute/attr_overline.c
+    src/attribute/attr_rise.c
+    src/attribute/attr_scale.c
+    src/attribute/attr_sentence.c
+    src/attribute/attr_show.c
+    src/attribute/attr_size.c
+    src/attribute/attr_stretch.c
+    src/attribute/attr_strikethrough_color.c
+    src/attribute/attr_strikethrough.c
+    src/attribute/attr_style.c
+    src/attribute/attr_text_transform.c
+    src/attribute/attr_type_to_ce_table.c
+    src/attribute/attr_underline_color.c
+    src/attribute/attr_underline.c
+    src/attribute/attr_variant.c
+    src/attribute/attr_weight.c
+    src/attribute/attr_width.c
+    src/attribute/attr_word.c
+    src/attribute/attribute.c
+    src/cairo/pango_cairo_context.c
+    src/cairo/pango_cairo_font_map.c
+    src/cairo/pango_cairo_layout.c
+    src/cairo/pango_cairo_layout_line.c
+    src/fc/pango_fc_font_map.c
+    src/ft2/pango_ft2_font_map.c
+  ]), [$ext_shared],, [-Isrc -Isrc/attribute -Isrc/cairo -Isrc/fc -Isrc/ft2])
 
-  EXT_PANGO_HEADERS="php_pango_api.h"
+  EXT_PANGO_HEADERS="php_pango.h src/attribute/attribute.h src/cairo/pango_cairo.h src/fc/pango_fc.h src/ft2/pango_ft2.h src/analysis.h src/color.h src/context.h src/coverage.h src/exception.h src/font.h src/font_description.h src/font_face.h src/font_family.h src/font_map.h src/font_metrics.h src/font_set.h src/font_set_simple.h src/glyph_geometry.h src/glyph_info.h src/glyph_item.h src/glyph_string.h src/glyph_vis_attr.h src/item.h src/language.h src/layout.h src/layout_iter.h src/layout_line.h src/logattr.h src/logattr_list.h src/matrix.h src/pango.h src/rectangle.h src/script.h src/tabstops.h"
 
   ifdef([PHP_INSTALL_HEADERS], [
     PHP_INSTALL_HEADERS([ext/pango], [$EXT_PANGO_HEADERS])

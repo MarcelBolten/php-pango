@@ -29,12 +29,10 @@ final class FontFace
      */
     public function getName(): string {}
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
     /**
      * Gets the FontFamily that face belongs to.
      */
     public function getFamily(): FontFamily {}
-#endif
 
     /**
      * Returns whether a FontFace is synthesized.

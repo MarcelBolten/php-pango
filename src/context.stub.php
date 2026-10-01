@@ -34,16 +34,20 @@ class Context
 
     public function getGravityHint(): GravityHint {}
 
-    // Todo: implement Language class
-    // public function getLanguage(): Language {}
+    public function getLanguage(): null|Language {}
 
     public function getMatrix(): Matrix {}
 
-    // Todo: implement Language class
-    // public function getMetrics(
-    //     FontDescription $desc,
-    //     Language $language
-    // ): FontMetrics {}
+    /**
+     * Get overall metric information for a particular font description.
+     *
+     * @param FontDescription|null $desc A PangoFontDescription structure. NULL means that the font description from the context will be used.
+     * @param Language|null $language Language tag used to determine which script to get the metrics for. NULL means that the language tag from the context will be used. If no language tag is set on the context, metrics for the default language (as determined by Pango\Language::getDefault()) will be returned.
+     */
+    public function getMetrics(
+        null|FontDescription $desc = null,
+        null|Language $language = null,
+    ): FontMetrics {}
 
     /**
      * Returns whether font rendering with this context
@@ -58,43 +62,45 @@ class Context
      */
     public function listFamilies(): array {}
 
-    // /**
-    //  * Loads the font in one of the fontmaps in the context that is the closest match for desc.
-    //  */
-    // Todo: implement Font class
-    // public function loadFont(
-    //     FontDescription $fontDesc
-    // ): Font {}
+    /**
+     * Loads the font in one of the FontMaps in the context that is the closest match for desc.
+     *
+     * @return null|Font The loaded Font, or null if no font matched.
+     */
+    public function loadFont(
+        FontDescription $fontDesc
+    ): null|Font {}
 
-    // /**
-    //  * Load a set of fonts in the context that can be used to render a font matching $fontDesc.
-    //  */
-    // Todo: implement Fontset class
-    // public function loadFontset(
-    //     FontDescription $fontDesc,
-    //     Language $language
-    // ): Fontset {}
+    /**
+     * Load a set of fonts in the context that can be used to render a font matching $fontDesc.
+     *
+     * @return null|FontSet The loaded FontSet, or null if no font matched.
+     */
+    public function loadFontSet(
+        FontDescription $fontDesc,
+        Language $language
+    ): null|FontSet {}
 
     /**
      * Sets the base direction for the context.
      */
     public function setBaseDir(
         Direction $direction
-    ): void {}
+    ): Context {}
 
     /**
      * Sets the gravity to be used to lay out the text
      */
     public function setBaseGravity(
         Gravity $gravity
-    ): void {}
+    ): Context {}
 
     /**
      * Set the default font description for the context.
      */
     public function setFontDescription(
         FontDescription $desc
-    ): void {}
+    ): Context {}
 
     // /**
     //  * Sets the font map to be searched when fonts are looked-up in this context.
@@ -108,14 +114,14 @@ class Context
      */
     public function setGravityHint(
         GravityHint $hint
-    ): void {}
+    ): Context {}
 
-    // /**
-    //  * Sets the global language tag for the context.
-    //  */
-    // public function setLanguage(
-    //     null|Language $language
-    // ): void {}
+    /**
+     * Sets the global language tag for the context.
+     */
+    public function setLanguage(
+        null|Language $language
+    ): Context {}
 
     /**
      * Sets the transformation matrix that will be applied when rendering with this context.
@@ -124,7 +130,7 @@ class Context
      */
     public function setMatrix(
         null|Matrix $matrix
-    ): void {}
+    ): Context {}
 
     /**
      * Sets whether font rendering with this context should round glyph positions
@@ -132,7 +138,31 @@ class Context
      */
     public function setRoundGlyphPositions(
         bool $round
-    ): void {}
+    ): Context {}
+
+    /**
+     * Returns the current serial number of Context.
+     */
+    public function getSerial(): int {}
+
+    /**
+     * Breaks a piece of text into segments with consistent directional level
+     * and font.
+     *
+     * Each byte of text will be contained in exactly one of the items in the
+     * returned array; the generated array of items will be in logical order
+     * (the start offsets of the items are ascending).
+     *
+     * @return Item[]
+     */
+    public function itemize(
+        string $text,
+        int $startByteIndex,
+        int $byteLength,
+        Attribute\AttributeList $attrs,
+        ?Attribute\AttributeIterator $cachedIter = null,
+        ?Direction $baseDir = null,
+    ): array {}
 }
 
 enum Gravity: int
@@ -171,6 +201,13 @@ enum Gravity: int
      * @cvalue PANGO_GRAVITY_AUTO
      */
     case Auto = UNKNOWN;
+
+    /**
+     * Converts a Gravity value to its natural rotation in radians.
+     *
+     * @throws \ValueError If called for Gravity::Auto.
+     */
+    public function toRotation(): float {}
 }
 
 /**
@@ -206,7 +243,7 @@ enum GravityHint: int
  * PangoDirection represents a direction in the Unicode bidirectional algorithm.
  *
  * If you are interested in text direction, you should really use fribidi directly.
- * PangoDirection is only retained because it is used in some public apis.
+ * Pango\Direction is only retained because it is used in some public apis.
  */
 enum Direction: int
 {
@@ -232,4 +269,7 @@ enum Direction: int
 
     /** @cvalue PANGO_DIRECTION_NEUTRAL */
     case Neutral = UNKNOWN;
+
+    // seems to be deprecated
+    // public static function findBaseDir(string $text): Direction {}
 }

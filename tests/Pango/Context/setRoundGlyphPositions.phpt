@@ -24,6 +24,7 @@ try {
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
+
 try {
     $context->setRoundGlyphPositions(array());
 } catch (TypeError $e) {

@@ -20,10 +20,10 @@ var_dump($layout);
 
 var_dump($layout->getIndent());
 
-$layout->setIndent(10 * Pango\Pango::SCALE);
+$layout->setIndent(10 * Pango\SCALE);
 var_dump($layout->getIndent());
 
-$layout->setIndent(-10 * Pango\Pango::SCALE);
+$layout->setIndent(-10 * Pango\SCALE);
 var_dump($layout->getIndent());
 
 try {

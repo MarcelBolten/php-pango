@@ -24,6 +24,18 @@ $line = $layout->getLine(0);
 var_dump($line);
 
 try {
+    $layout->getLine(-1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $layout->getLine(99);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $layout->getLine();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -50,6 +62,8 @@ object(Pango\Layout)#%d (0) {
 }
 object(Pango\LayoutLine)#%d (0) {
 }
+Pango\Layout::getLine(): Argument #1 ($lineIndex) must be between 0 and 0 but -1 given
+Pango\Layout::getLine(): Argument #1 ($lineIndex) must be between 0 and 0 but 99 given
 Pango\Layout::getLine() expects exactly 1 argument, 0 given
 Pango\Layout::getLine() expects exactly 1 argument, 2 given
 Pango\Layout::getLine(): Argument #1 ($lineIndex) must be of type int, array given

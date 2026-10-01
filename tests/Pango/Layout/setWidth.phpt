@@ -20,7 +20,7 @@ var_dump($layout);
 
 var_dump($layout->getWidth());
 
-$layout->setWidth(10 * Pango\Pango::SCALE);
+$layout->setWidth(10 * Pango\SCALE);
 var_dump($layout->getWidth());
 
 $layout->setWidth(0);

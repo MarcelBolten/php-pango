@@ -12,12 +12,12 @@ namespace Pango;
  */
 final class Matrix
 {
-    public float $xx = 1.0;
-    public float $yx = 0.0;
-    public float $xy = 0.0;
-    public float $yy = 1.0;
-    public float $x0 = 0.0;
-    public float $y0 = 0.0;
+    public readonly float $xx = 1.0;
+    public readonly float $yx = 0.0;
+    public readonly float $xy = 0.0;
+    public readonly float $yy = 1.0;
+    public readonly float $x0 = 0.0;
+    public readonly float $y0 = 0.0;
 
     public function __construct(
         float $xx = 1.0,
@@ -29,19 +29,39 @@ final class Matrix
     ) {}
 
     /**
+     * Changes the transformation represented by this matrix to be the
+     * transformation given by first applying the transformation given by
+     * newMatrix and then applying the original transformation.
+     */
+    public function concat(
+        Matrix $newMatrix
+    ): void {}
+
+    /**
      * Returns the scale factor of a matrix on the height of the font.
      */
-    // public function getFontScaleFactor(): float {}
+    public function getFontScaleFactor(): float {}
 
     /**
      * Calculates the scale factor of a matrix on the width and height of the font.
+     *
+     * @return array{x: float, y: float} Scale factor in the x and y directions.
      */
-    // public function getFontScaleFactors(): float {}
+    public function getFontScaleFactors(): array {}
 
-    // /**
-    //  * Gets the slant ratio of a matrix.
-    //  */
-    // public function getSlantRatio(): float {}
+    /**
+     * Gets the slant ratio of a matrix.
+     */
+    public function getSlantRatio(): float {}
+
+    /**
+     * Finds the gravity that best matches the rotation component in this
+     * matrix.
+     *
+     * @return Gravity The gravity that best matches the rotation component in
+     *                 this matrix. It will never be Gravity::Auto.
+     */
+    public function getGravity(): Gravity {}
 
     /**
      * Changes the transformation represented by matrix to be the transformation
@@ -63,7 +83,7 @@ final class Matrix
     ): void {}
 
     /**
-     * @return array{"x": float, "y": float}
+     * @return array{x: float, y: float}
      * // TODO: return Vector Class
      */
     public function transformDistance(
@@ -82,7 +102,7 @@ final class Matrix
     ): Rectangle {}
 
     /**
-     * @return array{"x": float, "y": float}
+     * @return array{x: float, y: float}
      * // TODO: return Point Class
      */
     public function transformPoint(

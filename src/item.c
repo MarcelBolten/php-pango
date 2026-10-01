@@ -20,13 +20,13 @@
 #include "config.h"
 #endif
 
-#include "php.h"
-#include "php_pango.h"
-#include "item_arginfo.h"
+#include <php.h>
 
-#include <string.h>
-#include <glib.h>
-#include "zend_exceptions.h"
+#include "../php_pango.h"
+#include "attribute/attribute.h"
+#include "analysis.h"
+#include "item.h"
+#include "item_arginfo.h"
 
 zend_class_entry *pango_ce_pango_item;
 
@@ -49,11 +49,76 @@ pango_item_object *pango_item_fetch_object(zend_object *object)
     ZVAL_LONG(&tmp, item_object->item->c_name); \
     zend_hash_str_update(props, #php_name, sizeof(#php_name)-1, &tmp);
 
-
 PHP_PANGO_API zend_class_entry* php_pango_get_item_ce()
 {
     return pango_ce_pango_item;
 }
+
+/* ----------------------------------------------------------------
+    \Pango\Item Class API
+------------------------------------------------------------------*/
+
+/* {{{ */
+PHP_METHOD(Pango_Item, applyAttributes)
+{
+    zval *attr_iter_zv;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(attr_iter_zv, php_pango_get_attr_iter_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    pango_item_apply_attrs(
+        Z_PANGO_ITEM_P(ZEND_THIS)->item,
+        pango_attr_iter_object_get_attr_iter(attr_iter_zv)
+    );
+}
+/* }}} */
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 54, 0)
+/* {{{ */
+PHP_METHOD(Pango_Item, getCharOffset)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    RETURN_LONG(pango_item_get_char_offset(Z_PANGO_ITEM_P(ZEND_THIS)->item));
+}
+/* }}} */
+#endif
+
+/* {{{ */
+PHP_METHOD(Pango_Item, split)
+{
+    PangoItem *orig = Z_PANGO_ITEM_P(ZEND_THIS)->item;
+    zend_long byte_index;
+    zend_long char_offset;
+
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_LONG(byte_index)
+        Z_PARAM_LONG(char_offset)
+    ZEND_PARSE_PARAMETERS_END();
+
+    if (byte_index <= 0 || byte_index >= orig->length) {
+        zend_argument_value_error(1,
+            "must be greater than 0 and less than the items byte length (%d) but " ZEND_LONG_FMT " given",
+            orig->length,
+            byte_index
+        );
+        RETURN_THROWS();
+    }
+    if (char_offset <= 0 || char_offset >= orig->num_chars) {
+        zend_argument_value_error(2,
+            "must be greater than 0 and less than the items character count (%d) but " ZEND_LONG_FMT " given",
+            orig->num_chars,
+            char_offset
+        );
+        RETURN_THROWS();
+    }
+
+    object_init_ex(return_value, php_pango_get_item_ce());
+    Z_PANGO_ITEM_P(return_value)->item = pango_item_split(orig, byte_index, char_offset);
+    ZVAL_COPY(&Z_PANGO_ITEM_P(return_value)->glyph_item_zv, &Z_PANGO_ITEM_P(ZEND_THIS)->glyph_item_zv);
+}
+/* }}} */
 
 /* ----------------------------------------------------------------
     \Pango\Item Object management
@@ -101,7 +166,7 @@ static zend_object* pango_item_create_object(zend_class_entry *ce)
     pango_item_object *intern = NULL;
     zend_object *return_value = pango_item_obj_ctor(ce, &intern);
 
-    object_properties_init(&intern->std, ce);
+    object_properties_init(return_value, ce);
     return return_value;
 }
 /* }}} */
@@ -116,94 +181,61 @@ static zval *pango_item_read_property(zend_object *zobj, zend_string *member, in
     }
 
     if (strcmp(ZSTR_VAL(member), "analysis") == 0) {
-        array_init(rv);
-        add_assoc_long(rv, "bidiLevel", item_object->item->analysis.level);
-
-        zend_object *gravity_case;
-        zend_enum_get_case_by_value(
-            &gravity_case, php_pango_get_gravity_ce(),
-            item_object->item->analysis.gravity,
-            NULL, false
-        );
-        GC_ADDREF(gravity_case);
-        add_assoc_object(rv, "gravity", gravity_case);
-
-        // add_assoc_long(rv, "flags", item_object->item->analysis.flags);
-        add_assoc_bool(rv, "centeredBaseline", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_CENTERED_BASELINE) != 0);
-        add_assoc_bool(rv, "isEllipsis", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_IS_ELLIPSIS) != 0);
-        add_assoc_bool(rv, "needsHyphen", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_NEED_HYPHEN) != 0);
-
-        guint32 script_code = GUINT32_TO_BE(g_unicode_script_to_iso15924((GUnicodeScript)item_object->item->analysis.script));
-        char script_str[5] = {0};
-        memcpy(script_str, &script_code, 4);
-        script_str[4] = '\0';
-        add_assoc_string(rv, "script", script_str);
-
-        if (item_object->item->analysis.language != NULL) {
-            const char* lang_str = pango_language_to_string(item_object->item->analysis.language);
-            add_assoc_string(rv, "language", lang_str);
-        } else {
-            add_assoc_null(rv, "language");
-        }
+        object_init_ex(rv, php_pango_get_analysis_ce());
+        pango_analysis_object *analysis_object = Z_PANGO_ANALYSIS_P(rv);
+        analysis_object->analysis = &item_object->item->analysis;
+        ZVAL_OBJ_COPY(&analysis_object->item_zv, zobj);
         return rv;
     }
 
     PANGO_VALUE_FROM_STRUCT(offset, offset);
     PANGO_VALUE_FROM_STRUCT(length, length);
     PANGO_VALUE_FROM_STRUCT(numChars, num_chars);
+
+    return zend_std_read_property(zobj, member, type, cache_slot, rv);
 }
 /* }}} */
 
-/* {{{ */
-static HashTable *pango_item_get_properties(zend_object *object)
+static HashTable *pango_item_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     HashTable *props;
     // used in PANGO_ADD_STRUCT_VALUE below
     zval tmp;
     pango_item_object *item_object = pango_item_fetch_object(object);
 
-    props = zend_std_get_properties(object);
+    props = zend_array_dup(zend_std_get_properties(object));
 
     if (!item_object->item) {
         return props;
     }
 
-    array_init(&tmp);
-    add_assoc_long(&tmp, "bidiLevel", item_object->item->analysis.level);
-
-    zend_object *gravity_case;
-    zend_enum_get_case_by_value(
-        &gravity_case, php_pango_get_gravity_ce(),
-        item_object->item->analysis.gravity,
-        NULL, false
-    );
-    GC_ADDREF(gravity_case);
-    add_assoc_object(&tmp, "gravity", gravity_case);
-
-    // add_assoc_long(&tmp, "flags", item_object->item->analysis.flags);
-    add_assoc_bool(&tmp, "centeredBaseline", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_CENTERED_BASELINE) != 0);
-    add_assoc_bool(&tmp, "isEllipsis", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_IS_ELLIPSIS) != 0);
-    add_assoc_bool(&tmp, "needsHyphen", (item_object->item->analysis.flags & PANGO_ANALYSIS_FLAG_NEED_HYPHEN) != 0);
-
-    guint32 script_code = GUINT32_TO_BE(g_unicode_script_to_iso15924((GUnicodeScript)item_object->item->analysis.script));
-    char script_str[5] = {0};
-    memcpy(script_str, &script_code, 4);
-    script_str[4] = '\0';
-    add_assoc_string(&tmp, "script", script_str);
-
-    if (item_object->item->analysis.language != NULL) {
-        const char* lang_str = pango_language_to_string(item_object->item->analysis.language);
-        add_assoc_string(&tmp, "language", lang_str);
-    } else {
-        add_assoc_null(&tmp, "language");
-    }
-    zend_hash_str_update(props, "analysis", sizeof("analysis")-1, &tmp);
-
     PANGO_ADD_STRUCT_VALUE(offset, offset);
     PANGO_ADD_STRUCT_VALUE(length, length);
     PANGO_ADD_STRUCT_VALUE(numChars, num_chars);
 
+    object_init_ex(&tmp, php_pango_get_analysis_ce());
+    pango_analysis_object *analysis_object = Z_PANGO_ANALYSIS_P(&tmp);
+    analysis_object->analysis = &item_object->item->analysis;
+    ZVAL_OBJ_COPY(&analysis_object->item_zv, object);
+    zend_hash_str_update(props, "analysis", sizeof("analysis")-1, &tmp);
+
     return props;
+}
+
+/* {{{ */
+static zend_object* pango_item_clone_obj(zend_object *zobj)
+{
+    pango_item_object *new_item;
+    pango_item_object *old_item = pango_item_fetch_object(zobj);
+    zend_object *return_value = pango_item_obj_ctor(zobj->ce, &new_item);
+
+    new_item->item = pango_item_copy(old_item->item);
+
+    ZVAL_COPY(&new_item->glyph_item_zv, &old_item->glyph_item_zv);
+
+    zend_objects_clone_members(&new_item->std, &old_item->std);
+
+    return return_value;
 }
 /* }}} */
 
@@ -218,9 +250,10 @@ PHP_MINIT_FUNCTION(pango_item)
 
     pango_item_object_handlers.offset = offsetof(pango_item_object, std);
     pango_item_object_handlers.free_obj = pango_item_free_obj;
+    pango_item_object_handlers.clone_obj = pango_item_clone_obj;
     pango_item_object_handlers.read_property = pango_item_read_property;
     pango_item_object_handlers.get_property_ptr_ptr = NULL;
-    pango_item_object_handlers.get_properties = pango_item_get_properties;
+    pango_item_object_handlers.get_properties_for = pango_item_get_properties_for;
 
     pango_ce_pango_item = register_class_Pango_Item();
     pango_ce_pango_item->create_object = pango_item_create_object;

@@ -20,12 +20,12 @@
 #include "config.h"
 #endif
 
-#include "php.h"
-#include "php_pango.h"
+#include <php.h>
+#include "../php_pango.h"
+#include "glyph_geometry.h"
+#include "glyph_vis_attr.h"
+#include "glyph_info.h"
 #include "glyph_info_arginfo.h"
-
-#include <string.h>
-#include "zend_exceptions.h"
 
 zend_class_entry *pango_ce_pango_glyph_info;
 
@@ -101,16 +101,17 @@ static zval *pango_glyph_info_read_property(zend_object *zobj, zend_string *memb
         return rv;
     }
     else if (strcmp(ZSTR_VAL(member), "geometry") == 0) {
-        array_init(rv);
-        add_assoc_long(rv, "width", glyph_info_object->glyph_info->geometry.width);
-        add_assoc_long(rv, "xOffset", glyph_info_object->glyph_info->geometry.x_offset);
-        add_assoc_long(rv, "yOffset", glyph_info_object->glyph_info->geometry.y_offset);
+        object_init_ex(rv, php_pango_get_glyph_geometry_ce());
+        pango_glyph_geometry_object *glyph_geometry_object = Z_PANGO_GLYPH_GEOMETRY_P(rv);
+        glyph_geometry_object->glyph_geometry = &glyph_info_object->glyph_info->geometry;
+        ZVAL_OBJ_COPY(&glyph_geometry_object->glyph_info_zv, zobj);
         return rv;
     }
     else if (strcmp(ZSTR_VAL(member), "attributes") == 0) {
-        array_init(rv);
-        add_assoc_long(rv, "isClusterStart", glyph_info_object->glyph_info->attr.is_cluster_start);
-        add_assoc_long(rv, "isColor", glyph_info_object->glyph_info->attr.is_color);
+        object_init_ex(rv, php_pango_get_glyph_vis_attr_ce());
+        pango_glyph_vis_attr_object *glyph_vis_attr_obj = Z_PANGO_GLYPH_VIS_ATTR_P(rv);
+        glyph_vis_attr_obj->glyph_vis_attr = &glyph_info_object->glyph_info->attr;
+        ZVAL_OBJ_COPY(&glyph_vis_attr_obj->glyph_info_zv, zobj);
         return rv;
     }
 
@@ -119,33 +120,33 @@ static zval *pango_glyph_info_read_property(zend_object *zobj, zend_string *memb
 /* }}} */
 
 /* {{{ */
-static HashTable *pango_glyph_info_get_properties(zend_object *object)
+static HashTable *pango_glyph_info_get_properties_for(zend_object *zobj, zend_prop_purpose purpose)
 {
     HashTable *props;
-    pango_glyph_info_object *glyph_info_object = pango_glyph_info_fetch_object(object);
+    pango_glyph_info_object *glyph_info_object = pango_glyph_info_fetch_object(zobj);
 
-    props = zend_std_get_properties(object);
+    props = zend_array_dup(zend_std_get_properties(zobj));
 
     if (!glyph_info_object->glyph_info) {
         return props;
     }
 
-    zval glyph;
-    ZVAL_LONG(&glyph, glyph_info_object->glyph_info->glyph);
-    zend_hash_str_update(props, "glyph", sizeof("glyph")-1, &glyph);
+    zval tmp;
 
-    zval geometry;
-    array_init(&geometry);
-    add_assoc_long(&geometry, "width", glyph_info_object->glyph_info->geometry.width);
-    add_assoc_long(&geometry, "xOffset", glyph_info_object->glyph_info->geometry.x_offset);
-    add_assoc_long(&geometry, "yOffset", glyph_info_object->glyph_info->geometry.y_offset);
-    zend_hash_str_update(props, "geometry", sizeof("geometry")-1, &geometry);
+    ZVAL_LONG(&tmp, glyph_info_object->glyph_info->glyph);
+    zend_hash_str_update(props, "glyph", sizeof("glyph")-1, &tmp);
 
-    zval attributes;
-    array_init(&attributes);
-    add_assoc_long(&attributes, "isClusterStart", glyph_info_object->glyph_info->attr.is_cluster_start);
-    add_assoc_long(&attributes, "isColor", glyph_info_object->glyph_info->attr.is_color);
-    zend_hash_str_update(props, "attributes", sizeof("attributes")-1, &attributes);
+    object_init_ex(&tmp, php_pango_get_glyph_geometry_ce());
+    pango_glyph_geometry_object *glyph_geometry_object = Z_PANGO_GLYPH_GEOMETRY_P(&tmp);
+    glyph_geometry_object->glyph_geometry = &glyph_info_object->glyph_info->geometry;
+    ZVAL_OBJ_COPY(&glyph_geometry_object->glyph_info_zv, zobj);
+    zend_hash_str_update(props, "geometry", sizeof("geometry")-1, &tmp);
+
+    object_init_ex(&tmp, php_pango_get_glyph_vis_attr_ce());
+    pango_glyph_vis_attr_object *glyph_vis_attr_obj = Z_PANGO_GLYPH_VIS_ATTR_P(&tmp);
+    glyph_vis_attr_obj->glyph_vis_attr = &glyph_info_object->glyph_info->attr;
+    ZVAL_OBJ_COPY(&glyph_vis_attr_obj->glyph_info_zv, zobj);
+    zend_hash_str_update(props, "attributes", sizeof("attributes")-1, &tmp);
 
     return props;
 }
@@ -164,7 +165,7 @@ PHP_MINIT_FUNCTION(pango_glyph_info)
     pango_glyph_info_object_handlers.free_obj = pango_glyph_info_free_obj;
     pango_glyph_info_object_handlers.read_property = pango_glyph_info_read_property;
     pango_glyph_info_object_handlers.get_property_ptr_ptr = NULL;
-    pango_glyph_info_object_handlers.get_properties = pango_glyph_info_get_properties;
+    pango_glyph_info_object_handlers.get_properties_for = pango_glyph_info_get_properties_for;
 
     pango_ce_pango_glyph_info = register_class_Pango_GlyphInfo();
     pango_ce_pango_glyph_info->create_object = pango_glyph_info_create_object;

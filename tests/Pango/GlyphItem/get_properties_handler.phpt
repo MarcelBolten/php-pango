@@ -14,15 +14,9 @@ $layout = new PangoCairo\Layout($cairoContext);
 var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
-foreach ($layout->getLinesReadonly() as $line) {
-    $runs = $line->getRuns();
-    foreach(get_object_vars($runs[0]) as $name => $value) {
-        echo $name, ": ", get_debug_type($value);
-        // if (gettype($value) !== 'object') {
-        //     echo " ", $value;
-        // }
-        echo "\n";
-    }
+$runs = $layout->getLine(0)->getRuns();
+foreach(get_object_vars($runs[0]) as $name => $value) {
+    echo $name, ": ", get_debug_type($value), "\n";
 }
 ?>
 --EXPECTF--

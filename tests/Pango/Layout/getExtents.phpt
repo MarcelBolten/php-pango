@@ -20,7 +20,7 @@ var_dump($layout);
 
 var_dump($layout->getExtents());
 
-$layout->setWidth(100 * Pango\Pango::SCALE);
+$layout->setWidth(100 * Pango\SCALE);
 // Todo: The values are fluctuating, need to investigate why
 // probably related to the unintialized pango values,
 // compare to output of `run-tests.php -m`

@@ -18,7 +18,7 @@ var_dump($pangoContext);
 $layout = new Pango\Layout($pangoContext);
 var_dump($layout);
 
-$layout->setHeight(10 * Pango\Pango::SCALE);
+$layout->setHeight(10 * Pango\SCALE);
 var_dump($layout->getHeight());
 
 $layout->setHeight(-2);
@@ -26,7 +26,6 @@ var_dump($layout->getHeight());
 
 $layout->setHeight(0);
 var_dump($layout->getHeight());
-
 
 try {
     $layout->setHeight();

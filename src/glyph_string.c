@@ -20,12 +20,16 @@
 #include "config.h"
 #endif
 
-#include "php.h"
-#include "php_pango.h"
+#include <php.h>
+#include "../php_pango.h"
+#include "font.h"
+#include "rectangle.h"
+#include "layout.h"
+#include "layout_line.h"
+#include "glyph_item.h"
+#include "glyph_info.h"
+#include "glyph_string.h"
 #include "glyph_string_arginfo.h"
-
-#include <string.h>
-#include "zend_exceptions.h"
 
 zend_class_entry *pango_ce_pango_glyph_string;
 
@@ -40,6 +44,144 @@ PHP_PANGO_API zend_class_entry* php_pango_get_glyph_string_ce()
 {
     return pango_ce_pango_glyph_string;
 }
+
+/* ----------------------------------------------------------------
+    \Pango\GlyphString Class API
+------------------------------------------------------------------*/
+
+/* {{{ */
+PHP_METHOD(Pango_GlyphString, getExtents)
+{
+    zval *font_zv;
+    PangoRectangle ink_rect, logical_rect;
+    zval rectangle_zv;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(font_zv, php_pango_get_font_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    pango_glyph_string_extents(
+        Z_PANGO_GLYPH_STRING_P(ZEND_THIS)->glyph_string,
+        pango_font_object_get_font(font_zv),
+        &ink_rect,
+        &logical_rect
+    );
+
+    array_init(return_value);
+
+    object_init_ex(&rectangle_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&rectangle_zv) = ink_rect;
+    add_assoc_zval(return_value, "ink", &rectangle_zv);
+
+    object_init_ex(&rectangle_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&rectangle_zv) = logical_rect;
+    add_assoc_zval(return_value, "logical",&rectangle_zv);
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_GlyphString, getExtentsRange)
+{
+    zend_long start, end;
+    zval *font_zv;
+    PangoGlyphString* glyph_string;
+    int num_glyphs;
+    PangoRectangle ink_rect, logical_rect;
+    zval rectangle_zv;
+
+    ZEND_PARSE_PARAMETERS_START(3, 3)
+        Z_PARAM_LONG(start)
+        Z_PARAM_LONG(end)
+        Z_PARAM_OBJECT_OF_CLASS(font_zv, php_pango_get_font_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    glyph_string = Z_PANGO_GLYPH_STRING_P(ZEND_THIS)->glyph_string;
+
+    num_glyphs = glyph_string->num_glyphs;
+    if (start < 0 || start > num_glyphs) {
+        zend_argument_value_error(1, "must be between 0 and %d but " ZEND_LONG_FMT " given",
+            num_glyphs, start
+        );
+        RETURN_THROWS();
+    }
+    if (end < 0 || end > num_glyphs) {
+        zend_argument_value_error(2, "must be between 0 and %d but " ZEND_LONG_FMT " given",
+            num_glyphs, end
+        );
+        RETURN_THROWS();
+    }
+    if (start >= end) {
+        const char *start_arg_name = get_active_function_arg_name(1);
+        zend_argument_value_error(2, "must be greater than argument #1 ($%s) %d but %d given",
+            start_arg_name, (int)start, (int)end
+        );
+        RETURN_THROWS();
+    }
+
+    pango_glyph_string_extents_range(
+        glyph_string, start, end, pango_font_object_get_font(font_zv),
+        &ink_rect, &logical_rect
+    );
+
+    array_init(return_value);
+
+    object_init_ex(&rectangle_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&rectangle_zv) = ink_rect;
+    add_assoc_zval(return_value, "ink", &rectangle_zv);
+
+    object_init_ex(&rectangle_zv, php_pango_get_rectangle_ce());
+    *pango_rectangle_object_get_rectangle(&rectangle_zv) = logical_rect;
+    add_assoc_zval(return_value, "logical",&rectangle_zv);
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_GlyphString, getWidth)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    RETURN_LONG(pango_glyph_string_get_width(Z_PANGO_GLYPH_STRING_P(ZEND_THIS)->glyph_string));
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_GlyphString, getLogicalWidths)
+{
+    zend_long embedding_level;
+    int *logical_widths;
+    int num_chars;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+    // ZEND_PARSE_PARAMETERS_START(1, 1)
+    //     Z_PARAM_LONG(embedding_level)
+    // ZEND_PARSE_PARAMETERS_END();
+
+    zval *glyph_item_zv = &Z_PANGO_GLYPH_STRING_P(ZEND_THIS)->glyph_item_zv;
+    zval *layout_line_zv = &Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->layout_line_zv;
+    zval *layout_zv = &Z_PANGO_LAYOUT_LINE_P(layout_line_zv)->layout_zval;
+    PangoLayout *layout = Z_PANGO_LAYOUT_P(layout_zv)->layout;
+    const char *text = pango_layout_get_text(layout);
+
+    num_chars = Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->num_chars;
+    logical_widths = g_new(int, num_chars);
+
+    pango_glyph_string_get_logical_widths(
+        Z_PANGO_GLYPH_STRING_P(ZEND_THIS)->glyph_string,
+        text + Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->offset,
+        Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->length,
+        Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->analysis.level,
+        // embedding_level,
+        logical_widths
+    );
+
+    array_init_size(return_value, num_chars);
+    for (int i = 0; i < num_chars; i++) {
+        add_next_index_long(return_value, logical_widths[i]);
+    }
+
+    g_free(logical_widths);
+}
+/* }}} */
 
 /* ----------------------------------------------------------------
     \Pango\GlyphString Object management
@@ -104,32 +246,30 @@ static zval *pango_glyph_string_read_property(zend_object *object, zend_string *
     else if (strcmp(ZSTR_VAL(member), "glyphs") == 0) {
         zval glyph_info_zv;
         pango_glyph_info_object *glyph_info_object;
-        zval tmp_glyph_string_zval;
-        ZVAL_OBJ(&tmp_glyph_string_zval, object);
 
         array_init(rv);
         for (int i = 0; i < glyph_string_object->glyph_string->num_glyphs; i++) {
             object_init_ex(&glyph_info_zv, php_pango_get_glyph_info_ce());
             glyph_info_object = Z_PANGO_GLYPH_INFO_P(&glyph_info_zv);
             glyph_info_object->glyph_info = &glyph_string_object->glyph_string->glyphs[i];
-            ZVAL_COPY(&glyph_info_object->glyph_string_zv, &tmp_glyph_string_zval);
+            ZVAL_OBJ_COPY(&glyph_info_object->glyph_string_zv, object);
             add_next_index_zval(rv, &glyph_info_zv);
         }
 
         return rv;
     }
 
-    return rv;
+    return zend_std_read_property(object, member, type, cache_slot, rv);
 }
 /* }}} */
 
 /* {{{ */
-static HashTable *pango_glyph_string_get_properties(zend_object *object)
+static HashTable *pango_glyph_string_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     HashTable *props;
     pango_glyph_string_object *glyph_string_object = pango_glyph_string_fetch_object(object);
 
-    props = zend_std_get_properties(object);
+    props = zend_array_dup(zend_std_get_properties(object));
 
     if (!glyph_string_object->glyph_string) {
         return props;
@@ -139,9 +279,6 @@ static HashTable *pango_glyph_string_get_properties(zend_object *object)
     ZVAL_LONG(&num_glyphs, glyph_string_object->glyph_string->num_glyphs);
     zend_hash_str_update(props, "numGlyphs", sizeof("numGlyphs")-1, &num_glyphs);
 
-    // TODO: return the object properly
-    // TODO: refactor this to a read-only view.
-    // See Claude chat from 06/10/2025 22:57
     zval glyph_info_arr_zv;
     zval glyph_info_zv;
     array_init(&glyph_info_arr_zv);
@@ -149,10 +286,7 @@ static HashTable *pango_glyph_string_get_properties(zend_object *object)
         object_init_ex(&glyph_info_zv, php_pango_get_glyph_info_ce());
         pango_glyph_info_object *glyph_info_object = Z_PANGO_GLYPH_INFO_P(&glyph_info_zv);
         glyph_info_object->glyph_info = &glyph_string_object->glyph_string->glyphs[i];
-        // zval tmp_glyph_string_zval;
-        // TODO: is the zval copy needed?
-        // ZVAL_OBJ(&tmp_glyph_string_zval, object);
-        // ZVAL_COPY(&glyph_info_zv->glyph_string_zv, &tmp_glyph_string_zval);
+        ZVAL_OBJ_COPY(&glyph_info_object->glyph_string_zv, object);
         add_next_index_zval(&glyph_info_arr_zv, &glyph_info_zv);
     }
     zend_hash_str_update(props, "glyphs", sizeof("glyphs")-1, &glyph_info_arr_zv);
@@ -174,7 +308,7 @@ PHP_MINIT_FUNCTION(pango_glyph_string)
     pango_glyph_string_object_handlers.free_obj = pango_glyph_string_free_obj;
     pango_glyph_string_object_handlers.read_property = pango_glyph_string_read_property;
     pango_glyph_string_object_handlers.get_property_ptr_ptr = NULL;
-    pango_glyph_string_object_handlers.get_properties = pango_glyph_string_get_properties;
+    pango_glyph_string_object_handlers.get_properties_for = pango_glyph_string_get_properties_for;
 
     pango_ce_pango_glyph_string = register_class_Pango_GlyphString();
     pango_ce_pango_glyph_string->create_object = pango_glyph_string_create_object;

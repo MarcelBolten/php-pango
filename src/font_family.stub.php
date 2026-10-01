@@ -14,7 +14,6 @@ namespace Pango;
  */
 final class FontFamily
 {
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
     /**
      * Gets the FontFace of family with the given name.
      *
@@ -25,7 +24,6 @@ final class FontFamily
     public function getFace(
         null|string $name = null
     ): null|FontFace {}
-#endif
 
     /**
      * Gets the name of the family.
@@ -40,17 +38,17 @@ final class FontFamily
      */
     public function isMonospace(): bool {}
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
     /**
      * A variable font is a font which has axes that can be modified to produce different faces.
      */
     public function isVariable(): bool {}
-#endif
 
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
     /**
      * Lists the different font faces that make up family.
      *
      * @return FontFace[] An array of FontFace objects.
      */
     public function listFaces(): array {}
+#endif
 }

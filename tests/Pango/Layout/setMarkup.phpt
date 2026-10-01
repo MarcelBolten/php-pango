@@ -25,35 +25,56 @@ $layout->setMarkup("");
 var_dump($layout->getText());
 
 //
-// potential null byte in markup
+// potential NUL byte in markup
 //
-// in text without markup, truncates at null byte
-$layout->setMarkup("Null\0 0");
-var_dump($layout->getText());
+// in text without markup, truncates at NUL byte
+try {
+    $layout->setMarkup("Null\0 0");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
-// in text, truncates at null byte
-$layout->setMarkup("<span foreground='blue'>Null\0 1</span>");
-var_dump($layout->getText());
+// in text, truncates at NUL byte
+try {
+    $layout->setMarkup("<span foreground='blue'>Null\0 1</span>");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // between tag and attribute, text is fine but markup parser fails
-$layout->setMarkup("<span\0 foreground='blue'>Null 2</span>");
-var_dump($layout->getText());
+try {
+    $layout->setMarkup("<span\0 foreground='blue'>Null 2</span>");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // in attribute name, emits pango warning, fails to set text
-$layout->setMarkup("<span fore\0ground='blue'>Null 3</span>");
-var_dump($layout->getText());
+try {
+    $layout->setMarkup("<span fore\0ground='blue'>Null 3</span>");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // in attribute value, emits pango warning, fails to set text
-$layout->setMarkup("<span foreground='bl\0ue'>Null 4</span>");
-var_dump($layout->getText());
+try {
+    $layout->setMarkup("<span foreground='bl\0ue'>Null 4</span>");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // in open tag name, emits pango warning, fails to set text
-$layout->setMarkup("<sp\0an foreground='blue'>Null 5</span>");
-var_dump($layout->getText());
+try {
+    $layout->setMarkup("<sp\0an foreground='blue'>Null 5</span>");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // in closing tag name, emits pango warning, fails to set text
-$layout->setMarkup("<span foreground='blue'>Null 5</sp\0an>");
-var_dump($layout->getText());
+try {
+    $layout->setMarkup("<span foreground='blue'>Null 5</sp\0an>");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 try {
     $layout->setMarkup();
@@ -82,35 +103,13 @@ object(Pango\Layout)#%d (0) {
 }
 string(18) "Hello, Παν語!!"
 string(0) ""
-
-Notice: Pango\Pango::setMarkup(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-string(4) "Null"
-
-Notice: Pango\Pango::setMarkup(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-string(4) "Null"
-
-Notice: Pango\Pango::setMarkup(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-string(6) "Null 2"
-
-Notice: Pango\Pango::setMarkup(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-
-(process:%d): Pango-WARNING **: %s: pango_layout_set_markup_with_accel: Attribute 'fore' is not allowed on the <span> tag on line 1 char 34
-string(6) "Null 2"
-
-Notice: Pango\Pango::setMarkup(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-
-(process:%d): Pango-WARNING **: %s: pango_layout_set_markup_with_accel: Value of 'foreground' attribute on <span> tag on line 1 could not be parsed; should be a color specification, not 'bl'
-string(6) "Null 2"
-
-Notice: Pango\Pango::setMarkup(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-
-(process:%d): Pango-WARNING **: %s: pango_layout_set_markup_with_accel: Unknown tag 'sp' on line 1 char 34
-string(6) "Null 2"
-
-Notice: Pango\Pango::setMarkup(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-
-(process:%d): Pango-WARNING **: %s pango_layout_set_markup_with_accel: Error on line 1 char 46: Element “sp” was closed, but the currently open element is “span”
-string(6) "Null 2"
+Pango\Layout::setMarkup(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkup(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkup(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkup(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkup(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkup(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkup(): Argument #1 ($markup) must not contain NUL bytes
 Pango\Layout::setMarkup() expects exactly 1 argument, 0 given
 Pango\Layout::setMarkup() expects exactly 1 argument, 2 given
 Pango\Layout::setMarkup(): Argument #1 ($markup) must be of type string, array given

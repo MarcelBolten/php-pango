@@ -3,41 +3,41 @@ Pango\Layout::__construct()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
-include __DIR__ . '/../../skipif_cairo.php.inc';
 ?>
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
+use Pango\Layout;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 
-$pangoContext = new Pango\Context($fontMap);
+$pangoContext = $fontMap->createContext();
 var_dump($pangoContext);
 
-$layout = new Pango\Layout($pangoContext);
+$layout = new Layout($pangoContext);
 var_dump($layout);
 
 try {
-    new Pango\Layout();
+    new Layout();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Pango\Layout(1, 1);
+    new Layout(1, 1);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Pango\Layout(array());
+    new Layout(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }

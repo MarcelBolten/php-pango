@@ -24,9 +24,12 @@ var_dump($layout->getText());
 $layout->setText("");
 var_dump($layout->getText());
 
-// with null byte
-$layout->setText("Hello,\0 Παν語!");
-var_dump($layout->getText());
+// with NUL byte
+try {
+    $layout->setText("Hello,\0 Παν語!");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 try {
     $layout->setText();
@@ -55,9 +58,7 @@ object(Pango\Layout)#%d (0) {
 }
 string(17) "Hello, Παν語!"
 string(0) ""
-
-Notice: Text contains null byte and will be truncated. %s
-string(6) "Hello,"
+Pango\Layout::setText(): Argument #1 ($text) must not contain NUL bytes
 Pango\Layout::setText() expects exactly 1 argument, 0 given
 Pango\Layout::setText() expects exactly 1 argument, 2 given
 Pango\Layout::setText(): Argument #1 ($text) must be of type string, array given

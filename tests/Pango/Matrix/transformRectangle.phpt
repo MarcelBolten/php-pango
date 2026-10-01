@@ -14,7 +14,7 @@ $matrix->scale(2, 2);
 var_dump($matrix);
 
 $params = [2, 2, 10, 10];
-array_walk($params, fn(&$v) => $v = $v * Pango\Pango::SCALE);
+array_walk($params, fn(&$v) => $v = $v * Pango\SCALE);
 $rectangle_in = new Rectangle(...$params);
 var_dump($rectangle_in);
 $rectangle_out = $matrix->transformRectangle($rectangle_in);

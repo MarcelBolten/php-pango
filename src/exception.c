@@ -21,13 +21,18 @@
 #include "config.h"
 #endif
 
-#include "php.h"
-#include "zend_exceptions.h"
+#include <php.h>
+#include <Zend/zend_exceptions.h>
 
-#include "php_pango.h"
+#include "../php_pango.h"
+#include "exception.h"
 #include "exception_arginfo.h"
 
 zend_class_entry *pango_ce_pango_exception;
+
+PHP_PANGO_API zend_class_entry* php_pango_get_pango_exception_ce() {
+    return pango_ce_pango_exception;
+}
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(pango_exception)

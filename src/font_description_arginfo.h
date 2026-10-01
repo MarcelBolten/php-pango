@@ -1,5 +1,5 @@
 /* This is a generated file, edit font_description.stub.php instead.
- * Stub hash: 30d53568ab0cdf4eff7b860790bc515f27a28ab6 */
+ * Stub hash: 3dfbc49e94166c0c0ff876d0eedfae4e86e359b7 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_FontDescription___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, description, IS_STRING, 1, "null")
@@ -8,7 +8,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_getVariant, 0, 0, Pango\\Variant, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_setVariant, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setVariant, 0, 1, Pango\\FontDescription, 0)
 	ZEND_ARG_OBJ_INFO(0, variant, Pango\\Variant, 0)
 ZEND_END_ARG_INFO()
 
@@ -16,42 +16,121 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_equa
 	ZEND_ARG_OBJ_INFO(0, fontdesc2, Pango\\FontDescription, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_setFamily, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setFamily, 0, 1, Pango\\FontDescription, 0)
 	ZEND_ARG_TYPE_INFO(0, family, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_getFamily, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_setSize, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setSize, 0, 1, Pango\\FontDescription, 0)
+	ZEND_ARG_TYPE_INFO(0, size, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setAbsoluteSize, 0, 1, Pango\\FontDescription, 0)
 	ZEND_ARG_TYPE_INFO(0, size, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_getSize, 0, 0, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_getSizeIsAbsolute, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_getStyle, 0, 0, Pango\\Style, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_setStyle, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setStyle, 0, 1, Pango\\FontDescription, 0)
 	ZEND_ARG_OBJ_INFO(0, style, Pango\\Style, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_getWeight, 0, 0, Pango\\Weight, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_setWeight, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setWeight, 0, 1, Pango\\FontDescription, 0)
 	ZEND_ARG_OBJ_INFO(0, weight, Pango\\Weight, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_getStretch, 0, 0, Pango\\Stretch, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_setStretch, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setStretch, 0, 1, Pango\\FontDescription, 0)
 	ZEND_ARG_OBJ_INFO(0, stretch, Pango\\Stretch, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_FontDescription_toString arginfo_class_Pango_FontDescription_getFamily
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_getFeatures, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setFeatures, 0, 0, Pango\\FontDescription, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, features, IS_STRING, 1, "null")
+ZEND_END_ARG_INFO()
+#endif
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_getGravity, 0, 0, Pango\\Gravity, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setGravity, 0, 1, Pango\\FontDescription, 0)
+	ZEND_ARG_OBJ_INFO(0, gravity, Pango\\Gravity, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_Pango_FontDescription_getVariations arginfo_class_Pango_FontDescription_getFamily
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setVariations, 0, 0, Pango\\FontDescription, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, variations, IS_STRING, 1, "null")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_Pango_FontDescription_getSetFields arginfo_class_Pango_FontDescription_getSize
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_unsetFields, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, fontMask, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_getColor, 0, 0, Pango\\FontColor, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setColor, 0, 1, Pango\\FontDescription, 0)
+	ZEND_ARG_OBJ_INFO(0, color, Pango\\FontColor, 0)
+ZEND_END_ARG_INFO()
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_getWidth, 0, 0, Pango\\Width, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_setWidth, 0, 1, Pango\\FontDescription, 0)
+	ZEND_ARG_OBJ_INFO(0, width, Pango\\Width, 0)
+ZEND_END_ARG_INFO()
+#endif
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontDescription_betterMatch, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_OBJ_INFO(0, candidate, Pango\\FontDescription, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, currentBest, Pango\\FontDescription, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontDescription_merge, 0, 1, Pango\\FontDescription, 0)
+	ZEND_ARG_OBJ_INFO(0, other, Pango\\FontDescription, 1)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, replaceExisting, _IS_BOOL, 0, "false")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Variant_parse, 0, 1, Pango\\Variant, 0)
+	ZEND_ARG_TYPE_INFO(0, string, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Style_parse, 0, 1, Pango\\Style, 0)
+	ZEND_ARG_TYPE_INFO(0, string, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Weight_parse, 0, 1, Pango\\Weight, 0)
+	ZEND_ARG_TYPE_INFO(0, string, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Stretch_parse, 0, 1, Pango\\Stretch, 0)
+	ZEND_ARG_TYPE_INFO(0, string, IS_STRING, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_METHOD(Pango_FontDescription, __construct);
 ZEND_METHOD(Pango_FontDescription, getVariant);
@@ -60,7 +139,9 @@ ZEND_METHOD(Pango_FontDescription, equal);
 ZEND_METHOD(Pango_FontDescription, setFamily);
 ZEND_METHOD(Pango_FontDescription, getFamily);
 ZEND_METHOD(Pango_FontDescription, setSize);
+ZEND_METHOD(Pango_FontDescription, setAbsoluteSize);
 ZEND_METHOD(Pango_FontDescription, getSize);
+ZEND_METHOD(Pango_FontDescription, getSizeIsAbsolute);
 ZEND_METHOD(Pango_FontDescription, getStyle);
 ZEND_METHOD(Pango_FontDescription, setStyle);
 ZEND_METHOD(Pango_FontDescription, getWeight);
@@ -68,6 +149,30 @@ ZEND_METHOD(Pango_FontDescription, setWeight);
 ZEND_METHOD(Pango_FontDescription, getStretch);
 ZEND_METHOD(Pango_FontDescription, setStretch);
 ZEND_METHOD(Pango_FontDescription, toString);
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
+ZEND_METHOD(Pango_FontDescription, getFeatures);
+ZEND_METHOD(Pango_FontDescription, setFeatures);
+#endif
+ZEND_METHOD(Pango_FontDescription, getGravity);
+ZEND_METHOD(Pango_FontDescription, setGravity);
+ZEND_METHOD(Pango_FontDescription, getVariations);
+ZEND_METHOD(Pango_FontDescription, setVariations);
+ZEND_METHOD(Pango_FontDescription, getSetFields);
+ZEND_METHOD(Pango_FontDescription, unsetFields);
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
+ZEND_METHOD(Pango_FontDescription, getColor);
+ZEND_METHOD(Pango_FontDescription, setColor);
+#endif
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+ZEND_METHOD(Pango_FontDescription, getWidth);
+ZEND_METHOD(Pango_FontDescription, setWidth);
+#endif
+ZEND_METHOD(Pango_FontDescription, betterMatch);
+ZEND_METHOD(Pango_FontDescription, merge);
+ZEND_METHOD(Pango_Variant, parse);
+ZEND_METHOD(Pango_Style, parse);
+ZEND_METHOD(Pango_Weight, parse);
+ZEND_METHOD(Pango_Stretch, parse);
 
 static const zend_function_entry class_Pango_FontDescription_methods[] = {
 	ZEND_ME(Pango_FontDescription, __construct, arginfo_class_Pango_FontDescription___construct, ZEND_ACC_PUBLIC)
@@ -77,7 +182,9 @@ static const zend_function_entry class_Pango_FontDescription_methods[] = {
 	ZEND_ME(Pango_FontDescription, setFamily, arginfo_class_Pango_FontDescription_setFamily, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontDescription, getFamily, arginfo_class_Pango_FontDescription_getFamily, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontDescription, setSize, arginfo_class_Pango_FontDescription_setSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, setAbsoluteSize, arginfo_class_Pango_FontDescription_setAbsoluteSize, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontDescription, getSize, arginfo_class_Pango_FontDescription_getSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, getSizeIsAbsolute, arginfo_class_Pango_FontDescription_getSizeIsAbsolute, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontDescription, getStyle, arginfo_class_Pango_FontDescription_getStyle, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontDescription, setStyle, arginfo_class_Pango_FontDescription_setStyle, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontDescription, getWeight, arginfo_class_Pango_FontDescription_getWeight, ZEND_ACC_PUBLIC)
@@ -85,6 +192,46 @@ static const zend_function_entry class_Pango_FontDescription_methods[] = {
 	ZEND_ME(Pango_FontDescription, getStretch, arginfo_class_Pango_FontDescription_getStretch, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontDescription, setStretch, arginfo_class_Pango_FontDescription_setStretch, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontDescription, toString, arginfo_class_Pango_FontDescription_toString, ZEND_ACC_PUBLIC)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
+	ZEND_ME(Pango_FontDescription, getFeatures, arginfo_class_Pango_FontDescription_getFeatures, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, setFeatures, arginfo_class_Pango_FontDescription_setFeatures, ZEND_ACC_PUBLIC)
+#endif
+	ZEND_ME(Pango_FontDescription, getGravity, arginfo_class_Pango_FontDescription_getGravity, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, setGravity, arginfo_class_Pango_FontDescription_setGravity, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, getVariations, arginfo_class_Pango_FontDescription_getVariations, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, setVariations, arginfo_class_Pango_FontDescription_setVariations, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, getSetFields, arginfo_class_Pango_FontDescription_getSetFields, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, unsetFields, arginfo_class_Pango_FontDescription_unsetFields, ZEND_ACC_PUBLIC)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
+	ZEND_ME(Pango_FontDescription, getColor, arginfo_class_Pango_FontDescription_getColor, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, setColor, arginfo_class_Pango_FontDescription_setColor, ZEND_ACC_PUBLIC)
+#endif
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	ZEND_ME(Pango_FontDescription, getWidth, arginfo_class_Pango_FontDescription_getWidth, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, setWidth, arginfo_class_Pango_FontDescription_setWidth, ZEND_ACC_PUBLIC)
+#endif
+	ZEND_ME(Pango_FontDescription, betterMatch, arginfo_class_Pango_FontDescription_betterMatch, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_FontDescription, merge, arginfo_class_Pango_FontDescription_merge, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_Pango_Variant_methods[] = {
+	ZEND_ME(Pango_Variant, parse, arginfo_class_Pango_Variant_parse, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_Pango_Style_methods[] = {
+	ZEND_ME(Pango_Style, parse, arginfo_class_Pango_Style_parse, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_Pango_Weight_methods[] = {
+	ZEND_ME(Pango_Weight, parse, arginfo_class_Pango_Weight_parse, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_Pango_Stretch_methods[] = {
+	ZEND_ME(Pango_Stretch, parse, arginfo_class_Pango_Stretch_parse, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_FE_END
 };
 
@@ -104,7 +251,7 @@ static zend_class_entry *register_class_Pango_FontDescription(void)
 
 static zend_class_entry *register_class_Pango_Variant(void)
 {
-	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Variant", IS_LONG, NULL);
+	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Variant", IS_LONG, class_Pango_Variant_methods);
 
 	zval enum_case_Normal_value;
 	ZVAL_LONG(&enum_case_Normal_value, PANGO_VARIANT_NORMAL);
@@ -149,7 +296,7 @@ static zend_class_entry *register_class_Pango_Variant(void)
 
 static zend_class_entry *register_class_Pango_Style(void)
 {
-	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Style", IS_LONG, NULL);
+	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Style", IS_LONG, class_Pango_Style_methods);
 
 	zval enum_case_Normal_value;
 	ZVAL_LONG(&enum_case_Normal_value, PANGO_STYLE_NORMAL);
@@ -168,7 +315,7 @@ static zend_class_entry *register_class_Pango_Style(void)
 
 static zend_class_entry *register_class_Pango_Weight(void)
 {
-	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Weight", IS_LONG, NULL);
+	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Weight", IS_LONG, class_Pango_Weight_methods);
 
 	zval enum_case_Thin_value;
 	ZVAL_LONG(&enum_case_Thin_value, PANGO_WEIGHT_THIN);
@@ -223,7 +370,7 @@ static zend_class_entry *register_class_Pango_Weight(void)
 
 static zend_class_entry *register_class_Pango_Stretch(void)
 {
-	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Stretch", IS_LONG, NULL);
+	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Stretch", IS_LONG, class_Pango_Stretch_methods);
 
 	zval enum_case_UltraCondensed_value;
 	ZVAL_LONG(&enum_case_UltraCondensed_value, PANGO_STRETCH_ULTRA_CONDENSED);
@@ -317,14 +464,12 @@ static zend_class_entry *register_class_Pango_FontMask(void)
 	zend_string *const_GRAVITY_name = zend_string_init_interned("GRAVITY", sizeof("GRAVITY") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_GRAVITY_name, &const_GRAVITY_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release_ex(const_GRAVITY_name, true);
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 42, 0)
 
 	zval const_VARIATIONS_value;
 	ZVAL_LONG(&const_VARIATIONS_value, PANGO_FONT_MASK_VARIATIONS);
 	zend_string *const_VARIATIONS_name = zend_string_init_interned("VARIATIONS", sizeof("VARIATIONS") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_VARIATIONS_name, &const_VARIATIONS_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release_ex(const_VARIATIONS_name, true);
-#endif
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 
 	zval const_FEATURES_value;
@@ -344,3 +489,93 @@ static zend_class_entry *register_class_Pango_FontMask(void)
 
 	return class_entry;
 }
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
+static zend_class_entry *register_class_Pango_FontColor(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\FontColor", IS_LONG, NULL);
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
+	zval enum_case_Forbidden_value;
+	ZVAL_LONG(&enum_case_Forbidden_value, PANGO_FONT_COLOR_FORBIDDEN);
+	zend_enum_add_case_cstr(class_entry, "Forbidden", &enum_case_Forbidden_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
+	zval enum_case_Required_value;
+	ZVAL_LONG(&enum_case_Required_value, PANGO_FONT_COLOR_REQUIRED);
+	zend_enum_add_case_cstr(class_entry, "Required", &enum_case_Required_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
+	zval enum_case_DontCare_value;
+	ZVAL_LONG(&enum_case_DontCare_value, PANGO_FONT_COLOR_DONT_CARE);
+	zend_enum_add_case_cstr(class_entry, "DontCare", &enum_case_DontCare_value);
+#endif
+
+	return class_entry;
+}
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+static zend_class_entry *register_class_Pango_Width(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Pango\\Width", IS_LONG, NULL);
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_UltraCondensed_value;
+	ZVAL_LONG(&enum_case_UltraCondensed_value, PANGO_WIDTH_ULTRA_CONDENSED);
+	zend_enum_add_case_cstr(class_entry, "UltraCondensed", &enum_case_UltraCondensed_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_ExtraCondensed_value;
+	ZVAL_LONG(&enum_case_ExtraCondensed_value, PANGO_WIDTH_EXTRA_CONDENSED);
+	zend_enum_add_case_cstr(class_entry, "ExtraCondensed", &enum_case_ExtraCondensed_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_Condensed_value;
+	ZVAL_LONG(&enum_case_Condensed_value, PANGO_WIDTH_CONDENSED);
+	zend_enum_add_case_cstr(class_entry, "Condensed", &enum_case_Condensed_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_SemiCondensed_value;
+	ZVAL_LONG(&enum_case_SemiCondensed_value, PANGO_WIDTH_SEMI_CONDENSED);
+	zend_enum_add_case_cstr(class_entry, "SemiCondensed", &enum_case_SemiCondensed_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_Normal_value;
+	ZVAL_LONG(&enum_case_Normal_value, PANGO_WIDTH_NORMAL);
+	zend_enum_add_case_cstr(class_entry, "Normal", &enum_case_Normal_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_SemiExpanded_value;
+	ZVAL_LONG(&enum_case_SemiExpanded_value, PANGO_WIDTH_SEMI_EXPANDED);
+	zend_enum_add_case_cstr(class_entry, "SemiExpanded", &enum_case_SemiExpanded_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_Expanded_value;
+	ZVAL_LONG(&enum_case_Expanded_value, PANGO_WIDTH_EXPANDED);
+	zend_enum_add_case_cstr(class_entry, "Expanded", &enum_case_Expanded_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_ExtraExpanded_value;
+	ZVAL_LONG(&enum_case_ExtraExpanded_value, PANGO_WIDTH_EXTRA_EXPANDED);
+	zend_enum_add_case_cstr(class_entry, "ExtraExpanded", &enum_case_ExtraExpanded_value);
+#endif
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+	zval enum_case_UltraExpanded_value;
+	ZVAL_LONG(&enum_case_UltraExpanded_value, PANGO_WIDTH_ULTRA_EXPANDED);
+	zend_enum_add_case_cstr(class_entry, "UltraExpanded", &enum_case_UltraExpanded_value);
+#endif
+
+	return class_entry;
+}
+#endif

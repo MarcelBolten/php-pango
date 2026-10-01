@@ -16,11 +16,14 @@
 #include "config.h"
 #endif
 
-#include "php.h"
-#include <zend_exceptions.h>
+#include <php.h>
 #include <zend_gc.h>
 
-#include "php_pango.h"
+#include "../php_pango.h"
+#include "php_pango_macros.h"
+#include "context.h"
+#include "rectangle.h"
+#include "matrix.h"
 #include "matrix_arginfo.h"
 
 zend_class_entry *ce_pango_matrix;
@@ -65,12 +68,6 @@ static inline double pango_matrix_get_property_value(zend_object *object, char *
         break; \
     }
 
-#define PANGO_VALUE_TO_STRUCT(n) \
-    if (strcmp(member->val, #n) == 0) { \
-        matrix_object->matrix->n = zval_get_double(value); \
-        break; \
-    }
-
 #define PANGO_ADD_STRUCT_VALUE(n) \
     ZVAL_DOUBLE(&tmp, matrix_object->matrix->n); \
     zend_hash_str_update(props, #n, sizeof(#n)-1, &tmp);
@@ -101,7 +98,7 @@ zend_class_entry* php_pango_get_matrix_ce()
 PHP_METHOD(Pango_Matrix, __construct)
 {
     pango_matrix_object *matrix_object;
-    zend_object *object = Z_OBJ_P(getThis());
+    zend_object *object = Z_OBJ_P(ZEND_THIS);
 
     /* read defaults from object */
     double xx = pango_matrix_get_property_value(object, "xx");
@@ -132,21 +129,82 @@ PHP_METHOD(Pango_Matrix, __construct)
 }
 /* }}} */
 
+/* {{{ */
+PHP_METHOD(Pango_Matrix, concat)
+{
+    zval *newMatrix;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(newMatrix, ce_pango_matrix)
+    ZEND_PARSE_PARAMETERS_END();
+
+    pango_matrix_concat(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix, Z_PANGO_MATRIX_P(newMatrix)->matrix);
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Matrix, getFontScaleFactor)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    RETURN_DOUBLE(pango_matrix_get_font_scale_factor(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix));
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Matrix, getFontScaleFactors)
+{
+    double x, y;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    pango_matrix_get_font_scale_factors(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix, &x, &y);
+
+    array_init_size(return_value, 2);
+    add_assoc_double(return_value, "x", x);
+    add_assoc_double(return_value, "y", y);
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Matrix, getSlantRatio)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    RETURN_DOUBLE(pango_matrix_get_slant_ratio(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix));
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(Pango_Matrix, getGravity)
+{
+    zend_object *gravity_case;
+
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    zend_enum_get_case_by_value(
+        &gravity_case, php_pango_get_gravity_ce(),
+        pango_gravity_get_for_matrix(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix),
+        NULL, false
+    );
+
+    RETURN_OBJ_COPY(gravity_case);
+}
+/* }}} */
+
+
 /* {{{ Changes the transformation represented by matrix to be the transformation
        given by first translating by (tx, ty) then applying the original transformation. */
 PHP_METHOD(Pango_Matrix, translate)
 {
     double tx = 0.0, ty = 0.0;
-    pango_matrix_object *matrix_object;
 
     ZEND_PARSE_PARAMETERS_START(2, 2)
         Z_PARAM_DOUBLE(tx)
         Z_PARAM_DOUBLE(ty)
     ZEND_PARSE_PARAMETERS_END();
 
-    matrix_object = Z_PANGO_MATRIX_P(getThis());
-
-    pango_matrix_translate(matrix_object->matrix, tx, ty);
+    pango_matrix_translate(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix, tx, ty);
 }
 /* }}} */
 
@@ -156,16 +214,13 @@ PHP_METHOD(Pango_Matrix, translate)
 PHP_METHOD(Pango_Matrix, scale)
 {
     double sx = 0.0, sy = 0.0;
-    pango_matrix_object *matrix_object;
 
     ZEND_PARSE_PARAMETERS_START(2, 2)
         Z_PARAM_DOUBLE(sx)
         Z_PARAM_DOUBLE(sy)
     ZEND_PARSE_PARAMETERS_END();
 
-    matrix_object = Z_PANGO_MATRIX_P(getThis());
-
-    pango_matrix_scale(matrix_object->matrix, sx, sy);
+    pango_matrix_scale(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix, sx, sy);
 }
 /* }}} */
 
@@ -175,18 +230,14 @@ PHP_METHOD(Pango_Matrix, scale)
 PHP_METHOD(Pango_Matrix, rotate)
 {
     double degrees = 0.0;
-    pango_matrix_object *matrix_object;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_DOUBLE(degrees)
     ZEND_PARSE_PARAMETERS_END();
 
-    matrix_object = Z_PANGO_MATRIX_P(getThis());
-
-    pango_matrix_rotate(matrix_object->matrix, degrees);
+    pango_matrix_rotate(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix, degrees);
 }
 /* }}} */
-
 
 /* {{{ Transforms the distance vector (dx,dy) by matrix.
        This is similar to pango_matrix_transform_point(), except that
@@ -194,16 +245,13 @@ PHP_METHOD(Pango_Matrix, rotate)
 PHP_METHOD(Pango_Matrix, transformDistance)
 {
     double dx = 0.0, dy = 0.0;
-    pango_matrix_object *matrix_object;
 
     ZEND_PARSE_PARAMETERS_START(2, 2)
         Z_PARAM_DOUBLE(dx)
         Z_PARAM_DOUBLE(dy)
     ZEND_PARSE_PARAMETERS_END();
 
-    matrix_object = Z_PANGO_MATRIX_P(getThis());
-
-    pango_matrix_transform_distance(matrix_object->matrix, &dx, &dy);
+    pango_matrix_transform_distance(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix, &dx, &dy);
 
     array_init(return_value);
     add_assoc_double(return_value, "x", dx);
@@ -224,7 +272,7 @@ PHP_METHOD(Pango_Matrix, transformPixelRectangle)
     rect = *pango_rectangle_object_get_rectangle(rectangle_zv);
 
     pango_matrix_transform_pixel_rectangle(
-        pango_matrix_object_get_matrix(getThis()),
+        pango_matrix_object_get_matrix(ZEND_THIS),
         &rect
     );
 
@@ -237,16 +285,13 @@ PHP_METHOD(Pango_Matrix, transformPixelRectangle)
 PHP_METHOD(Pango_Matrix, transformPoint)
 {
     double x = 0.0, y = 0.0;
-    pango_matrix_object *matrix_object;
 
     ZEND_PARSE_PARAMETERS_START(2, 2)
         Z_PARAM_DOUBLE(x)
         Z_PARAM_DOUBLE(y)
     ZEND_PARSE_PARAMETERS_END();
 
-    matrix_object = Z_PANGO_MATRIX_P(getThis());
-
-    pango_matrix_transform_point(matrix_object->matrix, &x, &y);
+    pango_matrix_transform_point(Z_PANGO_MATRIX_P(ZEND_THIS)->matrix, &x, &y);
 
     array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -267,7 +312,7 @@ PHP_METHOD(Pango_Matrix, transformRectangle)
     rect = *pango_rectangle_object_get_rectangle(rectangle_zv);
 
     pango_matrix_transform_rectangle(
-        pango_matrix_object_get_matrix(getThis()),
+        pango_matrix_object_get_matrix(ZEND_THIS),
         &rect
     );
 
@@ -344,12 +389,7 @@ static zend_object* pango_matrix_clone_obj(zend_object *zobj)
     PANGO_ALLOC_MATRIX(new_matrix->matrix);
 
     // init new matrix values from old matrix
-    new_matrix->matrix->xx = old_matrix->matrix->xx;
-    new_matrix->matrix->yx = old_matrix->matrix->yx;
-    new_matrix->matrix->xy = old_matrix->matrix->xy;
-    new_matrix->matrix->yy = old_matrix->matrix->yy;
-    new_matrix->matrix->x0 = old_matrix->matrix->x0;
-    new_matrix->matrix->y0 = old_matrix->matrix->y0;
+    *new_matrix->matrix = *old_matrix->matrix;
 
     zend_objects_clone_members(&new_matrix->std, &old_matrix->std);
 
@@ -400,12 +440,14 @@ static zval *pango_matrix_object_write_property(zend_object *object, zend_string
     }
 
     do {
-        PANGO_VALUE_TO_STRUCT(xx);
-        PANGO_VALUE_TO_STRUCT(yx);
-        PANGO_VALUE_TO_STRUCT(xy);
-        PANGO_VALUE_TO_STRUCT(yy);
-        PANGO_VALUE_TO_STRUCT(x0);
-        PANGO_VALUE_TO_STRUCT(y0);
+        PangoMatrix *matrix = matrix_object->matrix;
+
+        PANGO_DOUBLE_VALUE_TO_STRUCT(matrix->xx, xx);
+        PANGO_DOUBLE_VALUE_TO_STRUCT(matrix->yx, yx);
+        PANGO_DOUBLE_VALUE_TO_STRUCT(matrix->xy, xy);
+        PANGO_DOUBLE_VALUE_TO_STRUCT(matrix->yy, yy);
+        PANGO_DOUBLE_VALUE_TO_STRUCT(matrix->x0, x0);
+        PANGO_DOUBLE_VALUE_TO_STRUCT(matrix->y0, y0);
 
         /* not a struct member */
         retval = (zend_get_std_object_handlers())->write_property(object, member, value, cache_slot);
@@ -416,14 +458,14 @@ static zval *pango_matrix_object_write_property(zend_object *object, zend_string
 /* }}} */
 
 /* {{{ */
-static HashTable *pango_matrix_object_get_properties(zend_object *object)
+static HashTable *pango_matrix_object_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     HashTable *props;
     // used in PANGO_ADD_STRUCT_VALUE below
     zval tmp;
     pango_matrix_object *matrix_object = pango_matrix_fetch_object(object);
 
-    props = zend_std_get_properties(object);
+    props = zend_array_dup(zend_std_get_properties(object));
 
     if (!matrix_object->matrix) {
         return props;
@@ -462,7 +504,7 @@ PHP_MINIT_FUNCTION(pango_matrix)
     pango_matrix_object_handlers.read_property = pango_matrix_object_read_property;
     pango_matrix_object_handlers.write_property = pango_matrix_object_write_property;
     pango_matrix_object_handlers.get_property_ptr_ptr = NULL;
-    pango_matrix_object_handlers.get_properties = pango_matrix_object_get_properties;
+    pango_matrix_object_handlers.get_properties_for = pango_matrix_object_get_properties_for;
 
     ce_pango_matrix = register_class_Pango_Matrix();
     ce_pango_matrix->create_object = pango_matrix_create_object;

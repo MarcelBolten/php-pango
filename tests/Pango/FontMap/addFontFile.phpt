@@ -4,7 +4,7 @@ Pango\FontMap::addFontFile()
 <?php
 include __DIR__ . '/../../skipif.php.inc';
 include __DIR__ . '/../../skipif_cairo.php.inc';
-if (version_compare(Pango\Pango::versionString(), '1.56.0', '<')) {
+if (version_compare(Pango\version_string(), '1.56.0', '<')) {
     die("skip Pango version < 1.56.0");
 }
 ?>
@@ -15,6 +15,12 @@ use PangoCairo\FontMap;
 $fontMap = FontMap::getDefault();
 var_dump($fontMap);
 var_dump($fontMap->addFontFile(__DIR__ . "/Cantarell-VF.otf"));
+
+try {
+    $fontMap->addFontFile(__DIR__ . "/Cantarell-VF.otf\0");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 try {
     $fontMap->addFontFile("/wrong/path/Cantarell-VF.otf");
@@ -44,6 +50,7 @@ try {
 object(PangoCairo\FontMap)#%d (0) {
 }
 bool(true)
+Pango\FontMap::addFontFile(): Argument #1 ($file) must not contain NUL bytes
 Error adding font file '/wrong/path/Cantarell-VF.otf': Adding font /wrong/path/Cantarell-VF.otf to fontconfig configuration failed
 Pango\FontMap::addFontFile() expects exactly 1 argument, 0 given
 Pango\FontMap::addFontFile() expects exactly 1 argument, 2 given

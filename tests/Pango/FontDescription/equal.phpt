@@ -16,7 +16,7 @@ $fontDesc->setStyle(Style::Oblique);
 $fontDesc->setVariant(Variant::TitleCaps);
 $fontDesc->setWeight(Weight::Book);
 $fontDesc->setStretch(Stretch::SemiExpanded);
-$fontDesc->setSize(12.0 * Pango::SCALE);
+$fontDesc->setSize(12.0 * SCALE);
 var_dump($fontDesc->toString());
 var_dump($fontDesc->equal($fontDesc));
 

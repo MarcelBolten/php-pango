@@ -1,5 +1,5 @@
 /* This is a generated file, edit matrix.stub.php instead.
- * Stub hash: cf9242192e4708249ae64b94e5bbbcf2f14b82f2 */
+ * Stub hash: 6cbd598b9ac4c755a16a24079b8814de33923e91 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Matrix___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, xx, IS_DOUBLE, 0, "1.0")
@@ -8,6 +8,21 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Matrix___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, yy, IS_DOUBLE, 0, "1.0")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, x0, IS_DOUBLE, 0, "0.0")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, y0, IS_DOUBLE, 0, "0.0")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_concat, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, newMatrix, Pango\\Matrix, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_getFontScaleFactor, 0, 0, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_getFontScaleFactors, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_Pango_Matrix_getSlantRatio arginfo_class_Pango_Matrix_getFontScaleFactor
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Matrix_getGravity, 0, 0, Pango\\Gravity, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_rotate, 0, 1, IS_VOID, 0)
@@ -41,6 +56,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_translate, 0,
 ZEND_END_ARG_INFO()
 
 ZEND_METHOD(Pango_Matrix, __construct);
+ZEND_METHOD(Pango_Matrix, concat);
+ZEND_METHOD(Pango_Matrix, getFontScaleFactor);
+ZEND_METHOD(Pango_Matrix, getFontScaleFactors);
+ZEND_METHOD(Pango_Matrix, getSlantRatio);
+ZEND_METHOD(Pango_Matrix, getGravity);
 ZEND_METHOD(Pango_Matrix, rotate);
 ZEND_METHOD(Pango_Matrix, scale);
 ZEND_METHOD(Pango_Matrix, transformDistance);
@@ -51,6 +71,11 @@ ZEND_METHOD(Pango_Matrix, translate);
 
 static const zend_function_entry class_Pango_Matrix_methods[] = {
 	ZEND_ME(Pango_Matrix, __construct, arginfo_class_Pango_Matrix___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Matrix, concat, arginfo_class_Pango_Matrix_concat, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Matrix, getFontScaleFactor, arginfo_class_Pango_Matrix_getFontScaleFactor, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Matrix, getFontScaleFactors, arginfo_class_Pango_Matrix_getFontScaleFactors, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Matrix, getSlantRatio, arginfo_class_Pango_Matrix_getSlantRatio, ZEND_ACC_PUBLIC)
+	ZEND_ME(Pango_Matrix, getGravity, arginfo_class_Pango_Matrix_getGravity, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Matrix, rotate, arginfo_class_Pango_Matrix_rotate, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Matrix, scale, arginfo_class_Pango_Matrix_scale, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Matrix, transformDistance, arginfo_class_Pango_Matrix_transformDistance, ZEND_ACC_PUBLIC)
@@ -76,37 +101,37 @@ static zend_class_entry *register_class_Pango_Matrix(void)
 	zval property_xx_default_value;
 	ZVAL_DOUBLE(&property_xx_default_value, 1.0);
 	zend_string *property_xx_name = zend_string_init("xx", sizeof("xx") - 1, true);
-	zend_declare_typed_property(class_entry, property_xx_name, &property_xx_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
+	zend_declare_typed_property(class_entry, property_xx_name, &property_xx_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_xx_name, true);
 
 	zval property_yx_default_value;
 	ZVAL_DOUBLE(&property_yx_default_value, 0.0);
 	zend_string *property_yx_name = zend_string_init("yx", sizeof("yx") - 1, true);
-	zend_declare_typed_property(class_entry, property_yx_name, &property_yx_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
+	zend_declare_typed_property(class_entry, property_yx_name, &property_yx_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_yx_name, true);
 
 	zval property_xy_default_value;
 	ZVAL_DOUBLE(&property_xy_default_value, 0.0);
 	zend_string *property_xy_name = zend_string_init("xy", sizeof("xy") - 1, true);
-	zend_declare_typed_property(class_entry, property_xy_name, &property_xy_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
+	zend_declare_typed_property(class_entry, property_xy_name, &property_xy_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_xy_name, true);
 
 	zval property_yy_default_value;
 	ZVAL_DOUBLE(&property_yy_default_value, 1.0);
 	zend_string *property_yy_name = zend_string_init("yy", sizeof("yy") - 1, true);
-	zend_declare_typed_property(class_entry, property_yy_name, &property_yy_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
+	zend_declare_typed_property(class_entry, property_yy_name, &property_yy_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_yy_name, true);
 
 	zval property_x0_default_value;
 	ZVAL_DOUBLE(&property_x0_default_value, 0.0);
 	zend_string *property_x0_name = zend_string_init("x0", sizeof("x0") - 1, true);
-	zend_declare_typed_property(class_entry, property_x0_name, &property_x0_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
+	zend_declare_typed_property(class_entry, property_x0_name, &property_x0_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_x0_name, true);
 
 	zval property_y0_default_value;
 	ZVAL_DOUBLE(&property_y0_default_value, 0.0);
 	zend_string *property_y0_name = zend_string_init("y0", sizeof("y0") - 1, true);
-	zend_declare_typed_property(class_entry, property_y0_name, &property_y0_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
+	zend_declare_typed_property(class_entry, property_y0_name, &property_y0_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_y0_name, true);
 
 	return class_entry;

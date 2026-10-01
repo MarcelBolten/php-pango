@@ -29,20 +29,27 @@ object(Pango\Item)#%d (4) {
   ["numChars"]=>
   int(3)
   ["analysis"]=>
-  array(7) {
-    ["bidiLevel"]=>
+  object(Pango\Analysis)#%d (7) {
+    ["font"]=>
+    object(Pango\Font)#6 (1) {
+      ["string-representation"]=>
+      string(15) "DejaVu Serif 12"
+    }
+    ["level"]=>
     int(0)
     ["gravity"]=>
     enum(Pango\Gravity::South)
-    ["centeredBaseline"]=>
-    bool(false)
-    ["isEllipsis"]=>
-    bool(false)
-    ["needsHyphen"]=>
-    bool(false)
+    ["flags"]=>
+    int(128)
     ["script"]=>
-    string(4) "Grek"
+    enum(Pango\Script::Greek)
     ["language"]=>
-    string(1) "c"
+    object(Pango\Language)#%d (1) {
+      ["string-representation"]=>
+      string(1) "c"
+    }
+    ["extraAttrs"]=>
+    array(0) {
+    }
   }
 }

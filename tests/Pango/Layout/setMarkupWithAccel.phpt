@@ -17,43 +17,68 @@ var_dump($pangoContext);
 
 $layout = new Pango\Layout($pangoContext);
 var_dump($layout);
+var_dump($layout->getAccelChar());
 
-var_dump($layout->setMarkupWithAccel("<span foreground='blue' size='x-large'>_Hello,</span> <i>Παν語!</i>!", '_'));
+var_dump($layout
+    ->setMarkupWithAccel("<span foreground='blue' size='x-large'>_Hello,</span> <i>Παν語</i>!", '_')
+    ->getAccelChar()
+);
 var_dump($layout->getText());
 
-var_dump($layout->setMarkupWithAccel("", ""));
+var_dump($layout->setMarkupWithAccel("", "")->getAccelChar());
 var_dump($layout->getText());
 
 //
-// potential null byte in markup
+// potential NUL byte in markup
 //
-// in text without markup, truncates at null byte
-var_dump($layout->setMarkupWithAccel("_Null\0 0", "_"));
-var_dump($layout->getText());
+// in text without markup, truncates at NUL byte
+try {
+    var_dump($layout->setMarkupWithAccel("_Null\0 0", "_"));
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
-// in text, truncates at null byte
-var_dump($layout->setMarkupWithAccel("<span foreground='blue'>_Null\0 1</span>", "_"));
-var_dump($layout->getText());
+// in text, truncates at NUL byte
+try {
+    var_dump($layout->setMarkupWithAccel("<span foreground='blue'>_Null\0 1</span>", "_"));
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // between tag and attribute, text is fine but markup parser fails
-var_dump($layout->setMarkupWithAccel("<span\0 foreground='blue'>_Null 2</span>", "_"));
-var_dump($layout->getText());
+try {
+    var_dump($layout->setMarkupWithAccel("<span\0 foreground='blue'>_Null 2</span>", "_"));
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // in attribute name, emits pango warning, fails to set text
-var_dump($layout->setMarkupWithAccel("<span fore\0ground='blue'>_Null 3</span>", "_"));
-var_dump($layout->getText());
+try {
+    var_dump($layout->setMarkupWithAccel("<span fore\0ground='blue'>_Null 3</span>", "_"));
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // in attribute value, emits pango warning, fails to set text
-var_dump($layout->setMarkupWithAccel("<span foreground='bl\0ue'>_Null 4</span>", "_"));
-var_dump($layout->getText());
+try {
+    var_dump($layout->setMarkupWithAccel("<span foreground='bl\0ue'>_Null 4</span>", "_"));
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // in open tag name, emits pango warning, fails to set text
-var_dump($layout->setMarkupWithAccel("<sp\0an foreground='blue'>_Null 5</span>", "_"));
-var_dump($layout->getText());
+try {
+    var_dump($layout->setMarkupWithAccel("<sp\0an foreground='blue'>_Null 5</span>", "_"));
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 // in closing tag name, emits pango warning, fails to set text
-var_dump($layout->setMarkupWithAccel("<span foreground='blue'>_Null 5</sp\0an>", "_"));
-var_dump($layout->getText());
+try {
+    var_dump($layout->setMarkupWithAccel("<span foreground='blue'>_Null 5</sp\0an>", "_"));
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 try {
     $layout->setMarkupWithAccel();
@@ -86,46 +111,18 @@ object(Pango\Context)#%d (0) {
 }
 object(Pango\Layout)#%d (0) {
 }
+string(0) ""
 string(1) "H"
-string(18) "Hello, Παν語!!"
+string(17) "Hello, Παν語!"
 string(0) ""
 string(0) ""
-
-Notice: Pango\Pango::setMarkupWithAccel(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-string(1) "N"
-string(4) "Null"
-
-Notice: Pango\Pango::setMarkupWithAccel(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-string(1) "N"
-string(4) "Null"
-
-Notice: Pango\Pango::setMarkupWithAccel(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-string(1) "N"
-string(6) "Null 2"
-
-Notice: Pango\Pango::setMarkupWithAccel(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-
-(process:%d): Pango-WARNING **: %s: pango_layout_set_markup_with_accel: Attribute 'fore' is not allowed on the <span> tag on line 1 char 34
-string(0) ""
-string(6) "Null 2"
-
-Notice: Pango\Pango::setMarkupWithAccel(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-
-(process:%d): Pango-WARNING **: %s: pango_layout_set_markup_with_accel: Value of 'foreground' attribute on <span> tag on line 1 could not be parsed; should be a color specification, not 'bl'
-string(0) ""
-string(6) "Null 2"
-
-Notice: Pango\Pango::setMarkupWithAccel(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-
-(process:%d): Pango-WARNING **: %s: pango_layout_set_markup_with_accel: Unknown tag 'sp' on line 1 char 34
-string(0) ""
-string(6) "Null 2"
-
-Notice: Pango\Pango::setMarkupWithAccel(): Markup contains null byte. This may cause the underlying pango markup parser to fail, the text may be truncated, or not be set. %s
-
-(process:%d): Pango-WARNING **: %s pango_layout_set_markup_with_accel: Error on line 1 char 47: Element “sp” was closed, but the currently open element is “span”
-string(0) ""
-string(6) "Null 2"
+Pango\Layout::setMarkupWithAccel(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkupWithAccel(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkupWithAccel(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkupWithAccel(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkupWithAccel(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkupWithAccel(): Argument #1 ($markup) must not contain NUL bytes
+Pango\Layout::setMarkupWithAccel(): Argument #1 ($markup) must not contain NUL bytes
 Pango\Layout::setMarkupWithAccel() expects exactly 2 arguments, 0 given
 Pango\Layout::setMarkupWithAccel() expects exactly 2 arguments, 3 given
 Pango\Layout::setMarkupWithAccel(): Argument #1 ($markup) must be of type string, array given

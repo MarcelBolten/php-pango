@@ -1,0 +1,55 @@
+--TEST--
+Pango\Font::getMetrics()
+--SKIPIF--
+<?php
+include __DIR__ . '/../../skipif.php.inc';
+?>
+--FILE--
+<?php
+use Pango\Context;
+use PangoCairo\FontMap;
+use Pango\FontDescription;
+use Pango\Language;
+
+$fontMap = FontMap::getDefault();
+var_dump($fontMap);
+$context = new Context($fontMap);
+var_dump($context);
+$fontDesc = new FontDescription("Sans 12");
+var_dump($fontDesc);
+$font = $context->loadFont($fontDesc);
+var_dump($font);
+var_dump($font->getMetrics());
+
+$lang = new Language("ja");
+var_dump($font->getMetrics($lang));
+
+try {
+    $font->getMetrics($lang, 1);
+} catch (ArgumentCountError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $font->getMetrics(array());
+} catch (TypeError $e) {
+    echo $e->getMessage(), "\n";
+}
+?>
+--EXPECTF--
+object(PangoCairo\FontMap)#%d (0) {
+}
+object(Pango\Context)#%d (0) {
+}
+object(Pango\FontDescription)#%d (0) {
+}
+object(Pango\Font)#%d (1) {
+  ["string-representation"]=>
+  string(14) "DejaVu Sans 12"
+}
+object(Pango\FontMetrics)#%d (0) {
+}
+object(Pango\FontMetrics)#%d (0) {
+}
+Pango\Font::getMetrics() expects at most 1 argument, 2 given
+Pango\Font::getMetrics(): Argument #1 ($language) must be of type ?Pango\Language, array given

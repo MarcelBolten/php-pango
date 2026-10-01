@@ -20,7 +20,7 @@ var_dump($layout);
 
 var_dump($layout->getSpacing());
 
-$layout->setSpacing(10 * Pango\Pango::SCALE);
+$layout->setSpacing(10 * Pango\SCALE);
 var_dump($layout->getSpacing());
 
 try {

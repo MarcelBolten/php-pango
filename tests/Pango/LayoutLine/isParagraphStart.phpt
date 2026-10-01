@@ -22,7 +22,7 @@ $line = $layout->getLineReadonly(0);
 var_dump($line);
 var_dump($line->isParagraphStart());
 
-$layout->setWidth(200 * Pango\Pango::SCALE);
+$layout->setWidth(200 * Pango\SCALE);
 $layout->setText("Hello, Παν語!\nThis is a new paragraph with more text that will be wrapped.");
 var_dump($layout->getLineCount());
 foreach ($layout->getLines() as $line) {

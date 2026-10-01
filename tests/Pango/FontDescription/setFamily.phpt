@@ -15,6 +15,12 @@ $variant = $fontDesc->getFamily();
 var_dump($variant);
 
 try {
+    $fontDesc->setFamily("sans\0-serif");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $fontDesc->setFamily();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -30,5 +36,6 @@ try {
 object(Pango\FontDescription)#%d (0) {
 }
 string(10) "sans-serif"
+Pango\FontDescription::setFamily(): Argument #1 ($family) must not contain NUL bytes
 Pango\FontDescription::setFamily() expects exactly 1 argument, 0 given
 Pango\FontDescription::setFamily(): Argument #1 ($family) must be of type string, array given

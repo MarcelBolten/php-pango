@@ -27,7 +27,7 @@ object(Cairo\Context)#%d (0) {
 object(PangoCairo\Layout)#%d (0) {
 }
 int(794)
-array(3) {
+object(Pango\GlyphGeometry)#%d (3) {
   ["width"]=>
   int(14336)
   ["xOffset"]=>
@@ -35,9 +35,9 @@ array(3) {
   ["yOffset"]=>
   int(0)
 }
-array(2) {
+object(Pango\GlyphVisAttr)#%d (2) {
   ["isClusterStart"]=>
-  int(1)
+  bool(true)
   ["isColor"]=>
-  int(0)
+  bool(false)
 }

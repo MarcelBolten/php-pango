@@ -17,8 +17,7 @@ $layout->setText("Hello, Παν語!");
 foreach ($layout->getLinesReadonly() as $line) {
     $runs = $line->getRuns();
     foreach(get_object_vars($runs[1]->glyphs->glyphs[1]) as $name => $value) {
-        echo $name, ": ", get_debug_type($value);
-        echo "\n";
+        echo $name, ": ", get_debug_type($value), "\n";
     }
 }
 ?>
@@ -28,5 +27,5 @@ object(Cairo\Context)#%d (0) {
 object(PangoCairo\Layout)#%d (0) {
 }
 glyph: int
-geometry: array
-attributes: array
+geometry: Pango\GlyphGeometry
+attributes: Pango\GlyphVisAttr

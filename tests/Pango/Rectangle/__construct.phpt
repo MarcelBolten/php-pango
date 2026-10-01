@@ -9,7 +9,7 @@ include __DIR__ . '/../../skipif.php.inc';
 use Pango\Rectangle;
 
 $params = [1, 2, 100, 20];
-array_walk($params, fn (&$v) => $v = $v * Pango\Pango::SCALE);
+array_walk($params, fn (&$v) => $v = $v * Pango\SCALE);
 
 var_dump(new Rectangle(...$params));
 

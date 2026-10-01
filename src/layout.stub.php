@@ -14,7 +14,7 @@ class Layout
 {
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
     /**
-     * Pango's default serialization behavior.
+     * Pango’s default serialization behavior.
      *
      * @var int
      * @cvalue PANGO_LAYOUT_SERIALIZE_DEFAULT
@@ -46,7 +46,7 @@ class Layout
     ) {}
 
     /**
-     * Retrieves the PangoContext used for this layout.
+     * Retrieves the Context used for this layout.
      */
     public function getContext(): Context {}
 
@@ -58,7 +58,7 @@ class Layout
      */
     public function setText(
         string $text
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets the text in the layout.
@@ -117,7 +117,7 @@ class Layout
      */
     public function setWidth(
         int $width
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets the height of this Layout used for ellipsization.
@@ -133,7 +133,7 @@ class Layout
      */
     public function setHeight(
         int $height
-    ): void {}
+    ): Layout {}
 
     /**
      * Sets the layout text and attribute list from marked-up text.
@@ -147,7 +147,7 @@ class Layout
      */
     public function setMarkup(
         string $markup
-    ): void {}
+    ): Layout {}
 
     /**
      * Sets the layout text and attribute list from marked-up text with accelerator markers.
@@ -155,30 +155,34 @@ class Layout
      * Visit https://docs.gtk.org/Pango/pango_markup.html#pango-markup for details of the markup format.
      * Replaces the current text and attribute list.
      *
-     * Unlike setText, setMarkupWithAccel does not necessarily truncate the markup on encountering a null byte.
-     * However, depending on the location of the null byte the underlying pango markup parser will fail
-     * or the text will be truncated.
+     * To obtain the first character marked by the accelerator use getAccelChar().
      *
      * @param string $accelMarker A single-character string used to indicate the accelerator character in the markup.
-     *
-     * @return string The first character marked by the accelerator character, or an empty string if no accelerator was found.
      */
     public function setMarkupWithAccel(
         string $markup,
         string $accelMarker
-    ): string {}
+    ): Layout {}
+
+    /**
+     * Gets the first character marked by the accelerator marker in setMarkupWithAccel().
+     *
+     * Returns the first character marked by the accelerator marker, or an empty string if no accelerator was found.
+     */
+    public function getAccelChar(): string {}
 
     /**
      * Sets the default FontDescription for this Layout.
      */
     public function setFontDescription(
         FontDescription $desc
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets the font description for this Layout, if any.
      *
-     * @return null|FontDescription The FontDescription set on this Layout, or NULL if the FontDescription is inherited from the context.
+     * @return null|FontDescription The FontDescription set on this Layout, or
+     * NULL if the FontDescription is inherited from the context.
      */
     public function getFontDescription(): null|FontDescription {}
 
@@ -187,7 +191,7 @@ class Layout
      */
     public function setAlignment(
         Alignment $alignment
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets the alignment for the layout: how partial lines are positioned within the horizontal space available.
@@ -199,7 +203,7 @@ class Layout
      */
     public function setJustify(
         bool $justify
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets whether each complete line should be stretched to fill the entire width of the layout.
@@ -214,7 +218,7 @@ class Layout
      */
     public function setWrap(
         WrapMode $wrap
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets the wrap mode for the layout.
@@ -239,7 +243,7 @@ class Layout
      */
     public function setIndent(
         int $indent
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets the paragraph indent width in Pango units.
@@ -253,7 +257,7 @@ class Layout
      */
     public function setSpacing(
         int $spacing
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets the amount of spacing between the lines of the layout in Pango units.
@@ -265,7 +269,7 @@ class Layout
      */
     public function setEllipsize(
         EllipsizeMode $mode
-    ): void {}
+    ): Layout {}
 
     /**
      * Gets the type of ellipsization being performed for layout.
@@ -371,14 +375,13 @@ class Layout
      */
     public function setAutoDir(
         bool $autoDir
-    ): void {}
+    ): Layout {}
 
     /**
      * Returns the number of Unicode characters in the the text of layout.
      */
     public function getCharacterCount(): int {}
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 46, 0)
     /**
      * Gets the text direction at the given character position in layout.
      *
@@ -387,16 +390,12 @@ class Layout
     public function getDirection(
         int $byteIndex
     ): Direction {}
-#endif
-
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
     /**
      * Gets whether the last line should be stretched to fill the entire width of the layout.
      */
     public function getJustifyLastLine(): bool {}
-#endif
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
     /**
      * Sets whether the last line should be stretched to fill the entire width of the layout.
      *
@@ -406,17 +405,14 @@ class Layout
      */
     public function setJustifyLastLine(
         bool $justifyLastLine
-    ): void {}
+    ): Layout {}
 #endif
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
     /**
      * Gets the line spacing factor of layout.
      */
     public function getLineSpacing(): float {}
-#endif
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 44, 0)
     /**
      * Sets a factor for line spacing.
      *
@@ -429,8 +425,7 @@ class Layout
      */
     public function setLineSpacing(
         float $factor
-    ): void {}
-#endif
+    ): Layout {}
 
     /**
      * Counts the number of unknown glyphs.
@@ -452,7 +447,82 @@ class Layout
      */
     public function setSingleParagraphMode(
         bool $setting
-    ): void {}
+    ): Layout {}
+
+    /**
+     * Retrieves a List of logical attributes for each character in the layout.
+     *
+     * The length of the array will be one more
+     * than the total number of characters in the layout, since there need to
+     * be attributes corresponding to both the position before the first
+     * character and the position after the last character.
+     */
+    public function getLogAttrs(): LogAttrList {}
+
+    // /**
+    //  * Retrieves an array of logical attributes for each character in the layout.
+    //  *
+    //  * This is a faster alternative to Layout::getLogAttrs(). The returned array
+    //  * is part of layout and must not be modified. Modifying the layout will
+    //  * invalidate the returned array.
+    //  *
+    //  * @return LogAttr[] The length of the array will be one more
+    //  * than the total number of characters in the layout, since there need to
+    //  * be attributes corresponding to both the position before the first
+    //  * character and the position after the last character.
+    //  */
+    // public function getLogAttrsReadonly(): array {}
+
+    /**
+     * Returns the current serial number of layout.
+     *
+     * The serial number is initialized to an small number larger than zero
+     * when a new layout is created and is increased whenever the layout is
+     * changed using any of the setter functions, or the PangoContext it uses
+     * has changed.  The serial may wrap, but will never have the value 0.
+     * Since it can wrap, never compare it with "less than", always use
+     * "not equals".
+     *
+     * This can be used to automatically detect changes to a PangoLayout, and
+     * is useful for example to decide whether a layout needs redrawing.  To
+     * force the serial to be increased, use Layout::contextChanged().
+     */
+    public function getSerial(): int {}
+
+    /**
+     * Gets the attribute list for the layout, if any.
+     *
+     * @return null|Attribute\AttributeList The attribute list set on this Layout, or NULL if no attribute list is set.
+     */
+    public function getAttributes(): ?Attribute\AttributeList {}
+
+    /**
+     * Sets the text attributes for a layout object.
+     */
+    public function setAttributes(
+        ?Attribute\AttributeList $attributes = NULL
+    ): Layout {}
+
+    /**
+     * Gets the current TabStops used by this layout.
+     */
+    public function getTabStops(): ?TabStops {}
+
+    /**
+     * Sets the tabs to use for layout, overriding the default tabs.
+     *
+     * Note that tabs and justification conflict with each other: Justification
+     * will move content away from its tab-aligned positions. The same is true
+     * for alignments other than Alignment::Left.
+     */
+    public function setTabStops(
+        ?TabStops $tabStops = NULL
+    ): Layout {}
+
+    /**
+     * Returns an iterator to iterate over the visual extents of the layout.
+     */
+    public function getIter(): LayoutIter {}
 }
 
 /**

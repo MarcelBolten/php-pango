@@ -17,9 +17,11 @@
 #endif
 
 #include <php.h>
-#include <zend_exceptions.h>
+#include <Zend/zend_enum.h>
 
 #include "php_pango.h"
+#include "php_pango_macros.h"
+#include "rectangle.h"
 #include "rectangle_arginfo.h"
 
 zend_class_entry *ce_pango_rectangle;
@@ -35,21 +37,11 @@ pango_rectangle_object *pango_rectangle_fetch_object(zend_object *object)
 #define PANGO_ALLOC_RECT(rect_value) if (!rect_value) \
     { rect_value = ecalloc(1, sizeof(PangoRectangle)); }
 
-#define PANGO_VALUE_FROM_STRUCT(n) \
-    if (strcmp(member->val, #n) == 0) { \
-        ZVAL_LONG(rv, rectangle_object->rect->n); \
-        return rv; \
-    }
-
 #define PANGO_MACRO_VALUE_FROM_STRUCT(n, macro) \
     if (strcmp(member->val, #n) == 0) { \
         ZVAL_LONG(rv, macro((*rectangle_object->rect))); \
         return rv; \
     }
-
-#define PANGO_ADD_STRUCT_VALUE(n) \
-    ZVAL_LONG(&tmp, rectangle_object->rect->n); \
-    zend_hash_str_update(props, #n, sizeof(#n)-1, &tmp)
 
 #define PANGO_MACRO_ADD_STRUCT_VALUE(n, macro) \
     ZVAL_LONG(&tmp, macro((*rectangle_object->rect))); \
@@ -62,9 +54,7 @@ pango_rectangle_object *pango_rectangle_fetch_object(zend_object *object)
 /* {{{ */
 PHP_PANGO_API PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv)
 {
-    pango_rectangle_object *rect_object = Z_PANGO_RECTANGLE_P(zv);
-
-    return rect_object->rect;
+    return Z_PANGO_RECTANGLE_P(zv)->rect;
 }
 /* }}} */
 
@@ -93,7 +83,7 @@ PHP_METHOD(Pango_Rectangle, __construct)
         Z_PARAM_LONG(height)
     ZEND_PARSE_PARAMETERS_END();
 
-    rectangle_object = pango_rectangle_fetch_object(Z_OBJ_P(getThis()));
+    rectangle_object = pango_rectangle_fetch_object(Z_OBJ_P(ZEND_THIS));
     *rectangle_object->rect = (PangoRectangle){(int)x, (int)y, (int)width, (int)height};
 }
 /* }}} */
@@ -211,10 +201,12 @@ static zval *pango_rectangle_object_read_property(zend_object *object, zend_stri
         return rv;
     }
 
-    PANGO_VALUE_FROM_STRUCT(x);
-    PANGO_VALUE_FROM_STRUCT(y);
-    PANGO_VALUE_FROM_STRUCT(width);
-    PANGO_VALUE_FROM_STRUCT(height);
+    PangoRectangle *rect = rectangle_object->rect;
+
+    PANGO_LONG_VALUE_FROM_STRUCT(rect->x, x);
+    PANGO_LONG_VALUE_FROM_STRUCT(rect->y, y);
+    PANGO_LONG_VALUE_FROM_STRUCT(rect->width, width);
+    PANGO_LONG_VALUE_FROM_STRUCT(rect->height, height);
     PANGO_MACRO_VALUE_FROM_STRUCT(ascent, PANGO_ASCENT);
     PANGO_MACRO_VALUE_FROM_STRUCT(descent, PANGO_DESCENT);
     PANGO_MACRO_VALUE_FROM_STRUCT(leftBearing, PANGO_LBEARING);
@@ -225,23 +217,25 @@ static zval *pango_rectangle_object_read_property(zend_object *object, zend_stri
 /* }}} */
 
 /* {{{ */
-static HashTable *pango_rectangle_object_get_properties(zend_object *object)
+static HashTable *pango_rectangle_object_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     HashTable *props;
     // used in macros below
     zval tmp;
     pango_rectangle_object *rectangle_object = pango_rectangle_fetch_object(object);
 
-    props = zend_std_get_properties(object);
+    props = zend_array_dup(zend_std_get_properties(object));
 
     if (!rectangle_object->rect) {
         return props;
     }
 
-    PANGO_ADD_STRUCT_VALUE(x);
-    PANGO_ADD_STRUCT_VALUE(y);
-    PANGO_ADD_STRUCT_VALUE(width);
-    PANGO_ADD_STRUCT_VALUE(height);
+    PangoRectangle *rect = rectangle_object->rect;
+
+    PANGO_ADD_STRUCT_LONG_VALUE(rect->x, x);
+    PANGO_ADD_STRUCT_LONG_VALUE(rect->y, y);
+    PANGO_ADD_STRUCT_LONG_VALUE(rect->width, width);
+    PANGO_ADD_STRUCT_LONG_VALUE(rect->height, height);
     PANGO_MACRO_ADD_STRUCT_VALUE(ascent, PANGO_ASCENT);
     PANGO_MACRO_ADD_STRUCT_VALUE(descent, PANGO_DESCENT);
     PANGO_MACRO_ADD_STRUCT_VALUE(leftBearing, PANGO_LBEARING);
@@ -270,7 +264,7 @@ PHP_MINIT_FUNCTION(pango_rectangle)
     pango_rectangle_object_handlers.read_property = pango_rectangle_object_read_property;
     // pango_rectangle_object_handlers.write_property = pango_rectangle_object_write_property;
     pango_rectangle_object_handlers.get_property_ptr_ptr = NULL;
-    pango_rectangle_object_handlers.get_properties = pango_rectangle_object_get_properties;
+    pango_rectangle_object_handlers.get_properties_for = pango_rectangle_object_get_properties_for;
 
     ce_pango_rectangle = register_class_Pango_Rectangle();
     ce_pango_rectangle->create_object = pango_rectangle_create_object;

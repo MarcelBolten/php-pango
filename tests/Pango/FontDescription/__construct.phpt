@@ -13,6 +13,12 @@ $fontDesc = new Pango\FontDescription("Sans 12");
 var_dump($fontDesc);
 
 try {
+    $fontDesc = new Pango\FontDescription("Sans\0 12");
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $fontDesc = new Pango\FontDescription("1", "2");
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -23,4 +29,5 @@ object(Pango\FontDescription)#%d (0) {
 }
 object(Pango\FontDescription)#%d (0) {
 }
+Pango\FontDescription::__construct(): Argument #1 ($description) must not contain NUL bytes
 Pango\FontDescription::__construct() expects at most 1 argument, 2 given
