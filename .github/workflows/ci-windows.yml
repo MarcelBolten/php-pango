@@ -152,6 +152,9 @@ jobs:
               run: |
                 php -d extension=${{ steps.pango-dll.outputs.path }} --ri pango
 
+            - name: "Run Tests"
+              run: php ./run-tests.php -j$(nproc) -d extension=${{ steps.pango-dll.outputs.path }} -q --show-diff
+
             - name: "Upload test outputs"
               if: ${{ always() }}
               uses: actions/upload-artifact@v7
