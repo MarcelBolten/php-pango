@@ -126,9 +126,10 @@ PHP_METHOD(Pango_Font, getFace)
 /* {{{ */
 PHP_METHOD(Pango_Font, getFeatures)
 {
+    #define NUM_FEATURES 32
+
     PangoFont* font;
-    guint len = 32;
-    hb_feature_t features[len];
+    hb_feature_t features[NUM_FEATURES];
     guint num_features = 0;
     zval tmp_array_zv;
 
@@ -136,7 +137,7 @@ PHP_METHOD(Pango_Font, getFeatures)
 
     font = pango_font_object_get_font(ZEND_THIS);
 
-    pango_font_get_features(font, features, len, &num_features);
+    pango_font_get_features(font, features, NUM_FEATURES, &num_features);
 
     if (num_features == 0) {
         RETURN_EMPTY_ARRAY();
