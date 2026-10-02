@@ -120,7 +120,7 @@ jobs:
             - name: Install cairo via PIE
               shell: cmd
               run: |
-                curl -L -o pie.phar https://github.com/php/pie/releases/download/1.3.8/pie.phar
+                curl -L -o pie.phar https://github.com/php/pie/releases/download/1.5.1/pie.phar
                 php pie.phar install marcelbolten/php-cairo:^2.0.0alpha2
                 php --ri cairo
 
