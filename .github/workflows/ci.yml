@@ -26,7 +26,7 @@ jobs:
                 libssl-dev libxml2-dev libcairo2-dev \
                 libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
                 fonts-noto-cjk gdb \
-                meson-1.5 ninja-build \
+                meson-1.7 ninja-build \
                 libglib2.0-dev \
                 libfontconfig1-dev \
                 libfreetype-dev \
@@ -46,6 +46,7 @@ jobs:
                 git clone --depth 1 --branch marcel-1.58.2-join-fc-thread \
                   https://github.com/MarcelBolten/pango.git
                 cd pango
+                meson --version
                 meson setup build \
                   -Dintrospection=disabled \
                   -Dgtk_doc=false
