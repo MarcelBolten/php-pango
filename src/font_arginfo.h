@@ -1,5 +1,5 @@
 /* This is a generated file, edit font.stub.php instead.
- * Stub hash: 3afc02d796ef64ce284b4ee091eef6ea9e1ec9cc */
+ * Stub hash: d880ebaa7bbb6d062c73035e60dedfb24a44ded0 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Font_describe, 0, 0, Pango\\FontDescription, 0)
 ZEND_END_ARG_INFO()
@@ -19,7 +19,9 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Font_getFontMap, 0, 0, Pango\\FontMap, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Font_getGlyphExtents arginfo_class_Pango_Font_getFeatures
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Font_getGlyphExtents, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, glyph, IS_LONG, 0)
+ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Font_getLanguages arginfo_class_Pango_Font_getFeatures
 
