@@ -131,7 +131,9 @@ jobs:
                 arch: ${{ matrix.arch }}
                 ts: ${{ matrix.ts }}
                 args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }}
-                run-tests: false
+                run-tests: true
+                test-workers: 4
+                test-runner-args: -q
 
             - name: Find Pango DLL path
               id: pango-dll
@@ -151,9 +153,6 @@ jobs:
               shell: cmd
               run: |
                 php -d extension=${{ steps.pango-dll.outputs.path }} --ri pango
-
-            - name: "Run Tests"
-              run: php ./run-tests.php -j$(nproc) -d extension=${{ steps.pango-dll.outputs.path }} -q --show-diff
 
             - name: "Upload test outputs"
               if: ${{ always() }}
