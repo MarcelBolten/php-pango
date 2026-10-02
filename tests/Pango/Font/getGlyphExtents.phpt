@@ -1,5 +1,5 @@
 --TEST--
-Pango\Font::getFontMap()
+Pango\Font::getGlyphExtents()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
@@ -43,40 +43,40 @@ array(3) {
   ["ink"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(0)
+    int(%i)
     ["y"]=>
-    int(0)
+    int(%i)
     ["width"]=>
-    int(0)
+    int(%i)
     ["height"]=>
-    int(0)
+    int(%i)
     ["ascent"]=>
-    int(0)
+    int(%i)
     ["descent"]=>
-    int(0)
+    int(%i)
     ["leftBearing"]=>
-    int(0)
+    int(%i)
     ["rightBearing"]=>
-    int(0)
+    int(%i)
   }
   ["logical"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(0)
+    int(%i)
     ["y"]=>
-    int(-15360)
+    int(%i)
     ["width"]=>
-    int(0)
+    int(%i)
     ["height"]=>
-    int(19456)
+    int(%i)
     ["ascent"]=>
-    int(15360)
+    int(%i)
     ["descent"]=>
-    int(4096)
+    int(%i)
     ["leftBearing"]=>
-    int(0)
+    int(%i)
     ["rightBearing"]=>
-    int(0)
+    int(%i)
   }
 }
 Pango\Font::getGlyphExtents() expects exactly 0 arguments, 1 given
