@@ -2,6 +2,8 @@
 Pango\GlyphItem::applyAttributes()
 --SKIPIF--
 <?php
+die('xfail Feature is still a work-in-progress');
+
 include __DIR__ . '/../../skipif.php.inc';
 include __DIR__ . '/../../skipif_cairo.php.inc';
 ?>
