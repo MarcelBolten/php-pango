@@ -89,14 +89,14 @@ jobs:
                     "brotli:$triplet",
                     "bzip2:$triplet",
                     "cairo:$triplet",
-                    "expat:$triplet"
+                    "expat:$triplet",
                     "fontconfig:$triplet",
                     "freetype:$triplet",
                     "libjpeg-turbo:$triplet",
                     "libpng:$triplet",
                     "pango:$triplet",
                     "pixman:$triplet",
-                    "zlib:$triplet",
+                    "zlib:$triplet"
                 )
                 & .\vcpkg install @packages --overlay-ports=${{ github.workspace }}/vcpkg-overlays
 
