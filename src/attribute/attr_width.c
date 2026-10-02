@@ -22,6 +22,8 @@
 #include "attribute.h"
 #include "attribute_arginfo.h"
 
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
+
 zend_class_entry *ce_pango_attr_width;
 
 static zend_object_handlers pango_attr_width_object_handlers;
@@ -124,3 +126,5 @@ PHP_MINIT_FUNCTION(pango_attr_width)
     return SUCCESS;
 }
 /* }}} */
+
+#endif
