@@ -18,10 +18,28 @@ $fontDesc = new FontDescription("Sans 12");
 var_dump($fontDesc);
 $font = $context->loadFont($fontDesc);
 var_dump($font);
-var_dump($font->getGlyphExtents());
+var_dump($font->getGlyphExtents(41));
 
 try {
-    $font->getGlyphExtents(1);
+    $font->getGlyphExtents(-1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $font->getGlyphExtents(4294967296);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $font->getGlyphExtents();
+} catch (ArgumentCountError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $font->getGlyphExtents(1, 2);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -79,4 +97,7 @@ array(3) {
     int(%i)
   }
 }
-Pango\Font::getGlyphExtents() expects exactly 0 arguments, 1 given
+Pango\Font::getGlyphExtents(): Argument #1 ($glyph) must be greater than 0 and less than or equal to 4294967295
+Pango\Font::getGlyphExtents(): Argument #1 ($glyph) must be greater than 0 and less than or equal to 4294967295
+Pango\Font::getGlyphExtents() expects exactly 1 argument, 0 given
+Pango\Font::getGlyphExtents() expects exactly 1 argument, 2 given

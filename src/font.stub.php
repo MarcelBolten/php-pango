@@ -47,7 +47,7 @@ class Font
      *
      * @return array{glyph: int, ink: Rectangle, logical: Rectangle}
      */
-    public function getGlyphExtents(): array {}
+    public function getGlyphExtents(int $glyph): array {}
 
     // /**
     //  * Get a hb_font_t object backing this font.

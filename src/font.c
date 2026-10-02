@@ -182,17 +182,24 @@ PHP_METHOD(Pango_Font, getFontMap)
 /* {{{ */
 PHP_METHOD(Pango_Font, getGlyphExtents)
 {
-    PangoFont* font;
-    PangoGlyph glyph;
+    zend_long glyph;
     PangoRectangle ink_rect;
     PangoRectangle logical_rect;
     zval tmp_zv;
 
-    ZEND_PARSE_PARAMETERS_NONE();
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_LONG(glyph)
+    ZEND_PARSE_PARAMETERS_END();
 
-    font = pango_font_object_get_font(ZEND_THIS);
+    if (glyph < 0 || glyph > UINT32_MAX) {
+        zend_argument_value_error(1, "must be greater than 0 and less than or equal to %u", UINT32_MAX);
+        RETURN_THROWS();
+    }
 
-    pango_font_get_glyph_extents(font, glyph, &ink_rect, &logical_rect);
+    pango_font_get_glyph_extents(
+        pango_font_object_get_font(ZEND_THIS),
+        (PangoGlyph) glyph,
+        &ink_rect, &logical_rect);
 
     array_init(return_value);
     add_assoc_long(return_value, "glyph", glyph);
