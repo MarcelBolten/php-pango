@@ -12,7 +12,7 @@ jobs:
             matrix: ${{ steps.extension-matrix.outputs.matrix }}
         steps:
         - name: Checkout
-          uses: actions/checkout@v5
+          uses: actions/checkout@v7
         - name: Get the extension matrix
           id: extension-matrix
           uses: php/php-windows-builder/extension-matrix@v1
@@ -32,14 +32,14 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: actions/checkout@v5
+              uses: actions/checkout@v7
 
             - name: php -i
               run: php -i
 
             - name: Restore vcpkg cache
               id: restore-vcpkg-cache
-              uses: actions/cache/restore@v4
+              uses: actions/cache/restore@v6
               with:
                 path: |
                   C:\vcpkg\installed
@@ -110,7 +110,7 @@ jobs:
 
             - name: Save vcpkg cache
               if: steps.restore-vcpkg-cache.outputs.cache-hit != 'true'
-              uses: actions/cache/save@v4
+              uses: actions/cache/save@v6
               with:
                 path: |
                   C:\vcpkg\installed
@@ -154,7 +154,7 @@ jobs:
 
             - name: "Upload test outputs"
               if: ${{ always() }}
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                 name: pango-test-${{ matrix.php-version }}-${{ matrix.arch }}-${{ matrix.ts }}
                 path: tests/**/*.log
