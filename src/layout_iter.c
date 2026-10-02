@@ -34,7 +34,7 @@ zend_class_entry *pango_ce_pango_layout_iter;
 
 static zend_object_handlers pango_layout_iter_object_handlers;
 
-PHP_PANGO_API zend_class_entry* php_pango_get_layout_iter_ce() {
+PHP_PANGO_API zend_class_entry* php_pango_get_layout_iter_ce(void) {
     return pango_ce_pango_layout_iter;
 }
 

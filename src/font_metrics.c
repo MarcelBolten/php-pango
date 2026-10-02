@@ -36,7 +36,7 @@ pango_font_metrics_object *pango_font_metrics_fetch_object(zend_object *object)
     return (pango_font_metrics_object *) ((char*)(object) - offsetof(pango_font_metrics_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_font_metrics_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_font_metrics_ce(void)
 {
     return pango_ce_pango_font_metrics;
 }

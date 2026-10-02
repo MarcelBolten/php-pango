@@ -24,10 +24,10 @@
 #include <pango/pango.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_context_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_direction_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_gravity_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_gravity_hint_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_context_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_direction_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_gravity_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_gravity_hint_ce(void);
 
 typedef struct _pango_context_object {
     PangoContext *context;

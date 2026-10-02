@@ -37,7 +37,7 @@ PHP_PANGO_API PangoAttrFloat *pango_attr_scale_object_get_attr(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_scale_ce()
+zend_class_entry* php_pango_get_attr_scale_ce(void)
 {
     return ce_pango_attr_scale;
 }

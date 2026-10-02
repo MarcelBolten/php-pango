@@ -48,7 +48,7 @@ PHP_PANGO_API PangoColor *pango_color_object_get_color(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_color_ce()
+zend_class_entry* php_pango_get_color_ce(void)
 {
     return ce_pango_color;
 }

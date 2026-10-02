@@ -37,7 +37,7 @@ PHP_PANGO_API PangoAttrInt *pango_attr_insert_hyphens_object_get_attr(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_insert_hyphens_ce()
+zend_class_entry* php_pango_get_attr_insert_hyphens_ce(void)
 {
     return ce_pango_attr_insert_hyphens;
 }

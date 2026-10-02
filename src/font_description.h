@@ -25,13 +25,13 @@
 #include <pango/pango.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_font_color_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_font_description_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_stretch_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_style_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_variant_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_weight_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_width_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_font_color_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_font_description_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_stretch_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_style_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_variant_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_weight_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_width_ce(void);
 
 typedef struct _pango_font_description_object {
     PangoFontDescription *font_description;

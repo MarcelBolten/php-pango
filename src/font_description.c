@@ -57,40 +57,40 @@ PHP_PANGO_API PangoFontDescription *pango_font_description_object_get_font_descr
     return (PangoFontDescription *) Z_PANGO_FONT_DESC_P(zv)->font_description;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_font_description_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_font_description_ce(void)
 {
     return pango_ce_pango_font_description;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_style_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_style_ce(void)
 {
     return pango_ce_pango_style;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_weight_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_weight_ce(void)
 {
     return pango_ce_pango_weight;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_variant_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_variant_ce(void)
 {
     return pango_ce_pango_variant;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_stretch_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_stretch_ce(void)
 {
     return pango_ce_pango_stretch;
 }
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
-PHP_PANGO_API zend_class_entry* php_pango_get_font_color_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_font_color_ce(void)
 {
     return pango_ce_pango_font_color;
 }
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
-PHP_PANGO_API zend_class_entry* php_pango_get_width_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_width_ce(void)
 {
     return pango_ce_pango_width;
 }

@@ -43,19 +43,19 @@ zend_class_entry *pango_ce_pango_direction;
 zend_class_entry *pango_ce_pango_gravity;
 zend_class_entry *pango_ce_pango_gravity_hint;
 
-PHP_PANGO_API zend_class_entry* php_pango_get_context_ce() {
+PHP_PANGO_API zend_class_entry* php_pango_get_context_ce(void) {
     return pango_ce_pango_context;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_direction_ce() {
+PHP_PANGO_API zend_class_entry* php_pango_get_direction_ce(void) {
     return pango_ce_pango_direction;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_gravity_ce() {
+PHP_PANGO_API zend_class_entry* php_pango_get_gravity_ce(void) {
     return pango_ce_pango_gravity;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_gravity_hint_ce() {
+PHP_PANGO_API zend_class_entry* php_pango_get_gravity_hint_ce(void) {
     return pango_ce_pango_gravity_hint;
 }
 

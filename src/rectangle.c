@@ -58,7 +58,7 @@ PHP_PANGO_API PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_rectangle_ce()
+zend_class_entry* php_pango_get_rectangle_ce(void)
 {
     return ce_pango_rectangle;
 }

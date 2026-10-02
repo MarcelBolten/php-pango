@@ -37,7 +37,7 @@ PHP_PANGO_API PangoAttrFontFeatures *pango_attr_font_features_object_get_attr(zv
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_font_features_ce()
+zend_class_entry* php_pango_get_attr_font_features_ce(void)
 {
     return ce_pango_attr_font_features;
 }

@@ -49,7 +49,7 @@ PHP_PANGO_API PangoLanguage *pango_language_object_get_language(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_language_ce()
+zend_class_entry* php_pango_get_language_ce(void)
 {
     return ce_pango_language;
 }

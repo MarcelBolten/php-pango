@@ -25,7 +25,7 @@
 #include <pango/pango.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_glyph_info_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_glyph_info_ce(void);
 
 typedef struct _pango_glyph_info_object {
     PangoGlyphInfo *glyph_info;

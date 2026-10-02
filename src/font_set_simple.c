@@ -40,7 +40,7 @@ pango_font_set_simple_object *pango_font_set_simple_fetch_object(zend_object *ob
     return (pango_font_set_simple_object *) ((char*)(object) - offsetof(pango_font_set_simple_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_font_set_simple_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_font_set_simple_ce(void)
 {
     return pango_ce_pango_font_set_simple;
 }

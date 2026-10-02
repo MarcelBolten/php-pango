@@ -52,7 +52,7 @@ PHP_PANGO_API PangoLogAttr *pango_logattr_list_object_get_logattr_arr(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_logattr_list_ce()
+zend_class_entry* php_pango_get_logattr_list_ce(void)
 {
     return ce_pango_logattr_list;
 }

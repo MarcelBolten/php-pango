@@ -43,7 +43,7 @@ PHP_PANGO_API PangoTabArray *pango_tabstops_object_get_tab_array(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_tabstops_ce()
+zend_class_entry* php_pango_get_tabstops_ce(void)
 {
     return ce_pango_tabstops;
 }

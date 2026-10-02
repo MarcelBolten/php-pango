@@ -45,7 +45,7 @@ PHP_PANGO_API PangoAttrList *pango_attr_list_object_get_attr_list(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_list_ce()
+zend_class_entry* php_pango_get_attr_list_ce(void)
 {
     return ce_pango_attr_list;
 }

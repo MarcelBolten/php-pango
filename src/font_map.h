@@ -25,7 +25,7 @@
 #include <pango/pango.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_font_map_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_font_map_ce(void);
 
 // if font_map is obtained via pango_cairo_font_map_get_default it should not be
 // freed, so we track it in is_default

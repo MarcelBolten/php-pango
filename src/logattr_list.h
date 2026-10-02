@@ -25,7 +25,7 @@
 #include <pango/pango.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_logattr_list_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_logattr_list_ce(void);
 
 typedef struct _pango_logattr_list_object {
     PangoLogAttr *logattr_arr;

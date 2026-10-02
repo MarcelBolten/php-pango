@@ -46,12 +46,12 @@ PHP_PANGO_API PangoCoverage *pango_coverage_object_get_coverage(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_coverage_ce()
+zend_class_entry* php_pango_get_coverage_ce(void)
 {
     return ce_pango_coverage;
 }
 
-zend_class_entry* php_pango_get_coverage_level_ce()
+zend_class_entry* php_pango_get_coverage_level_ce(void)
 {
     return ce_pango_coverage_level;
 }

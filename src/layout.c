@@ -44,7 +44,7 @@ zend_class_entry *pango_ce_pango_alignment;
 zend_class_entry *pango_ce_pango_wrap_mode;
 zend_class_entry *pango_ce_pango_ellipsize_mode;
 
-PHP_PANGO_API zend_class_entry* php_pango_get_layout_ce() {
+PHP_PANGO_API zend_class_entry* php_pango_get_layout_ce(void) {
     return pango_ce_pango_layout;
 }
 

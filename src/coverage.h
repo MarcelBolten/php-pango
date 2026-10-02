@@ -24,8 +24,8 @@
 #include <pango/pango.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_coverage_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_coverage_level_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_coverage_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_coverage_level_ce(void);
 
 typedef struct _pango_coverage_object {
     PangoCoverage *coverage;

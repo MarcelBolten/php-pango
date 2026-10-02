@@ -49,7 +49,7 @@ pango_item_object *pango_item_fetch_object(zend_object *object)
     ZVAL_LONG(&tmp, item_object->item->c_name); \
     zend_hash_str_update(props, #php_name, sizeof(#php_name)-1, &tmp);
 
-PHP_PANGO_API zend_class_entry* php_pango_get_item_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_item_ce(void)
 {
     return pango_ce_pango_item;
 }

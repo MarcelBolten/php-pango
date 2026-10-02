@@ -38,7 +38,7 @@ PHP_PANGO_API PangoAttrColor *pango_attr_background_object_get_attr(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_background_ce()
+zend_class_entry* php_pango_get_attr_background_ce(void)
 {
     return ce_pango_attr_background;
 }

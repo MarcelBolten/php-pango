@@ -25,10 +25,10 @@
 #include <pango/pango.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_tabstop_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_tabstop_pixel_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_tabstops_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_tab_align_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_tabstop_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_tabstop_pixel_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_tabstops_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_tab_align_ce(void);
 
 typedef struct _pango_tabstop_object {
     zend_object std;

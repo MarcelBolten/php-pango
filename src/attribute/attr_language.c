@@ -45,7 +45,7 @@ PHP_PANGO_API PangoAttribute *pango_attr_language_object_get_attribute(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_language_ce()
+zend_class_entry* php_pango_get_attr_language_ce(void)
 {
     return ce_pango_attr_language;
 }

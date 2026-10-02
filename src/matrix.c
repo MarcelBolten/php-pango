@@ -85,7 +85,7 @@ PHP_PANGO_API PangoMatrix *pango_matrix_object_get_matrix(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_matrix_ce()
+zend_class_entry* php_pango_get_matrix_ce(void)
 {
     return ce_pango_matrix;
 }

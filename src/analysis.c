@@ -47,7 +47,7 @@ PHP_PANGO_API PangoAnalysis *pango_analysis_object_get_analysis(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_analysis_ce()
+zend_class_entry* php_pango_get_analysis_ce(void)
 {
     return ce_pango_analysis;
 }

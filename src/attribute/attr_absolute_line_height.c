@@ -37,7 +37,7 @@ PHP_PANGO_API PangoAttrInt *pango_attr_absolute_line_height_object_get_attr(zval
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_absolute_line_height_ce()
+zend_class_entry* php_pango_get_attr_absolute_line_height_ce(void)
 {
     return ce_pango_attr_absolute_line_height;
 }

@@ -45,7 +45,7 @@ pango_font_object *pango_font_fetch_object(zend_object *object)
     return (pango_font_object *) ((char*)(object) - offsetof(pango_font_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_font_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_font_ce(void)
 {
     return pango_ce_pango_font;
 }

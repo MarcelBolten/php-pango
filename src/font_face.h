@@ -23,7 +23,7 @@
 
 #include <pango/pango.h>
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_font_face_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_font_face_ce(void);
 
 typedef struct _pango_font_face_object {
     PangoFontFace *font_face;

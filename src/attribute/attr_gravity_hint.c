@@ -39,7 +39,7 @@ PHP_PANGO_API PangoAttrInt *pango_attr_gravity_hint_object_get_attr(zval *zv)
 }
 /* }}} */
 
-PHP_PANGO_API zend_class_entry* php_pango_get_attr_gravity_hint_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_attr_gravity_hint_ce(void)
 {
     return ce_pango_attr_gravity_hint;
 }

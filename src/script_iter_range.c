@@ -31,7 +31,7 @@ pango_script_iter_range_object *pango_script_iter_range_fetch_object(zend_object
     \Pango\ScriptIterRange C API
 ------------------------------------------------------------------*/
 
-zend_class_entry* php_pango_get_script_iter_range_ce()
+zend_class_entry* php_pango_get_script_iter_range_ce(void)
 {
     return ce_pango_script_iter_range;
 }

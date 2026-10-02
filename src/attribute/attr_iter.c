@@ -35,7 +35,7 @@ zend_class_entry *pango_ce_pango_attr_iter;
 
 static zend_object_handlers pango_attr_iter_object_handlers;
 
-PHP_PANGO_API zend_class_entry* php_pango_get_attr_iter_ce() {
+PHP_PANGO_API zend_class_entry* php_pango_get_attr_iter_ce(void) {
     return pango_ce_pango_attr_iter;
 }
 

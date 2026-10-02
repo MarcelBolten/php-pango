@@ -24,10 +24,10 @@
 #include <php.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_markup_parse_result_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_paragraph_boundary_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_quantized_line_geometry_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_shape_flags_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_markup_parse_result_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_paragraph_boundary_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_quantized_line_geometry_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_shape_flags_ce(void);
 
 PHP_MINIT_FUNCTION(pango_analysis);
 PHP_MINIT_FUNCTION(pango_color);

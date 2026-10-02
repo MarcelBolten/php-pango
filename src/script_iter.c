@@ -36,12 +36,12 @@ zend_class_entry *pango_ce_pango_script_iter;
 
 static zend_object_handlers pango_script_iter_object_handlers;
 
-PHP_PANGO_API extern zend_class_entry* php_pango_get_script_iter_ce()
+PHP_PANGO_API extern zend_class_entry* php_pango_get_script_iter_ce(void)
 {
     return pango_ce_pango_script_iter;
 }
 
-PHP_PANGO_API extern zend_class_entry* php_pango_get_script_ce()
+PHP_PANGO_API extern zend_class_entry* php_pango_get_script_ce(void)
 {
     return pango_ce_pango_script;
 }

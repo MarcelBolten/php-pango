@@ -30,7 +30,7 @@
 
 zend_class_entry *pango_ce_pango_exception;
 
-PHP_PANGO_API zend_class_entry* php_pango_get_pango_exception_ce() {
+PHP_PANGO_API zend_class_entry* php_pango_get_pango_exception_ce(void) {
     return pango_ce_pango_exception;
 }
 

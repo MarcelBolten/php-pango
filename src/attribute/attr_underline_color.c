@@ -39,7 +39,7 @@ PHP_PANGO_API PangoAttrColor *pango_attr_underline_color_object_get_attr(zval *z
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_underline_color_ce()
+zend_class_entry* php_pango_get_attr_underline_color_ce(void)
 {
     return ce_pango_attr_underline_color;
 }

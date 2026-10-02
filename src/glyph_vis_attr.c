@@ -57,7 +57,7 @@ PangoGlyphVisAttr *pango_glyph_vis_attr_object_get_glyph_vis_attr(zval *zv)
     } \
     zend_hash_str_update(props, #php_name, sizeof(#php_name)-1, &tmp);
 
-PHP_PANGO_API zend_class_entry* php_pango_get_glyph_vis_attr_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_glyph_vis_attr_ce(void)
 {
     return pango_ce_pango_glyph_vis_attr;
 }

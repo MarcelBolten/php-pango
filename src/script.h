@@ -25,9 +25,9 @@
 #include <pango/pango.h>
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry *php_pango_get_script_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_script_iter_ce();
-PHP_PANGO_API extern zend_class_entry *php_pango_get_script_iter_range_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_get_script_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_script_iter_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_script_iter_range_ce(void);
 
 typedef struct _pango_script_iter_range_object {
     zend_object std;

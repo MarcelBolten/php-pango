@@ -41,7 +41,7 @@ pango_layout_line_object *pango_layout_line_fetch_object(zend_object *object)
     return (pango_layout_line_object *) ((char*)(object) - offsetof(pango_layout_line_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_layout_line_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_layout_line_ce(void)
 {
     return pango_ce_pango_layout_line;
 }

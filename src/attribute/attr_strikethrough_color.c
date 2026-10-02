@@ -38,7 +38,7 @@ PHP_PANGO_API PangoAttrColor *pango_attr_strikethrough_color_object_get_attr(zva
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_strikethrough_color_ce()
+zend_class_entry* php_pango_get_attr_strikethrough_color_ce(void)
 {
     return ce_pango_attr_strikethrough_color;
 }

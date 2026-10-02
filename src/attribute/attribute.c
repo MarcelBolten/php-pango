@@ -52,39 +52,39 @@ PHP_PANGO_API PangoAttribute *pango_attribute_object_get_attribute(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attribute_ce()
+zend_class_entry* php_pango_get_attribute_ce(void)
 {
     return ce_pango_attribute;
 }
 
-zend_class_entry* php_pango_get_underline_ce()
+zend_class_entry* php_pango_get_underline_ce(void)
 {
     return ce_pango_underline;
 }
 
-zend_class_entry* php_pango_get_overline_ce()
+zend_class_entry* php_pango_get_overline_ce(void)
 {
     return ce_pango_overline;
 }
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-zend_class_entry* php_pango_get_text_transform_ce()
+zend_class_entry* php_pango_get_text_transform_ce(void)
 {
     return ce_pango_text_transform;
 }
 
-zend_class_entry* php_pango_get_baseline_shift_ce()
+zend_class_entry* php_pango_get_baseline_shift_ce(void)
 {
     return ce_pango_baseline_shift;
 }
 
-zend_class_entry* php_pango_get_font_scale_ce()
+zend_class_entry* php_pango_get_font_scale_ce(void)
 {
     return ce_pango_font_scale;
 }
 #endif
 
-zend_class_entry* php_pango_get_attribute_type_ce()
+zend_class_entry* php_pango_get_attribute_type_ce(void)
 {
     return ce_pango_attribute_type;
 }

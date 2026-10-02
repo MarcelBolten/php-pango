@@ -23,6 +23,6 @@
 
 #include "../php_pango.h"
 
-PHP_PANGO_API extern zend_class_entry* php_pango_get_pango_exception_ce();
+PHP_PANGO_API extern zend_class_entry* php_pango_get_pango_exception_ce(void);
 
 #endif /* PHP_PANGO_EXCEPTION_H */

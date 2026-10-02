@@ -36,7 +36,7 @@ pango_glyph_info_object *pango_glyph_info_fetch_object(zend_object *object)
     return (pango_glyph_info_object *) ((char*)(object) - offsetof(pango_glyph_info_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_glyph_info_ce()
+PHP_PANGO_API zend_class_entry* php_pango_get_glyph_info_ce(void)
 {
     return pango_ce_pango_glyph_info;
 }

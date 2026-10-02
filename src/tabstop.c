@@ -39,17 +39,17 @@ pango_tabstop_object *pango_tabstop_fetch_object(zend_object *object)
     \Pango\TabStop C API
 ------------------------------------------------------------------*/
 
-zend_class_entry* php_pango_get_tabstop_ce()
+zend_class_entry* php_pango_get_tabstop_ce(void)
 {
     return ce_pango_tabstop;
 }
 
-zend_class_entry* php_pango_get_tabstop_pixel_ce()
+zend_class_entry* php_pango_get_tabstop_pixel_ce(void)
 {
     return ce_pango_tabstop_pixel;
 }
 
-zend_class_entry* php_pango_get_tab_align_ce()
+zend_class_entry* php_pango_get_tab_align_ce(void)
 {
     return ce_pango_tab_align;
 }
