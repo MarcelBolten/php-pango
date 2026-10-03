@@ -84,11 +84,11 @@ final class TabStops
     public function arePositionsInPixels(): bool {}
 }
 
-class TabStop
+readonly class TabStop
 {
-    public readonly TabAlign $alignment;
-    public readonly int $position;
-    public readonly ?string $decimalChar;
+    public TabAlign $alignment;
+    public int $position;
+    public ?string $decimalChar;
 
     public function __construct(
         TabAlign $alignment,
@@ -97,7 +97,7 @@ class TabStop
     ) {}
 }
 
-final class TabStopPixel extends TabStop
+final readonly class TabStopPixel extends TabStop
 {
 }
 

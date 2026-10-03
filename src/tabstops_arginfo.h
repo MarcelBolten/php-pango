@@ -1,5 +1,5 @@
 /* This is a generated file, edit tabstops.stub.php instead.
- * Stub hash: 2cab8704d17355c6e92b26aacbefe14cc6b09844 */
+ * Stub hash: 2b29db162b89f2002485b6470430aeb133d40c04 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_TabStops___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, tabStops, IS_ARRAY, 0)
@@ -97,9 +97,11 @@ static zend_class_entry *register_class_Pango_TabStop(void)
 
 	INIT_NS_CLASS_ENTRY(ce, "Pango", "TabStop", class_Pango_TabStop_methods);
 #if (PHP_VERSION_ID >= 80400)
-	class_entry = zend_register_internal_class_with_flags(&ce, NULL, 0);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_READONLY_CLASS);
 #else
+	ce.ce_flags |= ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
+	class_entry->ce_flags |= ZEND_ACC_READONLY_CLASS;
 #endif
 
 	zval property_alignment_default_value;
@@ -130,11 +132,11 @@ static zend_class_entry *register_class_Pango_TabStopPixel(zend_class_entry *cla
 
 	INIT_NS_CLASS_ENTRY(ce, "Pango", "TabStopPixel", NULL);
 #if (PHP_VERSION_ID >= 80400)
-	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_TabStop, ZEND_ACC_FINAL);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_TabStop, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce.ce_flags |= ZEND_ACC_FINAL;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_TabStop);
-	class_entry->ce_flags |= ZEND_ACC_FINAL;
+	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
 
 	return class_entry;
