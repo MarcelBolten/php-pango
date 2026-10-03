@@ -7,10 +7,13 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 ?>
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
+$pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
+$fontMap->addFontFile($pathToFonts . "/dejavu-sans-ttf-2.37/ttf/DejaVuSans.ttf");
+$fontMap->addFontFile($pathToFonts . "/NotoSerifJP/SubsetOTF/JP/NotoSerifJP-Regular.otf");
 
 $pangoContext = new Pango\Context($fontMap);
 var_dump($pangoContext);
@@ -92,7 +95,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }
