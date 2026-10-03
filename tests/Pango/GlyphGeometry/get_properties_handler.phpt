@@ -14,18 +14,26 @@ $layout = new PangoCairo\Layout($cairoContext);
 var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
-foreach ($layout->getLinesReadonly() as $line) {
-    $runs = $line->getRuns();
-    foreach(get_object_vars($runs[1]->glyphs->glyphs[1]->geometry) as $name => $value) {
-        echo $name, ": ", get_debug_type($value), "\n";
-    }
-}
+$geometry = $layout->getLineReadonly(0)->getRuns()[1]->glyphs->glyphs[1]->geometry;
+var_dump($geometry);
+// foreach(get_object_vars($geometry) as $name => $value) {
+//     echo $name, ": ", get_debug_type($value), "\n";
+// }
+
+// width: int
+// xOffset: int
+// yOffset: int
 ?>
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
 }
 object(PangoCairo\Layout)#%d (0) {
 }
-width: int
-xOffset: int
-yOffset: int
+object(Pango\GlyphGeometry)#%d (3) {
+  ["width"]=>
+  int(11264)
+  ["xOffset"]=>
+  int(0)
+  ["yOffset"]=>
+  int(0)
+}

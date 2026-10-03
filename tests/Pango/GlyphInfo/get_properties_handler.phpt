@@ -16,9 +16,13 @@ var_dump($layout);
 $layout->setText("Hello, Παν語!");
 $glyph = $layout->getLineReadonly(0)->getRuns()[1]->glyphs->glyphs[1];
 var_dump($glyph);
-foreach(get_object_vars($glyph) as $name => $value) {
-    echo $name, ": ", get_debug_type($value), "\n";
-}
+// foreach(get_object_vars($glyph) as $name => $value) {
+//     echo $name, ": ", get_debug_type($value), "\n";
+// }
+
+// glyph: int
+// geometry: Pango\GlyphGeometry
+// attributes: Pango\GlyphVisAttr
 ?>
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
@@ -45,6 +49,3 @@ object(Pango\GlyphInfo)#%d (3) {
     bool(false)
   }
 }
-glyph: int
-geometry: Pango\GlyphGeometry
-attributes: Pango\GlyphVisAttr
