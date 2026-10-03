@@ -383,7 +383,7 @@ static zend_class_entry *register_class_Pango_Attribute_Attribute(void)
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_ABSTRACT|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_ABSTRACT|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 	class_entry->ce_flags |= ZEND_ACC_ABSTRACT|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -423,7 +423,7 @@ static zend_class_entry *register_class_Pango_Attribute_Language(zend_class_entr
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -444,7 +444,7 @@ static zend_class_entry *register_class_Pango_Attribute_Family(zend_class_entry 
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -464,7 +464,7 @@ static zend_class_entry *register_class_Pango_Attribute_Style(zend_class_entry *
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -485,7 +485,7 @@ static zend_class_entry *register_class_Pango_Attribute_Weight(zend_class_entry 
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -506,7 +506,7 @@ static zend_class_entry *register_class_Pango_Attribute_Variant(zend_class_entry
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -527,7 +527,7 @@ static zend_class_entry *register_class_Pango_Attribute_Stretch(zend_class_entry
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -548,7 +548,7 @@ static zend_class_entry *register_class_Pango_Attribute_Size(zend_class_entry *c
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -568,7 +568,7 @@ static zend_class_entry *register_class_Pango_Attribute_AbsoluteSize(zend_class_
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -588,7 +588,7 @@ static zend_class_entry *register_class_Pango_Attribute_FontDescription(zend_cla
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -611,7 +611,7 @@ static zend_class_entry *register_class_Pango_Attribute_Foreground(zend_class_en
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -634,7 +634,7 @@ static zend_class_entry *register_class_Pango_Attribute_Background(zend_class_en
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -657,7 +657,7 @@ static zend_class_entry *register_class_Pango_Attribute_Underline(zend_class_ent
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -678,7 +678,7 @@ static zend_class_entry *register_class_Pango_Attribute_Strikethrough(zend_class
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -698,7 +698,7 @@ static zend_class_entry *register_class_Pango_Attribute_Rise(zend_class_entry *c
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -718,7 +718,7 @@ static zend_class_entry *register_class_Pango_Attribute_Scale(zend_class_entry *
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -738,7 +738,7 @@ static zend_class_entry *register_class_Pango_Attribute_Fallback(zend_class_entr
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -758,7 +758,7 @@ static zend_class_entry *register_class_Pango_Attribute_LetterSpacing(zend_class
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -778,7 +778,7 @@ static zend_class_entry *register_class_Pango_Attribute_UnderlineColor(zend_clas
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -801,7 +801,7 @@ static zend_class_entry *register_class_Pango_Attribute_StrikethroughColor(zend_
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -824,7 +824,7 @@ static zend_class_entry *register_class_Pango_Attribute_Gravity(zend_class_entry
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -845,7 +845,7 @@ static zend_class_entry *register_class_Pango_Attribute_GravityHint(zend_class_e
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -866,7 +866,7 @@ static zend_class_entry *register_class_Pango_Attribute_FontFeatures(zend_class_
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -886,7 +886,7 @@ static zend_class_entry *register_class_Pango_Attribute_ForegroundAlpha(zend_cla
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -906,7 +906,7 @@ static zend_class_entry *register_class_Pango_Attribute_BackgroundAlpha(zend_cla
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -926,7 +926,7 @@ static zend_class_entry *register_class_Pango_Attribute_AllowBreaks(zend_class_e
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -946,7 +946,7 @@ static zend_class_entry *register_class_Pango_Attribute_Show(zend_class_entry *c
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -990,7 +990,7 @@ static zend_class_entry *register_class_Pango_Attribute_InsertHyphens(zend_class
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1010,7 +1010,7 @@ static zend_class_entry *register_class_Pango_Attribute_Overline(zend_class_entr
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1031,7 +1031,7 @@ static zend_class_entry *register_class_Pango_Attribute_OverlineColor(zend_class
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1055,7 +1055,7 @@ static zend_class_entry *register_class_Pango_Attribute_LineHeight(zend_class_en
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1077,7 +1077,7 @@ static zend_class_entry *register_class_Pango_Attribute_AbsoluteLineHeight(zend_
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1099,7 +1099,7 @@ static zend_class_entry *register_class_Pango_Attribute_TextTransform(zend_class
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1122,7 +1122,7 @@ static zend_class_entry *register_class_Pango_Attribute_Word(zend_class_entry *c
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1140,7 +1140,7 @@ static zend_class_entry *register_class_Pango_Attribute_Sentence(zend_class_entr
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1158,7 +1158,7 @@ static zend_class_entry *register_class_Pango_Attribute_BaselineShift(zend_class
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1181,7 +1181,7 @@ static zend_class_entry *register_class_Pango_Attribute_FontScale(zend_class_ent
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
@@ -1204,7 +1204,7 @@ static zend_class_entry *register_class_Pango_Attribute_Width(zend_class_entry *
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
 	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif

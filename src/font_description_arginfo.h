@@ -419,7 +419,7 @@ static zend_class_entry *register_class_Pango_FontMask(void)
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_ABSTRACT);
 #else
-	ce->ce_flags |= ZEND_ACC_ABSTRACT;
+	ce.ce_flags |= ZEND_ACC_ABSTRACT;
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 	class_entry->ce_flags |= ZEND_ACC_ABSTRACT;
 #endif

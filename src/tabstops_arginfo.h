@@ -83,7 +83,7 @@ static zend_class_entry *register_class_Pango_TabStops(void)
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL;
+	ce.ce_flags |= ZEND_ACC_FINAL;
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 	class_entry->ce_flags |= ZEND_ACC_FINAL;
 #endif
@@ -132,7 +132,7 @@ static zend_class_entry *register_class_Pango_TabStopPixel(zend_class_entry *cla
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_TabStop, ZEND_ACC_FINAL);
 #else
-	ce->ce_flags |= ZEND_ACC_FINAL;
+	ce.ce_flags |= ZEND_ACC_FINAL;
 	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_TabStop);
 	class_entry->ce_flags |= ZEND_ACC_FINAL;
 #endif
