@@ -25,7 +25,8 @@ jobs:
                 build-essential autoconf libtool bison re2c pkg-config \
                 libssl-dev libxml2-dev libcairo2-dev \
                 libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
-                fonts-noto-cjk gdb \
+                fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji \
+                gdb \
                 meson-1.7 ninja-build \
                 libglib2.0-dev \
                 libfontconfig1-dev \
