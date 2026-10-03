@@ -85,11 +85,11 @@ PHP_METHOD(Pango_TabStop, __construct)
     }
 
     zend_update_property(
-        Z_OBJCE_P(ZEND_THIS), Z_OBJ_P(ZEND_THIS),
+        ce_pango_tabstop, Z_OBJ_P(ZEND_THIS),
         "alignment", sizeof("alignment") - 1, alignment_zv
     );
     zend_update_property_long(
-        Z_OBJCE_P(ZEND_THIS), Z_OBJ_P(ZEND_THIS),
+        ce_pango_tabstop, Z_OBJ_P(ZEND_THIS),
         "position", sizeof("position") - 1, position
     );
 
@@ -97,12 +97,12 @@ PHP_METHOD(Pango_TabStop, __construct)
 
     if (decimalChar && alignment_value == PANGO_TAB_DECIMAL) {
         zend_update_property_stringl(
-            Z_OBJCE_P(ZEND_THIS), Z_OBJ_P(ZEND_THIS),
+            ce_pango_tabstop, Z_OBJ_P(ZEND_THIS),
             "decimalChar", sizeof("decimalChar") - 1, ZSTR_VAL(decimalChar), ZSTR_LEN(decimalChar)
         );
     } else {
         zend_update_property_null(
-            Z_OBJCE_P(ZEND_THIS), Z_OBJ_P(ZEND_THIS),
+            ce_pango_tabstop, Z_OBJ_P(ZEND_THIS),
             "decimalChar", sizeof("decimalChar") - 1
         );
     }
