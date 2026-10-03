@@ -17,7 +17,7 @@ function getXOffsetAndWidth(Pango\GlyphItem $glyphItem) {
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
 var_dump($cairoContext);
 
-$layout = new PangoCairo\Layout($cairoContext)
+$layout = (new PangoCairo\Layout($cairoContext))
     ->setText("Hello, Παν語!");
 var_dump($layout);
 

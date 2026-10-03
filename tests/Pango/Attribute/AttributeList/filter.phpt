@@ -31,12 +31,12 @@ var_dump($attributeList->getAttributes());
 // Should be NULL since there are no size attributes left in the original list.
 var_dump($emptyResult);
 
-var_dump(new AttributeList("10 20 size 42, language en, font-desc \"Sans 10\"")
+var_dump((new AttributeList("10 20 size 42, language en, font-desc \"Sans 10\""))
     ->filter($notSizeCallback)->toString());
 
 // callback must return a boolean value
 try {
-    new AttributeList("10 20 size 42, 10 20 weight bold")
+    (new AttributeList("10 20 size 42, 10 20 weight bold"))
         ->filter(fn (Pango\Attribute\Attribute $attr): int => 1);
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";

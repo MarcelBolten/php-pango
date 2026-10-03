@@ -36,7 +36,7 @@ $itemizeAttributes = $attrList->filter(
 );
 var_dump($itemizeAttributes->toString());
 
-$items = new PangoCairo\Context($cairoContext)->itemize($text, 0, 17, $itemizeAttributes);
+$items = (new PangoCairo\Context($cairoContext))->itemize($text, 0, 17, $itemizeAttributes);
 var_dump($items);
 $glyphString = shape_item($text, $items[0]);
 var_dump($glyphString);

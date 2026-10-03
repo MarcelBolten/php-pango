@@ -24,7 +24,7 @@ var_dump($tabs->getTabs()[0]);
 var_dump($tabs->getTabs()[3]);
 
 var_dump(new TabStops([]));
-var_dump(new TabStops([])->getTab(0));
+var_dump((new TabStops([]))->getTab(0));
 
 try {
     new TabStops([1, 2, 3]);
