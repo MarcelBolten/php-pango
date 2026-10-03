@@ -14,17 +14,36 @@ $layout = new PangoCairo\Layout($cairoContext);
 var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
-foreach ($layout->getLinesReadonly() as $line) {
-    $runs = $line->getRuns();
-    foreach(get_object_vars($runs[1]->glyphs->glyphs[1]) as $name => $value) {
-        echo $name, ": ", get_debug_type($value), "\n";
-    }
+$glyph = $layout->getLineReadonly(0)->getRuns()[1]->glyphs->glyphs[1];
+var_dump($glyph);
+foreach(get_object_vars($glyph) as $name => $value) {
+    echo $name, ": ", get_debug_type($value), "\n";
 }
 ?>
 --EXPECTF--
 object(Cairo\Context)#%d (0) {
 }
 object(PangoCairo\Layout)#%d (0) {
+}
+object(Pango\GlyphInfo)#%d (3) {
+  ["glyph"]=>
+  int(810)
+  ["geometry"]=>
+  object(Pango\GlyphGeometry)#%d (3) {
+    ["width"]=>
+    int(11264)
+    ["xOffset"]=>
+    int(0)
+    ["yOffset"]=>
+    int(0)
+  }
+  ["attributes"]=>
+  object(Pango\GlyphVisAttr)#%d (2) {
+    ["isClusterStart"]=>
+    bool(true)
+    ["isColor"]=>
+    bool(false)
+  }
 }
 glyph: int
 geometry: Pango\GlyphGeometry
