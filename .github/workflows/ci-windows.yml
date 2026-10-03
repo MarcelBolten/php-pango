@@ -133,7 +133,7 @@ jobs:
                 args: --with-pango=${{ steps.build-deps.outputs.PANGO_DEPS_PATH }}
                 run-tests: true
                 test-workers: 4
-                test-runner-args: -q
+                test-runner-args: -q -d extension=c:\tools\php\ext\php_cairo.dll
 
             - name: Find Pango DLL path
               id: pango-dll
