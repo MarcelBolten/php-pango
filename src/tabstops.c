@@ -354,7 +354,7 @@ PHP_METHOD(Pango_TabStops, getTab)
 
     // position
     zend_update_property_long(
-        Z_OBJCE_P(return_value), Z_OBJ_P(return_value),
+        php_pango_get_tabstop_ce(), Z_OBJ_P(return_value),
         "position", sizeof("position") - 1,
         location
     );
@@ -367,7 +367,7 @@ PHP_METHOD(Pango_TabStops, getTab)
     );
     ZVAL_OBJ(&align_zv, align_obj);
     zend_update_property(
-        Z_OBJCE_P(return_value), Z_OBJ_P(return_value),
+        php_pango_get_tabstop_ce(), Z_OBJ_P(return_value),
         "alignment", sizeof("alignment") - 1,
         &align_zv
     );
@@ -380,13 +380,13 @@ PHP_METHOD(Pango_TabStops, getTab)
         g_unichar_to_utf8(decimal_point, decimal_point_str);
 
         zend_update_property_string(
-            Z_OBJCE_P(return_value), Z_OBJ_P(return_value),
+            php_pango_get_tabstop_ce(), Z_OBJ_P(return_value),
             "decimalChar", sizeof("decimalChar") - 1,
             decimal_point_str
         );
     } else {
         zend_update_property_null(
-            Z_OBJCE_P(return_value), Z_OBJ_P(return_value),
+            php_pango_get_tabstop_ce(), Z_OBJ_P(return_value),
             "decimalChar", sizeof("decimalChar") - 1
         );
     }
@@ -435,7 +435,7 @@ PHP_METHOD(Pango_TabStops, getTabs)
 
         // position
         zend_update_property_long(
-            Z_OBJCE_P(&tabstop_zv), Z_OBJ_P(&tabstop_zv),
+            php_pango_get_tabstop_ce(), Z_OBJ_P(&tabstop_zv),
             "position", sizeof("position") - 1,
             locations[i]
         );
@@ -448,7 +448,7 @@ PHP_METHOD(Pango_TabStops, getTabs)
         );
         ZVAL_OBJ(&align_zv, align_obj);
         zend_update_property(
-            Z_OBJCE_P(&tabstop_zv), Z_OBJ_P(&tabstop_zv),
+            php_pango_get_tabstop_ce(), Z_OBJ_P(&tabstop_zv),
             "alignment", sizeof("alignment") - 1,
             &align_zv
         );
@@ -461,13 +461,13 @@ PHP_METHOD(Pango_TabStops, getTabs)
             g_unichar_to_utf8(decimal_point, decimal_point_str);
 
             zend_update_property_string(
-                Z_OBJCE_P(&tabstop_zv), Z_OBJ_P(&tabstop_zv),
+                php_pango_get_tabstop_ce(), Z_OBJ_P(&tabstop_zv),
                 "decimalChar", sizeof("decimalChar") - 1,
                 decimal_point_str
             );
         } else {
             zend_update_property_null(
-                Z_OBJCE_P(&tabstop_zv), Z_OBJ_P(&tabstop_zv),
+                php_pango_get_tabstop_ce(), Z_OBJ_P(&tabstop_zv),
                 "decimalChar", sizeof("decimalChar") - 1
             );
         }
