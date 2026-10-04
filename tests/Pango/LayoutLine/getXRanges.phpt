@@ -28,6 +28,7 @@ $counts = array();
 $text = "Hello,\nΠαν語!";
 $layout->setText($text);
 foreach ($layout->getLinesReadonly() as $id => $line) {
+    var_dump($line->getRuns());
     $xRanges = $line->getXRanges();
     var_dump($xRanges);
     $counts[$id] = count($xRanges);
