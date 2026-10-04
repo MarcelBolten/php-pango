@@ -234,8 +234,8 @@ PHP_METHOD(Pango_LayoutLine, getXRanges)
         &ranges, &n_ranges
     );
 
+    zend_printf("line: %p, n_ranges: %d\n", line, n_ranges);
     if (n_ranges < 0) {
-        zend_printf("line: %p, n_ranges: %d\n", line, n_ranges);
         zend_throw_error(NULL, "Failed to get x ranges for the line");
         RETURN_THROWS();
     }
