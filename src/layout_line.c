@@ -191,7 +191,7 @@ PHP_METHOD(Pango_LayoutLine, getXRanges)
     bool start_byte_index_is_null, end_byte_index_is_null;
     const char *start_arg_name;
     PangoLayoutLine *line;
-    int n_ranges = 0;
+    int n_ranges = -1;
     int *ranges = NULL;
     zval tmp_zv;
 
@@ -226,13 +226,21 @@ PHP_METHOD(Pango_LayoutLine, getXRanges)
         end_byte_index = line->start_index + line->length;
     }
 
+    zend_printf("line: %p, layout: %p, layout from zv: %p\n", line, line->layout, Z_PANGO_LAYOUT_P(&Z_PANGO_LAYOUT_LINE_P(ZEND_THIS)->layout_zval)->layout);
+
     pango_layout_line_get_x_ranges(
         line,
         (int) start_byte_index, (int) end_byte_index,
         &ranges, &n_ranges
     );
 
-    array_init(return_value);
+    if (n_ranges < 0) {
+        zend_printf("line: %p, n_ranges: %d\n", line, n_ranges);
+        zend_throw_error(NULL, "Failed to get x ranges for the line");
+        RETURN_THROWS();
+    }
+
+    array_init_size(return_value, n_ranges);
     for (int n = 0; n < n_ranges; n++) {
         array_init(&tmp_zv);
         add_assoc_long(&tmp_zv, "start", ranges[2*n]);
