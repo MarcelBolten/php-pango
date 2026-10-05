@@ -65,7 +65,7 @@ jobs:
                 cd pango
                 meson --version
                 meson setup build \
-                  -Dintrospection=false \
+                  -Dintrospection=disabled \
                   -Ddocumentation=false \
                   -Dbuild-testsuite=false \
                   -Dbuild-examples=false
