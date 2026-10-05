@@ -57,6 +57,7 @@ jobs:
               with:
                 # key: pango-${{ steps.pango-version.outputs.revision }}-${{ runner.os }}-${{ runner.arch }}
                 key: pango-${{ runner.os }}-${{ runner.arch }}
+                create-symlink: true
 
             - name: Build modified Pango
               run: |
