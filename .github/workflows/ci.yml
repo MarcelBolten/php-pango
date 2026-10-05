@@ -27,7 +27,7 @@ jobs:
                 libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
                 fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji \
                 gdb \
-                meson ninja-build \
+                meson-1.7 ninja-build ccache \
                 libglib2.0-dev \
                 libfontconfig1-dev \
                 libfreetype-dev \
