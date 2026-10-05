@@ -42,20 +42,21 @@ jobs:
             # perhaps need to install some fonts but ubuntu loads too many by default in fonts-noto
             # fonts-noto fonts-noto-cjk fonts-noto-color-emoji
 
-            - name: Get Pango revision
-              id: pango-version
-              run: |
-                git ls-remote \
-                  https://github.com/MarcelBolten/pango.git \
-                  refs/heads/marcel-1.58.2-join-fc-thread \
-                  | cut -f1 > pango-revision
+            # - name: Get Pango revision
+            #   id: pango-version
+            #   run: |
+            #     git ls-remote \
+            #       https://github.com/MarcelBolten/pango.git \
+            #       refs/heads/marcel-1.58.2-join-fc-thread \
+            #       | cut -f1 > pango-revision
 
-                echo "revision=$(cat pango-revision)" >> "$GITHUB_OUTPUT"
+            #     echo "revision=$(cat pango-revision)" >> "$GITHUB_OUTPUT"
 
             - name: Setup ccache
               uses: hendrikmuhs/ccache-action@v1.2
               with:
-                key: pango-${{ steps.pango-version.outputs.revision }}-${{ runner.os }}-${{ runner.arch }}
+                # key: pango-${{ steps.pango-version.outputs.revision }}-${{ runner.os }}-${{ runner.arch }}
+                key: pango-${{ runner.os }}-${{ runner.arch }}
 
             - name: Build modified Pango
               run: |
@@ -64,8 +65,10 @@ jobs:
                 cd pango
                 meson --version
                 meson setup build \
-                  -Dintrospection=disabled \
-                  -Dgtk_doc=false
+                  -Dintrospection=false \
+                  -Ddocumentation=false \
+                  -Dbuild-testsuite=false \
+                  -Dbuild-examples=false
 
                 meson compile -C build
                 sudo meson install -C build
