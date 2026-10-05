@@ -14,5 +14,11 @@ pango
 
 Pango text rendering support => enabled
 Compiled as => dynamic module
-Pango version => %d.%d.%d
-Extension version => %s
+against Pango version => %d.%d.%d
+Currently loaded Pango version => %d.%d.%d
+Extension version => 0.2.0-dev
+Currently used Cairo version => %d.%d.%d
+Currently used Fontconfig version => %d.%d.%d
+Currently used HarfBuzz version => %d.%d.%d
+Currently used FriBidi version => %d.%d.%d
+Currently used FreeType version => %d.%d.%d

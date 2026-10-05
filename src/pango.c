@@ -28,6 +28,12 @@
 #include <Zend/zend_enum.h>
 #include <pango/pangofc-fontmap.h>
 #include <pango/pangocairo.h>
+#include <cairo/cairo.h>
+#include <fontconfig/fontconfig.h>
+#include <harfbuzz/hb.h>
+#include <fribidi/fribidi-config.h>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 #include "../php_pango.h"
 #include "attribute/attribute.h"
@@ -791,7 +797,9 @@ PHP_MSHUTDOWN_FUNCTION(pango)
 PHP_MINFO_FUNCTION(pango)
 {
     php_info_print_table_start();
+
     php_info_print_table_header(2, "Pango text rendering support", "enabled");
+
     php_info_print_table_row(2, "Compiled as",
 #ifdef COMPILE_DL_PANGO
         "dynamic module"
@@ -799,14 +807,63 @@ PHP_MINFO_FUNCTION(pango)
         "static module"
 #endif
     );
-    php_info_print_table_row(2, "Pango version",
+
+    php_info_print_table_row(2, "against Pango version",
 #ifdef PANGO_VERSION_STRING
         PANGO_VERSION_STRING
 #else
         "Unknown"
 #endif
     );
+
+    php_info_print_table_row(2, "Currently loaded Pango version",
+        pango_version_string()
+    );
+
     php_info_print_table_row(2, "Extension version", PHP_PANGO_VERSION);
+
+    php_info_print_table_row(2, "Currently used Cairo version",
+        cairo_version_string()
+    );
+
+    int fc_version = FcGetVersion();
+    char fc_version_string[12];
+    snprintf(
+        fc_version_string,
+        sizeof(fc_version_string),
+        "%d.%d.%d",
+        fc_version / 10000,
+        (fc_version / 100) % 100,
+        fc_version % 100
+    );
+    php_info_print_table_row(2, "Currently used Fontconfig version",
+        fc_version_string
+    );
+
+    php_info_print_table_row(2, "Currently used HarfBuzz version",
+        hb_version_string()
+    );
+
+    php_info_print_table_row(2, "Currently used FriBidi version",
+        FRIBIDI_VERSION
+    );
+
+    FT_Library ft_library;
+    FT_Int major, minor, patch;
+    FT_Error error = FT_Init_FreeType(&ft_library);
+
+    if (error == 0) {
+        char version[12];
+
+        FT_Library_Version(ft_library, &major, &minor, &patch);
+        snprintf(version, sizeof(version), "%d.%d.%d", major, minor, patch);
+        php_info_print_table_row(2, "Currently used FreeType version", version);
+
+        FT_Done_FreeType(ft_library);
+    } else {
+        php_info_print_table_row(1, "FreeType version could not be determined");
+    }
+
     php_info_print_table_end();
 }
 /* }}} */
