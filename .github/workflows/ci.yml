@@ -27,7 +27,7 @@ jobs:
                 libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
                 fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji \
                 gdb \
-                meson-1.7 ninja-build \
+                meson ninja-build \
                 libglib2.0-dev \
                 libfontconfig1-dev \
                 libfreetype-dev \
@@ -41,6 +41,21 @@ jobs:
 
             # perhaps need to install some fonts but ubuntu loads too many by default in fonts-noto
             # fonts-noto fonts-noto-cjk fonts-noto-color-emoji
+
+            - name: Get Pango revision
+              id: pango-version
+              run: |
+                git ls-remote \
+                  https://github.com/MarcelBolten/pango.git \
+                  refs/heads/marcel-1.58.2-join-fc-thread \
+                  | cut -f1 > pango-revision
+
+                echo "revision=$(cat pango-revision)" >> "$GITHUB_OUTPUT"
+
+            - name: Setup ccache
+              uses: hendrikmuhs/ccache-action@v1.2
+              with:
+                key: pango-${{ steps.pango-version.outputs.revision }}-${{ runner.os }}-${{ runner.arch }}
 
             - name: Build modified Pango
               run: |
