@@ -219,8 +219,6 @@ PHP_METHOD(Pango_LayoutLine, getXRanges)
 
     line = Z_PANGO_LAYOUT_LINE_P(ZEND_THIS)->line;
 
-    zend_printf("start_byte_index: %d, line_length: %d, line: %p\n", line->start_index, line->length, line);
-
     if (start_byte_index_is_null) {
         start_byte_index = line->start_index;
     }
@@ -228,15 +226,12 @@ PHP_METHOD(Pango_LayoutLine, getXRanges)
         end_byte_index = line->start_index + line->length;
     }
 
-    zend_printf("line: %p, layout: %p, layout from zv: %p, start_byte_index: %ld, end_byte_index: %ld\n", line, line->layout, Z_PANGO_LAYOUT_P(&Z_PANGO_LAYOUT_LINE_P(ZEND_THIS)->layout_zval)->layout, start_byte_index, end_byte_index);
-
     pango_layout_line_get_x_ranges(
         line,
         (int) start_byte_index, (int) end_byte_index,
         &ranges, &n_ranges
     );
 
-    zend_printf("line: %p, n_ranges: %d\n", line, n_ranges);
     if (n_ranges < 0) {
         zend_throw_error(NULL, "Failed to get x ranges for the line");
         RETURN_THROWS();
