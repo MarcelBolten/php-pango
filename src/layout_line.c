@@ -188,7 +188,7 @@ PHP_METHOD(Pango_LayoutLine, getRuns)
 PHP_METHOD(Pango_LayoutLine, getXRanges)
 {
     zend_long start_byte_index = 0, end_byte_index = 0;
-    bool start_byte_index_is_null, end_byte_index_is_null;
+    bool start_byte_index_is_null = true, end_byte_index_is_null = true;
     const char *start_arg_name;
     PangoLayoutLine *line;
     int n_ranges = -1;
