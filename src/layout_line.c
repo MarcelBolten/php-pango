@@ -219,6 +219,8 @@ PHP_METHOD(Pango_LayoutLine, getXRanges)
 
     line = Z_PANGO_LAYOUT_LINE_P(ZEND_THIS)->line;
 
+    zend_printf("start_byte_index: %d, line_length: %d, line: %p\n", line->start_index, line->length, line);
+
     if (start_byte_index_is_null) {
         start_byte_index = line->start_index;
     }
