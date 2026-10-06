@@ -58,8 +58,12 @@ jobs:
                 # key: pango-${{ steps.pango-version.outputs.revision }}-${{ runner.os }}-${{ runner.arch }}
                 key: pango-${{ runner.os }}-${{ runner.arch }}
                 create-symlink: true
+                max-size: 2G
 
             - name: Build modified Pango
+              env:
+                CC: ccache gcc
+                CXX: ccache g++
               run: |
                 git clone --depth 1 --branch marcel-1.58.2-join-fc-thread \
                   https://github.com/MarcelBolten/pango.git
