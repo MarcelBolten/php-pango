@@ -16,25 +16,26 @@ jobs:
         outputs:
           key: ${{ steps.rev.outputs.key }}
         steps:
-          - uses: awalsh128/cache-apt-pkgs-action@v1
+          - name: install system dependencies
+            uses: awalsh128/cache-apt-pkgs-action@v1
             with:
-                packages: >
-                  build-essential autoconf libtool bison re2c pkg-config
-                  libssl-dev libxml2-dev libcairo2-dev
-                  libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip
-                  fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji
-                  gdb
-                  meson-1.7 ninja-build ccache
-                  libglib2.0-dev
-                  libfontconfig1-dev
-                  libfreetype-dev
-                  libharfbuzz-dev
-                  libthai-dev
-                  libxft-dev
-                  libxrender-dev
-                  libfribidi-dev
-                  libx11-dev
-                  libfreetype6-dev
+              packages: >
+                build-essential autoconf libtool bison re2c pkg-config
+                libssl-dev libxml2-dev libcairo2-dev
+                libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip
+                fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji
+                gdb
+                meson-1.7 ninja-build ccache
+                libglib2.0-dev
+                libfontconfig1-dev
+                libfreetype-dev
+                libharfbuzz-dev
+                libthai-dev
+                libxft-dev
+                libxrender-dev
+                libfribidi-dev
+                libx11-dev
+                libfreetype6-dev
               version: 1.0
 
           - name: Get pango revision
@@ -80,7 +81,8 @@ jobs:
                   key: ${{ needs.build_pango.outputs.key }}
                   fail-on-cache-miss: true
 
-            - uses: awalsh128/cache-apt-pkgs-action@v1
+            - name: install system dependencies
+              uses: awalsh128/cache-apt-pkgs-action@v1
               with:
                 packages: >
                   build-essential autoconf libtool bison re2c pkg-config
