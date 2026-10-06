@@ -64,6 +64,8 @@ jobs:
               env:
                 CC: ccache gcc
                 CXX: ccache g++
+                CCACHE_BASEDIR: ${{ github.workspace }}
+                CCACHE_SLOPPINESS: include_file_mtime,include_file_ctime,time_macros
               run: |
                 git clone --depth 1 --branch marcel-1.58.2-join-fc-thread \
                   https://github.com/MarcelBolten/pango.git
