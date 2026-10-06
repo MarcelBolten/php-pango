@@ -16,6 +16,27 @@ jobs:
         outputs:
           key: ${{ steps.rev.outputs.key }}
         steps:
+          - uses: awalsh128/cache-apt-pkgs-action@v1
+            with:
+                packages: >
+                  build-essential autoconf libtool bison re2c pkg-config
+                  libssl-dev libxml2-dev libcairo2-dev
+                  libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip
+                  fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji
+                  gdb
+                  meson-1.7 ninja-build ccache
+                  libglib2.0-dev
+                  libfontconfig1-dev
+                  libfreetype-dev
+                  libharfbuzz-dev
+                  libthai-dev
+                  libxft-dev
+                  libxrender-dev
+                  libfribidi-dev
+                  libx11-dev
+                  libfreetype6-dev
+              version: 1.0
+
           - name: Get pango revision
             id: rev
             run: |
@@ -32,23 +53,6 @@ jobs:
           - name: Build pango
             if: steps.cache.outputs.cache-hit != 'true'
             run: |
-              sudo apt-get update
-              sudo apt-get install -y --no-install-recommends \
-                build-essential autoconf libtool bison re2c pkg-config \
-                libssl-dev libxml2-dev libcairo2-dev \
-                libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
-                gdb \
-                meson-1.7 ninja-build ccache \
-                libglib2.0-dev \
-                libfontconfig1-dev \
-                libfreetype-dev \
-                libharfbuzz-dev \
-                libthai-dev \
-                libxft-dev \
-                libxrender-dev \
-                libfribidi-dev \
-                libx11-dev \
-                libfreetype6-dev
               git clone --depth 1 --branch marcel-1.58.2-join-fc-thread \
                 https://github.com/MarcelBolten/pango.git
               cd pango
@@ -76,26 +80,47 @@ jobs:
                   key: ${{ needs.build_pango.outputs.key }}
                   fail-on-cache-miss: true
 
-            - name: Install system dependencies
-              run: |
-                sudo apt-get update
-                sudo apt-get install -y --no-install-recommends \
-                  build-essential autoconf libtool bison re2c pkg-config \
-                  libssl-dev libxml2-dev libcairo2-dev \
-                  libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
-                  fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji \
-                  gdb \
-                  meson-1.7 ninja-build ccache \
-                  libglib2.0-dev \
-                  libfontconfig1-dev \
-                  libfreetype-dev \
-                  libharfbuzz-dev \
-                  libthai-dev \
-                  libxft-dev \
-                  libxrender-dev \
-                  libfribidi-dev \
-                  libx11-dev \
+            - uses: awalsh128/cache-apt-pkgs-action@v1
+              with:
+                packages: >
+                  build-essential autoconf libtool bison re2c pkg-config
+                  libssl-dev libxml2-dev libcairo2-dev
+                  libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip
+                  fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji
+                  gdb
+                  meson-1.7 ninja-build ccache
+                  libglib2.0-dev
+                  libfontconfig1-dev
+                  libfreetype-dev
+                  libharfbuzz-dev
+                  libthai-dev
+                  libxft-dev
+                  libxrender-dev
+                  libfribidi-dev
+                  libx11-dev
                   libfreetype6-dev
+                version: 1.0
+
+            # - name: Install system dependencies
+            #   run: |
+            #     sudo apt-get update
+            #     sudo apt-get install -y --no-install-recommends \
+            #       build-essential autoconf libtool bison re2c pkg-config \
+            #       libssl-dev libxml2-dev libcairo2-dev \
+            #       libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
+            #       fonts-noto-cjk fonts-dejavu-core fonts-noto-color-emoji \
+            #       gdb \
+            #       meson-1.7 ninja-build ccache \
+            #       libglib2.0-dev \
+            #       libfontconfig1-dev \
+            #       libfreetype-dev \
+            #       libharfbuzz-dev \
+            #       libthai-dev \
+            #       libxft-dev \
+            #       libxrender-dev \
+            #       libfribidi-dev \
+            #       libx11-dev \
+            #       libfreetype6-dev
 
             # perhaps need to install some fonts but ubuntu loads too many by default in fonts-noto
             # fonts-noto fonts-noto-cjk fonts-noto-color-emoji
