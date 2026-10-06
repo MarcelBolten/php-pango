@@ -68,7 +68,9 @@ jobs:
                 create-symlink: true
 
             - name: Reset ccache statistics
-              run: ccache -z
+              run: |
+                ccache -p  
+                ccache -z
 
             - name: Build modified Pango
               run: |
@@ -89,6 +91,10 @@ jobs:
                 ls -la /usr/local/lib/x86_64-linux-gnu/pkgconfig/pango*
 
                 sudo ldconfig
+
+            - name: CCache statistics
+              if: always()
+              run: ccache --show-stats --verbose
 
             - name: "Setup fontconfig cache"
               run: |
