@@ -34,10 +34,21 @@ jobs:
             run: |
               sudo apt-get update
               sudo apt-get install -y --no-install-recommends \
-                build-essential pkg-config meson ninja-build \
-                libglib2.0-dev libfontconfig1-dev libfreetype-dev \
-                libharfbuzz-dev libthai-dev libxft-dev libxrender-dev \
-                libfribidi-dev libx11-dev libcairo2-dev
+                build-essential autoconf libtool bison re2c pkg-config \
+                libssl-dev libxml2-dev libcairo2-dev \
+                libjpeg-turbo8-dev valgrind lcov wget ca-certificates gzip \
+                gdb \
+                meson-1.7 ninja-build ccache \
+                libglib2.0-dev \
+                libfontconfig1-dev \
+                libfreetype-dev \
+                libharfbuzz-dev \
+                libthai-dev \
+                libxft-dev \
+                libxrender-dev \
+                libfribidi-dev \
+                libx11-dev \
+                libfreetype6-dev
               git clone --depth 1 --branch marcel-1.58.2-join-fc-thread \
                 https://github.com/MarcelBolten/pango.git
               cd pango
