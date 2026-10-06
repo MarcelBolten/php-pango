@@ -6,6 +6,14 @@ on:
             - '*'
     pull_request:
 
+env:
+    CCACHE_DIR: ${{ github.workspace }}/.ccache
+    CCACHE_MAXSIZE: 2G
+    CCACHE_COMPILERCHECK: content
+    CCACHE_BASEDIR: ${{ github.workspace }}
+    CCACHE_NOHASHDIR: "true"
+    CCACHE_SLOPPINESS: time_macros,pch_defines,include_file_mtime
+
 jobs:
     Build_Test_Coverage:
         strategy:
@@ -58,14 +66,11 @@ jobs:
                 # key: pango-${{ steps.pango-version.outputs.revision }}-${{ runner.os }}-${{ runner.arch }}
                 key: pango-${{ runner.os }}-${{ runner.arch }}
                 create-symlink: true
-                max-size: 2G
+
+            - name: Reset ccache statistics
+              run: ccache -z
 
             - name: Build modified Pango
-              env:
-                CC: ccache gcc
-                CXX: ccache g++
-                CCACHE_BASEDIR: ${{ github.workspace }}
-                CCACHE_SLOPPINESS: include_file_mtime,include_file_ctime,time_macros
               run: |
                 git clone --depth 1 --branch marcel-1.58.2-join-fc-thread \
                   https://github.com/MarcelBolten/pango.git
