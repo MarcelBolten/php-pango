@@ -237,6 +237,7 @@ jobs:
                 echo "Created $INI_DIR/30-pango.ini"
                 php -i | grep pango
                 php --ri pango
+                php --re pango
 
             - name: "Run Tests"
               run: php ./run-tests.php -j$(nproc) --repeat 2 -q --show-diff
