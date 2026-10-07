@@ -1,5 +1,5 @@
 /* This is a generated file, edit color.stub.php instead.
- * Stub hash: 6a3361e1163e005aa737ffb6d7a73bff72aec4a9 */
+ * Stub hash: 3863e9f595e5a0e23aecdc39edc4b7a97d09e058 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Color___construct, 0, 0, 3)
 	ZEND_ARG_TYPE_INFO(0, red, IS_LONG, 0)
@@ -11,16 +11,22 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Color_fromString, 0, 
 	ZEND_ARG_TYPE_INFO(0, string, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Color_fromStringWithAlpha, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, string, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Color___toString, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_METHOD(Pango_Color, __construct);
 ZEND_METHOD(Pango_Color, fromString);
+ZEND_METHOD(Pango_Color, fromStringWithAlpha);
 ZEND_METHOD(Pango_Color, __toString);
 
 static const zend_function_entry class_Pango_Color_methods[] = {
 	ZEND_ME(Pango_Color, __construct, arginfo_class_Pango_Color___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_Color, fromString, arginfo_class_Pango_Color_fromString, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(Pango_Color, fromStringWithAlpha, arginfo_class_Pango_Color_fromStringWithAlpha, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(Pango_Color, __toString, arginfo_class_Pango_Color___toString, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };

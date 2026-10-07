@@ -46,6 +46,13 @@ final readonly class Color
     ): Color {}
 
     /**
+     * @return array{color: Color, alpha: int}
+     */
+    public static function fromStringWithAlpha(
+        string $string
+    ): array {}
+
+    /**
      * Returns a textual specification of color.
      *
      * The string is in the hexadecimal form #rrrrggggbbbb, where r, g and b are

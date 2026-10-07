@@ -117,6 +117,42 @@ PHP_METHOD(Pango_Color, fromString)
 }
 /* }}} */
 
+/* {{{ */
+PHP_METHOD(Pango_Color, fromStringWithAlpha)
+{
+    zend_string *spec = NULL;
+    PangoColor *color;
+    guint16 alpha;
+    zval color_zv;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_STR(spec)
+    ZEND_PARSE_PARAMETERS_END();
+
+    if (zend_str_has_nul_byte(spec)) {
+        zend_argument_value_error(1, "must not contain NUL bytes");
+        RETURN_THROWS();
+    }
+
+    object_init_ex(&color_zv, ce_pango_color);
+    color = pango_color_object_get_color(&color_zv);
+
+    if (!pango_color_parse_with_alpha(color, &alpha, ZSTR_VAL(spec))) {
+        zend_throw_exception(
+            php_pango_get_pango_exception_ce(),
+            "Failed to parse color with alpha from string",
+            0
+        );
+        zval_ptr_dtor(&color_zv);
+        RETURN_THROWS();
+    }
+
+    array_init(return_value);
+    add_assoc_zval(return_value, "color", &color_zv);
+    add_assoc_long(return_value, "alpha", alpha);
+}
+/* }}} */
+
 /* {{{ Returns a textual specification of color */
 PHP_METHOD(Pango_Color, __toString)
 {

@@ -12,7 +12,6 @@
 
 # Structs
 - AttrShape
-- Color::parse_with_alpha
 - GlyphItem
 - GlyphString
 

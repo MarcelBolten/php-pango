@@ -223,7 +223,7 @@ For now there is no plan to implement this as I only want to get positional info
     - ✅ copy
     - ✅ free
     - ✅ parse
-    - parse_with_alpha
+    - ✅ parse_with_alpha
     - ✅ to_string
 - FontDescription
     - ✅ new
