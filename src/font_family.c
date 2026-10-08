@@ -51,7 +51,6 @@ PHP_PANGO_API PangoFontFamily* pango_font_family_object_get_font_family(zval *zv
 PHP_METHOD(Pango_FontFamily, getFace)
 {
     zend_string *name = NULL;
-    size_t name_len = 0;
     PangoFontFace *font_face;
     pango_font_face_object *font_face_object;
 
