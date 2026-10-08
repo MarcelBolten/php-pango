@@ -344,7 +344,7 @@ class Layout
      * @param int $flags A bitwise OR of Pango\Layout::SERIALIZE constants.
      */
     public function serialize(
-        int $flags = Pango\Layout::SERIALIZE_DEFAULT
+        int $flags = Layout::SERIALIZE_DEFAULT
     ): string {}
 #endif
 

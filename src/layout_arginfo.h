@@ -1,5 +1,5 @@
 /* This is a generated file, edit layout.stub.php instead.
- * Stub hash: 524494ae9fbe5968c9b635afdbb1e7adcccaac63 */
+ * Stub hash: 304f7ce0d028e6f81255031ddf317c1f11d5f8db */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Pango\\Context, 0)
@@ -116,7 +116,7 @@ ZEND_END_ARG_INFO()
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_serialize, 0, 0, IS_STRING, 0)
-	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "Pango\\Pango\\Layout::SERIALIZE_DEFAULT")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "Pango\\Layout::SERIALIZE_DEFAULT")
 ZEND_END_ARG_INFO()
 #endif
 
