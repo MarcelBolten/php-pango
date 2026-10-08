@@ -13,8 +13,8 @@ var_dump($A);
 $B = new Matrix(yy: 5);
 var_dump($B);
 
-$A->concat($B);
-var_dump($A);
+$C = $A->concat($B);
+var_dump($C);
 
 try {
     $A->concat();

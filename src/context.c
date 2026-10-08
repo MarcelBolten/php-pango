@@ -279,8 +279,6 @@ PHP_METHOD(Pango_Context, getMatrix)
 
     // if the context has a matrix set, copy its values to the php matrix object
     if (matrix_pango != NULL) {
-        // TODO: check if a copy is wanted here, perhaps just assign the pointer?
-        // but the returned matrix is const so probably a copy is better
         matrix_php = pango_matrix_object_get_matrix(return_value);
         *matrix_php = *matrix_pango;
     }

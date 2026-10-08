@@ -10,11 +10,8 @@ use Pango\Matrix;
 
 $matrix = new Matrix(5);
 $copy = clone $matrix;
-$copy->xx = 9;
 
-var_dump($matrix->xx);
-var_dump($copy->xx);
+var_dump($matrix !== $copy);
 ?>
 --EXPECT--
-float(5)
-float(9)
+bool(true)

@@ -17,8 +17,7 @@ var_dump($context);
 $matrix = $context->getMatrix();
 var_dump($matrix);
 
-$matrix->scale(2.0, 2.0);
-$context->setMatrix($matrix);
+$context->setMatrix($matrix->scale(2.0, 2.0));
 var_dump($context->getMatrix());
 
 try {

@@ -8,10 +8,11 @@ include __DIR__ . '/../../skipif.php.inc';
 <?php
 use Pango\Matrix;
 
-$matrix = new Matrix(1, 0, 0, 1);
+$matrix = new Matrix(1.0, 0, 0, 1.0);
 var_dump($matrix);
 
-$matrix->rotate(0.1);
+$R = $matrix->rotate(90.0);
+var_dump($R);
 
 /* Wrong number args */
 try {
@@ -44,6 +45,20 @@ object(Pango\Matrix)#%d (6) {
   float(0)
   ["yy"]=>
   float(1)
+  ["x0"]=>
+  float(0)
+  ["y0"]=>
+  float(0)
+}
+object(Pango\Matrix)#2 (6) {
+  ["xx"]=>
+  float(6.123233995736766E-17)
+  ["yx"]=>
+  float(-1)
+  ["xy"]=>
+  float(1)
+  ["yy"]=>
+  float(6.123233995736766E-17)
   ["x0"]=>
   float(0)
   ["y0"]=>

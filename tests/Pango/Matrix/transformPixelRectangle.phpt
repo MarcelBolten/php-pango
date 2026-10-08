@@ -10,7 +10,7 @@ use Pango\Matrix;
 use Pango\Rectangle;
 
 $matrix = new Matrix();
-$matrix->scale(2, 2);
+$matrix = $matrix->scale(2, 2);
 var_dump($matrix);
 
 $params = [2, 2, 10, 10];

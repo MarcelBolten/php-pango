@@ -1,5 +1,5 @@
 /* This is a generated file, edit matrix.stub.php instead.
- * Stub hash: 6cbd598b9ac4c755a16a24079b8814de33923e91 */
+ * Stub hash: 4f1f4f6b35b20470690a0f4c09587abfa856e0a9 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Matrix___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, xx, IS_DOUBLE, 0, "1.0")
@@ -10,7 +10,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Matrix___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, y0, IS_DOUBLE, 0, "0.0")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_concat, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Matrix_concat, 0, 1, Pango\\Matrix, 0)
 	ZEND_ARG_OBJ_INFO(0, newMatrix, Pango\\Matrix, 0)
 ZEND_END_ARG_INFO()
 
@@ -25,11 +25,11 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Matrix_getGravity, 0, 0, Pango\\Gravity, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_rotate, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Matrix_rotate, 0, 1, Pango\\Matrix, 0)
 	ZEND_ARG_TYPE_INFO(0, degrees, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_scale, 0, 2, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Matrix_scale, 0, 2, Pango\\Matrix, 0)
 	ZEND_ARG_TYPE_INFO(0, sx, IS_DOUBLE, 0)
 	ZEND_ARG_TYPE_INFO(0, sy, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
@@ -50,7 +50,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Matrix_transformRectangle arginfo_class_Pango_Matrix_transformPixelRectangle
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Matrix_translate, 0, 2, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Matrix_translate, 0, 2, Pango\\Matrix, 0)
 	ZEND_ARG_TYPE_INFO(0, tx, IS_DOUBLE, 0)
 	ZEND_ARG_TYPE_INFO(0, ty, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
@@ -92,45 +92,45 @@ static zend_class_entry *register_class_Pango_Matrix(void)
 
 	INIT_NS_CLASS_ENTRY(ce, "Pango", "Matrix", class_Pango_Matrix_methods);
 #if (PHP_VERSION_ID >= 80400)
-	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
-	ce.ce_flags |= ZEND_ACC_FINAL;
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
-	class_entry->ce_flags |= ZEND_ACC_FINAL;
+	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
 #endif
 
 	zval property_xx_default_value;
-	ZVAL_DOUBLE(&property_xx_default_value, 1.0);
+	ZVAL_UNDEF(&property_xx_default_value);
 	zend_string *property_xx_name = zend_string_init("xx", sizeof("xx") - 1, true);
 	zend_declare_typed_property(class_entry, property_xx_name, &property_xx_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_xx_name, true);
 
 	zval property_yx_default_value;
-	ZVAL_DOUBLE(&property_yx_default_value, 0.0);
+	ZVAL_UNDEF(&property_yx_default_value);
 	zend_string *property_yx_name = zend_string_init("yx", sizeof("yx") - 1, true);
 	zend_declare_typed_property(class_entry, property_yx_name, &property_yx_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_yx_name, true);
 
 	zval property_xy_default_value;
-	ZVAL_DOUBLE(&property_xy_default_value, 0.0);
+	ZVAL_UNDEF(&property_xy_default_value);
 	zend_string *property_xy_name = zend_string_init("xy", sizeof("xy") - 1, true);
 	zend_declare_typed_property(class_entry, property_xy_name, &property_xy_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_xy_name, true);
 
 	zval property_yy_default_value;
-	ZVAL_DOUBLE(&property_yy_default_value, 1.0);
+	ZVAL_UNDEF(&property_yy_default_value);
 	zend_string *property_yy_name = zend_string_init("yy", sizeof("yy") - 1, true);
 	zend_declare_typed_property(class_entry, property_yy_name, &property_yy_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_yy_name, true);
 
 	zval property_x0_default_value;
-	ZVAL_DOUBLE(&property_x0_default_value, 0.0);
+	ZVAL_UNDEF(&property_x0_default_value);
 	zend_string *property_x0_name = zend_string_init("x0", sizeof("x0") - 1, true);
 	zend_declare_typed_property(class_entry, property_x0_name, &property_x0_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_x0_name, true);
 
 	zval property_y0_default_value;
-	ZVAL_DOUBLE(&property_y0_default_value, 0.0);
+	ZVAL_UNDEF(&property_y0_default_value);
 	zend_string *property_y0_name = zend_string_init("y0", sizeof("y0") - 1, true);
 	zend_declare_typed_property(class_entry, property_y0_name, &property_y0_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release_ex(property_y0_name, true);

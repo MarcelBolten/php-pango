@@ -11,8 +11,8 @@ use Pango\Matrix;
 $matrix = new Matrix(5, 5);
 var_dump($matrix);
 
-$matrix->translate(2, 2);
-var_dump($matrix);
+$T = $matrix->translate(2, 2);
+var_dump($T);
 
 /* Wrong number args */
 try {

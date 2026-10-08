@@ -10,14 +10,14 @@ namespace Pango;
 /**
  * Matrix specifies a transformation between user-space and device coordinates.
  */
-final class Matrix
+final readonly class Matrix
 {
-    public readonly float $xx = 1.0;
-    public readonly float $yx = 0.0;
-    public readonly float $xy = 0.0;
-    public readonly float $yy = 1.0;
-    public readonly float $x0 = 0.0;
-    public readonly float $y0 = 0.0;
+    public float $xx;
+    public float $yx;
+    public float $xy;
+    public float $yy;
+    public float $x0;
+    public float $y0;
 
     public function __construct(
         float $xx = 1.0,
@@ -29,13 +29,15 @@ final class Matrix
     ) {}
 
     /**
-     * Changes the transformation represented by this matrix to be the
-     * transformation given by first applying the transformation given by
-     * newMatrix and then applying the original transformation.
+     * Returns a new matrix whose transformation is the result of first applying
+     * the transformation given by $newMatrix, then applying the transformation
+     * of this matrix.
+     *
+     * This matrix is immutable and is not modified.
      */
     public function concat(
         Matrix $newMatrix
-    ): void {}
+    ): Matrix {}
 
     /**
      * Returns the scale factor of a matrix on the height of the font.
@@ -64,23 +66,27 @@ final class Matrix
     public function getGravity(): Gravity {}
 
     /**
-     * Changes the transformation represented by matrix to be the transformation
-     * given by first rotating by degrees degrees counter-clockwise then
-     * applying the original transformation.
+     * Returns a new matrix whose transformation is the result of first rotating
+     * by $degrees degrees counter-clockwise, then applying the transformation
+     * of this matrix.
+     *
+     * This matrix is immutable and is not modified.
      */
     public function rotate(
         float $degrees
-    ): void {}
+    ): Matrix {}
 
     /**
-     * Changes the transformation represented by matrix to be the transformation
-     * given by first scaling by sx in the X direction and sy in the Y direction
-     * then applying the original transformation.
+     * Returns a new matrix whose transformation is the result of first scaling
+     * by $sx in the X direction and $sy in the Y direction, then applying the
+     * transformation of this matrix.
+     *
+     * This matrix is immutable and is not modified.
      */
     public function scale(
         float $sx,
         float $sy
-    ): void {}
+    ): Matrix {}
 
     /**
      * @return array{x: float, y: float}
@@ -119,8 +125,15 @@ final class Matrix
         Rectangle $rectangle
     ): Rectangle {}
 
+    /**
+     * Returns a new matrix whose transformation is the result of first
+     * translating by ($tx, $ty), then applying the transformation of this
+     * matrix.
+     *
+     * This matrix is immutable and is not modified.
+     */
     public function translate(
         float $tx,
         float $ty
-    ): void {}
+    ): Matrix {}
 }
