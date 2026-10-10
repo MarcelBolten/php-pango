@@ -20,7 +20,7 @@ try {
 }
 
 try {
-    new AttrLanguage($language, 123);
+    new AttrLanguage($language, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -43,6 +43,6 @@ object(Pango\Attribute\Language)#%d (3) {
     string(2) "en"
   }
 }
-Pango\Attribute\Language::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Language::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Language::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Language::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Language::__construct(): Argument #1 ($value) must be of type Pango\Language, array given

@@ -27,7 +27,7 @@ try {
 }
 
 try {
-    new Family("Arial", 123);
+    new Family("Arial", 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -48,6 +48,6 @@ object(Pango\Attribute\Family)#%d (3) {
   string(5) "Arial"
 }
 Pango\Attribute\Family::__construct(): Argument #1 ($value) must not contain NUL bytes
-Pango\Attribute\Family::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Family::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Family::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Family::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Family::__construct(): Argument #1 ($value) must be of type string, array given

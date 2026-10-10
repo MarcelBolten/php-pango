@@ -25,6 +25,21 @@
 #include <pango/pango.h>
 #include "../../php_pango.h"
 
+// pango uses uint32 for attribute indices which is incompatible with a 32-bit zend_long
+#if SIZEOF_ZEND_LONG == 4
+# define PHP_PANGO_ATTR_INDEX_MAX ZEND_LONG_MAX
+# define PHP_PANGO_ATTR_INDEX_TO_TEXT_END ((zend_long) -1)
+# define PHP_PANGO_ATTR_END_INDEX_ERROR \
+    "must be greater than " ZEND_LONG_FMT \
+    " and at most " ZEND_LONG_FMT ", or -1, but " ZEND_LONG_FMT " given"
+#else
+# define PHP_PANGO_ATTR_INDEX_MAX ((zend_long) G_MAXUINT)
+# define PHP_PANGO_ATTR_INDEX_TO_TEXT_END ((zend_long) G_MAXUINT)
+# define PHP_PANGO_ATTR_END_INDEX_ERROR \
+    "must be greater than " ZEND_LONG_FMT \
+    " and at most " ZEND_LONG_FMT ", but " ZEND_LONG_FMT " given"
+#endif
+
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_absolute_size_ce(void);
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_allow_breaks_ce(void);
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_background_alpha_ce(void);

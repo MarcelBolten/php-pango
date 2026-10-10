@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new GravityHint(Pango\GravityHint::Strong, 123);
+    new GravityHint(Pango\GravityHint::Strong, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\GravityHint)#%d (3) {
   ["value"]=>
   enum(Pango\GravityHint::Strong)
 }
-Pango\Attribute\GravityHint::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\GravityHint::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\GravityHint::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\GravityHint::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\GravityHint::__construct(): Argument #1 ($value) must be of type Pango\GravityHint, array given

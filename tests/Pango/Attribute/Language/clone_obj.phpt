@@ -13,10 +13,8 @@ $attrLanguage = new AttrLanguage(new Language("en"));
 var_dump($attrLanguage->value->__toString());
 
 $copy = clone $attrLanguage;
-$copy->value = new Language("ja");
-
 var_dump($copy->value->__toString());
 ?>
 --EXPECTF--
 string(2) "en"
-string(2) "ja"
+string(2) "en"

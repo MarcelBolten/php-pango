@@ -12,7 +12,7 @@ $word = new Word();
 var_dump($word);
 
 try {
-    new Word(42);
+    new Word(1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -24,4 +24,4 @@ object(Pango\Attribute\Word)#%d (2) {
   ["endIndex"]=>
   int(4294967295)
 }
-Pango\Attribute\Word::__construct() expects exactly 0 arguments, 1 given
+Pango\Attribute\Word::__construct() expects at most 2 arguments, 3 given

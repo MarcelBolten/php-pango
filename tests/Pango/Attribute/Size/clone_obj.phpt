@@ -12,10 +12,8 @@ $size = new Size(5);
 var_dump($size->value);
 
 $copy = clone $size;
-$copy->value = 9;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 int(5)
-int(9)
+int(5)

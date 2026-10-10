@@ -12,10 +12,8 @@ $strikethrough = new Strikethrough(true);
 var_dump($strikethrough->value);
 
 $copy = clone $strikethrough;
-$copy->value = false;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 bool(true)
-bool(false)
+bool(true)

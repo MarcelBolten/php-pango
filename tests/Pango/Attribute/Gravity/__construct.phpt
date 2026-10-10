@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new Gravity(Pango\Gravity::North, 123);
+    new Gravity(Pango\Gravity::North, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\Gravity)#%d (3) {
   ["value"]=>
   enum(Pango\Gravity::East)
 }
-Pango\Attribute\Gravity::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Gravity::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Gravity::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Gravity::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Gravity::__construct(): Argument #1 ($value) must be of type Pango\Gravity, array given

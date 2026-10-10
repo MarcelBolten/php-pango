@@ -12,10 +12,8 @@ $width = new Width(10240);
 var_dump($width->value);
 
 $copy = clone $width;
-$copy->value = 20480;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 int(10240)
-int(20480)
+int(10240)

@@ -19,7 +19,7 @@ try {
 }
 
 try {
-    new StrikethroughColor($color, 123);
+    new StrikethroughColor($color, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -46,6 +46,6 @@ object(Pango\Attribute\StrikethroughColor)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\StrikethroughColor::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\StrikethroughColor::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\StrikethroughColor::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\StrikethroughColor::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\StrikethroughColor::__construct(): Argument #1 ($color) must be of type Pango\Color, array given

@@ -419,7 +419,7 @@ PHP_METHOD(Pango_Attribute_AttributeList, update)
         Z_PARAM_LONG(add)
     ZEND_PARSE_PARAMETERS_END();
 
-    pango_attr_list_update (
+    pango_attr_list_update(
         Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list,
         pos, remove, add
     );

@@ -12,10 +12,8 @@ $insertHyphens = new InsertHyphens(true);
 var_dump($insertHyphens->value);
 
 $copy = clone $insertHyphens;
-$copy->value = false;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 bool(true)
-bool(false)
+bool(true)

@@ -12,10 +12,8 @@ $allowBreaks = new AllowBreaks(true);
 var_dump($allowBreaks->value);
 
 $copy = clone $allowBreaks;
-$copy->value = false;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 bool(true)
-bool(false)
+bool(true)

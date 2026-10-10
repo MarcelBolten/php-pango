@@ -30,7 +30,7 @@ try {
 }
 
 try {
-    new Show(Show::NONE, 123);
+    new Show(Show::NONE, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -52,6 +52,6 @@ object(Pango\Attribute\Show)#%d (3) {
 }
 Pango\Attribute\Show::__construct(): Argument #1 ($value) must be a class constant of Pango\Attribute\Show or a combination of them
 Pango\Attribute\Show::__construct(): Argument #1 ($value) must be a class constant of Pango\Attribute\Show or a combination of them
-Pango\Attribute\Show::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Show::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Show::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Show::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Show::__construct(): Argument #1 ($value) must be of type int, array given

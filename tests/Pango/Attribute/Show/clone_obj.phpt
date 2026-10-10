@@ -12,10 +12,8 @@ $show = new Show(Show::NONE);
 var_dump($show->value);
 
 $copy = clone $show;
-$copy->value = Show::LINE_BREAKS;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 int(0)
-int(2)
+int(0)

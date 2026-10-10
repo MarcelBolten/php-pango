@@ -12,10 +12,8 @@ $overline = new Overline(Pango\Overline::Single);
 var_dump($overline->value);
 
 $copy = clone $overline;
-$copy->value = Pango\Overline::None;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 enum(Pango\Overline::Single)
-enum(Pango\Overline::None)
+enum(Pango\Overline::Single)

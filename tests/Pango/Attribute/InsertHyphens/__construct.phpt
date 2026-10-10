@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new InsertHyphens(true, 123);
+    new InsertHyphens(true, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\InsertHyphens)#%d (3) {
   ["value"]=>
   bool(true)
 }
-Pango\Attribute\InsertHyphens::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\InsertHyphens::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\InsertHyphens::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\InsertHyphens::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\InsertHyphens::__construct(): Argument #1 ($value) must be of type bool, array given

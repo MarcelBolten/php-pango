@@ -62,17 +62,63 @@ static zend_object* pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
     return return_value; \
 }
 
+#define PANGO_ATTR_CHECK_INDICES(start_index, end_index) \
+    if ((start_index) < PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING || \
+        (start_index) > PHP_PANGO_ATTR_INDEX_MAX) { \
+        zend_argument_value_error(2, \
+            "must be between 0 and " ZEND_LONG_FMT " but " ZEND_LONG_FMT " given", \
+            (zend_long) PHP_PANGO_ATTR_INDEX_MAX, \
+            (zend_long) (start_index)); \
+        RETURN_THROWS(); \
+    } \
+    if ((end_index) != PHP_PANGO_ATTR_INDEX_TO_TEXT_END && \
+        ((end_index) <= (start_index) || \
+            (end_index) > PHP_PANGO_ATTR_INDEX_MAX)) { \
+        zend_argument_value_error(3, \
+            PHP_PANGO_ATTR_END_INDEX_ERROR, \
+            (zend_long) (start_index), \
+            (zend_long) PHP_PANGO_ATTR_INDEX_MAX, \
+            (zend_long) (end_index)); \
+        RETURN_THROWS(); \
+    }
+
+#define PANGO_ATTR_CONSTRUCT(pango_attr_new_function, value_type, z_param_type) \
+    value_type value; \
+    zend_long start_index = ((zend_long) PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING); \
+    zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END; \
+\
+    ZEND_PARSE_PARAMETERS_START(1, 3) \
+        Z_PARAM_##z_param_type(value) \
+        Z_PARAM_OPTIONAL \
+        Z_PARAM_LONG(start_index) \
+        Z_PARAM_LONG(end_index) \
+    ZEND_PARSE_PARAMETERS_END(); \
+\
+    PANGO_ATTR_CHECK_INDICES(start_index, end_index); \
+\
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_new_function(value); \
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = (guint) start_index; \
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->end_index = end_index == PHP_PANGO_ATTR_INDEX_TO_TEXT_END \
+        ? PANGO_ATTR_INDEX_TO_TEXT_END \
+        : (guint) end_index;
+
 #define PANGO_ATTR_RANGE_READ_PROPERTY(_attr) \
     PANGO_LONG_VALUE_FROM_STRUCT((_attr)->start_index, startIndex); \
-    PANGO_LONG_VALUE_FROM_STRUCT((_attr)->end_index, endIndex);
-
-#define PANGO_ATTR_RANGE_WRITE_PROPERTY(_attr) \
-    PANGO_LONG_VALUE_TO_STRUCT((_attr)->start_index, startIndex); \
-    PANGO_LONG_VALUE_TO_STRUCT((_attr)->end_index, endIndex);
+    PANGO_LONG_VALUE_FROM_STRUCT( \
+        (_attr)->end_index == PANGO_ATTR_INDEX_TO_TEXT_END \
+            ? PHP_PANGO_ATTR_INDEX_TO_TEXT_END \
+            : (_attr)->end_index, \
+        endIndex \
+    );
 
 #define PANGO_ATTR_ADD_RANGE_PROPERTIES(_attr) \
     PANGO_ADD_STRUCT_LONG_VALUE((_attr)->start_index, startIndex); \
-    PANGO_ADD_STRUCT_LONG_VALUE((_attr)->end_index, endIndex);
+    PANGO_ADD_STRUCT_LONG_VALUE( \
+        (_attr)->end_index == PANGO_ATTR_INDEX_TO_TEXT_END \
+            ? PHP_PANGO_ATTR_INDEX_TO_TEXT_END \
+            : (_attr)->end_index, \
+        endIndex \
+    );
 
 #define PANGO_ATTR_READ_PROPERTY(pango_type, php_type, pango_member) \
     pango_attribute_object *attr_object = pango_attribute_fetch_object(object); \
@@ -172,4 +218,3 @@ static zend_object* pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
     PANGO_ADD_STRUCT_COLOR_VALUE; \
 \
     return props;
-

@@ -12,9 +12,7 @@ use Pango\Attribute\Size;
 $attributeList = new AttributeList("10 20 size 42");
 var_dump($attributeList->getAttributes());
 
-$attrSize = new Size(10);
-$attrSize->startIndex = 10;
-$attrSize->endIndex = 20;
+$attrSize = new Size(10, 10, 20);
 
 $attributeList->unshift($attrSize);
 var_dump($attributeList->getAttributes());

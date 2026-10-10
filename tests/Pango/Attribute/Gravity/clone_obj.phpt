@@ -12,10 +12,8 @@ $gravity = new Gravity(Pango\Gravity::North);
 var_dump($gravity->value);
 
 $copy = clone $gravity;
-$copy->value = Pango\Gravity::South;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 enum(Pango\Gravity::North)
-enum(Pango\Gravity::South)
+enum(Pango\Gravity::North)

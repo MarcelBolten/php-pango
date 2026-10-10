@@ -40,9 +40,7 @@ pango_attr_font_description_object *pango_attr_font_description_fetch_object(zen
 /* {{{ */
 PHP_PANGO_API PangoAttribute *pango_attr_font_description_object_get_attribute(zval *zv)
 {
-    pango_attr_font_description_object *attr_object = Z_PANGO_ATTR_FONT_DESCRIPTION_P(zv);
-
-    return (PangoAttribute *) attr_object->attribute;
+    return (PangoAttribute *) Z_PANGO_ATTR_FONT_DESCRIPTION_P(zv)->attribute;
 }
 /* }}} */
 
@@ -59,12 +57,19 @@ zend_class_entry* php_pango_get_attr_font_description_ce(void)
 PHP_METHOD(Pango_Attribute_FontDescription, __construct)
 {
     zval *font_description_zv;
+    zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
+    zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
     pango_attr_font_description_object *attr_object;
     PangoFontDescription *font_description;
 
-    ZEND_PARSE_PARAMETERS_START(1, 1)
+    ZEND_PARSE_PARAMETERS_START(1, 3)
         Z_PARAM_OBJECT_OF_CLASS(font_description_zv, php_pango_get_font_description_ce())
+        Z_PARAM_OPTIONAL
+        Z_PARAM_LONG(start_index)
+        Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
+
+    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
 
     attr_object = Z_PANGO_ATTR_FONT_DESCRIPTION_P(ZEND_THIS);
 
@@ -73,6 +78,8 @@ PHP_METHOD(Pango_Attribute_FontDescription, __construct)
 
     font_description = Z_PANGO_FONT_DESC_P(font_description_zv)->font_description;
     attr_object->attribute = pango_attr_font_desc_new(font_description);
+    attr_object->attribute->start_index = start_index;
+    attr_object->attribute->end_index = end_index;
 }
 /* }}} */
 

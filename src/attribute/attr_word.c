@@ -49,11 +49,20 @@ zend_class_entry* php_pango_get_attr_word_ce(void)
 /* {{{ Creates a new word attribute */
 PHP_METHOD(Pango_Attribute_Word, __construct)
 {
-    zend_long value;
+    zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
+    zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
 
-    ZEND_PARSE_PARAMETERS_NONE();
+    ZEND_PARSE_PARAMETERS_START(0, 2)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_LONG(start_index)
+        Z_PARAM_LONG(end_index)
+    ZEND_PARSE_PARAMETERS_END();
+
+    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
 
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_word_new();
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->end_index = end_index;
 }
 /* }}} */
 

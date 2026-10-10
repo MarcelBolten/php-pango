@@ -9,13 +9,19 @@ include __DIR__ . '/../../../skipif.php.inc';
 use Pango\Attribute\Word;
 
 $word = new Word();
-var_dump($word->startIndex);
-
-$copy = clone $word;
-$copy->startIndex = 9;
-
-var_dump($copy->startIndex);
+var_dump($word);
+var_dump(clone $word);
 ?>
 --EXPECT--
-int(0)
-int(9)
+object(Pango\Attribute\Word)#1 (2) {
+  ["startIndex"]=>
+  int(0)
+  ["endIndex"]=>
+  int(4294967295)
+}
+object(Pango\Attribute\Word)#2 (2) {
+  ["startIndex"]=>
+  int(0)
+  ["endIndex"]=>
+  int(4294967295)
+}

@@ -19,6 +19,10 @@ var_dump($attribute1->equalValue($attribute3));
 $attribute4 = new Pango\Attribute\Style(Pango\Style::Italic);
 var_dump($attribute4);
 var_dump($attribute4->equalValue($attribute1));
+
+$attribute4 = new Pango\Attribute\Size(12, 10, 20);
+var_dump($attribute4);
+var_dump($attribute4->equalValue($attribute1));
 ?>
 --EXPECTF--
 object(Pango\Attribute\Size)#%d (3) {
@@ -56,3 +60,12 @@ object(Pango\Attribute\Style)#%d (3) {
   enum(Pango\Style::Italic)
 }
 bool(false)
+object(Pango\Attribute\Size)#%d (3) {
+  ["startIndex"]=>
+  int(10)
+  ["endIndex"]=>
+  int(20)
+  ["value"]=>
+  int(12)
+}
+bool(true)

@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new Strikethrough(true, 123);
+    new Strikethrough(true, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\Strikethrough)#%d (3) {
   ["value"]=>
   bool(true)
 }
-Pango\Attribute\Strikethrough::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Strikethrough::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Strikethrough::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Strikethrough::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Strikethrough::__construct(): Argument #1 ($value) must be of type bool, array given

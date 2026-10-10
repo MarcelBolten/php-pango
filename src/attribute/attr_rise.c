@@ -49,13 +49,7 @@ zend_class_entry* php_pango_get_attr_rise_ce(void)
 /* {{{ Creates a new rise attribute */
 PHP_METHOD(Pango_Attribute_Rise, __construct)
 {
-    zend_long value;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_LONG(value)
-    ZEND_PARSE_PARAMETERS_END();
-
-    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_rise_new(value);
+    PANGO_ATTR_CONSTRUCT(pango_attr_rise_new, zend_long, LONG);
 }
 /* }}} */
 

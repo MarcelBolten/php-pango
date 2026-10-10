@@ -12,10 +12,8 @@ $textTransform = new TextTransform(Pango\TextTransform::Lowercase);
 var_dump($textTransform->value);
 
 $copy = clone $textTransform;
-$copy->value = Pango\TextTransform::Uppercase;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 enum(Pango\TextTransform::Lowercase)
-enum(Pango\TextTransform::Uppercase)
+enum(Pango\TextTransform::Lowercase)

@@ -12,10 +12,8 @@ $fallback = new Fallback(true);
 var_dump($fallback->value);
 
 $copy = clone $fallback;
-$copy->value = false;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 bool(true)
-bool(false)
+bool(true)

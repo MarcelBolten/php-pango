@@ -51,17 +51,26 @@ zend_class_entry* php_pango_get_attr_baseline_shift_ce(void)
 PHP_METHOD(Pango_Attribute_BaselineShift, __construct)
 {
     zend_object *baseline_shift_enum = NULL;
+    zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
+    zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
     zend_long baseline_shift_value;
 
-    ZEND_PARSE_PARAMETERS_START(1, 1)
+    ZEND_PARSE_PARAMETERS_START(1, 3)
         Z_PARAM_OBJ_OF_CLASS_OR_LONG(baseline_shift_enum, php_pango_get_baseline_shift_ce(), baseline_shift_value)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_LONG(start_index)
+        Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
+
+    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
 
     if (baseline_shift_enum) {
         baseline_shift_value = Z_LVAL_P(zend_enum_fetch_case_value(baseline_shift_enum));
     }
 
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_baseline_shift_new(baseline_shift_value);
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->end_index = end_index;
 }
 /* }}} */
 

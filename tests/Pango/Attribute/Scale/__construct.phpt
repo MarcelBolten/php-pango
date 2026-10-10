@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new Scale(42.5, 123);
+    new Scale(42.5, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\Scale)#%d (3) {
   ["value"]=>
   float(42.5)
 }
-Pango\Attribute\Scale::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Scale::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Scale::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Scale::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Scale::__construct(): Argument #1 ($value) must be of type float, array given

@@ -1,5 +1,5 @@
 /* This is a generated file, edit attribute.stub.php instead.
- * Stub hash: 9d2b64e5de9f58714dec4ebac9d893e56ba20cbb */
+ * Stub hash: 58c7ae43b0816836b9dfdc6d41143c17d744eb93 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_Attribute_equalValue, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_OBJ_INFO(0, other, Pango\\Attribute\\Attribute, 0)
@@ -7,56 +7,80 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Language___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Language, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Family___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Style___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Style, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Weight___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Weight, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Variant___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Variant, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Stretch___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Stretch, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Size___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_AbsoluteSize___construct arginfo_class_Pango_Attribute_Size___construct
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_FontDescription___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Foreground___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, color, Pango\\Color, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_Background___construct arginfo_class_Pango_Attribute_Foreground___construct
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Underline___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\\125nderline, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Strikethrough___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_Rise___construct arginfo_class_Pango_Attribute_Size___construct
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Scale___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_Fallback___construct arginfo_class_Pango_Attribute_Strikethrough___construct
@@ -69,10 +93,14 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Gravity___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Gravity, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_GravityHint___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\GravityHint, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_FontFeatures___construct arginfo_class_Pango_Attribute_Family___construct
@@ -89,6 +117,8 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Overline___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Overline, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_OverlineColor___construct arginfo_class_Pango_Attribute_Foreground___construct
@@ -96,33 +126,47 @@ ZEND_END_ARG_INFO()
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_LineHeight___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_AbsoluteLineHeight___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_TextTransform___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\TextTransform, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Word___construct, 0, 0, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_Sentence___construct arginfo_class_Pango_Attribute_Word___construct
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_BaselineShift___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_TYPE_MASK(0, value, Pango\\BaselineShift, MAY_BE_LONG, NULL)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_FontScale___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\FontScale, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Width___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 #endif
 
@@ -395,7 +439,7 @@ static zend_class_entry *register_class_Pango_Attribute_Attribute(void)
 	zend_string_release_ex(const_INDEX_FROM_TEXT_BEGINNING_name, true);
 
 	zval const_INDEX_TO_TEXT_END_value;
-	ZVAL_LONG(&const_INDEX_TO_TEXT_END_value, PANGO_ATTR_INDEX_TO_TEXT_END);
+	ZVAL_LONG(&const_INDEX_TO_TEXT_END_value, PHP_PANGO_ATTR_INDEX_TO_TEXT_END);
 	zend_string *const_INDEX_TO_TEXT_END_name = zend_string_init_interned("INDEX_TO_TEXT_END", sizeof("INDEX_TO_TEXT_END") - 1, true);
 	zend_declare_class_constant_ex(class_entry, const_INDEX_TO_TEXT_END_name, &const_INDEX_TO_TEXT_END_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release_ex(const_INDEX_TO_TEXT_END_name, true);

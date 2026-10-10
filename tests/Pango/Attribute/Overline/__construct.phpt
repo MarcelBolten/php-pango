@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new Overline(Pango\Overline::Single, 123);
+    new Overline(Pango\Overline::Single, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\Overline)#%d (3) {
   ["value"]=>
   enum(Pango\Overline::Single)
 }
-Pango\Attribute\Overline::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Overline::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Overline::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Overline::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Overline::__construct(): Argument #1 ($value) must be of type Pango\Overline, array given

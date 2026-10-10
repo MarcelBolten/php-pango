@@ -49,13 +49,7 @@ zend_class_entry* php_pango_get_attr_fallback_ce(void)
 /* {{{ Creates a new Fallback attribute */
 PHP_METHOD(Pango_Attribute_Fallback, __construct)
 {
-    bool value;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_BOOL(value)
-    ZEND_PARSE_PARAMETERS_END();
-
-    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_fallback_new(value);
+    PANGO_ATTR_CONSTRUCT(pango_attr_fallback_new, bool, BOOL);
 }
 /* }}} */
 

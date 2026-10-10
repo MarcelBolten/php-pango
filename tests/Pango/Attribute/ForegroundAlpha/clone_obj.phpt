@@ -12,10 +12,8 @@ $foregroundAlpha = new ForegroundAlpha(5);
 var_dump($foregroundAlpha->value);
 
 $copy = clone $foregroundAlpha;
-$copy->value = 9;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 int(5)
-int(9)
+int(5)

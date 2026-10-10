@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new Style(Pango\Style::Italic, 123);
+    new Style(Pango\Style::Italic, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\Style)#%d (3) {
   ["value"]=>
   enum(Pango\Style::Italic)
 }
-Pango\Attribute\Style::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Style::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Style::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Style::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Style::__construct(): Argument #1 ($value) must be of type Pango\Style, array given

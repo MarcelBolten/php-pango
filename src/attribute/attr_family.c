@@ -50,10 +50,15 @@ zend_class_entry* php_pango_get_attr_family_ce(void)
 PHP_METHOD(Pango_Attribute_Family, __construct)
 {
     zend_string *family = NULL;
+    zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
+    zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
     size_t family_len;
 
-    ZEND_PARSE_PARAMETERS_START(1, 1)
+    ZEND_PARSE_PARAMETERS_START(1, 3)
         Z_PARAM_STR(family)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_LONG(start_index)
+        Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
 
     if (zend_str_has_nul_byte(family)) {
@@ -61,7 +66,11 @@ PHP_METHOD(Pango_Attribute_Family, __construct)
         RETURN_THROWS();
     }
 
+    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_family_new(ZSTR_VAL(family));
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->end_index = end_index;
 }
 /* }}} */
 

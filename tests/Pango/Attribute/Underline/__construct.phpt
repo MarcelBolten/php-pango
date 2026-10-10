@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new Underline(Pango\Underline::Double, 123);
+    new Underline(Pango\Underline::Double, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\Underline)#%d (3) {
   ["value"]=>
   enum(Pango\Underline::Double)
 }
-Pango\Attribute\Underline::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Underline::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Underline::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Underline::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Underline::__construct(): Argument #1 ($value) must be of type Pango\Underline, array given

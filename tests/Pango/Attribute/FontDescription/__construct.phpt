@@ -20,7 +20,7 @@ try {
 }
 
 try {
-    new AttrFontDescription($fontDescription, 123);
+    new AttrFontDescription($fontDescription, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -41,6 +41,6 @@ object(Pango\Attribute\FontDescription)#%d (3) {
   object(Pango\FontDescription)#%d (0) {
   }
 }
-Pango\Attribute\FontDescription::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\FontDescription::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\FontDescription::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\FontDescription::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\FontDescription::__construct(): Argument #1 ($desc) must be of type Pango\FontDescription, array given

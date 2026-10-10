@@ -12,10 +12,8 @@ $weight = new Weight(Pango\Weight::Bold);
 var_dump($weight->value);
 
 $copy = clone $weight;
-$copy->value = Pango\Weight::Light;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 enum(Pango\Weight::Bold)
-enum(Pango\Weight::Light)
+enum(Pango\Weight::Bold)

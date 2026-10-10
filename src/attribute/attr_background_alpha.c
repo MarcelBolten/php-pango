@@ -49,13 +49,8 @@ zend_class_entry* php_pango_get_attr_background_alpha_ce(void)
 /* {{{ Creates a new letter spacing attribute */
 PHP_METHOD(Pango_Attribute_BackgroundAlpha, __construct)
 {
-    zend_long value;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_LONG(value)
-    ZEND_PARSE_PARAMETERS_END();
-
-    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_background_alpha_new(value);
+    PANGO_ATTR_CONSTRUCT(pango_attr_background_alpha_new, zend_long, LONG);
+    // TODO: Need to check the value range for the background alpha attribute
 }
 /* }}} */
 

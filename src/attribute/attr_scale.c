@@ -49,13 +49,7 @@ zend_class_entry* php_pango_get_attr_scale_ce(void)
 /* {{{ Creates a new Scale attribute */
 PHP_METHOD(Pango_Attribute_Scale, __construct)
 {
-    double value;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_DOUBLE(value)
-    ZEND_PARSE_PARAMETERS_END();
-
-    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_scale_new(value);
+    PANGO_ATTR_CONSTRUCT(pango_attr_scale_new, double, DOUBLE);
 }
 /* }}} */
 

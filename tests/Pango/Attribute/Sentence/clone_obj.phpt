@@ -12,10 +12,8 @@ $sentence = new Sentence();
 var_dump($sentence->startIndex);
 
 $copy = clone $sentence;
-$copy->startIndex = 9;
-
 var_dump($copy->startIndex);
 ?>
 --EXPECT--
 int(0)
-int(9)
+int(0)

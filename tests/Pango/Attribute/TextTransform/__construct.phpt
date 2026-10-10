@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new TextTransform(Pango\TextTransform::Lowercase, 123);
+    new TextTransform(Pango\TextTransform::Lowercase, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\TextTransform)#%d (3) {
   ["value"]=>
   enum(Pango\TextTransform::Lowercase)
 }
-Pango\Attribute\TextTransform::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\TextTransform::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\TextTransform::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\TextTransform::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\TextTransform::__construct(): Argument #1 ($value) must be of type Pango\TextTransform, array given

@@ -12,10 +12,8 @@ $gravityHint = new GravityHint(Pango\GravityHint::Strong);
 var_dump($gravityHint->value);
 
 $copy = clone $gravityHint;
-$copy->value = Pango\GravityHint::Line;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 enum(Pango\GravityHint::Strong)
-enum(Pango\GravityHint::Line)
+enum(Pango\GravityHint::Strong)

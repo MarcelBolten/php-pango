@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new Stretch(Pango\Stretch::Expanded, 123);
+    new Stretch(Pango\Stretch::Expanded, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\Stretch)#%d (3) {
   ["value"]=>
   enum(Pango\Stretch::Expanded)
 }
-Pango\Attribute\Stretch::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\Stretch::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\Stretch::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\Stretch::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Stretch::__construct(): Argument #1 ($value) must be of type Pango\Stretch, array given

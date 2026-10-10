@@ -51,11 +51,18 @@ zend_class_entry* php_pango_get_attr_strikethrough_color_ce(void)
 PHP_METHOD(Pango_Attribute_StrikethroughColor, __construct)
 {
     zend_object *color_obj;
+    zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
+    zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
     PangoColor *color;
 
-    ZEND_PARSE_PARAMETERS_START(1, 1)
+    ZEND_PARSE_PARAMETERS_START(1, 3)
         Z_PARAM_OBJ_OF_CLASS(color_obj, php_pango_get_color_ce())
+        Z_PARAM_OPTIONAL
+        Z_PARAM_LONG(start_index)
+        Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
+
+    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
 
     color = pango_color_fetch_object(color_obj)->color;
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_strikethrough_color_new(
@@ -63,6 +70,8 @@ PHP_METHOD(Pango_Attribute_StrikethroughColor, __construct)
         color->green,
         color->blue
     );
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->end_index = end_index;
 }
 /* }}} */
 

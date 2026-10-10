@@ -15,13 +15,43 @@ $baselineShift = new BaselineShift(1024 * 10);
 var_dump($baselineShift);
 
 try {
+    new BaselineShift(1024, -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new BaselineShift(1024, PHP_INT_MAX);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new BaselineShift(1024, endIndex: -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new BaselineShift(1024, endIndex: PHP_INT_MAX);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new BaselineShift(1024, 30, 20);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     new BaselineShift();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BaselineShift(Pango\BaselineShift::Subscript, 123);
+    new BaselineShift(Pango\BaselineShift::Subscript, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -49,6 +79,11 @@ object(Pango\Attribute\BaselineShift)#%d (3) {
   ["value"]=>
   int(10240)
 }
-Pango\Attribute\BaselineShift::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\BaselineShift::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\BaselineShift::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\BaselineShift::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\BaselineShift::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\BaselineShift::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\BaselineShift::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\BaselineShift::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\BaselineShift::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\BaselineShift::__construct(): Argument #1 ($value) must be of type Pango\BaselineShift|int, array given

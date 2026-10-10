@@ -12,7 +12,7 @@ $sentence = new Sentence();
 var_dump($sentence);
 
 try {
-    new Sentence(42);
+    new Sentence(1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -24,4 +24,4 @@ object(Pango\Attribute\Sentence)#%d (2) {
   ["endIndex"]=>
   int(4294967295)
 }
-Pango\Attribute\Sentence::__construct() expects exactly 0 arguments, 1 given
+Pango\Attribute\Sentence::__construct() expects at most 2 arguments, 3 given

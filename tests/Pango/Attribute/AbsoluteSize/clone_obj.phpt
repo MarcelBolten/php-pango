@@ -12,10 +12,8 @@ $absoluteSize = new AbsoluteSize(5);
 var_dump($absoluteSize->value);
 
 $copy = clone $absoluteSize;
-$copy->value = 9;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 int(5)
-int(9)
+int(5)

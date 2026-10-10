@@ -12,10 +12,8 @@ $stretch = new Stretch(Pango\Stretch::Expanded);
 var_dump($stretch->value);
 
 $copy = clone $stretch;
-$copy->value = Pango\Stretch::Condensed;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 enum(Pango\Stretch::Expanded)
-enum(Pango\Stretch::Condensed)
+enum(Pango\Stretch::Expanded)

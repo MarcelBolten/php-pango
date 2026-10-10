@@ -49,13 +49,7 @@ zend_class_entry* php_pango_get_attr_insert_hyphens_ce(void)
 /* {{{ Creates a new InsertHyphens attribute */
 PHP_METHOD(Pango_Attribute_InsertHyphens, __construct)
 {
-    bool value;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_BOOL(value)
-    ZEND_PARSE_PARAMETERS_END();
-
-    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_insert_hyphens_new(value);
+    PANGO_ATTR_CONSTRUCT(pango_attr_insert_hyphens_new, bool, BOOL);
 }
 /* }}} */
 

@@ -12,10 +12,8 @@ $scale = new Scale(5.2);
 var_dump($scale->value);
 
 $copy = clone $scale;
-$copy->value = 9.3;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 float(5.2)
-float(9.3)
+float(5.2)

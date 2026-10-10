@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new LetterSpacing(42, 123);
+    new LetterSpacing(42, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\LetterSpacing)#%d (3) {
   ["value"]=>
   int(42)
 }
-Pango\Attribute\LetterSpacing::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\LetterSpacing::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\LetterSpacing::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\LetterSpacing::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\LetterSpacing::__construct(): Argument #1 ($value) must be of type int, array given

@@ -12,10 +12,8 @@ $style = new Style(Pango\Style::Italic);
 var_dump($style->value);
 
 $copy = clone $style;
-$copy->value = Pango\Style::Oblique;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 enum(Pango\Style::Italic)
-enum(Pango\Style::Oblique)
+enum(Pango\Style::Italic)

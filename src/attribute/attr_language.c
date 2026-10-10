@@ -58,12 +58,19 @@ zend_class_entry* php_pango_get_attr_language_ce(void)
 PHP_METHOD(Pango_Attribute_Language, __construct)
 {
     zval *language_zv;
+    zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
+    zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
     pango_attr_language_object *attr_object;
     PangoLanguage *language;
 
-    ZEND_PARSE_PARAMETERS_START(1, 1)
+    ZEND_PARSE_PARAMETERS_START(1, 3)
         Z_PARAM_OBJECT_OF_CLASS(language_zv, php_pango_get_language_ce())
+        Z_PARAM_OPTIONAL
+        Z_PARAM_LONG(start_index)
+        Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
+
+    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
 
     attr_object = Z_PANGO_ATTR_LANGUAGE_P(ZEND_THIS);
 
@@ -71,7 +78,10 @@ PHP_METHOD(Pango_Attribute_Language, __construct)
     ZVAL_COPY(&attr_object->language_zv, language_zv);
 
     language = Z_PANGO_LANGUAGE_P(language_zv)->language;
+
     attr_object->attribute = pango_attr_language_new(language);
+    attr_object->attribute->start_index = start_index;
+    attr_object->attribute->end_index = end_index;
 }
 /* }}} */
 

@@ -12,10 +12,8 @@ $baselineShift = new BaselineShift(Pango\BaselineShift::Superscript);
 var_dump($baselineShift->value);
 
 $copy = clone $baselineShift;
-$copy->value = Pango\BaselineShift::Subscript;
-
 var_dump($copy->value);
 ?>
 --EXPECT--
 enum(Pango\BaselineShift::Superscript)
-enum(Pango\BaselineShift::Subscript)
+enum(Pango\BaselineShift::Superscript)

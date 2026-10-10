@@ -24,7 +24,7 @@ try {
 }
 
 try {
-    new FontFeatures("Arial", 123);
+    new FontFeatures("Arial", 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -45,6 +45,6 @@ object(Pango\Attribute\FontFeatures)#%d (3) {
   string(14) "kern=0, liga=0"
 }
 Pango\Attribute\FontFeatures::__construct(): Argument #1 ($value) must not contain NUL bytes
-Pango\Attribute\FontFeatures::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\FontFeatures::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\FontFeatures::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\FontFeatures::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\FontFeatures::__construct(): Argument #1 ($value) must be of type string, array given

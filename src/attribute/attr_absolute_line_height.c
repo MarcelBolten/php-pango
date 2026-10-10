@@ -49,13 +49,7 @@ zend_class_entry* php_pango_get_attr_absolute_line_height_ce(void)
 /* {{{ Creates a new absolute line height attribute */
 PHP_METHOD(Pango_Attribute_AbsoluteLineHeight, __construct)
 {
-    zend_long value;
-
-    ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_LONG(value)
-    ZEND_PARSE_PARAMETERS_END();
-
-    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_line_height_new_absolute(value);
+    PANGO_ATTR_CONSTRUCT(pango_attr_line_height_new_absolute, zend_long, LONG);
 }
 /* }}} */
 

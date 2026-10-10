@@ -13,12 +13,9 @@ $attrFontDescription = new AttrFontDescription(new FontDescription("Sans 12"));
 var_dump($attrFontDescription->desc);
 
 $copy = clone $attrFontDescription;
-$copy->desc = new FontDescription("Serif 14");
-
-var_dump($copy->desc);
+var_dump($attrFontDescription !== $copy);
 ?>
 --EXPECTF--
 object(Pango\FontDescription)#2 (0) {
 }
-object(Pango\FontDescription)#4 (0) {
-}
+bool(true)

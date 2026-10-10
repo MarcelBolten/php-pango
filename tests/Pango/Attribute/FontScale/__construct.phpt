@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    new FontScale(Pango\FontScale::SmallCaps, 123);
+    new FontScale(Pango\FontScale::SmallCaps, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
@@ -38,6 +38,6 @@ object(Pango\Attribute\FontScale)#%d (3) {
   ["value"]=>
   enum(Pango\FontScale::SmallCaps)
 }
-Pango\Attribute\FontScale::__construct() expects exactly 1 argument, 0 given
-Pango\Attribute\FontScale::__construct() expects exactly 1 argument, 2 given
+Pango\Attribute\FontScale::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\FontScale::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\FontScale::__construct(): Argument #1 ($value) must be of type Pango\FontScale, array given
