@@ -252,11 +252,7 @@ PHP_METHOD(Pango_GlyphItemIterator, next)
 {
     ZEND_PARSE_PARAMETERS_NONE();
 
-    if (pango_glyph_item_iter_next_cluster(Z_PANGO_GLYPH_ITEM_ITER_P(ZEND_THIS)->glyph_item_iter)) {
-        RETURN_TRUE;
-    }
-
-    RETURN_FALSE;
+    RETURN_BOOL(pango_glyph_item_iter_next_cluster(Z_PANGO_GLYPH_ITEM_ITER_P(ZEND_THIS)->glyph_item_iter));
 }
 /* }}} */
 
@@ -265,11 +261,7 @@ PHP_METHOD(Pango_GlyphItemIterator, prev)
 {
     ZEND_PARSE_PARAMETERS_NONE();
 
-    if (pango_glyph_item_iter_prev_cluster(Z_PANGO_GLYPH_ITEM_ITER_P(ZEND_THIS)->glyph_item_iter)) {
-        RETURN_TRUE;
-    }
-
-    RETURN_FALSE;
+    RETURN_BOOL(pango_glyph_item_iter_prev_cluster(Z_PANGO_GLYPH_ITEM_ITER_P(ZEND_THIS)->glyph_item_iter));
 }
 /* }}} */
 
