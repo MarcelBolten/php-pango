@@ -8,7 +8,7 @@ include __DIR__ . '/../../../skipif.php.inc';
 <?php
 use Pango\Attribute\Width;
 
-$width = new Width(10240);
+$width = new Width(Pango\Width::Expanded);
 var_dump($width);
 print_r($width);
 ?>
@@ -19,11 +19,16 @@ object(Pango\Attribute\Width)#%d (3) {
   ["endIndex"]=>
   int(4294967295)
   ["value"]=>
-  int(10240)
+  enum(Pango\Width::Expanded)
 }
 Pango\Attribute\Width Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295
-    [value] => 10240
+    [value] => Pango\Width Enum:int
+        (
+            [name] => Expanded
+            [value] => 1250
+        )
+
 )

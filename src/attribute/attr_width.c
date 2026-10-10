@@ -18,6 +18,7 @@
 
 #include "../../php_pango.h"
 #include "../php_pango_macros.h"
+#include "../font_description.h"
 #include "attr_macros.h"
 #include "attribute.h"
 #include "attribute_arginfo.h"
@@ -51,7 +52,24 @@ zend_class_entry* php_pango_get_attr_width_ce(void)
 /* {{{ Creates a new width attribute */
 PHP_METHOD(Pango_Attribute_Width, __construct)
 {
-    PANGO_ATTR_CONSTRUCT(pango_attr_width_new, zend_long, LONG);
+    zend_object *width;
+    zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
+    zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
+
+    ZEND_PARSE_PARAMETERS_START(1, 3)
+        Z_PARAM_OBJ_OF_CLASS(width, php_pango_get_width_ce())
+        Z_PARAM_OPTIONAL
+        Z_PARAM_LONG(start_index)
+        Z_PARAM_LONG(end_index)
+    ZEND_PARSE_PARAMETERS_END();
+
+    PANGO_ATTR_CHECK_INDICES(start_index, 2, end_index, 3);
+
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_width_new(
+        Z_LVAL_P(zend_enum_fetch_case_value(width))
+    );
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;
+    Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->end_index = end_index;
 }
 /* }}} */
 
@@ -74,14 +92,14 @@ PANGO_ATTR_CLONE_OBJECT(width);
 /* {{{ */
 static zval *pango_attr_width_object_read_property(zend_object *object, zend_string *member, int type, void **cache_slot, zval *rv)
 {
-    PANGO_ATTR_READ_PROPERTY(Int, LONG, value);
+    PANGO_ATTR_ENUM_READ_PROPERTY(php_pango_get_width_ce());
 }
 /* }}} */
 
 /* {{{ */
 static HashTable *pango_attr_width_object_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
-    PANGO_ATTR_GET_PROPERTIES(Int, LONG, value);
+    PANGO_ATTR_ENUM_GET_PROPERTIES(php_pango_get_width_ce());
 }
 /* }}} */
 

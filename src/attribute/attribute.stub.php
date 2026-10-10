@@ -984,15 +984,15 @@ final readonly class Width extends Attribute
     /**
      * The font width value.
      */
-    public int $value;
+    public \Pango\Width $value;
 
     /**
      * Create a new font width attribute.
      *
-     * @param int $value The font width value.
+     * @param \Pango\Width $value The font width value.
      */
     public function __construct(
-        int $value,
+        \Pango\Width $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
         int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
     ) {}

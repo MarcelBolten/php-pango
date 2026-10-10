@@ -1,5 +1,5 @@
 /* This is a generated file, edit attribute.stub.php instead.
- * Stub hash: 58c7ae43b0816836b9dfdc6d41143c17d744eb93 */
+ * Stub hash: 2def071ad0bf9ed826439624b34f1a4e2fd3d8a6 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_Attribute_equalValue, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_OBJ_INFO(0, other, Pango\\Attribute\\Attribute, 0)
@@ -164,7 +164,7 @@ ZEND_END_ARG_INFO()
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Width___construct, 0, 0, 1)
-	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO(0, value, Pango\\Width, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
@@ -1255,7 +1255,8 @@ static zend_class_entry *register_class_Pango_Attribute_Width(zend_class_entry *
 
 	zval property_value_default_value;
 	ZVAL_UNDEF(&property_value_default_value);
-	zend_declare_typed_property(class_entry, ZSTR_KNOWN(ZEND_STR_VALUE), &property_value_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string *property_value_class_Pango_Width = zend_string_init("Pango\\Width", sizeof("Pango\\Width")-1, 1);
+	zend_declare_typed_property(class_entry, ZSTR_KNOWN(ZEND_STR_VALUE), &property_value_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_value_class_Pango_Width, 0, 0));
 
 	return class_entry;
 }

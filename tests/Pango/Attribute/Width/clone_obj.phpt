@@ -8,12 +8,12 @@ include __DIR__ . '/../../../skipif.php.inc';
 <?php
 use Pango\Attribute\Width;
 
-$width = new Width(10240);
+$width = new Width(Pango\Width::Expanded);
 var_dump($width->value);
 
 $copy = clone $width;
 var_dump($copy->value);
 ?>
 --EXPECT--
-int(10240)
-int(10240)
+enum(Pango\Width::Expanded)
+enum(Pango\Width::Expanded)
