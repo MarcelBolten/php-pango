@@ -247,7 +247,7 @@ enum Script: int
      *
      * @cvalue G_UNICODE_SCRIPT_OLD_ITALIC
      */
-    case Old_Italic = UNKNOWN;
+    case OldItalic = UNKNOWN;
 
     /**
      * Oriya

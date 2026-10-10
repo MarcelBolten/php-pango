@@ -1,5 +1,5 @@
 /* This is a generated file, edit script.stub.php instead.
- * Stub hash: e5672298e3f65696a5a0dabec01a7c8b3eb83b49 */
+ * Stub hash: e82dc6771fd8c1bfd738c356702983c5f2de48b4 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Script_getSampleLanguage, 0, 0, Pango\\Language, 1)
 ZEND_END_ARG_INFO()
@@ -151,9 +151,9 @@ static zend_class_entry *register_class_Pango_Script(void)
 	ZVAL_LONG(&enum_case_Ogham_value, G_UNICODE_SCRIPT_OGHAM);
 	zend_enum_add_case_cstr(class_entry, "Ogham", &enum_case_Ogham_value);
 
-	zval enum_case_Old_Italic_value;
-	ZVAL_LONG(&enum_case_Old_Italic_value, G_UNICODE_SCRIPT_OLD_ITALIC);
-	zend_enum_add_case_cstr(class_entry, "Old_Italic", &enum_case_Old_Italic_value);
+	zval enum_case_OldItalic_value;
+	ZVAL_LONG(&enum_case_OldItalic_value, G_UNICODE_SCRIPT_OLD_ITALIC);
+	zend_enum_add_case_cstr(class_entry, "OldItalic", &enum_case_OldItalic_value);
 
 	zval enum_case_Oriya_value;
 	ZVAL_LONG(&enum_case_Oriya_value, G_UNICODE_SCRIPT_ORIYA);

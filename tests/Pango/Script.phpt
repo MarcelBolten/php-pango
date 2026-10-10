@@ -121,7 +121,7 @@ array(178) {
   [31]=>
   enum(Pango\Script::Ogham)
   [32]=>
-  enum(Pango\Script::Old_Italic)
+  enum(Pango\Script::OldItalic)
   [33]=>
   enum(Pango\Script::Oriya)
   [34]=>
