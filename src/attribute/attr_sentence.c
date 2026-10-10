@@ -91,29 +91,6 @@ static zval *pango_attr_sentence_object_read_property(zend_object *object, zend_
 /* }}} */
 
 /* {{{ */
-static zval *pango_attr_sentence_object_write_property(zend_object *object, zend_string *member, zval *value, void **cache_slot)
-{
-    pango_attribute_object *attr_object = pango_attribute_fetch_object(object);
-    zval *retval = NULL;
-
-    if (!attr_object) {
-        return retval;
-    }
-
-    do {
-        PangoAttribute *attr = attr_object->attribute;
-
-        PANGO_ATTR_RANGE_WRITE_PROPERTY(attr);
-
-        /* not a struct member */
-        retval = (zend_get_std_object_handlers())->write_property(object, member, value, cache_slot);
-    } while(0);
-
-    return retval;
-}
-/* }}} */
-
-/* {{{ */
 static HashTable *pango_attr_sentence_object_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     HashTable *props;
@@ -152,7 +129,6 @@ PHP_MINIT_FUNCTION(pango_attr_sentence)
     pango_attr_sentence_object_handlers.free_obj = pango_attr_free_obj;
     pango_attr_sentence_object_handlers.clone_obj = pango_attr_sentence_clone_obj;
     pango_attr_sentence_object_handlers.read_property = pango_attr_sentence_object_read_property;
-    pango_attr_sentence_object_handlers.write_property = pango_attr_sentence_object_write_property;
     pango_attr_sentence_object_handlers.get_property_ptr_ptr = NULL;
     pango_attr_sentence_object_handlers.get_properties_for = pango_attr_sentence_object_get_properties_for;
     pango_attr_sentence_object_handlers.compare = pango_attr_object_compare;

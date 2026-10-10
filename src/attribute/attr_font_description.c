@@ -170,50 +170,6 @@ static zval *pango_attr_font_description_object_read_property(zend_object *objec
 /* }}} */
 
 /* {{{ */
-static zval *pango_attr_font_description_object_write_property(zend_object *object, zend_string *member, zval *value, void **cache_slot)
-{
-    pango_attr_font_description_object *attr_object = pango_attr_font_description_fetch_object(object);
-    zval *retval = NULL;
-
-    if (!attr_object) {
-        return retval;
-    }
-
-    do {
-        PangoAttrFontDesc *attr = (PangoAttrFontDesc *)attr_object->attribute;
-
-        if (strcmp(member->val, "desc") == 0) {
-            if (Z_TYPE_P(value) != IS_OBJECT || !instanceof_function(Z_OBJCE_P(value), php_pango_get_font_description_ce())) {
-                zend_type_error(
-                    "Cannot assign %s to property %s::$%s of type %s",
-                    zend_zval_type_name(value),
-                    ZSTR_VAL(object->ce->name),
-                    "desc",
-                    ZSTR_VAL(php_pango_get_font_description_ce()->name)
-                );
-                break;
-            }
-
-            zval_ptr_dtor(&attr_object->font_description_zv);
-            ZVAL_COPY(&attr_object->font_description_zv, value);
-
-            PangoFontDescription *font_desc = Z_PANGO_FONT_DESC_P(value)->font_description;
-            attr->desc = pango_font_description_copy(font_desc);
-
-            break;
-        }
-
-        PANGO_ATTR_RANGE_WRITE_PROPERTY(&attr->attr);
-
-        /* not a struct member */
-        retval = (zend_get_std_object_handlers())->write_property(object, member, value, cache_slot);
-    } while(0);
-
-    return retval;
-}
-/* }}} */
-
-/* {{{ */
 static HashTable *pango_attr_font_description_object_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     HashTable *props;
@@ -254,7 +210,6 @@ PHP_MINIT_FUNCTION(pango_attr_font_description)
     pango_attr_font_description_object_handlers.free_obj = pango_attr_font_description_free_obj;
     pango_attr_font_description_object_handlers.clone_obj = pango_attr_font_description_clone_obj;
     pango_attr_font_description_object_handlers.read_property = pango_attr_font_description_object_read_property;
-    pango_attr_font_description_object_handlers.write_property = pango_attr_font_description_object_write_property;
     pango_attr_font_description_object_handlers.get_property_ptr_ptr = NULL;
     pango_attr_font_description_object_handlers.get_properties_for = pango_attr_font_description_object_get_properties_for;
     pango_attr_font_description_object_handlers.compare = pango_attr_object_compare;

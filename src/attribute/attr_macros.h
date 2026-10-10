@@ -88,26 +88,6 @@ static zend_object* pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
 \
     return rv;
 
-#define PANGO_ATTR_WRITE_PROPERTY(pango_type, php_type, pango_member) \
-    pango_attribute_object *attr_object = pango_attribute_fetch_object(object); \
-    zval *retval = NULL; \
-\
-    if (!attr_object) { \
-        return retval; \
-    } \
-\
-    do { \
-        PangoAttr ## pango_type *attr = (PangoAttr ## pango_type *)attr_object->attribute; \
-\
-        PANGO_ ## php_type ## _VALUE_TO_STRUCT(attr->pango_member, value); \
-        PANGO_ATTR_RANGE_WRITE_PROPERTY(&attr->attr); \
-\
-        /* not a struct member */ \
-        retval = (zend_get_std_object_handlers())->write_property(object, member, value, cache_slot); \
-    } while(0); \
-\
-    return retval;
-
 #define PANGO_ATTR_GET_PROPERTIES(pango_type, php_type, pango_member) \
     HashTable *props; \
     /* used in macros below */ \
@@ -141,26 +121,6 @@ static zend_object* pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
 \
     return rv;
 
-#define PANGO_ATTR_ENUM_WRITE_PROPERTY(_ce) \
-    pango_attribute_object *attr_object = pango_attribute_fetch_object(object); \
-    zval *retval = NULL; \
-\
-    if (!attr_object) { \
-        return retval; \
-    } \
-\
-    do { \
-        PangoAttrInt *attr = (PangoAttrInt *)attr_object->attribute; \
-\
-        PANGO_ENUM_VALUE_TO_STRUCT(attr->value, value, _ce); \
-        PANGO_ATTR_RANGE_WRITE_PROPERTY(&attr->attr); \
-\
-        /* not a struct member */ \
-        retval = (zend_get_std_object_handlers())->write_property(object, member, value, cache_slot); \
-    } while(0); \
-\
-    return retval;
-
 #define PANGO_ATTR_ENUM_GET_PROPERTIES(_ce) \
     HashTable *props; \
     /* used in macros below */ \
@@ -193,26 +153,6 @@ static zend_object* pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
     PANGO_ATTR_RANGE_READ_PROPERTY(&attr->attr); \
 \
     return rv;
-
-#define PANGO_ATTR_COLOR_WRITE_PROPERTY \
-    pango_attribute_object *attr_object = pango_attribute_fetch_object(object); \
-    zval *retval = NULL; \
-\
-    if (!attr_object) { \
-        return retval; \
-    } \
-\
-    do { \
-        PangoAttrColor *attr = (PangoAttrColor *)attr_object->attribute; \
-\
-        PANGO_COLOR_VALUE_TO_STRUCT; \
-        PANGO_ATTR_RANGE_WRITE_PROPERTY(&attr->attr); \
-\
-        /* not a struct member */ \
-        retval = (zend_get_std_object_handlers())->write_property(object, member, value, cache_slot); \
-    } while(0); \
-\
-    return retval;
 
 #define PANGO_ATTR_COLOR_GET_PROPERTIES \
     HashTable *props; \

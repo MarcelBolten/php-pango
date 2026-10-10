@@ -83,13 +83,6 @@ static zval *pango_attr_absolute_size_object_read_property(zend_object *object, 
 /* }}} */
 
 /* {{{ */
-static zval *pango_attr_absolute_size_object_write_property(zend_object *object, zend_string *member, zval *value, void **cache_slot)
-{
-    PANGO_ATTR_WRITE_PROPERTY(Size, LONG, size);
-}
-/* }}} */
-
-/* {{{ */
 static HashTable *pango_attr_absolute_size_object_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     PANGO_ATTR_GET_PROPERTIES(Size, LONG, size);
@@ -113,7 +106,6 @@ PHP_MINIT_FUNCTION(pango_attr_absolute_size)
     pango_attr_absolute_size_object_handlers.free_obj = pango_attr_free_obj;
     pango_attr_absolute_size_object_handlers.clone_obj = pango_attr_absolute_size_clone_obj;
     pango_attr_absolute_size_object_handlers.read_property = pango_attr_absolute_size_object_read_property;
-    pango_attr_absolute_size_object_handlers.write_property = pango_attr_absolute_size_object_write_property;
     pango_attr_absolute_size_object_handlers.get_property_ptr_ptr = NULL;
     pango_attr_absolute_size_object_handlers.get_properties_for = pango_attr_absolute_size_object_get_properties_for;
     pango_attr_absolute_size_object_handlers.compare = pango_attr_object_compare;
