@@ -62,7 +62,7 @@ PHP_METHOD(Pango_Attribute_BaselineShift, __construct)
         Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
 
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+    PANGO_ATTR_CHECK_INDICES(start_index, 2, end_index, 3);
 
     if (baseline_shift_enum) {
         baseline_shift_value = Z_LVAL_P(zend_enum_fetch_case_value(baseline_shift_enum));

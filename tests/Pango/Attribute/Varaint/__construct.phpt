@@ -8,8 +8,39 @@ include __DIR__ . '/../../../skipif.php.inc';
 <?php
 use Pango\Attribute\Variant;
 
-$variant = new Variant(Pango\Variant::SmallCaps);
+$variantCase = Pango\Variant::SmallCaps;
+$variant = new Variant($variantCase);
 var_dump($variant);
+
+try {
+    new Variant($variantCase, -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new Variant($variantCase, PHP_INT_MAX);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new Variant($variantCase, endIndex: -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new Variant($variantCase, endIndex: PHP_INT_MAX);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new Variant($variantCase, 30, 20);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
 
 try {
     new Variant();
@@ -38,6 +69,11 @@ object(Pango\Attribute\Variant)#%d (3) {
   ["value"]=>
   enum(Pango\Variant::SmallCaps)
 }
+Pango\Attribute\Variant::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\Variant::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\Variant::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\Variant::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\Variant::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
 Pango\Attribute\Variant::__construct() expects at least 1 argument, 0 given
 Pango\Attribute\Variant::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Variant::__construct(): Argument #1 ($value) must be of type Pango\Variant, array given

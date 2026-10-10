@@ -62,7 +62,7 @@ PHP_METHOD(Pango_Attribute_Gravity, __construct)
         Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
 
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+    PANGO_ATTR_CHECK_INDICES(start_index, 2, end_index, 3);
 
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_gravity_new(
         Z_LVAL_P(zend_enum_fetch_case_value(gravity))

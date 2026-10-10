@@ -13,6 +13,36 @@ $underlineColor = new UnderlineColor($color);
 var_dump($underlineColor);
 
 try {
+    new UnderlineColor($color, -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new UnderlineColor($color, PHP_INT_MAX);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new UnderlineColor($color, endIndex: -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new UnderlineColor($color, endIndex: PHP_INT_MAX);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new UnderlineColor($color, 30, 20);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     new UnderlineColor();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -46,6 +76,11 @@ object(Pango\Attribute\UnderlineColor)#%d (3) {
     int(4096)
   }
 }
+Pango\Attribute\UnderlineColor::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\UnderlineColor::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\UnderlineColor::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\UnderlineColor::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\UnderlineColor::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
 Pango\Attribute\UnderlineColor::__construct() expects at least 1 argument, 0 given
 Pango\Attribute\UnderlineColor::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\UnderlineColor::__construct(): Argument #1 ($color) must be of type Pango\Color, array given

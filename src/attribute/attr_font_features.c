@@ -65,7 +65,7 @@ PHP_METHOD(Pango_Attribute_FontFeatures, __construct)
         RETURN_THROWS();
     }
 
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+    PANGO_ATTR_CHECK_INDICES(start_index, 2, end_index, 3);
 
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_font_features_new(ZSTR_VAL(font_features));
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;

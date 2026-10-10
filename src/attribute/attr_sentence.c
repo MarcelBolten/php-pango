@@ -60,7 +60,7 @@ PHP_METHOD(Pango_Attribute_Sentence, __construct)
 
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_sentence_new();
 
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+    PANGO_ATTR_CHECK_INDICES(start_index, 1, end_index, 2);
 
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->end_index = end_index;

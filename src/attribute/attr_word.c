@@ -58,7 +58,7 @@ PHP_METHOD(Pango_Attribute_Word, __construct)
         Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
 
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+    PANGO_ATTR_CHECK_INDICES(start_index, 1, end_index, 2);
 
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_word_new();
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;

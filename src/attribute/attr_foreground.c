@@ -62,7 +62,7 @@ PHP_METHOD(Pango_Attribute_Foreground, __construct)
         Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
 
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+    PANGO_ATTR_CHECK_INDICES(start_index, 2, end_index, 3);
 
     color = pango_color_fetch_object(color_obj)->color;
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_foreground_new(

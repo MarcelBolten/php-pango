@@ -62,23 +62,27 @@ static zend_object* pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
     return return_value; \
 }
 
-#define PANGO_ATTR_CHECK_INDICES(start_index, end_index) \
-    if ((start_index) < PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING || \
-        (start_index) > PHP_PANGO_ATTR_INDEX_MAX) { \
-        zend_argument_value_error(2, \
+#define PANGO_ATTR_CHECK_INDICES(start_index, arg_num_start, end_index, arg_num_end) \
+    if ((start_index) < PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING \
+        || (start_index) > PHP_PANGO_ATTR_INDEX_MAX \
+    ) { \
+        zend_argument_value_error(arg_num_start, \
             "must be between 0 and " ZEND_LONG_FMT " but " ZEND_LONG_FMT " given", \
             (zend_long) PHP_PANGO_ATTR_INDEX_MAX, \
-            (zend_long) (start_index)); \
+            (zend_long) (start_index) \
+        ); \
         RETURN_THROWS(); \
     } \
-    if ((end_index) != PHP_PANGO_ATTR_INDEX_TO_TEXT_END && \
-        ((end_index) <= (start_index) || \
-            (end_index) > PHP_PANGO_ATTR_INDEX_MAX)) { \
-        zend_argument_value_error(3, \
+    if ((end_index) != PHP_PANGO_ATTR_INDEX_TO_TEXT_END \
+        && ((end_index) <= (start_index) \
+            || (end_index) > PHP_PANGO_ATTR_INDEX_MAX) \
+    ) { \
+        zend_argument_value_error(arg_num_end, \
             PHP_PANGO_ATTR_END_INDEX_ERROR, \
             (zend_long) (start_index), \
             (zend_long) PHP_PANGO_ATTR_INDEX_MAX, \
-            (zend_long) (end_index)); \
+            (zend_long) (end_index) \
+        ); \
         RETURN_THROWS(); \
     }
 
@@ -94,7 +98,7 @@ static zend_object* pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
         Z_PARAM_LONG(end_index) \
     ZEND_PARSE_PARAMETERS_END(); \
 \
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index); \
+    PANGO_ATTR_CHECK_INDICES(start_index, 2, end_index, 3); \
 \
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_new_function(value); \
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = (guint) start_index; \

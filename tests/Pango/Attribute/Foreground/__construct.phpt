@@ -13,6 +13,36 @@ $foreground = new Foreground($color);
 var_dump($foreground);
 
 try {
+    new Foreground($color, -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new Foreground($color, PHP_INT_MAX);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new Foreground($color, endIndex: -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new Foreground($color, endIndex: PHP_INT_MAX);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new Foreground($color, 30, 20);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     new Foreground();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -46,6 +76,11 @@ object(Pango\Attribute\Foreground)#%d (3) {
     int(4096)
   }
 }
+Pango\Attribute\Foreground::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\Foreground::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\Foreground::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\Foreground::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\Foreground::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
 Pango\Attribute\Foreground::__construct() expects at least 1 argument, 0 given
 Pango\Attribute\Foreground::__construct() expects at most 3 arguments, 4 given
 Pango\Attribute\Foreground::__construct(): Argument #1 ($color) must be of type Pango\Color, array given

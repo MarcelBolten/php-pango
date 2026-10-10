@@ -68,7 +68,7 @@ PHP_METHOD(Pango_Attribute_Show, __construct)
         RETURN_THROWS();
     }
 
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+    PANGO_ATTR_CHECK_INDICES(start_index, 2, end_index, 3);
 
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute = pango_attr_show_new(value);
     Z_PANGO_ATTRIBUTE_P(ZEND_THIS)->attribute->start_index = start_index;

@@ -70,7 +70,7 @@ PHP_METHOD(Pango_Attribute_Language, __construct)
         Z_PARAM_LONG(end_index)
     ZEND_PARSE_PARAMETERS_END();
 
-    PANGO_ATTR_CHECK_INDICES(start_index, end_index);
+    PANGO_ATTR_CHECK_INDICES(start_index, 2, end_index, 3);
 
     attr_object = Z_PANGO_ATTR_LANGUAGE_P(ZEND_THIS);
 
