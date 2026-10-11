@@ -351,7 +351,7 @@ PHP_METHOD(Pango_Context, setGravityHint)
 /* {{{ */
 PHP_METHOD(Pango_Context, setMatrix)
 {
-    zval *matrix_zval;
+    zval *matrix_zval = NULL;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_OBJECT_OF_CLASS_OR_NULL(matrix_zval, php_pango_get_matrix_ce())
@@ -359,7 +359,7 @@ PHP_METHOD(Pango_Context, setMatrix)
 
     pango_context_set_matrix(
         Z_PANGO_CONTEXT_P(ZEND_THIS)->context,
-        pango_matrix_object_get_matrix(matrix_zval)
+        matrix_zval ? pango_matrix_object_get_matrix(matrix_zval) : NULL
     );
 
     RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
