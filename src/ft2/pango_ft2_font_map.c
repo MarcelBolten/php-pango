@@ -81,7 +81,7 @@ PHP_METHOD(Pango_Ft2_FontMap, setResolution)
         y_resolution
     );
 
-    RETURN_ZVAL(ZEND_THIS, 1, 0);
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
