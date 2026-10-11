@@ -173,9 +173,11 @@ class Layout
 
     /**
      * Sets the default FontDescription for this Layout.
+     *
+     * @param null|FontDescription $desc The FontDescription to set on this Layout, or NULL to inherit from the context.
      */
     public function setFontDescription(
-        FontDescription $desc
+        ?FontDescription $desc
     ): Layout {}
 
     /**

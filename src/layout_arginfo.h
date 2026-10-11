@@ -1,5 +1,5 @@
 /* This is a generated file, edit layout.stub.php instead.
- * Stub hash: 304f7ce0d028e6f81255031ddf317c1f11d5f8db */
+ * Stub hash: bd162cee6ab02703930507b4a4986a0202ad602e */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Pango\\Context, 0)
@@ -49,7 +49,7 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_Pango_Layout_getAccelChar arginfo_class_Pango_Layout_getText
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, Pango\\Layout, 0)
-	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)
+	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getFontDescription, 0, 0, Pango\\FontDescription, 1)

@@ -374,12 +374,12 @@ PHP_METHOD(Pango_Layout, setFontDescription)
     zval *font_desc_zv = NULL;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_OBJECT_OF_CLASS(font_desc_zv, php_pango_get_font_description_ce())
+        Z_PARAM_OBJECT_OF_CLASS_OR_NULL(font_desc_zv, php_pango_get_font_description_ce())
     ZEND_PARSE_PARAMETERS_END();
 
     pango_layout_set_font_description(
         Z_PANGO_LAYOUT_P(ZEND_THIS)->layout,
-        Z_PANGO_FONT_DESC_P(font_desc_zv)->font_description
+        font_desc_zv ? Z_PANGO_FONT_DESC_P(font_desc_zv)->font_description : NULL
     );
 
     RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
@@ -394,8 +394,9 @@ PHP_METHOD(Pango_Layout, getFontDescription)
 
     ZEND_PARSE_PARAMETERS_NONE();
 
+    font_description = pango_layout_get_font_description(Z_PANGO_LAYOUT_P(ZEND_THIS)->layout);
     // font_description can be NULL, in that case the font description is from the context and not set on the layout
-    if (!(font_description = pango_layout_get_font_description(Z_PANGO_LAYOUT_P(ZEND_THIS)->layout))) {
+    if (!font_description) {
         // TODO: should the font description of the context be returned instead?
         RETURN_NULL();
     }

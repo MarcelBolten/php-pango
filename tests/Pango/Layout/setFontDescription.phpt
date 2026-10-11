@@ -27,6 +27,9 @@ $fontDescription = $layout->getFontDescription();
 var_dump($fontDescription);
 var_dump($fontDescription->getFamily());
 
+$layout->setFontDescription(null);
+var_dump($layout->getFontDescription());
+
 try {
     $layout->setFontDescription();
 } catch (ArgumentCountError $e) {
@@ -56,6 +59,7 @@ NULL
 object(Pango\FontDescription)#%d (0) {
 }
 string(5) "serif"
+NULL
 Pango\Layout::setFontDescription() expects exactly 1 argument, 0 given
 Pango\Layout::setFontDescription() expects exactly 1 argument, 2 given
-Pango\Layout::setFontDescription(): Argument #1 ($desc) must be of type Pango\FontDescription, array given
+Pango\Layout::setFontDescription(): Argument #1 ($desc) must be of type ?Pango\FontDescription, array given
