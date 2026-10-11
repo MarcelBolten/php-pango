@@ -26,6 +26,8 @@ try {
 object(Pango\Ft2\FontMap)#%d (0) {
 }
 bool(true)
-object(Pango\FontFamily)#%d (0) {
+object(Pango\FontFamily)#%d (1) {
+  ["string-representation"]=>
+  string(11) "DejaVu Sans"
 }
 Pango\FontMap::listFamilies() expects exactly 0 arguments, 1 given

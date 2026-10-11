@@ -29,10 +29,14 @@ try {
 --EXPECTF--
 object(Pango\Ft2\FontMap)#%d (0) {
 }
-object(Pango\FontFamily)#%d (0) {
+object(Pango\FontFamily)#%d (1) {
+  ["string-representation"]=>
+  string(11) "DejaVu Sans"
 }
 object(Pango\FontFace)#%d (0) {
 }
-object(Pango\FontFamily)#%d (0) {
+object(Pango\FontFamily)#%d (1) {
+  ["string-representation"]=>
+  string(11) "DejaVu Sans"
 }
 Pango\FontFace::getFamily() expects exactly 0 arguments, 1 given
