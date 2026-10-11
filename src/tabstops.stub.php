@@ -43,12 +43,12 @@ final class TabStops
      */
     public static function fromString(string $str): TabStops {}
 
-    public function add(TabStop $tabStop): void {}
+    public function add(TabStop $tabStop): TabStops {}
 
     /**
      * @throws \ValueError if $index is out of bounds
      */
-    public function remove(int $index): void {}
+    public function remove(int $index): TabStops {}
 
     /**
      * Sets/updates the tab stop at the given index.

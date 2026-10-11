@@ -11,10 +11,10 @@ use Pango\TabStops;
 $tabs = TabStops::fromString("left:10240 right:20480 decimal:30720:46 center:40960");
 var_dump($tabs);
 var_dump($tabs->getSize());
-var_dump($tabs->getTabs()[2]);
+var_dump($tabs->getTab(2));
 $tabs->remove(1);
 var_dump($tabs->getSize());
-var_dump($tabs->getTabs()[1]);
+var_dump($tabs->getTab(1));
 
 try {
     $tabs->remove(-1);

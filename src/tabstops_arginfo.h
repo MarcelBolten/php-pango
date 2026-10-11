@@ -1,5 +1,5 @@
 /* This is a generated file, edit tabstops.stub.php instead.
- * Stub hash: 2b29db162b89f2002485b6470430aeb133d40c04 */
+ * Stub hash: 95a0bc45d0e3e5023159a11bf2d953d8963096b5 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_TabStops___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, tabStops, IS_ARRAY, 0)
@@ -12,11 +12,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_TabStops_fromString, 
 	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_TabStops_add, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_TabStops_add, 0, 1, Pango\\TabStops, 0)
 	ZEND_ARG_OBJ_INFO(0, tabStop, Pango\\TabStop, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_TabStops_remove, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_TabStops_remove, 0, 1, Pango\\TabStops, 0)
 	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 

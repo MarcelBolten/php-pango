@@ -226,6 +226,8 @@ PHP_METHOD(Pango_TabStops, add)
     if (php_pango_tabstops_set_tab(tab_array, size, tabstop, return_value, 1, true) == FAILURE) {
         RETURN_THROWS();
     }
+
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
@@ -264,7 +266,9 @@ PHP_METHOD(Pango_TabStops, remove)
             continue;
         }
 
-        int new_index = i < index ? i : i - 1;
+        int new_index = i < index
+            ? i
+            : i - 1;
         pango_tab_array_set_tab(
             new_tab_array, new_index, alignments[i], locations[i]
         );
@@ -279,6 +283,8 @@ PHP_METHOD(Pango_TabStops, remove)
 
     pango_tab_array_free(tab_array);
     tabstops_obj->tab_array = new_tab_array;
+
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
