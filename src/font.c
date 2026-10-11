@@ -203,8 +203,8 @@ PHP_METHOD(Pango_Font, getGlyphExtents)
         Z_PARAM_LONG(glyph)
     ZEND_PARSE_PARAMETERS_END();
 
-    if (glyph < 0 || glyph > UINT32_MAX) {
-        zend_argument_value_error(1, "must be greater than 0 and less than or equal to %u", UINT32_MAX);
+    if (glyph < 0 || glyph > INT32_MAX) {
+        zend_argument_value_error(1, "must be greater than 0 and less than or equal to %d", INT32_MAX);
         RETURN_THROWS();
     }
 

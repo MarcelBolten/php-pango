@@ -41,7 +41,7 @@ pango_layout_line_object *pango_layout_line_fetch_object(zend_object *object)
     return (pango_layout_line_object *) ((char*)(object) - offsetof(pango_layout_line_object, std));
 }
 
-PHP_PANGO_API zend_class_entry *php_pango_get_layout_line_ce(void)
+PHP_PANGO_API zend_class_entry* php_pango_get_layout_line_ce(void)
 {
     return pango_ce_pango_layout_line;
 }
@@ -201,18 +201,18 @@ PHP_METHOD(Pango_LayoutLine, getXRanges)
         Z_PARAM_LONG_OR_NULL(end_byte_index, end_byte_index_is_null)
     ZEND_PARSE_PARAMETERS_END();
 
-    if (!start_byte_index_is_null && (start_byte_index < 0 || start_byte_index > INT_MAX)) {
-        zend_argument_value_error(1, "must be between 0 and %d", INT_MAX);
+    if (!start_byte_index_is_null && (start_byte_index < 0 || start_byte_index > INT32_MAX)) {
+        zend_argument_value_error(1, "must be between 0 and %d but %ld given", INT32_MAX, start_byte_index);
         RETURN_THROWS();
     }
-    if (!end_byte_index_is_null && (end_byte_index < 0 || end_byte_index > INT_MAX)) {
-        zend_argument_value_error(2, "must be between 0 and %d", INT_MAX);
+    if (!end_byte_index_is_null && (end_byte_index < 0 || end_byte_index > INT32_MAX)) {
+        zend_argument_value_error(2, "must be between 0 and %d but %ld given", INT32_MAX, end_byte_index);
         RETURN_THROWS();
     }
     if (!start_byte_index_is_null && !end_byte_index_is_null && start_byte_index > end_byte_index) {
         start_arg_name = get_active_function_arg_name(1);
-        zend_argument_value_error(2, "must be be greater than argument #1 ($%s) %d",
-            start_arg_name, start_byte_index
+        zend_argument_value_error(2, "must be be greater than argument #1 ($%s) %d but %d given",
+            start_arg_name, start_byte_index, end_byte_index
         );
         RETURN_THROWS();
     }
@@ -274,7 +274,7 @@ static void pango_layout_line_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object *pango_layout_line_obj_ctor(zend_class_entry *ce, pango_layout_line_object **intern)
+static zend_object* pango_layout_line_obj_ctor(zend_class_entry *ce, pango_layout_line_object **intern)
 {
     pango_layout_line_object *object = ecalloc(1, sizeof(pango_layout_line_object) + zend_object_properties_size(ce));
 
@@ -290,7 +290,7 @@ static zend_object *pango_layout_line_obj_ctor(zend_class_entry *ce, pango_layou
 /* }}} */
 
 /* {{{ */
-static zend_object *pango_layout_line_create_object(zend_class_entry *ce)
+static zend_object* pango_layout_line_create_object(zend_class_entry *ce)
 {
     pango_layout_line_object *intern = NULL;
     zend_object *return_value = pango_layout_line_obj_ctor(ce, &intern);

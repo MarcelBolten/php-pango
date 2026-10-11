@@ -82,10 +82,10 @@ PHP_METHOD(Pango_LogAttrList, __construct)
         RETURN_THROWS();
     }
 
-    if (level < -1 || level > INT_MAX) {
+    if (level < -1 || level > INT32_MAX) {
         zend_argument_value_error(3,
             "must be between -1 and " ZEND_LONG_FMT,
-            (zend_long)INT_MAX
+            (zend_long)INT32_MAX
         );
         RETURN_THROWS();
     }
@@ -176,10 +176,10 @@ ZEND_METHOD(Pango_LogAttrList, tailorBreak)
         Z_PARAM_LONG(byte_offset)
     ZEND_PARSE_PARAMETERS_END();
 
-    if (byte_offset < -1 || byte_offset > INT_MAX) {
+    if (byte_offset < -1 || byte_offset > INT32_MAX) {
         zend_argument_value_error(2,
             "must be between -1 and " ZEND_LONG_FMT,
-            (zend_long)INT_MAX
+            (zend_long)INT32_MAX
         );
         RETURN_THROWS();
     }
@@ -220,10 +220,10 @@ ZEND_METHOD(Pango_LogAttrList, attrBreak)
         Z_PARAM_LONG(byte_offset)
     ZEND_PARSE_PARAMETERS_END();
 
-    if (byte_offset < 0 || byte_offset > INT_MAX) {
+    if (byte_offset < 0 || byte_offset > INT32_MAX) {
         zend_argument_value_error(2,
             "must be between 0 and " ZEND_LONG_FMT,
-            (zend_long)INT_MAX
+            (zend_long)INT32_MAX
         );
         RETURN_THROWS();
     }
