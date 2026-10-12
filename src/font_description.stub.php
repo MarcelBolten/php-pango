@@ -77,6 +77,9 @@ class FontDescription
     public function toString(): string {}
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
+    /**
+     * Returns the font features, or an empty string if not set.
+     */
     public function getFeatures(): string {}
 
     public function setFeatures(
@@ -90,6 +93,9 @@ class FontDescription
         Gravity $gravity
     ): FontDescription {}
 
+    /**
+     * Returns the variations, or an empty string if not set.
+     */
     public function getVariations(): string {}
 
     public function setVariations(
@@ -113,6 +119,9 @@ class FontDescription
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
     public function getColor(): FontColor {}
 
+    /**
+     * This field determines whether the font description should match fonts that have color glyphs, or fonts that don’t.
+     */
     public function setColor(
         FontColor $color,
     ): FontDescription {}
@@ -385,6 +394,9 @@ abstract class FontMask
 }
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 57, 0)
+/**
+ * Specifies whether a font should or should not have color glyphs.
+ */
 enum FontColor: int
 {
     /**
