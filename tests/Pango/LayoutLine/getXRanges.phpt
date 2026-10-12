@@ -12,10 +12,12 @@ use Pango\Ft2\FontMap;
 $fontMap = new FontMap();
 var_dump($fontMap);
 $pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
-$fontMap->addFontFile($pathToFonts . "/dejavu-sans-ttf-2.37/ttf/DejaVuSans.ttf");
-$fontMap->addFontFile($pathToFonts . "/NotoSerifJP/SubsetOTF/JP/NotoSerifJP-Regular.otf");
+$fontMap->addFontFile($pathToFonts . "/DejaVuSans.ttf");
+$fontMap->addFontFile($pathToFonts . "/NotoSansJP-Regular.otf");
+$fontMap->addFontFile($pathToFonts . "/NotoSans-Regular.ttf");
 
-$pangoContext = new Pango\Context($fontMap);
+$pangoContext = (new Pango\Context($fontMap))
+    ->setFontDescription(new Pango\FontDescription("DejaVu Sans, Noto Sans, Noto Sans JP, 12"));
 var_dump($pangoContext);
 
 $layout = new Pango\Layout($pangoContext);
@@ -120,7 +122,7 @@ array(1) {
         ["font"]=>
         object(Pango\Font)#%d (1) {
           ["string-representation"]=>
-          string(15) "DejaVu Serif 12"
+          string(14) "DejaVu Sans 12"
         }
         ["level"]=>
         int(0)
@@ -153,7 +155,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(10240)
+            int(9216)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -195,7 +197,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(4096)
+            int(3072)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -216,7 +218,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(4096)
+            int(3072)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -309,7 +311,7 @@ array(3) {
         ["font"]=>
         object(Pango\Font)#%d (1) {
           ["string-representation"]=>
-          string(15) "DejaVu Serif 12"
+          string(14) "DejaVu Sans 12"
         }
         ["level"]=>
         int(0)
@@ -338,11 +340,11 @@ array(3) {
         [0]=>
         object(Pango\GlyphInfo)#%d (3) {
           ["glyph"]=>
-          int(794)
+          int(822)
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(10240)
+            int(9216)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -359,7 +361,7 @@ array(3) {
         [1]=>
         object(Pango\GlyphInfo)#%d (3) {
           ["glyph"]=>
-          int(810)
+          int(838)
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
@@ -380,7 +382,7 @@ array(3) {
         [2]=>
         object(Pango\GlyphInfo)#%d (3) {
           ["glyph"]=>
-          int(822)
+          int(850)
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
@@ -422,7 +424,7 @@ array(3) {
         ["font"]=>
         object(Pango\Font)#%d (1) {
           ["string-representation"]=>
-          string(16) "Noto Serif JP 12"
+          string(15) "Noto Sans JP 12"
         }
         ["level"]=>
         int(0)
@@ -451,7 +453,7 @@ array(3) {
         [0]=>
         object(Pango\GlyphInfo)#%d (3) {
           ["glyph"]=>
-          int(12189)
+          int(12177)
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
@@ -493,7 +495,7 @@ array(3) {
         ["font"]=>
         object(Pango\Font)#%d (1) {
           ["string-representation"]=>
-          string(15) "DejaVu Serif 12"
+          string(14) "DejaVu Sans 12"
         }
         ["level"]=>
         int(0)
