@@ -9,9 +9,11 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 <?php
 use Pango\Ft2\FontMap;
 
+$pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
+putenv('FONTCONFIG_FILE=' .  $pathToFonts . '/empty_fontconfig.conf');
+
 $fontMap = new FontMap();
 var_dump($fontMap);
-$pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
 $fontMap->addFontFile($pathToFonts . "/DejaVuSans.ttf");
 $fontMap->addFontFile($pathToFonts . "/NotoSansJP-Regular.otf");
 $fontMap->addFontFile($pathToFonts . "/NotoSans-Regular.ttf");
