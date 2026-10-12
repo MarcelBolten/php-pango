@@ -126,6 +126,8 @@ jobs:
 
             - name: Build the extension
               uses: php/php-windows-builder/extension@v1
+              env:
+                FONTCONFIG_FILE: "${{ github.workspace }}/tests/assets/fonts/empty_fontconfig.conf"
               with:
                 php-version: ${{ matrix.php-version }}
                 arch: ${{ matrix.arch }}
