@@ -9,7 +9,6 @@ include __DIR__ . '/../../skipif_cairo.php.inc';
 <?php
 use Pango\Ft2\FontMap;
 
-
 $fontMap = new FontMap();
 var_dump($fontMap);
 $pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
@@ -136,7 +135,7 @@ array(1) {
         ["language"]=>
         object(Pango\Language)#%d (1) {
           ["string-representation"]=>
-          string(1) "c"
+          string(%d) "%s"
         }
         ["extraAttrs"]=>
         array(0) {
@@ -325,7 +324,7 @@ array(3) {
         ["language"]=>
         object(Pango\Language)#%d (1) {
           ["string-representation"]=>
-          string(1) "c"
+          string(%d) "%s"
         }
         ["extraAttrs"]=>
         array(0) {
@@ -438,7 +437,7 @@ array(3) {
         ["language"]=>
         object(Pango\Language)#%d (1) {
           ["string-representation"]=>
-          string(1) "c"
+          string(%d) "%s"
         }
         ["extraAttrs"]=>
         array(0) {
@@ -509,7 +508,7 @@ array(3) {
         ["language"]=>
         object(Pango\Language)#%d (1) {
           ["string-representation"]=>
-          string(1) "c"
+          string(%d) "%s"
         }
         ["extraAttrs"]=>
         array(0) {
