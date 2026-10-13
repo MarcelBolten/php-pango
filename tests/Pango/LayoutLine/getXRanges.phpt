@@ -424,7 +424,7 @@ array(3) {
         ["font"]=>
         object(Pango\Font)#%d (1) {
           ["string-representation"]=>
-          string(15) "Noto Sans JP 12"
+          string(%d) "%s"
         }
         ["level"]=>
         int(0)

@@ -103,7 +103,7 @@ object(Pango\Font)#%d (1) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(24) "DejaVu Sans 12 @wght=700"
+  string(%d) "%s"
 }
 Pango\FontMap::reloadFont(): Argument #2 ($scale) must be a positive number
 Pango\FontMap::reloadFont(): Argument #4 ($variations) must not contain NUL bytes

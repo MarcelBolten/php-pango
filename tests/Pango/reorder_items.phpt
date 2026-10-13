@@ -74,7 +74,7 @@ object(Pango\Item)#%d (4) {
     ["font"]=>
     object(Pango\Font)#%d (1) {
       ["string-representation"]=>
-      string(17) "DejaVu Sans 0.015"
+      string(%d) "%s"
     }
     ["level"]=>
     int(1)
@@ -87,7 +87,7 @@ object(Pango\Item)#%d (4) {
     ["language"]=>
     object(Pango\Language)#%d (1) {
       ["string-representation"]=>
-      string(1) "c"
+      string(%d) "%s"
     }
     ["extraAttrs"]=>
     array(0) {
@@ -107,7 +107,7 @@ object(Pango\Item)#%d (4) {
     ["font"]=>
     object(Pango\Font)#%d (1) {
       ["string-representation"]=>
-      string(18) "DejaVu Serif 0.015"
+      string(%d) "%s"
     }
     ["level"]=>
     int(1)
@@ -120,7 +120,7 @@ object(Pango\Item)#%d (4) {
     ["language"]=>
     object(Pango\Language)#%d (1) {
       ["string-representation"]=>
-      string(1) "c"
+      string(%d) "%s"
     }
     ["extraAttrs"]=>
     array(0) {
@@ -139,7 +139,7 @@ object(Pango\Item)#%d (4) {
     ["font"]=>
     object(Pango\Font)#%d (1) {
       ["string-representation"]=>
-      string(17) "DejaVu Sans 0.015"
+      string(%d) "%s"
     }
     ["level"]=>
     int(1)
@@ -152,7 +152,7 @@ object(Pango\Item)#%d (4) {
     ["language"]=>
     object(Pango\Language)#%d (1) {
       ["string-representation"]=>
-      string(1) "c"
+      string(%d) "%s"
     }
     ["extraAttrs"]=>
     array(0) {

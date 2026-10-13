@@ -33,7 +33,7 @@ object(Pango\Analysis)#%d (7) {
   ["font"]=>
   object(Pango\Font)#6 (1) {
     ["string-representation"]=>
-    string(15) "DejaVu Serif 12"
+    string(%d) "%s"
   }
   ["level"]=>
   int(0)
@@ -46,7 +46,7 @@ object(Pango\Analysis)#%d (7) {
   ["language"]=>
   object(Pango\Language)#%d (1) {
     ["string-representation"]=>
-    string(1) "c"
+    string(%d) "%s"
   }
   ["extraAttrs"]=>
   array(0) {

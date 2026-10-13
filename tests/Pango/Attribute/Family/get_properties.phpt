@@ -19,7 +19,7 @@ object(Pango\Attribute\Family)#%d (3) {
   ["endIndex"]=>
   int(4294967295)
   ["value"]=>
-  string(9) "Noto Sans"
+  string(%d) "%s"
 }
 Pango\Attribute\Family Object
 (

@@ -45,7 +45,7 @@ object(Pango\GlyphItem)#6 (5) {
       ["font"]=>
       object(Pango\Font)#10 (1) {
         ["string-representation"]=>
-        string(15) "DejaVu Serif 12"
+        string(%d) "%s"
       }
       ["level"]=>
       int(0)
@@ -58,7 +58,7 @@ object(Pango\GlyphItem)#6 (5) {
       ["language"]=>
       object(Pango\Language)#13 (1) {
         ["string-representation"]=>
-        string(1) "c"
+        string(%d) "%s"
       }
       ["extraAttrs"]=>
       array(0) {
