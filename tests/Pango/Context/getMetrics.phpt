@@ -14,11 +14,11 @@ use Pango\Language;
 $fontMap = FontMap::getDefault();
 var_dump($fontMap);
 $context = new Context($fontMap);
-$context->setFontDescription(new FontDescription());
+$context->setFontDescription(new FontDescription("Sans 12"));
 var_dump($context);
 var_dump($context->getMetrics());
 
-var_dump($context->getMetrics(desc: new FontDescription()));
+var_dump($context->getMetrics(desc: new FontDescription("Serif 12")));
 var_dump($context->getMetrics(language: new Language('ja')));
 
 try {
