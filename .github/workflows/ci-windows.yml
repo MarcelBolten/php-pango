@@ -104,7 +104,7 @@ jobs:
                     "pixman:$triplet",
                     "zlib:$triplet"
                 )
-                & .\vcpkg install @packages --overlay-ports=${{ github.workspace }}/vcpkg-overlays
+                & .\vcpkg install @packages --recurse --overlay-ports=${{ github.workspace }}/vcpkg-overlays
 
                 $depsPath = "C:\vcpkg\installed\$triplet"
 
