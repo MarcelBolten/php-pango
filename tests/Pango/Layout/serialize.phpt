@@ -169,19 +169,11 @@ string(%d) "{
             "text" : "Hello, ",
             "bidi-level" : 0,
             "gravity" : "south",
-            "language" : "c",
+            "language" : "%s",
             "script" : "latin",
             "font" : {
               "description" : "%s",
-              "checksum" : "%s",
-              "matrix" : [
-                1,
-                -0,
-                -0,
-                1,
-                0,
-                0
-              ]
+              "checksum" : "%s"%A
             },
             "flags" : 0,
             "y-offset" : 0,
@@ -242,15 +234,7 @@ string(%d) "{
             "script" : "greek",
             "font" : {
               "description" : "%s",
-              "checksum" : "%s",
-              "matrix" : [
-                1,
-                -0,
-                -0,
-                1,
-                0,
-                0
-              ]
+              "checksum" : "%s"%A
             },
             "flags" : 0,
             "y-offset" : 0,
@@ -287,15 +271,7 @@ string(%d) "{
             "script" : "han",
             "font" : {
               "description" : "%s",
-              "checksum" : "%s",
-              "matrix" : [
-                1,
-                -0,
-                -0,
-                1,
-                0,
-                0
-              ]
+              "checksum" : "%s"%A
             },
             "flags" : 0,
             "y-offset" : 0,
@@ -320,15 +296,7 @@ string(%d) "{
             "script" : "han",
             "font" : {
               "description" : "%s",
-              "checksum" : "%s",
-              "matrix" : [
-                1,
-                -0,
-                -0,
-                1,
-                0,
-                0
-              ]
+              "checksum" : "%s"%A
             },
             "flags" : 0,
             "y-offset" : 0,
