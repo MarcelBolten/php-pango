@@ -12,6 +12,8 @@ use Pango\FontDescription;
 use Pango\Language;
 
 $fontMap = FontMap::getDefault();
+$pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
+$fontMap->addFontFile($pathToFonts . "/NotoColorEmoji_WindowsCompatible.ttf");
 var_dump($fontMap);
 $context = new Context($fontMap);
 var_dump($context);
