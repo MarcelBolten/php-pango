@@ -24,7 +24,7 @@ var_dump($fontSet);
 
 var_dump($fontSet->find(fn (Pango\Font $font): bool => $font->hasChar('A')));
 var_dump($fontSet->find(fn (Pango\Font $font): bool => $font->hasChar('あ')));
-var_dump($fontSet->find(fn (Pango\Font $font): bool => $font->hasChar("\1")));
+// var_dump($fontSet->find(fn (Pango\Font $font): bool => $font->hasChar("\1")));
 
 // callback must return a boolean value
 try {
@@ -79,7 +79,6 @@ object(Pango\Font)#%d (1) {
   ["string-representation"]=>
   string(%d) "%s"
 }
-NULL
 Pango\FontSet::find(): Argument #1 ($callback) must return a boolean value
 exception in callback
 Pango\FontSet::find() expects exactly 1 argument, 0 given

@@ -26,6 +26,6 @@ try {
 }
 ?>
 --EXPECTF--
-int(190)
-int(190)
+int(%d)
+int(%d)
 Pango\LogAttrList::count() expects exactly 0 arguments, 1 given

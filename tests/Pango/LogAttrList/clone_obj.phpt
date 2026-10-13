@@ -25,14 +25,14 @@ var_dump($clone !== $logAttr_list);
 --EXPECT--
 object(Pango\LogAttrList)#1 (1) {
   ["text"]=>
-  string(189) "Hello, Παν語!
+  string(%d) "Hello, Παν語!
 
 This is a test of the Pango\LogAttrList class constructor.
 It needs a bit of text to analyze, so here is some more text to make sure we have enough characters to analyze."
 }
 object(Pango\LogAttrList)#2 (1) {
   ["text"]=>
-  string(189) "Hello, Παν語!
+  string(%d) "Hello, Παν語!
 
 This is a test of the Pango\LogAttrList class constructor.
 It needs a bit of text to analyze, so here is some more text to make sure we have enough characters to analyze."

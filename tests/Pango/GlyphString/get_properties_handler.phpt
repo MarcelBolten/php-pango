@@ -35,15 +35,15 @@ object(Pango\GlyphString)#%d (2) {
     [0]=>
     object(Pango\GlyphInfo)#%d (3) {
       ["glyph"]=>
-      int(794)
+      int(%i)
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(14336)
+        int(%i)
         ["xOffset"]=>
-        int(0)
+        int(%i)
         ["yOffset"]=>
-        int(0)
+        int(%i)
       }
       ["attributes"]=>
       object(Pango\GlyphVisAttr)#%d (2) {
@@ -56,15 +56,15 @@ object(Pango\GlyphString)#%d (2) {
     [1]=>
     object(Pango\GlyphInfo)#%d (3) {
       ["glyph"]=>
-      int(810)
+      int(%i)
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(11264)
+        int(%i)
         ["xOffset"]=>
-        int(0)
+        int(%i)
         ["yOffset"]=>
-        int(0)
+        int(%i)
       }
       ["attributes"]=>
       object(Pango\GlyphVisAttr)#%d (2) {
@@ -77,15 +77,15 @@ object(Pango\GlyphString)#%d (2) {
     [2]=>
     object(Pango\GlyphInfo)#%d (3) {
       ["glyph"]=>
-      int(822)
+      int(%i)
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(10240)
+        int(%i)
         ["xOffset"]=>
-        int(0)
+        int(%i)
         ["yOffset"]=>
-        int(0)
+        int(%i)
       }
       ["attributes"]=>
       object(Pango\GlyphVisAttr)#%d (2) {

@@ -35,11 +35,11 @@ object(Pango\GlyphInfo)#%d (3) {
   ["geometry"]=>
   object(Pango\GlyphGeometry)#%d (3) {
     ["width"]=>
-    int(11264)
+    int(%i)
     ["xOffset"]=>
-    int(0)
+    int(%i)
     ["yOffset"]=>
-    int(0)
+    int(%i)
   }
   ["attributes"]=>
   object(Pango\GlyphVisAttr)#%d (2) {

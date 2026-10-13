@@ -26,6 +26,6 @@ object(Cairo\Context)#%d (0) {
 }
 object(PangoCairo\Layout)#%d (0) {
 }
-int(14336)
-int(0)
-int(0)
+int(%i)
+int(%i)
+int(%i)

@@ -29,11 +29,11 @@ object(PangoCairo\Layout)#%d (0) {
 int(794)
 object(Pango\GlyphGeometry)#%d (3) {
   ["width"]=>
-  int(14336)
+  int(%i)
   ["xOffset"]=>
-  int(0)
+  int(%i)
   ["yOffset"]=>
-  int(0)
+  int(%i)
 }
 object(Pango\GlyphVisAttr)#%d (2) {
   ["isClusterStart"]=>

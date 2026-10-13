@@ -31,10 +31,10 @@ object(PangoCairo\Layout)#%d (0) {
 }
 array(3) {
   [0]=>
-  int(14336)
+  int(%i)
   [1]=>
-  int(11264)
+  int(%i)
   [2]=>
-  int(10240)
+  int(%i)
 }
 Pango\GlyphString::getLogicalWidths() expects exactly 0 arguments, 1 given

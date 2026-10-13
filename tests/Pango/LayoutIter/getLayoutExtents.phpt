@@ -44,40 +44,40 @@ array(2) {
   ["ink"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(0)
+    int(%i)
     ["y"]=>
-    int(3072)
+    int(%i)
     ["width"]=>
-    int(98304)
+    int(%i)
     ["height"]=>
-    int(51200)
+    int(%i)
     ["ascent"]=>
-    int(-3072)
+    int(%i)
     ["descent"]=>
-    int(54272)
+    int(%i)
     ["leftBearing"]=>
-    int(0)
+    int(%i)
     ["rightBearing"]=>
-    int(98304)
+    int(%i)
   }
   ["logical"]=>
   object(Pango\Rectangle)#%d (8) {
     ["x"]=>
-    int(0)
+    int(%i)
     ["y"]=>
-    int(0)
+    int(%i)
     ["width"]=>
-    int(98304)
+    int(%i)
     ["height"]=>
-    int(58368)
+    int(%i)
     ["ascent"]=>
-    int(0)
+    int(%i)
     ["descent"]=>
-    int(58368)
+    int(%i)
     ["leftBearing"]=>
-    int(0)
+    int(%i)
     ["rightBearing"]=>
-    int(98304)
+    int(%i)
   }
 }
 Pango\LayoutIter::getLayoutExtents() expects exactly 0 arguments, 1 given

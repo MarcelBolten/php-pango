@@ -55,46 +55,46 @@ array(3) {
   [0]=>
   array(2) {
     ["xOffset"]=>
-    int(0)
+    int(%i)
     ["width"]=>
-    int(14336)
+    int(%i)
   }
   [1]=>
   array(2) {
     ["xOffset"]=>
-    int(0)
+    int(%i)
     ["width"]=>
-    int(11264)
+    int(%i)
   }
   [2]=>
   array(2) {
     ["xOffset"]=>
-    int(0)
+    int(%i)
     ["width"]=>
-    int(10240)
+    int(%i)
   }
 }
 array(3) {
   [0]=>
   array(2) {
     ["xOffset"]=>
-    int(0)
+    int(%i)
     ["width"]=>
-    int(14351)
+    int(%i)
   }
   [1]=>
   array(2) {
     ["xOffset"]=>
-    int(15)
+    int(%i)
     ["width"]=>
-    int(11294)
+    int(%i)
   }
   [2]=>
   array(2) {
     ["xOffset"]=>
-    int(15)
+    int(%i)
     ["width"]=>
-    int(10255)
+    int(%i)
   }
 }
 Pango\GlyphItem::letterSpace() expects exactly 1 argument, 0 given

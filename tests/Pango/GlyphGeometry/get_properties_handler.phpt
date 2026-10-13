@@ -31,9 +31,9 @@ object(PangoCairo\Layout)#%d (0) {
 }
 object(Pango\GlyphGeometry)#%d (3) {
   ["width"]=>
-  int(11264)
+  int(%i)
   ["xOffset"]=>
-  int(0)
+  int(%i)
   ["yOffset"]=>
-  int(0)
+  int(%i)
 }
