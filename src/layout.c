@@ -681,7 +681,7 @@ PHP_METHOD(Pango_Layout, getLine)
 
     line_count = pango_layout_get_line_count(layout_object->layout);
     if (line_number < 0 || line_number >= line_count) {
-        zend_argument_value_error(1, "must be between 0 and %d but %ld given", line_count - 1, line_number);
+        zend_argument_value_error(1, "must be between 0 and %d but " ZEND_LONG_FMT " given", line_count - 1, line_number);
         RETURN_THROWS();
     }
 

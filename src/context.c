@@ -562,8 +562,8 @@ PHP_METHOD(Pango_Context, itemize)
     }
     if (byte_length < 0 || start_byte_index + byte_length > ZSTR_LEN(text)) {
         zend_argument_value_error(3,
-            "must be between 0 and the byte length of text minus startByteIndex (%ld)",
-            ZSTR_LEN(text) - start_byte_index
+            "must be between 0 and the byte length of text minus startByteIndex (%zu)",
+            (size_t)(ZSTR_LEN(text) - start_byte_index)
         );
         RETURN_THROWS();
     }
