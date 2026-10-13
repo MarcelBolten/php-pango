@@ -74,11 +74,11 @@ object(Pango\GlyphItem)#6 (5) {
       [0]=>
       object(Pango\GlyphInfo)#7 (3) {
         ["glyph"]=>
-        int(43)
+        int(%d)
         ["geometry"]=>
         object(Pango\GlyphGeometry)#18 (3) {
           ["width"]=>
-          int(14336)
+          int(%i)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -95,11 +95,11 @@ object(Pango\GlyphItem)#6 (5) {
       [1]=>
       object(Pango\GlyphInfo)#13 (3) {
         ["glyph"]=>
-        int(72)
+        int(%d)
         ["geometry"]=>
         object(Pango\GlyphGeometry)#19 (3) {
           ["width"]=>
-          int(9216)
+          int(%i)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -116,11 +116,11 @@ object(Pango\GlyphItem)#6 (5) {
       [2]=>
       object(Pango\GlyphInfo)#10 (3) {
         ["glyph"]=>
-        int(79)
+        int(%d)
         ["geometry"]=>
         object(Pango\GlyphGeometry)#18 (3) {
           ["width"]=>
-          int(5120)
+          int(%i)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -137,11 +137,11 @@ object(Pango\GlyphItem)#6 (5) {
       [3]=>
       object(Pango\GlyphInfo)#14 (3) {
         ["glyph"]=>
-        int(79)
+        int(%d)
         ["geometry"]=>
         object(Pango\GlyphGeometry)#19 (3) {
           ["width"]=>
-          int(5120)
+          int(%i)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -158,11 +158,11 @@ object(Pango\GlyphItem)#6 (5) {
       [4]=>
       object(Pango\GlyphInfo)#15 (3) {
         ["glyph"]=>
-        int(82)
+        int(%d)
         ["geometry"]=>
         object(Pango\GlyphGeometry)#18 (3) {
           ["width"]=>
-          int(10240)
+          int(%i)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -179,11 +179,11 @@ object(Pango\GlyphItem)#6 (5) {
       [5]=>
       object(Pango\GlyphInfo)#16 (3) {
         ["glyph"]=>
-        int(15)
+        int(%d)
         ["geometry"]=>
         object(Pango\GlyphGeometry)#19 (3) {
           ["width"]=>
-          int(5120)
+          int(%i)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -200,11 +200,11 @@ object(Pango\GlyphItem)#6 (5) {
       [6]=>
       object(Pango\GlyphInfo)#17 (3) {
         ["glyph"]=>
-        int(3)
+        int(%d)
         ["geometry"]=>
         object(Pango\GlyphGeometry)#18 (3) {
           ["width"]=>
-          int(5120)
+          int(%i)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>

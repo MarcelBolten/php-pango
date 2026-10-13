@@ -31,7 +31,7 @@ object(PangoCairo\Layout)#%d (0) {
 }
 object(Pango\GlyphInfo)#%d (3) {
   ["glyph"]=>
-  int(810)
+  int(%d)
   ["geometry"]=>
   object(Pango\GlyphGeometry)#%d (3) {
     ["width"]=>
