@@ -22,7 +22,7 @@ $clone = clone $logAttr_list;
 var_dump($clone);
 var_dump($clone !== $logAttr_list);
 ?>
---EXPECT--
+--EXPECTF--
 object(Pango\LogAttrList)#1 (1) {
   ["text"]=>
   string(%d) "Hello, Παν語!

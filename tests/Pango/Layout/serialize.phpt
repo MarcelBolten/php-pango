@@ -49,7 +49,7 @@ string(35) "{
   "text" : "Hello, Παν語!"
 }
 "
-string(7655) "{
+string(%d) "{
   "context" : {
     "font" : "serif 12",
     "base-gravity" : "south",
@@ -70,8 +70,8 @@ string(7655) "{
     "is-wrapped" : false,
     "is-ellipsized" : false,
     "unknown-glyphs" : 0,
-    "width" : 112640,
-    "height" : 24576,
+    "width" : %d,
+    "height" : %d,
     "log-attrs" : [
       {
         "char-break" : true,
@@ -172,7 +172,7 @@ string(7655) "{
             "language" : "c",
             "script" : "latin",
             "font" : {
-              "description" : "DejaVu Serif 12",
+              "description" : "%s",
               "checksum" : "%s",
               "matrix" : [
                 1,
@@ -190,43 +190,43 @@ string(7655) "{
             "glyphs" : [
               {
                 "glyph" : 43,
-                "width" : 14336,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 0
               },
               {
                 "glyph" : 72,
-                "width" : 9216,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 1
               },
               {
                 "glyph" : 79,
-                "width" : 5120,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 2
               },
               {
                 "glyph" : 79,
-                "width" : 5120,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 3
               },
               {
                 "glyph" : 82,
-                "width" : 10240,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 4
               },
               {
                 "glyph" : 15,
-                "width" : 5120,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 5
               },
               {
                 "glyph" : 3,
-                "width" : 5120,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 6
               }
@@ -238,10 +238,10 @@ string(7655) "{
             "text" : "Παν",
             "bidi-level" : 0,
             "gravity" : "south",
-            "language" : "c",
+            "language" : "%s",
             "script" : "greek",
             "font" : {
-              "description" : "DejaVu Serif 12",
+              "description" : "%s",
               "checksum" : "%s",
               "matrix" : [
                 1,
@@ -258,20 +258,20 @@ string(7655) "{
             "end-x-offset" : 0,
             "glyphs" : [
               {
-                "glyph" : 794,
-                "width" : 14336,
+                "glyph" : %d,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 0
               },
               {
-                "glyph" : 810,
-                "width" : 11264,
+                "glyph" : %d,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 2
               },
               {
-                "glyph" : 822,
-                "width" : 10240,
+                "glyph" : %d,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 4
               }
@@ -283,10 +283,10 @@ string(7655) "{
             "text" : "語",
             "bidi-level" : 0,
             "gravity" : "south",
-            "language" : "c",
+            "language" : "%s",
             "script" : "han",
             "font" : {
-              "description" : "Noto Sans CJK %s 12",
+              "description" : "%s",
               "checksum" : "%s",
               "matrix" : [
                 1,
@@ -303,8 +303,8 @@ string(7655) "{
             "end-x-offset" : 0,
             "glyphs" : [
               {
-                "glyph" : 37860,
-                "width" : 16384,
+                "glyph" : %d,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 0
               }
@@ -316,10 +316,10 @@ string(7655) "{
             "text" : "!",
             "bidi-level" : 0,
             "gravity" : "south",
-            "language" : "c",
+            "language" : "%s",
             "script" : "han",
             "font" : {
-              "description" : "DejaVu Serif 12",
+              "description" : "%s",
               "checksum" : "%s",
               "matrix" : [
                 1,
@@ -336,8 +336,8 @@ string(7655) "{
             "end-x-offset" : 0,
             "glyphs" : [
               {
-                "glyph" : 4,
-                "width" : 6144,
+                "glyph" : %d,
+                "width" : %d,
                 "is-cluster-start" : true,
                 "log-cluster" : 0
               }

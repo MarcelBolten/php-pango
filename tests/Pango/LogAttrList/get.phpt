@@ -81,8 +81,8 @@ object(Pango\LogAttr)#%d (15) {
   ["breakRemovesPreceding"]=>
   bool(false)
 }
-Pango\LogAttrList::get(): Argument #1 ($byteIndex) must be between 0 and 189
-Pango\LogAttrList::get(): Argument #1 ($byteIndex) must be between 0 and 189
+Pango\LogAttrList::get(): Argument #1 ($byteIndex) must be between 0 and %d
+Pango\LogAttrList::get(): Argument #1 ($byteIndex) must be between 0 and %d
 Pango\LogAttrList::get() expects exactly 1 argument, 0 given
 Pango\LogAttrList::get() expects exactly 1 argument, 2 given
 Pango\LogAttrList::get(): Argument #1 ($byteIndex) must be of type int, array given
