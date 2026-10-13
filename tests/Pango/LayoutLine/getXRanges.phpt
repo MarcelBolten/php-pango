@@ -581,11 +581,11 @@ array(3) {
     int(%d)
   }
 }
-Pango\LayoutLine::getXRanges(): Argument #2 ($byteEnd) must be be greater than argument #1 ($byteStart) 2 but 1 given
-Pango\LayoutLine::getXRanges(): Argument #1 ($byteStart) must be between 0 and 2147483647 but -1 given
-Pango\LayoutLine::getXRanges(): Argument #1 ($byteStart) must be between 0 and 2147483647 but 2147483648 given
-Pango\LayoutLine::getXRanges(): Argument #2 ($byteEnd) must be between 0 and 2147483647 but -1 given
-Pango\LayoutLine::getXRanges(): Argument #2 ($byteEnd) must be between 0 and 2147483647 but 2147483648 given
+Pango\LayoutLine::getXRanges(): Argument #2 ($byteEnd) must be be greater than argument #1 ($byteStart) 2
+Pango\LayoutLine::getXRanges(): Argument #1 ($byteStart) must be between 0 and 2147483647
+Pango\LayoutLine::getXRanges(): Argument #1 ($byteStart) must be between 0 and 2147483647
+Pango\LayoutLine::getXRanges(): Argument #2 ($byteEnd) must be between 0 and 2147483647
+Pango\LayoutLine::getXRanges(): Argument #2 ($byteEnd) must be between 0 and 2147483647
 Pango\LayoutLine::getXRanges() expects at most 2 arguments, 3 given
 Pango\LayoutLine::getXRanges(): Argument #1 ($byteStart) must be of type ?int, array given
 Pango\LayoutLine::getXRanges(): Argument #2 ($byteEnd) must be of type ?int, array given

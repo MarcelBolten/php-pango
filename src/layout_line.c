@@ -202,17 +202,17 @@ PHP_METHOD(Pango_LayoutLine, getXRanges)
     ZEND_PARSE_PARAMETERS_END();
 
     if (!start_byte_index_is_null && (start_byte_index < 0 || start_byte_index > INT_MAX)) {
-        zend_argument_value_error(1, "must be between 0 and %d but %ld given", INT_MAX, start_byte_index);
+        zend_argument_value_error(1, "must be between 0 and %d", INT_MAX);
         RETURN_THROWS();
     }
     if (!end_byte_index_is_null && (end_byte_index < 0 || end_byte_index > INT_MAX)) {
-        zend_argument_value_error(2, "must be between 0 and %d but %ld given", INT_MAX, end_byte_index);
+        zend_argument_value_error(2, "must be between 0 and %d", INT_MAX);
         RETURN_THROWS();
     }
     if (!start_byte_index_is_null && !end_byte_index_is_null && start_byte_index > end_byte_index) {
         start_arg_name = get_active_function_arg_name(1);
-        zend_argument_value_error(2, "must be be greater than argument #1 ($%s) %d but %d given",
-            start_arg_name, start_byte_index, end_byte_index
+        zend_argument_value_error(2, "must be be greater than argument #1 ($%s) %d",
+            start_arg_name, start_byte_index
         );
         RETURN_THROWS();
     }
