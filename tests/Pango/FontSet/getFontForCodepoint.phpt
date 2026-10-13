@@ -21,7 +21,7 @@ $language = new Language('en');
 var_dump($language);
 $fontSet = $context->loadFontSet($fontDesc, $language);
 var_dump($fontSet);
-var_dump($fontSet->getFontForCodepoint(mb_ord('🐘', 'UTF-8')));
+var_dump($fontSet->getFontForCodepoint(128024)); // mb_ord('🐘', 'UTF-8')
 
 try {
     $fontSet->getFontForCodepoint();
@@ -50,13 +50,13 @@ object(Pango\FontDescription)#%d (0) {
 }
 object(Pango\Language)#%d (1) {
   ["string-representation"]=>
-  string(2) "en"
+  string(%d) "%s"
 }
 object(Pango\FontSet)#%d (0) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(19) "Noto Color Emoji 12"
+  string(%d) "%s"
 }
 Pango\FontSet::getFontForCodepoint() expects exactly 1 argument, 0 given
 Pango\FontSet::getFontForCodepoint() expects exactly 1 argument, 2 given

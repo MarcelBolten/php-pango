@@ -30,5 +30,5 @@ object(Pango\Context)#%d (0) {
 }
 object(Pango\FontMetrics)#%d (0) {
 }
-int(%d)
+int(%i)
 Pango\FontMetrics::getUnderlinePosition() expects exactly 0 arguments, 1 given

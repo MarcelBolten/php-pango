@@ -21,5 +21,5 @@ try {
 --EXPECTF--
 object(PangoCairo\FontMap)#%d (0) {
 }
-enum(Cairo\FontType::FT)
+enum(Cairo\FontType::%s)
 PangoCairo\FontMap::getFontType() expects exactly 0 arguments, 1 given

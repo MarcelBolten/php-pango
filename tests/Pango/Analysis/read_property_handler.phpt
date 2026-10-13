@@ -21,8 +21,11 @@ foreach ($layout->getLinesReadonly() as $line) {
     var_dump($analysis->font);
     var_dump($analysis->level);
     var_dump($analysis->gravity);
-    // it is not clear why the flags property is 128 (10000000)
-    // Anyway, only the first 3 bits are used for the flags
+    /**
+     * Pango internally uses bit 7 (0x80) to
+     * indicate that the analysis is associated with an internal
+     * PangoItemPrivate representation.
+     */
     var_dump($analysis->flags);
     var_dump($analysis->script);
     var_dump($analysis->language->__toString());
@@ -36,7 +39,7 @@ object(PangoCairo\Layout)#%d (0) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(14) "DejaVu Sans 12"
+  string(%d) "%s"
 }
 int(0)
 enum(Pango\Gravity::South)

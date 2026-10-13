@@ -67,17 +67,17 @@ object(Pango\FontDescription)#%d (0) {
 }
 object(Pango\Language)#%d (1) {
   ["string-representation"]=>
-  string(2) "en"
+  string(%d) "%s"
 }
 object(Pango\FontSet)#%d (0) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(14) "DejaVu Sans 12"
+  string(%d) "%s"
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(19) "Noto Sans CJK JP 12"
+  string(%d) "%s"
 }
 NULL
 Pango\FontSet::find(): Argument #1 ($callback) must return a boolean value

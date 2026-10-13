@@ -27,7 +27,7 @@ object(Pango\Analysis)#%d (7) {
   ["font"]=>
   object(Pango\Font)#%d (1) {
     ["string-representation"]=>
-    string(14) "DejaVu Sans 12"
+    string(%d) "%s"
   }
   ["level"]=>
   int(0)

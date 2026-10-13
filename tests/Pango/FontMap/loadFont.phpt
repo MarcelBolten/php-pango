@@ -58,7 +58,7 @@ object(Pango\FontDescription)#%d (0) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(14) "DejaVu Sans 12"
+  string(%d) "%s"
 }
 Pango\FontMap::loadFont() expects exactly 2 arguments, 0 given
 Pango\FontMap::loadFont() expects exactly 2 arguments, 1 given

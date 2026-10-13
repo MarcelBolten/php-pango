@@ -14,6 +14,7 @@ use Pango\Language;
 $fontMap = FontMap::getDefault();
 var_dump($fontMap);
 $context = new Context($fontMap);
+$context->setFontDescription(new FontDescription());
 var_dump($context);
 var_dump($context->getMetrics());
 

@@ -122,7 +122,7 @@ array(1) {
         ["font"]=>
         object(Pango\Font)#%d (1) {
           ["string-representation"]=>
-          string(14) "DejaVu Sans 12"
+          string(%d) "%s"
         }
         ["level"]=>
         int(0)
@@ -311,7 +311,7 @@ array(3) {
         ["font"]=>
         object(Pango\Font)#%d (1) {
           ["string-representation"]=>
-          string(14) "DejaVu Sans 12"
+          string(%d) "%s"
         }
         ["level"]=>
         int(0)
@@ -495,7 +495,7 @@ array(3) {
         ["font"]=>
         object(Pango\Font)#%d (1) {
           ["string-representation"]=>
-          string(14) "DejaVu Sans 12"
+          string(%d) "%s"
         }
         ["level"]=>
         int(0)

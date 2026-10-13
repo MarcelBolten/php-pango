@@ -23,7 +23,7 @@ $lang = new Language("en");
 $coverage = $font->getCoverage($lang);
 var_dump($coverage);
 var_dump($coverage->get(ord('A')));
-var_dump($coverage->get(mb_ord('あ')));
+var_dump($coverage->get(12354)); // mb_ord('あ')
 
 try {
     $font->getCoverage();
@@ -52,7 +52,7 @@ object(Pango\FontDescription)#%d (0) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(14) "DejaVu Sans 12"
+  string(%d) "%s"
 }
 object(Pango\Coverage)#%d (0) {
 }

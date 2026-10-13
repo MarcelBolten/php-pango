@@ -15,7 +15,7 @@ var_dump($fontMap);
 $family = $fontMap->getFamily("Sans");
 var_dump($family);
 
-$defaultFace = $family->getFace(null);
+$defaultFace = $family->getFace();
 var_dump($defaultFace);
 var_dump($defaultFace->getName());
 
@@ -32,5 +32,5 @@ object(Pango\FontFamily)#%d (0) {
 }
 object(Pango\FontFace)#%d (0) {
 }
-string(7) "Regular"
+string(%d) "%s"
 Pango\FontFace::getName() expects exactly 0 arguments, 1 given

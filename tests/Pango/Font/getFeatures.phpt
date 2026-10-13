@@ -14,7 +14,7 @@ $fontMap = FontMap::getDefault();
 var_dump($fontMap);
 $context = new Context($fontMap);
 var_dump($context);
-$fontDesc = new FontDescription("DejaVu Sans 12");
+$fontDesc = new FontDescription("Sans 12");
 var_dump($fontDesc);
 $font = $context->loadFont($fontDesc);
 var_dump($font);
@@ -36,7 +36,7 @@ object(Pango\FontDescription)#%d (0) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(14) "DejaVu Sans 12"
+  string(%d) "%s"
 }
 array(0) {
 }

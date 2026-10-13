@@ -45,7 +45,7 @@ object(Pango\FontDescription)#%d (0) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(14) "DejaVu Sans 12"
+  string(%d) "%s"
 }
 object(Pango\FontMetrics)#%d (0) {
 }

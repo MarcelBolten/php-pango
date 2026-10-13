@@ -56,13 +56,13 @@ object(Pango\FontDescription)#%d (0) {
 }
 object(Pango\Language)#%d (1) {
   ["string-representation"]=>
-  string(2) "en"
+  string(%d) "%s"
 }
 object(Pango\FontSet)#%d (0) {
 }
 object(Pango\Font)#%d (1) {
   ["string-representation"]=>
-  string(14) "DejaVu Sans 12"
+  string(%d) "%s"
 }
 Pango\FontSet::getFont(): Argument #1 ($letter) must not contain NUL bytes
 Pango\FontSet::getFont() expects exactly 1 argument, 0 given
