@@ -23,6 +23,11 @@ try {
 }
 
 try {
+    // the expected error message depends on the underlying font system:
+    // with fontconfig:
+    //     Adding font /wrong/path/Cantarell-VF.otf to fontconfig configuration failed
+    // with direct write on windows:
+    //     Specified font file '/wrong/path/Cantarell-VF.otf' does not exist
     $fontMap->addFontFile("/wrong/path/Cantarell-VF.otf");
 } catch (Pango\Exception $e) {
     echo $e->getMessage(), "\n";
@@ -51,7 +56,7 @@ object(PangoCairo\FontMap)#%d (0) {
 }
 bool(true)
 Pango\FontMap::addFontFile(): Argument #1 ($file) must not contain NUL bytes
-Error adding font file '/wrong/path/Cantarell-VF.otf': Adding font /wrong/path/Cantarell-VF.otf to fontconfig configuration failed
+Error adding font file '/wrong/path/Cantarell-VF.otf': %s/wrong/path/Cantarell-VF.otf%s
 Pango\FontMap::addFontFile() expects exactly 1 argument, 0 given
 Pango\FontMap::addFontFile() expects exactly 1 argument, 2 given
 Pango\FontMap::addFontFile(): Argument #1 ($file) must be of type string, array given
