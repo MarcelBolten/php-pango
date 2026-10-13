@@ -25,7 +25,7 @@ try {
 }
 
 try {
-    $defaultBreakList->get(190);
+    $defaultBreakList->get(193); // 190 (\n) vs 193 vs (\r\n)
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
