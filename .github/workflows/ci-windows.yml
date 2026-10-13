@@ -48,8 +48,9 @@ jobs:
                 path: |
                   C:\vcpkg\installed
                   C:\vcpkg\buildtrees
-                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
+                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}-1
                 restore-keys: |
+                  vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}-1
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
                   vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-
 
@@ -96,6 +97,7 @@ jobs:
                     "expat:$triplet",
                     "fontconfig:$triplet",
                     "freetype:$triplet",
+                    "harfbuzz[directwrite]:$triplet",
                     "libjpeg-turbo:$triplet",
                     "libpng:$triplet",
                     "pango:$triplet",
@@ -119,7 +121,7 @@ jobs:
                 path: |
                   C:\vcpkg\installed
                   C:\vcpkg\buildtrees
-                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}
+                key: vcpkg-${{ matrix.arch }}-${{ matrix.php-version }}-${{ github.ref_name }}-1
 
             - name: Install cairo via PIE
               shell: cmd
