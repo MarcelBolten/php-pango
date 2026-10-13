@@ -26,7 +26,7 @@ object(Cairo\Context)#%d (0) {
 }
 object(PangoCairo\Layout)#%d (0) {
 }
-int(794)
+int(%d)
 object(Pango\GlyphGeometry)#%d (3) {
   ["width"]=>
   int(%i)
