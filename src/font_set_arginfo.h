@@ -1,15 +1,15 @@
 /* This is a generated file, edit font_set.stub.php instead.
- * Stub hash: 081b7d15cfc262c112b3cec8e7ae27e97e299b2c */
+ * Stub hash: 2b6a79104ed09fdb3418f0037f7df7829f816e67 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontSet_find, 0, 1, Pango\\Font, 1)
 	ZEND_ARG_TYPE_INFO(0, callback, IS_CALLABLE, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontSet_getFont, 0, 1, Pango\\Font, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontSet_getFont, 0, 1, Pango\\Font, 1)
 	ZEND_ARG_TYPE_INFO(0, letter, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontSet_getFontForCodepoint, 0, 1, Pango\\Font, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontSet_getFontForCodepoint, 0, 1, Pango\\Font, 1)
 	ZEND_ARG_TYPE_INFO(0, codepoint, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 

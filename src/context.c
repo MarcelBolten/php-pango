@@ -501,7 +501,7 @@ PHP_METHOD(Pango_Context, loadFontSet)
     zval *language_zv;
     PangoLanguage* language;
     pango_font_set_object *font_set_obj;
-    PangoFontset *font_set;
+    PangoFontset *font_set = NULL;
 
     ZEND_PARSE_PARAMETERS_START(2, 2)
         Z_PARAM_OBJECT_OF_CLASS(font_desc_zv, php_pango_get_font_description_ce())

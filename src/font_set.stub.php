@@ -35,14 +35,14 @@ readonly class FontSet
      * @param string $letter A Unicode character, a single code point.
      * @throws \ValueError if the string is not a single Unicode character.
      */
-    public function getFont(string $letter): Font {}
+    public function getFont(string $letter): ?Font {}
 
     /**
      * Returns the font in the FontSet that contains the best glyph for a Unicode code point.
      *
      * @param int $codepoint A Unicode code point.
      */
-    public function getFontForCodepoint(int $codepoint): Font {}
+    public function getFontForCodepoint(int $codepoint): ?Font {}
 
     /**
      * Get overall metric information for the fonts in the FontSet.

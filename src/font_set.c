@@ -161,7 +161,7 @@ PHP_METHOD(Pango_FontSet, getFont)
 {
     PangoFontset* font_set;
     zend_string *letter;
-    PangoFont* font;
+    PangoFont* font = NULL;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_STR(letter)
@@ -177,6 +177,10 @@ PHP_METHOD(Pango_FontSet, getFont)
         g_utf8_get_char(ZSTR_VAL(letter))
     );
 
+    if (!font) {
+        RETURN_NULL();
+    }
+
     object_init_ex(return_value, php_pango_get_font_ce());
     Z_PANGO_FONT_P(return_value)->font = font;
 }
@@ -187,8 +191,7 @@ PHP_METHOD(Pango_FontSet, getFontForCodepoint)
 {
     PangoFontset* font_set;
     zend_long codepoint;
-    PangoFont* font;
-    pango_font_object *font_obj;
+    PangoFont* font = NULL;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_LONG(codepoint)
@@ -197,9 +200,12 @@ PHP_METHOD(Pango_FontSet, getFontForCodepoint)
     font_set = pango_font_set_object_get_font_set(ZEND_THIS);
     font = pango_fontset_get_font(font_set, codepoint);
 
+    if (!font) {
+        RETURN_NULL();
+    }
+
     object_init_ex(return_value, php_pango_get_font_ce());
-    font_obj = Z_PANGO_FONT_P(return_value);
-    font_obj->font = font;
+    Z_PANGO_FONT_P(return_value)->font = font;
 }
 /* }}} */
 

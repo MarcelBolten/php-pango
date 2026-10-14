@@ -1,5 +1,5 @@
 /* This is a generated file, edit font.stub.php instead.
- * Stub hash: d880ebaa7bbb6d062c73035e60dedfb24a44ded0 */
+ * Stub hash: a6fd8bc132d34a3d2992e251ca279f98d3e7cd69 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Font_describe, 0, 0, Pango\\FontDescription, 0)
 ZEND_END_ARG_INFO()
