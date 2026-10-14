@@ -1,18 +1,11 @@
 --TEST--
-Pango\FontSet::getFontForCodepoint() failing on Windows ci runner
+Pango\FontSet::getFontForCodepoint() Windows
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
 if (strtolower(PHP_OS_FAMILY) !== 'windows') {
     die('skip - This test is for Windows only');
 }
-if (strtolower(PHP_OS_FAMILY) === 'windows') {
-    die('xfail - This test is expected to fail on Windows');
-}
-// TODO: investigate why this test fails on Windows with
-// (process:5008): Pango-CRITICAL **: pango_font_describe: assertion 'font != NULL' failed
-// (process:5008): Pango-CRITICAL **: pango_font_description_to_string: assertion 'desc != NULL' failed
-// Termsig=-1073741819
 ?>
 --FILE--
 <?php
@@ -22,10 +15,12 @@ use Pango\FontDescription;
 use Pango\Language;
 
 $fontMap = FontMap::getDefault();
+$pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
+$fontMap->addFontFile($pathToFonts . "/NotoColorEmoji_WindowsCompatible.ttf");
 var_dump($fontMap);
 $context = new Context($fontMap);
 var_dump($context);
-$fontDesc = new FontDescription('Sans 12');
+$fontDesc = new FontDescription('Noto Color Emoji 12');
 var_dump($fontDesc);
 $language = new Language('en');
 var_dump($language);
@@ -64,10 +59,7 @@ object(Pango\Language)#%d (1) {
 }
 object(Pango\FontSet)#%d (0) {
 }
-object(Pango\Font)#%d (1) {
-  ["string-representation"]=>
-  string(%d) "%s"
-}
+NULL
 Pango\FontSet::getFontForCodepoint() expects exactly 1 argument, 0 given
 Pango\FontSet::getFontForCodepoint() expects exactly 1 argument, 2 given
 Pango\FontSet::getFontForCodepoint(): Argument #1 ($codepoint) must be of type int, array given

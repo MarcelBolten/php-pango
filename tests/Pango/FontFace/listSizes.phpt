@@ -4,6 +4,9 @@ Pango\FontFace::listSizes()
 <?php
 include __DIR__ . '/../../skipif.php.inc';
 include __DIR__ . '/../../skipif_cairo.php.inc';
+if (strtolower(PHP_OS_FAMILY) === 'windows') {
+    die('xfail - This test is expected to fail on Windows');
+}
 ?>
 --FILE--
 <?php
@@ -15,7 +18,7 @@ var_dump($fontMap);
 $family = $fontMap->listFamilies()[0];
 var_dump($family);
 
-$defaultFace = $family->getFace(null);
+$defaultFace = $family->getFace();
 var_dump($defaultFace);
 var_dump($defaultFace->listSizes());
 

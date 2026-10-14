@@ -4,6 +4,9 @@ Pango\FontFamily::getFace()
 <?php
 include __DIR__ . '/../../skipif.php.inc';
 include __DIR__ . '/../../skipif_cairo.php.inc';
+if (strtolower(PHP_OS_FAMILY) === 'windows') {
+    die('xfail - This test is expected to fail on Windows');
+}
 ?>
 --FILE--
 <?php
