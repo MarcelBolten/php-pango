@@ -59,6 +59,10 @@ object(Pango\Language)#%d (1) {
 }
 object(Pango\FontSet)#%d (0) {
 }
+object(Pango\Font)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
+}
 NULL
 Pango\FontSet::getFontForCodepoint() expects exactly 1 argument, 0 given
 Pango\FontSet::getFontForCodepoint() expects exactly 1 argument, 2 given

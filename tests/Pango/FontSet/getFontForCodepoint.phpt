@@ -3,9 +3,6 @@ Pango\FontSet::getFontForCodepoint()
 --SKIPIF--
 <?php
 include __DIR__ . '/../../skipif.php.inc';
-if (strtolower(PHP_OS_FAMILY) === 'windows') {
-    die('xfail - This test is expected to fail on Windows');
-}
 ?>
 --FILE--
 <?php
@@ -15,10 +12,12 @@ use Pango\FontDescription;
 use Pango\Language;
 
 $fontMap = FontMap::getDefault();
+$pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
+$fontMap->addFontFile($pathToFonts . "/NotoColorEmoji_WindowsCompatible.ttf");
 var_dump($fontMap);
 $context = new Context($fontMap);
 var_dump($context);
-$fontDesc = new FontDescription('Sans 12');
+$fontDesc = new FontDescription('Noto Color Emoji 12');
 var_dump($fontDesc);
 $language = new Language('en');
 var_dump($language);
