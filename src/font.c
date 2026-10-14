@@ -227,6 +227,10 @@ PHP_METHOD(Pango_Font, getLanguages)
     font = pango_font_object_get_font(ZEND_THIS);
     languages = pango_font_get_languages(font);
 
+    if (!languages) {
+        RETURN_EMPTY_ARRAY();
+    }
+
     array_init(return_value);
     for (int i = 0; languages[i] != NULL; i++) {
         object_init_ex(&tmp, php_pango_get_language_ce());

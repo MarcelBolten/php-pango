@@ -57,7 +57,8 @@ class Font
     /**
      * Returns the Languages that are supported by font.
      *
-     * @return Language[] An array of Language objects.
+     * @return Language[] An array of Language objects. Can be an empty array
+     *                    if the font backend does not provide this information.
      */
     public function getLanguages(): array {}
 
