@@ -38,8 +38,18 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v7
 
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                php-version: ${{ matrix.php-version }}
+                tools: pie:1.5
+              env:
+                phpts: ${{ matrix.ts }}
+
             - name: php -i
-              run: php -i
+              run: |
+                pie --version
+                php -i
 
             - name: Restore vcpkg cache
               id: restore-vcpkg-cache
@@ -126,8 +136,7 @@ jobs:
             - name: Install cairo via PIE
               shell: cmd
               run: |
-                curl -L -o pie.phar https://github.com/php/pie/releases/download/1.4.10/pie.phar
-                php pie.phar install marcelbolten/php-cairo:^2.0.0alpha2
+                pie install marcelbolten/php-cairo:^2.0.0alpha2
                 php --ri cairo
 
             - name: Build the extension
