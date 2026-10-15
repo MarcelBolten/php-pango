@@ -1,9 +1,7 @@
 --TEST--
 Pango\version_string()
---SKIPIF--
-<?php
-include __DIR__ . '/../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 var_dump(Pango\version_string());

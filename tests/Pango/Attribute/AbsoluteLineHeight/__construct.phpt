@@ -1,9 +1,7 @@
 --TEST--
 Pango\Attribute\AbsoluteLineHeight::__construct()
---SKIPIF--
-<?php
-include __DIR__ . '/../../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Attribute\AbsoluteLineHeight;

@@ -1,9 +1,7 @@
 --TEST--
 Pango\Matrix::rotate()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Matrix;

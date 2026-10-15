@@ -1,9 +1,7 @@
 --TEST--
 Pango\Language clone handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $language = new Pango\Language("en");

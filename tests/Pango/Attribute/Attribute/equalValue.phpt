@@ -1,9 +1,7 @@
 --TEST--
 Pango\Attribute\Attribute::equalValue()
---SKIPIF--
-<?php
-include __DIR__ . '/../../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $attribute1 = new Pango\Attribute\Size(12);

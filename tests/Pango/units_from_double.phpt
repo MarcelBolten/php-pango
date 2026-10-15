@@ -1,9 +1,7 @@
 --TEST--
 Pango\units_from_double()
---SKIPIF--
-<?php
-include __DIR__ . '/../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use function Pango\units_from_double;

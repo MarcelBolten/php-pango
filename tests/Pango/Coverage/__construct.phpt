@@ -1,9 +1,7 @@
 --TEST--
 Pango\Coverage::__construct()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Coverage;

@@ -1,8 +1,9 @@
 --TEST--
 Pango extension class listing
+--EXTENSIONS--
+pango
 --SKIPIF--
 <?php
-include __DIR__ . '/skipif.php.inc';
 if (strtolower(PHP_OS_FAMILY) !== 'linux') {
     die('skip - This test is for Linux only');
 }

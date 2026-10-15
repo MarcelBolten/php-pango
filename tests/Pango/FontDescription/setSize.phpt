@@ -1,9 +1,7 @@
 --TEST--
 Pango\FontDescription::setSize()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 namespace Pango;

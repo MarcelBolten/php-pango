@@ -1,9 +1,7 @@
 --TEST--
 Pango\Matrix get_properties handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Matrix;

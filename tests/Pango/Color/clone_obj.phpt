@@ -1,9 +1,7 @@
 --TEST--
 Pango\Color clone handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $color = new Pango\Color(1024, 2048, 4096);

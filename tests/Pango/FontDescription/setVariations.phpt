@@ -1,9 +1,7 @@
 --TEST--
 Pango\FontDescription::setVariations()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $fontDesc = new Pango\FontDescription();

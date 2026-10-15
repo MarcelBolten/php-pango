@@ -1,9 +1,7 @@
 --TEST--
 Pango\Attribute\FontScale::__construct()
---SKIPIF--
-<?php
-include __DIR__ . '/../../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Attribute\FontScale;

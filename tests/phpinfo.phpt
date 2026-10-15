@@ -1,9 +1,7 @@
 --TEST--
 Pango extension phpinfo information
---SKIPIF--
-<?php
-include __DIR__ . '/skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $ext = new ReflectionExtension('pango');

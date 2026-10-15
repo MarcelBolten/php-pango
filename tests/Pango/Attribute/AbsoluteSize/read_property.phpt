@@ -1,9 +1,7 @@
 --TEST--
 Pango\Attribute\AbsoluteSize read_property handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Attribute\AbsoluteSize;

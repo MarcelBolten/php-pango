@@ -1,9 +1,7 @@
 --TEST--
 Pango\Attribute\BaselineShift::__construct()
---SKIPIF--
-<?php
-include __DIR__ . '/../../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Attribute\BaselineShift;

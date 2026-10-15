@@ -1,9 +1,7 @@
 --TEST--
 Pango\Attribute\FontDescription clone handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Attribute\FontDescription as AttrFontDescription;

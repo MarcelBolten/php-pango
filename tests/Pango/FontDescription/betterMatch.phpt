@@ -1,9 +1,7 @@
 --TEST--
 Pango\FontDescription::betterMatch()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $fontDescRegular = new Pango\FontDescription("Sans Regular 12");

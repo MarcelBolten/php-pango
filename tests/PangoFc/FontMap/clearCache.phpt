@@ -1,9 +1,7 @@
 --TEST--
 Pango\Ft2\FontMap::clearCache()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Ft2\FontMap;

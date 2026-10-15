@@ -1,8 +1,9 @@
 --TEST--
 Pango\Font::getLanguages()
+--EXTENSIONS--
+pango
 --SKIPIF--
 <?php
-include __DIR__ . '/../../skipif.php.inc';
 if (strtolower(PHP_OS_FAMILY) !== 'windows') {
     die('skip - This test is for Windows only');
 }

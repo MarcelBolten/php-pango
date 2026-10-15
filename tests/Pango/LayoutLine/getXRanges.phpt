@@ -1,10 +1,7 @@
 --TEST--
 Pango\LayoutLine::getXRanges()
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-include __DIR__ . '/../../skipif_cairo.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Ft2\FontMap;

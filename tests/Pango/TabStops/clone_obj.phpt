@@ -1,9 +1,7 @@
 --TEST--
 Pango\TabStops clone handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\TabStops;

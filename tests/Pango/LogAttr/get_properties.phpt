@@ -1,13 +1,12 @@
 --TEST--
 Pango\LogAttr get_properties handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $logattr = new Pango\LogAttr();
 var_dump($logattr);
+// The expected result has trailing whitespace
 print_r($logattr);
 ?>
 --EXPECTF--

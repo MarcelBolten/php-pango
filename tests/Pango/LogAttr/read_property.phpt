@@ -1,9 +1,7 @@
 --TEST--
 Pango\LogAttr read_property handler
---SKIPIF--
-<?php
-include __DIR__ . '/../../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 $logattr = new Pango\LogAttr();

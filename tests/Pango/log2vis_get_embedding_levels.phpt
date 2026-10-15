@@ -1,9 +1,7 @@
 --TEST--
 Pango\log2vis_get_embedding_levels()
---SKIPIF--
-<?php
-include __DIR__ . '/../skipif.php.inc';
-?>
+--EXTENSIONS--
+pango
 --FILE--
 <?php
 use Pango\Direction;
