@@ -22,7 +22,7 @@ jobs:
           uses: php/php-windows-builder/extension-matrix@v1
           with:
             extension-url: https://github.com/MarcelBolten/php-pango
-            php-version-list: '8.6' # 8.2, 8.3, 8.4, 8.5, 
+            php-version-list: '8.2, 8.3, 8.4, 8.5, 8.6'
             arch-list: 'x64'
             ts-list: 'nts'
 
@@ -136,7 +136,7 @@ jobs:
             - name: Install cairo via PIE
               shell: cmd
               run: |
-                pie install -vvv marcelbolten/php-cairo:^2.0.0alpha2
+                pie install marcelbolten/php-cairo:^2.0.0alpha2
                 php --ri cairo
 
             - name: Build the extension
