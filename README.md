@@ -6,6 +6,7 @@ Pango extension for PHP 8.2+
 This extension provides access to Pango functionality in PHP 8.2+ in the Pango and PangoCairo namespace.
 
 [![Build and Test](https://github.com/MarcelBolten/php-pango/actions/workflows/ci.yml/badge.svg?branch=modern_php)](https://github.com/MarcelBolten/php-pango/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/github/MarcelBolten/php-pango/graph/badge.svg?token=JGOM5G9MJ5)](https://codecov.io/github/MarcelBolten/php-pango)
 
 Requirements
 =============
