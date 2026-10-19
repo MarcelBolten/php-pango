@@ -751,7 +751,9 @@ PHP_METHOD(Pango_Layout, serialize)
     }
     if (serialized_layout = pango_layout_serialize(layout_object->layout, flags)) {
         text = g_bytes_get_data(serialized_layout, NULL);
-        RETURN_STRING(text);
+        RETVAL_STRING(text);
+        g_bytes_unref(serialized_layout);
+        return;
     }
 
     RETURN_EMPTY_STRING();
@@ -1055,7 +1057,8 @@ PHP_METHOD(Pango_Layout, getTabStops)
 
     object_init_ex(return_value, php_pango_get_tabstops_ce());
     tabstops_object = Z_PANGO_TABSTOPS_P(return_value);
-    tabstops_object->tab_array = pango_tab_array_copy(tab_array);
+    // no need to copy tab_array here, pango_layout_get_tabs returns a copy
+    tabstops_object->tab_array = tab_array;
 }
 /* }}} */
 

@@ -175,8 +175,11 @@ PHP_METHOD(Pango_TabStops, __toString)
     ZEND_PARSE_PARAMETERS_NONE();
 
     tab_array = pango_tabstops_object_get_tab_array(ZEND_THIS);
+    str = pango_tab_array_to_string(tab_array);
 
-    RETURN_STRING(pango_tab_array_to_string(tab_array));
+    RETVAL_STRING(str);
+    g_free(str);
+    return;
 }
 /* }}} */
 
@@ -281,6 +284,8 @@ PHP_METHOD(Pango_TabStops, remove)
         }
     }
 
+    g_free(alignments);
+    g_free(locations);
     pango_tab_array_free(tab_array);
     tabstops_obj->tab_array = new_tab_array;
 
@@ -480,6 +485,9 @@ PHP_METHOD(Pango_TabStops, getTabs)
 
         add_next_index_zval(return_value, &tabstop_zv);
     }
+
+    g_free(alignments);
+    g_free(locations);
 }
 /* }}} */
 

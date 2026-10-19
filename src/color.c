@@ -162,7 +162,9 @@ PHP_METHOD(Pango_Color, __toString)
 
     spec = pango_color_to_string(Z_PANGO_COLOR_P(ZEND_THIS)->color);
 
-    RETURN_STRING(spec);
+    RETVAL_STRING(spec);
+    g_free(spec);
+    return;
 }
 /* }}} */
 

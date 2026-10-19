@@ -141,6 +141,7 @@ static void pango_font_face_free_obj(zend_object *zobj)
     }
 
     if (intern->font_face != NULL) {
+        g_object_unref(intern->font_face);
         intern->font_face = NULL;
     }
 

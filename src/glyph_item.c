@@ -210,13 +210,15 @@ PHP_METHOD(Pango_GlyphItem, getGlyphItemIterator)
     zend_object *init_loc_end = zend_enum_get_case_cstr(php_pango_get_glyph_item_iter_init_loc_ce(), "End");
     gboolean (*init_iterator)(PangoGlyphItemIter *, PangoGlyphItem *, const char *);
     gboolean initialized;
-    PangoGlyphItemIter *glyph_item_iter = g_slice_new(PangoGlyphItemIter);
+    PangoGlyphItemIter *glyph_item_iter;
     pango_glyph_item_iter_object *iter_object;
 
     ZEND_PARSE_PARAMETERS_START(0, 1)
         Z_PARAM_OPTIONAL
         Z_PARAM_OBJ_OF_CLASS(init_location, php_pango_get_glyph_item_iter_init_loc_ce())
     ZEND_PARSE_PARAMETERS_END();
+
+    glyph_item_iter = g_slice_new(PangoGlyphItemIter);
 
     text = get_text_from_layout_line(ZEND_THIS);
 

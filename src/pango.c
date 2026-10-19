@@ -190,6 +190,7 @@ ZEND_FUNCTION(Pango_parse_markup)
         Z_OBJCE_P(return_value), Z_OBJ_P(return_value),
         "text", sizeof("text") - 1, text, strlen(text)
     );
+    g_free(text);
 
     zval attr_list_zv;
     object_init_ex(&attr_list_zv, php_pango_get_attr_list_ce());
@@ -365,7 +366,7 @@ ZEND_FUNCTION(Pango_reorder_items)
     // are all array items Pango\Item objects?
     bool all_items = true;
     GList *items_log = NULL;
-    GList *items_vis;
+    GList *items_vis = NULL;
     zval tmp_item_zv;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
@@ -387,7 +388,8 @@ ZEND_FUNCTION(Pango_reorder_items)
         RETURN_THROWS();
     }
 
-    items_vis = pango_reorder_items(g_list_reverse(items_log));
+    items_log = g_list_reverse(items_log);
+    items_vis = pango_reorder_items(items_log);
 
     array_init(return_value);
     for (GList *item = items_vis; item != NULL; item = item->next) {

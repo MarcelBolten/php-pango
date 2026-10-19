@@ -119,7 +119,7 @@ PHP_METHOD(Pango_Font, getFace)
 
     object_init_ex(return_value, php_pango_get_font_face_ce());
     face_obj = Z_PANGO_FONT_FACE_P(return_value);
-    face_obj->font_face = pango_font_get_face(font);
+    face_obj->font_face = g_object_ref(pango_font_get_face(font));
 }
 /* }}} */
 

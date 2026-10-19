@@ -91,12 +91,14 @@ PHP_METHOD(Pango_Attribute_AttributeList, __construct)
 /* {{{ Returns the list of attributes in AttributeList. */
 PHP_METHOD(Pango_Attribute_AttributeList, getAttributes)
 {
-    GSList *attrs;
+    GSList *attrs = NULL;
     zval attr_zv;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
-    if (!(attrs = pango_attr_list_get_attributes(Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list))) {
+    attrs = pango_attr_list_get_attributes(Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list);
+    if (!attrs) {
+        g_slist_free(attrs);
         RETURN_EMPTY_ARRAY();
     }
 
@@ -118,7 +120,7 @@ PHP_METHOD(Pango_Attribute_AttributeList, getAttributes)
         object_init_ex(&attr_zv, attr_ce);
         if (attr_type == PANGO_ATTR_FONT_DESC) {
             pango_attr_font_description_object *attr_font_description_object = Z_PANGO_ATTR_FONT_DESCRIPTION_P(&attr_zv);
-            attr_font_description_object->attribute = pango_attribute_copy(attr);
+            attr_font_description_object->attribute = attr;
 
             zval font_description_zv;
             object_init_ex(&font_description_zv, php_pango_get_font_description_ce());
@@ -130,7 +132,7 @@ PHP_METHOD(Pango_Attribute_AttributeList, getAttributes)
             ZVAL_COPY_VALUE(&attr_font_description_object->font_description_zv, &font_description_zv);
         } else if (attr_type == PANGO_ATTR_LANGUAGE) {
             pango_attr_language_object *attr_language_object = Z_PANGO_ATTR_LANGUAGE_P(&attr_zv);
-            attr_language_object->attribute = pango_attribute_copy(attr);
+            attr_language_object->attribute = attr;
 
             zval language_zv;
             object_init_ex(&language_zv, php_pango_get_language_ce());
@@ -139,11 +141,13 @@ PHP_METHOD(Pango_Attribute_AttributeList, getAttributes)
             // hand-over the language zval to the attribute object without incrementing the refcount
             ZVAL_COPY_VALUE(&attr_language_object->language_zv, &language_zv);
         } else {
-            Z_PANGO_ATTRIBUTE_P(&attr_zv)->attribute = pango_attribute_copy(attr);
+            Z_PANGO_ATTRIBUTE_P(&attr_zv)->attribute = attr;
         }
 
         add_next_index_zval(return_value, &attr_zv);
     }
+
+    g_slist_free(attrs);
 }
 /* }}} */
 
@@ -400,9 +404,15 @@ PHP_METHOD(Pango_Attribute_AttributeList, merge)
 /* {{{  */
 PHP_METHOD(Pango_Attribute_AttributeList, toString)
 {
+    char *str;
+
     ZEND_PARSE_PARAMETERS_NONE();
 
-    RETURN_STRING(pango_attr_list_to_string(Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list));
+    str = pango_attr_list_to_string(Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list);
+    
+    RETVAL_STRING(str);
+    g_free(str);
+    return;
 }
 /* }}} */
 

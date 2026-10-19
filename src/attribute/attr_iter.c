@@ -127,6 +127,7 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, get)
 PHP_METHOD(Pango_Attribute_AttributeIterator, getAttributes)
 {
     GSList *attributes;
+
     ZEND_PARSE_PARAMETERS_NONE();
 
     attributes = pango_attr_iterator_get_attrs(pango_attr_iter_object_get_attr_iter(ZEND_THIS));
@@ -151,7 +152,7 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getAttributes)
 
         if (attr_type == PANGO_ATTR_FONT_DESC) {
             pango_attr_font_description_object *attr_font_description_object = Z_PANGO_ATTR_FONT_DESCRIPTION_P(&attr_zv);
-            attr_font_description_object->attribute = pango_attribute_copy(attr);
+            attr_font_description_object->attribute = attr;
 
             zval font_description_zv;
             object_init_ex(&font_description_zv, php_pango_get_font_description_ce());
@@ -163,7 +164,7 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getAttributes)
             ZVAL_COPY_VALUE(&attr_font_description_object->font_description_zv, &font_description_zv);
         } else if (attr_type == PANGO_ATTR_LANGUAGE) {
             pango_attr_language_object *attr_language_object = Z_PANGO_ATTR_LANGUAGE_P(&attr_zv);
-            attr_language_object->attribute = pango_attribute_copy(attr);
+            attr_language_object->attribute = attr;
 
             zval language_zv;
             object_init_ex(&language_zv, php_pango_get_language_ce());
@@ -173,23 +174,27 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getAttributes)
             ZVAL_COPY_VALUE(&attr_language_object->language_zv, &language_zv);
         } else {
             pango_attribute_object *attr_object = Z_PANGO_ATTRIBUTE_P(&attr_zv);
-            attr_object->attribute = pango_attribute_copy(attr);
+            attr_object->attribute = attr;
         }
 
         add_next_index_zval(return_value, &attr_zv);
     }
+
+    g_slist_free(attributes);
 }
 /* }}} */
 
 /* {{{ */
 PHP_METHOD(Pango_Attribute_AttributeIterator, getFont)
 {
-    PangoFontDescription* font_desc = pango_font_description_new();
+    PangoFontDescription* font_desc;
     PangoLanguage* language;
     GSList* extra_attrs;
     zval tmp;
 
     ZEND_PARSE_PARAMETERS_NONE();
+
+    font_desc = pango_font_description_new();
 
     pango_attr_iterator_get_font(
         pango_attr_iter_object_get_attr_iter(ZEND_THIS),
@@ -203,8 +208,8 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getFont)
     object_init_ex(&tmp, php_pango_get_font_description_ce());
     Z_PANGO_FONT_DESC_P(&tmp)->font_description = font_desc;
     pango_font_description_set_family(
-        Z_PANGO_FONT_DESC_P(&tmp)->font_description,
-        pango_font_description_get_family(Z_PANGO_FONT_DESC_P(&tmp)->font_description));
+        font_desc,
+        pango_font_description_get_family(font_desc));
     add_assoc_zval(return_value, "fontDescription", &tmp);
 
     object_init_ex(&tmp, php_pango_get_language_ce());
@@ -216,6 +221,13 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getFont)
         PangoAttribute *attr = (PangoAttribute *)iter->data;
         PangoAttrType attr_type = attr->klass->type;
 
+        // PANGO_ATTR_LANGUAGE and PANGO_ATTR_FONT_DESC are never added to the
+        // extra_attrs list by pango, so we can skip them here as well
+        if (attr_type == PANGO_ATTR_LANGUAGE || attr_type == PANGO_ATTR_FONT_DESC) {
+            pango_attribute_destroy(attr);
+            continue;
+        }
+        
         zend_class_entry *attr_ce = php_pango_attr_ce_lookup(attr_type);
         if (!attr_ce) {
             continue; // Skip unsupported attribute types
@@ -226,21 +238,14 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getFont)
             // );
             // RETURN_THROWS();
         }
+
         zval attr_zv;
         object_init_ex(&attr_zv, attr_ce);
-
-        // PANGO_ATTR_LANGUAGE and PANGO_ATTR_FONT_DESC are never added to the
-        // extra_attrs list by pango, so we can skip them here as well
-        if (attr_type == PANGO_ATTR_LANGUAGE || attr_type == PANGO_ATTR_FONT_DESC) {
-            continue;
-        } else {
-            pango_attribute_object *attr_object = Z_PANGO_ATTRIBUTE_P(&attr_zv);
-            attr_object->attribute = pango_attribute_copy(attr);
-        }
-
+        Z_PANGO_ATTRIBUTE_P(&attr_zv)->attribute = attr;
         add_next_index_zval(&tmp, &attr_zv);
     }
     add_assoc_zval(return_value, "extraAttrs", &tmp);
+    g_slist_free(extra_attrs);
 }
 /* }}} */
 
