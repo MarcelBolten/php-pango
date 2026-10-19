@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">src</a> - exception.c<span style="font-size: 80%;"> (source / <a href="exception.c.func-c.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - exception.c<span style="font-size: 80%;"> (source / <a href="exception.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -32,17 +32,17 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-26 00:52:08</td>
+            <td class="headerValue">2026-10-19 21:21:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
                   <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -83,22 +83,27 @@
 <span id="L21"><span class="lineNum">      21</span>              : #include &quot;config.h&quot;</span>
 <span id="L22"><span class="lineNum">      22</span>              : #endif</span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
-<span id="L24"><span class="lineNum">      24</span>              : #include &quot;php.h&quot;</span>
-<span id="L25"><span class="lineNum">      25</span>              : #include &quot;zend_exceptions.h&quot;</span>
+<span id="L24"><span class="lineNum">      24</span>              : #include &lt;php.h&gt;</span>
+<span id="L25"><span class="lineNum">      25</span>              : #include &lt;Zend/zend_exceptions.h&gt;</span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
-<span id="L27"><span class="lineNum">      27</span>              : #include &quot;php_pango.h&quot;</span>
-<span id="L28"><span class="lineNum">      28</span>              : #include &quot;exception_arginfo.h&quot;</span>
-<span id="L29"><span class="lineNum">      29</span>              : </span>
-<span id="L30"><span class="lineNum">      30</span>              : zend_class_entry *pango_ce_pango_exception;</span>
-<span id="L31"><span class="lineNum">      31</span>              : </span>
-<span id="L32"><span class="lineNum">      32</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC tlaBgGNC">         194 : PHP_MINIT_FUNCTION(pango_exception)</span></span>
-<span id="L34"><span class="lineNum">      34</span>              : {</span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         194 :     pango_ce_pango_exception = register_class_Pango_Exception(zend_ce_exception);</span></span>
+<span id="L27"><span class="lineNum">      27</span>              : #include &quot;../php_pango.h&quot;</span>
+<span id="L28"><span class="lineNum">      28</span>              : #include &quot;exception.h&quot;</span>
+<span id="L29"><span class="lineNum">      29</span>              : #include &quot;exception_arginfo.h&quot;</span>
+<span id="L30"><span class="lineNum">      30</span>              : </span>
+<span id="L31"><span class="lineNum">      31</span>              : zend_class_entry *pango_ce_pango_exception;</span>
+<span id="L32"><span class="lineNum">      32</span>              : </span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          10 : PHP_PANGO_API zend_class_entry* php_pango_get_pango_exception_ce(void) {</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          10 :     return pango_ce_pango_exception;</span></span>
+<span id="L35"><span class="lineNum">      35</span>              : }</span>
 <span id="L36"><span class="lineNum">      36</span>              : </span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         194 :     return SUCCESS;</span></span>
-<span id="L38"><span class="lineNum">      38</span>              : }</span>
-<span id="L39"><span class="lineNum">      39</span>              : /* }}} */</span>
+<span id="L37"><span class="lineNum">      37</span>              : /* {{{ PHP_MINIT_FUNCTION */</span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">         543 : PHP_MINIT_FUNCTION(pango_exception)</span></span>
+<span id="L39"><span class="lineNum">      39</span>              : {</span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">         543 :     pango_ce_pango_exception = register_class_Pango_Exception(zend_ce_exception);</span></span>
+<span id="L41"><span class="lineNum">      41</span>              : </span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         543 :     return SUCCESS;</span></span>
+<span id="L43"><span class="lineNum">      43</span>              : }</span>
+<span id="L44"><span class="lineNum">      44</span>              : /* }}} */</span>
         </pre>
               </td>
             </tr>

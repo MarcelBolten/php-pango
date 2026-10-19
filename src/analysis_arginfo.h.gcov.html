@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - PHP Pango Extension Coverage - src/analysis_arginfo.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - analysis_arginfo.h<span style="font-size: 80%;"> (source / <a href="analysis_arginfo.h.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">PHP Pango Extension Coverage</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">38</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2026-10-19 21:21:46</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /* This is a generated file, edit analysis.stub.php instead.</span>
+<span id="L2"><span class="lineNum">       2</span>              :  * Stub hash: 63b3a7a018d41fa1cd0355f5fe7e2101397703d6 */</span>
+<span id="L3"><span class="lineNum">       3</span>              : </span>
+<span id="L4"><span class="lineNum">       4</span> <span class="tlaGNC">         543 : static zend_class_entry *register_class_Pango_Analysis(void)</span></span>
+<span id="L5"><span class="lineNum">       5</span>              : {</span>
+<span id="L6"><span class="lineNum">       6</span>              :     zend_class_entry ce, *class_entry;</span>
+<span id="L7"><span class="lineNum">       7</span>              : </span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">         543 :     INIT_NS_CLASS_ENTRY(ce, &quot;Pango&quot;, &quot;Analysis&quot;, NULL);</span></span>
+<span id="L9"><span class="lineNum">       9</span>              : #if (PHP_VERSION_ID &gt;= 80400)</span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">         543 :     class_entry = zend_register_internal_class_with_flags(&amp;ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);</span></span>
+<span id="L11"><span class="lineNum">      11</span>              : #else</span>
+<span id="L12"><span class="lineNum">      12</span>              :     ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;</span>
+<span id="L13"><span class="lineNum">      13</span>              :     class_entry = zend_register_internal_class_ex(&amp;ce, NULL);</span>
+<span id="L14"><span class="lineNum">      14</span>              :     class_entry-&gt;ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;</span>
+<span id="L15"><span class="lineNum">      15</span>              : #endif</span>
+<span id="L16"><span class="lineNum">      16</span>              : </span>
+<span id="L17"><span class="lineNum">      17</span>              :     zval const_FLAG_IS_ELLIPSIS_value;</span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         543 :     ZVAL_LONG(&amp;const_FLAG_IS_ELLIPSIS_value, PANGO_ANALYSIS_FLAG_IS_ELLIPSIS);</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">         543 :     zend_string *const_FLAG_IS_ELLIPSIS_name = zend_string_init_interned(&quot;FLAG_IS_ELLIPSIS&quot;, sizeof(&quot;FLAG_IS_ELLIPSIS&quot;) - 1, true);</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         543 :     zend_declare_class_constant_ex(class_entry, const_FLAG_IS_ELLIPSIS_name, &amp;const_FLAG_IS_ELLIPSIS_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L21"><span class="lineNum">      21</span>              :     zend_string_release_ex(const_FLAG_IS_ELLIPSIS_name, true);</span>
+<span id="L22"><span class="lineNum">      22</span>              : </span>
+<span id="L23"><span class="lineNum">      23</span>              :     zval const_FLAG_NEED_HYPHEN_value;</span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         543 :     ZVAL_LONG(&amp;const_FLAG_NEED_HYPHEN_value, PANGO_ANALYSIS_FLAG_NEED_HYPHEN);</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         543 :     zend_string *const_FLAG_NEED_HYPHEN_name = zend_string_init_interned(&quot;FLAG_NEED_HYPHEN&quot;, sizeof(&quot;FLAG_NEED_HYPHEN&quot;) - 1, true);</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">         543 :     zend_declare_class_constant_ex(class_entry, const_FLAG_NEED_HYPHEN_name, &amp;const_FLAG_NEED_HYPHEN_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L27"><span class="lineNum">      27</span>              :     zend_string_release_ex(const_FLAG_NEED_HYPHEN_name, true);</span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span>              :     zval const_FLAG_CENTERED_BASELINE_value;</span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">         543 :     ZVAL_LONG(&amp;const_FLAG_CENTERED_BASELINE_value, PANGO_ANALYSIS_FLAG_CENTERED_BASELINE);</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         543 :     zend_string *const_FLAG_CENTERED_BASELINE_name = zend_string_init_interned(&quot;FLAG_CENTERED_BASELINE&quot;, sizeof(&quot;FLAG_CENTERED_BASELINE&quot;) - 1, true);</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         543 :     zend_declare_class_constant_ex(class_entry, const_FLAG_CENTERED_BASELINE_name, &amp;const_FLAG_CENTERED_BASELINE_value, ZEND_ACC_PUBLIC, NULL);</span></span>
+<span id="L33"><span class="lineNum">      33</span>              :     zend_string_release_ex(const_FLAG_CENTERED_BASELINE_name, true);</span>
+<span id="L34"><span class="lineNum">      34</span>              : </span>
+<span id="L35"><span class="lineNum">      35</span>              :     zval property_font_default_value;</span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         543 :     ZVAL_UNDEF(&amp;property_font_default_value);</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         543 :     zend_string *property_font_name = zend_string_init(&quot;font&quot;, sizeof(&quot;font&quot;) - 1, true);</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">         543 :     zend_string *property_font_class_Pango_Font = zend_string_init(&quot;Pango\\Font&quot;, sizeof(&quot;Pango\\Font&quot;)-1, 1);</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         543 :     zend_declare_typed_property(class_entry, property_font_name, &amp;property_font_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_font_class_Pango_Font, 0, 0));</span></span>
+<span id="L40"><span class="lineNum">      40</span>              :     zend_string_release_ex(property_font_name, true);</span>
+<span id="L41"><span class="lineNum">      41</span>              : </span>
+<span id="L42"><span class="lineNum">      42</span>              :     zval property_level_default_value;</span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         543 :     ZVAL_UNDEF(&amp;property_level_default_value);</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         543 :     zend_string *property_level_name = zend_string_init(&quot;level&quot;, sizeof(&quot;level&quot;) - 1, true);</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         543 :     zend_declare_typed_property(class_entry, property_level_name, &amp;property_level_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));</span></span>
+<span id="L46"><span class="lineNum">      46</span>              :     zend_string_release_ex(property_level_name, true);</span>
+<span id="L47"><span class="lineNum">      47</span>              : </span>
+<span id="L48"><span class="lineNum">      48</span>              :     zval property_gravity_default_value;</span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">         543 :     ZVAL_UNDEF(&amp;property_gravity_default_value);</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         543 :     zend_string *property_gravity_name = zend_string_init(&quot;gravity&quot;, sizeof(&quot;gravity&quot;) - 1, true);</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">         543 :     zend_string *property_gravity_class_Pango_Gravity = zend_string_init(&quot;Pango\\Gravity&quot;, sizeof(&quot;Pango\\Gravity&quot;)-1, 1);</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         543 :     zend_declare_typed_property(class_entry, property_gravity_name, &amp;property_gravity_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_gravity_class_Pango_Gravity, 0, 0));</span></span>
+<span id="L53"><span class="lineNum">      53</span>              :     zend_string_release_ex(property_gravity_name, true);</span>
+<span id="L54"><span class="lineNum">      54</span>              : </span>
+<span id="L55"><span class="lineNum">      55</span>              :     zval property_flags_default_value;</span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         543 :     ZVAL_UNDEF(&amp;property_flags_default_value);</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">         543 :     zend_string *property_flags_name = zend_string_init(&quot;flags&quot;, sizeof(&quot;flags&quot;) - 1, true);</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">         543 :     zend_declare_typed_property(class_entry, property_flags_name, &amp;property_flags_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));</span></span>
+<span id="L59"><span class="lineNum">      59</span>              :     zend_string_release_ex(property_flags_name, true);</span>
+<span id="L60"><span class="lineNum">      60</span>              : </span>
+<span id="L61"><span class="lineNum">      61</span>              :     zval property_script_default_value;</span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">         543 :     ZVAL_UNDEF(&amp;property_script_default_value);</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">         543 :     zend_string *property_script_name = zend_string_init(&quot;script&quot;, sizeof(&quot;script&quot;) - 1, true);</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">         543 :     zend_string *property_script_class_Pango_Script = zend_string_init(&quot;Pango\\Script&quot;, sizeof(&quot;Pango\\Script&quot;)-1, 1);</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">         543 :     zend_declare_typed_property(class_entry, property_script_name, &amp;property_script_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_script_class_Pango_Script, 0, 0));</span></span>
+<span id="L66"><span class="lineNum">      66</span>              :     zend_string_release_ex(property_script_name, true);</span>
+<span id="L67"><span class="lineNum">      67</span>              : </span>
+<span id="L68"><span class="lineNum">      68</span>              :     zval property_language_default_value;</span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">         543 :     ZVAL_UNDEF(&amp;property_language_default_value);</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">         543 :     zend_string *property_language_name = zend_string_init(&quot;language&quot;, sizeof(&quot;language&quot;) - 1, true);</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         543 :     zend_string *property_language_class_Pango_Language = zend_string_init(&quot;Pango\\Language&quot;, sizeof(&quot;Pango\\Language&quot;)-1, 1);</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         543 :     zend_declare_typed_property(class_entry, property_language_name, &amp;property_language_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_language_class_Pango_Language, 0, 0));</span></span>
+<span id="L73"><span class="lineNum">      73</span>              :     zend_string_release_ex(property_language_name, true);</span>
+<span id="L74"><span class="lineNum">      74</span>              : </span>
+<span id="L75"><span class="lineNum">      75</span>              :     zval property_extraAttrs_default_value;</span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">         543 :     ZVAL_UNDEF(&amp;property_extraAttrs_default_value);</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         543 :     zend_string *property_extraAttrs_name = zend_string_init(&quot;extraAttrs&quot;, sizeof(&quot;extraAttrs&quot;) - 1, true);</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         543 :     zend_declare_typed_property(class_entry, property_extraAttrs_name, &amp;property_extraAttrs_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_ARRAY));</span></span>
+<span id="L79"><span class="lineNum">      79</span>              :     zend_string_release_ex(property_extraAttrs_name, true);</span>
+<span id="L80"><span class="lineNum">      80</span>              : </span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">         543 :     return class_entry;</span></span>
+<span id="L82"><span class="lineNum">      82</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

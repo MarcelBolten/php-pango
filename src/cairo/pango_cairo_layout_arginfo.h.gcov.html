@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - PHP Pango Extension Coverage - src/cairo/pango_cairo_layout_arginfo.h</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cairo">src/cairo</a> - pango_cairo_layout_arginfo.h<span style="font-size: 80%;"> (source / <a href="pango_cairo_layout_arginfo.h.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">PHP Pango Extension Coverage</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2026-10-19 21:21:46</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+                  <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /* This is a generated file, edit pango_cairo_layout.stub.php instead.</span>
+<span id="L2"><span class="lineNum">       2</span>              :  * Stub hash: 5ba55ef6687e3ec148845891456533a39d675725 */</span>
+<span id="L3"><span class="lineNum">       3</span>              : </span>
+<span id="L4"><span class="lineNum">       4</span>              : ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_Layout___construct, 0, 0, 1)</span>
+<span id="L5"><span class="lineNum">       5</span>              :     ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)</span>
+<span id="L6"><span class="lineNum">       6</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L7"><span class="lineNum">       7</span>              : </span>
+<span id="L8"><span class="lineNum">       8</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_Layout_path, 0, 0, IS_VOID, 0)</span>
+<span id="L9"><span class="lineNum">       9</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L10"><span class="lineNum">      10</span>              : </span>
+<span id="L11"><span class="lineNum">      11</span>              : #define arginfo_class_PangoCairo_Layout_show arginfo_class_PangoCairo_Layout_path</span>
+<span id="L12"><span class="lineNum">      12</span>              : </span>
+<span id="L13"><span class="lineNum">      13</span>              : #define arginfo_class_PangoCairo_Layout_update arginfo_class_PangoCairo_Layout_path</span>
+<span id="L14"><span class="lineNum">      14</span>              : </span>
+<span id="L15"><span class="lineNum">      15</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Layout_getCairoContext, 0, 0, Cairo\\Context, 0)</span>
+<span id="L16"><span class="lineNum">      16</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 58, 0)</span>
+<span id="L19"><span class="lineNum">      19</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_Layout_layoutPathForComponents, 0, 1, IS_VOID, 0)</span>
+<span id="L20"><span class="lineNum">      20</span>              :     ZEND_ARG_TYPE_INFO(0, component, IS_LONG, 0)</span>
+<span id="L21"><span class="lineNum">      21</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L22"><span class="lineNum">      22</span>              : #endif</span>
+<span id="L23"><span class="lineNum">      23</span>              : </span>
+<span id="L24"><span class="lineNum">      24</span>              : ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_Layout_getLines, 0, 0, IS_ARRAY, 0)</span>
+<span id="L25"><span class="lineNum">      25</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L26"><span class="lineNum">      26</span>              : </span>
+<span id="L27"><span class="lineNum">      27</span>              : #define arginfo_class_PangoCairo_Layout_getLinesReadonly arginfo_class_PangoCairo_Layout_getLines</span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span>              : ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Layout_getLine, 0, 1, PangoCairo\\LayoutLine, 1)</span>
+<span id="L30"><span class="lineNum">      30</span>              :     ZEND_ARG_TYPE_INFO(0, lineIndex, IS_LONG, 0)</span>
+<span id="L31"><span class="lineNum">      31</span>              : ZEND_END_ARG_INFO()</span>
+<span id="L32"><span class="lineNum">      32</span>              : </span>
+<span id="L33"><span class="lineNum">      33</span>              : #define arginfo_class_PangoCairo_Layout_getLineReadonly arginfo_class_PangoCairo_Layout_getLine</span>
+<span id="L34"><span class="lineNum">      34</span>              : </span>
+<span id="L35"><span class="lineNum">      35</span>              : ZEND_METHOD(PangoCairo_Layout, __construct);</span>
+<span id="L36"><span class="lineNum">      36</span>              : ZEND_METHOD(PangoCairo_Layout, path);</span>
+<span id="L37"><span class="lineNum">      37</span>              : ZEND_METHOD(PangoCairo_Layout, show);</span>
+<span id="L38"><span class="lineNum">      38</span>              : ZEND_METHOD(PangoCairo_Layout, update);</span>
+<span id="L39"><span class="lineNum">      39</span>              : ZEND_METHOD(PangoCairo_Layout, getCairoContext);</span>
+<span id="L40"><span class="lineNum">      40</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 58, 0)</span>
+<span id="L41"><span class="lineNum">      41</span>              : ZEND_METHOD(PangoCairo_Layout, layoutPathForComponents);</span>
+<span id="L42"><span class="lineNum">      42</span>              : #endif</span>
+<span id="L43"><span class="lineNum">      43</span>              : ZEND_METHOD(PangoCairo_Layout, getLines);</span>
+<span id="L44"><span class="lineNum">      44</span>              : ZEND_METHOD(PangoCairo_Layout, getLinesReadonly);</span>
+<span id="L45"><span class="lineNum">      45</span>              : ZEND_METHOD(PangoCairo_Layout, getLine);</span>
+<span id="L46"><span class="lineNum">      46</span>              : ZEND_METHOD(PangoCairo_Layout, getLineReadonly);</span>
+<span id="L47"><span class="lineNum">      47</span>              : </span>
+<span id="L48"><span class="lineNum">      48</span>              : static const zend_function_entry class_PangoCairo_Layout_methods[] = {</span>
+<span id="L49"><span class="lineNum">      49</span>              :     ZEND_ME(PangoCairo_Layout, __construct, arginfo_class_PangoCairo_Layout___construct, ZEND_ACC_PUBLIC)</span>
+<span id="L50"><span class="lineNum">      50</span>              :     ZEND_ME(PangoCairo_Layout, path, arginfo_class_PangoCairo_Layout_path, ZEND_ACC_PUBLIC)</span>
+<span id="L51"><span class="lineNum">      51</span>              :     ZEND_ME(PangoCairo_Layout, show, arginfo_class_PangoCairo_Layout_show, ZEND_ACC_PUBLIC)</span>
+<span id="L52"><span class="lineNum">      52</span>              :     ZEND_ME(PangoCairo_Layout, update, arginfo_class_PangoCairo_Layout_update, ZEND_ACC_PUBLIC)</span>
+<span id="L53"><span class="lineNum">      53</span>              :     ZEND_ME(PangoCairo_Layout, getCairoContext, arginfo_class_PangoCairo_Layout_getCairoContext, ZEND_ACC_PUBLIC)</span>
+<span id="L54"><span class="lineNum">      54</span>              : #if PANGO_VERSION &gt;= PANGO_VERSION_ENCODE(1, 58, 0)</span>
+<span id="L55"><span class="lineNum">      55</span>              :     ZEND_ME(PangoCairo_Layout, layoutPathForComponents, arginfo_class_PangoCairo_Layout_layoutPathForComponents, ZEND_ACC_PUBLIC)</span>
+<span id="L56"><span class="lineNum">      56</span>              : #endif</span>
+<span id="L57"><span class="lineNum">      57</span>              :     ZEND_ME(PangoCairo_Layout, getLines, arginfo_class_PangoCairo_Layout_getLines, ZEND_ACC_PUBLIC)</span>
+<span id="L58"><span class="lineNum">      58</span>              :     ZEND_ME(PangoCairo_Layout, getLinesReadonly, arginfo_class_PangoCairo_Layout_getLinesReadonly, ZEND_ACC_PUBLIC)</span>
+<span id="L59"><span class="lineNum">      59</span>              :     ZEND_ME(PangoCairo_Layout, getLine, arginfo_class_PangoCairo_Layout_getLine, ZEND_ACC_PUBLIC)</span>
+<span id="L60"><span class="lineNum">      60</span>              :     ZEND_ME(PangoCairo_Layout, getLineReadonly, arginfo_class_PangoCairo_Layout_getLineReadonly, ZEND_ACC_PUBLIC)</span>
+<span id="L61"><span class="lineNum">      61</span>              :     ZEND_FE_END</span>
+<span id="L62"><span class="lineNum">      62</span>              : };</span>
+<span id="L63"><span class="lineNum">      63</span>              : </span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">         543 : static zend_class_entry *register_class_PangoCairo_Layout(zend_class_entry *class_entry_Pango_Layout)</span></span>
+<span id="L65"><span class="lineNum">      65</span>              : {</span>
+<span id="L66"><span class="lineNum">      66</span>              :     zend_class_entry ce, *class_entry;</span>
+<span id="L67"><span class="lineNum">      67</span>              : </span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">         543 :     INIT_NS_CLASS_ENTRY(ce, &quot;PangoCairo&quot;, &quot;Layout&quot;, class_PangoCairo_Layout_methods);</span></span>
+<span id="L69"><span class="lineNum">      69</span>              : #if (PHP_VERSION_ID &gt;= 80400)</span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">         543 :     class_entry = zend_register_internal_class_with_flags(&amp;ce, class_entry_Pango_Layout, ZEND_ACC_FINAL);</span></span>
+<span id="L71"><span class="lineNum">      71</span>              : #else</span>
+<span id="L72"><span class="lineNum">      72</span>              :     ce.ce_flags |= ZEND_ACC_FINAL;</span>
+<span id="L73"><span class="lineNum">      73</span>              :     class_entry = zend_register_internal_class_ex(&amp;ce, class_entry_Pango_Layout);</span>
+<span id="L74"><span class="lineNum">      74</span>              :     class_entry-&gt;ce_flags |= ZEND_ACC_FINAL;</span>
+<span id="L75"><span class="lineNum">      75</span>              : #endif</span>
+<span id="L76"><span class="lineNum">      76</span>              : </span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         543 :     return class_entry;</span></span>
+<span id="L78"><span class="lineNum">      78</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">src</a> - exception_arginfo.h<span style="font-size: 80%;"> (source / <a href="exception_arginfo.h.func-c.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - exception_arginfo.h<span style="font-size: 80%;"> (source / <a href="exception_arginfo.h.func-c.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-26 00:52:08</td>
+            <td class="headerValue">2026-10-19 21:21:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -60,22 +60,24 @@
               <td>
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
-<span id="L1"><span class="lineNum">       1</span>              : /* This is a generated file, edit the .stub.php file instead.</span>
-<span id="L2"><span class="lineNum">       2</span>              :  * Stub hash: 7ca34e321751bb47f7011c7646f8ea44620c3de4 */</span>
+<span id="L1"><span class="lineNum">       1</span>              : /* This is a generated file, edit exception.stub.php instead.</span>
+<span id="L2"><span class="lineNum">       2</span>              :  * Stub hash: e2a2fe95b3efb401b5a4b458dd089424df596811 */</span>
 <span id="L3"><span class="lineNum">       3</span>              : </span>
-<span id="L4"><span class="lineNum">       4</span> <span class="tlaGNC tlaBgGNC">         194 : static zend_class_entry *register_class_Pango_Exception(zend_class_entry *class_entry_Exception)</span></span>
+<span id="L4"><span class="lineNum">       4</span> <span class="tlaGNC">         543 : static zend_class_entry *register_class_Pango_Exception(zend_class_entry *class_entry_Exception)</span></span>
 <span id="L5"><span class="lineNum">       5</span>              : {</span>
 <span id="L6"><span class="lineNum">       6</span>              :     zend_class_entry ce, *class_entry;</span>
 <span id="L7"><span class="lineNum">       7</span>              : </span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">         194 :     INIT_NS_CLASS_ENTRY(ce, &quot;Pango&quot;, &quot;Exception&quot;, NULL);</span></span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">         543 :     INIT_NS_CLASS_ENTRY(ce, &quot;Pango&quot;, &quot;Exception&quot;, NULL);</span></span>
 <span id="L9"><span class="lineNum">       9</span>              : #if (PHP_VERSION_ID &gt;= 80400)</span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">         194 :     class_entry = zend_register_internal_class_with_flags(&amp;ce, class_entry_Exception, 0);</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">         543 :     class_entry = zend_register_internal_class_with_flags(&amp;ce, class_entry_Exception, ZEND_ACC_FINAL);</span></span>
 <span id="L11"><span class="lineNum">      11</span>              : #else</span>
-<span id="L12"><span class="lineNum">      12</span>              :     class_entry = zend_register_internal_class_ex(&amp;ce, class_entry_Exception);</span>
-<span id="L13"><span class="lineNum">      13</span>              : #endif</span>
-<span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">         194 :     return class_entry;</span></span>
-<span id="L16"><span class="lineNum">      16</span>              : }</span>
+<span id="L12"><span class="lineNum">      12</span>              :     ce.ce_flags |= ZEND_ACC_FINAL;</span>
+<span id="L13"><span class="lineNum">      13</span>              :     class_entry = zend_register_internal_class_ex(&amp;ce, class_entry_Exception);</span>
+<span id="L14"><span class="lineNum">      14</span>              :     class_entry-&gt;ce_flags |= ZEND_ACC_FINAL;</span>
+<span id="L15"><span class="lineNum">      15</span>              : #endif</span>
+<span id="L16"><span class="lineNum">      16</span>              : </span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">         543 :     return class_entry;</span></span>
+<span id="L18"><span class="lineNum">      18</span>              : }</span>
         </pre>
               </td>
             </tr>
