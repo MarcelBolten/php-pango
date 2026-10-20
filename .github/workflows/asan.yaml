@@ -1,0 +1,183 @@
+name: ASAN
+
+on:
+  push:
+    branches: ['*']
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: asan-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PHP_BRANCH: PHP-8.5
+  PHP_PREFIX: /opt/php-asan
+  PANGO_PREFIX: /opt/pango
+  PANGO_BRANCH: marcel-1.58.2-join-fc-thread
+  SAN_CFLAGS: "-fsanitize=address,undefined -fno-omit-frame-pointer -g -Og -ggdb3"
+
+jobs:
+  asan:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 90
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v7
+
+      # ASAN + high ASLR entropy = "unexpected memory mapping" crashes
+      - name: "Lower mmap_rnd_bits for ASAN"
+        run: sudo sysctl vm.mmap_rnd_bits=28
+
+      - name: "Install system dependencies"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential autoconf libtool bison re2c pkg-config git \
+            meson ninja-build gdb wget curl ca-certificates \
+            libssl-dev libxml2-dev libsqlite3-dev libonig-dev \
+            libcurl4-openssl-dev libsodium-dev libzip-dev libreadline-dev \
+            libexpat1-dev libjpeg-dev libpng-dev \
+            libcairo2-dev libglib2.0-dev libharfbuzz-dev libfontconfig1-dev \
+            libfreetype-dev libfribidi-dev libthai-dev \
+            fontconfig fonts-dejavu-core fonts-noto-cjk fonts-noto-color-emoji \
+            libc6-dbg ubuntu-dbgsym-keyring
+
+      # Debug symbols for dependencies, only for what actually has a matching dbgsym
+      - name: "Install dbgsym packages"
+        run: |
+          sudo tee /etc/apt/sources.list.d/ddebs.sources <<EOF
+          Types: deb
+          URIs: http://ddebs.ubuntu.com/
+          Suites: resolute resolute-updates
+          Components: main restricted universe multiverse
+          Signed-By: /usr/share/keyrings/ubuntu-dbgsym-keyring.gpg
+          EOF
+          sudo apt-get update
+          dbg=""
+          for p in libcairo2 libharfbuzz0b libfreetype6 libfontconfig1 \
+                   libglib2.0-0t64 libfribidi0 libthai0 libpixman-1-0; do
+            ver=$(dpkg-query -W -f='${Version}' "$p" 2>/dev/null) || continue
+            if apt-cache madison "${p}-dbgsym" | awk -F' *[|] *' -v v="$ver" '$2 == v { f=1 } END { exit !f }'; then
+              dbg="$dbg ${p}-dbgsym=${ver}"
+            else
+              echo "No dbgsym for $p=$ver, skipping"
+            fi
+          done
+          echo "Installing:$dbg"
+          [ -n "$dbg" ] && sudo apt-get install -y --no-install-recommends $dbg || true
+
+      # ---------------------------------------------------------------- Pango
+      - name: "Get revisions"
+        id: rev
+        run: |
+          pango=$(git ls-remote https://github.com/MarcelBolten/pango.git refs/heads/$PANGO_BRANCH | cut -f1)
+          php=$(git ls-remote https://github.com/php/php-src.git refs/heads/$PHP_BRANCH | cut -f1)
+          echo "pango=$pango" >> "$GITHUB_OUTPUT"
+          echo "php=$php" >> "$GITHUB_OUTPUT"
+
+      - name: "Cache Pango"
+        id: cache-pango
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PANGO_PREFIX }}
+          key: asan-pango-${{ steps.rev.outputs.pango }}-${{ runner.arch }}-1
+
+      - name: "Build Pango"
+        if: steps.cache-pango.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch $PANGO_BRANCH https://github.com/MarcelBolten/pango.git
+          cd pango
+          meson setup build --prefix=$PANGO_PREFIX --buildtype=debugoptimized \
+            -Dintrospection=disabled -Ddocumentation=false \
+            -Dbuild-testsuite=false -Dbuild-examples=false
+          meson compile -C build
+          meson install -C build
+
+      - name: "Activate Pango"
+        run: |
+          echo "$PANGO_PREFIX/lib/x86_64-linux-gnu" | sudo tee /etc/ld.so.conf.d/pango-asan.conf
+          sudo ldconfig
+          echo "PKG_CONFIG_PATH=$PANGO_PREFIX/lib/x86_64-linux-gnu/pkgconfig" >> "$GITHUB_ENV"
+          pkg-config --modversion pango
+
+      # ------------------------------------------------------------------ PHP
+      - name: "Cache ASAN PHP"
+        id: cache-php
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PHP_PREFIX }}
+          key: asan-php-${{ steps.rev.outputs.php }}-${{ runner.arch }}-${{ hashFiles('.github/workflows/asan.yml') }}
+
+      - name: "Build PHP with ASAN/UBSAN"
+        if: steps.cache-php.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch $PHP_BRANCH https://github.com/php/php-src.git
+          cd php-src
+          ./buildconf --force
+          CFLAGS="$SAN_CFLAGS" ./configure \
+            --prefix=$PHP_PREFIX \
+            --enable-debug --with-openssl --enable-mbstring --with-zlib \
+            --with-curl --enable-gd --with-jpeg --with-freetype --with-sodium \
+            --with-expat --with-zip --with-readline \
+            --with-config-file-path=$PHP_PREFIX/etc
+          make -j$(nproc)
+          make install
+          mkdir -p $PHP_PREFIX/etc
+          cp php.ini-development $PHP_PREFIX/etc/php.ini
+
+      - name: "Put PHP on PATH"
+        run: |
+          echo "$PHP_PREFIX/bin" >> "$GITHUB_PATH"
+          echo "PHPRC=$PHP_PREFIX/etc" >> "$GITHUB_ENV"
+
+      # ---------------------------------------------------------------- Cairo
+      - name: "Build php-cairo"
+        run: |
+          git clone --depth 1 --branch dev-overhaul https://github.com/MarcelBolten/php-cairo.git
+          cd php-cairo
+          phpize
+          CFLAGS="$SAN_CFLAGS" ./configure --with-php-config=$PHP_PREFIX/bin/php-config
+          make -j$(nproc)
+          make install
+          echo "extension=cairo.so" >> $PHP_PREFIX/etc/php.ini
+        env:
+          ASAN_OPTIONS: detect_leaks=0
+
+      # ---------------------------------------------------------------- Pango ext
+      - name: "Build pango extension"
+        run: |
+          phpize
+          PANGO_COVERAGE=yes CFLAGS="$SAN_CFLAGS" ./configure --with-php-config=$PHP_PREFIX/bin/php-config
+          make -j$(nproc)
+          make install
+          echo "extension=pango.so" >> $PHP_PREFIX/etc/php.ini
+          php --ri pango
+        env:
+          ASAN_OPTIONS: detect_leaks=0
+
+      - name: "Fontconfig cache"
+        run: fc-cache -f
+
+      - name: "Run tests under ASAN/LSAN"
+        run: php ./run-tests.php -q -j$(nproc) --show-diff
+        env:
+          LSAN_OPTIONS: suppressions=${{ github.workspace }}/lsan.supp:print_suppressions=0
+          ASAN_OPTIONS: detect_leaks=1:symbolize=1:abort_on_error=0
+          UBSAN_OPTIONS: print_stacktrace=1
+          ZEND_DONT_UNLOAD_MODULES: 1
+          USE_ZEND_ALLOC: 0
+          REPORT_EXIT_STATUS: 1
+
+      - name: "Upload test outputs"
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: pango-asan-logs
+          path: |
+            tests/**/*.log
+            tests/**/*.out
+            tests/**/*.diff
+          if-no-files-found: ignore
+          
