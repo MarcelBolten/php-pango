@@ -1,9 +1,4 @@
-leak:g_quark_init
-leak:libfontconfig.so
-leak:libcairo.so
-leak:libpixman-1.so
-leak:libthai.so
-leak:libdatrie.so
-leak:libxml2.so
-leak:libfreetype.so
-leak:hb_font_funcs_create
+# fontconfig config parse in Pango's init thread: pure init, no extension frames
+leak:FcInitLoadOwnConfigAndFonts
+# probably a Pango/fontconfig bug: FcFontSet/patterns leaked in pango_fc_font_map_add_font_file
+leak:pango_fc_font_map_add_font_file
