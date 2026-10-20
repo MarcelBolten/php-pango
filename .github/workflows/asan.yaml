@@ -44,7 +44,6 @@ jobs:
             fontconfig fonts-dejavu-core fonts-noto-cjk fonts-noto-color-emoji \
             libc6-dbg ubuntu-dbgsym-keyring
 
-      # Debug symbols for dependencies, only for what actually has a matching dbgsym
       - name: "Install dbgsym packages"
         run: |
           sudo tee /etc/apt/sources.list.d/ddebs.sources <<EOF
@@ -68,7 +67,6 @@ jobs:
           echo "Installing:$dbg"
           [ -n "$dbg" ] && sudo apt-get install -y --no-install-recommends $dbg || true
 
-      # ---------------------------------------------------------------- Pango
       - name: "Get revisions"
         id: rev
         run: |
@@ -102,7 +100,6 @@ jobs:
           echo "PKG_CONFIG_PATH=$PANGO_PREFIX/lib/x86_64-linux-gnu/pkgconfig" >> "$GITHUB_ENV"
           PKG_CONFIG_PATH="$PANGO_PREFIX/lib/x86_64-linux-gnu/pkgconfig" pkg-config --modversion pango
 
-      # ------------------------------------------------------------------ PHP
       - name: "Cache ASAN PHP"
         id: cache-php
         uses: actions/cache@v6
@@ -131,8 +128,12 @@ jobs:
         run: |
           echo "$PHP_PREFIX/bin" >> "$GITHUB_PATH"
           echo "PHPRC=$PHP_PREFIX/etc" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/php-conf.d"
+          echo "PHP_INI_SCAN_DIR=$RUNNER_TEMP/php-conf.d" >> "$GITHUB_ENV"
 
-      # ---------------------------------------------------------------- Cairo
+      - name: "Show PHP info"
+        run: php -i
+
       - name: "Build php-cairo"
         run: |
           git clone --depth 1 --branch overhaul https://github.com/MarcelBolten/php-cairo.git
@@ -141,18 +142,17 @@ jobs:
           CFLAGS="$SAN_CFLAGS" ./configure --with-php-config=$PHP_PREFIX/bin/php-config
           make -j$(nproc)
           make install
-          echo "extension=cairo.so" >> $PHP_PREFIX/etc/php.ini
+          echo "extension=cairo.so" > "$PHP_INI_SCAN_DIR/30-cairo.ini"
         env:
           ASAN_OPTIONS: detect_leaks=0
 
-      # ---------------------------------------------------------------- Pango ext
       - name: "Build pango extension"
         run: |
           phpize
           PANGO_COVERAGE=yes CFLAGS="$SAN_CFLAGS" ./configure --with-php-config=$PHP_PREFIX/bin/php-config
           make -j$(nproc)
           make install
-          echo "extension=pango.so" >> $PHP_PREFIX/etc/php.ini
+          echo "extension=pango.so" > "$PHP_INI_SCAN_DIR/31-pango.ini"
           php --ri pango
         env:
           ASAN_OPTIONS: detect_leaks=0
