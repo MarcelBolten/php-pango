@@ -135,7 +135,7 @@ jobs:
       # ---------------------------------------------------------------- Cairo
       - name: "Build php-cairo"
         run: |
-          git clone --depth 1 --branch dev-overhaul https://github.com/MarcelBolten/php-cairo.git
+          git clone --depth 1 --branch overhaul https://github.com/MarcelBolten/php-cairo.git
           cd php-cairo
           phpize
           CFLAGS="$SAN_CFLAGS" ./configure --with-php-config=$PHP_PREFIX/bin/php-config
