@@ -100,7 +100,7 @@ jobs:
           echo "$PANGO_PREFIX/lib/x86_64-linux-gnu" | sudo tee /etc/ld.so.conf.d/pango-asan.conf
           sudo ldconfig
           echo "PKG_CONFIG_PATH=$PANGO_PREFIX/lib/x86_64-linux-gnu/pkgconfig" >> "$GITHUB_ENV"
-          pkg-config --modversion pango
+          PKG_CONFIG_PATH="$PANGO_PREFIX/lib/x86_64-linux-gnu/pkgconfig" pkg-config --modversion pango
 
       # ------------------------------------------------------------------ PHP
       - name: "Cache ASAN PHP"
