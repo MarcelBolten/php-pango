@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_allow_breaks;
 static zend_object_handlers pango_attr_allow_breaks_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AllowBreaks C API
+    \Pango\Attribute\AllowBreaksAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_allow_breaks_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AllowBreaks Class API
+    \Pango\Attribute\AllowBreaksAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new AllowBreaks attribute */
-PHP_METHOD(Pango_Attribute_AllowBreaks, __construct)
+PHP_METHOD(Pango_Attribute_AllowBreaksAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_allow_breaks_new, bool, BOOL);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AllowBreaks Object management
+    \Pango\Attribute\AllowBreaksAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_allow_breaks_object_get_properties_for(zend_object 
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AllowBreaks Definition and registration
+    \Pango\Attribute\AllowBreaksAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_allow_breaks)
     pango_attr_allow_breaks_object_handlers.get_properties_for = pango_attr_allow_breaks_object_get_properties_for;
     pango_attr_allow_breaks_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_allow_breaks = register_class_Pango_Attribute_AllowBreaks(php_pango_get_attribute_ce());
+    ce_pango_attr_allow_breaks = register_class_Pango_Attribute_AllowBreaksAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_allow_breaks->create_object = pango_attr_allow_breaks_create_object;
 
     return SUCCESS;

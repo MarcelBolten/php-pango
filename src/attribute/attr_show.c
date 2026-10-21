@@ -28,7 +28,7 @@ zend_class_entry *ce_pango_attr_show;
 static zend_object_handlers pango_attr_show_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Show C API
+    \Pango\Attribute\ShowAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -44,11 +44,11 @@ zend_class_entry* php_pango_get_attr_show_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Show Class API
+    \Pango\Attribute\ShowAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new letter spacing attribute */
-PHP_METHOD(Pango_Attribute_Show, __construct)
+PHP_METHOD(Pango_Attribute_ShowAttribute, __construct)
 {
     zend_long value;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -77,7 +77,7 @@ PHP_METHOD(Pango_Attribute_Show, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Show Object management
+    \Pango\Attribute\ShowAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -107,7 +107,7 @@ static HashTable *pango_attr_show_object_get_properties_for(zend_object *object,
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Show Definition and registration
+    \Pango\Attribute\ShowAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -127,7 +127,7 @@ PHP_MINIT_FUNCTION(pango_attr_show)
     pango_attr_show_object_handlers.get_properties_for = pango_attr_show_object_get_properties_for;
     pango_attr_show_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_show = register_class_Pango_Attribute_Show(php_pango_get_attribute_ce());
+    ce_pango_attr_show = register_class_Pango_Attribute_ShowAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_show->create_object = pango_attr_show_create_object;
 
     return SUCCESS;

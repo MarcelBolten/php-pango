@@ -59,7 +59,7 @@ abstract readonly class Attribute
  *
  * It is used for: Type::Language.
  */
-final readonly class Language extends Attribute
+final readonly class LanguageAttribute extends Attribute
 {
     /**
      * The language.
@@ -83,7 +83,7 @@ final readonly class Language extends Attribute
  *
  * It is used for: Type::Family.
  */
-final readonly class Family extends Attribute
+final readonly class FamilyAttribute extends Attribute
 {
     /**
      * The family or comma-separated list of families.
@@ -107,7 +107,7 @@ final readonly class Family extends Attribute
  *
  * It is used for: Type::Style.
  */
-final readonly class Style extends Attribute
+final readonly class StyleAttribute extends Attribute
 {
     /**
      * The font style value.
@@ -131,7 +131,7 @@ final readonly class Style extends Attribute
  *
  * It is used for: Type::Weight.
  */
-final readonly class Weight extends Attribute
+final readonly class WeightAttribute extends Attribute
 {
     /**
      * The font weight value.
@@ -155,7 +155,7 @@ final readonly class Weight extends Attribute
  *
  * It is used for: Type::Variant.
  */
-final readonly class Variant extends Attribute
+final readonly class VariantAttribute extends Attribute
 {
     /**
      * The font variant value.
@@ -179,7 +179,7 @@ final readonly class Variant extends Attribute
  *
  * It is used for: Type::Stretch.
  */
-final readonly class Stretch extends Attribute
+final readonly class StretchAttribute extends Attribute
 {
     /**
      * The font stretch value.
@@ -203,7 +203,7 @@ final readonly class Stretch extends Attribute
  *
  * It is used for: Type::Size.
  */
-final readonly class Size extends Attribute
+final readonly class SizeAttribute extends Attribute
 {
     /**
      * The font size in Pango units (1/PANGO_SCALE points).
@@ -227,7 +227,7 @@ final readonly class Size extends Attribute
  *
  * It is used for: Type::AbsoluteSize.
  */
-final readonly class AbsoluteSize extends Attribute
+final readonly class AbsoluteSizeAttribute extends Attribute
 {
     /**
      * The font size in device units (1/PANGO_SCALE pixels).
@@ -251,7 +251,7 @@ final readonly class AbsoluteSize extends Attribute
  *
  * It is used for: Type::FontDescription.
  */
-final readonly class FontDescription extends Attribute
+final readonly class FontDescriptionAttribute extends Attribute
 {
     /**
      * The font description.
@@ -278,7 +278,7 @@ final readonly class FontDescription extends Attribute
  *
  * It is used for: Type::Foreground.
  */
-final readonly class Foreground extends Attribute
+final readonly class ForegroundAttribute extends Attribute
 {
     /**
      * The foreground color.
@@ -302,7 +302,7 @@ final readonly class Foreground extends Attribute
  *
  * It is used for: Type::Background.
  */
-final readonly class Background extends Attribute
+final readonly class BackgroundAttribute extends Attribute
 {
     /**
      * The background color.
@@ -326,7 +326,7 @@ final readonly class Background extends Attribute
  *
  * It is used for: Type::Underline.
  */
-final readonly class Underline extends Attribute
+final readonly class UnderlineAttribute extends Attribute
 {
     /**
      * The underline style value.
@@ -350,7 +350,7 @@ final readonly class Underline extends Attribute
  *
  * It is used for: Type::Strikethrough.
  */
-final readonly class Strikethrough extends Attribute
+final readonly class StrikethroughAttribute extends Attribute
 {
     /**
      * Whether strikethrough is enabled.
@@ -374,7 +374,7 @@ final readonly class Strikethrough extends Attribute
  *
  * It is used for: Type::Rise.
  */
-final readonly class Rise extends Attribute
+final readonly class RiseAttribute extends Attribute
 {
     /**
      * The rise value in Pango units. Positive values shift the baseline up.
@@ -424,7 +424,7 @@ final readonly class Rise extends Attribute
  *
  * It is used for: Type::Scale.
  */
-final readonly class Scale extends Attribute
+final readonly class ScaleAttribute extends Attribute
 {
     /**
      * The scale factor.
@@ -448,7 +448,7 @@ final readonly class Scale extends Attribute
  *
  * It is used for: Type::Fallback.
  */
-final readonly class Fallback extends Attribute
+final readonly class FallbackAttribute extends Attribute
 {
     /**
      * Whether fallback to other fonts is enabled.
@@ -472,7 +472,7 @@ final readonly class Fallback extends Attribute
  *
  * It is used for: Type::LetterSpacing.
  */
-final readonly class LetterSpacing extends Attribute
+final readonly class LetterSpacingAttribute extends Attribute
 {
     /**
      * The extra letter spacing in Pango units.
@@ -496,7 +496,7 @@ final readonly class LetterSpacing extends Attribute
  *
  * It is used for: Type::UnderlineColor.
  */
-final readonly class UnderlineColor extends Attribute
+final readonly class UnderlineColorAttribute extends Attribute
 {
     /**
      * The underline color.
@@ -520,7 +520,7 @@ final readonly class UnderlineColor extends Attribute
  *
  * It is used for: Type::StrikethroughColor.
  */
-final readonly class StrikethroughColor extends Attribute
+final readonly class StrikethroughColorAttribute extends Attribute
 {
     /**
      * The strikethrough color.
@@ -544,7 +544,7 @@ final readonly class StrikethroughColor extends Attribute
  *
  * It is used for: Type::Gravity.
  */
-final readonly class Gravity extends Attribute
+final readonly class GravityAttribute extends Attribute
 {
     /**
      * The gravity value.
@@ -568,7 +568,7 @@ final readonly class Gravity extends Attribute
  *
  * It is used for: Type::GravityHint.
  */
-final readonly class GravityHint extends Attribute
+final readonly class GravityHintAttribute extends Attribute
 {
     /**
      * The gravity hint value.
@@ -592,7 +592,7 @@ final readonly class GravityHint extends Attribute
  *
  * It is used for: Type::FontFeatures.
  */
-final readonly class FontFeatures extends Attribute
+final readonly class FontFeaturesAttribute extends Attribute
 {
     /**
      * The font features string in CSS format (e.g., "dlig=1, kern=0").
@@ -616,7 +616,7 @@ final readonly class FontFeatures extends Attribute
  *
  * It is used for: Type::ForegroundAlpha.
  */
-final readonly class ForegroundAlpha extends Attribute
+final readonly class ForegroundAlphaAttribute extends Attribute
 {
     /**
      * The alpha value, range 1-65535.
@@ -641,7 +641,7 @@ final readonly class ForegroundAlpha extends Attribute
  *
  * It is used for: Type::BackgroundAlpha.
  */
-final readonly class BackgroundAlpha extends Attribute
+final readonly class BackgroundAlphaAttribute extends Attribute
 {
     /**
      * The alpha value, range 1-65535.
@@ -666,7 +666,7 @@ final readonly class BackgroundAlpha extends Attribute
  *
  * It is used for: Type::AllowBreaks.
  */
-final readonly class AllowBreaks extends Attribute
+final readonly class AllowBreaksAttribute extends Attribute
 {
     /**
      * Whether line breaks are allowed.
@@ -690,7 +690,7 @@ final readonly class AllowBreaks extends Attribute
  *
  * It is used for: Type::Show.
  */
-final readonly class Show extends Attribute
+final readonly class ShowAttribute extends Attribute
 {
     /**
      * No special treatment for invisible characters.
@@ -748,7 +748,7 @@ final readonly class Show extends Attribute
  *
  * It is used for: Type::InsertHyphens.
  */
-final readonly class InsertHyphens extends Attribute
+final readonly class InsertHyphensAttribute extends Attribute
 {
     /**
      * Whether automatic hyphen insertion is enabled.
@@ -772,7 +772,7 @@ final readonly class InsertHyphens extends Attribute
  *
  * It is used for: Type::Overline.
  */
-final readonly class Overline extends Attribute
+final readonly class OverlineAttribute extends Attribute
 {
     /**
      * The overline style value.
@@ -796,7 +796,7 @@ final readonly class Overline extends Attribute
  *
  * It is used for: Type::OverlineColor.
  */
-final readonly class OverlineColor extends Attribute
+final readonly class OverlineColorAttribute extends Attribute
 {
     /**
      * The overline color.
@@ -821,7 +821,7 @@ final readonly class OverlineColor extends Attribute
  *
  * It is used for: Type::LineHeight.
  */
-final readonly class LineHeight extends Attribute
+final readonly class LineHeightAttribute extends Attribute
 {
     /**
      * The line height scale factor.
@@ -845,7 +845,7 @@ final readonly class LineHeight extends Attribute
  *
  * It is used for: Type::AbsoluteLineHeight.
  */
-final readonly class AbsoluteLineHeight extends Attribute
+final readonly class AbsoluteLineHeightAttribute extends Attribute
 {
     /**
      * The absolute line height in Pango units.
@@ -869,7 +869,7 @@ final readonly class AbsoluteLineHeight extends Attribute
  *
  * It is used for: Type::TextTransform.
  */
-final readonly class TextTransform extends Attribute
+final readonly class TextTransformAttribute extends Attribute
 {
     /**
      * The text transform value.
@@ -893,7 +893,7 @@ final readonly class TextTransform extends Attribute
  *
  * It is used for: Type::Word.
  */
-final readonly class Word extends Attribute
+final readonly class WordAttribute extends Attribute
 {
     /**
      * Create a new word boundary attribute.
@@ -909,7 +909,7 @@ final readonly class Word extends Attribute
  *
  * It is used for: Type::Sentence.
  */
-final readonly class Sentence extends Attribute
+final readonly class SentenceAttribute extends Attribute
 {
     /**
      * Create a new sentence boundary attribute.
@@ -927,7 +927,7 @@ final readonly class Sentence extends Attribute
  *
  * It is used for: Type::BaselineShift.
  */
-final readonly class BaselineShift extends Attribute
+final readonly class BaselineShiftAttribute extends Attribute
 {
     /**
      * The baseline shift value.
@@ -953,7 +953,7 @@ final readonly class BaselineShift extends Attribute
  *
  * It is used for: Type::FontScale.
  */
-final readonly class FontScale extends Attribute
+final readonly class FontScaleAttribute extends Attribute
 {
     /**
      * The font scale value.
@@ -979,7 +979,7 @@ final readonly class FontScale extends Attribute
  *
  * It is used for: Type::Width.
  */
-final readonly class Width extends Attribute
+final readonly class WidthAttribute extends Attribute
 {
     /**
      * The font width value.

@@ -28,7 +28,7 @@ zend_class_entry *ce_pango_attr_overline_color;
 static zend_object_handlers pango_attr_overline_color_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\OverlineColor C API
+    \Pango\Attribute\OverlineColorAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -44,11 +44,11 @@ zend_class_entry* php_pango_get_attr_overline_color_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\OverlineColor Class API
+    \Pango\Attribute\OverlineColorAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new overline_color attribute */
-PHP_METHOD(Pango_Attribute_OverlineColor, __construct)
+PHP_METHOD(Pango_Attribute_OverlineColorAttribute, __construct)
 {
     zend_object *color_obj;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -76,7 +76,7 @@ PHP_METHOD(Pango_Attribute_OverlineColor, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\OverlineColor Object management
+    \Pango\Attribute\OverlineColorAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -106,7 +106,7 @@ static HashTable *pango_attr_overline_color_object_get_properties_for(zend_objec
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\OverlineColor Definition and registration
+    \Pango\Attribute\OverlineColorAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -126,7 +126,7 @@ PHP_MINIT_FUNCTION(pango_attr_overline_color)
     pango_attr_overline_color_object_handlers.get_properties_for = pango_attr_overline_color_object_get_properties_for;
     pango_attr_overline_color_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_overline_color = register_class_Pango_Attribute_OverlineColor(php_pango_get_attribute_ce());
+    ce_pango_attr_overline_color = register_class_Pango_Attribute_OverlineColorAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_overline_color->create_object = pango_attr_overline_color_create_object;
 
     return SUCCESS;

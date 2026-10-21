@@ -34,7 +34,7 @@ pango_attr_font_description_object *pango_attr_font_description_fetch_object(zen
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\FontDescription C API
+    \Pango\Attribute\FontDescriptionAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -50,11 +50,11 @@ zend_class_entry* php_pango_get_attr_font_description_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\FontDescription Class API
+    \Pango\Attribute\FontDescriptionAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new font_description attribute */
-PHP_METHOD(Pango_Attribute_FontDescription, __construct)
+PHP_METHOD(Pango_Attribute_FontDescriptionAttribute, __construct)
 {
     zval *font_description_zv;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -84,7 +84,7 @@ PHP_METHOD(Pango_Attribute_FontDescription, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\FontDescription Object management
+    \Pango\Attribute\FontDescriptionAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -201,7 +201,7 @@ static HashTable *pango_attr_font_description_object_get_properties_for(zend_obj
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\FontDescription Definition and registration
+    \Pango\Attribute\FontDescriptionAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -221,7 +221,7 @@ PHP_MINIT_FUNCTION(pango_attr_font_description)
     pango_attr_font_description_object_handlers.get_properties_for = pango_attr_font_description_object_get_properties_for;
     pango_attr_font_description_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_font_description = register_class_Pango_Attribute_FontDescription(php_pango_get_attribute_ce());
+    ce_pango_attr_font_description = register_class_Pango_Attribute_FontDescriptionAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_font_description->create_object = pango_attr_font_description_create_object;
 
     return SUCCESS;

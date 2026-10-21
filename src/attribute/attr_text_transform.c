@@ -28,7 +28,7 @@ zend_class_entry *ce_pango_attr_text_transform;
 static zend_object_handlers pango_attr_text_transform_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\TextTransform C API
+    \Pango\Attribute\TextTransformAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -44,11 +44,11 @@ zend_class_entry* php_pango_get_attr_text_transform_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\TextTransform Class API
+    \Pango\Attribute\TextTransformAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new text_transform attribute */
-PHP_METHOD(Pango_Attribute_TextTransform, __construct)
+PHP_METHOD(Pango_Attribute_TextTransformAttribute, __construct)
 {
     zend_object *text_transform;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -72,7 +72,7 @@ PHP_METHOD(Pango_Attribute_TextTransform, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\TextTransform Object management
+    \Pango\Attribute\TextTransformAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -102,7 +102,7 @@ static HashTable *pango_attr_text_transform_object_get_properties_for(zend_objec
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\TextTransform Definition and registration
+    \Pango\Attribute\TextTransformAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -122,7 +122,7 @@ PHP_MINIT_FUNCTION(pango_attr_text_transform)
     pango_attr_text_transform_object_handlers.get_properties_for = pango_attr_text_transform_object_get_properties_for;
     pango_attr_text_transform_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_text_transform = register_class_Pango_Attribute_TextTransform(php_pango_get_attribute_ce());
+    ce_pango_attr_text_transform = register_class_Pango_Attribute_TextTransformAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_text_transform->create_object = pango_attr_text_transform_create_object;
 
     return SUCCESS;

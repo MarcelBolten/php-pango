@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_letter_spacing;
 static zend_object_handlers pango_attr_letter_spacing_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\LetterSpacing C API
+    \Pango\Attribute\LetterSpacingAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_letter_spacing_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\LetterSpacing Class API
+    \Pango\Attribute\LetterSpacingAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new letter spacing attribute */
-PHP_METHOD(Pango_Attribute_LetterSpacing, __construct)
+PHP_METHOD(Pango_Attribute_LetterSpacingAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_letter_spacing_new, zend_long, LONG);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\LetterSpacing Object management
+    \Pango\Attribute\LetterSpacingAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_letter_spacing_object_get_properties_for(zend_objec
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\LetterSpacing Definition and registration
+    \Pango\Attribute\LetterSpacingAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_letter_spacing)
     pango_attr_letter_spacing_object_handlers.get_properties_for = pango_attr_letter_spacing_object_get_properties_for;
     pango_attr_letter_spacing_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_letter_spacing = register_class_Pango_Attribute_LetterSpacing(php_pango_get_attribute_ce());
+    ce_pango_attr_letter_spacing = register_class_Pango_Attribute_LetterSpacingAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_letter_spacing->create_object = pango_attr_letter_spacing_create_object;
 
     return SUCCESS;

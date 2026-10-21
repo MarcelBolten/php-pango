@@ -28,7 +28,7 @@ zend_class_entry *ce_pango_attr_underline;
 static zend_object_handlers pango_attr_underline_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Underline C API
+    \Pango\Attribute\UnderlineAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -44,11 +44,11 @@ zend_class_entry* php_pango_get_attr_underline_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Underline Class API
+    \Pango\Attribute\UnderlineAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new underline attribute */
-PHP_METHOD(Pango_Attribute_Underline, __construct)
+PHP_METHOD(Pango_Attribute_UnderlineAttribute, __construct)
 {
     zend_object *underline;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -72,7 +72,7 @@ PHP_METHOD(Pango_Attribute_Underline, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Underline Object management
+    \Pango\Attribute\UnderlineAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -102,7 +102,7 @@ static HashTable *pango_attr_underline_object_get_properties_for(zend_object *ob
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Underline Definition and registration
+    \Pango\Attribute\UnderlineAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -122,7 +122,7 @@ PHP_MINIT_FUNCTION(pango_attr_underline)
     pango_attr_underline_object_handlers.get_properties_for = pango_attr_underline_object_get_properties_for;
     pango_attr_underline_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_underline = register_class_Pango_Attribute_Underline(php_pango_get_attribute_ce());
+    ce_pango_attr_underline = register_class_Pango_Attribute_UnderlineAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_underline->create_object = pango_attr_underline_create_object;
 
     return SUCCESS;

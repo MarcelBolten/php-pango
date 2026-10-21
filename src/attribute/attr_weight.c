@@ -29,7 +29,7 @@ zend_class_entry *ce_pango_attr_weight;
 static zend_object_handlers pango_attr_weight_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Weight C API
+    \Pango\Attribute\WeightAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -45,11 +45,11 @@ zend_class_entry* php_pango_get_attr_weight_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Weight Class API
+    \Pango\Attribute\WeightAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new weight attribute */
-PHP_METHOD(Pango_Attribute_Weight, __construct)
+PHP_METHOD(Pango_Attribute_WeightAttribute, __construct)
 {
     zend_object *weight;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -73,7 +73,7 @@ PHP_METHOD(Pango_Attribute_Weight, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Weight Object management
+    \Pango\Attribute\WeightAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -103,7 +103,7 @@ static HashTable *pango_attr_weight_object_get_properties_for(zend_object *objec
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Weight Definition and registration
+    \Pango\Attribute\WeightAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -123,7 +123,7 @@ PHP_MINIT_FUNCTION(pango_attr_weight)
     pango_attr_weight_object_handlers.get_properties_for = pango_attr_weight_object_get_properties_for;
     pango_attr_weight_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_weight = register_class_Pango_Attribute_Weight(php_pango_get_attribute_ce());
+    ce_pango_attr_weight = register_class_Pango_Attribute_WeightAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_weight->create_object = pango_attr_weight_create_object;
 
     return SUCCESS;

@@ -29,7 +29,7 @@ zend_class_entry *ce_pango_attr_stretch;
 static zend_object_handlers pango_attr_stretch_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Stretch C API
+    \Pango\Attribute\StretchAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -45,11 +45,11 @@ zend_class_entry* php_pango_get_attr_stretch_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Stretch Class API
+    \Pango\Attribute\StretchAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new stretch attribute */
-PHP_METHOD(Pango_Attribute_Stretch, __construct)
+PHP_METHOD(Pango_Attribute_StretchAttribute, __construct)
 {
     zend_object *stretch;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -73,7 +73,7 @@ PHP_METHOD(Pango_Attribute_Stretch, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Stretch Object management
+    \Pango\Attribute\StretchAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -103,7 +103,7 @@ static HashTable *pango_attr_stretch_object_get_properties_for(zend_object *obje
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Stretch Definition and registration
+    \Pango\Attribute\StretchAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -123,7 +123,7 @@ PHP_MINIT_FUNCTION(pango_attr_stretch)
     pango_attr_stretch_object_handlers.get_properties_for = pango_attr_stretch_object_get_properties_for;
     pango_attr_stretch_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_stretch = register_class_Pango_Attribute_Stretch(php_pango_get_attribute_ce());
+    ce_pango_attr_stretch = register_class_Pango_Attribute_StretchAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_stretch->create_object = pango_attr_stretch_create_object;
 
     return SUCCESS;

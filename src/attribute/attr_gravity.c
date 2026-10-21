@@ -29,7 +29,7 @@ zend_class_entry *ce_pango_attr_gravity;
 static zend_object_handlers pango_attr_gravity_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Gravity C API
+    \Pango\Attribute\GravityAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -45,11 +45,11 @@ zend_class_entry* php_pango_get_attr_gravity_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Gravity Class API
+    \Pango\Attribute\GravityAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new gravity attribute */
-PHP_METHOD(Pango_Attribute_Gravity, __construct)
+PHP_METHOD(Pango_Attribute_GravityAttribute, __construct)
 {
     zend_object *gravity;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -73,7 +73,7 @@ PHP_METHOD(Pango_Attribute_Gravity, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Gravity Object management
+    \Pango\Attribute\GravityAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -103,7 +103,7 @@ static HashTable *pango_attr_gravity_object_get_properties_for(zend_object *obje
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Gravity Definition and registration
+    \Pango\Attribute\GravityAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -123,7 +123,7 @@ PHP_MINIT_FUNCTION(pango_attr_gravity)
     pango_attr_gravity_object_handlers.get_properties_for = pango_attr_gravity_object_get_properties_for;
     pango_attr_gravity_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_gravity = register_class_Pango_Attribute_Gravity(php_pango_get_attribute_ce());
+    ce_pango_attr_gravity = register_class_Pango_Attribute_GravityAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_gravity->create_object = pango_attr_gravity_create_object;
 
     return SUCCESS;

@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_insert_hyphens;
 static zend_object_handlers pango_attr_insert_hyphens_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\InsertHyphens C API
+    \Pango\Attribute\InsertHyphensAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_insert_hyphens_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\InsertHyphens Class API
+    \Pango\Attribute\InsertHyphensAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new InsertHyphens attribute */
-PHP_METHOD(Pango_Attribute_InsertHyphens, __construct)
+PHP_METHOD(Pango_Attribute_InsertHyphensAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_insert_hyphens_new, bool, BOOL);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\InsertHyphens Object management
+    \Pango\Attribute\InsertHyphensAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_insert_hyphens_object_get_properties_for(zend_objec
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\InsertHyphens Definition and registration
+    \Pango\Attribute\InsertHyphensAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_insert_hyphens)
     pango_attr_insert_hyphens_object_handlers.get_properties_for = pango_attr_insert_hyphens_object_get_properties_for;
     pango_attr_insert_hyphens_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_insert_hyphens = register_class_Pango_Attribute_InsertHyphens(php_pango_get_attribute_ce());
+    ce_pango_attr_insert_hyphens = register_class_Pango_Attribute_InsertHyphensAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_insert_hyphens->create_object = pango_attr_insert_hyphens_create_object;
 
     return SUCCESS;

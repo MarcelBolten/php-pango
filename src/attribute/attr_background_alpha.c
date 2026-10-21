@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_background_alpha;
 static zend_object_handlers pango_attr_background_alpha_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\BackgroundAlpha C API
+    \Pango\Attribute\BackgroundAlphaAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,11 +43,11 @@ zend_class_entry* php_pango_get_attr_background_alpha_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\BackgroundAlpha Class API
+    \Pango\Attribute\BackgroundAlphaAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ */
-PHP_METHOD(Pango_Attribute_BackgroundAlpha, __construct)
+PHP_METHOD(Pango_Attribute_BackgroundAlphaAttribute, __construct)
 {
     zend_long value;
     zend_long start_index = ((zend_long) PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING);
@@ -79,7 +79,7 @@ PHP_METHOD(Pango_Attribute_BackgroundAlpha, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\BackgroundAlpha Object management
+    \Pango\Attribute\BackgroundAlphaAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -109,7 +109,7 @@ static HashTable *pango_attr_background_alpha_object_get_properties_for(zend_obj
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\BackgroundAlpha Definition and registration
+    \Pango\Attribute\BackgroundAlphaAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -129,7 +129,7 @@ PHP_MINIT_FUNCTION(pango_attr_background_alpha)
     pango_attr_background_alpha_object_handlers.get_properties_for = pango_attr_background_alpha_object_get_properties_for;
     pango_attr_background_alpha_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_background_alpha = register_class_Pango_Attribute_BackgroundAlpha(php_pango_get_attribute_ce());
+    ce_pango_attr_background_alpha = register_class_Pango_Attribute_BackgroundAlphaAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_background_alpha->create_object = pango_attr_background_alpha_create_object;
 
     return SUCCESS;

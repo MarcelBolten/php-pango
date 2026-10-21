@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_rise;
 static zend_object_handlers pango_attr_rise_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Rise C API
+    \Pango\Attribute\RiseAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_rise_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Rise Class API
+    \Pango\Attribute\RiseAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new rise attribute */
-PHP_METHOD(Pango_Attribute_Rise, __construct)
+PHP_METHOD(Pango_Attribute_RiseAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_rise_new, zend_long, LONG);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Rise Object management
+    \Pango\Attribute\RiseAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_rise_object_get_properties_for(zend_object *object,
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Rise Definition and registration
+    \Pango\Attribute\RiseAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_rise)
     pango_attr_rise_object_handlers.get_properties_for = pango_attr_rise_object_get_properties_for;
     pango_attr_rise_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_rise = register_class_Pango_Attribute_Rise(php_pango_get_attribute_ce());
+    ce_pango_attr_rise = register_class_Pango_Attribute_RiseAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_rise->create_object = pango_attr_rise_create_object;
 
     return SUCCESS;

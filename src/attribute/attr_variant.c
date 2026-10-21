@@ -29,7 +29,7 @@ zend_class_entry *ce_pango_attr_variant;
 static zend_object_handlers pango_attr_variant_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Variant C API
+    \Pango\Attribute\VariantAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -45,11 +45,11 @@ zend_class_entry* php_pango_get_attr_variant_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Variant Class API
+    \Pango\Attribute\VariantAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new variant attribute */
-PHP_METHOD(Pango_Attribute_Variant, __construct)
+PHP_METHOD(Pango_Attribute_VariantAttribute, __construct)
 {
     zend_object *variant;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -73,7 +73,7 @@ PHP_METHOD(Pango_Attribute_Variant, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Variant Object management
+    \Pango\Attribute\VariantAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -103,7 +103,7 @@ static HashTable *pango_attr_variant_object_get_properties_for(zend_object *obje
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Variant Definition and registration
+    \Pango\Attribute\VariantAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -123,7 +123,7 @@ PHP_MINIT_FUNCTION(pango_attr_variant)
     pango_attr_variant_object_handlers.get_properties_for = pango_attr_variant_object_get_properties_for;
     pango_attr_variant_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_variant = register_class_Pango_Attribute_Variant(php_pango_get_attribute_ce());
+    ce_pango_attr_variant = register_class_Pango_Attribute_VariantAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_variant->create_object = pango_attr_variant_create_object;
 
     return SUCCESS;

@@ -28,7 +28,7 @@ zend_class_entry *ce_pango_attr_baseline_shift;
 static zend_object_handlers pango_attr_baseline_shift_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\BaselineShift C API
+    \Pango\Attribute\BaselineShiftAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -44,11 +44,11 @@ zend_class_entry* php_pango_get_attr_baseline_shift_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\BaselineShift Class API
+    \Pango\Attribute\BaselineShiftAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new baseline_shift attribute */
-PHP_METHOD(Pango_Attribute_BaselineShift, __construct)
+PHP_METHOD(Pango_Attribute_BaselineShiftAttribute, __construct)
 {
     zend_object *baseline_shift_enum = NULL;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -75,7 +75,7 @@ PHP_METHOD(Pango_Attribute_BaselineShift, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\BaselineShift Object management
+    \Pango\Attribute\BaselineShiftAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -141,7 +141,7 @@ static HashTable *pango_attr_baseline_shift_object_get_properties_for(zend_objec
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\BaselineShift Definition and registration
+    \Pango\Attribute\BaselineShiftAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -161,7 +161,7 @@ PHP_MINIT_FUNCTION(pango_attr_baseline_shift)
     pango_attr_baseline_shift_object_handlers.get_properties_for = pango_attr_baseline_shift_object_get_properties_for;
     pango_attr_baseline_shift_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_baseline_shift = register_class_Pango_Attribute_BaselineShift(php_pango_get_attribute_ce());
+    ce_pango_attr_baseline_shift = register_class_Pango_Attribute_BaselineShiftAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_baseline_shift->create_object = pango_attr_baseline_shift_create_object;
 
     return SUCCESS;

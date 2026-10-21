@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_word;
 static zend_object_handlers pango_attr_word_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Word C API
+    \Pango\Attribute\WordAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,11 +43,11 @@ zend_class_entry* php_pango_get_attr_word_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Word Class API
+    \Pango\Attribute\WordAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new word attribute */
-PHP_METHOD(Pango_Attribute_Word, __construct)
+PHP_METHOD(Pango_Attribute_WordAttribute, __construct)
 {
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
     zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
@@ -67,7 +67,7 @@ PHP_METHOD(Pango_Attribute_Word, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Word Object management
+    \Pango\Attribute\WordAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -122,7 +122,7 @@ static HashTable *pango_attr_word_object_get_properties_for(zend_object *object,
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Word Definition and registration
+    \Pango\Attribute\WordAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -142,7 +142,7 @@ PHP_MINIT_FUNCTION(pango_attr_word)
     pango_attr_word_object_handlers.get_properties_for = pango_attr_word_object_get_properties_for;
     pango_attr_word_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_word = register_class_Pango_Attribute_Word(php_pango_get_attribute_ce());
+    ce_pango_attr_word = register_class_Pango_Attribute_WordAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_word->create_object = pango_attr_word_create_object;
 
     return SUCCESS;

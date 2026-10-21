@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_sentence;
 static zend_object_handlers pango_attr_sentence_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Sentence C API
+    \Pango\Attribute\SentenceAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,11 +43,11 @@ zend_class_entry* php_pango_get_attr_sentence_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Sentence Class API
+    \Pango\Attribute\SentenceAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new sentence attribute */
-PHP_METHOD(Pango_Attribute_Sentence, __construct)
+PHP_METHOD(Pango_Attribute_SentenceAttribute, __construct)
 {
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
     zend_long end_index = PHP_PANGO_ATTR_INDEX_TO_TEXT_END;
@@ -68,7 +68,7 @@ PHP_METHOD(Pango_Attribute_Sentence, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Sentence Object management
+    \Pango\Attribute\SentenceAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -123,7 +123,7 @@ static HashTable *pango_attr_sentence_object_get_properties_for(zend_object *obj
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Sentence Definition and registration
+    \Pango\Attribute\SentenceAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -143,7 +143,7 @@ PHP_MINIT_FUNCTION(pango_attr_sentence)
     pango_attr_sentence_object_handlers.get_properties_for = pango_attr_sentence_object_get_properties_for;
     pango_attr_sentence_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_sentence = register_class_Pango_Attribute_Sentence(php_pango_get_attribute_ce());
+    ce_pango_attr_sentence = register_class_Pango_Attribute_SentenceAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_sentence->create_object = pango_attr_sentence_create_object;
 
     return SUCCESS;

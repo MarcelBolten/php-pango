@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_absolute_line_height;
 static zend_object_handlers pango_attr_absolute_line_height_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AbsoluteLineHeight C API
+    \Pango\Attribute\AbsoluteLineHeightAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_absolute_line_height_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AbsoluteLineHeight Class API
+    \Pango\Attribute\AbsoluteLineHeightAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new absolute line height attribute */
-PHP_METHOD(Pango_Attribute_AbsoluteLineHeight, __construct)
+PHP_METHOD(Pango_Attribute_AbsoluteLineHeightAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_line_height_new_absolute, zend_long, LONG);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AbsoluteLineHeight Object management
+    \Pango\Attribute\AbsoluteLineHeightAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_absolute_line_height_object_get_properties_for(zend
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AbsoluteLineHeight Definition and registration
+    \Pango\Attribute\AbsoluteLineHeightAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_absolute_line_height)
     pango_attr_absolute_line_height_object_handlers.get_properties_for = pango_attr_absolute_line_height_object_get_properties_for;
     pango_attr_absolute_line_height_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_absolute_line_height = register_class_Pango_Attribute_AbsoluteLineHeight(php_pango_get_attribute_ce());
+    ce_pango_attr_absolute_line_height = register_class_Pango_Attribute_AbsoluteLineHeightAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_absolute_line_height->create_object = pango_attr_absolute_line_height_create_object;
 
     return SUCCESS;

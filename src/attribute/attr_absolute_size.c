@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_absolute_size;
 static zend_object_handlers pango_attr_absolute_size_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AbsoluteSize C API
+    \Pango\Attribute\AbsoluteSizeAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_absolute_size_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AbsoluteSize Class API
+    \Pango\Attribute\AbsoluteSizeAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new size attribute */
-PHP_METHOD(Pango_Attribute_AbsoluteSize, __construct)
+PHP_METHOD(Pango_Attribute_AbsoluteSizeAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_size_new_absolute, zend_long, LONG);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AbsoluteSize Object management
+    \Pango\Attribute\AbsoluteSizeAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_absolute_size_object_get_properties_for(zend_object
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\AbsoluteSize Definition and registration
+    \Pango\Attribute\AbsoluteSizeAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_absolute_size)
     pango_attr_absolute_size_object_handlers.get_properties_for = pango_attr_absolute_size_object_get_properties_for;
     pango_attr_absolute_size_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_absolute_size = register_class_Pango_Attribute_AbsoluteSize(php_pango_get_attribute_ce());
+    ce_pango_attr_absolute_size = register_class_Pango_Attribute_AbsoluteSizeAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_absolute_size->create_object = pango_attr_absolute_size_create_object;
 
     return SUCCESS;

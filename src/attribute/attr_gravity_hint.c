@@ -29,7 +29,7 @@ zend_class_entry *ce_pango_attr_gravity_hint;
 static zend_object_handlers pango_attr_gravity_hint_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\GravityHint C API
+    \Pango\Attribute\GravityHintAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -45,11 +45,11 @@ PHP_PANGO_API zend_class_entry* php_pango_get_attr_gravity_hint_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\GravityHint Class API
+    \Pango\Attribute\GravityHintAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new gravity_hint attribute */
-PHP_METHOD(Pango_Attribute_GravityHint, __construct)
+PHP_METHOD(Pango_Attribute_GravityHintAttribute, __construct)
 {
     zend_object *gravity_hint;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -73,7 +73,7 @@ PHP_METHOD(Pango_Attribute_GravityHint, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\GravityHint Object management
+    \Pango\Attribute\GravityHintAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -103,7 +103,7 @@ static HashTable *pango_attr_gravity_hint_object_get_properties_for(zend_object 
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\GravityHint Definition and registration
+    \Pango\Attribute\GravityHintAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -123,7 +123,7 @@ PHP_MINIT_FUNCTION(pango_attr_gravity_hint)
     pango_attr_gravity_hint_object_handlers.get_properties_for = pango_attr_gravity_hint_object_get_properties_for;
     pango_attr_gravity_hint_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_gravity_hint = register_class_Pango_Attribute_GravityHint(php_pango_get_attribute_ce());
+    ce_pango_attr_gravity_hint = register_class_Pango_Attribute_GravityHintAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_gravity_hint->create_object = pango_attr_gravity_hint_create_object;
 
     return SUCCESS;

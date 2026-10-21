@@ -30,7 +30,7 @@ zend_class_entry *ce_pango_attr_width;
 static zend_object_handlers pango_attr_width_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Width C API
+    \Pango\Attribute\WidthAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -46,11 +46,11 @@ zend_class_entry* php_pango_get_attr_width_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Width Class API
+    \Pango\Attribute\WidthAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new width attribute */
-PHP_METHOD(Pango_Attribute_Width, __construct)
+PHP_METHOD(Pango_Attribute_WidthAttribute, __construct)
 {
     zend_object *width;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -74,7 +74,7 @@ PHP_METHOD(Pango_Attribute_Width, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Width Object management
+    \Pango\Attribute\WidthAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -104,7 +104,7 @@ static HashTable *pango_attr_width_object_get_properties_for(zend_object *object
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Width Definition and registration
+    \Pango\Attribute\WidthAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -124,7 +124,7 @@ PHP_MINIT_FUNCTION(pango_attr_width)
     pango_attr_width_object_handlers.get_properties_for = pango_attr_width_object_get_properties_for;
     pango_attr_width_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_width = register_class_Pango_Attribute_Width(php_pango_get_attribute_ce());
+    ce_pango_attr_width = register_class_Pango_Attribute_WidthAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_width->create_object = pango_attr_width_create_object;
 
     return SUCCESS;

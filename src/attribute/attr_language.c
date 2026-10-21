@@ -33,7 +33,7 @@ pango_attr_language_object *pango_attr_language_fetch_object(zend_object *object
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Language C API
+    \Pango\Attribute\LanguageAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -51,11 +51,11 @@ zend_class_entry* php_pango_get_attr_language_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Language Class API
+    \Pango\Attribute\LanguageAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new language attribute */
-PHP_METHOD(Pango_Attribute_Language, __construct)
+PHP_METHOD(Pango_Attribute_LanguageAttribute, __construct)
 {
     zval *language_zv;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -86,7 +86,7 @@ PHP_METHOD(Pango_Attribute_Language, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Language Object management
+    \Pango\Attribute\LanguageAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -203,7 +203,7 @@ static HashTable *pango_attr_language_object_get_properties_for(zend_object *obj
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Language Definition and registration
+    \Pango\Attribute\LanguageAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -223,7 +223,7 @@ PHP_MINIT_FUNCTION(pango_attr_language)
     pango_attr_language_object_handlers.get_properties_for = pango_attr_language_object_get_properties_for;
     pango_attr_language_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_language = register_class_Pango_Attribute_Language(php_pango_get_attribute_ce());
+    ce_pango_attr_language = register_class_Pango_Attribute_LanguageAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_language->create_object = pango_attr_language_create_object;
 
     return SUCCESS;

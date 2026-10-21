@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_strikethrough;
 static zend_object_handlers pango_attr_strikethrough_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Strikethrough C API
+    \Pango\Attribute\StrikethroughAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_strikethrough_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Strikethrough Class API
+    \Pango\Attribute\StrikethroughAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new Strikethrough attribute */
-PHP_METHOD(Pango_Attribute_Strikethrough, __construct)
+PHP_METHOD(Pango_Attribute_StrikethroughAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_strikethrough_new, bool, BOOL);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Strikethrough Object management
+    \Pango\Attribute\StrikethroughAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_strikethrough_object_get_properties_for(zend_object
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Strikethrough Definition and registration
+    \Pango\Attribute\StrikethroughAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_strikethrough)
     pango_attr_strikethrough_object_handlers.get_properties_for = pango_attr_strikethrough_object_get_properties_for;
     pango_attr_strikethrough_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_strikethrough = register_class_Pango_Attribute_Strikethrough(php_pango_get_attribute_ce());
+    ce_pango_attr_strikethrough = register_class_Pango_Attribute_StrikethroughAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_strikethrough->create_object = pango_attr_strikethrough_create_object;
 
     return SUCCESS;

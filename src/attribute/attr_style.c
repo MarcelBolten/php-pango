@@ -29,7 +29,7 @@ zend_class_entry *ce_pango_attr_style;
 static zend_object_handlers pango_attr_style_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Style C API
+    \Pango\Attribute\StyleAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -45,11 +45,11 @@ zend_class_entry* php_pango_get_attr_style_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Style Class API
+    \Pango\Attribute\StyleAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new style attribute */
-PHP_METHOD(Pango_Attribute_Style, __construct)
+PHP_METHOD(Pango_Attribute_StyleAttribute, __construct)
 {
     zend_object *style;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -73,7 +73,7 @@ PHP_METHOD(Pango_Attribute_Style, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Style Object management
+    \Pango\Attribute\StyleAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -103,7 +103,7 @@ static HashTable *pango_attr_style_object_get_properties_for(zend_object *object
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Style Definition and registration
+    \Pango\Attribute\StyleAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -123,7 +123,7 @@ PHP_MINIT_FUNCTION(pango_attr_style)
     pango_attr_style_object_handlers.get_properties_for = pango_attr_style_object_get_properties_for;
     pango_attr_style_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_style = register_class_Pango_Attribute_Style(php_pango_get_attribute_ce());
+    ce_pango_attr_style = register_class_Pango_Attribute_StyleAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_style->create_object = pango_attr_style_create_object;
 
     return SUCCESS;

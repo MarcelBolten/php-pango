@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_fallback;
 static zend_object_handlers pango_attr_fallback_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Fallback C API
+    \Pango\Attribute\FallbackAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_fallback_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Fallback Class API
+    \Pango\Attribute\FallbackAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new Fallback attribute */
-PHP_METHOD(Pango_Attribute_Fallback, __construct)
+PHP_METHOD(Pango_Attribute_FallbackAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_fallback_new, bool, BOOL);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Fallback Object management
+    \Pango\Attribute\FallbackAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_fallback_object_get_properties_for(zend_object *obj
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Fallback Definition and registration
+    \Pango\Attribute\FallbackAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_fallback)
     pango_attr_fallback_object_handlers.get_properties_for = pango_attr_fallback_object_get_properties_for;
     pango_attr_fallback_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_fallback = register_class_Pango_Attribute_Fallback(php_pango_get_attribute_ce());
+    ce_pango_attr_fallback = register_class_Pango_Attribute_FallbackAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_fallback->create_object = pango_attr_fallback_create_object;
 
     return SUCCESS;

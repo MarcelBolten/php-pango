@@ -28,7 +28,7 @@ zend_class_entry *ce_pango_attr_strikethrough_color;
 static zend_object_handlers pango_attr_strikethrough_color_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\StrikethroughColor C API
+    \Pango\Attribute\StrikethroughColorAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -44,11 +44,11 @@ zend_class_entry* php_pango_get_attr_strikethrough_color_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\StrikethroughColor Class API
+    \Pango\Attribute\StrikethroughColorAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new strikethrough_color attribute */
-PHP_METHOD(Pango_Attribute_StrikethroughColor, __construct)
+PHP_METHOD(Pango_Attribute_StrikethroughColorAttribute, __construct)
 {
     zend_object *color_obj;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -76,7 +76,7 @@ PHP_METHOD(Pango_Attribute_StrikethroughColor, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\StrikethroughColor Object management
+    \Pango\Attribute\StrikethroughColorAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -106,7 +106,7 @@ static HashTable *pango_attr_strikethrough_color_object_get_properties_for(zend_
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\StrikethroughColor Definition and registration
+    \Pango\Attribute\StrikethroughColorAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -126,7 +126,7 @@ PHP_MINIT_FUNCTION(pango_attr_strikethrough_color)
     pango_attr_strikethrough_color_object_handlers.get_properties_for = pango_attr_strikethrough_color_object_get_properties_for;
     pango_attr_strikethrough_color_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_strikethrough_color = register_class_Pango_Attribute_StrikethroughColor(php_pango_get_attribute_ce());
+    ce_pango_attr_strikethrough_color = register_class_Pango_Attribute_StrikethroughColorAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_strikethrough_color->create_object = pango_attr_strikethrough_color_create_object;
 
     return SUCCESS;

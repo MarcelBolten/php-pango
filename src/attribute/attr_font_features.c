@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_font_features;
 static zend_object_handlers pango_attr_font_features_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\FontFeatures C API
+    \Pango\Attribute\FontFeaturesAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,11 +43,11 @@ zend_class_entry* php_pango_get_attr_font_features_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\FontFeatures Class API
+    \Pango\Attribute\FontFeaturesAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new font_features attribute */
-PHP_METHOD(Pango_Attribute_FontFeatures, __construct)
+PHP_METHOD(Pango_Attribute_FontFeaturesAttribute, __construct)
 {
     zend_string *font_features = NULL;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -74,7 +74,7 @@ PHP_METHOD(Pango_Attribute_FontFeatures, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\FontFeatures Object management
+    \Pango\Attribute\FontFeaturesAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -104,7 +104,7 @@ static HashTable *pango_attr_font_features_object_get_properties_for(zend_object
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\FontFeatures Definition and registration
+    \Pango\Attribute\FontFeaturesAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -124,7 +124,7 @@ PHP_MINIT_FUNCTION(pango_attr_font_features)
     pango_attr_font_features_object_handlers.get_properties_for = pango_attr_font_features_object_get_properties_for;
     pango_attr_font_features_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_font_features = register_class_Pango_Attribute_FontFeatures(php_pango_get_attribute_ce());
+    ce_pango_attr_font_features = register_class_Pango_Attribute_FontFeaturesAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_font_features->create_object = pango_attr_font_features_create_object;
 
     return SUCCESS;

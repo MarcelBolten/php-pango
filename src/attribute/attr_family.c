@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_family;
 static zend_object_handlers pango_attr_family_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Family C API
+    \Pango\Attribute\FamilyAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,11 +43,11 @@ zend_class_entry* php_pango_get_attr_family_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Family Class API
+    \Pango\Attribute\FamilyAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new family attribute */
-PHP_METHOD(Pango_Attribute_Family, __construct)
+PHP_METHOD(Pango_Attribute_FamilyAttribute, __construct)
 {
     zend_string *family = NULL;
     zend_long start_index = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING;
@@ -75,7 +75,7 @@ PHP_METHOD(Pango_Attribute_Family, __construct)
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Family Object management
+    \Pango\Attribute\FamilyAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -105,7 +105,7 @@ static HashTable *pango_attr_family_object_get_properties_for(zend_object *objec
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\Family Definition and registration
+    \Pango\Attribute\FamilyAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -125,7 +125,7 @@ PHP_MINIT_FUNCTION(pango_attr_family)
     pango_attr_family_object_handlers.get_properties_for = pango_attr_family_object_get_properties_for;
     pango_attr_family_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_family = register_class_Pango_Attribute_Family(php_pango_get_attribute_ce());
+    ce_pango_attr_family = register_class_Pango_Attribute_FamilyAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_family->create_object = pango_attr_family_create_object;
 
     return SUCCESS;

@@ -27,7 +27,7 @@ zend_class_entry *ce_pango_attr_line_height;
 static zend_object_handlers pango_attr_line_height_object_handlers;
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\LineHeight C API
+    \Pango\Attribute\LineHeightAttribute C API
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -43,18 +43,18 @@ zend_class_entry* php_pango_get_attr_line_height_ce(void)
 }
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\LineHeight Class API
+    \Pango\Attribute\LineHeightAttribute Class API
 ------------------------------------------------------------------*/
 
 /* {{{ Creates a new LineHeight attribute */
-PHP_METHOD(Pango_Attribute_LineHeight, __construct)
+PHP_METHOD(Pango_Attribute_LineHeightAttribute, __construct)
 {
     PANGO_ATTR_CONSTRUCT(pango_attr_line_height_new, double, DOUBLE);
 }
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\LineHeight Object management
+    \Pango\Attribute\LineHeightAttribute Object management
 ------------------------------------------------------------------*/
 
 /* {{{ */
@@ -84,7 +84,7 @@ static HashTable *pango_attr_line_height_object_get_properties_for(zend_object *
 /* }}} */
 
 /* ----------------------------------------------------------------
-    \Pango\Attribute\LineHeight Definition and registration
+    \Pango\Attribute\LineHeightAttribute Definition and registration
 ------------------------------------------------------------------*/
 
 /* {{{ PHP_MINIT_FUNCTION */
@@ -104,7 +104,7 @@ PHP_MINIT_FUNCTION(pango_attr_line_height)
     pango_attr_line_height_object_handlers.get_properties_for = pango_attr_line_height_object_get_properties_for;
     pango_attr_line_height_object_handlers.compare = pango_attr_object_compare;
 
-    ce_pango_attr_line_height = register_class_Pango_Attribute_LineHeight(php_pango_get_attribute_ce());
+    ce_pango_attr_line_height = register_class_Pango_Attribute_LineHeightAttribute(php_pango_get_attribute_ce());
     ce_pango_attr_line_height->create_object = pango_attr_line_height_create_object;
 
     return SUCCESS;
