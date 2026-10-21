@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Overline::__construct()
+Pango\Attribute\OverlineAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Overline;
+use Pango\Attribute\OverlineAttribute;
 
 $overlineCase = Pango\Overline::Single;
 $overline = new Overline($overlineCase);
@@ -59,7 +59,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\Overline)#%d (3) {
+object(Pango\Attribute\OverlineAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -67,11 +67,11 @@ object(Pango\Attribute\Overline)#%d (3) {
   ["value"]=>
   enum(Pango\Overline::Single)
 }
-Pango\Attribute\Overline::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\Overline::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\Overline::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\Overline::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\Overline::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\Overline::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\Overline::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\Overline::__construct(): Argument #1 ($value) must be of type Pango\Overline, array given
+Pango\Attribute\OverlineAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\OverlineAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\OverlineAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\OverlineAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\OverlineAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\OverlineAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\OverlineAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\OverlineAttribute::__construct(): Argument #1 ($value) must be of type Pango\Overline, array given

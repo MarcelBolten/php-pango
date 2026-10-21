@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Language get_properties handler
+Pango\Attribute\LanguageAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Language as AttrLanguage;
+use Pango\Attribute\LanguageAttribute as AttrLanguage;
 use Pango\Language;
 
 $attrLanguage = new AttrLanguage(new Language("en"));
@@ -12,7 +12,7 @@ var_dump($attrLanguage);
 print_r($attrLanguage);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Language)#%d (3) {
+object(Pango\Attribute\LanguageAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -23,7 +23,7 @@ object(Pango\Attribute\Language)#%d (3) {
     string(2) "en"
   }
 }
-Pango\Attribute\Language Object
+Pango\Attribute\LanguageAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

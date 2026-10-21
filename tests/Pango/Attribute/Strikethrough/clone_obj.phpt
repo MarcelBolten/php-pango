@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Strikethrough clone handler
+Pango\Attribute\StrikethroughAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Strikethrough;
+use Pango\Attribute\StrikethroughAttribute;
 
 $strikethrough = new Strikethrough(true);
 var_dump($strikethrough->value);

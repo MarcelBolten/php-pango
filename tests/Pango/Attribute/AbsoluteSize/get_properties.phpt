@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\AbsoluteSize get_properties handler
+Pango\Attribute\AbsoluteSizeAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AbsoluteSize;
+use Pango\Attribute\AbsoluteSizeAttribute;
 
 $absoluteSize = new AbsoluteSize(5);
 var_dump($absoluteSize);
 print_r($absoluteSize);
 ?>
 --EXPECTF--
-object(Pango\Attribute\AbsoluteSize)#%d (3) {
+object(Pango\Attribute\AbsoluteSizeAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\AbsoluteSize)#%d (3) {
   ["value"]=>
   int(5)
 }
-Pango\Attribute\AbsoluteSize Object
+Pango\Attribute\AbsoluteSizeAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

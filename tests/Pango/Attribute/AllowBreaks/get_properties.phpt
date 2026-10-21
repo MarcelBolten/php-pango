@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\AllowBreaks get_properties handler
+Pango\Attribute\AllowBreaksAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AllowBreaks;
+use Pango\Attribute\AllowBreaksAttribute;
 
 $allowBreaks = new AllowBreaks(true);
 var_dump($allowBreaks);
 print_r($allowBreaks);
 ?>
 --EXPECTF--
-object(Pango\Attribute\AllowBreaks)#%d (3) {
+object(Pango\Attribute\AllowBreaksAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\AllowBreaks)#%d (3) {
   ["value"]=>
   bool(true)
 }
-Pango\Attribute\AllowBreaks Object
+Pango\Attribute\AllowBreaksAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

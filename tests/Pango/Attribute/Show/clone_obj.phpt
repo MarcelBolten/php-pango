@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Show clone handler
+Pango\Attribute\ShowAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Show;
+use Pango\Attribute\ShowAttribute;
 
 $show = new Show(Show::NONE);
 var_dump($show->value);

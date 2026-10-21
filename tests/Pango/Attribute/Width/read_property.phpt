@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Width read_property handler
+Pango\Attribute\WidthAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Width;
+use Pango\Attribute\WidthAttribute;
 
 $width = new Width(Pango\Width::Expanded);
 

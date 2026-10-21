@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\StrikethroughColor get_properties handler
+Pango\Attribute\StrikethroughColorAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\StrikethroughColor;
+use Pango\Attribute\StrikethroughColorAttribute;
 
 $strikethroughColor = new StrikethroughColor(new Pango\Color(1024, 2048, 4096));
 var_dump($strikethroughColor);
 print_r($strikethroughColor);
 ?>
 --EXPECTF--
-object(Pango\Attribute\StrikethroughColor)#%d (3) {
+object(Pango\Attribute\StrikethroughColorAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -26,7 +26,7 @@ object(Pango\Attribute\StrikethroughColor)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\StrikethroughColor Object
+Pango\Attribute\StrikethroughColorAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

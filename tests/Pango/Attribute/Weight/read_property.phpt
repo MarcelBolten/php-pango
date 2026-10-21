@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Weight read_property handler
+Pango\Attribute\WeightAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Weight;
+use Pango\Attribute\WeightAttribute;
 
 $weight = new Weight(Pango\Weight::Bold);
 

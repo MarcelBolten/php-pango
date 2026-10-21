@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Language::__construct()
+Pango\Attribute\LanguageAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Language as AttrLanguage;
+use Pango\Attribute\LanguageAttribute as AttrLanguage;
 use Pango\Language;
 
 $language = new Language("en");
@@ -60,7 +60,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\Language)#%d (3) {
+object(Pango\Attribute\LanguageAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -71,11 +71,11 @@ object(Pango\Attribute\Language)#%d (3) {
     string(2) "en"
   }
 }
-Pango\Attribute\Language::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\Language::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\Language::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\Language::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\Language::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\Language::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\Language::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\Language::__construct(): Argument #1 ($value) must be of type Pango\Language, array given
+Pango\Attribute\LanguageAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\LanguageAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\LanguageAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\LanguageAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\LanguageAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\LanguageAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\LanguageAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\LanguageAttribute::__construct(): Argument #1 ($value) must be of type Pango\Language, array given

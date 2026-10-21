@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\LineHeight get_properties handler
+Pango\Attribute\LineHeightAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\LineHeight;
+use Pango\Attribute\LineHeightAttribute;
 
 $LineHeight = new LineHeight(5.2);
 var_dump($LineHeight);
 print_r($LineHeight);
 ?>
 --EXPECTF--
-object(Pango\Attribute\LineHeight)#%d (3) {
+object(Pango\Attribute\LineHeightAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\LineHeight)#%d (3) {
   ["value"]=>
   float(5.2)
 }
-Pango\Attribute\LineHeight Object
+Pango\Attribute\LineHeightAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

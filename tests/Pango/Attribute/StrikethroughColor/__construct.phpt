@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\StrikethroughColor::__construct()
+Pango\Attribute\StrikethroughColorAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\StrikethroughColor;
+use Pango\Attribute\StrikethroughColorAttribute;
 
 $color = new Pango\Color(1024, 2048, 4096);
 $strikethroughColor = new StrikethroughColor($color);
@@ -59,7 +59,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\StrikethroughColor)#%d (3) {
+object(Pango\Attribute\StrikethroughColorAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -74,11 +74,11 @@ object(Pango\Attribute\StrikethroughColor)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\StrikethroughColor::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\StrikethroughColor::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\StrikethroughColor::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\StrikethroughColor::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\StrikethroughColor::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\StrikethroughColor::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\StrikethroughColor::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\StrikethroughColor::__construct(): Argument #1 ($color) must be of type Pango\Color, array given
+Pango\Attribute\StrikethroughColorAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\StrikethroughColorAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\StrikethroughColorAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\StrikethroughColorAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\StrikethroughColorAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\StrikethroughColorAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\StrikethroughColorAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\StrikethroughColorAttribute::__construct(): Argument #1 ($color) must be of type Pango\Color, array given

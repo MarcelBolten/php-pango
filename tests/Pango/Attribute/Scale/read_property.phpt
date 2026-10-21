@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Scale read_property handler
+Pango\Attribute\ScaleAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Scale;
+use Pango\Attribute\ScaleAttribute;
 
 $scale = new Scale(5.2);
 

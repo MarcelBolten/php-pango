@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Word::__construct()
+Pango\Attribute\WordAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Word;
+use Pango\Attribute\WordAttribute;
 
 $word = new Word();
 var_dump($word);
@@ -46,15 +46,15 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\Word)#%d (2) {
+object(Pango\Attribute\WordAttribute)#%d (2) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
   int(4294967295)
 }
-Pango\Attribute\Word::__construct(): Argument #1 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\Word::__construct(): Argument #1 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\Word::__construct(): Argument #2 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\Word::__construct(): Argument #2 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\Word::__construct(): Argument #2 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\Word::__construct() expects at most 2 arguments, 3 given
+Pango\Attribute\WordAttribute::__construct(): Argument #1 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\WordAttribute::__construct(): Argument #1 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\WordAttribute::__construct(): Argument #2 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\WordAttribute::__construct(): Argument #2 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\WordAttribute::__construct(): Argument #2 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\WordAttribute::__construct() expects at most 2 arguments, 3 given

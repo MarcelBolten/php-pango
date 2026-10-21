@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\AbsoluteLineHeight::__construct()
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AbsoluteLineHeight;
+use Pango\Attribute\AbsoluteLineHeightAttribute;
 
 $absoluteLineHeight = new AbsoluteLineHeight(42);
 var_dump($absoluteLineHeight);
@@ -73,7 +73,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\AbsoluteLineHeight)#%d (3) {
+object(Pango\Attribute\AbsoluteLineHeightAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -81,7 +81,7 @@ object(Pango\Attribute\AbsoluteLineHeight)#%d (3) {
   ["value"]=>
   int(42)
 }
-object(Pango\Attribute\AbsoluteLineHeight)#%d (3) {
+object(Pango\Attribute\AbsoluteLineHeightAttribute)#%d (3) {
   ["startIndex"]=>
   int(100)
   ["endIndex"]=>
@@ -89,13 +89,13 @@ object(Pango\Attribute\AbsoluteLineHeight)#%d (3) {
   ["value"]=>
   int(42)
 }
-Pango\Attribute\AbsoluteLineHeight::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\AbsoluteLineHeight::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\AbsoluteLineHeight::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\AbsoluteLineHeight::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\AbsoluteLineHeight::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\AbsoluteLineHeight::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\AbsoluteLineHeight::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\AbsoluteLineHeight::__construct(): Argument #1 ($value) must be of type int, array given
-Pango\Attribute\AbsoluteLineHeight::__construct(): Argument #2 ($startIndex) must be of type int, array given
-Pango\Attribute\AbsoluteLineHeight::__construct(): Argument #3 ($endIndex) must be of type int, array given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct(): Argument #1 ($value) must be of type int, array given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct(): Argument #2 ($startIndex) must be of type int, array given
+Pango\Attribute\AbsoluteLineHeightAttribute::__construct(): Argument #3 ($endIndex) must be of type int, array given

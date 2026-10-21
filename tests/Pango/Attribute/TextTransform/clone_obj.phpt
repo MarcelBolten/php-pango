@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\TextTransform clone handler
+Pango\Attribute\TextTransformAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\TextTransform;
+use Pango\Attribute\TextTransformAttribute;
 
 $textTransform = new TextTransform(Pango\TextTransform::Lowercase);
 var_dump($textTransform->value);

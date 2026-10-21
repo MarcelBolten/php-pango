@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Size read_property handler
+Pango\Attribute\SizeAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Size;
+use Pango\Attribute\SizeAttribute;
 
 $size = new Size(5);
 

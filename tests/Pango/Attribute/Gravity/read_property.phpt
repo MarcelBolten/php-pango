@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Gravity read_property handler
+Pango\Attribute\GravityAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Gravity;
+use Pango\Attribute\GravityAttribute;
 
 $gravity = new Gravity(Pango\Gravity::North);
 

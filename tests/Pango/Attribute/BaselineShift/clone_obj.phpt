@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\BaselineShift clone handler
+Pango\Attribute\BaselineShiftAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\BaselineShift;
+use Pango\Attribute\BaselineShiftAttribute;
 
 $baselineShift = new BaselineShift(Pango\BaselineShift::Superscript);
 var_dump($baselineShift->value);

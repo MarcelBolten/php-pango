@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\AbsoluteLineHeight read_property handler
+Pango\Attribute\AbsoluteLineHeightAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AbsoluteLineHeight;
+use Pango\Attribute\AbsoluteLineHeightAttribute;
 
 $absoluteLineHeight = new AbsoluteLineHeight(5);
 

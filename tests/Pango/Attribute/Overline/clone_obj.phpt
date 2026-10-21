@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Overline clone handler
+Pango\Attribute\OverlineAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Overline;
+use Pango\Attribute\OverlineAttribute;
 
 $overline = new Overline(Pango\Overline::Single);
 var_dump($overline->value);

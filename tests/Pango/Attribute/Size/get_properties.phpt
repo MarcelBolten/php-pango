@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Size get_properties handler
+Pango\Attribute\SizeAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Size;
+use Pango\Attribute\SizeAttribute;
 
 $size = new Size(5);
 var_dump($size);
 print_r($size);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Size)#%d (3) {
+object(Pango\Attribute\SizeAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Size)#%d (3) {
   ["value"]=>
   int(5)
 }
-Pango\Attribute\Size Object
+Pango\Attribute\SizeAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Background::__construct()
+Pango\Attribute\BackgroundAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Background;
+use Pango\Attribute\BackgroundAttribute;
 
 $color = new Pango\Color(1024, 2048, 4096);
 $background = new Background($color);
@@ -59,7 +59,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\Background)#%d (3) {
+object(Pango\Attribute\BackgroundAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -74,11 +74,11 @@ object(Pango\Attribute\Background)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\Background::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\Background::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\Background::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\Background::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\Background::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\Background::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\Background::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\Background::__construct(): Argument #1 ($color) must be of type Pango\Color, array given
+Pango\Attribute\BackgroundAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\BackgroundAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\BackgroundAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\BackgroundAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\BackgroundAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\BackgroundAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\BackgroundAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\BackgroundAttribute::__construct(): Argument #1 ($color) must be of type Pango\Color, array given

@@ -1,23 +1,23 @@
 --TEST--
-Pango\Attribute\Sentence get_properties handler
+Pango\Attribute\SentenceAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Sentence;
+use Pango\Attribute\SentenceAttribute;
 
 $sentence = new Sentence();
 var_dump($sentence);
 print_r($sentence);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Sentence)#%d (2) {
+object(Pango\Attribute\SentenceAttribute)#%d (2) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
   int(4294967295)
 }
-Pango\Attribute\Sentence Object
+Pango\Attribute\SentenceAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

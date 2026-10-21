@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\StrikethroughColor clone handler
+Pango\Attribute\StrikethroughColorAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\StrikethroughColor;
+use Pango\Attribute\StrikethroughColorAttribute;
 
 $strikethroughColor = new StrikethroughColor(new Pango\Color(1024, 2048, 4096));
 var_dump($strikethroughColor->color->red);

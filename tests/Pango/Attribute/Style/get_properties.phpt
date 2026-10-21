@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Style get_properties handler
+Pango\Attribute\StyleAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Style;
+use Pango\Attribute\StyleAttribute;
 
 $style = new Style(Pango\Style::Italic);
 var_dump($style);
 print_r($style);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Style)#%d (3) {
+object(Pango\Attribute\StyleAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Style)#%d (3) {
   ["value"]=>
   enum(Pango\Style::Italic)
 }
-Pango\Attribute\Style Object
+Pango\Attribute\StyleAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

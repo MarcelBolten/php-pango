@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Gravity get_properties handler
+Pango\Attribute\GravityAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Gravity;
+use Pango\Attribute\GravityAttribute;
 
 $gravity = new Gravity(Pango\Gravity::North);
 var_dump($gravity);
 print_r($gravity);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Gravity)#%d (3) {
+object(Pango\Attribute\GravityAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Gravity)#%d (3) {
   ["value"]=>
   enum(Pango\Gravity::North)
 }
-Pango\Attribute\Gravity Object
+Pango\Attribute\GravityAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

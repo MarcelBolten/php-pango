@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Strikethrough get_properties handler
+Pango\Attribute\StrikethroughAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Strikethrough;
+use Pango\Attribute\StrikethroughAttribute;
 
 $strikethrough = new Strikethrough(true);
 var_dump($strikethrough);
 print_r($strikethrough);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Strikethrough)#%d (3) {
+object(Pango\Attribute\StrikethroughAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Strikethrough)#%d (3) {
   ["value"]=>
   bool(true)
 }
-Pango\Attribute\Strikethrough Object
+Pango\Attribute\StrikethroughAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

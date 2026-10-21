@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\FontFeatures get_properties handler
+Pango\Attribute\FontFeaturesAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\FontFeatures;
+use Pango\Attribute\FontFeaturesAttribute;
 
 $fontFeatures = new FontFeatures("kern=0");
 var_dump($fontFeatures);
 print_r($fontFeatures);
 ?>
 --EXPECTF--
-object(Pango\Attribute\FontFeatures)#%d (3) {
+object(Pango\Attribute\FontFeaturesAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\FontFeatures)#%d (3) {
   ["value"]=>
   string(6) "kern=0"
 }
-Pango\Attribute\FontFeatures Object
+Pango\Attribute\FontFeaturesAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

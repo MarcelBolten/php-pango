@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\AbsoluteSize clone handler
+Pango\Attribute\AbsoluteSizeAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AbsoluteSize;
+use Pango\Attribute\AbsoluteSizeAttribute;
 
 $absoluteSize = new AbsoluteSize(5);
 var_dump($absoluteSize->value);

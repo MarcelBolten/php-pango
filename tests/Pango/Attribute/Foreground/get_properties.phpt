@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Foreground get_properties handler
+Pango\Attribute\ForegroundAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Foreground;
+use Pango\Attribute\ForegroundAttribute;
 
 $foreground = new Foreground(new Pango\Color(1024, 2048, 4096));
 var_dump($foreground);
 print_r($foreground);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Foreground)#%d (3) {
+object(Pango\Attribute\ForegroundAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -26,7 +26,7 @@ object(Pango\Attribute\Foreground)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\Foreground Object
+Pango\Attribute\ForegroundAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

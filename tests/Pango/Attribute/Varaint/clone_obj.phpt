@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Variant clone handler
+Pango\Attribute\VariantAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Variant;
+use Pango\Attribute\VariantAttribute;
 
 $variant = new Variant(Pango\Variant::SmallCaps);
 var_dump($variant->value);

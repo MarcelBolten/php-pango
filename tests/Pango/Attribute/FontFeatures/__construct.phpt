@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\FontFeatures::__construct()
+Pango\Attribute\FontFeaturesAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\FontFeatures;
+use Pango\Attribute\FontFeaturesAttribute;
 
 $fontFeatures = new FontFeatures("kern=0, liga=0");
 var_dump($fontFeatures);
@@ -64,7 +64,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\FontFeatures)#%d (3) {
+object(Pango\Attribute\FontFeaturesAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -72,12 +72,12 @@ object(Pango\Attribute\FontFeatures)#%d (3) {
   ["value"]=>
   string(14) "kern=0, liga=0"
 }
-Pango\Attribute\FontFeatures::__construct(): Argument #1 ($value) must not contain NUL bytes
-Pango\Attribute\FontFeatures::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\FontFeatures::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\FontFeatures::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\FontFeatures::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\FontFeatures::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\FontFeatures::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\FontFeatures::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\FontFeatures::__construct(): Argument #1 ($value) must be of type string, array given
+Pango\Attribute\FontFeaturesAttribute::__construct(): Argument #1 ($value) must not contain NUL bytes
+Pango\Attribute\FontFeaturesAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\FontFeaturesAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\FontFeaturesAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\FontFeaturesAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\FontFeaturesAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\FontFeaturesAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\FontFeaturesAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\FontFeaturesAttribute::__construct(): Argument #1 ($value) must be of type string, array given

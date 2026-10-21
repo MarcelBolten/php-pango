@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\FontFeatures read_property handler
+Pango\Attribute\FontFeaturesAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\FontFeatures;
+use Pango\Attribute\FontFeaturesAttribute;
 
 $fontFeatures = new FontFeatures("kern=0");
 

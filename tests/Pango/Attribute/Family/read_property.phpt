@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Family read_property handler
+Pango\Attribute\FamilyAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Family;
+use Pango\Attribute\FamilyAttribute;
 
 $family = new Family("Arial");
 

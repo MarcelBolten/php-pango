@@ -39,7 +39,7 @@ object(Pango\Attribute\AttributeList)#%d (0) {
 }
 object(Pango\Attribute\AttributeIterator)#%d (0) {
 }
-object(Pango\Attribute\Size)#%d (3) {
+object(Pango\Attribute\SizeAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -47,7 +47,7 @@ object(Pango\Attribute\Size)#%d (3) {
   ["value"]=>
   int(42)
 }
-object(Pango\Attribute\FontDescription)#%d (3) {
+object(Pango\Attribute\FontDescriptionAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -56,7 +56,7 @@ object(Pango\Attribute\FontDescription)#%d (3) {
   object(Pango\FontDescription)#%d (0) {
   }
 }
-object(Pango\Attribute\Language)#%d (3) {
+object(Pango\Attribute\LanguageAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>

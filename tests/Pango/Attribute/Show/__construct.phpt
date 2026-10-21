@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Show::__construct()
+Pango\Attribute\ShowAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Show;
+use Pango\Attribute\ShowAttribute;
 
 $show = new Show(Show::NONE);
 var_dump($show);
@@ -70,7 +70,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\Show)#%d (3) {
+object(Pango\Attribute\ShowAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -78,13 +78,13 @@ object(Pango\Attribute\Show)#%d (3) {
   ["value"]=>
   int(0)
 }
-Pango\Attribute\Show::__construct(): Argument #1 ($value) must be a class constant of Pango\Attribute\Show or a combination of them
-Pango\Attribute\Show::__construct(): Argument #1 ($value) must be a class constant of Pango\Attribute\Show or a combination of them
-Pango\Attribute\Show::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\Show::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\Show::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\Show::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\Show::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\Show::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\Show::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\Show::__construct(): Argument #1 ($value) must be of type int, array given
+Pango\Attribute\ShowAttribute::__construct(): Argument #1 ($value) must be a class constant of Pango\Attribute\ShowAttribute or a combination of them
+Pango\Attribute\ShowAttribute::__construct(): Argument #1 ($value) must be a class constant of Pango\Attribute\ShowAttribute or a combination of them
+Pango\Attribute\ShowAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\ShowAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\ShowAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\ShowAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\ShowAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\ShowAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\ShowAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\ShowAttribute::__construct(): Argument #1 ($value) must be of type int, array given

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Stretch clone handler
+Pango\Attribute\StretchAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Stretch;
+use Pango\Attribute\StretchAttribute;
 
 $stretch = new Stretch(Pango\Stretch::Expanded);
 var_dump($stretch->value);

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\TextTransform::__construct()
+Pango\Attribute\TextTransformAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\TextTransform;
+use Pango\Attribute\TextTransformAttribute;
 
 $transformCase = Pango\TextTransform::Lowercase;
 $textTransform = new TextTransform($transformCase);
@@ -59,7 +59,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\TextTransform)#%d (3) {
+object(Pango\Attribute\TextTransformAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -67,11 +67,11 @@ object(Pango\Attribute\TextTransform)#%d (3) {
   ["value"]=>
   enum(Pango\TextTransform::Lowercase)
 }
-Pango\Attribute\TextTransform::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\TextTransform::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\TextTransform::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\TextTransform::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\TextTransform::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\TextTransform::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\TextTransform::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\TextTransform::__construct(): Argument #1 ($value) must be of type Pango\TextTransform, array given
+Pango\Attribute\TextTransformAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\TextTransformAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\TextTransformAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\TextTransformAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\TextTransformAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\TextTransformAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\TextTransformAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\TextTransformAttribute::__construct(): Argument #1 ($value) must be of type Pango\TextTransform, array given

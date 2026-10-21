@@ -46,7 +46,7 @@ enum(Pango\Script::Greek)
 string(2) "en"
 array(1) {
   [0]=>
-  object(Pango\Attribute\Rise)#%d (3) {
+  object(Pango\Attribute\RiseAttribute)#%d (3) {
     ["startIndex"]=>
     int(0)
     ["endIndex"]=>

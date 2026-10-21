@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Stretch get_properties handler
+Pango\Attribute\StretchAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Stretch;
+use Pango\Attribute\StretchAttribute;
 
 $stretch = new Stretch(Pango\Stretch::Expanded);
 var_dump($stretch);
 print_r($stretch);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Stretch)#%d (3) {
+object(Pango\Attribute\StretchAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Stretch)#%d (3) {
   ["value"]=>
   enum(Pango\Stretch::Expanded)
 }
-Pango\Attribute\Stretch Object
+Pango\Attribute\StretchAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

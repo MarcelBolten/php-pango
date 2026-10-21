@@ -5,7 +5,7 @@ pango
 --FILE--
 <?php
 use Pango\Attribute\AttributeList;
-use Pango\Attribute\Size;
+use Pango\Attribute\SizeAttribute;
 
 $attributeList = new AttributeList("10 20 size 42");
 var_dump($attributeList->getAttributes());
@@ -37,7 +37,7 @@ try {
 --EXPECTF--
 array(1) {
   [0]=>
-  object(Pango\Attribute\Size)#%d (3) {
+  object(Pango\Attribute\SizeAttribute)#%d (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>
@@ -48,7 +48,7 @@ array(1) {
 }
 array(2) {
   [0]=>
-  object(Pango\Attribute\Size)#%d (3) {
+  object(Pango\Attribute\SizeAttribute)#%d (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>
@@ -57,7 +57,7 @@ array(2) {
     int(10)
   }
   [1]=>
-  object(Pango\Attribute\Size)#%d (3) {
+  object(Pango\Attribute\SizeAttribute)#%d (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>

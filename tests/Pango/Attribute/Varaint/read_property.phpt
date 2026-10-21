@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Variant read_property handler
+Pango\Attribute\VariantAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Variant;
+use Pango\Attribute\VariantAttribute;
 
 $variant = new Variant(Pango\Variant::SmallCaps);
 

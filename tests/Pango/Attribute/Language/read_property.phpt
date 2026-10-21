@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Language read_property handler
+Pango\Attribute\LanguageAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Language as AttrLanguage;
+use Pango\Attribute\LanguageAttribute as AttrLanguage;
 use Pango\Language;
 
 $attrLanguage = new AttrLanguage(new Language("en"));

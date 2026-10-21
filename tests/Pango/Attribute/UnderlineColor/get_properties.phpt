@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\UnderlineColor get_properties handler
+Pango\Attribute\UnderlineColorAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\UnderlineColor;
+use Pango\Attribute\UnderlineColorAttribute;
 
 $underlineColor = new UnderlineColor(new Pango\Color(1024, 2048, 4096));
 var_dump($underlineColor);
 print_r($underlineColor);
 ?>
 --EXPECTF--
-object(Pango\Attribute\UnderlineColor)#%d (3) {
+object(Pango\Attribute\UnderlineColorAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -26,7 +26,7 @@ object(Pango\Attribute\UnderlineColor)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\UnderlineColor Object
+Pango\Attribute\UnderlineColorAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\AllowBreaks clone handler
+Pango\Attribute\AllowBreaksAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AllowBreaks;
+use Pango\Attribute\AllowBreaksAttribute;
 
 $allowBreaks = new AllowBreaks(true);
 var_dump($allowBreaks->value);

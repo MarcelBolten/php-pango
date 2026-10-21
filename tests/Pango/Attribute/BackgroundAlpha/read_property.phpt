@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\BackgroundAlpha read_property handler
+Pango\Attribute\BackgroundAlphaAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\BackgroundAlpha;
+use Pango\Attribute\BackgroundAlphaAttribute;
 
 $backgroundAlpha = new BackgroundAlpha(5);
 

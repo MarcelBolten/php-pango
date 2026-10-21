@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Width get_properties handler
+Pango\Attribute\WidthAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Width;
+use Pango\Attribute\WidthAttribute;
 
 $width = new Width(Pango\Width::Expanded);
 var_dump($width);
 print_r($width);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Width)#%d (3) {
+object(Pango\Attribute\WidthAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Width)#%d (3) {
   ["value"]=>
   enum(Pango\Width::Expanded)
 }
-Pango\Attribute\Width Object
+Pango\Attribute\WidthAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

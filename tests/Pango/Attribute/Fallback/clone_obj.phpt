@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Fallback clone handler
+Pango\Attribute\FallbackAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Fallback;
+use Pango\Attribute\FallbackAttribute;
 
 $fallback = new Fallback(true);
 var_dump($fallback->value);

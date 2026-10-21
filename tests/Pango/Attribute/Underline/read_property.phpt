@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Underline read_property handler
+Pango\Attribute\UnderlineAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Underline;
+use Pango\Attribute\UnderlineAttribute;
 
 $underline = new Underline(Pango\Underline::Double);
 

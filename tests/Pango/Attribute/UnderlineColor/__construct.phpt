@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\UnderlineColor::__construct()
+Pango\Attribute\UnderlineColorAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\UnderlineColor;
+use Pango\Attribute\UnderlineColorAttribute;
 
 $color = new Pango\Color(1024, 2048, 4096);
 $underlineColor = new UnderlineColor($color);
@@ -59,7 +59,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\UnderlineColor)#%d (3) {
+object(Pango\Attribute\UnderlineColorAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -74,11 +74,11 @@ object(Pango\Attribute\UnderlineColor)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\UnderlineColor::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\UnderlineColor::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\UnderlineColor::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\UnderlineColor::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\UnderlineColor::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\UnderlineColor::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\UnderlineColor::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\UnderlineColor::__construct(): Argument #1 ($color) must be of type Pango\Color, array given
+Pango\Attribute\UnderlineColorAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\UnderlineColorAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\UnderlineColorAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\UnderlineColorAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\UnderlineColorAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\UnderlineColorAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\UnderlineColorAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\UnderlineColorAttribute::__construct(): Argument #1 ($color) must be of type Pango\Color, array given

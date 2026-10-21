@@ -269,7 +269,7 @@ array(4) {
       ["extraAttrs"]=>
       array(1) {
         [0]=>
-        object(Pango\Attribute\Foreground)#%d (3) {
+        object(Pango\Attribute\ForegroundAttribute)#%d (3) {
           ["startIndex"]=>
           int(7)
           ["endIndex"]=>
@@ -318,7 +318,7 @@ array(4) {
       ["extraAttrs"]=>
       array(1) {
         [0]=>
-        object(Pango\Attribute\Foreground)#%d (3) {
+        object(Pango\Attribute\ForegroundAttribute)#%d (3) {
           ["startIndex"]=>
           int(7)
           ["endIndex"]=>
@@ -367,7 +367,7 @@ array(4) {
       ["extraAttrs"]=>
       array(1) {
         [0]=>
-        object(Pango\Attribute\Foreground)#%d (3) {
+        object(Pango\Attribute\ForegroundAttribute)#%d (3) {
           ["startIndex"]=>
           int(16)
           ["endIndex"]=>

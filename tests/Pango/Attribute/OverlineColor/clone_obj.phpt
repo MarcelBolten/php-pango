@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\OverlineColor clone handler
+Pango\Attribute\OverlineColorAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\OverlineColor;
+use Pango\Attribute\OverlineColorAttribute;
 
 $overlineColor = new OverlineColor(new Pango\Color(1024, 2048, 4096));
 var_dump($overlineColor->color->red);

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Scale clone handler
+Pango\Attribute\ScaleAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Scale;
+use Pango\Attribute\ScaleAttribute;
 
 $scale = new Scale(5.2);
 var_dump($scale->value);

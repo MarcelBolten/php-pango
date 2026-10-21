@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Scale get_properties handler
+Pango\Attribute\ScaleAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Scale;
+use Pango\Attribute\ScaleAttribute;
 
 $scale = new Scale(5.2);
 var_dump($scale);
 print_r($scale);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Scale)#%d (3) {
+object(Pango\Attribute\ScaleAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Scale)#%d (3) {
   ["value"]=>
   float(5.2)
 }
-Pango\Attribute\Scale Object
+Pango\Attribute\ScaleAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

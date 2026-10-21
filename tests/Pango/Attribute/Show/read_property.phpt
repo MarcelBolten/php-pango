@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Show read_property handler
+Pango\Attribute\ShowAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Show;
+use Pango\Attribute\ShowAttribute;
 
 $show = new Show(Show::NONE);
 

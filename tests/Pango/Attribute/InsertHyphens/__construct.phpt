@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\InsertHyphens::__construct()
+Pango\Attribute\InsertHyphensAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\InsertHyphens;
+use Pango\Attribute\InsertHyphensAttribute;
 
 $insertHyphens = new InsertHyphens(true);
 var_dump($insertHyphens);
@@ -58,7 +58,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\InsertHyphens)#%d (3) {
+object(Pango\Attribute\InsertHyphensAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -66,11 +66,11 @@ object(Pango\Attribute\InsertHyphens)#%d (3) {
   ["value"]=>
   bool(true)
 }
-Pango\Attribute\InsertHyphens::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\InsertHyphens::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\InsertHyphens::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\InsertHyphens::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\InsertHyphens::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\InsertHyphens::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\InsertHyphens::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\InsertHyphens::__construct(): Argument #1 ($value) must be of type bool, array given
+Pango\Attribute\InsertHyphensAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\InsertHyphensAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\InsertHyphensAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\InsertHyphensAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\InsertHyphensAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\InsertHyphensAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\InsertHyphensAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\InsertHyphensAttribute::__construct(): Argument #1 ($value) must be of type bool, array given

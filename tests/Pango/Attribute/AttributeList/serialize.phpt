@@ -5,7 +5,7 @@ pango
 --FILE--
 <?php
 use Pango\Attribute\AttributeList;
-use Pango\Attribute\Size;
+use Pango\Attribute\SizeAttribute;
 
 $attributeList = new AttributeList();
 var_dump($attributeList->getAttributes());
@@ -27,7 +27,7 @@ array(0) {
 }
 array(1) {
   [0]=>
-  object(Pango\Attribute\Size)#%d (3) {
+  object(Pango\Attribute\SizeAttribute)#%d (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>

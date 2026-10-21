@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\AbsoluteSize::__construct()
+Pango\Attribute\AbsoluteSizeAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AbsoluteSize;
+use Pango\Attribute\AbsoluteSizeAttribute;
 
 $pangoSize = new AbsoluteSize(42);
 var_dump($pangoSize);
@@ -58,7 +58,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\AbsoluteSize)#%d (3) {
+object(Pango\Attribute\AbsoluteSizeAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -66,11 +66,11 @@ object(Pango\Attribute\AbsoluteSize)#%d (3) {
   ["value"]=>
   int(42)
 }
-Pango\Attribute\AbsoluteSize::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\AbsoluteSize::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\AbsoluteSize::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\AbsoluteSize::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\AbsoluteSize::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\AbsoluteSize::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\AbsoluteSize::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\AbsoluteSize::__construct(): Argument #1 ($value) must be of type int, array given
+Pango\Attribute\AbsoluteSizeAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\AbsoluteSizeAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\AbsoluteSizeAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\AbsoluteSizeAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\AbsoluteSizeAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\AbsoluteSizeAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\AbsoluteSizeAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\AbsoluteSizeAttribute::__construct(): Argument #1 ($value) must be of type int, array given

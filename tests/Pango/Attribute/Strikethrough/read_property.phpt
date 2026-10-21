@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Strikethrough read_property handler
+Pango\Attribute\StrikethroughAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Strikethrough;
+use Pango\Attribute\StrikethroughAttribute;
 
 $strikethrough = new Strikethrough(true);
 

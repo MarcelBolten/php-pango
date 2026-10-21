@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\FontScale read_property handler
+Pango\Attribute\FontScaleAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\FontScale;
+use Pango\Attribute\FontScaleAttribute;
 
 $fontScale = new FontScale(Pango\FontScale::SmallCaps);
 

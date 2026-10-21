@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Sentence::__construct()
+Pango\Attribute\SentenceAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Sentence;
+use Pango\Attribute\SentenceAttribute;
 
 $sentence = new Sentence();
 var_dump($sentence);
@@ -46,15 +46,15 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\Sentence)#%d (2) {
+object(Pango\Attribute\SentenceAttribute)#%d (2) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
   int(4294967295)
 }
-Pango\Attribute\Sentence::__construct(): Argument #1 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\Sentence::__construct(): Argument #1 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\Sentence::__construct(): Argument #2 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\Sentence::__construct(): Argument #2 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\Sentence::__construct(): Argument #2 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\Sentence::__construct() expects at most 2 arguments, 3 given
+Pango\Attribute\SentenceAttribute::__construct(): Argument #1 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\SentenceAttribute::__construct(): Argument #1 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\SentenceAttribute::__construct(): Argument #2 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\SentenceAttribute::__construct(): Argument #2 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\SentenceAttribute::__construct(): Argument #2 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\SentenceAttribute::__construct() expects at most 2 arguments, 3 given

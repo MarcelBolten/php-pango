@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\AllowBreaks read_property handler
+Pango\Attribute\AllowBreaksAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AllowBreaks;
+use Pango\Attribute\AllowBreaksAttribute;
 
 $allowBreaks = new AllowBreaks(true);
 

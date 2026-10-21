@@ -7,11 +7,11 @@ pango
 use Pango\Attribute\AttributeList;
 
 $callback = function (Pango\Attribute\Attribute $attr): bool {
-    return $attr instanceof Pango\Attribute\Size;
+    return $attr instanceof Pango\Attribute\SizeAttribute;
 };
 
 $notSizeCallback = function (Pango\Attribute\Attribute $attr): bool {
-    return !($attr instanceof Pango\Attribute\Size);
+    return !($attr instanceof Pango\Attribute\SizeAttribute);
 };
 
 $attributeList = new AttributeList("10 20 size 42, 10 20 weight bold");
@@ -72,7 +72,7 @@ object(Pango\Attribute\AttributeList)#%d (0) {
 }
 array(1) {
   [0]=>
-  object(Pango\Attribute\Weight)#%d (3) {
+  object(Pango\Attribute\WeightAttribute)#%d (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>
@@ -83,7 +83,7 @@ array(1) {
 }
 array(1) {
   [0]=>
-  object(Pango\Attribute\Size)#%d (3) {
+  object(Pango\Attribute\SizeAttribute)#%d (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>
@@ -94,7 +94,7 @@ array(1) {
 }
 array(1) {
   [0]=>
-  object(Pango\Attribute\Weight)#%d (3) {
+  object(Pango\Attribute\WeightAttribute)#%d (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Rise clone handler
+Pango\Attribute\RiseAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Rise;
+use Pango\Attribute\RiseAttribute;
 
 $rise = new Rise(5);
 var_dump($rise->value);

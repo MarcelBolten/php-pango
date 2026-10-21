@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\InsertHyphens get_properties handler
+Pango\Attribute\InsertHyphensAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\InsertHyphens;
+use Pango\Attribute\InsertHyphensAttribute;
 
 $insertHyphens = new InsertHyphens(true);
 var_dump($insertHyphens);
 print_r($insertHyphens);
 ?>
 --EXPECTF--
-object(Pango\Attribute\InsertHyphens)#%d (3) {
+object(Pango\Attribute\InsertHyphensAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\InsertHyphens)#%d (3) {
   ["value"]=>
   bool(true)
 }
-Pango\Attribute\InsertHyphens Object
+Pango\Attribute\InsertHyphensAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

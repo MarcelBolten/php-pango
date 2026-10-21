@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\OverlineColor read_property handler
+Pango\Attribute\OverlineColorAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\OverlineColor;
+use Pango\Attribute\OverlineColorAttribute;
 
 $overlineColor = new OverlineColor(new Pango\Color(1024, 2048, 4096));
 

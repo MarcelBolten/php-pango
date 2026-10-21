@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Foreground read_property handler
+Pango\Attribute\ForegroundAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Foreground;
+use Pango\Attribute\ForegroundAttribute;
 
 $foreground = new Foreground(new Pango\Color(1024, 2048, 4096));
 

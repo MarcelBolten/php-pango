@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Size clone handler
+Pango\Attribute\SizeAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Size;
+use Pango\Attribute\SizeAttribute;
 
 $size = new Size(5);
 var_dump($size->value);

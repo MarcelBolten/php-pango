@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Overline get_properties handler
+Pango\Attribute\OverlineAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Overline;
+use Pango\Attribute\OverlineAttribute;
 
 $overline = new Overline(Pango\Overline::Single);
 var_dump($overline);
 print_r($overline);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Overline)#%d (3) {
+object(Pango\Attribute\OverlineAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Overline)#%d (3) {
   ["value"]=>
   enum(Pango\Overline::Single)
 }
-Pango\Attribute\Overline Object
+Pango\Attribute\OverlineAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

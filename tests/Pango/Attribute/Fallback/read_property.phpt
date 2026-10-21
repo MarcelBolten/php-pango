@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Fallback read_property handler
+Pango\Attribute\FallbackAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Fallback;
+use Pango\Attribute\FallbackAttribute;
 
 $fallback = new Fallback(true);
 

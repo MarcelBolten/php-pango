@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Family clone handler
+Pango\Attribute\FamilyAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Family;
+use Pango\Attribute\FamilyAttribute;
 
 $family = new Family("Arial");
 var_dump($family);
@@ -13,7 +13,7 @@ $copy = clone $family;
 var_dump($copy);
 ?>
 --EXPECT--
-object(Pango\Attribute\Family)#1 (3) {
+object(Pango\Attribute\FamilyAttribute)#1 (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -21,7 +21,7 @@ object(Pango\Attribute\Family)#1 (3) {
   ["value"]=>
   string(5) "Arial"
 }
-object(Pango\Attribute\Family)#2 (3) {
+object(Pango\Attribute\FamilyAttribute)#2 (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>

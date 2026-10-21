@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\GravityHint read_property handler
+Pango\Attribute\GravityHintAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\GravityHint;
+use Pango\Attribute\GravityHintAttribute;
 
 $gravityHint = new GravityHint(Pango\GravityHint::Strong);
 

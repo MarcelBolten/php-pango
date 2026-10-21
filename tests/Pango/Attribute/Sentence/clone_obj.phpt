@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Sentence clone handler
+Pango\Attribute\SentenceAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Sentence;
+use Pango\Attribute\SentenceAttribute;
 
 $sentence = new Sentence();
 var_dump($sentence->startIndex);

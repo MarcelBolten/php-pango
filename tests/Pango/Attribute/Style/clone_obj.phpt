@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Style clone handler
+Pango\Attribute\StyleAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Style;
+use Pango\Attribute\StyleAttribute;
 
 $style = new Style(Pango\Style::Italic);
 var_dump($style->value);

@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Underline get_properties handler
+Pango\Attribute\UnderlineAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Underline;
+use Pango\Attribute\UnderlineAttribute;
 
 $underline = new Underline(Pango\Underline::Double);
 var_dump($underline);
 print_r($underline);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Underline)#%d (3) {
+object(Pango\Attribute\UnderlineAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Underline)#%d (3) {
   ["value"]=>
   enum(Pango\Underline::Double)
 }
-Pango\Attribute\Underline Object
+Pango\Attribute\UnderlineAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

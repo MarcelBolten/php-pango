@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\LetterSpacing read_property handler
+Pango\Attribute\LetterSpacingAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\LetterSpacing;
+use Pango\Attribute\LetterSpacingAttribute;
 
 $letterSpacing = new LetterSpacing(5);
 

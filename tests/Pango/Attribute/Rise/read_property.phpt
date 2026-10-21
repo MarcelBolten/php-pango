@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Rise read_property handler
+Pango\Attribute\RiseAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Rise;
+use Pango\Attribute\RiseAttribute;
 
 $rise = new Rise(5);
 

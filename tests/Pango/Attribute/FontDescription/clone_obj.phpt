@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\FontDescription clone handler
+Pango\Attribute\FontDescriptionAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\FontDescription as AttrFontDescription;
+use Pango\Attribute\FontDescriptionAttribute as AttrFontDescription;
 use Pango\FontDescription;
 
 $attrFontDescription = new AttrFontDescription(new FontDescription("Sans 12"));

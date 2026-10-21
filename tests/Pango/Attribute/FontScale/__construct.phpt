@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\FontScale::__construct()
+Pango\Attribute\FontScaleAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\FontScale;
+use Pango\Attribute\FontScaleAttribute;
 
 $fontScaleCase = Pango\FontScale::SmallCaps;
 $fontScale = new FontScale($fontScaleCase);
@@ -59,7 +59,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\FontScale)#%d (3) {
+object(Pango\Attribute\FontScaleAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -67,11 +67,11 @@ object(Pango\Attribute\FontScale)#%d (3) {
   ["value"]=>
   enum(Pango\FontScale::SmallCaps)
 }
-Pango\Attribute\FontScale::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\FontScale::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\FontScale::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\FontScale::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\FontScale::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\FontScale::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\FontScale::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\FontScale::__construct(): Argument #1 ($value) must be of type Pango\FontScale, array given
+Pango\Attribute\FontScaleAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\FontScaleAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\FontScaleAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\FontScaleAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\FontScaleAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\FontScaleAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\FontScaleAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\FontScaleAttribute::__construct(): Argument #1 ($value) must be of type Pango\FontScale, array given

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Size::__construct()
+Pango\Attribute\SizeAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Size;
+use Pango\Attribute\SizeAttribute;
 
 $size = new Size(42);
 var_dump($size);
@@ -58,7 +58,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\Size)#%d (3) {
+object(Pango\Attribute\SizeAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -66,11 +66,11 @@ object(Pango\Attribute\Size)#%d (3) {
   ["value"]=>
   int(42)
 }
-Pango\Attribute\Size::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\Size::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\Size::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\Size::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\Size::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\Size::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\Size::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\Size::__construct(): Argument #1 ($value) must be of type int, array given
+Pango\Attribute\SizeAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\SizeAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\SizeAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\SizeAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\SizeAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\SizeAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\SizeAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\SizeAttribute::__construct(): Argument #1 ($value) must be of type int, array given

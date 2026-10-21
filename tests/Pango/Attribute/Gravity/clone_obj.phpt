@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Gravity clone handler
+Pango\Attribute\GravityAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Gravity;
+use Pango\Attribute\GravityAttribute;
 
 $gravity = new Gravity(Pango\Gravity::North);
 var_dump($gravity->value);

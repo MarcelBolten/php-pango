@@ -53,7 +53,7 @@ object(Pango\Attribute\AttributeList)#%d (0) {
 }
 array(1) {
   [0]=>
-  object(Pango\Attribute\Size)#6 (3) {
+  object(Pango\Attribute\SizeAttribute)#6 (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>

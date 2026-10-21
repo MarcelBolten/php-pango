@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\LetterSpacing get_properties handler
+Pango\Attribute\LetterSpacingAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\LetterSpacing;
+use Pango\Attribute\LetterSpacingAttribute;
 
 $letterSpacing = new LetterSpacing(5);
 var_dump($letterSpacing);
 print_r($letterSpacing);
 ?>
 --EXPECTF--
-object(Pango\Attribute\LetterSpacing)#%d (3) {
+object(Pango\Attribute\LetterSpacingAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\LetterSpacing)#%d (3) {
   ["value"]=>
   int(5)
 }
-Pango\Attribute\LetterSpacing Object
+Pango\Attribute\LetterSpacingAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

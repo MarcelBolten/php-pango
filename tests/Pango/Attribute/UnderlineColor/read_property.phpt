@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\UnderlineColor read_property handler
+Pango\Attribute\UnderlineColorAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\UnderlineColor;
+use Pango\Attribute\UnderlineColorAttribute;
 
 $underlineColor = new UnderlineColor(new Pango\Color(1024, 2048, 4096));
 

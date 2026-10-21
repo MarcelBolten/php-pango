@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\InsertHyphens clone handler
+Pango\Attribute\InsertHyphensAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\InsertHyphens;
+use Pango\Attribute\InsertHyphensAttribute;
 
 $insertHyphens = new InsertHyphens(true);
 var_dump($insertHyphens->value);

@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\FontScale get_properties handler
+Pango\Attribute\FontScaleAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\FontScale;
+use Pango\Attribute\FontScaleAttribute;
 
 $fontScale = new FontScale(Pango\FontScale::SmallCaps);
 var_dump($fontScale);
 print_r($fontScale);
 ?>
 --EXPECTF--
-object(Pango\Attribute\FontScale)#%d (3) {
+object(Pango\Attribute\FontScaleAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\FontScale)#%d (3) {
   ["value"]=>
   enum(Pango\FontScale::SmallCaps)
 }
-Pango\Attribute\FontScale Object
+Pango\Attribute\FontScaleAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\BackgroundAlpha clone handler
+Pango\Attribute\BackgroundAlphaAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\BackgroundAlpha;
+use Pango\Attribute\BackgroundAlphaAttribute;
 
 $backgroundAlpha = new BackgroundAlpha(5);
 var_dump($backgroundAlpha->value);

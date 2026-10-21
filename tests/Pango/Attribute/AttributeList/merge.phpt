@@ -37,7 +37,7 @@ try {
 --EXPECTF--
 array(1) {
   [0]=>
-  object(Pango\Attribute\Size)#2 (3) {
+  object(Pango\Attribute\SizeAttribute)#2 (3) {
     ["startIndex"]=>
     int(10)
     ["endIndex"]=>
@@ -48,7 +48,7 @@ array(1) {
 }
 array(1) {
   [0]=>
-  object(Pango\Attribute\Size)#3 (3) {
+  object(Pango\Attribute\SizeAttribute)#3 (3) {
     ["startIndex"]=>
     int(20)
     ["endIndex"]=>

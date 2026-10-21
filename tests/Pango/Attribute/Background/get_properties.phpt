@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Background get_properties handler
+Pango\Attribute\BackgroundAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Background;
+use Pango\Attribute\BackgroundAttribute;
 
 $background = new Background(new Pango\Color(1024, 2048, 4096));
 var_dump($background);
 print_r($background);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Background)#%d (3) {
+object(Pango\Attribute\BackgroundAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -26,7 +26,7 @@ object(Pango\Attribute\Background)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\Background Object
+Pango\Attribute\BackgroundAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

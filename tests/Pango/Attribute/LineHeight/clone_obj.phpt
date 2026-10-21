@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\LineHeight clone handler
+Pango\Attribute\LineHeightAttribute clone handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\LineHeight;
+use Pango\Attribute\LineHeightAttribute;
 
 $LineHeight = new LineHeight(5.2);
 var_dump($LineHeight->value);

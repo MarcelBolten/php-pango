@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Fallback get_properties handler
+Pango\Attribute\FallbackAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Fallback;
+use Pango\Attribute\FallbackAttribute;
 
 $fallback = new Fallback(true);
 var_dump($fallback);
 print_r($fallback);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Fallback)#%d (3) {
+object(Pango\Attribute\FallbackAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Fallback)#%d (3) {
   ["value"]=>
   bool(true)
 }
-Pango\Attribute\Fallback Object
+Pango\Attribute\FallbackAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

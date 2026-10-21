@@ -142,79 +142,79 @@ array(107) {
   [62]=>
   string(19) "Pango\EllipsizeMode"
   [63]=>
-  string(28) "Pango\Attribute\AbsoluteSize"
+  string(28) "Pango\Attribute\AbsoluteSizeAttribute"
   [64]=>
-  string(27) "Pango\Attribute\AllowBreaks"
+  string(27) "Pango\Attribute\AllowBreaksAttribute"
   [65]=>
-  string(31) "Pango\Attribute\BackgroundAlpha"
+  string(31) "Pango\Attribute\BackgroundAlphaAttribute"
   [66]=>
-  string(26) "Pango\Attribute\Background"
+  string(26) "Pango\Attribute\BackgroundAttribute"
   [67]=>
-  string(24) "Pango\Attribute\Fallback"
+  string(24) "Pango\Attribute\FallbackAttribute"
   [68]=>
-  string(22) "Pango\Attribute\Family"
+  string(22) "Pango\Attribute\FamilyAttribute"
   [69]=>
-  string(31) "Pango\Attribute\FontDescription"
+  string(31) "Pango\Attribute\FontDescriptionAttribute"
   [70]=>
-  string(28) "Pango\Attribute\FontFeatures"
+  string(28) "Pango\Attribute\FontFeaturesAttribute"
   [71]=>
-  string(31) "Pango\Attribute\ForegroundAlpha"
+  string(31) "Pango\Attribute\ForegroundAlphaAttribute"
   [72]=>
-  string(26) "Pango\Attribute\Foreground"
+  string(26) "Pango\Attribute\ForegroundAttribute"
   [73]=>
-  string(27) "Pango\Attribute\GravityHint"
+  string(27) "Pango\Attribute\GravityHintAttribute"
   [74]=>
-  string(23) "Pango\Attribute\Gravity"
+  string(23) "Pango\Attribute\GravityAttribute"
   [75]=>
-  string(29) "Pango\Attribute\InsertHyphens"
+  string(29) "Pango\Attribute\InsertHyphensAttribute"
   [76]=>
-  string(24) "Pango\Attribute\Language"
+  string(24) "Pango\Attribute\LanguageAttribute"
   [77]=>
-  string(29) "Pango\Attribute\LetterSpacing"
+  string(29) "Pango\Attribute\LetterSpacingAttribute"
   [78]=>
-  string(29) "Pango\Attribute\OverlineColor"
+  string(29) "Pango\Attribute\OverlineColorAttribute"
   [79]=>
-  string(24) "Pango\Attribute\Overline"
+  string(24) "Pango\Attribute\OverlineAttribute"
   [80]=>
-  string(20) "Pango\Attribute\Rise"
+  string(20) "Pango\Attribute\RiseAttribute"
   [81]=>
-  string(21) "Pango\Attribute\Scale"
+  string(21) "Pango\Attribute\ScaleAttribute"
   [82]=>
-  string(20) "Pango\Attribute\Show"
+  string(20) "Pango\Attribute\ShowAttribute"
   [83]=>
-  string(20) "Pango\Attribute\Size"
+  string(20) "Pango\Attribute\SizeAttribute"
   [84]=>
-  string(23) "Pango\Attribute\Stretch"
+  string(23) "Pango\Attribute\StretchAttribute"
   [85]=>
-  string(34) "Pango\Attribute\StrikethroughColor"
+  string(34) "Pango\Attribute\StrikethroughColorAttribute"
   [86]=>
-  string(29) "Pango\Attribute\Strikethrough"
+  string(29) "Pango\Attribute\StrikethroughAttribute"
   [87]=>
-  string(21) "Pango\Attribute\Style"
+  string(21) "Pango\Attribute\StyleAttribute"
   [88]=>
-  string(30) "Pango\Attribute\UnderlineColor"
+  string(30) "Pango\Attribute\UnderlineColorAttribute"
   [89]=>
-  string(25) "Pango\Attribute\Underline"
+  string(25) "Pango\Attribute\UnderlineAttribute"
   [90]=>
-  string(23) "Pango\Attribute\Variant"
+  string(23) "Pango\Attribute\VariantAttribute"
   [91]=>
-  string(22) "Pango\Attribute\Weight"
+  string(22) "Pango\Attribute\WeightAttribute"
   [92]=>
-  string(34) "Pango\Attribute\AbsoluteLineHeight"
+  string(34) "Pango\Attribute\AbsoluteLineHeightAttribute"
   [93]=>
-  string(29) "Pango\Attribute\BaselineShift"
+  string(29) "Pango\Attribute\BaselineShiftAttribute"
   [94]=>
-  string(25) "Pango\Attribute\FontScale"
+  string(25) "Pango\Attribute\FontScaleAttribute"
   [95]=>
-  string(26) "Pango\Attribute\LineHeight"
+  string(26) "Pango\Attribute\LineHeightAttribute"
   [96]=>
-  string(24) "Pango\Attribute\Sentence"
+  string(24) "Pango\Attribute\SentenceAttribute"
   [97]=>
-  string(29) "Pango\Attribute\TextTransform"
+  string(29) "Pango\Attribute\TextTransformAttribute"
   [98]=>
-  string(20) "Pango\Attribute\Word"
+  string(20) "Pango\Attribute\WordAttribute"
   [99]=>
-  string(21) "Pango\Attribute\Width"
+  string(21) "Pango\Attribute\WidthAttribute"
   [100]=>
   string(18) "PangoCairo\Context"
   [101]=>

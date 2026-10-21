@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\OverlineColor get_properties handler
+Pango\Attribute\OverlineColorAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\OverlineColor;
+use Pango\Attribute\OverlineColorAttribute;
 
 $overlineColor = new OverlineColor(new Pango\Color(1024, 2048, 4096));
 var_dump($overlineColor);
 print_r($overlineColor);
 ?>
 --EXPECTF--
-object(Pango\Attribute\OverlineColor)#%d (3) {
+object(Pango\Attribute\OverlineColorAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -26,7 +26,7 @@ object(Pango\Attribute\OverlineColor)#%d (3) {
     int(4096)
   }
 }
-Pango\Attribute\OverlineColor Object
+Pango\Attribute\OverlineColorAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

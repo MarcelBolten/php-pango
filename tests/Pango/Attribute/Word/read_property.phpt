@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Word read_property handler
+Pango\Attribute\WordAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Word;
+use Pango\Attribute\WordAttribute;
 
 $word = new Word();
 

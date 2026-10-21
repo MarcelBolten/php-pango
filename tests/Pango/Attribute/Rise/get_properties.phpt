@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\Rise get_properties handler
+Pango\Attribute\RiseAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Rise;
+use Pango\Attribute\RiseAttribute;
 
 $rise = new Rise(5);
 var_dump($rise);
 print_r($rise);
 ?>
 --EXPECTF--
-object(Pango\Attribute\Rise)#%d (3) {
+object(Pango\Attribute\RiseAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\Rise)#%d (3) {
   ["value"]=>
   int(5)
 }
-Pango\Attribute\Rise Object
+Pango\Attribute\RiseAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

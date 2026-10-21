@@ -43,7 +43,7 @@ object(Pango\Analysis)#%d (7) {
   ["extraAttrs"]=>
   array(1) {
     [0]=>
-    object(Pango\Attribute\Foreground)#%d (3) {
+    object(Pango\Attribute\ForegroundAttribute)#%d (3) {
       ["startIndex"]=>
       int(0)
       ["endIndex"]=>

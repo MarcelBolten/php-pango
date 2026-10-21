@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Stretch read_property handler
+Pango\Attribute\StretchAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Stretch;
+use Pango\Attribute\StretchAttribute;
 
 $stretch = new Stretch(Pango\Stretch::Expanded);
 

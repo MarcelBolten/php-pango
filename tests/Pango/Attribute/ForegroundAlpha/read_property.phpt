@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\ForegroundAlpha read_property handler
+Pango\Attribute\ForegroundAlphaAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\ForegroundAlpha;
+use Pango\Attribute\ForegroundAlphaAttribute;
 
 $foregroundAlpha = new ForegroundAlpha(5);
 

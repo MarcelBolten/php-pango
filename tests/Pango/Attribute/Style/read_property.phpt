@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Style read_property handler
+Pango\Attribute\StyleAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Style;
+use Pango\Attribute\StyleAttribute;
 
 $style = new Style(Pango\Style::Italic);
 

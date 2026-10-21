@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Sentence read_property handler
+Pango\Attribute\SentenceAttribute read_property handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Sentence;
+use Pango\Attribute\SentenceAttribute;
 
 $sentence = new Sentence();
 

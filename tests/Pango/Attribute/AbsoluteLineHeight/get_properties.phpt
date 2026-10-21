@@ -1,17 +1,17 @@
 --TEST--
-Pango\Attribute\AbsoluteLineHeight get_properties handler
+Pango\Attribute\AbsoluteLineHeightAttribute get_properties handler
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\AbsoluteLineHeight;
+use Pango\Attribute\AbsoluteLineHeightAttribute;
 
 $absoluteLineHeight = new AbsoluteLineHeight(5);
 var_dump($absoluteLineHeight);
 print_r($absoluteLineHeight);
 ?>
 --EXPECTF--
-object(Pango\Attribute\AbsoluteLineHeight)#%d (3) {
+object(Pango\Attribute\AbsoluteLineHeightAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -19,7 +19,7 @@ object(Pango\Attribute\AbsoluteLineHeight)#%d (3) {
   ["value"]=>
   int(5)
 }
-Pango\Attribute\AbsoluteLineHeight Object
+Pango\Attribute\AbsoluteLineHeightAttribute Object
 (
     [startIndex] => 0
     [endIndex] => 4294967295

@@ -1,10 +1,10 @@
 --TEST--
-Pango\Attribute\Fallback::__construct()
+Pango\Attribute\FallbackAttribute::__construct()
 --EXTENSIONS--
 pango
 --FILE--
 <?php
-use Pango\Attribute\Fallback;
+use Pango\Attribute\FallbackAttribute;
 
 $fallback = new Fallback(true);
 var_dump($fallback);
@@ -58,7 +58,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\Fallback)#%d (3) {
+object(Pango\Attribute\FallbackAttribute)#%d (3) {
   ["startIndex"]=>
   int(0)
   ["endIndex"]=>
@@ -66,11 +66,11 @@ object(Pango\Attribute\Fallback)#%d (3) {
   ["value"]=>
   bool(true)
 }
-Pango\Attribute\Fallback::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
-Pango\Attribute\Fallback::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
-Pango\Attribute\Fallback::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
-Pango\Attribute\Fallback::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
-Pango\Attribute\Fallback::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
-Pango\Attribute\Fallback::__construct() expects at least 1 argument, 0 given
-Pango\Attribute\Fallback::__construct() expects at most 3 arguments, 4 given
-Pango\Attribute\Fallback::__construct(): Argument #1 ($value) must be of type bool, array given
+Pango\Attribute\FallbackAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given
+Pango\Attribute\FallbackAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but 9223372036854775807 given
+Pango\Attribute\FallbackAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but -1 given
+Pango\Attribute\FallbackAttribute::__construct(): Argument #3 ($endIndex) must be greater than 0 and at most 4294967295, but 9223372036854775807 given
+Pango\Attribute\FallbackAttribute::__construct(): Argument #3 ($endIndex) must be greater than 30 and at most 4294967295, but 20 given
+Pango\Attribute\FallbackAttribute::__construct() expects at least 1 argument, 0 given
+Pango\Attribute\FallbackAttribute::__construct() expects at most 3 arguments, 4 given
+Pango\Attribute\FallbackAttribute::__construct(): Argument #1 ($value) must be of type bool, array given
