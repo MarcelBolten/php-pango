@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\StrikethroughColorAttribute;
 
 $color = new Pango\Color(1024, 2048, 4096);
-$strikethroughColor = new StrikethroughColor($color);
+$strikethroughColor = new StrikethroughColorAttribute($color);
 var_dump($strikethroughColor);
 
 try {
-    new StrikethroughColor($color, -1);
+    new StrikethroughColorAttribute($color, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new StrikethroughColor($color, PHP_INT_MAX);
+    new StrikethroughColorAttribute($color, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new StrikethroughColor($color, endIndex: -1);
+    new StrikethroughColorAttribute($color, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new StrikethroughColor($color, endIndex: PHP_INT_MAX);
+    new StrikethroughColorAttribute($color, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new StrikethroughColor($color, 30, 20);
+    new StrikethroughColorAttribute($color, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new StrikethroughColor();
+    new StrikethroughColorAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new StrikethroughColor($color, 1, 2, 3);
+    new StrikethroughColorAttribute($color, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new StrikethroughColor(array());
+    new StrikethroughColorAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

@@ -6,41 +6,41 @@ pango
 <?php
 use Pango\Attribute\SentenceAttribute;
 
-$sentence = new Sentence();
+$sentence = new SentenceAttribute();
 var_dump($sentence);
 
 try {
-    new Sentence(-1);
+    new SentenceAttribute(-1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Sentence(PHP_INT_MAX);
+    new SentenceAttribute(PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Sentence(endIndex: -1);
+    new SentenceAttribute(endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Sentence(endIndex: PHP_INT_MAX);
+    new SentenceAttribute(endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Sentence(30, 20);
+    new SentenceAttribute(30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Sentence(1, 2, 3);
+    new SentenceAttribute(1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }

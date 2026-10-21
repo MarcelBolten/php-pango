@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\BaselineShiftAttribute;
 
-$baselineShift = new BaselineShift(Pango\BaselineShift::Superscript);
+$baselineShift = new BaselineShiftAttribute(Pango\BaselineShift::Superscript);
 var_dump($baselineShift->value);
 
 $copy = clone $baselineShift;

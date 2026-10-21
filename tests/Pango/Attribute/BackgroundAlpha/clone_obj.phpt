@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\BackgroundAlphaAttribute;
 
-$backgroundAlpha = new BackgroundAlpha(5);
+$backgroundAlpha = new BackgroundAlphaAttribute(5);
 var_dump($backgroundAlpha->value);
 
 $copy = clone $backgroundAlpha;

@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\SizeAttribute;
 
-$size = new Size(5);
+$size = new SizeAttribute(5);
 
 var_dump($size->value);
 var_dump($size->startIndex);

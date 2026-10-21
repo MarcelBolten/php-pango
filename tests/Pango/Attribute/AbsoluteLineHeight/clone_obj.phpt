@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\AbsoluteLineHeightAttribute;
 
-$absoluteLineHeight = new AbsoluteLineHeight(5);
+$absoluteLineHeight = new AbsoluteLineHeightAttribute(5);
 var_dump($absoluteLineHeight->value);
 
 $copy = clone $absoluteLineHeight;

@@ -4,57 +4,57 @@ Pango\Attribute\LanguageAttribute::__construct()
 pango
 --FILE--
 <?php
-use Pango\Attribute\LanguageAttribute as AttrLanguage;
+use Pango\Attribute\LanguageAttribute;
 use Pango\Language;
 
 $language = new Language("en");
-$attrLanguage = new AttrLanguage($language);
+$attrLanguage = new LanguageAttribute($language);
 var_dump($attrLanguage);
 
 try {
-    new AttrLanguage($language, -1);
+    new LanguageAttribute($language, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AttrLanguage($language, PHP_INT_MAX);
+    new LanguageAttribute($language, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AttrLanguage($language, endIndex: -1);
+    new LanguageAttribute($language, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AttrLanguage($language, endIndex: PHP_INT_MAX);
+    new LanguageAttribute($language, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AttrLanguage($language, 30, 20);
+    new LanguageAttribute($language, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AttrLanguage();
+    new LanguageAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AttrLanguage($language, 1, 2, 3);
+    new LanguageAttribute($language, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AttrLanguage(array());
+    new LanguageAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

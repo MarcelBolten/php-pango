@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\FamilyAttribute;
 
-$family = new Family("Arial");
+$family = new FamilyAttribute("Arial");
 var_dump($family);
 
 $copy = clone $family;

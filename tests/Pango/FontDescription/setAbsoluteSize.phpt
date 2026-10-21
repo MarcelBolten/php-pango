@@ -1,5 +1,5 @@
 --TEST--
-Pango\FontDescription::setAbsoluteSize()
+Pango\FontDescription::setAbsoluteSizeAttribute()
 --EXTENSIONS--
 pango
 --FILE--

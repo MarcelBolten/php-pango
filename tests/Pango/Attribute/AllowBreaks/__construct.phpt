@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\AllowBreaksAttribute;
 
-$allowBreaks = new AllowBreaks(true);
+$allowBreaks = new AllowBreaksAttribute(true);
 var_dump($allowBreaks);
 
 try {
-    new AllowBreaks(true, -1);
+    new AllowBreaksAttribute(true, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AllowBreaks(true, PHP_INT_MAX);
+    new AllowBreaksAttribute(true, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AllowBreaks(true, endIndex: -1);
+    new AllowBreaksAttribute(true, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AllowBreaks(true, endIndex: PHP_INT_MAX);
+    new AllowBreaksAttribute(true, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AllowBreaks(true, 30, 20);
+    new AllowBreaksAttribute(true, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AllowBreaks();
+    new AllowBreaksAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AllowBreaks(true, 1, 2, 3);
+    new AllowBreaksAttribute(true, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AllowBreaks(array());
+    new AllowBreaksAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

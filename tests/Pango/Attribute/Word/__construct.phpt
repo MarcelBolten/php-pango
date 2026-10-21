@@ -6,41 +6,41 @@ pango
 <?php
 use Pango\Attribute\WordAttribute;
 
-$word = new Word();
+$word = new WordAttribute();
 var_dump($word);
 
 try {
-    new Word(-1);
+    new WordAttribute(-1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Word(PHP_INT_MAX);
+    new WordAttribute(PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Word(endIndex: -1);
+    new WordAttribute(endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Word(endIndex: PHP_INT_MAX);
+    new WordAttribute(endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Word(30, 20);
+    new WordAttribute(30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Word(1, 2, 3);
+    new WordAttribute(1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }

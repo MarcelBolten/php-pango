@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\OverlineColorAttribute;
 
-$overlineColor = new OverlineColor(new Pango\Color(1024, 2048, 4096));
+$overlineColor = new OverlineColorAttribute(new Pango\Color(1024, 2048, 4096));
 var_dump($overlineColor);
 print_r($overlineColor);
 ?>

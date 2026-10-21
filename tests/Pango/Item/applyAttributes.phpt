@@ -9,7 +9,7 @@ cairo
 use Pango\Attribute\{
   Attribute,
   AttributeList,
-  Size,
+  SizeAttribute,
 };
 
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
@@ -28,7 +28,7 @@ $attrList = new AttributeList(
 var_dump($attrList);
 
 $itemizeAttributes = $attrList->filter(
-  fn (Attribute $attr): bool => $attr instanceof Size
+  fn (Attribute $attr): bool => $attr instanceof SizeAttribute
 );
 var_dump($itemizeAttributes->toString());
 

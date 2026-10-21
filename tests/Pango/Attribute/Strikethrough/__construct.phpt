@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\StrikethroughAttribute;
 
-$strikethrough = new Strikethrough(true);
+$strikethrough = new StrikethroughAttribute(true);
 var_dump($strikethrough);
 
 try {
-    new Strikethrough(true, -1);
+    new StrikethroughAttribute(true, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Strikethrough(true, PHP_INT_MAX);
+    new StrikethroughAttribute(true, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Strikethrough(true, endIndex: -1);
+    new StrikethroughAttribute(true, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Strikethrough(true, endIndex: PHP_INT_MAX);
+    new StrikethroughAttribute(true, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Strikethrough(true, 30, 20);
+    new StrikethroughAttribute(true, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Strikethrough();
+    new StrikethroughAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Strikethrough(true, 1, 2, 3);
+    new StrikethroughAttribute(true, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Strikethrough(array());
+    new StrikethroughAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

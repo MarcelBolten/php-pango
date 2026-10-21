@@ -6,65 +6,65 @@ pango
 <?php
 use Pango\Attribute\ForegroundAlphaAttribute;
 
-$foregroundAlpha = new ForegroundAlpha(42);
+$foregroundAlpha = new ForegroundAlphaAttribute(42);
 var_dump($foregroundAlpha);
 
 try {
-    new ForegroundAlpha(-1);
+    new ForegroundAlphaAttribute(-1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha(PHP_INT_MAX);
+    new ForegroundAlphaAttribute(PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha(42, -1);
+    new ForegroundAlphaAttribute(42, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha(42, PHP_INT_MAX);
+    new ForegroundAlphaAttribute(42, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha(42, endIndex: -1);
+    new ForegroundAlphaAttribute(42, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha(42, endIndex: PHP_INT_MAX);
+    new ForegroundAlphaAttribute(42, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha(42, 30, 20);
+    new ForegroundAlphaAttribute(42, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha();
+    new ForegroundAlphaAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha(42, 1, 2, 3);
+    new ForegroundAlphaAttribute(42, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new ForegroundAlpha(array());
+    new ForegroundAlphaAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

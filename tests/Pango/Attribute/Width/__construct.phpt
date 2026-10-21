@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\WidthAttribute;
 
 $widthCase = Pango\Width::Expanded;
-$width = new Width($widthCase);
+$width = new WidthAttribute($widthCase);
 var_dump($width);
 
 try {
-    new Width($widthCase, -1);
+    new WidthAttribute($widthCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Width($widthCase, PHP_INT_MAX);
+    new WidthAttribute($widthCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Width($widthCase, endIndex: -1);
+    new WidthAttribute($widthCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Width($widthCase, endIndex: PHP_INT_MAX);
+    new WidthAttribute($widthCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Width($widthCase, 30, 20);
+    new WidthAttribute($widthCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Width();
+    new WidthAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Width($widthCase, 1, 2, 3);
+    new WidthAttribute($widthCase, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Width(array());
+    new WidthAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

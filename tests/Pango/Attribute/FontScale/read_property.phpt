@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\FontScaleAttribute;
 
-$fontScale = new FontScale(Pango\FontScale::SmallCaps);
+$fontScale = new FontScaleAttribute(Pango\FontScale::SmallCaps);
 
 var_dump($fontScale->value);
 var_dump($fontScale->startIndex);

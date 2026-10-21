@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\StretchAttribute;
 
 $stretchCase = Pango\Stretch::Expanded;
-$stretch = new Stretch($stretchCase);
+$stretch = new StretchAttribute($stretchCase);
 var_dump($stretch);
 
 try {
-    new Stretch($stretchCase, -1);
+    new StretchAttribute($stretchCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Stretch($stretchCase, PHP_INT_MAX);
+    new StretchAttribute($stretchCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Stretch($stretchCase, endIndex: -1);
+    new StretchAttribute($stretchCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Stretch($stretchCase, endIndex: PHP_INT_MAX);
+    new StretchAttribute($stretchCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Stretch($stretchCase, 30, 20);
+    new StretchAttribute($stretchCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Stretch();
+    new StretchAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Stretch(Pango\Stretch::Expanded, 1, 2, 3);
+    new StretchAttribute(Pango\Stretch::Expanded, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Stretch(array());
+    new StretchAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

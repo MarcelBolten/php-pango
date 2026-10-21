@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\LetterSpacingAttribute;
 
-$letterSpacing = new LetterSpacing(5);
+$letterSpacing = new LetterSpacingAttribute(5);
 var_dump($letterSpacing->value);
 
 $copy = clone $letterSpacing;

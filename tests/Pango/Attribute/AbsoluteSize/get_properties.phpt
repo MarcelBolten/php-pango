@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\AbsoluteSizeAttribute;
 
-$absoluteSize = new AbsoluteSize(5);
+$absoluteSize = new AbsoluteSizeAttribute(5);
 var_dump($absoluteSize);
 print_r($absoluteSize);
 ?>

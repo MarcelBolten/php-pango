@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\RiseAttribute;
 
-$rise = new Rise(5);
+$rise = new RiseAttribute(5);
 var_dump($rise->value);
 
 $copy = clone $rise;

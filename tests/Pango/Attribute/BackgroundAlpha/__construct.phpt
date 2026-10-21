@@ -6,65 +6,65 @@ pango
 <?php
 use Pango\Attribute\BackgroundAlphaAttribute;
 
-$backgroundAlpha = new BackgroundAlpha(42);
+$backgroundAlpha = new BackgroundAlphaAttribute(42);
 var_dump($backgroundAlpha);
 
 try {
-    new BackgroundAlpha(-1);
+    new BackgroundAlphaAttribute(-1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha(PHP_INT_MAX);
+    new BackgroundAlphaAttribute(PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha(42, -1);
+    new BackgroundAlphaAttribute(42, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha(42, PHP_INT_MAX);
+    new BackgroundAlphaAttribute(42, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha(42, endIndex: -1);
+    new BackgroundAlphaAttribute(42, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha(42, endIndex: PHP_INT_MAX);
+    new BackgroundAlphaAttribute(42, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha(42, 30, 20);
+    new BackgroundAlphaAttribute(42, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha();
+    new BackgroundAlphaAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha(42, 1, 2, 3);
+    new BackgroundAlphaAttribute(42, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BackgroundAlpha(array());
+    new BackgroundAlphaAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

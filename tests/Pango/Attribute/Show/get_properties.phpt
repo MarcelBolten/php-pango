@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\ShowAttribute;
 
-$show = new Show(Show::NONE);
+$show = new ShowAttribute(ShowAttribute::NONE);
 var_dump($show);
 print_r($show);
 ?>

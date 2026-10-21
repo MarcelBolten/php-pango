@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\WeightAttribute;
 
-$weight = new Weight(Pango\Weight::Bold);
+$weight = new WeightAttribute(Pango\Weight::Bold);
 var_dump($weight->value);
 
 $copy = clone $weight;

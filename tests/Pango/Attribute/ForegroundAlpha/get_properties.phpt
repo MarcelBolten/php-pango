@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\ForegroundAlphaAttribute;
 
-$foregroundAlpha = new ForegroundAlpha(5);
+$foregroundAlpha = new ForegroundAlphaAttribute(5);
 var_dump($foregroundAlpha);
 print_r($foregroundAlpha);
 ?>

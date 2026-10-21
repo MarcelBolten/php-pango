@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\StretchAttribute;
 
-$stretch = new Stretch(Pango\Stretch::Expanded);
+$stretch = new StretchAttribute(Pango\Stretch::Expanded);
 
 var_dump($stretch->value);
 var_dump($stretch->startIndex);

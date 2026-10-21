@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\InsertHyphensAttribute;
 
-$insertHyphens = new InsertHyphens(true);
+$insertHyphens = new InsertHyphensAttribute(true);
 var_dump($insertHyphens);
 
 try {
-    new InsertHyphens(true, -1);
+    new InsertHyphensAttribute(true, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new InsertHyphens(true, PHP_INT_MAX);
+    new InsertHyphensAttribute(true, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new InsertHyphens(true, endIndex: -1);
+    new InsertHyphensAttribute(true, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new InsertHyphens(true, endIndex: PHP_INT_MAX);
+    new InsertHyphensAttribute(true, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new InsertHyphens(true, 30, 20);
+    new InsertHyphensAttribute(true, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new InsertHyphens();
+    new InsertHyphensAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new InsertHyphens(true, 1, 2, 3);
+    new InsertHyphensAttribute(true, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new InsertHyphens(array());
+    new InsertHyphensAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

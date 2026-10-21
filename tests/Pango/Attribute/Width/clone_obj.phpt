@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\WidthAttribute;
 
-$width = new Width(Pango\Width::Expanded);
+$width = new WidthAttribute(Pango\Width::Expanded);
 var_dump($width->value);
 
 $copy = clone $width;

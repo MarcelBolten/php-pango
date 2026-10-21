@@ -6,65 +6,65 @@ pango
 <?php
 use Pango\Attribute\ShowAttribute;
 
-$show = new Show(Show::NONE);
+$show = new ShowAttribute(ShowAttribute::NONE);
 var_dump($show);
 
 try {
-    new Show(-1);
+    new ShowAttribute(-1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show(8);
+    new ShowAttribute(8);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show(Show::NONE, -1);
+    new ShowAttribute(ShowAttribute::NONE, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show(Show::NONE, PHP_INT_MAX);
+    new ShowAttribute(ShowAttribute::NONE, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show(Show::NONE, endIndex: -1);
+    new ShowAttribute(ShowAttribute::NONE, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show(Show::NONE, endIndex: PHP_INT_MAX);
+    new ShowAttribute(ShowAttribute::NONE, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show(Show::NONE, 30, 20);
+    new ShowAttribute(ShowAttribute::NONE, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show();
+    new ShowAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show(Show::NONE, 1, 2, 3);
+    new ShowAttribute(ShowAttribute::NONE, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Show(array());
+    new ShowAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

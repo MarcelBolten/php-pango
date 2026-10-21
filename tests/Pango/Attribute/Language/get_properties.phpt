@@ -4,10 +4,10 @@ Pango\Attribute\LanguageAttribute get_properties handler
 pango
 --FILE--
 <?php
-use Pango\Attribute\LanguageAttribute as AttrLanguage;
+use Pango\Attribute\LanguageAttribute;
 use Pango\Language;
 
-$attrLanguage = new AttrLanguage(new Language("en"));
+$attrLanguage = new LanguageAttribute(new Language("en"));
 var_dump($attrLanguage);
 print_r($attrLanguage);
 ?>

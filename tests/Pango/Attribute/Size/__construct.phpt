@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\SizeAttribute;
 
-$size = new Size(42);
+$size = new SizeAttribute(42);
 var_dump($size);
 
 try {
-    new Size(42, -1);
+    new SizeAttribute(42, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Size(42, PHP_INT_MAX);
+    new SizeAttribute(42, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Size(42, endIndex: -1);
+    new SizeAttribute(42, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Size(42, endIndex: PHP_INT_MAX);
+    new SizeAttribute(42, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Size(42, 30, 20);
+    new SizeAttribute(42, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Size();
+    new SizeAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Size(42, 1, 2, 3);
+    new SizeAttribute(42, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Size(array());
+    new SizeAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

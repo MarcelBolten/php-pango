@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\ScaleAttribute;
 
-$scale = new Scale(5.2);
+$scale = new ScaleAttribute(5.2);
 
 var_dump($scale->value);
 var_dump($scale->startIndex);

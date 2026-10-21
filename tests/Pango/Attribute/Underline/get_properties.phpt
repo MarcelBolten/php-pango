@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\UnderlineAttribute;
 
-$underline = new Underline(Pango\Underline::Double);
+$underline = new UnderlineAttribute(Pango\Underline::Double);
 var_dump($underline);
 print_r($underline);
 ?>

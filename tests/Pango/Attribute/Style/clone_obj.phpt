@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\StyleAttribute;
 
-$style = new Style(Pango\Style::Italic);
+$style = new StyleAttribute(Pango\Style::Italic);
 var_dump($style->value);
 
 $copy = clone $style;

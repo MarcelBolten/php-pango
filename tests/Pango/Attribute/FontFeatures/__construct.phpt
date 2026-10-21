@@ -6,59 +6,59 @@ pango
 <?php
 use Pango\Attribute\FontFeaturesAttribute;
 
-$fontFeatures = new FontFeatures("kern=0, liga=0");
+$fontFeatures = new FontFeaturesAttribute("kern=0, liga=0");
 var_dump($fontFeatures);
 
 try {
-    new FontFeatures("kern=0,\0liga=0");
+    new FontFeaturesAttribute("kern=0,\0liga=0");
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontFeatures("kern=0, liga=0", -1);
+    new FontFeaturesAttribute("kern=0, liga=0", -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontFeatures("kern=0, liga=0", PHP_INT_MAX);
+    new FontFeaturesAttribute("kern=0, liga=0", PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontFeatures("kern=0, liga=0", endIndex: -1);
+    new FontFeaturesAttribute("kern=0, liga=0", endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontFeatures("kern=0, liga=0", endIndex: PHP_INT_MAX);
+    new FontFeaturesAttribute("kern=0, liga=0", endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontFeatures("kern=0, liga=0", 30, 20);
+    new FontFeaturesAttribute("kern=0, liga=0", 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontFeatures();
+    new FontFeaturesAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontFeatures("Arial", 1, 2, 3);
+    new FontFeaturesAttribute("Arial", 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontFeatures(array());
+    new FontFeaturesAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

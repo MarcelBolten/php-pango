@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\InsertHyphensAttribute;
 
-$insertHyphens = new InsertHyphens(true);
+$insertHyphens = new InsertHyphensAttribute(true);
 var_dump($insertHyphens);
 print_r($insertHyphens);
 ?>

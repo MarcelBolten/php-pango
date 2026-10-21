@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\FallbackAttribute;
 
-$fallback = new Fallback(true);
+$fallback = new FallbackAttribute(true);
 var_dump($fallback);
 
 try {
-    new Fallback(true, -1);
+    new FallbackAttribute(true, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Fallback(true, PHP_INT_MAX);
+    new FallbackAttribute(true, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Fallback(true, endIndex: -1);
+    new FallbackAttribute(true, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Fallback(true, endIndex: PHP_INT_MAX);
+    new FallbackAttribute(true, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Fallback(true, 30, 20);
+    new FallbackAttribute(true, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Fallback();
+    new FallbackAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Fallback(true, 1, 2, 3);
+    new FallbackAttribute(true, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Fallback(array());
+    new FallbackAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\UnderlineAttribute;
 
 $underlineCase = Pango\Underline::Double;
-$underline = new Underline($underlineCase);
+$underline = new UnderlineAttribute($underlineCase);
 var_dump($underline);
 
 try {
-    new Underline($underlineCase, -1);
+    new UnderlineAttribute($underlineCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Underline($underlineCase, PHP_INT_MAX);
+    new UnderlineAttribute($underlineCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Underline($underlineCase, endIndex: -1);
+    new UnderlineAttribute($underlineCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Underline($underlineCase, endIndex: PHP_INT_MAX);
+    new UnderlineAttribute($underlineCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Underline($underlineCase, 30, 20);
+    new UnderlineAttribute($underlineCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Underline();
+    new UnderlineAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Underline(Pango\Underline::Double, 1, 2, 3);
+    new UnderlineAttribute(Pango\Underline::Double, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Underline(array());
+    new UnderlineAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

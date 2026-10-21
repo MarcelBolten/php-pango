@@ -6,62 +6,62 @@ pango
 <?php
 use Pango\Attribute\FamilyAttribute;
 
-$family = new Family("Arial");
+$family = new FamilyAttribute("Arial");
 var_dump($family);
 
-$family = new Family("Arial, Times New Roman, sans-serif");
+$family = new FamilyAttribute("Arial, Times New Roman, sans-serif");
 assert(gettype($family) === 'object');
 
 try {
-    new Family("Arial,\0Times New Roman");
+    new FamilyAttribute("Arial,\0Times New Roman");
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Family("Arial", -1);
+    new FamilyAttribute("Arial", -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Family("Arial", PHP_INT_MAX);
+    new FamilyAttribute("Arial", PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Family("Arial", endIndex: -1);
+    new FamilyAttribute("Arial", endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Family("Arial", endIndex: PHP_INT_MAX);
+    new FamilyAttribute("Arial", endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Family("Arial", 30, 20);
+    new FamilyAttribute("Arial", 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Family();
+    new FamilyAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Family("Arial", 1, 2, 3);
+    new FamilyAttribute("Arial", 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Family(array());
+    new FamilyAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

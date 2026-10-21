@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\VariantAttribute;
 
 $variantCase = Pango\Variant::SmallCaps;
-$variant = new Variant($variantCase);
+$variant = new VariantAttribute($variantCase);
 var_dump($variant);
 
 try {
-    new Variant($variantCase, -1);
+    new VariantAttribute($variantCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Variant($variantCase, PHP_INT_MAX);
+    new VariantAttribute($variantCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Variant($variantCase, endIndex: -1);
+    new VariantAttribute($variantCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Variant($variantCase, endIndex: PHP_INT_MAX);
+    new VariantAttribute($variantCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Variant($variantCase, 30, 20);
+    new VariantAttribute($variantCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Variant();
+    new VariantAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Variant(Pango\Variant::SmallCaps, 1, 2, 3);
+    new VariantAttribute(Pango\Variant::SmallCaps, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Variant(array());
+    new VariantAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

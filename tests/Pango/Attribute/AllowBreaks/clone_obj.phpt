@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\AllowBreaksAttribute;
 
-$allowBreaks = new AllowBreaks(true);
+$allowBreaks = new AllowBreaksAttribute(true);
 var_dump($allowBreaks->value);
 
 $copy = clone $allowBreaks;

@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\StrikethroughColorAttribute;
 
-$strikethroughColor = new StrikethroughColor(new Pango\Color(1024, 2048, 4096));
+$strikethroughColor = new StrikethroughColorAttribute(new Pango\Color(1024, 2048, 4096));
 
 var_dump($strikethroughColor->color->red);
 var_dump($strikethroughColor->startIndex);

@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\GravityHintAttribute;
 
-$gravityHint = new GravityHint(Pango\GravityHint::Strong);
+$gravityHint = new GravityHintAttribute(Pango\GravityHint::Strong);
 
 var_dump($gravityHint->value);
 var_dump($gravityHint->startIndex);

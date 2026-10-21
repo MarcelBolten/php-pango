@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\ScaleAttribute;
 
-$scale = new Scale(42.5);
+$scale = new ScaleAttribute(42.5);
 var_dump($scale);
 
 try {
-    new Scale(42.5, -1);
+    new ScaleAttribute(42.5, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Scale(42.5, PHP_INT_MAX);
+    new ScaleAttribute(42.5, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Scale(42.5, endIndex: -1);
+    new ScaleAttribute(42.5, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Scale(42.5, endIndex: PHP_INT_MAX);
+    new ScaleAttribute(42.5, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Scale(42.5, 30, 20);
+    new ScaleAttribute(42.5, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Scale();
+    new ScaleAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Scale(42.5, 1, 2, 3);
+    new ScaleAttribute(42.5, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Scale(array());
+    new ScaleAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

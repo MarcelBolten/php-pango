@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\WeightAttribute;
 
 $weightCase = Pango\Weight::Bold;
-$weight = new Weight($weightCase);
+$weight = new WeightAttribute($weightCase);
 var_dump($weight);
 
 try {
-    new Weight($weightCase, -1);
+    new WeightAttribute($weightCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Weight($weightCase, PHP_INT_MAX);
+    new WeightAttribute($weightCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Weight($weightCase, endIndex: -1);
+    new WeightAttribute($weightCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Weight($weightCase, endIndex: PHP_INT_MAX);
+    new WeightAttribute($weightCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Weight($weightCase, 30, 20);
+    new WeightAttribute($weightCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Weight();
+    new WeightAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Weight($weightCase, 1, 2, 3);
+    new WeightAttribute($weightCase, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Weight(array());
+    new WeightAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

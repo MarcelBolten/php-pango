@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\AbsoluteSizeAttribute;
 
-$pangoSize = new AbsoluteSize(42);
+$pangoSize = new AbsoluteSizeAttribute(42);
 var_dump($pangoSize);
 
 try {
-    new AbsoluteSize(42, -1);
+    new AbsoluteSizeAttribute(42, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteSize(42, PHP_INT_MAX);
+    new AbsoluteSizeAttribute(42, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteSize(42, endIndex: -1);
+    new AbsoluteSizeAttribute(42, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteSize(42, endIndex: PHP_INT_MAX);
+    new AbsoluteSizeAttribute(42, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteSize(42, 30, 20);
+    new AbsoluteSizeAttribute(42, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteSize();
+    new AbsoluteSizeAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteSize(42, 1, 2, 3);
+    new AbsoluteSizeAttribute(42, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteSize(array());
+    new AbsoluteSizeAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

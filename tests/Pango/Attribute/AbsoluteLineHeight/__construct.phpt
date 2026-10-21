@@ -6,68 +6,68 @@ pango
 <?php
 use Pango\Attribute\AbsoluteLineHeightAttribute;
 
-$absoluteLineHeight = new AbsoluteLineHeight(42);
+$absoluteLineHeight = new AbsoluteLineHeightAttribute(42);
 var_dump($absoluteLineHeight);
 
-$absoluteLineHeight = new AbsoluteLineHeight(42, 100, 200);
+$absoluteLineHeight = new AbsoluteLineHeightAttribute(42, 100, 200);
 var_dump($absoluteLineHeight);
 
 try {
-    new AbsoluteLineHeight(42, -1);
+    new AbsoluteLineHeightAttribute(42, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight(42, PHP_INT_MAX);
+    new AbsoluteLineHeightAttribute(42, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight(42, endIndex: -1);
+    new AbsoluteLineHeightAttribute(42, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight(42, endIndex: PHP_INT_MAX);
+    new AbsoluteLineHeightAttribute(42, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight(42, 30, 20);
+    new AbsoluteLineHeightAttribute(42, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight();
+    new AbsoluteLineHeightAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight(42, 1, 2, 3);
+    new AbsoluteLineHeightAttribute(42, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight(array());
+    new AbsoluteLineHeightAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight(1, array());
+    new AbsoluteLineHeightAttribute(1, array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new AbsoluteLineHeight(1, 2, array());
+    new AbsoluteLineHeightAttribute(1, 2, array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

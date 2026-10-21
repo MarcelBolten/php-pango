@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\BackgroundAttribute;
 
-$background = new Background(new Pango\Color(1024, 2048, 4096));
+$background = new BackgroundAttribute(new Pango\Color(1024, 2048, 4096));
 var_dump($background);
 print_r($background);
 ?>

@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\SentenceAttribute;
 
-$sentence = new Sentence();
+$sentence = new SentenceAttribute();
 var_dump($sentence->startIndex);
 
 $copy = clone $sentence;

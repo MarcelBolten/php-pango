@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\OverlineAttribute;
 
 $overlineCase = Pango\Overline::Single;
-$overline = new Overline($overlineCase);
+$overline = new OverlineAttribute($overlineCase);
 var_dump($overline);
 
 try {
-    new Overline($overlineCase, -1);
+    new OverlineAttribute($overlineCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Overline($overlineCase, PHP_INT_MAX);
+    new OverlineAttribute($overlineCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Overline($overlineCase, endIndex: -1);
+    new OverlineAttribute($overlineCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Overline($overlineCase, endIndex: PHP_INT_MAX);
+    new OverlineAttribute($overlineCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Overline($overlineCase, 30, 20);
+    new OverlineAttribute($overlineCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Overline();
+    new OverlineAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Overline(Pango\Overline::Single, 1, 2, 3);
+    new OverlineAttribute(Pango\Overline::Single, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Overline(array());
+    new OverlineAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

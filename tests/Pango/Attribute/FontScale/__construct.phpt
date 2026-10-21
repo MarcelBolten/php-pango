@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\FontScaleAttribute;
 
 $fontScaleCase = Pango\FontScale::SmallCaps;
-$fontScale = new FontScale($fontScaleCase);
+$fontScale = new FontScaleAttribute($fontScaleCase);
 var_dump($fontScale);
 
 try {
-    new FontScale($fontScaleCase, -1);
+    new FontScaleAttribute($fontScaleCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontScale($fontScaleCase, PHP_INT_MAX);
+    new FontScaleAttribute($fontScaleCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontScale($fontScaleCase, endIndex: -1);
+    new FontScaleAttribute($fontScaleCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontScale($fontScaleCase, endIndex: PHP_INT_MAX);
+    new FontScaleAttribute($fontScaleCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontScale($fontScaleCase, 30, 20);
+    new FontScaleAttribute($fontScaleCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontScale();
+    new FontScaleAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontScale(Pango\FontScale::SmallCaps, 1, 2, 3);
+    new FontScaleAttribute(Pango\FontScale::SmallCaps, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new FontScale(array());
+    new FontScaleAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

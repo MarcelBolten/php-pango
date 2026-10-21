@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\TextTransformAttribute;
 
-$textTransform = new TextTransform(Pango\TextTransform::Lowercase);
+$textTransform = new TextTransformAttribute(Pango\TextTransform::Lowercase);
 var_dump($textTransform);
 print_r($textTransform);
 ?>

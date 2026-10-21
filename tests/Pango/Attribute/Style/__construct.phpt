@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\StyleAttribute;
 
 $styleCase = Pango\Style::Italic;
-$style = new Style($styleCase);
+$style = new StyleAttribute($styleCase);
 var_dump($style);
 
 try {
-    new Style($styleCase, -1);
+    new StyleAttribute($styleCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Style($styleCase, PHP_INT_MAX);
+    new StyleAttribute($styleCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Style($styleCase, endIndex: -1);
+    new StyleAttribute($styleCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Style($styleCase, endIndex: PHP_INT_MAX);
+    new StyleAttribute($styleCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Style($styleCase, 30, 20);
+    new StyleAttribute($styleCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Style();
+    new StyleAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Style(Pango\Style::Italic, 1, 2, 3);
+    new StyleAttribute(Pango\Style::Italic, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Style(array());
+    new StyleAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

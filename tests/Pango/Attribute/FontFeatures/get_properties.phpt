@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\FontFeaturesAttribute;
 
-$fontFeatures = new FontFeatures("kern=0");
+$fontFeatures = new FontFeaturesAttribute("kern=0");
 var_dump($fontFeatures);
 print_r($fontFeatures);
 ?>

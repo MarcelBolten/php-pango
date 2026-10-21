@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\LineHeightAttribute;
 
-$LineHeight = new LineHeight(5.2);
+$LineHeight = new LineHeightAttribute(5.2);
 var_dump($LineHeight->value);
 
 $copy = clone $LineHeight;

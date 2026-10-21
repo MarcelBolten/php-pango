@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\UnderlineColorAttribute;
 
 $color = new Pango\Color(1024, 2048, 4096);
-$underlineColor = new UnderlineColor($color);
+$underlineColor = new UnderlineColorAttribute($color);
 var_dump($underlineColor);
 
 try {
-    new UnderlineColor($color, -1);
+    new UnderlineColorAttribute($color, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new UnderlineColor($color, PHP_INT_MAX);
+    new UnderlineColorAttribute($color, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new UnderlineColor($color, endIndex: -1);
+    new UnderlineColorAttribute($color, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new UnderlineColor($color, endIndex: PHP_INT_MAX);
+    new UnderlineColorAttribute($color, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new UnderlineColor($color, 30, 20);
+    new UnderlineColorAttribute($color, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new UnderlineColor();
+    new UnderlineColorAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new UnderlineColor($color, 1, 2, 3);
+    new UnderlineColorAttribute($color, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new UnderlineColor(array());
+    new UnderlineColorAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

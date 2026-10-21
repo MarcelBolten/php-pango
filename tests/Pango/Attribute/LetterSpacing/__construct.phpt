@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\LetterSpacingAttribute;
 
-$letterSpacing = new LetterSpacing(42);
+$letterSpacing = new LetterSpacingAttribute(42);
 var_dump($letterSpacing);
 
 try {
-    new LetterSpacing(42, -1);
+    new LetterSpacingAttribute(42, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LetterSpacing(42, PHP_INT_MAX);
+    new LetterSpacingAttribute(42, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LetterSpacing(42, endIndex: -1);
+    new LetterSpacingAttribute(42, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LetterSpacing(42, endIndex: PHP_INT_MAX);
+    new LetterSpacingAttribute(42, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LetterSpacing(42, 30, 20);
+    new LetterSpacingAttribute(42, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LetterSpacing();
+    new LetterSpacingAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LetterSpacing(42, 1, 2, 3);
+    new LetterSpacingAttribute(42, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LetterSpacing(array());
+    new LetterSpacingAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

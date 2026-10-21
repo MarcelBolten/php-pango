@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\VariantAttribute;
 
-$variant = new Variant(Pango\Variant::SmallCaps);
+$variant = new VariantAttribute(Pango\Variant::SmallCaps);
 
 var_dump($variant->value);
 var_dump($variant->startIndex);

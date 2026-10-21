@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\StrikethroughAttribute;
 
-$strikethrough = new Strikethrough(true);
+$strikethrough = new StrikethroughAttribute(true);
 var_dump($strikethrough);
 print_r($strikethrough);
 ?>

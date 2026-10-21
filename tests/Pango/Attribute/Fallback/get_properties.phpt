@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\FallbackAttribute;
 
-$fallback = new Fallback(true);
+$fallback = new FallbackAttribute(true);
 var_dump($fallback);
 print_r($fallback);
 ?>

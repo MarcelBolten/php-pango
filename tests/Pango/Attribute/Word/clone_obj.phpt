@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\WordAttribute;
 
-$word = new Word();
+$word = new WordAttribute();
 var_dump($word);
 var_dump(clone $word);
 ?>

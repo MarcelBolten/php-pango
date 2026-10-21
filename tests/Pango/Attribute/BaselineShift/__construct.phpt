@@ -6,56 +6,56 @@ pango
 <?php
 use Pango\Attribute\BaselineShiftAttribute;
 
-$baselineShift = new BaselineShift(Pango\BaselineShift::Subscript);
+$baselineShift = new BaselineShiftAttribute(Pango\BaselineShift::Subscript);
 var_dump($baselineShift);
 
-$baselineShift = new BaselineShift(1024 * 10);
+$baselineShift = new BaselineShiftAttribute(1024 * 10);
 var_dump($baselineShift);
 
 try {
-    new BaselineShift(1024, -1);
+    new BaselineShiftAttribute(1024, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BaselineShift(1024, PHP_INT_MAX);
+    new BaselineShiftAttribute(1024, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BaselineShift(1024, endIndex: -1);
+    new BaselineShiftAttribute(1024, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BaselineShift(1024, endIndex: PHP_INT_MAX);
+    new BaselineShiftAttribute(1024, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BaselineShift(1024, 30, 20);
+    new BaselineShiftAttribute(1024, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BaselineShift();
+    new BaselineShiftAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BaselineShift(Pango\BaselineShift::Subscript, 1, 2, 3);
+    new BaselineShiftAttribute(Pango\BaselineShift::Subscript, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new BaselineShift(array());
+    new BaselineShiftAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

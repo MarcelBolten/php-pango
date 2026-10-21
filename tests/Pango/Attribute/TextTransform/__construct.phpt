@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\TextTransformAttribute;
 
 $transformCase = Pango\TextTransform::Lowercase;
-$textTransform = new TextTransform($transformCase);
+$textTransform = new TextTransformAttribute($transformCase);
 var_dump($textTransform);
 
 try {
-    new TextTransform($transformCase, -1);
+    new TextTransformAttribute($transformCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new TextTransform($transformCase, PHP_INT_MAX);
+    new TextTransformAttribute($transformCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new TextTransform($transformCase, endIndex: -1);
+    new TextTransformAttribute($transformCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new TextTransform($transformCase, endIndex: PHP_INT_MAX);
+    new TextTransformAttribute($transformCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new TextTransform($transformCase, 30, 20);
+    new TextTransformAttribute($transformCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new TextTransform();
+    new TextTransformAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new TextTransform(Pango\TextTransform::Lowercase, 1, 2, 3);
+    new TextTransformAttribute(Pango\TextTransform::Lowercase, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new TextTransform(array());
+    new TextTransformAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\OverlineAttribute;
 
-$overline = new Overline(Pango\Overline::Single);
+$overline = new OverlineAttribute(Pango\Overline::Single);
 var_dump($overline->value);
 
 $copy = clone $overline;

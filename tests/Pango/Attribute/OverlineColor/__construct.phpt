@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\OverlineColorAttribute;
 
 $color = new Pango\Color(1024, 2048, 4096);
-$overlineColor = new OverlineColor($color);
+$overlineColor = new OverlineColorAttribute($color);
 var_dump($overlineColor);
 
 try {
-    new OverlineColor($color, -1);
+    new OverlineColorAttribute($color, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new OverlineColor($color, PHP_INT_MAX);
+    new OverlineColorAttribute($color, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new OverlineColor($color, endIndex: -1);
+    new OverlineColorAttribute($color, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new OverlineColor($color, endIndex: PHP_INT_MAX);
+    new OverlineColorAttribute($color, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new OverlineColor($color, 30, 20);
+    new OverlineColorAttribute($color, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new OverlineColor();
+    new OverlineColorAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new OverlineColor($color, 1, 2, 3);
+    new OverlineColorAttribute($color, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new OverlineColor(array());
+    new OverlineColorAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

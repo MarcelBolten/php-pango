@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\FamilyAttribute;
 
-$family = new Family("Noto Sans");
+$family = new FamilyAttribute("Noto Sans");
 var_dump($family);
 print_r($family);
 ?>

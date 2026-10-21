@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\RiseAttribute;
 
-$rise = new Rise(42);
+$rise = new RiseAttribute(42);
 var_dump($rise);
 
 try {
-    new Rise(42, -1);
+    new RiseAttribute(42, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Rise(42, PHP_INT_MAX);
+    new RiseAttribute(42, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Rise(42, endIndex: -1);
+    new RiseAttribute(42, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Rise(42, endIndex: PHP_INT_MAX);
+    new RiseAttribute(42, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Rise(42, 30, 20);
+    new RiseAttribute(42, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Rise();
+    new RiseAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Rise(42, 1, 2, 3);
+    new RiseAttribute(42, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Rise(array());
+    new RiseAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

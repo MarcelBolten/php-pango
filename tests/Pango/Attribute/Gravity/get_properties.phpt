@@ -6,7 +6,7 @@ pango
 <?php
 use Pango\Attribute\GravityAttribute;
 
-$gravity = new Gravity(Pango\Gravity::North);
+$gravity = new GravityAttribute(Pango\Gravity::North);
 var_dump($gravity);
 print_r($gravity);
 ?>

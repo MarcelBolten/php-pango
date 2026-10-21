@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\GravityHintAttribute;
 
 $hintCase = Pango\GravityHint::Strong;
-$gravityHint = new GravityHint($hintCase);
+$gravityHint = new GravityHintAttribute($hintCase);
 var_dump($gravityHint);
 
 try {
-    new GravityHint($hintCase, -1);
+    new GravityHintAttribute($hintCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new GravityHint($hintCase, PHP_INT_MAX);
+    new GravityHintAttribute($hintCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new GravityHint($hintCase, endIndex: -1);
+    new GravityHintAttribute($hintCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new GravityHint($hintCase, endIndex: PHP_INT_MAX);
+    new GravityHintAttribute($hintCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new GravityHint($hintCase, 30, 20);
+    new GravityHintAttribute($hintCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new GravityHint();
+    new GravityHintAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new GravityHint($hintCase, 1, 2, 3);
+    new GravityHintAttribute($hintCase, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new GravityHint(array());
+    new GravityHintAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

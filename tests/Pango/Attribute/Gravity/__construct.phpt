@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\GravityAttribute;
 
 $gravityCase = Pango\Gravity::East;
-$gravity = new Gravity($gravityCase);
+$gravity = new GravityAttribute($gravityCase);
 var_dump($gravity);
 
 try {
-    new Gravity($gravityCase, -1);
+    new GravityAttribute($gravityCase, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Gravity($gravityCase, PHP_INT_MAX);
+    new GravityAttribute($gravityCase, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Gravity($gravityCase, endIndex: -1);
+    new GravityAttribute($gravityCase, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Gravity($gravityCase, endIndex: PHP_INT_MAX);
+    new GravityAttribute($gravityCase, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Gravity($gravityCase, 30, 20);
+    new GravityAttribute($gravityCase, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Gravity();
+    new GravityAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Gravity(Pango\Gravity::North, 1, 2, 3);
+    new GravityAttribute(Pango\Gravity::North, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Gravity(array());
+    new GravityAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

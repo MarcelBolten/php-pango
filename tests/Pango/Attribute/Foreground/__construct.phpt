@@ -7,53 +7,53 @@ pango
 use Pango\Attribute\ForegroundAttribute;
 
 $color = new Pango\Color(1024, 2048, 4096);
-$foreground = new Foreground($color);
+$foreground = new ForegroundAttribute($color);
 var_dump($foreground);
 
 try {
-    new Foreground($color, -1);
+    new ForegroundAttribute($color, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Foreground($color, PHP_INT_MAX);
+    new ForegroundAttribute($color, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Foreground($color, endIndex: -1);
+    new ForegroundAttribute($color, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Foreground($color, endIndex: PHP_INT_MAX);
+    new ForegroundAttribute($color, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Foreground($color, 30, 20);
+    new ForegroundAttribute($color, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Foreground();
+    new ForegroundAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Foreground($color, 1, 2, 3);
+    new ForegroundAttribute($color, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new Foreground(array());
+    new ForegroundAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }

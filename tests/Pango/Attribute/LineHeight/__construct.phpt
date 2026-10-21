@@ -6,53 +6,53 @@ pango
 <?php
 use Pango\Attribute\LineHeightAttribute;
 
-$LineHeight = new LineHeight(42.5);
+$LineHeight = new LineHeightAttribute(42.5);
 var_dump($LineHeight);
 
 try {
-    new LineHeight(42.5, -1);
+    new LineHeightAttribute(42.5, -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LineHeight(42.5, PHP_INT_MAX);
+    new LineHeightAttribute(42.5, PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LineHeight(42.5, endIndex: -1);
+    new LineHeightAttribute(42.5, endIndex: -1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LineHeight(42.5, endIndex: PHP_INT_MAX);
+    new LineHeightAttribute(42.5, endIndex: PHP_INT_MAX);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LineHeight(42.5, 30, 20);
+    new LineHeightAttribute(42.5, 30, 20);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LineHeight();
+    new LineHeightAttribute();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LineHeight(42.5, 1, 2, 3);
+    new LineHeightAttribute(42.5, 1, 2, 3);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    new LineHeight(array());
+    new LineHeightAttribute(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }
