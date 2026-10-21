@@ -1,161 +1,161 @@
 /* This is a generated file, edit attribute.stub.php instead.
- * Stub hash: 2def071ad0bf9ed826439624b34f1a4e2fd3d8a6 */
+ * Stub hash: 2fb34bf110ebcff8d47e1a9098f6f7115d3a4507 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_Attribute_equalValue, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_OBJ_INFO(0, other, Pango\\Attribute\\Attribute, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Language___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_LanguageAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Language, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Family___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_FamilyAttribute___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Style___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_StyleAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Style, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Weight___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_WeightAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Weight, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Variant___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_VariantAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Variant, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Stretch___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_StretchAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Stretch, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Size___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_SizeAttribute___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Attribute_AbsoluteSize___construct arginfo_class_Pango_Attribute_Size___construct
+#define arginfo_class_Pango_Attribute_AbsoluteSizeAttribute___construct arginfo_class_Pango_Attribute_SizeAttribute___construct
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_FontDescription___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_FontDescriptionAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Foreground___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_ForegroundAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, color, Pango\\Color, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Attribute_Background___construct arginfo_class_Pango_Attribute_Foreground___construct
+#define arginfo_class_Pango_Attribute_BackgroundAttribute___construct arginfo_class_Pango_Attribute_ForegroundAttribute___construct
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Underline___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_UnderlineAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\\125nderline, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Strikethrough___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_StrikethroughAttribute___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Attribute_Rise___construct arginfo_class_Pango_Attribute_Size___construct
+#define arginfo_class_Pango_Attribute_RiseAttribute___construct arginfo_class_Pango_Attribute_SizeAttribute___construct
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Scale___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_ScaleAttribute___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_DOUBLE, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Attribute_Fallback___construct arginfo_class_Pango_Attribute_Strikethrough___construct
+#define arginfo_class_Pango_Attribute_FallbackAttribute___construct arginfo_class_Pango_Attribute_StrikethroughAttribute___construct
 
-#define arginfo_class_Pango_Attribute_LetterSpacing___construct arginfo_class_Pango_Attribute_Size___construct
+#define arginfo_class_Pango_Attribute_LetterSpacingAttribute___construct arginfo_class_Pango_Attribute_SizeAttribute___construct
 
-#define arginfo_class_Pango_Attribute_UnderlineColor___construct arginfo_class_Pango_Attribute_Foreground___construct
+#define arginfo_class_Pango_Attribute_UnderlineColorAttribute___construct arginfo_class_Pango_Attribute_ForegroundAttribute___construct
 
-#define arginfo_class_Pango_Attribute_StrikethroughColor___construct arginfo_class_Pango_Attribute_Foreground___construct
+#define arginfo_class_Pango_Attribute_StrikethroughColorAttribute___construct arginfo_class_Pango_Attribute_ForegroundAttribute___construct
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Gravity___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_GravityAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Gravity, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_GravityHint___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_GravityHintAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\GravityHint, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Attribute_FontFeatures___construct arginfo_class_Pango_Attribute_Family___construct
+#define arginfo_class_Pango_Attribute_FontFeaturesAttribute___construct arginfo_class_Pango_Attribute_FamilyAttribute___construct
 
-#define arginfo_class_Pango_Attribute_ForegroundAlpha___construct arginfo_class_Pango_Attribute_Size___construct
+#define arginfo_class_Pango_Attribute_ForegroundAlphaAttribute___construct arginfo_class_Pango_Attribute_SizeAttribute___construct
 
-#define arginfo_class_Pango_Attribute_BackgroundAlpha___construct arginfo_class_Pango_Attribute_Size___construct
+#define arginfo_class_Pango_Attribute_BackgroundAlphaAttribute___construct arginfo_class_Pango_Attribute_SizeAttribute___construct
 
-#define arginfo_class_Pango_Attribute_AllowBreaks___construct arginfo_class_Pango_Attribute_Strikethrough___construct
+#define arginfo_class_Pango_Attribute_AllowBreaksAttribute___construct arginfo_class_Pango_Attribute_StrikethroughAttribute___construct
 
-#define arginfo_class_Pango_Attribute_Show___construct arginfo_class_Pango_Attribute_Size___construct
+#define arginfo_class_Pango_Attribute_ShowAttribute___construct arginfo_class_Pango_Attribute_SizeAttribute___construct
 
-#define arginfo_class_Pango_Attribute_InsertHyphens___construct arginfo_class_Pango_Attribute_Strikethrough___construct
+#define arginfo_class_Pango_Attribute_InsertHyphensAttribute___construct arginfo_class_Pango_Attribute_StrikethroughAttribute___construct
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Overline___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_OverlineAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Overline, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Attribute_OverlineColor___construct arginfo_class_Pango_Attribute_Foreground___construct
+#define arginfo_class_Pango_Attribute_OverlineColorAttribute___construct arginfo_class_Pango_Attribute_ForegroundAttribute___construct
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_LineHeight___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_LineHeightAttribute___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_DOUBLE, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_AbsoluteLineHeight___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_AbsoluteLineHeightAttribute___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_TextTransform___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_TextTransformAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\TextTransform, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Word___construct, 0, 0, 0)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_WordAttribute___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Pango_Attribute_Sentence___construct arginfo_class_Pango_Attribute_Word___construct
+#define arginfo_class_Pango_Attribute_SentenceAttribute___construct arginfo_class_Pango_Attribute_WordAttribute___construct
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_BaselineShift___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_BaselineShiftAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_TYPE_MASK(0, value, Pango\\BaselineShift, MAY_BE_LONG, NULL)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_FontScale___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_FontScaleAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\FontScale, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
@@ -163,7 +163,7 @@ ZEND_END_ARG_INFO()
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_Width___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_WidthAttribute___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, value, Pango\\Width, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
@@ -171,46 +171,46 @@ ZEND_END_ARG_INFO()
 #endif
 
 ZEND_METHOD(Pango_Attribute_Attribute, equalValue);
-ZEND_METHOD(Pango_Attribute_Language, __construct);
-ZEND_METHOD(Pango_Attribute_Family, __construct);
-ZEND_METHOD(Pango_Attribute_Style, __construct);
-ZEND_METHOD(Pango_Attribute_Weight, __construct);
-ZEND_METHOD(Pango_Attribute_Variant, __construct);
-ZEND_METHOD(Pango_Attribute_Stretch, __construct);
-ZEND_METHOD(Pango_Attribute_Size, __construct);
-ZEND_METHOD(Pango_Attribute_AbsoluteSize, __construct);
-ZEND_METHOD(Pango_Attribute_FontDescription, __construct);
-ZEND_METHOD(Pango_Attribute_Foreground, __construct);
-ZEND_METHOD(Pango_Attribute_Background, __construct);
-ZEND_METHOD(Pango_Attribute_Underline, __construct);
-ZEND_METHOD(Pango_Attribute_Strikethrough, __construct);
-ZEND_METHOD(Pango_Attribute_Rise, __construct);
-ZEND_METHOD(Pango_Attribute_Scale, __construct);
-ZEND_METHOD(Pango_Attribute_Fallback, __construct);
-ZEND_METHOD(Pango_Attribute_LetterSpacing, __construct);
-ZEND_METHOD(Pango_Attribute_UnderlineColor, __construct);
-ZEND_METHOD(Pango_Attribute_StrikethroughColor, __construct);
-ZEND_METHOD(Pango_Attribute_Gravity, __construct);
-ZEND_METHOD(Pango_Attribute_GravityHint, __construct);
-ZEND_METHOD(Pango_Attribute_FontFeatures, __construct);
-ZEND_METHOD(Pango_Attribute_ForegroundAlpha, __construct);
-ZEND_METHOD(Pango_Attribute_BackgroundAlpha, __construct);
-ZEND_METHOD(Pango_Attribute_AllowBreaks, __construct);
-ZEND_METHOD(Pango_Attribute_Show, __construct);
-ZEND_METHOD(Pango_Attribute_InsertHyphens, __construct);
-ZEND_METHOD(Pango_Attribute_Overline, __construct);
-ZEND_METHOD(Pango_Attribute_OverlineColor, __construct);
+ZEND_METHOD(Pango_Attribute_LanguageAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_FamilyAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_StyleAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_WeightAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_VariantAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_StretchAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_SizeAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_AbsoluteSizeAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_FontDescriptionAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_ForegroundAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_BackgroundAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_UnderlineAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_StrikethroughAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_RiseAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_ScaleAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_FallbackAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_LetterSpacingAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_UnderlineColorAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_StrikethroughColorAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_GravityAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_GravityHintAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_FontFeaturesAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_ForegroundAlphaAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_BackgroundAlphaAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_AllowBreaksAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_ShowAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_InsertHyphensAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_OverlineAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_OverlineColorAttribute, __construct);
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-ZEND_METHOD(Pango_Attribute_LineHeight, __construct);
-ZEND_METHOD(Pango_Attribute_AbsoluteLineHeight, __construct);
-ZEND_METHOD(Pango_Attribute_TextTransform, __construct);
-ZEND_METHOD(Pango_Attribute_Word, __construct);
-ZEND_METHOD(Pango_Attribute_Sentence, __construct);
-ZEND_METHOD(Pango_Attribute_BaselineShift, __construct);
-ZEND_METHOD(Pango_Attribute_FontScale, __construct);
+ZEND_METHOD(Pango_Attribute_LineHeightAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_AbsoluteLineHeightAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_TextTransformAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_WordAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_SentenceAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_BaselineShiftAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_FontScaleAttribute, __construct);
 #endif
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
-ZEND_METHOD(Pango_Attribute_Width, __construct);
+ZEND_METHOD(Pango_Attribute_WidthAttribute, __construct);
 #endif
 
 static const zend_function_entry class_Pango_Attribute_Attribute_methods[] = {
@@ -218,203 +218,203 @@ static const zend_function_entry class_Pango_Attribute_Attribute_methods[] = {
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Language_methods[] = {
-	ZEND_ME(Pango_Attribute_Language, __construct, arginfo_class_Pango_Attribute_Language___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_LanguageAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_LanguageAttribute, __construct, arginfo_class_Pango_Attribute_LanguageAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Family_methods[] = {
-	ZEND_ME(Pango_Attribute_Family, __construct, arginfo_class_Pango_Attribute_Family___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_FamilyAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_FamilyAttribute, __construct, arginfo_class_Pango_Attribute_FamilyAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Style_methods[] = {
-	ZEND_ME(Pango_Attribute_Style, __construct, arginfo_class_Pango_Attribute_Style___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_StyleAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_StyleAttribute, __construct, arginfo_class_Pango_Attribute_StyleAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Weight_methods[] = {
-	ZEND_ME(Pango_Attribute_Weight, __construct, arginfo_class_Pango_Attribute_Weight___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_WeightAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_WeightAttribute, __construct, arginfo_class_Pango_Attribute_WeightAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Variant_methods[] = {
-	ZEND_ME(Pango_Attribute_Variant, __construct, arginfo_class_Pango_Attribute_Variant___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_VariantAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_VariantAttribute, __construct, arginfo_class_Pango_Attribute_VariantAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Stretch_methods[] = {
-	ZEND_ME(Pango_Attribute_Stretch, __construct, arginfo_class_Pango_Attribute_Stretch___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_StretchAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_StretchAttribute, __construct, arginfo_class_Pango_Attribute_StretchAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Size_methods[] = {
-	ZEND_ME(Pango_Attribute_Size, __construct, arginfo_class_Pango_Attribute_Size___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_SizeAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_SizeAttribute, __construct, arginfo_class_Pango_Attribute_SizeAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_AbsoluteSize_methods[] = {
-	ZEND_ME(Pango_Attribute_AbsoluteSize, __construct, arginfo_class_Pango_Attribute_AbsoluteSize___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_AbsoluteSizeAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_AbsoluteSizeAttribute, __construct, arginfo_class_Pango_Attribute_AbsoluteSizeAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_FontDescription_methods[] = {
-	ZEND_ME(Pango_Attribute_FontDescription, __construct, arginfo_class_Pango_Attribute_FontDescription___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_FontDescriptionAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_FontDescriptionAttribute, __construct, arginfo_class_Pango_Attribute_FontDescriptionAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Foreground_methods[] = {
-	ZEND_ME(Pango_Attribute_Foreground, __construct, arginfo_class_Pango_Attribute_Foreground___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_ForegroundAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_ForegroundAttribute, __construct, arginfo_class_Pango_Attribute_ForegroundAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Background_methods[] = {
-	ZEND_ME(Pango_Attribute_Background, __construct, arginfo_class_Pango_Attribute_Background___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_BackgroundAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_BackgroundAttribute, __construct, arginfo_class_Pango_Attribute_BackgroundAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Underline_methods[] = {
-	ZEND_ME(Pango_Attribute_Underline, __construct, arginfo_class_Pango_Attribute_Underline___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_UnderlineAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_UnderlineAttribute, __construct, arginfo_class_Pango_Attribute_UnderlineAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Strikethrough_methods[] = {
-	ZEND_ME(Pango_Attribute_Strikethrough, __construct, arginfo_class_Pango_Attribute_Strikethrough___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_StrikethroughAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_StrikethroughAttribute, __construct, arginfo_class_Pango_Attribute_StrikethroughAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Rise_methods[] = {
-	ZEND_ME(Pango_Attribute_Rise, __construct, arginfo_class_Pango_Attribute_Rise___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_RiseAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_RiseAttribute, __construct, arginfo_class_Pango_Attribute_RiseAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Scale_methods[] = {
-	ZEND_ME(Pango_Attribute_Scale, __construct, arginfo_class_Pango_Attribute_Scale___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_ScaleAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_ScaleAttribute, __construct, arginfo_class_Pango_Attribute_ScaleAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Fallback_methods[] = {
-	ZEND_ME(Pango_Attribute_Fallback, __construct, arginfo_class_Pango_Attribute_Fallback___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_FallbackAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_FallbackAttribute, __construct, arginfo_class_Pango_Attribute_FallbackAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_LetterSpacing_methods[] = {
-	ZEND_ME(Pango_Attribute_LetterSpacing, __construct, arginfo_class_Pango_Attribute_LetterSpacing___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_LetterSpacingAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_LetterSpacingAttribute, __construct, arginfo_class_Pango_Attribute_LetterSpacingAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_UnderlineColor_methods[] = {
-	ZEND_ME(Pango_Attribute_UnderlineColor, __construct, arginfo_class_Pango_Attribute_UnderlineColor___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_UnderlineColorAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_UnderlineColorAttribute, __construct, arginfo_class_Pango_Attribute_UnderlineColorAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_StrikethroughColor_methods[] = {
-	ZEND_ME(Pango_Attribute_StrikethroughColor, __construct, arginfo_class_Pango_Attribute_StrikethroughColor___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_StrikethroughColorAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_StrikethroughColorAttribute, __construct, arginfo_class_Pango_Attribute_StrikethroughColorAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Gravity_methods[] = {
-	ZEND_ME(Pango_Attribute_Gravity, __construct, arginfo_class_Pango_Attribute_Gravity___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_GravityAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_GravityAttribute, __construct, arginfo_class_Pango_Attribute_GravityAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_GravityHint_methods[] = {
-	ZEND_ME(Pango_Attribute_GravityHint, __construct, arginfo_class_Pango_Attribute_GravityHint___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_GravityHintAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_GravityHintAttribute, __construct, arginfo_class_Pango_Attribute_GravityHintAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_FontFeatures_methods[] = {
-	ZEND_ME(Pango_Attribute_FontFeatures, __construct, arginfo_class_Pango_Attribute_FontFeatures___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_FontFeaturesAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_FontFeaturesAttribute, __construct, arginfo_class_Pango_Attribute_FontFeaturesAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_ForegroundAlpha_methods[] = {
-	ZEND_ME(Pango_Attribute_ForegroundAlpha, __construct, arginfo_class_Pango_Attribute_ForegroundAlpha___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_ForegroundAlphaAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_ForegroundAlphaAttribute, __construct, arginfo_class_Pango_Attribute_ForegroundAlphaAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_BackgroundAlpha_methods[] = {
-	ZEND_ME(Pango_Attribute_BackgroundAlpha, __construct, arginfo_class_Pango_Attribute_BackgroundAlpha___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_BackgroundAlphaAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_BackgroundAlphaAttribute, __construct, arginfo_class_Pango_Attribute_BackgroundAlphaAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_AllowBreaks_methods[] = {
-	ZEND_ME(Pango_Attribute_AllowBreaks, __construct, arginfo_class_Pango_Attribute_AllowBreaks___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_AllowBreaksAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_AllowBreaksAttribute, __construct, arginfo_class_Pango_Attribute_AllowBreaksAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Show_methods[] = {
-	ZEND_ME(Pango_Attribute_Show, __construct, arginfo_class_Pango_Attribute_Show___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_ShowAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_ShowAttribute, __construct, arginfo_class_Pango_Attribute_ShowAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_InsertHyphens_methods[] = {
-	ZEND_ME(Pango_Attribute_InsertHyphens, __construct, arginfo_class_Pango_Attribute_InsertHyphens___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_InsertHyphensAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_InsertHyphensAttribute, __construct, arginfo_class_Pango_Attribute_InsertHyphensAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_Overline_methods[] = {
-	ZEND_ME(Pango_Attribute_Overline, __construct, arginfo_class_Pango_Attribute_Overline___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_OverlineAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_OverlineAttribute, __construct, arginfo_class_Pango_Attribute_OverlineAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
-static const zend_function_entry class_Pango_Attribute_OverlineColor_methods[] = {
-	ZEND_ME(Pango_Attribute_OverlineColor, __construct, arginfo_class_Pango_Attribute_OverlineColor___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_OverlineColorAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_OverlineColorAttribute, __construct, arginfo_class_Pango_Attribute_OverlineColorAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static const zend_function_entry class_Pango_Attribute_LineHeight_methods[] = {
-	ZEND_ME(Pango_Attribute_LineHeight, __construct, arginfo_class_Pango_Attribute_LineHeight___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_LineHeightAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_LineHeightAttribute, __construct, arginfo_class_Pango_Attribute_LineHeightAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static const zend_function_entry class_Pango_Attribute_AbsoluteLineHeight_methods[] = {
-	ZEND_ME(Pango_Attribute_AbsoluteLineHeight, __construct, arginfo_class_Pango_Attribute_AbsoluteLineHeight___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_AbsoluteLineHeightAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_AbsoluteLineHeightAttribute, __construct, arginfo_class_Pango_Attribute_AbsoluteLineHeightAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static const zend_function_entry class_Pango_Attribute_TextTransform_methods[] = {
-	ZEND_ME(Pango_Attribute_TextTransform, __construct, arginfo_class_Pango_Attribute_TextTransform___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_TextTransformAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_TextTransformAttribute, __construct, arginfo_class_Pango_Attribute_TextTransformAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static const zend_function_entry class_Pango_Attribute_Word_methods[] = {
-	ZEND_ME(Pango_Attribute_Word, __construct, arginfo_class_Pango_Attribute_Word___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_WordAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_WordAttribute, __construct, arginfo_class_Pango_Attribute_WordAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static const zend_function_entry class_Pango_Attribute_Sentence_methods[] = {
-	ZEND_ME(Pango_Attribute_Sentence, __construct, arginfo_class_Pango_Attribute_Sentence___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_SentenceAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_SentenceAttribute, __construct, arginfo_class_Pango_Attribute_SentenceAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static const zend_function_entry class_Pango_Attribute_BaselineShift_methods[] = {
-	ZEND_ME(Pango_Attribute_BaselineShift, __construct, arginfo_class_Pango_Attribute_BaselineShift___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_BaselineShiftAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_BaselineShiftAttribute, __construct, arginfo_class_Pango_Attribute_BaselineShiftAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static const zend_function_entry class_Pango_Attribute_FontScale_methods[] = {
-	ZEND_ME(Pango_Attribute_FontScale, __construct, arginfo_class_Pango_Attribute_FontScale___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_FontScaleAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_FontScaleAttribute, __construct, arginfo_class_Pango_Attribute_FontScaleAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
-static const zend_function_entry class_Pango_Attribute_Width_methods[] = {
-	ZEND_ME(Pango_Attribute_Width, __construct, arginfo_class_Pango_Attribute_Width___construct, ZEND_ACC_PUBLIC)
+static const zend_function_entry class_Pango_Attribute_WidthAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_WidthAttribute, __construct, arginfo_class_Pango_Attribute_WidthAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 #endif
@@ -459,11 +459,11 @@ static zend_class_entry *register_class_Pango_Attribute_Attribute(void)
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Language(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_LanguageAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Language", class_Pango_Attribute_Language_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "LanguageAttribute", class_Pango_Attribute_LanguageAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -480,11 +480,11 @@ static zend_class_entry *register_class_Pango_Attribute_Language(zend_class_entr
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Family(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_FamilyAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Family", class_Pango_Attribute_Family_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "FamilyAttribute", class_Pango_Attribute_FamilyAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -500,11 +500,11 @@ static zend_class_entry *register_class_Pango_Attribute_Family(zend_class_entry 
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Style(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_StyleAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Style", class_Pango_Attribute_Style_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "StyleAttribute", class_Pango_Attribute_StyleAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -521,11 +521,11 @@ static zend_class_entry *register_class_Pango_Attribute_Style(zend_class_entry *
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Weight(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_WeightAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Weight", class_Pango_Attribute_Weight_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "WeightAttribute", class_Pango_Attribute_WeightAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -542,11 +542,11 @@ static zend_class_entry *register_class_Pango_Attribute_Weight(zend_class_entry 
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Variant(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_VariantAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Variant", class_Pango_Attribute_Variant_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "VariantAttribute", class_Pango_Attribute_VariantAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -563,11 +563,11 @@ static zend_class_entry *register_class_Pango_Attribute_Variant(zend_class_entry
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Stretch(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_StretchAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Stretch", class_Pango_Attribute_Stretch_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "StretchAttribute", class_Pango_Attribute_StretchAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -584,11 +584,11 @@ static zend_class_entry *register_class_Pango_Attribute_Stretch(zend_class_entry
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Size(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_SizeAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Size", class_Pango_Attribute_Size_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "SizeAttribute", class_Pango_Attribute_SizeAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -604,11 +604,11 @@ static zend_class_entry *register_class_Pango_Attribute_Size(zend_class_entry *c
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_AbsoluteSize(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_AbsoluteSizeAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "AbsoluteSize", class_Pango_Attribute_AbsoluteSize_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "AbsoluteSizeAttribute", class_Pango_Attribute_AbsoluteSizeAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -624,11 +624,11 @@ static zend_class_entry *register_class_Pango_Attribute_AbsoluteSize(zend_class_
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_FontDescription(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_FontDescriptionAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "FontDescription", class_Pango_Attribute_FontDescription_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "FontDescriptionAttribute", class_Pango_Attribute_FontDescriptionAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -647,11 +647,11 @@ static zend_class_entry *register_class_Pango_Attribute_FontDescription(zend_cla
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Foreground(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_ForegroundAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Foreground", class_Pango_Attribute_Foreground_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "ForegroundAttribute", class_Pango_Attribute_ForegroundAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -670,11 +670,11 @@ static zend_class_entry *register_class_Pango_Attribute_Foreground(zend_class_en
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Background(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_BackgroundAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Background", class_Pango_Attribute_Background_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "BackgroundAttribute", class_Pango_Attribute_BackgroundAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -693,11 +693,11 @@ static zend_class_entry *register_class_Pango_Attribute_Background(zend_class_en
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Underline(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_UnderlineAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Underline", class_Pango_Attribute_Underline_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "UnderlineAttribute", class_Pango_Attribute_UnderlineAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -714,11 +714,11 @@ static zend_class_entry *register_class_Pango_Attribute_Underline(zend_class_ent
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Strikethrough(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_StrikethroughAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Strikethrough", class_Pango_Attribute_Strikethrough_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "StrikethroughAttribute", class_Pango_Attribute_StrikethroughAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -734,11 +734,11 @@ static zend_class_entry *register_class_Pango_Attribute_Strikethrough(zend_class
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Rise(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_RiseAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Rise", class_Pango_Attribute_Rise_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "RiseAttribute", class_Pango_Attribute_RiseAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -754,11 +754,11 @@ static zend_class_entry *register_class_Pango_Attribute_Rise(zend_class_entry *c
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Scale(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_ScaleAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Scale", class_Pango_Attribute_Scale_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "ScaleAttribute", class_Pango_Attribute_ScaleAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -774,11 +774,11 @@ static zend_class_entry *register_class_Pango_Attribute_Scale(zend_class_entry *
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Fallback(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_FallbackAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Fallback", class_Pango_Attribute_Fallback_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "FallbackAttribute", class_Pango_Attribute_FallbackAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -794,11 +794,11 @@ static zend_class_entry *register_class_Pango_Attribute_Fallback(zend_class_entr
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_LetterSpacing(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_LetterSpacingAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "LetterSpacing", class_Pango_Attribute_LetterSpacing_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "LetterSpacingAttribute", class_Pango_Attribute_LetterSpacingAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -814,11 +814,11 @@ static zend_class_entry *register_class_Pango_Attribute_LetterSpacing(zend_class
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_UnderlineColor(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_UnderlineColorAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "UnderlineColor", class_Pango_Attribute_UnderlineColor_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "UnderlineColorAttribute", class_Pango_Attribute_UnderlineColorAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -837,11 +837,11 @@ static zend_class_entry *register_class_Pango_Attribute_UnderlineColor(zend_clas
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_StrikethroughColor(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_StrikethroughColorAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "StrikethroughColor", class_Pango_Attribute_StrikethroughColor_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "StrikethroughColorAttribute", class_Pango_Attribute_StrikethroughColorAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -860,11 +860,11 @@ static zend_class_entry *register_class_Pango_Attribute_StrikethroughColor(zend_
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Gravity(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_GravityAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Gravity", class_Pango_Attribute_Gravity_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "GravityAttribute", class_Pango_Attribute_GravityAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -881,11 +881,11 @@ static zend_class_entry *register_class_Pango_Attribute_Gravity(zend_class_entry
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_GravityHint(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_GravityHintAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "GravityHint", class_Pango_Attribute_GravityHint_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "GravityHintAttribute", class_Pango_Attribute_GravityHintAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -902,11 +902,11 @@ static zend_class_entry *register_class_Pango_Attribute_GravityHint(zend_class_e
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_FontFeatures(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_FontFeaturesAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "FontFeatures", class_Pango_Attribute_FontFeatures_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "FontFeaturesAttribute", class_Pango_Attribute_FontFeaturesAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -922,11 +922,11 @@ static zend_class_entry *register_class_Pango_Attribute_FontFeatures(zend_class_
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_ForegroundAlpha(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_ForegroundAlphaAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "ForegroundAlpha", class_Pango_Attribute_ForegroundAlpha_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "ForegroundAlphaAttribute", class_Pango_Attribute_ForegroundAlphaAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -942,11 +942,11 @@ static zend_class_entry *register_class_Pango_Attribute_ForegroundAlpha(zend_cla
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_BackgroundAlpha(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_BackgroundAlphaAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "BackgroundAlpha", class_Pango_Attribute_BackgroundAlpha_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "BackgroundAlphaAttribute", class_Pango_Attribute_BackgroundAlphaAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -962,11 +962,11 @@ static zend_class_entry *register_class_Pango_Attribute_BackgroundAlpha(zend_cla
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_AllowBreaks(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_AllowBreaksAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "AllowBreaks", class_Pango_Attribute_AllowBreaks_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "AllowBreaksAttribute", class_Pango_Attribute_AllowBreaksAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -982,11 +982,11 @@ static zend_class_entry *register_class_Pango_Attribute_AllowBreaks(zend_class_e
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Show(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_ShowAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Show", class_Pango_Attribute_Show_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "ShowAttribute", class_Pango_Attribute_ShowAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1026,11 +1026,11 @@ static zend_class_entry *register_class_Pango_Attribute_Show(zend_class_entry *c
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_InsertHyphens(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_InsertHyphensAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "InsertHyphens", class_Pango_Attribute_InsertHyphens_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "InsertHyphensAttribute", class_Pango_Attribute_InsertHyphensAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1046,11 +1046,11 @@ static zend_class_entry *register_class_Pango_Attribute_InsertHyphens(zend_class
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_Overline(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_OverlineAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Overline", class_Pango_Attribute_Overline_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "OverlineAttribute", class_Pango_Attribute_OverlineAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1067,11 +1067,11 @@ static zend_class_entry *register_class_Pango_Attribute_Overline(zend_class_entr
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Pango_Attribute_OverlineColor(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_OverlineColorAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "OverlineColor", class_Pango_Attribute_OverlineColor_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "OverlineColorAttribute", class_Pango_Attribute_OverlineColorAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1091,11 +1091,11 @@ static zend_class_entry *register_class_Pango_Attribute_OverlineColor(zend_class
 }
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static zend_class_entry *register_class_Pango_Attribute_LineHeight(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_LineHeightAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "LineHeight", class_Pango_Attribute_LineHeight_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "LineHeightAttribute", class_Pango_Attribute_LineHeightAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1113,11 +1113,11 @@ static zend_class_entry *register_class_Pango_Attribute_LineHeight(zend_class_en
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static zend_class_entry *register_class_Pango_Attribute_AbsoluteLineHeight(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_AbsoluteLineHeightAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "AbsoluteLineHeight", class_Pango_Attribute_AbsoluteLineHeight_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "AbsoluteLineHeightAttribute", class_Pango_Attribute_AbsoluteLineHeightAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1135,11 +1135,11 @@ static zend_class_entry *register_class_Pango_Attribute_AbsoluteLineHeight(zend_
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static zend_class_entry *register_class_Pango_Attribute_TextTransform(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_TextTransformAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "TextTransform", class_Pango_Attribute_TextTransform_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "TextTransformAttribute", class_Pango_Attribute_TextTransformAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1158,11 +1158,11 @@ static zend_class_entry *register_class_Pango_Attribute_TextTransform(zend_class
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static zend_class_entry *register_class_Pango_Attribute_Word(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_WordAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Word", class_Pango_Attribute_Word_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "WordAttribute", class_Pango_Attribute_WordAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1176,11 +1176,11 @@ static zend_class_entry *register_class_Pango_Attribute_Word(zend_class_entry *c
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static zend_class_entry *register_class_Pango_Attribute_Sentence(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_SentenceAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Sentence", class_Pango_Attribute_Sentence_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "SentenceAttribute", class_Pango_Attribute_SentenceAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1194,11 +1194,11 @@ static zend_class_entry *register_class_Pango_Attribute_Sentence(zend_class_entr
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static zend_class_entry *register_class_Pango_Attribute_BaselineShift(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_BaselineShiftAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "BaselineShift", class_Pango_Attribute_BaselineShift_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "BaselineShiftAttribute", class_Pango_Attribute_BaselineShiftAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1217,11 +1217,11 @@ static zend_class_entry *register_class_Pango_Attribute_BaselineShift(zend_class
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-static zend_class_entry *register_class_Pango_Attribute_FontScale(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_FontScaleAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "FontScale", class_Pango_Attribute_FontScale_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "FontScaleAttribute", class_Pango_Attribute_FontScaleAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else
@@ -1240,11 +1240,11 @@ static zend_class_entry *register_class_Pango_Attribute_FontScale(zend_class_ent
 #endif
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 58, 0)
-static zend_class_entry *register_class_Pango_Attribute_Width(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+static zend_class_entry *register_class_Pango_Attribute_WidthAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "Width", class_Pango_Attribute_Width_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "WidthAttribute", class_Pango_Attribute_WidthAttribute_methods);
 #if (PHP_VERSION_ID >= 80400)
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
 #else

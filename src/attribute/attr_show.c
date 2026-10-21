@@ -64,7 +64,7 @@ PHP_METHOD(Pango_Attribute_ShowAttribute, __construct)
     if (value < PANGO_SHOW_NONE
         || value > (PANGO_SHOW_SPACES | PANGO_SHOW_LINE_BREAKS | PANGO_SHOW_IGNORABLES)
     ) {
-        zend_argument_value_error(1, "must be a class constant of Pango\\Attribute\\Show or a combination of them");
+        zend_argument_value_error(1, "must be a class constant of Pango\\Attribute\\ShowAttribute or a combination of them");
         RETURN_THROWS();
     }
 
