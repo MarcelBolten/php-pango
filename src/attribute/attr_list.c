@@ -164,6 +164,8 @@ PHP_METHOD(Pango_Attribute_AttributeList, change)
         Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list,
         pango_attribute_copy(Z_PANGO_ATTRIBUTE_P(attr_zv)->attribute)
     );
+
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
@@ -344,6 +346,8 @@ PHP_METHOD(Pango_Attribute_AttributeList, insert)
         Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list,
         pango_attribute_copy(Z_PANGO_ATTRIBUTE_P(attr_zv)->attribute)
     );
+
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
@@ -360,6 +364,8 @@ PHP_METHOD(Pango_Attribute_AttributeList, insertBefore)
         Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list,
         pango_attribute_copy(Z_PANGO_ATTRIBUTE_P(attr_zv)->attribute)
     );
+
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
@@ -381,6 +387,8 @@ PHP_METHOD(Pango_Attribute_AttributeList, splice)
         Z_PANGO_ATTR_LIST_P(attr_list_zv)->attr_list,
         pos, length
     );
+
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
@@ -398,6 +406,8 @@ PHP_METHOD(Pango_Attribute_AttributeList, merge)
         Z_PANGO_ATTR_LIST_P(attr_list_zv)->attr_list,
         0, 0
     );
+
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
@@ -433,6 +443,8 @@ PHP_METHOD(Pango_Attribute_AttributeList, update)
         Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list,
         pos, remove, add
     );
+
+    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 

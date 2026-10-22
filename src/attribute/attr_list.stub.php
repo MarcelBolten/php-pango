@@ -32,7 +32,7 @@ final class AttributeList
      * It will replace any attributes of the same type on that segment and be
      * merged with any adjoining attributes that are identical.
      */
-    public function change(Attribute $attr): void {}
+    public function change(Attribute $attr): AttributeList {}
 
     /**
      * Removes any elements of list for which callback returns TRUE and inserts
@@ -58,21 +58,21 @@ final class AttributeList
      * Insert the given attribute into this AttributeList after all other attributes
      * with a matching startIndex.
      */
-    public function insert(Attribute $attr): void {}
+    public function insert(Attribute $attr): AttributeList {}
 
     /**
      * @alias Pango\Attribute\AttributeList::insert
      */
-    public function push(Attribute $attr): void {}
+    public function push(Attribute $attr): AttributeList {}
 
     /**
      * Insert the given attribute into this AttributeList before all other attributes
      * with a matching startIndex.
      */
-    public function insertBefore(Attribute $attr): void {}
+    public function insertBefore(Attribute $attr): AttributeList {}
 
     /** @alias Pango\Attribute\AttributeList::insertBefore */
-    public function unshift(Attribute $attr): void {}
+    public function unshift(Attribute $attr): AttributeList {}
 
     /**
      * This function opens up a hole in this AttributeList, fills it in with attributes
@@ -96,7 +96,7 @@ final class AttributeList
         AttributeList $other,
         int $pos,
         int $length,
-    ): void {}
+    ): AttributeList {}
 
     /**
      * Merges the attributes from *$other* into this AttributeList.
@@ -104,7 +104,7 @@ final class AttributeList
      * This operation is equivalent to calling *Pango\AttributeList::splice()* with
      * *$pos* set to 0 and *$length* set to 0.
      */
-    public function merge(AttributeList $other): void {}
+    public function merge(AttributeList $other): AttributeList {}
 
     /**
      * Serializes this AttributeList to a string.
@@ -128,5 +128,5 @@ final class AttributeList
         int $pos,
         int $remove,
         int $add,
-    ): void {}
+    ): AttributeList {}
 }

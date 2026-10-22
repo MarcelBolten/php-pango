@@ -1,5 +1,5 @@
 /* This is a generated file, edit attr_list.stub.php instead.
- * Stub hash: 63be4696b649495ffe7181648345799b406012f4 */
+ * Stub hash: dc0e718b8060622d74854c10fed5331526c8e53a */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_AttributeList___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, string, IS_STRING, 1, "null")
@@ -8,7 +8,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_getAttributes, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_change, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_change, 0, 1, Pango\\Attribute\\AttributeList, 0)
 	ZEND_ARG_OBJ_INFO(0, attr, Pango\\Attribute\\Attribute, 0)
 ZEND_END_ARG_INFO()
 
@@ -27,13 +27,13 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_AttributeList_unshift arginfo_class_Pango_Attribute_AttributeList_change
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_splice, 0, 3, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_splice, 0, 3, Pango\\Attribute\\AttributeList, 0)
 	ZEND_ARG_OBJ_INFO(0, other, Pango\\Attribute\\AttributeList, 0)
 	ZEND_ARG_TYPE_INFO(0, pos, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, length, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_merge, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_merge, 0, 1, Pango\\Attribute\\AttributeList, 0)
 	ZEND_ARG_OBJ_INFO(0, other, Pango\\Attribute\\AttributeList, 0)
 ZEND_END_ARG_INFO()
 
@@ -42,7 +42,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_AttributeList_serialize arginfo_class_Pango_Attribute_AttributeList_toString
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_update, 0, 3, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Attribute_AttributeList_update, 0, 3, Pango\\Attribute\\AttributeList, 0)
 	ZEND_ARG_TYPE_INFO(0, pos, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, remove, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, add, IS_LONG, 0)
