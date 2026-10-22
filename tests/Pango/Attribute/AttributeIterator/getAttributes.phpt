@@ -5,6 +5,8 @@ pango
 --FILE--
 <?php
 use Pango\Attribute\AttributeList;
+use Pango\Attribute\ShapeAttribute;
+use Pango\Rectangle;
 
 /*
  * @TODO: the different attribute types are not available in all versions of
@@ -61,6 +63,9 @@ $attrList = new AttributeList(
     . "0 46 font-desc \"Sans Italic 12\","
     . "0 47 language en"
 );
+$rect = new Rectangle(0, 0, 100, 100);
+$shapeAttr = new ShapeAttribute($rect, $rect);
+$attrList->insert($shapeAttr);
 var_dump($attrList);
 $attrIter = $attrList->getIterator();
 var_dump($attrIter);
@@ -77,5 +82,5 @@ object(Pango\Attribute\AttributeList)#%d (0) {
 }
 object(Pango\Attribute\AttributeIterator)#%d (0) {
 }
-int(38)
+int(39)
 Pango\Attribute\AttributeIterator::getAttributes() expects exactly 0 arguments, 1 given
