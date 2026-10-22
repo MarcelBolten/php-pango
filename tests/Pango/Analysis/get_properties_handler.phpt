@@ -12,7 +12,9 @@ $layout = new PangoCairo\Layout($cairoContext);
 var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
-$layout->setAttributes(new Pango\Attribute\AttributeList("0 20 foreground red, 0 20 language en, 0 20 font-desc \"Sans 12\""));
+$attrList = new Pango\Attribute\AttributeList("0 20 foreground red, 0 20 language en, 0 20 font-desc \"Sans 12\"");
+$attrList->insert(new Pango\Attribute\ShapeAttribute(new Pango\Rectangle(0, 0, 10, 10), new Pango\Rectangle(0, 0, 10, 10)));
+$layout->setAttributes($attrList);
 $analysis_object = $layout->getLine(0)->getRuns()[1]->item->analysis;
 var_dump($analysis_object);
 ?>
@@ -41,8 +43,53 @@ object(Pango\Analysis)#%d (7) {
     string(2) "en"
   }
   ["extraAttrs"]=>
-  array(1) {
+  array(2) {
     [0]=>
+    object(Pango\Attribute\ShapeAttribute)#%d (4) {
+      ["startIndex"]=>
+      int(0)
+      ["endIndex"]=>
+      int(4294967295)
+      ["inkRect"]=>
+      object(Pango\Rectangle)#%d (8) {
+        ["x"]=>
+        int(0)
+        ["y"]=>
+        int(0)
+        ["width"]=>
+        int(10)
+        ["height"]=>
+        int(10)
+        ["ascent"]=>
+        int(0)
+        ["descent"]=>
+        int(10)
+        ["leftBearing"]=>
+        int(0)
+        ["rightBearing"]=>
+        int(10)
+      }
+      ["logicalRect"]=>
+      object(Pango\Rectangle)#%d (8) {
+        ["x"]=>
+        int(0)
+        ["y"]=>
+        int(0)
+        ["width"]=>
+        int(10)
+        ["height"]=>
+        int(10)
+        ["ascent"]=>
+        int(0)
+        ["descent"]=>
+        int(10)
+        ["leftBearing"]=>
+        int(0)
+        ["rightBearing"]=>
+        int(10)
+      }
+    }
+    [1]=>
     object(Pango\Attribute\ForegroundAttribute)#%d (3) {
       ["startIndex"]=>
       int(0)

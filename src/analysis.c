@@ -23,6 +23,7 @@
 #include "context.h"
 #include "script.h"
 #include "language.h"
+#include "rectangle.h"
 #include "attribute/attr_type_to_ce_table.h"
 #include "php_pango_macros.h"
 #include "analysis_arginfo.h"
@@ -163,6 +164,12 @@ static zval *pango_analysis_object_read_property(zend_object *object, zend_strin
             PangoAttribute *attr = (PangoAttribute *)iter->data;
             PangoAttrType attr_type = attr->klass->type;
 
+            // PANGO_ATTR_LANGUAGE and PANGO_ATTR_FONT_DESC are never added to the
+            // extra_attrs list by pango, so we can skip them here as well
+            if (attr_type == PANGO_ATTR_LANGUAGE || attr_type == PANGO_ATTR_FONT_DESC) {
+                continue;
+            }
+        
             zend_class_entry *attr_ce = php_pango_attr_ce_lookup(attr_type);
             if (!attr_ce) {
                 continue; // Skip unsupported attribute types
@@ -174,17 +181,28 @@ static zval *pango_analysis_object_read_property(zend_object *object, zend_strin
                 // RETURN_THROWS();
             }
 
-            // PANGO_ATTR_LANGUAGE and PANGO_ATTR_FONT_DESC are never added to the
-            // extra_attrs list by pango, so we can skip them here as well
-            if (attr_type == PANGO_ATTR_LANGUAGE || attr_type == PANGO_ATTR_FONT_DESC) {
-                continue;
-            }
-
             zval attr_zv;
             object_init_ex(&attr_zv, attr_ce);
-            pango_attribute_object *attr_object = Z_PANGO_ATTRIBUTE_P(&attr_zv);
-            attr_object->attribute = pango_attribute_copy(attr);
+            if (attr_type == PANGO_ATTR_SHAPE) {
+                pango_attr_shape_object *attr_shape_object = Z_PANGO_ATTR_SHAPE_P(&attr_zv);
+                attr_shape_object->attribute = pango_attribute_copy(attr);
 
+                zval rect_zv;
+                object_init_ex(&rect_zv, php_pango_get_rectangle_ce());
+                *Z_PANGO_RECTANGLE_P(&rect_zv)->rect = ((PangoAttrShape *)attr_shape_object->attribute)->ink_rect;
+
+                zval logical_rect_zv;
+                object_init_ex(&logical_rect_zv, php_pango_get_rectangle_ce());
+                *Z_PANGO_RECTANGLE_P(&logical_rect_zv)->rect = ((PangoAttrShape *)attr_shape_object->attribute)->logical_rect;
+
+                // hand-over the rectangle zvals to the attribute object without incrementing the refcount
+                ZVAL_COPY_VALUE(&attr_shape_object->ink_rect_zv, &rect_zv);
+                ZVAL_COPY_VALUE(&attr_shape_object->logical_rect_zv, &logical_rect_zv);
+            } else {
+                pango_attribute_object *attr_object = Z_PANGO_ATTRIBUTE_P(&attr_zv);
+                attr_object->attribute = pango_attribute_copy(attr);
+            }
+            
             add_next_index_zval(rv, &attr_zv);
         }
         return rv;
@@ -247,8 +265,25 @@ static HashTable *pango_analysis_object_get_properties_for(zend_object *object, 
         }
 
         object_init_ex(&attr_zv, attr_ce);
-        pango_attribute_object *attr_object = Z_PANGO_ATTRIBUTE_P(&attr_zv);
-        attr_object->attribute = pango_attribute_copy(attr);
+        if (attr_type == PANGO_ATTR_SHAPE) {
+            pango_attr_shape_object *attr_shape_object = Z_PANGO_ATTR_SHAPE_P(&attr_zv);
+            attr_shape_object->attribute = pango_attribute_copy(attr);
+
+            zval rect_zv;
+            object_init_ex(&rect_zv, php_pango_get_rectangle_ce());
+            *Z_PANGO_RECTANGLE_P(&rect_zv)->rect = ((PangoAttrShape *)attr_shape_object->attribute)->ink_rect;
+
+            zval logical_rect_zv;
+            object_init_ex(&logical_rect_zv, php_pango_get_rectangle_ce());
+            *Z_PANGO_RECTANGLE_P(&logical_rect_zv)->rect = ((PangoAttrShape *)attr_shape_object->attribute)->logical_rect;
+
+            // hand-over the rectangle zvals to the attribute object without incrementing the refcount
+            ZVAL_COPY_VALUE(&attr_shape_object->ink_rect_zv, &rect_zv);
+            ZVAL_COPY_VALUE(&attr_shape_object->logical_rect_zv, &logical_rect_zv);
+        } else {
+            pango_attribute_object *attr_object = Z_PANGO_ATTRIBUTE_P(&attr_zv);
+            attr_object->attribute = pango_attribute_copy(attr);
+        }
 
         add_next_index_zval(&tmp, &attr_zv);
     }
