@@ -393,31 +393,36 @@ final readonly class RiseAttribute extends Attribute
     ) {}
 }
 
-// /**
-//  * Shape is an Attribute that holds ink and logical rectangles for a custom glyph shape.
-//  *
-//  * It is used for: Type::Shape.
-//  */
-// final readonly class Shape extends Attribute
-// {
-//     /**
-//      * The ink rectangle of the glyph.
-//      */
-//     public \Pango\Rectangle $inkRect;
+/**
+ * Shape is an Attribute that holds ink and logical rectangles for a custom glyph shape.
+ *
+ * It is used for: Type::Shape.
+ */
+final readonly class ShapeAttribute extends Attribute
+{
+    /**
+     * The ink rectangle of the glyph.
+     */
+    public \Pango\Rectangle $inkRect;
 
-//     /**
-//      * The logical rectangle of the glyph.
-//      */
-//     public \Pango\Rectangle $logicalRect;
+    /**
+     * The logical rectangle of the glyph.
+     */
+    public \Pango\Rectangle $logicalRect;
 
-//     /**
-//      * Create a new shape attribute.
-//      *
-//      * @param \Pango\Rectangle $inkRect The ink rectangle.
-//      * @param \Pango\Rectangle $logicalRect The logical rectangle.
-//      */
-//     public function __construct(\Pango\Rectangle $inkRect, \Pango\Rectangle $logicalRect) {}
-// }
+    /**
+     * Create a new shape attribute.
+     *
+     * @param \Pango\Rectangle $inkRect The ink rectangle.
+     * @param \Pango\Rectangle $logicalRect The logical rectangle.
+     */
+    public function __construct(
+        \Pango\Rectangle $inkRect, 
+        \Pango\Rectangle $logicalRect,
+        int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+    ) {}
+}
 
 /**
  * Scale is an Attribute that holds a font scale factor.

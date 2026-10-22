@@ -745,6 +745,7 @@ PHP_MINIT_FUNCTION(pango)
     PHP_MINIT(pango_attr_overline)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_attr_rise)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_attr_scale)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(pango_attr_shape)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_attr_show)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_attr_size)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_attr_stretch)(INIT_FUNC_ARGS_PASSTHRU);

@@ -81,6 +81,7 @@ PHP_MINIT_FUNCTION(pango_attr_overline_color);
 PHP_MINIT_FUNCTION(pango_attr_overline);
 PHP_MINIT_FUNCTION(pango_attr_rise);
 PHP_MINIT_FUNCTION(pango_attr_scale);
+PHP_MINIT_FUNCTION(pango_attr_shape);
 PHP_MINIT_FUNCTION(pango_attr_show);
 PHP_MINIT_FUNCTION(pango_attr_size);
 PHP_MINIT_FUNCTION(pango_attr_stretch);

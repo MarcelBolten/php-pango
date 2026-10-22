@@ -84,6 +84,7 @@ if test "$PHP_PANGO" != "no"; then
     src/attribute/attr_rise.c
     src/attribute/attr_scale.c
     src/attribute/attr_sentence.c
+    src/attribute/attr_shape.c
     src/attribute/attr_show.c
     src/attribute/attr_size.c
     src/attribute/attr_stretch.c

@@ -35,7 +35,7 @@ const attr_ce_getter_t attr_ce_table[] = {
     [PANGO_ATTR_UNDERLINE]            = php_pango_get_attr_underline_ce,
     [PANGO_ATTR_STRIKETHROUGH]        = php_pango_get_attr_strikethrough_ce,
     [PANGO_ATTR_RISE]                 = php_pango_get_attr_rise_ce,
-    // PANGO_ATTR_SHAPE is not implemented yet
+    [PANGO_ATTR_SHAPE]                = php_pango_get_attr_shape_ce,
     [PANGO_ATTR_SCALE]                = php_pango_get_attr_scale_ce,
     [PANGO_ATTR_FALLBACK]             = php_pango_get_attr_fallback_ce,
     [PANGO_ATTR_LETTER_SPACING]       = php_pango_get_attr_letter_spacing_ce,

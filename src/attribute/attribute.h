@@ -61,6 +61,7 @@ PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_overline_ce(void);
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_overline_color_ce(void);
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_rise_ce(void);
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_scale_ce(void);
+PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_shape_ce(void);
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_show_ce(void);
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_size_ce(void);
 PHP_PANGO_API extern zend_class_entry *php_pango_get_attr_stretch_ce(void);
@@ -127,6 +128,7 @@ PHP_PANGO_API extern PangoAttrInt          *pango_attr_insert_hyphens_object_get
 PHP_PANGO_API extern PangoAttrInt          *pango_attr_letter_spacing_object_get_attr(zval *zv);
 PHP_PANGO_API extern PangoAttrInt          *pango_attr_overline_object_get_attr(zval *zv);
 PHP_PANGO_API extern PangoAttrInt          *pango_attr_rise_object_get_attr(zval *zv);
+PHP_PANGO_API extern PangoAttrShape        *pango_attr_shape_object_get_attr(zval *zv);
 PHP_PANGO_API extern PangoAttrInt          *pango_attr_show_object_get_attr(zval *zv);
 PHP_PANGO_API extern PangoAttrInt          *pango_attr_stretch_object_get_attr(zval *zv);
 PHP_PANGO_API extern PangoAttrInt          *pango_attr_strikethrough_object_get_attr(zval *zv);
@@ -178,6 +180,15 @@ extern pango_attr_iter_object *pango_attr_iter_fetch_object(zend_object *object)
 #define Z_PANGO_ATTR_ITER_P(zv) pango_attr_iter_fetch_object(Z_OBJ_P(zv))
 PHP_PANGO_API extern PangoAttrIterator *pango_attr_iter_object_get_attr_iter(zval *zv);
 PHP_PANGO_API extern PangoAttrList *pango_attr_iter_object_get_attr_list(zval *zv);
+
+typedef struct _pango_attr_shape_object {
+    PangoAttribute *attribute;
+    zval ink_rect_zv;
+    zval logical_rect_zv;
+    zend_object std;
+} pango_attr_shape_object;
+extern pango_attr_shape_object *pango_attr_shape_fetch_object(zend_object *object);
+#define Z_PANGO_ATTR_SHAPE_P(zv) pango_attr_shape_fetch_object(Z_OBJ_P(zv))
 
 extern void pango_attr_free_obj(zend_object *object);
 extern int pango_attr_object_compare(zval *op1, zval *op2);

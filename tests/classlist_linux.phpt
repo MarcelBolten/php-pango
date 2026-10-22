@@ -14,7 +14,7 @@ $ext = new ReflectionExtension('pango');
 var_dump($ext->getClassNames());
 ?>
 --EXPECT--
-array(107) {
+array(108) {
   [0]=>
   string(23) "Pango\MarkupParseResult"
   [1]=>
@@ -180,53 +180,55 @@ array(107) {
   [81]=>
   string(30) "Pango\Attribute\ScaleAttribute"
   [82]=>
-  string(29) "Pango\Attribute\ShowAttribute"
+  string(30) "Pango\Attribute\ShapeAttribute"
   [83]=>
-  string(29) "Pango\Attribute\SizeAttribute"
+  string(29) "Pango\Attribute\ShowAttribute"
   [84]=>
-  string(32) "Pango\Attribute\StretchAttribute"
+  string(29) "Pango\Attribute\SizeAttribute"
   [85]=>
-  string(43) "Pango\Attribute\StrikethroughColorAttribute"
+  string(32) "Pango\Attribute\StretchAttribute"
   [86]=>
-  string(38) "Pango\Attribute\StrikethroughAttribute"
+  string(43) "Pango\Attribute\StrikethroughColorAttribute"
   [87]=>
-  string(30) "Pango\Attribute\StyleAttribute"
+  string(38) "Pango\Attribute\StrikethroughAttribute"
   [88]=>
-  string(39) "Pango\Attribute\UnderlineColorAttribute"
+  string(30) "Pango\Attribute\StyleAttribute"
   [89]=>
-  string(34) "Pango\Attribute\UnderlineAttribute"
+  string(39) "Pango\Attribute\UnderlineColorAttribute"
   [90]=>
-  string(32) "Pango\Attribute\VariantAttribute"
+  string(34) "Pango\Attribute\UnderlineAttribute"
   [91]=>
-  string(31) "Pango\Attribute\WeightAttribute"
+  string(32) "Pango\Attribute\VariantAttribute"
   [92]=>
-  string(43) "Pango\Attribute\AbsoluteLineHeightAttribute"
+  string(31) "Pango\Attribute\WeightAttribute"
   [93]=>
-  string(38) "Pango\Attribute\BaselineShiftAttribute"
+  string(43) "Pango\Attribute\AbsoluteLineHeightAttribute"
   [94]=>
-  string(34) "Pango\Attribute\FontScaleAttribute"
+  string(38) "Pango\Attribute\BaselineShiftAttribute"
   [95]=>
-  string(35) "Pango\Attribute\LineHeightAttribute"
+  string(34) "Pango\Attribute\FontScaleAttribute"
   [96]=>
-  string(33) "Pango\Attribute\SentenceAttribute"
+  string(35) "Pango\Attribute\LineHeightAttribute"
   [97]=>
-  string(38) "Pango\Attribute\TextTransformAttribute"
+  string(33) "Pango\Attribute\SentenceAttribute"
   [98]=>
-  string(29) "Pango\Attribute\WordAttribute"
+  string(38) "Pango\Attribute\TextTransformAttribute"
   [99]=>
-  string(30) "Pango\Attribute\WidthAttribute"
+  string(29) "Pango\Attribute\WordAttribute"
   [100]=>
-  string(18) "PangoCairo\Context"
+  string(30) "Pango\Attribute\WidthAttribute"
   [101]=>
-  string(18) "PangoCairo\FontMap"
+  string(18) "PangoCairo\Context"
   [102]=>
-  string(21) "PangoCairo\LayoutLine"
+  string(18) "PangoCairo\FontMap"
   [103]=>
-  string(17) "PangoCairo\Layout"
+  string(21) "PangoCairo\LayoutLine"
   [104]=>
-  string(19) "Pango\FontSetSimple"
+  string(17) "PangoCairo\Layout"
   [105]=>
-  string(16) "Pango\Fc\FontMap"
+  string(19) "Pango\FontSetSimple"
   [106]=>
+  string(16) "Pango\Fc\FontMap"
+  [107]=>
   string(17) "Pango\Ft2\FontMap"
 }

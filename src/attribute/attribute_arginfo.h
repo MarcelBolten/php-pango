@@ -1,5 +1,5 @@
 /* This is a generated file, edit attribute.stub.php instead.
- * Stub hash: 2fb34bf110ebcff8d47e1a9098f6f7115d3a4507 */
+ * Stub hash: 7085c406e73adf847837c3910c0d49b9c819e608 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Attribute_Attribute_equalValue, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_OBJ_INFO(0, other, Pango\\Attribute\\Attribute, 0)
@@ -76,6 +76,13 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_StrikethroughAttribute___co
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Attribute_RiseAttribute___construct arginfo_class_Pango_Attribute_SizeAttribute___construct
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_ShapeAttribute___construct, 0, 0, 2)
+	ZEND_ARG_OBJ_INFO(0, inkRect, Pango\\Rectangle, 0)
+	ZEND_ARG_OBJ_INFO(0, logicalRect, Pango\\Rectangle, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, startIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_FROM_TEXT_BEGINNING")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, endIndex, IS_LONG, 0, "Pango\\Attribute\\Attribute::INDEX_TO_TEXT_END")
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Attribute_ScaleAttribute___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, value, IS_DOUBLE, 0)
@@ -185,6 +192,7 @@ ZEND_METHOD(Pango_Attribute_BackgroundAttribute, __construct);
 ZEND_METHOD(Pango_Attribute_UnderlineAttribute, __construct);
 ZEND_METHOD(Pango_Attribute_StrikethroughAttribute, __construct);
 ZEND_METHOD(Pango_Attribute_RiseAttribute, __construct);
+ZEND_METHOD(Pango_Attribute_ShapeAttribute, __construct);
 ZEND_METHOD(Pango_Attribute_ScaleAttribute, __construct);
 ZEND_METHOD(Pango_Attribute_FallbackAttribute, __construct);
 ZEND_METHOD(Pango_Attribute_LetterSpacingAttribute, __construct);
@@ -285,6 +293,11 @@ static const zend_function_entry class_Pango_Attribute_StrikethroughAttribute_me
 
 static const zend_function_entry class_Pango_Attribute_RiseAttribute_methods[] = {
 	ZEND_ME(Pango_Attribute_RiseAttribute, __construct, arginfo_class_Pango_Attribute_RiseAttribute___construct, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_Pango_Attribute_ShapeAttribute_methods[] = {
+	ZEND_ME(Pango_Attribute_ShapeAttribute, __construct, arginfo_class_Pango_Attribute_ShapeAttribute___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -750,6 +763,36 @@ static zend_class_entry *register_class_Pango_Attribute_RiseAttribute(zend_class
 	zval property_value_default_value;
 	ZVAL_UNDEF(&property_value_default_value);
 	zend_declare_typed_property(class_entry, ZSTR_KNOWN(ZEND_STR_VALUE), &property_value_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Pango_Attribute_ShapeAttribute(zend_class_entry *class_entry_Pango_Attribute_Attribute)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_NS_CLASS_ENTRY(ce, "Pango\\Attribute", "ShapeAttribute", class_Pango_Attribute_ShapeAttribute_methods);
+#if (PHP_VERSION_ID >= 80400)
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_Pango_Attribute_Attribute, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
+#else
+	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	class_entry = zend_register_internal_class_ex(&ce, class_entry_Pango_Attribute_Attribute);
+	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+#endif
+
+	zval property_inkRect_default_value;
+	ZVAL_UNDEF(&property_inkRect_default_value);
+	zend_string *property_inkRect_name = zend_string_init("inkRect", sizeof("inkRect") - 1, true);
+	zend_string *property_inkRect_class_Pango_Rectangle = zend_string_init("Pango\\Rectangle", sizeof("Pango\\Rectangle")-1, 1);
+	zend_declare_typed_property(class_entry, property_inkRect_name, &property_inkRect_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_inkRect_class_Pango_Rectangle, 0, 0));
+	zend_string_release_ex(property_inkRect_name, true);
+
+	zval property_logicalRect_default_value;
+	ZVAL_UNDEF(&property_logicalRect_default_value);
+	zend_string *property_logicalRect_name = zend_string_init("logicalRect", sizeof("logicalRect") - 1, true);
+	zend_string *property_logicalRect_class_Pango_Rectangle = zend_string_init("Pango\\Rectangle", sizeof("Pango\\Rectangle")-1, 1);
+	zend_declare_typed_property(class_entry, property_logicalRect_name, &property_logicalRect_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_logicalRect_class_Pango_Rectangle, 0, 0));
+	zend_string_release_ex(property_logicalRect_name, true);
 
 	return class_entry;
 }
