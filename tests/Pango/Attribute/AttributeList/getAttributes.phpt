@@ -5,6 +5,8 @@ pango
 --FILE--
 <?php
 use Pango\Attribute\AttributeList;
+use Pango\Attribute\ShapeAttribute;
+use Pango\Rectangle;
 
 $attributeList = new AttributeList();
 var_dump($attributeList);
@@ -63,8 +65,10 @@ $attributeList2 = new AttributeList(
     . "45 46 font-desc \"Sans Italic 12\","
     . "46 47 language en"
 );
+$rect = new Rectangle(0, 0, 100, 100);
+$shapeAttr = new ShapeAttribute($rect, $rect);
+$attributeList2->insert($shapeAttr);
 var_dump($attributeList2);
-// var_dump($attributeList2->getAttributes());
 var_dump(count($attributeList2->getAttributes()));
 
 try {
@@ -80,5 +84,5 @@ array(0) {
 }
 object(Pango\Attribute\AttributeList)#%d (0) {
 }
-int(47)
+int(48)
 Pango\Attribute\AttributeList::getAttributes() expects exactly 0 arguments, 1 given

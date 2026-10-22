@@ -5,6 +5,8 @@ pango
 --FILE--
 <?php
 use Pango\Attribute\AttributeList;
+use Pango\Attribute\ShapeAttribute;
+use Pango\Rectangle;
 
 $callback = function (Pango\Attribute\Attribute $attr): bool {
     return $attr instanceof Pango\Attribute\SizeAttribute;
@@ -29,8 +31,14 @@ var_dump($attributeList->getAttributes());
 // Should be NULL since there are no size attributes left in the original list.
 var_dump($emptyResult);
 
-var_dump((new AttributeList("10 20 size 42, language en, font-desc \"Sans 10\""))
-    ->filter($notSizeCallback)->toString());
+$rect = new Rectangle(0, 0, 100, 100);
+$shapeAttr = new ShapeAttribute($rect, $rect);
+
+echo (new AttributeList("10 20 size 42, language en, font-desc \"Sans 10\""))
+    ->insert($shapeAttr)
+    ->filter($notSizeCallback)
+    ->toString(),
+    "\n";
 
 // callback must return a boolean value
 try {
@@ -42,11 +50,13 @@ try {
 
 // throwing an exception in the callback will propagate the exception to the caller and leave the original list unchanged
 try {
-    $attributeList = new AttributeList("10 20 size 42, 10 20 weight bold");
+    $attributeList = new AttributeList("11 21 size 44, 11 21 weight light");
     $attributeList->filter(fn (Pango\Attribute\Attribute $attr): bool => throw new Exception("exception in callback"));
 } catch (Exception $e) {
-    var_dump($attributeList->toString());
     echo $e->getMessage(), "\n";
+} finally {
+    // The original list should remain unchanged after the exception.
+    echo $attributeList->toString(), "\n";
 }
 
 try {
@@ -104,12 +114,13 @@ array(1) {
   }
 }
 NULL
-string(57) "0 4294967295 language en
-0 4294967295 font-desc "Sans 10""
+0 4294967295 language en
+0 4294967295 font-desc "Sans 10"
+0 4294967295 shapeshape
 Pango\Attribute\AttributeList::filter(): Argument #1 ($callback) must return a boolean value
-string(31) "10 20 size 42
-10 20 weight bold"
 exception in callback
+11 21 size 44
+11 21 weight light
 Pango\Attribute\AttributeList::filter() expects exactly 1 argument, 0 given
 Pango\Attribute\AttributeList::filter() expects exactly 1 argument, 2 given
 Pango\Attribute\AttributeList::filter(): Argument #1 ($callback) must be a valid callback, no array or string given
