@@ -364,6 +364,18 @@ PHP_METHOD(Pango_Attribute_AttributeList, getIterator)
 }
 /* }}} */
 
+PangoAttribute* php_pango_get_attribute_from_zval(zval *attr_zv) {
+    if (instanceof_function(Z_OBJCE_P(attr_zv), php_pango_get_attr_language_ce())) {
+        return Z_PANGO_ATTR_LANGUAGE_P(attr_zv)->attribute;
+    } else if (instanceof_function(Z_OBJCE_P(attr_zv), php_pango_get_attr_shape_ce())) {
+        return Z_PANGO_ATTR_SHAPE_P(attr_zv)->attribute;
+    } else if (instanceof_function(Z_OBJCE_P(attr_zv), php_pango_get_attr_font_description_ce())) {
+        return Z_PANGO_ATTR_FONT_DESCRIPTION_P(attr_zv)->attribute;
+    } else {
+        return Z_PANGO_ATTRIBUTE_P(attr_zv)->attribute;
+    }
+}
+
 /* {{{  */
 PHP_METHOD(Pango_Attribute_AttributeList, insert)
 {
@@ -375,7 +387,7 @@ PHP_METHOD(Pango_Attribute_AttributeList, insert)
 
     pango_attr_list_insert(
         Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list,
-        pango_attribute_copy(Z_PANGO_ATTRIBUTE_P(attr_zv)->attribute)
+        pango_attribute_copy(php_pango_get_attribute_from_zval(attr_zv))
     );
 
     RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
@@ -393,7 +405,7 @@ PHP_METHOD(Pango_Attribute_AttributeList, insertBefore)
 
     pango_attr_list_insert_before(
         Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list,
-        pango_attribute_copy(Z_PANGO_ATTRIBUTE_P(attr_zv)->attribute)
+        pango_attribute_copy(php_pango_get_attribute_from_zval(attr_zv))
     );
 
     RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
