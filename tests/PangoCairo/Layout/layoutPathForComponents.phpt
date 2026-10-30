@@ -50,8 +50,8 @@ object(Cairo\Context)#%d (0) {
 }
 object(PangoCairo\Layout)#%d (0) {
 }
-PangoCairo\Layout::layoutPathForComponents(): Argument #1 ($component) must be between 0 and 62 but -1 given
-PangoCairo\Layout::layoutPathForComponents(): Argument #1 ($component) must be between 0 and 62 but 63 given
+PangoCairo\Layout::layoutPathForComponents(): Argument #1 ($component) must be between 0 and 63 but -1 given
+PangoCairo\Layout::layoutPathForComponents(): Argument #1 ($component) must be between 0 and 63 but 64 given
 PangoCairo\Layout::layoutPathForComponents() expects exactly 1 argument, 0 given
 PangoCairo\Layout::layoutPathForComponents() expects exactly 1 argument, 2 given
 PangoCairo\Layout::layoutPathForComponents(): Argument #1 ($component) must be of type int, array given
