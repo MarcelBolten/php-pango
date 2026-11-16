@@ -1,5 +1,5 @@
 /* This is a generated file, edit layout.stub.php instead.
- * Stub hash: bd162cee6ab02703930507b4a4986a0202ad602e */
+ * Stub hash: cf27131915e03c427cacab229180d05c4dabed3f */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Pango\\Context, 0)
@@ -8,7 +8,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getContext, 0, 0, Pango\\Context, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setText, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setText, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
@@ -27,49 +27,49 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getPixelExtents arginfo_class_Pango_Layout_getSize
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setWidth, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setWidth, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getHeight arginfo_class_Pango_Layout_getWidth
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setHeight, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setHeight, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setMarkup, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setMarkup, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, markup, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setMarkupWithAccel, 0, 2, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setMarkupWithAccel, 0, 2, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, markup, IS_STRING, 0)
 	ZEND_ARG_TYPE_INFO(0, accelMarker, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getAccelChar arginfo_class_Pango_Layout_getText
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setFontDescription, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getFontDescription, 0, 0, Pango\\FontDescription, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setAlignment, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAlignment, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, alignment, Pango\\Alignment, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getAlignment, 0, 0, Pango\\Alignment, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setJustify, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustify, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, justify, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustify, 0, 0, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setWrap, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setWrap, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, wrap, Pango\\WrapMode, 0)
 ZEND_END_ARG_INFO()
 
@@ -78,19 +78,19 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_isWrapped arginfo_class_Pango_Layout_getJustify
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setIndent, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setIndent, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, indent, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getIndent arginfo_class_Pango_Layout_getWidth
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setSpacing, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSpacing, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, spacing, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getSpacing arginfo_class_Pango_Layout_getWidth
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setEllipsize, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setEllipsize, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, mode, Pango\\EllipsizeMode, 0)
 ZEND_END_ARG_INFO()
 
@@ -124,7 +124,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getAutoDir arginfo_class_Pango_Layout_getJustify
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setAutoDir, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAutoDir, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, autoDir, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
@@ -138,7 +138,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getJustifyLastLine, 0, 0, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setJustifyLastLine, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setJustifyLastLine, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, justifyLastLine, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 #endif
@@ -146,7 +146,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_getLineSpacing, 0, 0, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setLineSpacing, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setLineSpacing, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, factor, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
@@ -154,7 +154,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Pango_Layout_getSingleParagraphMode arginfo_class_Pango_Layout_getJustify
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setSingleParagraphMode, 0, 1, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setSingleParagraphMode, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, setting, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
@@ -166,14 +166,14 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getAttributes, 0, 0, Pango\\Attribute\\AttributeList, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setAttributes, 0, 0, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setAttributes, 0, 0, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, attributes, Pango\\Attribute\\AttributeList, 1, "NULL")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_getTabStops, 0, 0, Pango\\TabStops, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Layout_setTabStops, 0, 0, Pango\\Layout, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Layout_setTabStops, 0, 0, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, tabStops, Pango\\TabStops, 1, "NULL")
 ZEND_END_ARG_INFO()
 
