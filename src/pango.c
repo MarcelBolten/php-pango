@@ -791,6 +791,7 @@ PHP_MSHUTDOWN_FUNCTION(pango)
     if (PANGO_IS_FC_FONT_MAP(font_map)) {
         pango_fc_font_map_shutdown((PangoFcFontMap *)font_map);
     }
+    g_object_unref(font_map);
 
     return SUCCESS;
 }
