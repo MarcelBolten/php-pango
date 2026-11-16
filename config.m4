@@ -169,6 +169,15 @@ if test "$PHP_PANGO" != "no"; then
     PANGOCAIRO_INCS="$CFLAGS `$PKG_CONFIG --cflags-only-I pangocairo`"
     PHP_EVAL_INCLINE([$PANGOCAIRO_INCS])
 
+    dnl GLib-based libraries must never be dlclose()d (GTypes, signals and
+    dnl worker threads keep pointers into the library), so mark the extension
+    dnl non-unloadable. Dependencies of a NODELETE object stay loaded too.
+    case $host_os in
+      linux*|freebsd*)
+        PANGO_SHARED_LIBADD="$PANGO_SHARED_LIBADD -Wl,-z,nodelete"
+        ;;
+    esac
+    
     AC_DEFINE([HAVE_PANGO], [1], [whether pango exists in the system])
   fi
 
