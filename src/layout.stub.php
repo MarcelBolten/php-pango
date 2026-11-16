@@ -58,7 +58,7 @@ class Layout
      */
     public function setText(
         string $text
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the text in the layout.
@@ -117,7 +117,7 @@ class Layout
      */
     public function setWidth(
         int $width
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the height of this Layout used for ellipsization.
@@ -133,7 +133,7 @@ class Layout
      */
     public function setHeight(
         int $height
-    ): Layout {}
+    ): static {}
 
     /**
      * Sets the layout text and attribute list from marked-up text.
@@ -147,7 +147,7 @@ class Layout
      */
     public function setMarkup(
         string $markup
-    ): Layout {}
+    ): static {}
 
     /**
      * Sets the layout text and attribute list from marked-up text with accelerator markers.
@@ -162,7 +162,7 @@ class Layout
     public function setMarkupWithAccel(
         string $markup,
         string $accelMarker
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the first character marked by the accelerator marker in setMarkupWithAccel().
@@ -178,7 +178,7 @@ class Layout
      */
     public function setFontDescription(
         ?FontDescription $desc
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the font description for this Layout, if any.
@@ -193,7 +193,7 @@ class Layout
      */
     public function setAlignment(
         Alignment $alignment
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the alignment for the layout: how partial lines are positioned within the horizontal space available.
@@ -205,7 +205,7 @@ class Layout
      */
     public function setJustify(
         bool $justify
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets whether each complete line should be stretched to fill the entire width of the layout.
@@ -220,7 +220,7 @@ class Layout
      */
     public function setWrap(
         WrapMode $wrap
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the wrap mode for the layout.
@@ -245,7 +245,7 @@ class Layout
      */
     public function setIndent(
         int $indent
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the paragraph indent width in Pango units.
@@ -259,7 +259,7 @@ class Layout
      */
     public function setSpacing(
         int $spacing
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the amount of spacing between the lines of the layout in Pango units.
@@ -271,7 +271,7 @@ class Layout
      */
     public function setEllipsize(
         EllipsizeMode $mode
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the type of ellipsization being performed for layout.
@@ -377,7 +377,7 @@ class Layout
      */
     public function setAutoDir(
         bool $autoDir
-    ): Layout {}
+    ): static {}
 
     /**
      * Returns the number of Unicode characters in the the text of layout.
@@ -407,7 +407,7 @@ class Layout
      */
     public function setJustifyLastLine(
         bool $justifyLastLine
-    ): Layout {}
+    ): static {}
 #endif
 
     /**
@@ -427,7 +427,7 @@ class Layout
      */
     public function setLineSpacing(
         float $factor
-    ): Layout {}
+    ): static {}
 
     /**
      * Counts the number of unknown glyphs.
@@ -449,7 +449,7 @@ class Layout
      */
     public function setSingleParagraphMode(
         bool $setting
-    ): Layout {}
+    ): static {}
 
     /**
      * Retrieves a List of logical attributes for each character in the layout.
@@ -503,7 +503,7 @@ class Layout
      */
     public function setAttributes(
         ?Attribute\AttributeList $attributes = NULL
-    ): Layout {}
+    ): static {}
 
     /**
      * Gets the current TabStops used by this layout.
@@ -519,7 +519,7 @@ class Layout
      */
     public function setTabStops(
         ?TabStops $tabStops = NULL
-    ): Layout {}
+    ): static {}
 
     /**
      * Returns an iterator to iterate over the visual extents of the layout.
