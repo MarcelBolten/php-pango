@@ -86,21 +86,21 @@ class Context
      */
     public function setBaseDir(
         Direction $direction
-    ): Context {}
+    ): static {}
 
     /**
      * Sets the gravity to be used to lay out the text
      */
     public function setBaseGravity(
         Gravity $gravity
-    ): Context {}
+    ): static {}
 
     /**
      * Set the default font description for the context.
      */
     public function setFontDescription(
         FontDescription $desc
-    ): Context {}
+    ): static {}
 
     // /**
     //  * Sets the font map to be searched when fonts are looked-up in this context.
@@ -114,14 +114,14 @@ class Context
      */
     public function setGravityHint(
         GravityHint $hint
-    ): Context {}
+    ): static {}
 
     /**
      * Sets the global language tag for the context.
      */
     public function setLanguage(
         null|Language $language
-    ): Context {}
+    ): static {}
 
     /**
      * Sets the transformation matrix that will be applied when rendering with this context.
@@ -130,7 +130,7 @@ class Context
      */
     public function setMatrix(
         null|Matrix $matrix
-    ): Context {}
+    ): static {}
 
     /**
      * Sets whether font rendering with this context should round glyph positions
@@ -138,7 +138,7 @@ class Context
      */
     public function setRoundGlyphPositions(
         bool $round
-    ): Context {}
+    ): static {}
 
     /**
      * Returns the current serial number of Context.

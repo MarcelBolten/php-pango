@@ -1,5 +1,5 @@
 /* This is a generated file, edit pango_cairo_context.stub.php instead.
- * Stub hash: a512eb92eb8881871611be928db4572b3769a355 */
+ * Stub hash: 6dc2d5faa1ec1135222df1236393678bd49a0eef */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_Context___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Cairo\\Context, 0)
@@ -11,14 +11,14 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Context_getFontOptions, 0, 0, Cairo\\FontOptions, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Context_setFontOptions, 0, 1, PangoCairo\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_Context_setFontOptions, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, options, Cairo\\FontOptions, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_Context_getResolution, 0, 0, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_Context_setResolution, 0, 1, PangoCairo\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_Context_setResolution, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, dpi, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 

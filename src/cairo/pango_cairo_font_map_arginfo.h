@@ -1,13 +1,13 @@
 /* This is a generated file, edit pango_cairo_font_map.stub.php instead.
- * Stub hash: f0114f191739d9233e91db84480c1afad6903fa2 */
+ * Stub hash: 2292544a268821d310ad60f29abee5243b535464 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_FontMap___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_FontMap_getDefault, 0, 0, PangoCairo\\FontMap, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_FontMap_getDefault, 0, 0, IS_STATIC, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_FontMap_newForFontType, 0, 1, PangoCairo\\FontMap, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_FontMap_newForFontType, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, type, Cairo\\FontType, 0)
 ZEND_END_ARG_INFO()
 
@@ -17,11 +17,11 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_FontMap_getResolution, 0, 0, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_FontMap_setDefault, 0, 1, PangoCairo\\FontMap, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_FontMap_setDefault, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, fontMap, PangoCairo\\FontMap, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_FontMap_setResolution, 0, 1, PangoCairo\\FontMap, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_FontMap_setResolution, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, factor, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 

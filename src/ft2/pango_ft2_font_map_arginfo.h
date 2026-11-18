@@ -1,10 +1,10 @@
 /* This is a generated file, edit pango_ft2_font_map.stub.php instead.
- * Stub hash: 7236b7bf88a07fafde27f37331ed1bf1083bc84a */
+ * Stub hash: cf17b2a6e46de49411b3e18fc78b6730d932aaae */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Ft2_FontMap___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Ft2_FontMap_setResolution, 0, 2, Pango\\Ft2\\FontMap, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Ft2_FontMap_setResolution, 0, 2, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, dpiX, IS_DOUBLE, 0)
 	ZEND_ARG_TYPE_INFO(0, dpiY, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()

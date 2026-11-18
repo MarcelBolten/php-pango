@@ -24,5 +24,8 @@ final class FontMap extends \Pango\Fc\FontMap
     /**
      * Sets the horizontal and vertical resolutions for the fontmap.
      */
-    public function setResolution(float $dpiX, float $dpiY): FontMap {}
+    public function setResolution(
+        float $dpiX, 
+        float $dpiY,
+    ): static {}
 }

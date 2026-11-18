@@ -1,5 +1,5 @@
 /* This is a generated file, edit context.stub.php instead.
- * Stub hash: f715064efdcfcc1749837d9c56f144f271dc39cd */
+ * Stub hash: 70c4b917db58a737851b5d11ec3b9aedb5072efa */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Context___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, fontmap, Pango\\FontMap, 1, "null")
@@ -48,31 +48,31 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_loadFontSet, 
 	ZEND_ARG_OBJ_INFO(0, language, Pango\\Language, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_setBaseDir, 0, 1, Pango\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setBaseDir, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, direction, Pango\\Direction, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_setBaseGravity, 0, 1, Pango\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setBaseGravity, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, gravity, Pango\\Gravity, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_setFontDescription, 0, 1, Pango\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setFontDescription, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, desc, Pango\\FontDescription, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_setGravityHint, 0, 1, Pango\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setGravityHint, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, hint, Pango\\GravityHint, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_setLanguage, 0, 1, Pango\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setLanguage, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, language, Pango\\Language, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_setMatrix, 0, 1, Pango\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setMatrix, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_OBJ_INFO(0, matrix, Pango\\Matrix, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_Context_setRoundGlyphPositions, 0, 1, Pango\\Context, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Context_setRoundGlyphPositions, 0, 1, IS_STATIC, 0)
 	ZEND_ARG_TYPE_INFO(0, round, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 

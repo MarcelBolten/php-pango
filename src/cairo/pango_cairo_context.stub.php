@@ -37,7 +37,7 @@ final class Context extends \Pango\Context
      */
     public function setFontOptions(
         null|\Cairo\FontOptions $options
-    ): Context {}
+    ): static {}
 
     /**
      * Gets the resolution for the context.
@@ -60,7 +60,7 @@ final class Context extends \Pango\Context
      */
     public function setResolution(
         float $dpi
-    ): Context {}
+    ): static {}
 
     /**
      * Updates this context to match the current transformation and target
