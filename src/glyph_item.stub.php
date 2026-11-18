@@ -10,12 +10,12 @@ namespace Pango;
 /**
  * GlyphItem is a pair of an Item and the glyphs resulting from shaping the
  * items text.
+ *
+ * @property-read GlyphString $glyphs
  */
-final readonly class GlyphItem
+readonly class GlyphItem
 {
     public Item $item;
-
-    public GlyphString $glyphs;
 
     /**
      * Shift of the baseline, relative to the baseline of the containing line.

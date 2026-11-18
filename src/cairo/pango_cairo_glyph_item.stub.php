@@ -10,12 +10,12 @@ namespace PangoCairo;
 /**
  * GlyphItem is a pair of an Item and the glyphs resulting from shaping the
  * items text.
+ *
+ * @property-read GlyphString $glyphs
  */
-final readonly class GlyphItem
+final readonly class GlyphItem extends \Pango\GlyphItem
 {
     public \Pango\Item $item;
-
-    public GlyphString $glyphs;
 
     /**
      * Shift of the baseline, relative to the baseline of the containing line.
@@ -48,5 +48,15 @@ final readonly class GlyphItem
      * Note that text is the start of the text for layout, which is then
      * indexed by glyph_item->item->offset.
      */
-    public function show(string $text): void {}
+    public function show(
+        string $text,
+    ): void {}
+
+    /**
+     * @return GlyphItem[] An array of resulting GlyphItem objects after
+     *                     applying the attributes.
+     */
+    public function applyAttributes(\Pango\Attribute\AttributeList $list): array {}
+
+    public function split(int $splitByteIndex): ?GlyphItem {}
 }

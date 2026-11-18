@@ -1,5 +1,5 @@
 /* This is a generated file, edit glyph_item.stub.php instead.
- * Stub hash: dc530cfee756673e696702804f5a52084d539650 */
+ * Stub hash: f587fdbb13806e2ae492dac240b50683538ae056 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_GlyphItem_getLogicalWidths, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
@@ -54,11 +54,11 @@ static zend_class_entry *register_class_Pango_GlyphItem(void)
 
 	INIT_NS_CLASS_ENTRY(ce, "Pango", "GlyphItem", class_Pango_GlyphItem_methods);
 #if (PHP_VERSION_ID >= 80400)
-	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_READONLY_CLASS);
 #else
-	ce.ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	ce.ce_flags |= ZEND_ACC_READONLY_CLASS;
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
-	class_entry->ce_flags |= ZEND_ACC_FINAL|ZEND_ACC_READONLY_CLASS;
+	class_entry->ce_flags |= ZEND_ACC_READONLY_CLASS;
 #endif
 
 	zval property_item_default_value;
@@ -67,13 +67,6 @@ static zend_class_entry *register_class_Pango_GlyphItem(void)
 	zend_string *property_item_class_Pango_Item = zend_string_init("Pango\\Item", sizeof("Pango\\Item")-1, 1);
 	zend_declare_typed_property(class_entry, property_item_name, &property_item_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_item_class_Pango_Item, 0, 0));
 	zend_string_release_ex(property_item_name, true);
-
-	zval property_glyphs_default_value;
-	ZVAL_UNDEF(&property_glyphs_default_value);
-	zend_string *property_glyphs_name = zend_string_init("glyphs", sizeof("glyphs") - 1, true);
-	zend_string *property_glyphs_class_Pango_GlyphString = zend_string_init("Pango\\GlyphString", sizeof("Pango\\GlyphString")-1, 1);
-	zend_declare_typed_property(class_entry, property_glyphs_name, &property_glyphs_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_glyphs_class_Pango_GlyphString, 0, 0));
-	zend_string_release_ex(property_glyphs_name, true);
 
 	zval property_yOffset_default_value;
 	ZVAL_UNDEF(&property_yOffset_default_value);
