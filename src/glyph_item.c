@@ -59,17 +59,17 @@ pango_glyph_item_iter_object *pango_glyph_item_iter_fetch_object(zend_object *ob
     ZVAL_LONG(&tmp, c_name); \
     zend_hash_str_update(props, #php_name, sizeof(#php_name)-1, &tmp);
 
-PHP_PANGO_API zend_class_entry* php_pango_get_glyph_item_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_glyph_item_ce(void)
 {
     return pango_ce_pango_glyph_item;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_glyph_item_iter_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_glyph_item_iter_ce(void)
 {
     return pango_ce_pango_glyph_item_iter;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_glyph_item_iter_init_loc_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_glyph_item_iter_init_loc_ce(void)
 {
     return pango_ce_pango_glyph_item_iter_init_loc;
 }
@@ -118,7 +118,7 @@ PHP_METHOD(Pango_GlyphItem, getLogicalWidths)
 PHP_METHOD(Pango_GlyphItem, applyAttributes)
 {
     zval *attr_list_zv;
-    GSList* glyph_items;
+    GSList *glyph_items;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_OBJECT_OF_CLASS(attr_list_zv, php_pango_get_attr_list_ce())
@@ -137,7 +137,10 @@ PHP_METHOD(Pango_GlyphItem, applyAttributes)
         zval glyph_item_zv;
         object_init_ex(&glyph_item_zv, php_pango_get_glyph_item_ce());
         Z_PANGO_GLYPH_ITEM_P(&glyph_item_zv)->glyph_item = (PangoGlyphItem *) list->data;
-        ZVAL_COPY(&Z_PANGO_GLYPH_ITEM_P(&glyph_item_zv)->layout_line_zv, &Z_PANGO_GLYPH_ITEM_P(ZEND_THIS)->layout_line_zv);
+        ZVAL_COPY(
+            &Z_PANGO_GLYPH_ITEM_P(&glyph_item_zv)->layout_line_zv,
+            &Z_PANGO_GLYPH_ITEM_P(ZEND_THIS)->layout_line_zv
+        );
         add_next_index_zval(return_value, &glyph_item_zv);
     }
     g_slist_free(glyph_items);
@@ -198,16 +201,25 @@ PHP_METHOD(Pango_GlyphItem, split)
 
     object_init_ex(return_value, php_pango_get_glyph_item_ce());
     Z_PANGO_GLYPH_ITEM_P(return_value)->glyph_item = new_glyph_item;
-    ZVAL_COPY(&Z_PANGO_GLYPH_ITEM_P(return_value)->layout_line_zv, &Z_PANGO_GLYPH_ITEM_P(ZEND_THIS)->layout_line_zv);
+    ZVAL_COPY(
+        &Z_PANGO_GLYPH_ITEM_P(return_value)->layout_line_zv,
+        &Z_PANGO_GLYPH_ITEM_P(ZEND_THIS)->layout_line_zv
+    );
 }
 /* }}} */
 
 /* {{{ */
 PHP_METHOD(Pango_GlyphItem, getGlyphItemIterator)
 {
-    zend_object *init_location = zend_enum_get_case_cstr(php_pango_get_glyph_item_iter_init_loc_ce(), "Beginning");
+    zend_object *init_location = zend_enum_get_case_cstr(
+        php_pango_get_glyph_item_iter_init_loc_ce(),
+        "Beginning"
+    );
     const char *text;
-    zend_object *init_loc_end = zend_enum_get_case_cstr(php_pango_get_glyph_item_iter_init_loc_ce(), "End");
+    zend_object *init_loc_end = zend_enum_get_case_cstr(
+        php_pango_get_glyph_item_iter_init_loc_ce(),
+        "End"
+    );
     gboolean (*init_iterator)(PangoGlyphItemIter *, PangoGlyphItem *, const char *);
     gboolean initialized;
     PangoGlyphItemIter *glyph_item_iter;
@@ -254,7 +266,9 @@ PHP_METHOD(Pango_GlyphItemIterator, next)
 {
     ZEND_PARSE_PARAMETERS_NONE();
 
-    RETURN_BOOL(pango_glyph_item_iter_next_cluster(Z_PANGO_GLYPH_ITEM_ITER_P(ZEND_THIS)->glyph_item_iter));
+    RETURN_BOOL(pango_glyph_item_iter_next_cluster(
+        Z_PANGO_GLYPH_ITEM_ITER_P(ZEND_THIS)->glyph_item_iter
+    ));
 }
 /* }}} */
 
@@ -263,7 +277,9 @@ PHP_METHOD(Pango_GlyphItemIterator, prev)
 {
     ZEND_PARSE_PARAMETERS_NONE();
 
-    RETURN_BOOL(pango_glyph_item_iter_prev_cluster(Z_PANGO_GLYPH_ITEM_ITER_P(ZEND_THIS)->glyph_item_iter));
+    RETURN_BOOL(pango_glyph_item_iter_prev_cluster(
+        Z_PANGO_GLYPH_ITEM_ITER_P(ZEND_THIS)->glyph_item_iter
+    ));
 }
 /* }}} */
 
@@ -292,7 +308,7 @@ static void pango_glyph_item_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_item_obj_ctor(zend_class_entry *ce, pango_glyph_item_object **intern)
+static zend_object *pango_glyph_item_obj_ctor(zend_class_entry *ce, pango_glyph_item_object **intern)
 {
     pango_glyph_item_object *object = ecalloc(1, sizeof(pango_glyph_item_object) + zend_object_properties_size(ce));
 
@@ -308,7 +324,7 @@ static zend_object* pango_glyph_item_obj_ctor(zend_class_entry *ce, pango_glyph_
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_item_create_object(zend_class_entry *ce)
+static zend_object *pango_glyph_item_create_object(zend_class_entry *ce)
 {
     pango_glyph_item_object *intern = NULL;
     zend_object *return_value = pango_glyph_item_obj_ctor(ce, &intern);
@@ -410,7 +426,7 @@ static void pango_glyph_item_iter_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_item_iter_obj_ctor(zend_class_entry *ce, pango_glyph_item_iter_object **intern)
+static zend_object *pango_glyph_item_iter_obj_ctor(zend_class_entry *ce, pango_glyph_item_iter_object **intern)
 {
     pango_glyph_item_iter_object *object = ecalloc(1, sizeof(pango_glyph_item_iter_object) + zend_object_properties_size(ce));
 
@@ -426,7 +442,7 @@ static zend_object* pango_glyph_item_iter_obj_ctor(zend_class_entry *ce, pango_g
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_item_iter_create_object(zend_class_entry *ce)
+static zend_object *pango_glyph_item_iter_create_object(zend_class_entry *ce)
 {
     pango_glyph_item_iter_object *intern = NULL;
     zend_object *return_value = pango_glyph_item_iter_obj_ctor(ce, &intern);

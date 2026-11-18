@@ -45,7 +45,7 @@ PHP_PANGO_API PangoAttribute *pango_attr_language_object_get_attribute(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_language_ce(void)
+zend_class_entry *php_pango_get_attr_language_ce(void)
 {
     return ce_pango_attr_language;
 }
@@ -110,7 +110,7 @@ static void pango_attr_language_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_language_obj_ctor(zend_class_entry *ce, pango_attr_language_object **intern)
+static zend_object *pango_attr_language_obj_ctor(zend_class_entry *ce, pango_attr_language_object **intern)
 {
     pango_attr_language_object *object = ecalloc(1, sizeof(pango_attr_language_object) + zend_object_properties_size(ce));
 
@@ -126,7 +126,7 @@ static zend_object* pango_attr_language_obj_ctor(zend_class_entry *ce, pango_att
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_language_create_object(zend_class_entry *ce)
+static zend_object *pango_attr_language_create_object(zend_class_entry *ce)
 {
     pango_attr_language_object *intern = NULL;
     zend_object *return_value = pango_attr_language_obj_ctor(ce, &intern);
@@ -137,7 +137,7 @@ static zend_object* pango_attr_language_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_language_clone_obj(zend_object *zobj)
+static zend_object *pango_attr_language_clone_obj(zend_object *zobj)
 {
     pango_attr_language_object *new_attr;
     pango_attr_language_object *old_attr = pango_attr_language_fetch_object(zobj);

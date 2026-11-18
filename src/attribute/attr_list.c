@@ -46,7 +46,7 @@ PHP_PANGO_API PangoAttrList *pango_attr_list_object_get_attr_list(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_list_ce(void)
+zend_class_entry *php_pango_get_attr_list_ce(void)
 {
     return ce_pango_attr_list;
 }
@@ -307,7 +307,7 @@ PHP_METHOD(Pango_Attribute_AttributeList, filter)
     php_pango_filter_ctx ctx;
     PangoAttrList *original;
     PangoAttrList *working;
-    PangoAttrList* filter_res = NULL;
+    PangoAttrList *filter_res = NULL;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_FUNC(fci, fci_cache)
@@ -364,7 +364,7 @@ PHP_METHOD(Pango_Attribute_AttributeList, getIterator)
 }
 /* }}} */
 
-PangoAttribute* php_pango_get_attribute_from_zval(zval *attr_zv) {
+PangoAttribute *php_pango_get_attribute_from_zval(zval *attr_zv) {
     if (instanceof_function(Z_OBJCE_P(attr_zv), php_pango_get_attr_language_ce())) {
         return Z_PANGO_ATTR_LANGUAGE_P(attr_zv)->attribute;
     } else if (instanceof_function(Z_OBJCE_P(attr_zv), php_pango_get_attr_shape_ce())) {
@@ -514,7 +514,7 @@ static void pango_attr_list_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_list_obj_ctor(zend_class_entry *ce, pango_attr_list_object **intern)
+static zend_object *pango_attr_list_obj_ctor(zend_class_entry *ce, pango_attr_list_object **intern)
 {
     pango_attr_list_object *object = ecalloc(1, sizeof(pango_attr_list_object) + zend_object_properties_size(ce));
 
@@ -528,7 +528,7 @@ static zend_object* pango_attr_list_obj_ctor(zend_class_entry *ce, pango_attr_li
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_list_create_object(zend_class_entry *ce)
+static zend_object *pango_attr_list_create_object(zend_class_entry *ce)
 {
     pango_attr_list_object *intern = NULL;
     zend_object *return_value = pango_attr_list_obj_ctor(ce, &intern);
@@ -539,7 +539,7 @@ static zend_object* pango_attr_list_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_list_clone_obj(zend_object *zobj)
+static zend_object *pango_attr_list_clone_obj(zend_object *zobj)
 {
     pango_attr_list_object *new_attr_list;
     pango_attr_list_object *old_attr_list = pango_attr_list_fetch_object(zobj);

@@ -52,7 +52,7 @@ PHP_PANGO_API PangoLogAttr *pango_logattr_list_object_get_logattr_arr(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_logattr_list_ce(void)
+zend_class_entry *php_pango_get_logattr_list_ce(void)
 {
     return ce_pango_logattr_list;
 }
@@ -345,7 +345,7 @@ static void pango_logattr_list_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_logattr_list_obj_ctor(zend_class_entry *ce, pango_logattr_list_object **intern)
+static zend_object *pango_logattr_list_obj_ctor(zend_class_entry *ce, pango_logattr_list_object **intern)
 {
     pango_logattr_list_object *object = ecalloc(1, sizeof(pango_logattr_list_object) + zend_object_properties_size(ce));
 
@@ -359,7 +359,7 @@ static zend_object* pango_logattr_list_obj_ctor(zend_class_entry *ce, pango_loga
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_logattr_list_create_object(zend_class_entry *ce)
+static zend_object *pango_logattr_list_create_object(zend_class_entry *ce)
 {
     pango_logattr_list_object *intern = NULL;
     zend_object *return_value = pango_logattr_list_obj_ctor(ce, &intern);
@@ -370,7 +370,7 @@ static zend_object* pango_logattr_list_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_logattr_list_clone_obj(zend_object *zobj)
+static zend_object *pango_logattr_list_clone_obj(zend_object *zobj)
 {
     pango_logattr_list_object *new_logattr_list;
     pango_logattr_list_object *old_logattr_list = pango_logattr_list_fetch_object(zobj);

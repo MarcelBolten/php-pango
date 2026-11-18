@@ -49,7 +49,7 @@ pango_item_object *pango_item_fetch_object(zend_object *object)
     ZVAL_LONG(&tmp, item_object->item->c_name); \
     zend_hash_str_update(props, #php_name, sizeof(#php_name)-1, &tmp);
 
-PHP_PANGO_API zend_class_entry* php_pango_get_item_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_item_ce(void)
 {
     return pango_ce_pango_item;
 }
@@ -145,7 +145,7 @@ static void pango_item_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_item_obj_ctor(zend_class_entry *ce, pango_item_object **intern)
+static zend_object *pango_item_obj_ctor(zend_class_entry *ce, pango_item_object **intern)
 {
     pango_item_object *object = ecalloc(1, sizeof(pango_item_object) + zend_object_properties_size(ce));
 
@@ -161,7 +161,7 @@ static zend_object* pango_item_obj_ctor(zend_class_entry *ce, pango_item_object 
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_item_create_object(zend_class_entry *ce)
+static zend_object *pango_item_create_object(zend_class_entry *ce)
 {
     pango_item_object *intern = NULL;
     zend_object *return_value = pango_item_obj_ctor(ce, &intern);
@@ -223,7 +223,7 @@ static HashTable *pango_item_get_properties_for(zend_object *object, zend_prop_p
 }
 
 /* {{{ */
-static zend_object* pango_item_clone_obj(zend_object *zobj)
+static zend_object *pango_item_clone_obj(zend_object *zobj)
 {
     pango_item_object *new_item;
     pango_item_object *old_item = pango_item_fetch_object(zobj);

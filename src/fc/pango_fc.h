@@ -28,9 +28,9 @@
 #include "../font_map.h"
 
 PHP_PANGO_API extern zend_class_entry *php_pango_fc_get_font_map_ce();
-// PHP_PANGO_API extern zend_class_entry* php_pango_fc_get_layout_ce();
-// PHP_PANGO_API extern zend_class_entry* php_pango_fc_get_layout_line_ce();
-// PHP_PANGO_API extern zend_class_entry* php_pango_fc_get_glyph_string_ce();
+// PHP_PANGO_API extern zend_class_entry *php_pango_fc_get_layout_ce();
+// PHP_PANGO_API extern zend_class_entry *php_pango_fc_get_layout_line_ce();
+// PHP_PANGO_API extern zend_class_entry *php_pango_fc_get_glyph_string_ce();
 
 extern pango_font_map_object *pango_fc_font_map_fetch_object(zend_object *object);
 #define Z_PANGO_FC_FONT_MAP_P(zv) pango_fc_font_map_fetch_object(Z_OBJ_P(zv))

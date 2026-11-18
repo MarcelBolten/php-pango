@@ -48,7 +48,7 @@ PHP_PANGO_API PangoColor *pango_color_object_get_color(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_color_ce(void)
+zend_class_entry *php_pango_get_color_ce(void)
 {
     return ce_pango_color;
 }
@@ -191,7 +191,7 @@ static void pango_color_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_color_obj_ctor(zend_class_entry *ce, pango_color_object **intern)
+static zend_object *pango_color_obj_ctor(zend_class_entry *ce, pango_color_object **intern)
 {
     pango_color_object *object = ecalloc(1, sizeof(pango_color_object) + zend_object_properties_size(ce));
     PANGO_ALLOC_COLOR(object->color);
@@ -206,7 +206,7 @@ static zend_object* pango_color_obj_ctor(zend_class_entry *ce, pango_color_objec
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_color_create_object(zend_class_entry *ce)
+static zend_object *pango_color_create_object(zend_class_entry *ce)
 {
     pango_color_object *intern = NULL;
     zend_object *return_value = pango_color_obj_ctor(ce, &intern);
@@ -217,7 +217,7 @@ static zend_object* pango_color_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_color_clone_obj(zend_object *zobj)
+static zend_object *pango_color_clone_obj(zend_object *zobj)
 {
     pango_color_object *new_color;
     pango_color_object *old_color = pango_color_fetch_object(zobj);

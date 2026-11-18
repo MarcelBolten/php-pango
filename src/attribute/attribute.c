@@ -52,39 +52,39 @@ PHP_PANGO_API PangoAttribute *pango_attribute_object_get_attribute(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attribute_ce(void)
+zend_class_entry *php_pango_get_attribute_ce(void)
 {
     return ce_pango_attribute;
 }
 
-zend_class_entry* php_pango_get_underline_ce(void)
+zend_class_entry *php_pango_get_underline_ce(void)
 {
     return ce_pango_underline;
 }
 
-zend_class_entry* php_pango_get_overline_ce(void)
+zend_class_entry *php_pango_get_overline_ce(void)
 {
     return ce_pango_overline;
 }
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
-zend_class_entry* php_pango_get_text_transform_ce(void)
+zend_class_entry *php_pango_get_text_transform_ce(void)
 {
     return ce_pango_text_transform;
 }
 
-zend_class_entry* php_pango_get_baseline_shift_ce(void)
+zend_class_entry *php_pango_get_baseline_shift_ce(void)
 {
     return ce_pango_baseline_shift;
 }
 
-zend_class_entry* php_pango_get_font_scale_ce(void)
+zend_class_entry *php_pango_get_font_scale_ce(void)
 {
     return ce_pango_font_scale;
 }
 #endif
 
-zend_class_entry* php_pango_get_attribute_type_ce(void)
+zend_class_entry *php_pango_get_attribute_type_ce(void)
 {
     return ce_pango_attribute_type;
 }
@@ -133,7 +133,7 @@ PHP_METHOD(Pango_Attribute_Attribute, equalValue)
 /* }}} */
 
 /* {{{ */
-// static zend_object* pango_attribute_obj_ctor(zend_class_entry *ce, pango_attribute_object **intern)
+// static zend_object *pango_attribute_obj_ctor(zend_class_entry *ce, pango_attribute_object **intern)
 // {
 //     pango_attribute_object *object = ecalloc(1, sizeof(pango_attribute_object) + zend_object_properties_size(ce));
 
@@ -147,7 +147,7 @@ PHP_METHOD(Pango_Attribute_Attribute, equalValue)
 /* }}} */
 
 /* {{{ */
-// static zend_object* pango_attribute_create_object(zend_class_entry *ce)
+// static zend_object *pango_attribute_create_object(zend_class_entry *ce)
 // {
 //     pango_attribute_object *intern = NULL;
 //     zend_object *return_value = pango_attribute_obj_ctor(ce, &intern);
@@ -158,7 +158,7 @@ PHP_METHOD(Pango_Attribute_Attribute, equalValue)
 /* }}} */
 
 // /* {{{ */
-// static zend_object* pango_attribute_clone_obj(zend_object *zobj)
+// static zend_object *pango_attribute_clone_obj(zend_object *zobj)
 // {
 //     pango_attribute_object *new_attribute;
 //     pango_attribute_object *old_attribute = pango_attribute_fetch_object(zobj);

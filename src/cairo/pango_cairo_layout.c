@@ -35,7 +35,7 @@
 
 zend_class_entry *pango_ce_pango_cairo_layout;
 
-PHP_PANGO_API zend_class_entry* php_pango_cairo_get_layout_ce() {
+PHP_PANGO_API zend_class_entry *php_pango_cairo_get_layout_ce() {
     return pango_ce_pango_cairo_layout;
 }
 
@@ -306,7 +306,7 @@ static void pango_cairo_layout_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_cairo_layout_obj_ctor(zend_class_entry *ce, pango_layout_object **intern)
+static zend_object *pango_cairo_layout_obj_ctor(zend_class_entry *ce, pango_layout_object **intern)
 {
     pango_layout_object *object = ecalloc(1, sizeof(pango_layout_object) + zend_object_properties_size(ce));
 
@@ -323,7 +323,7 @@ static zend_object* pango_cairo_layout_obj_ctor(zend_class_entry *ce, pango_layo
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_cairo_layout_create_object(zend_class_entry *ce)
+static zend_object *pango_cairo_layout_create_object(zend_class_entry *ce)
 {
     pango_layout_object *intern = NULL;
     zend_object *return_value = pango_cairo_layout_obj_ctor(ce, &intern);

@@ -49,7 +49,7 @@ PangoGlyphGeometry *pango_glyph_geometry_object_get_glyph_geometry(zval *zv)
     ZVAL_LONG(&tmp, glyph_geometry_object->glyph_geometry->c_name); \
     zend_hash_str_update(props, #php_name, sizeof(#php_name)-1, &tmp);
 
-PHP_PANGO_API zend_class_entry* php_pango_get_glyph_geometry_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_glyph_geometry_ce(void)
 {
     return pango_ce_pango_glyph_geometry;
 }
@@ -78,7 +78,7 @@ static void pango_glyph_geometry_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_geometry_obj_ctor(zend_class_entry *ce, pango_glyph_geometry_object **intern)
+static zend_object *pango_glyph_geometry_obj_ctor(zend_class_entry *ce, pango_glyph_geometry_object **intern)
 {
     pango_glyph_geometry_object *object = ecalloc(1, sizeof(pango_glyph_geometry_object) + zend_object_properties_size(ce));
 
@@ -94,7 +94,7 @@ static zend_object* pango_glyph_geometry_obj_ctor(zend_class_entry *ce, pango_gl
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_geometry_create_object(zend_class_entry *ce)
+static zend_object *pango_glyph_geometry_create_object(zend_class_entry *ce)
 {
     pango_glyph_geometry_object *intern = NULL;
     zend_object *return_value = pango_glyph_geometry_obj_ctor(ce, &intern);

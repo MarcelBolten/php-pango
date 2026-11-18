@@ -34,7 +34,7 @@ zend_class_entry *pango_ce_pango_layout_iter;
 
 static zend_object_handlers pango_layout_iter_object_handlers;
 
-PHP_PANGO_API zend_class_entry* php_pango_get_layout_iter_ce(void) {
+PHP_PANGO_API zend_class_entry *php_pango_get_layout_iter_ce(void) {
     return pango_ce_pango_layout_iter;
 }
 
@@ -287,7 +287,7 @@ static void pango_layout_iter_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_layout_iter_obj_ctor(zend_class_entry *ce, pango_layout_iter_object **intern)
+static zend_object *pango_layout_iter_obj_ctor(zend_class_entry *ce, pango_layout_iter_object **intern)
 {
     pango_layout_iter_object *object = ecalloc(1, sizeof(pango_layout_iter_object) + zend_object_properties_size(ce));
 
@@ -303,7 +303,7 @@ static zend_object* pango_layout_iter_obj_ctor(zend_class_entry *ce, pango_layou
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_layout_iter_create_object(zend_class_entry *ce)
+static zend_object *pango_layout_iter_create_object(zend_class_entry *ce)
 {
     pango_layout_iter_object *intern = NULL;
     zend_object *return_value = pango_layout_iter_obj_ctor(ce, &intern);
@@ -314,7 +314,7 @@ static zend_object* pango_layout_iter_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_layout_iter_clone_obj(zend_object *zobj)
+static zend_object *pango_layout_iter_clone_obj(zend_object *zobj)
 {
     pango_layout_iter_object *new_layout_iter;
     pango_layout_iter_object *layout_iter = pango_layout_iter_fetch_object(zobj);

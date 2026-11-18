@@ -36,7 +36,7 @@ zend_class_entry *pango_ce_pango_attr_iter;
 
 static zend_object_handlers pango_attr_iter_object_handlers;
 
-PHP_PANGO_API zend_class_entry* php_pango_get_attr_iter_ce(void) {
+PHP_PANGO_API zend_class_entry *php_pango_get_attr_iter_ce(void) {
     return pango_ce_pango_attr_iter;
 }
 
@@ -66,7 +66,7 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, __construct)
 PHP_METHOD(Pango_Attribute_AttributeIterator, get)
 {
     zend_object *attr_type_case;
-    PangoAttribute* attr = NULL;
+    PangoAttribute *attr = NULL;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_OBJ_OF_CLASS(attr_type_case, php_pango_get_attribute_type_ce())
@@ -216,9 +216,9 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getAttributes)
 /* {{{ */
 PHP_METHOD(Pango_Attribute_AttributeIterator, getFont)
 {
-    PangoFontDescription* font_desc;
-    PangoLanguage* language;
-    GSList* extra_attrs;
+    PangoFontDescription *font_desc;
+    PangoLanguage *language;
+    GSList *extra_attrs;
     zval tmp;
 
     ZEND_PARSE_PARAMETERS_NONE();
@@ -352,7 +352,7 @@ static void pango_attr_iter_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_iter_obj_ctor(zend_class_entry *ce, pango_attr_iter_object **intern)
+static zend_object *pango_attr_iter_obj_ctor(zend_class_entry *ce, pango_attr_iter_object **intern)
 {
     pango_attr_iter_object *object = ecalloc(1, sizeof(pango_attr_iter_object) + zend_object_properties_size(ce));
 
@@ -366,7 +366,7 @@ static zend_object* pango_attr_iter_obj_ctor(zend_class_entry *ce, pango_attr_it
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_iter_create_object(zend_class_entry *ce)
+static zend_object *pango_attr_iter_create_object(zend_class_entry *ce)
 {
     pango_attr_iter_object *intern = NULL;
     zend_object *return_value = pango_attr_iter_obj_ctor(ce, &intern);
@@ -377,7 +377,7 @@ static zend_object* pango_attr_iter_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_iter_clone_obj(zend_object *zobj)
+static zend_object *pango_attr_iter_clone_obj(zend_object *zobj)
 {
     pango_attr_iter_object *new_attr_iter;
     pango_attr_iter_object *attr_iter = pango_attr_iter_fetch_object(zobj);

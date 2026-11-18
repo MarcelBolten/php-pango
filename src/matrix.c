@@ -71,7 +71,7 @@ PHP_PANGO_API PangoMatrix *pango_matrix_object_get_matrix(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_matrix_ce(void)
+zend_class_entry *php_pango_get_matrix_ce(void)
 {
     return ce_pango_matrix;
 }
@@ -345,7 +345,7 @@ static void pango_matrix_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_matrix_obj_ctor(zend_class_entry *ce, pango_matrix_object **intern)
+static zend_object *pango_matrix_obj_ctor(zend_class_entry *ce, pango_matrix_object **intern)
 {
     pango_matrix_object *object = ecalloc(1, sizeof(pango_matrix_object) + zend_object_properties_size(ce));
     PANGO_ALLOC_MATRIX(object->matrix);
@@ -361,7 +361,7 @@ static zend_object* pango_matrix_obj_ctor(zend_class_entry *ce, pango_matrix_obj
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_matrix_create_object(zend_class_entry *ce)
+static zend_object *pango_matrix_create_object(zend_class_entry *ce)
 {
     pango_matrix_object *intern = NULL;
     zend_object *return_value = pango_matrix_obj_ctor(ce, &intern);
@@ -372,7 +372,7 @@ static zend_object* pango_matrix_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_matrix_clone_obj(zend_object *zobj)
+static zend_object *pango_matrix_clone_obj(zend_object *zobj)
 {
     pango_matrix_object *new_matrix;
     pango_matrix_object *old_matrix = pango_matrix_fetch_object(zobj);

@@ -37,12 +37,12 @@ pango_font_map_object *pango_fc_font_map_fetch_object(zend_object *object)
     return (pango_font_map_object *) ((char*)(object) - offsetof(pango_font_map_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_fc_get_font_map_ce()
+PHP_PANGO_API zend_class_entry *php_pango_fc_get_font_map_ce()
 {
     return pango_ce_pango_fc_font_map;
 }
 
-PHP_PANGO_API PangoFontMap* pango_fc_font_map_object_get_font_map(zval *zv)
+PHP_PANGO_API PangoFontMap *pango_fc_font_map_object_get_font_map(zval *zv)
 {
     return Z_PANGO_FC_FONT_MAP_P(zv)->font_map;
 }
@@ -113,7 +113,7 @@ PHP_METHOD(Pango_Fc_FontMap, substituteChanged)
 // /* }}} */
 
 // /* {{{ */
-// static zend_object* pango_fc_font_map_obj_ctor(zend_class_entry *ce, pango_font_map_object **intern)
+// static zend_object *pango_fc_font_map_obj_ctor(zend_class_entry *ce, pango_font_map_object **intern)
 // {
 //     pango_font_map_object *object = ecalloc(1, sizeof(pango_font_map_object) + zend_object_properties_size(ce));
 
@@ -127,7 +127,7 @@ PHP_METHOD(Pango_Fc_FontMap, substituteChanged)
 // /* }}} */
 
 // /* {{{ */
-// static zend_object* pango_fc_font_map_create_object(zend_class_entry *ce)
+// static zend_object *pango_fc_font_map_create_object(zend_class_entry *ce)
 // {
 //     pango_font_map_object *intern = NULL;
 //     zend_object *return_value = pango_fc_font_map_obj_ctor(ce, &intern);

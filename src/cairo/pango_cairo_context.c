@@ -32,7 +32,7 @@
 
 zend_class_entry *pango_ce_pango_cairo_context;
 
-PHP_PANGO_API zend_class_entry* php_pango_cairo_get_context_ce() {
+PHP_PANGO_API zend_class_entry *php_pango_cairo_get_context_ce() {
     return pango_ce_pango_cairo_context;
 }
 
@@ -84,7 +84,7 @@ PHP_METHOD(PangoCairo_Context, getCairoContext)
 PHP_METHOD(PangoCairo_Context, getFontOptions)
 {
     pango_context_object *context_object;
-    const cairo_font_options_t* font_options;
+    const cairo_font_options_t *font_options;
     cairo_font_options_object *font_options_object;
 
     ZEND_PARSE_PARAMETERS_NONE();
@@ -201,7 +201,7 @@ static void pango_context_free_obj(zend_object *zobj)
 }
 
 /* {{{ */
-static zend_object* pango_context_obj_ctor(zend_class_entry *ce, pango_context_object **intern)
+static zend_object *pango_context_obj_ctor(zend_class_entry *ce, pango_context_object **intern)
 {
     pango_context_object *object = ecalloc(1, sizeof(pango_context_object) + zend_object_properties_size(ce));
 
@@ -222,7 +222,7 @@ static zend_object* pango_context_obj_ctor(zend_class_entry *ce, pango_context_o
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_context_create_object(zend_class_entry *ce)
+static zend_object *pango_context_create_object(zend_class_entry *ce)
 {
     pango_context_object *intern = NULL;
     zend_object *return_value = pango_context_obj_ctor(ce, &intern);

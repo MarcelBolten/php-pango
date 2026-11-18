@@ -145,7 +145,7 @@ ZEND_FUNCTION(Pango_parse_markup)
     gunichar first_accel_codepoint = 0;
     char first_accel_char[6]; // Max UTF-8 char is 6 bytes
     int first_accel_char_len;
-    PangoAttrList* attr_list;
+    PangoAttrList *attr_list;
     GError *error = NULL;
     gboolean parse_result;
 

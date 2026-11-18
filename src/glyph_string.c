@@ -40,7 +40,7 @@ pango_glyph_string_object *pango_glyph_string_fetch_object(zend_object *object)
     return (pango_glyph_string_object *) ((char*)(object) - offsetof(pango_glyph_string_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_glyph_string_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_glyph_string_ce(void)
 {
     return pango_ce_pango_glyph_string;
 }
@@ -84,7 +84,7 @@ PHP_METHOD(Pango_GlyphString, getExtentsRange)
 {
     zend_long start, end;
     zval *font_zv;
-    PangoGlyphString* glyph_string;
+    PangoGlyphString *glyph_string;
     int num_glyphs;
     PangoRectangle ink_rect, logical_rect;
     zval rectangle_zv;
@@ -208,7 +208,7 @@ static void pango_glyph_string_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_string_obj_ctor(zend_class_entry *ce, pango_glyph_string_object **intern)
+static zend_object *pango_glyph_string_obj_ctor(zend_class_entry *ce, pango_glyph_string_object **intern)
 {
     pango_glyph_string_object *object = ecalloc(1, sizeof(pango_glyph_string_object) + zend_object_properties_size(ce));
 
@@ -224,7 +224,7 @@ static zend_object* pango_glyph_string_obj_ctor(zend_class_entry *ce, pango_glyp
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_string_create_object(zend_class_entry *ce)
+static zend_object *pango_glyph_string_create_object(zend_class_entry *ce)
 {
     pango_glyph_string_object *intern = NULL;
     zend_object *return_value = pango_glyph_string_obj_ctor(ce, &intern);

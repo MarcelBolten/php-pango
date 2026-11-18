@@ -38,7 +38,7 @@ pango_glyph_string_object *pango_cairo_glyph_string_fetch_object(zend_object *ob
     return (pango_glyph_string_object *) ((char*)(object) - offsetof(pango_glyph_string_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_cairo_get_glyph_string_ce()
+PHP_PANGO_API zend_class_entry *php_pango_cairo_get_glyph_string_ce()
 {
     return pango_ce_pango_cairo_glyph_string;
 }
@@ -81,7 +81,7 @@ PHP_METHOD(PangoCairo_GlyphString, show)
 // /* }}} */
 
 // /* {{{ */
-// static zend_object* pango_glyph_string_obj_ctor(zend_class_entry *ce, pango_glyph_string_object **intern)
+// static zend_object *pango_glyph_string_obj_ctor(zend_class_entry *ce, pango_glyph_string_object **intern)
 // {
 //     pango_glyph_string_object *object = ecalloc(1, sizeof(pango_glyph_string_object) + zend_object_properties_size(ce));
 
@@ -97,7 +97,7 @@ PHP_METHOD(PangoCairo_GlyphString, show)
 // /* }}} */
 
 // /* {{{ */
-// static zend_object* pango_glyph_string_create_object(zend_class_entry *ce)
+// static zend_object *pango_glyph_string_create_object(zend_class_entry *ce)
 // {
 //     pango_glyph_string_object *intern = NULL;
 //     zend_object *return_value = pango_glyph_string_obj_ctor(ce, &intern);

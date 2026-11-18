@@ -44,7 +44,7 @@ PHP_PANGO_API PangoAttribute *pango_attr_shape_object_get_attribute(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_shape_ce(void)
+zend_class_entry *php_pango_get_attr_shape_ce(void)
 {
     return ce_pango_attr_shape;
 }
@@ -115,7 +115,7 @@ static void pango_attr_shape_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_shape_obj_ctor(zend_class_entry *ce, pango_attr_shape_object **intern)
+static zend_object *pango_attr_shape_obj_ctor(zend_class_entry *ce, pango_attr_shape_object **intern)
 {
     pango_attr_shape_object *object = ecalloc(1, sizeof(pango_attr_shape_object) + zend_object_properties_size(ce));
 
@@ -132,7 +132,7 @@ static zend_object* pango_attr_shape_obj_ctor(zend_class_entry *ce, pango_attr_s
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_shape_create_object(zend_class_entry *ce)
+static zend_object *pango_attr_shape_create_object(zend_class_entry *ce)
 {
     pango_attr_shape_object *intern = NULL;
     zend_object *return_value = pango_attr_shape_obj_ctor(ce, &intern);
@@ -143,7 +143,7 @@ static zend_object* pango_attr_shape_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_shape_clone_obj(zend_object *zobj)
+static zend_object *pango_attr_shape_clone_obj(zend_object *zobj)
 {
     pango_attr_shape_object *new_attr;
     pango_attr_shape_object *old_attr = pango_attr_shape_fetch_object(zobj);

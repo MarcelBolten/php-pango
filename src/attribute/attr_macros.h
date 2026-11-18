@@ -25,7 +25,7 @@
     return (PangoAttr ## type *) attr_object->attribute;
 
 #define PANGO_ATTR_OBJ_CTOR(name) \
-static zend_object* pango_attr_ ## name ## _obj_ctor(zend_class_entry *ce, pango_attribute_object **intern) \
+static zend_object *pango_attr_ ## name ## _obj_ctor(zend_class_entry *ce, pango_attribute_object **intern) \
 { \
     pango_attribute_object *object = ecalloc(1, sizeof(pango_attribute_object) + zend_object_properties_size(ce)); \
     zend_object_std_init(&object->std, ce); \
@@ -37,7 +37,7 @@ static zend_object* pango_attr_ ## name ## _obj_ctor(zend_class_entry *ce, pango
 }
 
 #define PANGO_ATTR_CREATE_OBJECT(name) \
-static zend_object* pango_attr_ ## name ## _create_object(zend_class_entry *ce) \
+static zend_object *pango_attr_ ## name ## _create_object(zend_class_entry *ce) \
 { \
     pango_attribute_object *intern = NULL; \
     zend_object *return_value = pango_attr_ ## name ## _obj_ctor(ce, &intern); \
@@ -47,7 +47,7 @@ static zend_object* pango_attr_ ## name ## _create_object(zend_class_entry *ce) 
 }
 
 #define PANGO_ATTR_CLONE_OBJECT(name) \
-static zend_object* pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
+static zend_object *pango_attr_ ## name ## _clone_obj(zend_object *zobj) \
 { \
     pango_attribute_object *new_attr; \
     pango_attribute_object *old_attr = pango_attribute_fetch_object(zobj); \

@@ -36,12 +36,12 @@ zend_class_entry *pango_ce_pango_script_iter;
 
 static zend_object_handlers pango_script_iter_object_handlers;
 
-PHP_PANGO_API extern zend_class_entry* php_pango_get_script_iter_ce(void)
+PHP_PANGO_API extern zend_class_entry *php_pango_get_script_iter_ce(void)
 {
     return pango_ce_pango_script_iter;
 }
 
-PHP_PANGO_API extern zend_class_entry* php_pango_get_script_ce(void)
+PHP_PANGO_API extern zend_class_entry *php_pango_get_script_ce(void)
 {
     return pango_ce_pango_script;
 }
@@ -240,7 +240,7 @@ static void pango_script_iter_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_script_iter_obj_ctor(zend_class_entry *ce, pango_script_iter_object **intern)
+static zend_object *pango_script_iter_obj_ctor(zend_class_entry *ce, pango_script_iter_object **intern)
 {
     pango_script_iter_object *object = ecalloc(1, sizeof(pango_script_iter_object) + zend_object_properties_size(ce));
 
@@ -254,7 +254,7 @@ static zend_object* pango_script_iter_obj_ctor(zend_class_entry *ce, pango_scrip
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_script_iter_create_object(zend_class_entry *ce)
+static zend_object *pango_script_iter_create_object(zend_class_entry *ce)
 {
     pango_script_iter_object *intern = NULL;
     zend_object *return_value = pango_script_iter_obj_ctor(ce, &intern);

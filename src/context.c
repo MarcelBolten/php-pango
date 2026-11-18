@@ -43,19 +43,19 @@ zend_class_entry *pango_ce_pango_direction;
 zend_class_entry *pango_ce_pango_gravity;
 zend_class_entry *pango_ce_pango_gravity_hint;
 
-PHP_PANGO_API zend_class_entry* php_pango_get_context_ce(void) {
+PHP_PANGO_API zend_class_entry *php_pango_get_context_ce(void) {
     return pango_ce_pango_context;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_direction_ce(void) {
+PHP_PANGO_API zend_class_entry *php_pango_get_direction_ce(void) {
     return pango_ce_pango_direction;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_gravity_ce(void) {
+PHP_PANGO_API zend_class_entry *php_pango_get_gravity_ce(void) {
     return pango_ce_pango_gravity;
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_gravity_hint_ce(void) {
+PHP_PANGO_API zend_class_entry *php_pango_get_gravity_hint_ce(void) {
     return pango_ce_pango_gravity_hint;
 }
 
@@ -435,8 +435,8 @@ PHP_METHOD(Pango_Context, getMetrics)
 {
     zval *font_desc_zv = NULL;
     zval *language_zv = NULL;
-    PangoFontDescription* desc = NULL;
-    PangoLanguage* language = NULL;
+    PangoFontDescription *desc = NULL;
+    PangoLanguage *language = NULL;
     pango_font_metrics_object *metrics_obj;
 
     ZEND_PARSE_PARAMETERS_START(0, 2)
@@ -467,7 +467,7 @@ PHP_METHOD(Pango_Context, loadFont)
 {
     PangoContext *context;
     zval *font_desc_zv;
-    PangoFontDescription* desc;
+    PangoFontDescription *desc;
     pango_font_object *font_obj;
     PangoFont *font;
 
@@ -497,9 +497,9 @@ PHP_METHOD(Pango_Context, loadFontSet)
 {
     PangoContext *context;
     zval *font_desc_zv;
-    PangoFontDescription* desc;
+    PangoFontDescription *desc;
     zval *language_zv;
-    PangoLanguage* language;
+    PangoLanguage *language;
     pango_font_set_object *font_set_obj;
     PangoFontset *font_set = NULL;
 
@@ -674,7 +674,7 @@ static void pango_context_free_obj(zend_object *zobj)
 }
 
 /* {{{ */
-static zend_object* pango_context_obj_ctor(zend_class_entry *ce, pango_context_object **intern)
+static zend_object *pango_context_obj_ctor(zend_class_entry *ce, pango_context_object **intern)
 {
     pango_context_object *object = ecalloc(1, sizeof(pango_context_object) + zend_object_properties_size(ce));
 
@@ -695,7 +695,7 @@ static zend_object* pango_context_obj_ctor(zend_class_entry *ce, pango_context_o
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_context_create_object(zend_class_entry *ce)
+static zend_object *pango_context_create_object(zend_class_entry *ce)
 {
     pango_context_object *intern = NULL;
     zend_object *return_value = pango_context_obj_ctor(ce, &intern);

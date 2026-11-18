@@ -36,12 +36,12 @@ pango_font_family_object *pango_font_family_fetch_object(zend_object *object)
     return (pango_font_family_object *) ((char*)(object) - offsetof(pango_font_family_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_font_family_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_font_family_ce(void)
 {
     return pango_ce_pango_font_family;
 }
 
-PHP_PANGO_API PangoFontFamily* pango_font_family_object_get_font_family(zval *zv)
+PHP_PANGO_API PangoFontFamily *pango_font_family_object_get_font_family(zval *zv)
 {
     pango_font_family_object *obj = Z_PANGO_FONT_FAMILY_P(zv);
     return obj->font_family;
@@ -166,7 +166,7 @@ static void pango_font_family_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_font_family_obj_ctor(zend_class_entry *ce, pango_font_family_object **intern)
+static zend_object *pango_font_family_obj_ctor(zend_class_entry *ce, pango_font_family_object **intern)
 {
     pango_font_family_object *object = ecalloc(1, sizeof(pango_font_family_object) + zend_object_properties_size(ce));
 
@@ -180,7 +180,7 @@ static zend_object* pango_font_family_obj_ctor(zend_class_entry *ce, pango_font_
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_font_family_create_object(zend_class_entry *ce)
+static zend_object *pango_font_family_create_object(zend_class_entry *ce)
 {
     pango_font_family_object *intern = NULL;
     zend_object *return_value = pango_font_family_obj_ctor(ce, &intern);

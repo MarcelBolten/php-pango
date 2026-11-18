@@ -31,9 +31,9 @@
 #include "../layout_line.h"
 
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_font_map_ce();
-PHP_PANGO_API extern zend_class_entry* php_pango_cairo_get_layout_ce();
-PHP_PANGO_API extern zend_class_entry* php_pango_cairo_get_layout_line_ce();
-PHP_PANGO_API extern zend_class_entry* php_pango_cairo_get_glyph_string_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_layout_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_layout_line_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_glyph_string_ce();
 
 
 extern pango_font_map_object *pango_cairo_font_map_fetch_object(zend_object *object);

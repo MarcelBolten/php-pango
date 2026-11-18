@@ -44,7 +44,7 @@ PHP_PANGO_API PangoLogAttr *pango_logattr_object_get_logattr(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_logattr_ce(void)
+zend_class_entry *php_pango_get_logattr_ce(void)
 {
     return ce_pango_logattr;
 }
@@ -137,7 +137,7 @@ static void pango_logattr_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_logattr_obj_ctor(zend_class_entry *ce, pango_logattr_object **intern)
+static zend_object *pango_logattr_obj_ctor(zend_class_entry *ce, pango_logattr_object **intern)
 {
     pango_logattr_object *object = ecalloc(1, sizeof(pango_logattr_object) + zend_object_properties_size(ce));
     PANGO_ALLOC_LOGATTR(object->logattr);
@@ -152,7 +152,7 @@ static zend_object* pango_logattr_obj_ctor(zend_class_entry *ce, pango_logattr_o
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_logattr_create_object(zend_class_entry *ce)
+static zend_object *pango_logattr_create_object(zend_class_entry *ce)
 {
     pango_logattr_object *intern = NULL;
     zend_object *return_value = pango_logattr_obj_ctor(ce, &intern);
@@ -163,7 +163,7 @@ static zend_object* pango_logattr_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_logattr_clone_obj(zend_object *zobj)
+static zend_object *pango_logattr_clone_obj(zend_object *zobj)
 {
     pango_logattr_object *new_logattr;
     pango_logattr_object *old_logattr = pango_logattr_fetch_object(zobj);

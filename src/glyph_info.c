@@ -36,7 +36,7 @@ pango_glyph_info_object *pango_glyph_info_fetch_object(zend_object *object)
     return (pango_glyph_info_object *) ((char*)(object) - offsetof(pango_glyph_info_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_glyph_info_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_glyph_info_ce(void)
 {
     return pango_ce_pango_glyph_info;
 }
@@ -65,7 +65,7 @@ static void pango_glyph_info_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_info_obj_ctor(zend_class_entry *ce, pango_glyph_info_object **intern)
+static zend_object *pango_glyph_info_obj_ctor(zend_class_entry *ce, pango_glyph_info_object **intern)
 {
     pango_glyph_info_object *object = ecalloc(1, sizeof(pango_glyph_info_object) + zend_object_properties_size(ce));
 
@@ -81,7 +81,7 @@ static zend_object* pango_glyph_info_obj_ctor(zend_class_entry *ce, pango_glyph_
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_glyph_info_create_object(zend_class_entry *ce)
+static zend_object *pango_glyph_info_create_object(zend_class_entry *ce)
 {
     pango_glyph_info_object *intern = NULL;
     zend_object *return_value = pango_glyph_info_obj_ctor(ce, &intern);

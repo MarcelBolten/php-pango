@@ -173,7 +173,7 @@ PHP_PANGO_API extern PangoAttribute *pango_attr_font_description_object_get_attr
 
 typedef struct _pango_attr_iter_object {
     PangoAttrIterator *attr_iter;
-    PangoAttrList* attr_list;
+    PangoAttrList *attr_list;
     zend_object std;
 } pango_attr_iter_object;
 extern pango_attr_iter_object *pango_attr_iter_fetch_object(zend_object *object);

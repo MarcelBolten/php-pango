@@ -45,12 +45,12 @@ pango_font_object *pango_font_fetch_object(zend_object *object)
     return (pango_font_object *) ((char*)(object) - offsetof(pango_font_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_font_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_font_ce(void)
 {
     return pango_ce_pango_font;
 }
 
-PHP_PANGO_API PangoFont* pango_font_object_get_font(zval *zv)
+PHP_PANGO_API PangoFont *pango_font_object_get_font(zval *zv)
 {
     return Z_PANGO_FONT_P(zv)->font;
 }
@@ -58,7 +58,7 @@ PHP_PANGO_API PangoFont* pango_font_object_get_font(zval *zv)
 /* {{{ */
 PHP_METHOD(Pango_Font, describe)
 {
-    PangoFont* font;
+    PangoFont *font;
     pango_font_description_object *desc_obj;
 
     ZEND_PARSE_PARAMETERS_NONE();
@@ -74,7 +74,7 @@ PHP_METHOD(Pango_Font, describe)
 /* {{{ */
 PHP_METHOD(Pango_Font, describeAbsolute)
 {
-    PangoFont* font;
+    PangoFont *font;
     pango_font_description_object *desc_obj;
 
     ZEND_PARSE_PARAMETERS_NONE();
@@ -90,9 +90,9 @@ PHP_METHOD(Pango_Font, describeAbsolute)
 /* {{{ */
 PHP_METHOD(Pango_Font, getCoverage)
 {
-    PangoFont* font;
+    PangoFont *font;
     zval *language_zv;
-    PangoLanguage* language;
+    PangoLanguage *language;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_OBJECT_OF_CLASS(language_zv, php_pango_get_language_ce())
@@ -110,7 +110,7 @@ PHP_METHOD(Pango_Font, getCoverage)
 /* {{{ */
 PHP_METHOD(Pango_Font, getFace)
 {
-    PangoFont* font;
+    PangoFont *font;
     pango_font_face_object *face_obj;
 
     ZEND_PARSE_PARAMETERS_NONE();
@@ -128,7 +128,7 @@ PHP_METHOD(Pango_Font, getFeatures)
 {
     #define NUM_FEATURES 32
 
-    PangoFont* font;
+    PangoFont *font;
     hb_feature_t features[NUM_FEATURES];
     guint num_features = 0;
     zval tmp_array_zv;
@@ -161,7 +161,7 @@ PHP_METHOD(Pango_Font, getFeatures)
 /* {{{ */
 PHP_METHOD(Pango_Font, getFontMap)
 {
-    PangoFont* font;
+    PangoFont *font;
     pango_font_map_object *font_map_obj;
 
     ZEND_PARSE_PARAMETERS_NONE();
@@ -217,7 +217,7 @@ PHP_METHOD(Pango_Font, getGlyphExtents)
 /* {{{ */
 PHP_METHOD(Pango_Font, getLanguages)
 {
-    PangoFont* font;
+    PangoFont *font;
     PangoLanguage** languages;
     zval tmp;
     pango_language_object *lang_obj;
@@ -244,10 +244,10 @@ PHP_METHOD(Pango_Font, getLanguages)
 /* {{{ */
 PHP_METHOD(Pango_Font, getMetrics)
 {
-    PangoFont* font;
+    PangoFont *font;
     zval *language_zv = NULL;
     pango_font_metrics_object *metrics_obj;
-    PangoLanguage* lang = NULL;
+    PangoLanguage *lang = NULL;
 
     ZEND_PARSE_PARAMETERS_START(0, 1)
         Z_PARAM_OPTIONAL
@@ -310,7 +310,7 @@ static void pango_font_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_font_obj_ctor(zend_class_entry *ce, pango_font_object **intern)
+static zend_object *pango_font_obj_ctor(zend_class_entry *ce, pango_font_object **intern)
 {
     pango_font_object *object = ecalloc(1, sizeof(pango_font_object) + zend_object_properties_size(ce));
 
@@ -324,7 +324,7 @@ static zend_object* pango_font_obj_ctor(zend_class_entry *ce, pango_font_object 
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_font_create_object(zend_class_entry *ce)
+static zend_object *pango_font_create_object(zend_class_entry *ce)
 {
     pango_font_object *intern = NULL;
     zend_object *return_value = pango_font_obj_ctor(ce, &intern);
@@ -334,7 +334,7 @@ static zend_object* pango_font_create_object(zend_class_entry *ce)
 }
 /* }}} */
 
-static HashTable* pango_font_get_debug_info(zend_object *zobj, int *is_temp)
+static HashTable *pango_font_get_debug_info(zend_object *zobj, int *is_temp)
 {
     pango_font_object *intern = pango_font_fetch_object(zobj);
     HashTable *debug_info = zend_std_get_properties(zobj);

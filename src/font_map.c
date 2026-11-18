@@ -43,12 +43,12 @@ pango_font_map_object *pango_font_map_fetch_object(zend_object *object)
     return (pango_font_map_object *) ((char*)(object) - offsetof(pango_font_map_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_font_map_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_font_map_ce(void)
 {
     return pango_ce_pango_font_map;
 }
 
-PHP_PANGO_API PangoFontMap* pango_font_map_object_get_font_map(zval *zv)
+PHP_PANGO_API PangoFontMap *pango_font_map_object_get_font_map(zval *zv)
 {
     return Z_PANGO_FONT_MAP_P(zv)->font_map;
 }
@@ -58,7 +58,7 @@ PHP_PANGO_API PangoFontMap* pango_font_map_object_get_font_map(zval *zv)
 PHP_METHOD(Pango_FontMap, addFontFile)
 {
     zend_string *filename;
-    GError* error = NULL;
+    GError *error = NULL;
     bool result;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
@@ -95,7 +95,7 @@ PHP_METHOD(Pango_FontMap, addFontFile)
 /* {{{ Creates a context connected to font map. */
 PHP_METHOD(Pango_FontMap, createContext)
 {
-    PangoFontMap* font_map;
+    PangoFontMap *font_map;
     pango_context_object *context_object;
 
     ZEND_PARSE_PARAMETERS_NONE();
@@ -141,7 +141,7 @@ PHP_METHOD(Pango_FontMap, getFamily)
 /* {{{ List all families for a font map. */
 PHP_METHOD(Pango_FontMap, listFamilies)
 {
-    PangoFontMap* font_map;
+    PangoFontMap *font_map;
     PangoFontFamily** families;
     int num_families;
     zval family_zv;
@@ -291,7 +291,7 @@ PHP_METHOD(Pango_FontMap, reloadFont)
 /* }}} */
 
 /* {{{ */
-// static zend_object* pango_font_map_obj_ctor(zend_class_entry *ce, pango_font_map_object **intern)
+// static zend_object *pango_font_map_obj_ctor(zend_class_entry *ce, pango_font_map_object **intern)
 // {
 //     pango_font_map_object *object = ecalloc(1, sizeof(pango_font_map_object) + zend_object_properties_size(ce));
 
@@ -305,7 +305,7 @@ PHP_METHOD(Pango_FontMap, reloadFont)
 /* }}} */
 
 /* {{{ */
-// static zend_object* pango_font_map_create_object(zend_class_entry *ce)
+// static zend_object *pango_font_map_create_object(zend_class_entry *ce)
 // {
 //     pango_font_map_object *intern = NULL;
 //     zend_object *return_value = pango_font_map_obj_ctor(ce, &intern);

@@ -39,17 +39,17 @@ pango_tabstop_object *pango_tabstop_fetch_object(zend_object *object)
     \Pango\TabStop C API
 ------------------------------------------------------------------*/
 
-zend_class_entry* php_pango_get_tabstop_ce(void)
+zend_class_entry *php_pango_get_tabstop_ce(void)
 {
     return ce_pango_tabstop;
 }
 
-zend_class_entry* php_pango_get_tabstop_pixel_ce(void)
+zend_class_entry *php_pango_get_tabstop_pixel_ce(void)
 {
     return ce_pango_tabstop_pixel;
 }
 
-zend_class_entry* php_pango_get_tab_align_ce(void)
+zend_class_entry *php_pango_get_tab_align_ce(void)
 {
     return ce_pango_tab_align;
 }
@@ -127,7 +127,7 @@ static void pango_tabstop_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_tabstop_obj_ctor(zend_class_entry *ce, pango_tabstop_object **intern)
+static zend_object *pango_tabstop_obj_ctor(zend_class_entry *ce, pango_tabstop_object **intern)
 {
     pango_tabstop_object *object = ecalloc(1, sizeof(pango_tabstop_object) + zend_object_properties_size(ce));
 
@@ -141,7 +141,7 @@ static zend_object* pango_tabstop_obj_ctor(zend_class_entry *ce, pango_tabstop_o
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_tabstop_create_object(zend_class_entry *ce)
+static zend_object *pango_tabstop_create_object(zend_class_entry *ce)
 {
     pango_tabstop_object *intern = NULL;
     zend_object *return_value = pango_tabstop_obj_ctor(ce, &intern);
@@ -152,7 +152,7 @@ static zend_object* pango_tabstop_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_tabstop_clone_obj(zend_object *zobj)
+static zend_object *pango_tabstop_clone_obj(zend_object *zobj)
 {
     pango_tabstop_object *new_tabstop;
     pango_tabstop_object *old_tabstop = pango_tabstop_fetch_object(zobj);

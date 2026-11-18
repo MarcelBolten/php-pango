@@ -58,7 +58,7 @@ PHP_PANGO_API PangoRectangle *pango_rectangle_object_get_rectangle(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_rectangle_ce(void)
+zend_class_entry *php_pango_get_rectangle_ce(void)
 {
     return ce_pango_rectangle;
 }
@@ -151,7 +151,7 @@ static void pango_rectangle_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_rectangle_obj_ctor(zend_class_entry *ce, pango_rectangle_object **intern)
+static zend_object *pango_rectangle_obj_ctor(zend_class_entry *ce, pango_rectangle_object **intern)
 {
     pango_rectangle_object *object = ecalloc(1, sizeof(pango_rectangle_object) + zend_object_properties_size(ce));
     PANGO_ALLOC_RECT(object->rect);
@@ -166,7 +166,7 @@ static zend_object* pango_rectangle_obj_ctor(zend_class_entry *ce, pango_rectang
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_rectangle_create_object(zend_class_entry *ce)
+static zend_object *pango_rectangle_create_object(zend_class_entry *ce)
 {
     pango_rectangle_object *intern = NULL;
     zend_object *return_value = pango_rectangle_obj_ctor(ce, &intern);
@@ -177,7 +177,7 @@ static zend_object* pango_rectangle_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_rectangle_clone_obj(zend_object *zobj)
+static zend_object *pango_rectangle_clone_obj(zend_object *zobj)
 {
     pango_rectangle_object *new_rectangle;
     pango_rectangle_object *old_rectangle = pango_rectangle_fetch_object(zobj);

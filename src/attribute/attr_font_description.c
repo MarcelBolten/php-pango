@@ -44,7 +44,7 @@ PHP_PANGO_API PangoAttribute *pango_attr_font_description_object_get_attribute(z
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_attr_font_description_ce(void)
+zend_class_entry *php_pango_get_attr_font_description_ce(void)
 {
     return ce_pango_attr_font_description;
 }
@@ -108,7 +108,7 @@ static void pango_attr_font_description_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_font_description_obj_ctor(zend_class_entry *ce, pango_attr_font_description_object **intern)
+static zend_object *pango_attr_font_description_obj_ctor(zend_class_entry *ce, pango_attr_font_description_object **intern)
 {
     pango_attr_font_description_object *object = ecalloc(1, sizeof(pango_attr_font_description_object) + zend_object_properties_size(ce));
 
@@ -124,7 +124,7 @@ static zend_object* pango_attr_font_description_obj_ctor(zend_class_entry *ce, p
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_font_description_create_object(zend_class_entry *ce)
+static zend_object *pango_attr_font_description_create_object(zend_class_entry *ce)
 {
     pango_attr_font_description_object *intern = NULL;
     zend_object *return_value = pango_attr_font_description_obj_ctor(ce, &intern);
@@ -135,7 +135,7 @@ static zend_object* pango_attr_font_description_create_object(zend_class_entry *
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_attr_font_description_clone_obj(zend_object *zobj)
+static zend_object *pango_attr_font_description_clone_obj(zend_object *zobj)
 {
     pango_attr_font_description_object *new_attr;
     pango_attr_font_description_object *old_attr = pango_attr_font_description_fetch_object(zobj);

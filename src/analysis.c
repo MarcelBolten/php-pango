@@ -48,7 +48,7 @@ PHP_PANGO_API PangoAnalysis *pango_analysis_object_get_analysis(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_analysis_ce(void)
+zend_class_entry *php_pango_get_analysis_ce(void)
 {
     return ce_pango_analysis;
 }
@@ -87,7 +87,7 @@ static void pango_analysis_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_analysis_obj_ctor(zend_class_entry *ce, pango_analysis_object **intern)
+static zend_object *pango_analysis_obj_ctor(zend_class_entry *ce, pango_analysis_object **intern)
 {
     pango_analysis_object *object = ecalloc(1, sizeof(pango_analysis_object) + zend_object_properties_size(ce));
 
@@ -103,7 +103,7 @@ static zend_object* pango_analysis_obj_ctor(zend_class_entry *ce, pango_analysis
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_analysis_create_object(zend_class_entry *ce)
+static zend_object *pango_analysis_create_object(zend_class_entry *ce)
 {
     pango_analysis_object *intern = NULL;
     zend_object *return_value = pango_analysis_obj_ctor(ce, &intern);
@@ -114,7 +114,7 @@ static zend_object* pango_analysis_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_analysis_clone_obj(zend_object *zobj)
+static zend_object *pango_analysis_clone_obj(zend_object *zobj)
 {
     pango_analysis_object *new_analysis;
     pango_analysis_object *old_analysis = pango_analysis_fetch_object(zobj);

@@ -46,12 +46,12 @@ PHP_PANGO_API PangoCoverage *pango_coverage_object_get_coverage(zval *zv)
 }
 /* }}} */
 
-zend_class_entry* php_pango_get_coverage_ce(void)
+zend_class_entry *php_pango_get_coverage_ce(void)
 {
     return ce_pango_coverage;
 }
 
-zend_class_entry* php_pango_get_coverage_level_ce(void)
+zend_class_entry *php_pango_get_coverage_level_ce(void)
 {
     return ce_pango_coverage_level;
 }
@@ -133,7 +133,7 @@ static void pango_coverage_free_obj(zend_object *object)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_coverage_obj_ctor(zend_class_entry *ce, pango_coverage_object **intern)
+static zend_object *pango_coverage_obj_ctor(zend_class_entry *ce, pango_coverage_object **intern)
 {
     pango_coverage_object *object = ecalloc(1, sizeof(pango_coverage_object) + zend_object_properties_size(ce));
 
@@ -147,7 +147,7 @@ static zend_object* pango_coverage_obj_ctor(zend_class_entry *ce, pango_coverage
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_coverage_create_object(zend_class_entry *ce)
+static zend_object *pango_coverage_create_object(zend_class_entry *ce)
 {
     pango_coverage_object *intern = NULL;
     zend_object *return_value = pango_coverage_obj_ctor(ce, &intern);
@@ -158,7 +158,7 @@ static zend_object* pango_coverage_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_coverage_clone_obj(zend_object *zobj)
+static zend_object *pango_coverage_clone_obj(zend_object *zobj)
 {
     pango_coverage_object *new_coverage;
     pango_coverage_object *old_coverage = pango_coverage_fetch_object(zobj);
