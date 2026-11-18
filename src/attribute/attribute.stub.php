@@ -74,7 +74,7 @@ final readonly class LanguageAttribute extends Attribute
     public function __construct(
         \Pango\Language $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -98,7 +98,7 @@ final readonly class FamilyAttribute extends Attribute
     public function __construct(
         string $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -122,7 +122,7 @@ final readonly class StyleAttribute extends Attribute
     public function __construct(
         \Pango\Style $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -146,7 +146,7 @@ final readonly class WeightAttribute extends Attribute
     public function __construct(
         \Pango\Weight $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -170,7 +170,7 @@ final readonly class VariantAttribute extends Attribute
     public function __construct(
         \Pango\Variant $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -194,7 +194,7 @@ final readonly class StretchAttribute extends Attribute
     public function __construct(
         \Pango\Stretch $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -218,7 +218,7 @@ final readonly class SizeAttribute extends Attribute
     public function __construct(
         int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -242,7 +242,7 @@ final readonly class AbsoluteSizeAttribute extends Attribute
     public function __construct(
         int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -269,7 +269,7 @@ final readonly class FontDescriptionAttribute extends Attribute
     public function __construct(
         \Pango\FontDescription $desc,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -293,7 +293,7 @@ final readonly class ForegroundAttribute extends Attribute
     public function __construct(
         \Pango\Color $color,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -317,7 +317,7 @@ final readonly class BackgroundAttribute extends Attribute
     public function __construct(
         \Pango\Color $color,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -341,7 +341,7 @@ final readonly class UnderlineAttribute extends Attribute
     public function __construct(
         \Pango\Underline $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -365,7 +365,7 @@ final readonly class StrikethroughAttribute extends Attribute
     public function __construct(
         bool $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -389,7 +389,7 @@ final readonly class RiseAttribute extends Attribute
     public function __construct(
         int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -420,7 +420,7 @@ final readonly class ShapeAttribute extends Attribute
         \Pango\Rectangle $inkRect, 
         \Pango\Rectangle $logicalRect,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -444,7 +444,7 @@ final readonly class ScaleAttribute extends Attribute
     public function __construct(
         float $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -468,7 +468,7 @@ final readonly class FallbackAttribute extends Attribute
     public function __construct(
         bool $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -492,7 +492,7 @@ final readonly class LetterSpacingAttribute extends Attribute
     public function __construct(
         int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -516,7 +516,7 @@ final readonly class UnderlineColorAttribute extends Attribute
     public function __construct(
         \Pango\Color $color,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -540,7 +540,7 @@ final readonly class StrikethroughColorAttribute extends Attribute
     public function __construct(
         \Pango\Color $color,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -564,7 +564,7 @@ final readonly class GravityAttribute extends Attribute
     public function __construct(
         \Pango\Gravity $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -588,7 +588,7 @@ final readonly class GravityHintAttribute extends Attribute
     public function __construct(
         \Pango\GravityHint $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -612,7 +612,7 @@ final readonly class FontFeaturesAttribute extends Attribute
     public function __construct(
         string $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -637,7 +637,7 @@ final readonly class ForegroundAlphaAttribute extends Attribute
     public function __construct(
         int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -662,7 +662,7 @@ final readonly class BackgroundAlphaAttribute extends Attribute
     public function __construct(
         int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -686,7 +686,7 @@ final readonly class AllowBreaksAttribute extends Attribute
     public function __construct(
         bool $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -744,7 +744,7 @@ final readonly class ShowAttribute extends Attribute
     public function __construct(
         int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -768,7 +768,7 @@ final readonly class InsertHyphensAttribute extends Attribute
     public function __construct(
         bool $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -792,7 +792,7 @@ final readonly class OverlineAttribute extends Attribute
     public function __construct(
         \Pango\Overline $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -816,7 +816,7 @@ final readonly class OverlineColorAttribute extends Attribute
     public function __construct(
         \Pango\Color $color,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -841,7 +841,7 @@ final readonly class LineHeightAttribute extends Attribute
     public function __construct(
         float $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -865,7 +865,7 @@ final readonly class AbsoluteLineHeightAttribute extends Attribute
     public function __construct(
         int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -889,7 +889,7 @@ final readonly class TextTransformAttribute extends Attribute
     public function __construct(
         \Pango\TextTransform $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -905,7 +905,7 @@ final readonly class WordAttribute extends Attribute
      */
     public function __construct(
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -921,7 +921,7 @@ final readonly class SentenceAttribute extends Attribute
      */
     public function __construct(
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -949,7 +949,7 @@ final readonly class BaselineShiftAttribute extends Attribute
     public function __construct(
         \Pango\BaselineShift|int $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 
@@ -973,7 +973,7 @@ final readonly class FontScaleAttribute extends Attribute
     public function __construct(
         \Pango\FontScale $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 #endif
@@ -999,7 +999,7 @@ final readonly class WidthAttribute extends Attribute
     public function __construct(
         \Pango\Width $value,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
-        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END
+        int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,
     ) {}
 }
 #endif

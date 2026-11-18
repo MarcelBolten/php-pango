@@ -1,5 +1,5 @@
 /* This is a generated file, edit item.stub.php instead.
- * Stub hash: c53f25b5c02c6afb3c75f61b2e4a838a44163bde */
+ * Stub hash: ceb1f700116319b9feb469457f1a1d8118449978 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_Item_applyAttributes, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, iter, Pango\\Attribute\\AttributeIterator, 0)

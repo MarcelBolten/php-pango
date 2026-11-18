@@ -15,7 +15,7 @@ final class Context extends \Pango\Context
      * @param \Cairo\Context $context A Cairo context.
      */
     public function __construct(
-        \Cairo\Context $context
+        \Cairo\Context $context,
     ) {}
 
     /**
@@ -36,7 +36,7 @@ final class Context extends \Pango\Context
      * @param null|\Cairo\FontOptions $options The font options to set, or null to clear any previously set options.
      */
     public function setFontOptions(
-        null|\Cairo\FontOptions $options
+        null|\Cairo\FontOptions $options,
     ): static {}
 
     /**
@@ -59,7 +59,7 @@ final class Context extends \Pango\Context
      * A 0 or negative value means to use the resolution from the font map.
      */
     public function setResolution(
-        float $dpi
+        float $dpi,
     ): static {}
 
     /**

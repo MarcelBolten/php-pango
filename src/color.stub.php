@@ -42,14 +42,14 @@ final readonly class Color
      * @throws Pango\Exception if the string cannot be parsed into a color.
      */
     public static function fromString(
-        string $string
+        string $string,
     ): Color {}
 
     /**
      * @return array{color: Color, alpha: int}
      */
     public static function fromStringWithAlpha(
-        string $string
+        string $string,
     ): array {}
 
     /**

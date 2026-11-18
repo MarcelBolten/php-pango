@@ -18,21 +18,21 @@ class FontDescription
      * compare to https://docs.gtk.org/Pango/type_func.FontDescription.from_string.html#description
      */
     public function __construct(
-        null|string $description = null
+        null|string $description = null,
     ) {}
 
     public function getVariant(): Variant {}
 
     public function setVariant(
-        Variant $variant
+        Variant $variant,
     ): FontDescription {}
 
     public function equal(
-        FontDescription $fontdesc2
+        FontDescription $fontdesc2,
     ): bool {}
 
     public function setFamily(
-        string $family
+        string $family,
     ): FontDescription {}
 
     /**
@@ -41,11 +41,11 @@ class FontDescription
     public function getFamily(): string {}
 
     public function setSize(
-        int $size
+        int $size,
     ): FontDescription {}
 
     public function setAbsoluteSize(
-        float $size
+        float $size,
     ): FontDescription {}
 
     public function getSize(): int {}
@@ -59,19 +59,19 @@ class FontDescription
     public function getStyle(): Style {}
 
     public function setStyle(
-        Style $style
+        Style $style,
     ): FontDescription {}
 
     public function getWeight(): Weight {}
 
     public function setWeight(
-        Weight $weight
+        Weight $weight,
     ): FontDescription {}
 
     public function getStretch(): Stretch {}
 
     public function setStretch(
-        Stretch $stretch
+        Stretch $stretch,
     ): FontDescription {}
 
     public function toString(): string {}
@@ -83,14 +83,14 @@ class FontDescription
     public function getFeatures(): string {}
 
     public function setFeatures(
-        null|string $features = null
+        null|string $features = null,
     ): FontDescription {}
 #endif
 
     public function getGravity(): Gravity {}
 
     public function setGravity(
-        Gravity $gravity
+        Gravity $gravity,
     ): FontDescription {}
 
     /**
@@ -99,7 +99,7 @@ class FontDescription
     public function getVariations(): string {}
 
     public function setVariations(
-        null|string $variations = null
+        null|string $variations = null,
     ): FontDescription {}
 
     /**
@@ -173,7 +173,7 @@ class FontDescription
      */
     public function merge(
         ?FontDescription $other,
-        bool $replaceExisting = false
+        bool $replaceExisting = false,
     ): FontDescription {}
 }
 

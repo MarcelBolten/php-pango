@@ -22,7 +22,7 @@ final class FontFamily
      * @return null|FontFace The FontFace with the given name, or null if no such face exists.
      */
     public function getFace(
-        null|string $name = null
+        null|string $name = null,
     ): null|FontFace {}
 
     /**

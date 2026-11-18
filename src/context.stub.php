@@ -10,7 +10,7 @@ namespace Pango;
 class Context
 {
     public function __construct(
-        null|FontMap $fontmap = null
+        null|FontMap $fontmap = null,
     ) {}
 
     /**
@@ -68,7 +68,7 @@ class Context
      * @return null|Font The loaded Font, or null if no font matched.
      */
     public function loadFont(
-        FontDescription $fontDesc
+        FontDescription $fontDesc,
     ): null|Font {}
 
     /**
@@ -78,28 +78,28 @@ class Context
      */
     public function loadFontSet(
         FontDescription $fontDesc,
-        Language $language
+        Language $language,
     ): null|FontSet {}
 
     /**
      * Sets the base direction for the context.
      */
     public function setBaseDir(
-        Direction $direction
+        Direction $direction,
     ): static {}
 
     /**
      * Sets the gravity to be used to lay out the text
      */
     public function setBaseGravity(
-        Gravity $gravity
+        Gravity $gravity,
     ): static {}
 
     /**
      * Set the default font description for the context.
      */
     public function setFontDescription(
-        FontDescription $desc
+        FontDescription $desc,
     ): static {}
 
     // /**
@@ -113,14 +113,14 @@ class Context
      * Sets the gravity hint for the context.
      */
     public function setGravityHint(
-        GravityHint $hint
+        GravityHint $hint,
     ): static {}
 
     /**
      * Sets the global language tag for the context.
      */
     public function setLanguage(
-        null|Language $language
+        null|Language $language,
     ): static {}
 
     /**
@@ -129,7 +129,7 @@ class Context
      * @param Matrix|null $matrix A Pango\Matrix, or null to unset (set to identity matrix) any existing matrix.
      */
     public function setMatrix(
-        null|Matrix $matrix
+        null|Matrix $matrix,
     ): static {}
 
     /**
@@ -137,7 +137,7 @@ class Context
      * and widths to integral positions, in device units.
      */
     public function setRoundGlyphPositions(
-        bool $round
+        bool $round,
     ): static {}
 
     /**

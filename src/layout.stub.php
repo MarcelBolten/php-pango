@@ -42,7 +42,7 @@ class Layout
      * Create a new Layout object with attributes initialized to default values for a given Pango Context.
      */
     public function __construct(
-        Context $context
+        Context $context,
     ) {}
 
     /**
@@ -57,7 +57,7 @@ class Layout
      * Text will be truncated on encountering a null byte.
      */
     public function setText(
-        string $text
+        string $text,
     ): static {}
 
     /**
@@ -116,7 +116,7 @@ class Layout
      * @param int $width The desired width in Pango units, or -1 to indicate that no wrapping or ellipsization should be performed.
      */
     public function setWidth(
-        int $width
+        int $width,
     ): static {}
 
     /**
@@ -132,7 +132,7 @@ class Layout
      * @param int $height The desired height of this Layout in Pango units if positive, or desired number of lines if negative.
      */
     public function setHeight(
-        int $height
+        int $height,
     ): static {}
 
     /**
@@ -146,7 +146,7 @@ class Layout
      * or the text will be truncated.
      */
     public function setMarkup(
-        string $markup
+        string $markup,
     ): static {}
 
     /**
@@ -161,7 +161,7 @@ class Layout
      */
     public function setMarkupWithAccel(
         string $markup,
-        string $accelMarker
+        string $accelMarker,
     ): static {}
 
     /**
@@ -177,7 +177,7 @@ class Layout
      * @param null|FontDescription $desc The FontDescription to set on this Layout, or NULL to inherit from the context.
      */
     public function setFontDescription(
-        ?FontDescription $desc
+        ?FontDescription $desc,
     ): static {}
 
     /**
@@ -192,7 +192,7 @@ class Layout
      * Sets the alignment for the layout: how partial lines are positioned within the horizontal space available.
      */
     public function setAlignment(
-        Alignment $alignment
+        Alignment $alignment,
     ): static {}
 
     /**
@@ -204,7 +204,7 @@ class Layout
      * Sets whether each complete line should be stretched to fill the entire width of the layout.
      */
     public function setJustify(
-        bool $justify
+        bool $justify,
     ): static {}
 
     /**
@@ -219,7 +219,7 @@ class Layout
      * To turn off wrapping, set the width to -1.
      */
     public function setWrap(
-        WrapMode $wrap
+        WrapMode $wrap,
     ): static {}
 
     /**
@@ -244,7 +244,7 @@ class Layout
      * The indent setting is ignored if layout alignment is set to Alignment::Center.
      */
     public function setIndent(
-        int $indent
+        int $indent,
     ): static {}
 
     /**
@@ -258,7 +258,7 @@ class Layout
      * Sets the amount of spacing in Pango units between the lines of the layout.
      */
     public function setSpacing(
-        int $spacing
+        int $spacing,
     ): static {}
 
     /**
@@ -270,7 +270,7 @@ class Layout
      * Sets the type of ellipsization being performed for Layout.
      */
     public function setEllipsize(
-        EllipsizeMode $mode
+        EllipsizeMode $mode,
     ): static {}
 
     /**
@@ -320,7 +320,7 @@ class Layout
      * @return null|LayoutLine The requested LayoutLine, or NULL if the index is out of range.
      */
     public function getLine(
-        int $lineIndex
+        int $lineIndex,
     ): null|LayoutLine {}
 
     /**
@@ -331,7 +331,7 @@ class Layout
      * @return null|LayoutLine The requested LayoutLine, or NULL if the index is out of range.
      */
     public function getLineReadonly(
-        int $lineIndex
+        int $lineIndex,
     ): null|LayoutLine {}
 
     /**
@@ -346,7 +346,7 @@ class Layout
      * @param int $flags A bitwise OR of Pango\Layout::SERIALIZE constants.
      */
     public function serialize(
-        int $flags = Layout::SERIALIZE_DEFAULT
+        int $flags = Layout::SERIALIZE_DEFAULT,
     ): string {}
 #endif
 
@@ -376,7 +376,7 @@ class Layout
      * @param bool $autoDir If TRUE, compute the bidirectional base direction from the layout’s contents.
      */
     public function setAutoDir(
-        bool $autoDir
+        bool $autoDir,
     ): static {}
 
     /**
@@ -390,7 +390,7 @@ class Layout
      * @param int $byteIndex The byte index of the char.
      */
     public function getDirection(
-        int $byteIndex
+        int $byteIndex,
     ): Direction {}
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 50, 0)
     /**
@@ -406,7 +406,7 @@ class Layout
      * @param bool $justifyLastLine Whether the last line in the layout should be justified.
      */
     public function setJustifyLastLine(
-        bool $justifyLastLine
+        bool $justifyLastLine,
     ): static {}
 #endif
 
@@ -426,7 +426,7 @@ class Layout
      * If $factor is zero (the default), spacing is applied as before.
      */
     public function setLineSpacing(
-        float $factor
+        float $factor,
     ): static {}
 
     /**
@@ -448,7 +448,7 @@ class Layout
      * to allow editing of newlines on a single text line.
      */
     public function setSingleParagraphMode(
-        bool $setting
+        bool $setting,
     ): static {}
 
     /**
@@ -502,7 +502,7 @@ class Layout
      * Sets the text attributes for a layout object.
      */
     public function setAttributes(
-        ?Attribute\AttributeList $attributes = NULL
+        ?Attribute\AttributeList $attributes = NULL,
     ): static {}
 
     /**
@@ -518,7 +518,7 @@ class Layout
      * for alignments other than Alignment::Left.
      */
     public function setTabStops(
-        ?TabStops $tabStops = NULL
+        ?TabStops $tabStops = NULL,
     ): static {}
 
     /**

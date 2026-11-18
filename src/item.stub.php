@@ -45,7 +45,7 @@ final readonly class Item
      * items resulting from itemization, while passing the iter to each call.
      */
     public function applyAttributes(
-        Attribute\AttributeIterator $iter
+        Attribute\AttributeIterator $iter,
     ): void {}
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 54, 0)

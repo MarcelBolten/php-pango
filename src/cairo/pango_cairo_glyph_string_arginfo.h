@@ -1,5 +1,5 @@
 /* This is a generated file, edit pango_cairo_glyph_string.stub.php instead.
- * Stub hash: 917c5d8dd3c29abb6a2b3a394de0e7ef8e0012bc */
+ * Stub hash: 79027ab55cda88d0dc3b65d6e12c7a81325fe948 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_GlyphString_path, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, font, Pango\\Font, 0)

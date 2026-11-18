@@ -19,7 +19,9 @@ final readonly class GlyphString extends \Pango\GlyphString
      * The origin of the glyphs (the left edge of the baseline) will be at the
      * current point of the cairo context.
      */
-    public function path(\Pango\Font $font): void {}
+    public function path(
+        \Pango\Font $font,
+    ): void {}
 
     /**
      * Draws the glyphs in this GlyphString in the specified cairo context.
@@ -29,5 +31,7 @@ final readonly class GlyphString extends \Pango\GlyphString
      *
      * @param \Pango\Font $font A Font from a PangoCairo\FontMap.
      */
-    public function show(\Pango\Font $font): void {}
+    public function show(
+        \Pango\Font $font,
+    ): void {}
 }

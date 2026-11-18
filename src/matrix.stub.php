@@ -36,7 +36,7 @@ final readonly class Matrix
      * This matrix is immutable and is not modified.
      */
     public function concat(
-        Matrix $newMatrix
+        Matrix $newMatrix,
     ): Matrix {}
 
     /**
@@ -73,7 +73,7 @@ final readonly class Matrix
      * This matrix is immutable and is not modified.
      */
     public function rotate(
-        float $degrees
+        float $degrees,
     ): Matrix {}
 
     /**
@@ -85,7 +85,7 @@ final readonly class Matrix
      */
     public function scale(
         float $sx,
-        float $sy
+        float $sy,
     ): Matrix {}
 
     /**
@@ -94,7 +94,7 @@ final readonly class Matrix
      */
     public function transformDistance(
         float $dx,
-        float $dy
+        float $dy,
     ): array {}
 
     /**
@@ -104,7 +104,7 @@ final readonly class Matrix
      * and convert to pixels afterward using Rectangle::extentsToPixels().
      */
     public function transformPixelRectangle(
-        Rectangle $rectangle
+        Rectangle $rectangle,
     ): Rectangle {}
 
     /**
@@ -113,7 +113,7 @@ final readonly class Matrix
      */
     public function transformPoint(
         float $x,
-        float $y
+        float $y,
     ): array {}
 
     /**
@@ -122,7 +122,7 @@ final readonly class Matrix
      * If rectangle is in device units (pixels), use transformPixelRectangle().
      */
     public function transformRectangle(
-        Rectangle $rectangle
+        Rectangle $rectangle,
     ): Rectangle {}
 
     /**
@@ -134,6 +134,6 @@ final readonly class Matrix
      */
     public function translate(
         float $tx,
-        float $ty
+        float $ty,
     ): Matrix {}
 }

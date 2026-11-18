@@ -20,7 +20,7 @@ abstract class FontMap
      * @throws Exception If the font file could not be loaded.
      */
     public function addFontFile(
-        string $file
+        string $file,
     ): bool {}
 #endif
 
@@ -33,7 +33,7 @@ abstract class FontMap
      * Gets a font family by name.
      */
     public function getFamily(
-        string $name
+        string $name,
     ): ?FontFamily {}
 
     /**
@@ -53,7 +53,7 @@ abstract class FontMap
      */
     public function loadFont(
         Context $context,
-        FontDescription $desc
+        FontDescription $desc,
     ): null|Font {}
 
     /**
@@ -68,7 +68,7 @@ abstract class FontMap
     public function loadFontSet(
         Context $context,
         FontDescription $desc,
-        Language $language
+        Language $language,
     ): null|FontSet {}
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
@@ -93,7 +93,7 @@ abstract class FontMap
         Font $font,
         float $scale,
         null|Context $context = null,
-        null|string $variations = null
+        null|string $variations = null,
     ): Font {}
 #endif
 }

@@ -20,7 +20,7 @@ final class Layout extends \Pango\Layout
      * update() has to be called.
      */
     public function __construct(
-        \Cairo\Context $context
+        \Cairo\Context $context,
     ) {}
 
     /**
@@ -64,7 +64,9 @@ final class Layout extends \Pango\Layout
      * @param int $component The component to add to the path.
      *                       See Pango::RENDER_COMPONENT_* constants.
      */
-    public function layoutPathForComponents(int $component): void {}
+    public function layoutPathForComponents(
+        int $component,
+    ): void {}
 #endif
 
     /**
@@ -95,7 +97,7 @@ final class Layout extends \Pango\Layout
      * @return null|LayoutLine The requested LayoutLine, or NULL if the index is out of range.
      */
     public function getLine(
-        int $lineIndex
+        int $lineIndex,
     ): null|LayoutLine {}
 
     /**
@@ -106,6 +108,6 @@ final class Layout extends \Pango\Layout
      * @return null|LayoutLine The requested LayoutLine, or NULL if the index is out of range.
      */
     public function getLineReadonly(
-        int $lineIndex
+        int $lineIndex,
     ): null|LayoutLine {}
 }

@@ -1,5 +1,5 @@
 /* This is a generated file, edit rectangle.stub.php instead.
- * Stub hash: 12e8b6c4d290bd6b161a29c3b15755f5a6e5d62b */
+ * Stub hash: a35ae9b7d614abb431e216a69f618be529fe9cb3 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Rectangle___construct, 0, 0, 4)
 	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)

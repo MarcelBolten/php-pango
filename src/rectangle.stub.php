@@ -70,7 +70,7 @@ final readonly class Rectangle
         int $x,
         int $y,
         int $width,
-        int $height
+        int $height,
     ) {}
 
     /**
@@ -78,7 +78,7 @@ final readonly class Rectangle
      */
     public static function extentsToPixels(
         Rectangle $rectangle,
-        RoundingMode $roundingMode = RoundingMode::Inclusive
+        RoundingMode $roundingMode = RoundingMode::Inclusive,
     ): Rectangle {}
 }
 

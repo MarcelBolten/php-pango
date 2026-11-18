@@ -1,5 +1,5 @@
 /* This is a generated file, edit color.stub.php instead.
- * Stub hash: 3863e9f595e5a0e23aecdc39edc4b7a97d09e058 */
+ * Stub hash: 3cfb30d486ec9d4516db289a404513447661eef4 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Color___construct, 0, 0, 3)
 	ZEND_ARG_TYPE_INFO(0, red, IS_LONG, 0)

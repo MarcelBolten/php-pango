@@ -103,7 +103,7 @@ final readonly class GlyphItem
      *                                if the GlyphItem has no clusters.
      */
     public function getGlyphItemIterator(
-        GlyphItemIterInitLoc $initialLocation = GlyphItemIterInitLoc::Beginning
+        GlyphItemIterInitLoc $initialLocation = GlyphItemIterInitLoc::Beginning,
     ): ?GlyphItemIterator {}
 }
 
