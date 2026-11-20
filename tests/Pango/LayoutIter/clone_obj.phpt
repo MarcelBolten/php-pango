@@ -4,9 +4,9 @@ Pango\LayoutIter clone object handler
 pango
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 
 $pangoContext = new Pango\Context($fontMap);
@@ -25,7 +25,7 @@ var_dump($layoutIter2);
 
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }

@@ -2,13 +2,17 @@
 Pango\GlyphItem get_properties handler
 --EXTENSIONS--
 pango
-cairo
 --FILE--
 <?php
-$cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
-var_dump($cairoContext);
+use Pango\Ft2\FontMap;
+use Pango\Context;
+use Pango\Layout;
 
-$layout = new PangoCairo\Layout($cairoContext);
+$fontMap = new FontMap();
+var_dump($fontMap);
+$context = new Context($fontMap);
+var_dump($context);
+$layout = new Layout($context);
 var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
@@ -25,13 +29,15 @@ var_dump($run);
 // endXOffset: int
 ?>
 --EXPECTF--
-object(Cairo\Context)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
-object(PangoCairo\Layout)#%d (0) {
+object(Pango\Context)#%d (0) {
 }
-object(Pango\GlyphItem)#6 (5) {
+object(Pango\Layout)#%d (0) {
+}
+object(Pango\GlyphItem)#%d (5) {
   ["item"]=>
-  object(Pango\Item)#9 (4) {
+  object(Pango\Item)#%d (4) {
     ["offset"]=>
     int(0)
     ["length"]=>
@@ -39,9 +45,9 @@ object(Pango\GlyphItem)#6 (5) {
     ["numChars"]=>
     int(7)
     ["analysis"]=>
-    object(Pango\Analysis)#7 (7) {
+    object(Pango\Analysis)#%d (7) {
       ["font"]=>
-      object(Pango\Font)#10 (1) {
+      object(Pango\Font)#%d (1) {
         ["string-representation"]=>
         string(%d) "%s"
       }
@@ -54,7 +60,7 @@ object(Pango\GlyphItem)#6 (5) {
       ["script"]=>
       enum(Pango\Script::Latin)
       ["language"]=>
-      object(Pango\Language)#13 (1) {
+      object(Pango\Language)#%d (1) {
         ["string-representation"]=>
         string(%d) "%s"
       }
@@ -64,17 +70,17 @@ object(Pango\GlyphItem)#6 (5) {
     }
   }
   ["glyphs"]=>
-  object(Pango\GlyphString)#8 (2) {
+  object(Pango\GlyphString)#%d (2) {
     ["numGlyphs"]=>
     int(7)
     ["glyphs"]=>
     array(7) {
       [0]=>
-      object(Pango\GlyphInfo)#7 (3) {
+      object(Pango\GlyphInfo)#%d (3) {
         ["glyph"]=>
         int(%d)
         ["geometry"]=>
-        object(Pango\GlyphGeometry)#18 (3) {
+        object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
           int(%i)
           ["xOffset"]=>
@@ -83,7 +89,7 @@ object(Pango\GlyphItem)#6 (5) {
           int(0)
         }
         ["attributes"]=>
-        object(Pango\GlyphVisAttr)#19 (2) {
+        object(Pango\GlyphVisAttr)#%d (2) {
           ["isClusterStart"]=>
           bool(true)
           ["isColor"]=>
@@ -91,11 +97,11 @@ object(Pango\GlyphItem)#6 (5) {
         }
       }
       [1]=>
-      object(Pango\GlyphInfo)#13 (3) {
+      object(Pango\GlyphInfo)#%d (3) {
         ["glyph"]=>
         int(%d)
         ["geometry"]=>
-        object(Pango\GlyphGeometry)#19 (3) {
+        object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
           int(%i)
           ["xOffset"]=>
@@ -104,7 +110,7 @@ object(Pango\GlyphItem)#6 (5) {
           int(0)
         }
         ["attributes"]=>
-        object(Pango\GlyphVisAttr)#18 (2) {
+        object(Pango\GlyphVisAttr)#%d (2) {
           ["isClusterStart"]=>
           bool(true)
           ["isColor"]=>
@@ -112,11 +118,11 @@ object(Pango\GlyphItem)#6 (5) {
         }
       }
       [2]=>
-      object(Pango\GlyphInfo)#10 (3) {
+      object(Pango\GlyphInfo)#%d (3) {
         ["glyph"]=>
         int(%d)
         ["geometry"]=>
-        object(Pango\GlyphGeometry)#18 (3) {
+        object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
           int(%i)
           ["xOffset"]=>
@@ -125,7 +131,7 @@ object(Pango\GlyphItem)#6 (5) {
           int(0)
         }
         ["attributes"]=>
-        object(Pango\GlyphVisAttr)#19 (2) {
+        object(Pango\GlyphVisAttr)#%d (2) {
           ["isClusterStart"]=>
           bool(true)
           ["isColor"]=>
@@ -133,11 +139,11 @@ object(Pango\GlyphItem)#6 (5) {
         }
       }
       [3]=>
-      object(Pango\GlyphInfo)#14 (3) {
+      object(Pango\GlyphInfo)#%d (3) {
         ["glyph"]=>
         int(%d)
         ["geometry"]=>
-        object(Pango\GlyphGeometry)#19 (3) {
+        object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
           int(%i)
           ["xOffset"]=>
@@ -146,7 +152,7 @@ object(Pango\GlyphItem)#6 (5) {
           int(0)
         }
         ["attributes"]=>
-        object(Pango\GlyphVisAttr)#18 (2) {
+        object(Pango\GlyphVisAttr)#%d (2) {
           ["isClusterStart"]=>
           bool(true)
           ["isColor"]=>
@@ -154,11 +160,11 @@ object(Pango\GlyphItem)#6 (5) {
         }
       }
       [4]=>
-      object(Pango\GlyphInfo)#15 (3) {
+      object(Pango\GlyphInfo)#%d (3) {
         ["glyph"]=>
         int(%d)
         ["geometry"]=>
-        object(Pango\GlyphGeometry)#18 (3) {
+        object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
           int(%i)
           ["xOffset"]=>
@@ -167,7 +173,7 @@ object(Pango\GlyphItem)#6 (5) {
           int(0)
         }
         ["attributes"]=>
-        object(Pango\GlyphVisAttr)#19 (2) {
+        object(Pango\GlyphVisAttr)#%d (2) {
           ["isClusterStart"]=>
           bool(true)
           ["isColor"]=>
@@ -175,11 +181,11 @@ object(Pango\GlyphItem)#6 (5) {
         }
       }
       [5]=>
-      object(Pango\GlyphInfo)#16 (3) {
+      object(Pango\GlyphInfo)#%d (3) {
         ["glyph"]=>
         int(%d)
         ["geometry"]=>
-        object(Pango\GlyphGeometry)#19 (3) {
+        object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
           int(%i)
           ["xOffset"]=>
@@ -188,7 +194,7 @@ object(Pango\GlyphItem)#6 (5) {
           int(0)
         }
         ["attributes"]=>
-        object(Pango\GlyphVisAttr)#18 (2) {
+        object(Pango\GlyphVisAttr)#%d (2) {
           ["isClusterStart"]=>
           bool(true)
           ["isColor"]=>
@@ -196,11 +202,11 @@ object(Pango\GlyphItem)#6 (5) {
         }
       }
       [6]=>
-      object(Pango\GlyphInfo)#17 (3) {
+      object(Pango\GlyphInfo)#%d (3) {
         ["glyph"]=>
         int(%d)
         ["geometry"]=>
-        object(Pango\GlyphGeometry)#18 (3) {
+        object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
           int(%i)
           ["xOffset"]=>
@@ -209,7 +215,7 @@ object(Pango\GlyphItem)#6 (5) {
           int(0)
         }
         ["attributes"]=>
-        object(Pango\GlyphVisAttr)#19 (2) {
+        object(Pango\GlyphVisAttr)#%d (2) {
           ["isClusterStart"]=>
           bool(true)
           ["isColor"]=>

@@ -4,9 +4,9 @@ Pango\LayoutLine::isParagraphStart()
 pango
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 
 $pangoContext = new Pango\Context($fontMap);
@@ -33,7 +33,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }
@@ -42,9 +42,8 @@ object(Pango\Layout)#%d (0) {
 object(Pango\LayoutLine)#%d (0) {
 }
 bool(true)
-int(4)
+int(3)
 bool(true)
 bool(true)
-bool(false)
 bool(false)
 Pango\LayoutLine::isParagraphStart() expects exactly 0 arguments, 1 given

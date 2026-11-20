@@ -5,12 +5,12 @@ pango
 --FILE--
 <?php
 use Pango\Context;
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
 $pangoContext = new Context();
 var_dump($pangoContext);
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 $pangoContextFromFontMap = new Context($fontMap);
 var_dump($pangoContextFromFontMap);
@@ -30,7 +30,7 @@ try {
 --EXPECTF--
 object(Pango\Context)#%d (0) {
 }
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }

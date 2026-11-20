@@ -4,9 +4,9 @@ Pango\FontMap::getFamily()
 pango
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 var_dump($fontMap->getFamily("Sans"));
 var_dump($fontMap->getFamily("This family does not exist"));
@@ -36,7 +36,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\FontFamily)#%d (0) {
 }

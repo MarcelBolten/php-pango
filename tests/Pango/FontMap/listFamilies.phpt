@@ -4,9 +4,9 @@ Pango\FontMap::listFamilies()
 pango
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 $families = $fontMap->listFamilies();
 var_dump(is_array($families));
@@ -19,7 +19,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 bool(true)
 object(Pango\FontFamily)#%d (0) {

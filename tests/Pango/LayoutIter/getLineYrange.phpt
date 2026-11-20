@@ -4,9 +4,9 @@ Pango\LayoutIter::getLineYrange()
 pango
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 
 $pangoContext = new Pango\Context($fontMap);
@@ -29,7 +29,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }
@@ -39,8 +39,8 @@ object(Pango\LayoutIter)#%d (0) {
 }
 array(2) {
   ["y0"]=>
-  int(0)
+  int(%i)
   ["y1"]=>
-  int(19456)
+  int(%i)
 }
 Pango\LayoutIter::getLineYrange() expects exactly 0 arguments, 1 given

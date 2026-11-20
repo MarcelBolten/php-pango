@@ -2,13 +2,17 @@
 Pango\Item clone handler
 --EXTENSIONS--
 pango
-cairo
 --FILE--
 <?php
-$cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
-var_dump($cairoContext);
+use Pango\Ft2\FontMap;
+use Pango\Context;
+use Pango\Layout;
 
-$layout = new PangoCairo\Layout($cairoContext);
+$fontMap = new FontMap();
+var_dump($fontMap);
+$context = new Context($fontMap);
+var_dump($context);
+$layout = new Layout($context);
 var_dump($layout);
 
 $layout->setText("Hello, Παν語!");
@@ -18,9 +22,11 @@ $clonedItem = clone $item;
 var_dump($clonedItem);
 ?>
 --EXPECTF--
-object(Cairo\Context)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
-object(PangoCairo\Layout)#%d (0) {
+object(Pango\Context)#%d (0) {
+}
+object(Pango\Layout)#%d (0) {
 }
 object(Pango\Item)#%d (4) {
   ["offset"]=>
@@ -32,7 +38,7 @@ object(Pango\Item)#%d (4) {
   ["analysis"]=>
   object(Pango\Analysis)#%d (7) {
     ["font"]=>
-    object(Pango\Font)#6 (1) {
+    object(Pango\Font)#%d (1) {
       ["string-representation"]=>
       string(%d) "%s"
     }
@@ -64,7 +70,7 @@ object(Pango\Item)#%d (4) {
   ["analysis"]=>
   object(Pango\Analysis)#%d (7) {
     ["font"]=>
-    object(Pango\Font)#6 (1) {
+    object(Pango\Font)#%d (1) {
       ["string-representation"]=>
       string(%d) "%s"
     }

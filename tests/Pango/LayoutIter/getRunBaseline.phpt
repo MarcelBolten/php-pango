@@ -4,9 +4,9 @@ Pango\LayoutIter::getRunBaseline()
 pango
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 
 $pangoContext = new Pango\Context($fontMap);
@@ -29,7 +29,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }
@@ -37,5 +37,5 @@ object(Pango\Layout)#%d (0) {
 }
 object(Pango\LayoutIter)#%d (0) {
 }
-int(15360)
+int(%i)
 Pango\LayoutIter::getRunBaseline() expects exactly 0 arguments, 1 given

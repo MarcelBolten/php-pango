@@ -5,11 +5,11 @@ pango
 --FILE--
 <?php
 use Pango\Context;
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 use Pango\FontDescription;
 use Pango\Language;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 $pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
 $fontMap->addFontFile($pathToFonts . "/NotoColorEmoji_WindowsCompatible.ttf");
 var_dump($fontMap);
@@ -42,7 +42,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }

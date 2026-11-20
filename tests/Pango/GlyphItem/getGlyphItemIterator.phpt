@@ -2,20 +2,23 @@
 Pango\GlyphItem::getGlyphItemIterator()
 --EXTENSIONS--
 pango
-cairo
 --FILE--
 <?php
 use Pango\GlyphItemIterInitLoc;
+use Pango\Ft2\FontMap;
+use Pango\Context;
+use Pango\Layout;
 
 var_dump(GlyphItemIterInitLoc::cases());
 
-$cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
-var_dump($cairoContext);
-
-$layout = (new PangoCairo\Layout($cairoContext))
-    ->setText("Hello, Παν語!");
+$fontMap = new FontMap();
+var_dump($fontMap);
+$context = new Context($fontMap);
+var_dump($context);
+$layout = new Layout($context);
 var_dump($layout);
 
+$layout->setText("Hello, Παν語!");
 $runs = $layout->getLine(0)->getRuns();
 $glyphItem = $runs[1];
 $glyphItemIter = $glyphItem->getGlyphItemIterator();
@@ -60,9 +63,11 @@ array(2) {
   [1]=>
   enum(Pango\GlyphItemIterInitLoc::End)
 }
-object(Cairo\Context)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
-object(PangoCairo\Layout)#%d (0) {
+object(Pango\Context)#%d (0) {
+}
+object(Pango\Layout)#%d (0) {
 }
 object(Pango\GlyphItemIterator)#%d (8) {
   ["glyphItem"]=>
@@ -164,7 +169,7 @@ object(Pango\GlyphItemIterator)#%d (8) {
 }
 bool(false)
 bool(true)
-object(Pango\GlyphItem)#13 (0) {
+object(Pango\GlyphItem)#%d (0) {
 }
 string(17) "Hello, Παν語!"
 int(9)

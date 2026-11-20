@@ -2,9 +2,12 @@
 Pango\GlyphItem::split()
 --EXTENSIONS--
 pango
-cairo
 --FILE--
 <?php
+use Pango\Ft2\FontMap;
+use Pango\Context;
+use Pango\Layout;
+
 function getOffsetAndLength(Pango\GlyphItem $glyphItem) {
     return [
         'offset' => $glyphItem->item->offset,
@@ -12,13 +15,14 @@ function getOffsetAndLength(Pango\GlyphItem $glyphItem) {
     ];
 }
 
-$cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
-var_dump($cairoContext);
-
-$layout = (new PangoCairo\Layout($cairoContext))
-    ->setText("Hello, Παν語!");
+$fontMap = new FontMap();
+var_dump($fontMap);
+$context = new Context($fontMap);
+var_dump($context);
+$layout = new Layout($context);
 var_dump($layout);
 
+$layout->setText("Hello, Παν語!");
 $runs = $layout->getLine(0)->getRuns();
 $glyphItem = $runs[0];
 var_dump(getOffsetAndLength($glyphItem));
@@ -58,9 +62,11 @@ try {
 }
 ?>
 --EXPECTF--
-object(Cairo\Context)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
-object(PangoCairo\Layout)#%d (0) {
+object(Pango\Context)#%d (0) {
+}
+object(Pango\Layout)#%d (0) {
 }
 array(2) {
   ["offset"]=>

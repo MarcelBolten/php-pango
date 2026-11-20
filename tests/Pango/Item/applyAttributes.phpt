@@ -2,7 +2,6 @@
 Pango\Item::applyAttributes()
 --EXTENSIONS--
 pango
-cairo
 --FILE--
 <?php
 

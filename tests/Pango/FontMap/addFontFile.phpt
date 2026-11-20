@@ -10,9 +10,9 @@ if (version_compare(Pango\version_string(), '1.56.0', '<')) {
 ?>
 --FILE--
 <?php
-use PangoCairo\FontMap;
+use Pango\Ft2\FontMap;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 var_dump($fontMap->addFontFile(__DIR__ . "/Cantarell-VF.otf"));
 
@@ -52,7 +52,7 @@ try {
 }
 ?>
 --EXPECTF--
-object(PangoCairo\FontMap)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
 bool(true)
 Pango\FontMap::addFontFile(): Argument #1 ($file) must not contain NUL bytes
