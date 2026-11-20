@@ -205,12 +205,14 @@ string(%d) "{
                 "glyph" : 82,
                 "width" : %d,
                 "is-cluster-start" : true,
+                "unsafe-to-concat" : true,
                 "log-cluster" : 4
               },
               {
                 "glyph" : 15,
                 "width" : %d,
                 "is-cluster-start" : true,
+                "unsafe-to-concat" : true,
                 "log-cluster" : 5
               },
               {
