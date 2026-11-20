@@ -27,6 +27,8 @@
 #include <php_cairo_internal.h>
 
 #include "../../php_pango.h"
+#include "../context.h"
+#include "../font.h"
 #include "../font_map.h"
 #include "../exception.h"
 #include "pango_cairo.h"
@@ -176,6 +178,54 @@ PHP_METHOD(PangoCairo_FontMap, setResolution)
     RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
+/* {{{ Returns a new font that is like font, except that it is scaled by scale,
+       its backend-dependent configuration (e.g. cairo font options) is
+       replaced by the one in context, and its variations are replaced by
+       variations.
+*/
+PHP_METHOD(PangoCairo_FontMap, reloadFont)
+{
+    zval *font_zv;
+    double scale;
+    zval *context_zv = NULL;
+    zend_string *font_variations = NULL;
+    PangoFont * scaled_font;
+
+    ZEND_PARSE_PARAMETERS_START(2, 4)
+        Z_PARAM_OBJECT_OF_CLASS(font_zv, php_pango_get_font_ce())
+        Z_PARAM_DOUBLE(scale)
+        Z_PARAM_OPTIONAL
+        Z_PARAM_OBJECT_OF_CLASS_OR_NULL(context_zv, php_pango_get_context_ce())
+        Z_PARAM_STR_OR_NULL(font_variations)
+    ZEND_PARSE_PARAMETERS_END();
+
+    if (font_variations && zend_str_has_nul_byte(font_variations)) {
+        zend_argument_value_error(4, "must not contain NUL bytes");
+        RETURN_THROWS();
+    }
+
+    // scale must be positive
+    if (scale <= 0) {
+        zend_argument_value_error(2, "must be a positive number");
+        RETURN_THROWS();
+    }
+
+    scaled_font = pango_font_map_reload_font(
+        pango_font_map_object_get_font_map(ZEND_THIS),
+        pango_font_object_get_font(font_zv),
+        scale,
+        context_zv ? pango_context_object_get_context(context_zv) : NULL,
+        font_variations ? ZSTR_VAL(font_variations) : NULL
+    );
+
+    object_init_ex(return_value, php_pango_get_font_ce());
+    Z_PANGO_FONT_P(return_value)->font = scaled_font;
+}
+/* }}} */
+#endif
+
 
 /* ----------------------------------------------------------------
     \PangoCairo\FontMap Object management

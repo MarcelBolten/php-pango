@@ -70,30 +70,4 @@ abstract class FontMap
         FontDescription $desc,
         Language $language,
     ): null|FontSet {}
-
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
-    /**
-     * Returns a new font that is like font, except that it is scaled by scale,
-     * its backend-dependent configuration (e.g. cairo font options) is
-     * replaced by the one in context, and its variations are replaced by
-     * variations.
-     *
-     * Note that the scaling here is meant to be linear, so this scaling can be
-     * used to render a font on a hi-dpi display without changing its optical
-     * size.
-     *
-     * @param Font $font The font in this FontMap to reload.
-     * @param float $scale The scale factor to apply.
-     * @param null|Context $context The context to use, or NULL to use the default context.
-     * @param null|string $variations The font variations to apply, or NULL to keep the existing variations.
-     *
-     * @return Font The modified font.
-     */
-    public function reloadFont(
-        Font $font,
-        float $scale,
-        null|Context $context = null,
-        null|string $variations = null,
-    ): Font {}
-#endif
 }

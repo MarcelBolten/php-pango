@@ -1,5 +1,5 @@
 /* This is a generated file, edit pango_cairo_font_map.stub.php instead.
- * Stub hash: 2292544a268821d310ad60f29abee5243b535464 */
+ * Stub hash: ece160ef2f967d61fa97ae7facd577523e4cdb59 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_FontMap___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
@@ -25,6 +25,15 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_FontMap_setReso
 	ZEND_ARG_TYPE_INFO(0, factor, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_FontMap_reloadFont, 0, 2, Pango\\Font, 0)
+	ZEND_ARG_OBJ_INFO(0, font, Pango\\Font, 0)
+	ZEND_ARG_TYPE_INFO(0, scale, IS_DOUBLE, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, context, Pango\\Context, 1, "null")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, variations, IS_STRING, 1, "null")
+ZEND_END_ARG_INFO()
+#endif
+
 ZEND_METHOD(PangoCairo_FontMap, __construct);
 ZEND_METHOD(PangoCairo_FontMap, getDefault);
 ZEND_METHOD(PangoCairo_FontMap, newForFontType);
@@ -32,6 +41,9 @@ ZEND_METHOD(PangoCairo_FontMap, getFontType);
 ZEND_METHOD(PangoCairo_FontMap, getResolution);
 ZEND_METHOD(PangoCairo_FontMap, setDefault);
 ZEND_METHOD(PangoCairo_FontMap, setResolution);
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
+ZEND_METHOD(PangoCairo_FontMap, reloadFont);
+#endif
 
 static const zend_function_entry class_PangoCairo_FontMap_methods[] = {
 	ZEND_ME(PangoCairo_FontMap, __construct, arginfo_class_PangoCairo_FontMap___construct, ZEND_ACC_PUBLIC)
@@ -41,6 +53,9 @@ static const zend_function_entry class_PangoCairo_FontMap_methods[] = {
 	ZEND_ME(PangoCairo_FontMap, getResolution, arginfo_class_PangoCairo_FontMap_getResolution, ZEND_ACC_PUBLIC)
 	ZEND_ME(PangoCairo_FontMap, setDefault, arginfo_class_PangoCairo_FontMap_setDefault, ZEND_ACC_PUBLIC)
 	ZEND_ME(PangoCairo_FontMap, setResolution, arginfo_class_PangoCairo_FontMap_setResolution, ZEND_ACC_PUBLIC)
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
+	ZEND_ME(PangoCairo_FontMap, reloadFont, arginfo_class_PangoCairo_FontMap_reloadFont, ZEND_ACC_PUBLIC)
+#endif
 	ZEND_FE_END
 };
 

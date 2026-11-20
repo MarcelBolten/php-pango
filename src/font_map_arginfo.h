@@ -1,5 +1,5 @@
 /* This is a generated file, edit font_map.stub.php instead.
- * Stub hash: 13ca10f087a558da0856ea124857220b7aca530b */
+ * Stub hash: de75265690755b4020b9c13abed2aaa5b2577fd8 */
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_FontMap_addFontFile, 0, 1, _IS_BOOL, 0)
@@ -28,15 +28,6 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontMap_loadFontSet, 
 	ZEND_ARG_OBJ_INFO(0, language, Pango\\Language, 0)
 ZEND_END_ARG_INFO()
 
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Pango_FontMap_reloadFont, 0, 2, Pango\\Font, 0)
-	ZEND_ARG_OBJ_INFO(0, font, Pango\\Font, 0)
-	ZEND_ARG_TYPE_INFO(0, scale, IS_DOUBLE, 0)
-	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, context, Pango\\Context, 1, "null")
-	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, variations, IS_STRING, 1, "null")
-ZEND_END_ARG_INFO()
-#endif
-
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
 ZEND_METHOD(Pango_FontMap, addFontFile);
 #endif
@@ -45,9 +36,6 @@ ZEND_METHOD(Pango_FontMap, getFamily);
 ZEND_METHOD(Pango_FontMap, listFamilies);
 ZEND_METHOD(Pango_FontMap, loadFont);
 ZEND_METHOD(Pango_FontMap, loadFontSet);
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
-ZEND_METHOD(Pango_FontMap, reloadFont);
-#endif
 
 static const zend_function_entry class_Pango_FontMap_methods[] = {
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 56, 0)
@@ -58,9 +46,6 @@ static const zend_function_entry class_Pango_FontMap_methods[] = {
 	ZEND_ME(Pango_FontMap, listFamilies, arginfo_class_Pango_FontMap_listFamilies, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontMap, loadFont, arginfo_class_Pango_FontMap_loadFont, ZEND_ACC_PUBLIC)
 	ZEND_ME(Pango_FontMap, loadFontSet, arginfo_class_Pango_FontMap_loadFontSet, ZEND_ACC_PUBLIC)
-#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
-	ZEND_ME(Pango_FontMap, reloadFont, arginfo_class_Pango_FontMap_reloadFont, ZEND_ACC_PUBLIC)
-#endif
 	ZEND_FE_END
 };
 

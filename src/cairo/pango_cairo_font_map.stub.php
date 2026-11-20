@@ -58,4 +58,32 @@ final class FontMap extends \Pango\FontMap
     public function setResolution(
         float $factor,
     ): static {}
+
+#if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
+    // TODO: move this to PangoCairo\FontMap as it need a create_font method which is only available in the PangoCairo.
+    // (process:30315): Pango-WARNING **: 17:10:50.648: PangoFT2FontMap needs to implement create_font
+    /**
+     * Returns a new font that is like font, except that it is scaled by scale,
+     * its backend-dependent configuration (e.g. cairo font options) is
+     * replaced by the one in context, and its variations are replaced by
+     * variations.
+     *
+     * Note that the scaling here is meant to be linear, so this scaling can be
+     * used to render a font on a hi-dpi display without changing its optical
+     * size.
+     *
+     * @param \Pango\Font $font The font in this FontMap to reload.
+     * @param float $scale The scale factor to apply.
+     * @param null|\Pango\Context $context The context to use, or NULL to use the default context.
+     * @param null|string $variations The font variations to apply, or NULL to keep the existing variations.
+     *
+     * @return \Pango\Font The modified font.
+     */
+    public function reloadFont(
+        \Pango\Font $font,
+        float $scale,
+        null|\Pango\Context $context = null,
+        null|string $variations = null,
+    ): \Pango\Font {}
+#endif
 }
