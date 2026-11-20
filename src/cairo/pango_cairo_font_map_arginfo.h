@@ -1,5 +1,5 @@
 /* This is a generated file, edit pango_cairo_font_map.stub.php instead.
- * Stub hash: ece160ef2f967d61fa97ae7facd577523e4cdb59 */
+ * Stub hash: f1f4462177c780a22d684039c8c4ee46fa3605a1 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_FontMap___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()

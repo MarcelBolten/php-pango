@@ -60,8 +60,6 @@ final class FontMap extends \Pango\FontMap
     ): static {}
 
 #if PANGO_VERSION >= PANGO_VERSION_ENCODE(1, 52, 0)
-    // TODO: move this to PangoCairo\FontMap as it need a create_font method which is only available in the PangoCairo.
-    // (process:30315): Pango-WARNING **: 17:10:50.648: PangoFT2FontMap needs to implement create_font
     /**
      * Returns a new font that is like font, except that it is scaled by scale,
      * its backend-dependent configuration (e.g. cairo font options) is
