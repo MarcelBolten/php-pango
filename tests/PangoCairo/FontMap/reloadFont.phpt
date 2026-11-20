@@ -1,5 +1,5 @@
 --TEST--
-Pango\FontMap::reloadFont()
+PangoCairo\FontMap::reloadFont()
 --EXTENSIONS--
 pango
 --FILE--
@@ -7,7 +7,7 @@ pango
 use PangoCairo\FontMap;
 use Pango\FontDescription;
 
-$fontMap = FontMap::getDefault();
+$fontMap = new FontMap();
 var_dump($fontMap);
 $context = $fontMap->createContext();
 var_dump($context);
@@ -102,12 +102,12 @@ object(Pango\Font)#%d (1) {
   ["string-representation"]=>
   string(%d) "%s"
 }
-Pango\FontMap::reloadFont(): Argument #2 ($scale) must be a positive number
-Pango\FontMap::reloadFont(): Argument #4 ($variations) must not contain NUL bytes
-Pango\FontMap::reloadFont() expects at least 2 arguments, 0 given
-Pango\FontMap::reloadFont() expects at least 2 arguments, 1 given
-Pango\FontMap::reloadFont() expects at most 4 arguments, 5 given
-Pango\FontMap::reloadFont(): Argument #1 ($font) must be of type Pango\Font, array given
-Pango\FontMap::reloadFont(): Argument #2 ($scale) must be of type float, array given
-Pango\FontMap::reloadFont(): Argument #3 ($context) must be of type ?Pango\Context, array given
-Pango\FontMap::reloadFont(): Argument #4 ($variations) must be of type ?string, array given
+PangoCairo\FontMap::reloadFont(): Argument #2 ($scale) must be a positive number
+PangoCairo\FontMap::reloadFont(): Argument #4 ($variations) must not contain NUL bytes
+PangoCairo\FontMap::reloadFont() expects at least 2 arguments, 0 given
+PangoCairo\FontMap::reloadFont() expects at least 2 arguments, 1 given
+PangoCairo\FontMap::reloadFont() expects at most 4 arguments, 5 given
+PangoCairo\FontMap::reloadFont(): Argument #1 ($font) must be of type Pango\Font, array given
+PangoCairo\FontMap::reloadFont(): Argument #2 ($scale) must be of type float, array given
+PangoCairo\FontMap::reloadFont(): Argument #3 ($context) must be of type ?Pango\Context, array given
+PangoCairo\FontMap::reloadFont(): Argument #4 ($variations) must be of type ?string, array given
