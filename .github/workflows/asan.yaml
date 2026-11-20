@@ -14,7 +14,7 @@ env:
   PHP_BRANCH: PHP-8.5
   PHP_PREFIX: /opt/php-asan
   PANGO_PREFIX: /opt/pango
-  PANGO_BRANCH: marcel-1.58.2-join-fc-thread
+  PANGO_BRANCH: marcel-main-join-fc-thread-in-finalize
   SAN_CFLAGS: "-fsanitize=address,undefined -fno-omit-frame-pointer -g -Og -ggdb3"
 
 jobs:

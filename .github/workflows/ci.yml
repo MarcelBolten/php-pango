@@ -42,7 +42,7 @@ jobs:
             id: rev
             run: |
               sha=$(git ls-remote https://github.com/MarcelBolten/pango.git \
-                refs/heads/marcel-1.58.2-join-fc-thread | cut -f1)
+                refs/heads/marcel-main-join-fc-thread-in-finalize | cut -f1)
               echo "key=pango-$sha-${{ runner.os }}-${{ runner.arch }}" >> "$GITHUB_OUTPUT"
 
           - uses: actions/cache@v4
@@ -54,7 +54,7 @@ jobs:
           - name: Build pango
             if: steps.cache.outputs.cache-hit != 'true'
             run: |
-              git clone --depth 1 --branch marcel-1.58.2-join-fc-thread \
+              git clone --depth 1 --branch marcel-main-join-fc-thread-in-finalize \
                 https://github.com/MarcelBolten/pango.git
               cd pango
               meson setup build --prefix=/usr/local \
