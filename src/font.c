@@ -22,9 +22,12 @@
 
 #include <php.h>
 #include <Zend/zend_exceptions.h>
+#include <pango/pangoft2.h>
+#include <pango/pangocairo.h>
 
 #include "../php_pango.h"
 #include "cairo/pango_cairo.h"
+#include "ft2/pango_ft2.h"
 #include "php_pango_macros.h"
 #include "coverage.h"
 #include "language.h"
@@ -162,19 +165,28 @@ PHP_METHOD(Pango_Font, getFeatures)
 PHP_METHOD(Pango_Font, getFontMap)
 {
     PangoFont *font;
+    PangoFontMap *font_map;
+    zend_class_entry *font_map_ce;
     pango_font_map_object *font_map_obj;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     font = pango_font_object_get_font(ZEND_THIS);
+    font_map = pango_font_get_font_map(font);
 
-    object_init_ex(return_value, php_pango_cairo_get_font_map_ce());
-    font_map_obj = Z_PANGO_CAIRO_FONT_MAP_P(return_value);
+    if (PANGO_FT2_IS_FONT_MAP(font_map)) {
+        font_map_ce = php_pango_ft2_get_font_map_ce();
+    } else if (PANGO_IS_CAIRO_FONT_MAP(font_map)) {
+        font_map_ce = php_pango_cairo_get_font_map_ce();
+    }
+
+    object_init_ex(return_value, font_map_ce);
+    font_map_obj = Z_PANGO_FONT_MAP_P(return_value);
 
     // The returned data is owned by the instance, so we don’t need to
     // g_object_ref() it. We also set is_default to true, so that the
     // destructor doesn’t unref it
-    font_map_obj->font_map = pango_font_get_font_map(font);
+    font_map_obj->font_map = font_map;
     font_map_obj->is_default = true;
 }
 /* }}} */
