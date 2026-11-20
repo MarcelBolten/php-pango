@@ -3,6 +3,12 @@ PangoCairo\Layout::layoutPathForComponents()
 --EXTENSIONS--
 pango
 cairo
+--SKIPIF--
+<?php
+if (strtolower(PHP_OS_FAMILY) === 'windows') {
+    die('xfail - This test is expected to fail on Windows till the new pango version is available via vcpkg');
+}
+?>
 --FILE--
 <?php
 $cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));

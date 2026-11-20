@@ -2,6 +2,12 @@
 Pango\Layout::serialize()
 --EXTENSIONS--
 pango
+--SKIPIF--
+<?php
+if (strtolower(PHP_OS_FAMILY) === 'windows') {
+    die('xfail - This test is expected to fail on Windows till the new pango version is available via vcpkg');
+}
+?>
 --FILE--
 <?php
 use Pango\Ft2\FontMap;
