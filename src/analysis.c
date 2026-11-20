@@ -142,8 +142,11 @@ static zval *pango_analysis_object_read_property(zend_object *object, zend_strin
     PangoAnalysis *analysis = analysis_object->analysis;
 
     if (strcmp(ZSTR_VAL(member), "font") == 0) {
-        object_init_ex(rv, php_pango_get_font_ce());
-        Z_PANGO_FONT_P(rv)->font = g_object_ref(analysis->font);
+        ZVAL_NULL(rv);
+        if (analysis->font) {
+            object_init_ex(rv, php_pango_get_font_ce());
+            Z_PANGO_FONT_P(rv)->font = g_object_ref(analysis->font);
+        }
         return rv;
     }
 
@@ -230,8 +233,11 @@ static HashTable *pango_analysis_object_get_properties_for(zend_object *object, 
     PangoAnalysis *analysis = analysis_object->analysis;
 
     // Add the font property
-    object_init_ex(&tmp, php_pango_get_font_ce());
-    Z_PANGO_FONT_P(&tmp)->font = g_object_ref(analysis->font);
+    ZVAL_NULL(&tmp);
+    if (analysis->font) {
+        object_init_ex(&tmp, php_pango_get_font_ce());
+        Z_PANGO_FONT_P(&tmp)->font = g_object_ref(analysis->font);
+    }
     zend_hash_str_update(props, "font", sizeof("font")-1, &tmp);
 
     PANGO_ADD_STRUCT_LONG_VALUE(analysis->level, level);

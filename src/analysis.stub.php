@@ -40,7 +40,7 @@ final readonly class Analysis
     /**
      * The font for this segment.
      */
-    public Font $font;
+    public ?Font $font;
 
     /**
      * The bidirectional level for this segment.

@@ -1,5 +1,5 @@
 /* This is a generated file, edit analysis.stub.php instead.
- * Stub hash: 63b3a7a018d41fa1cd0355f5fe7e2101397703d6 */
+ * Stub hash: bcc6c6717ffdadb72d92ee98ffc28f35be5f0211 */
 
 static zend_class_entry *register_class_Pango_Analysis(void)
 {
@@ -36,7 +36,7 @@ static zend_class_entry *register_class_Pango_Analysis(void)
 	ZVAL_UNDEF(&property_font_default_value);
 	zend_string *property_font_name = zend_string_init("font", sizeof("font") - 1, true);
 	zend_string *property_font_class_Pango_Font = zend_string_init("Pango\\Font", sizeof("Pango\\Font")-1, 1);
-	zend_declare_typed_property(class_entry, property_font_name, &property_font_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_font_class_Pango_Font, 0, 0));
+	zend_declare_typed_property(class_entry, property_font_name, &property_font_default_value, ZEND_ACC_PUBLIC|ZEND_ACC_READONLY, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_font_class_Pango_Font, 0, MAY_BE_NULL));
 	zend_string_release_ex(property_font_name, true);
 
 	zval property_level_default_value;
