@@ -1,5 +1,5 @@
 /* This is a generated file, edit layout_line.stub.php instead.
- * Stub hash: e5592e3c982ccea86773a145b0eecbde24654395 */
+ * Stub hash: 35f8734fc1875143f770c3eea518447604eca28a */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Pango_LayoutLine_getExtents, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()

@@ -86,7 +86,7 @@ class LayoutLine
      *                     trailing edge of the layout. Otherwise, it will
      *                     end at the trailing edge of the last character.
      *
-     * @return array<int, array{start: int, end: int, width: int}> The coordinates
+     * @return array{int, array{start: int, end: int, width: int}} The coordinates
      *                       are relative to the layout and are in Pango units.
      */
     public function getXRanges(
