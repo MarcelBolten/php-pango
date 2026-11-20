@@ -2,12 +2,6 @@
 Pango\FontFamily::getFace()
 --EXTENSIONS--
 pango
---SKIPIF--
-<?php
-if (strtolower(PHP_OS_FAMILY) === 'windows') {
-    die('xfail - This test is expected to fail on Windows');
-}
-?>
 --FILE--
 <?php
 use Pango\Ft2\FontMap;
