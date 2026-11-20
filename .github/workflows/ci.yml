@@ -36,7 +36,7 @@ jobs:
                 libfribidi-dev
                 libx11-dev
                 libfreetype6-dev
-              version: 1.1
+              version: 1.2
 
           - name: Get pango revision
             id: rev
@@ -101,7 +101,7 @@ jobs:
                   libfribidi-dev
                   libx11-dev
                   libfreetype6-dev
-                version: 1.1
+                version: 1.2
 
             # - name: Install system dependencies
             #   run: |
