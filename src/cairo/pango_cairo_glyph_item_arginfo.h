@@ -1,8 +1,7 @@
 /* This is a generated file, edit pango_cairo_glyph_item.stub.php instead.
- * Stub hash: d44b05a0f0a7f4a0640e77967c1eb99f399b3ca6 */
+ * Stub hash: 5736abe524cb3df61ff8536f61d1ae0b88bc35ec */
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_GlyphItem_show, 0, 1, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_GlyphItem_show, 0, 0, IS_VOID, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_GlyphItem_applyAttributes, 0, 1, IS_ARRAY, 0)

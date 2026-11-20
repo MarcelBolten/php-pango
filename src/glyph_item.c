@@ -29,6 +29,7 @@
 #include "glyph_string.h"
 #include "layout.h"
 #include "layout_line.h"
+#include "cairo/pango_cairo.h"
 #include "glyph_item.h"
 #include "glyph_item_arginfo.h"
 
@@ -74,11 +75,19 @@ PHP_PANGO_API zend_class_entry *php_pango_get_glyph_item_iter_init_loc_ce(void)
     return pango_ce_pango_glyph_item_iter_init_loc;
 }
 
-static const char *get_text_from_layout_line(zval *zv) {
-    zval *layout_line_zv = &Z_PANGO_GLYPH_ITEM_P(zv)->layout_line_zv;
+extern const char *get_text_from_layout_line(zval *glyph_item_zv) {
+    zval *layout_line_zv = &Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->layout_line_zv;
     zval *layout_zv = &Z_PANGO_LAYOUT_LINE_P(layout_line_zv)->layout_zval;
     PangoLayout *layout = Z_PANGO_LAYOUT_P(layout_zv)->layout;
     return pango_layout_get_text(layout);
+}
+
+static inline zend_class_entry *pango_glyph_item_get_glyph_string_ce(zend_object *glyph_item_obj)
+{
+    if (instanceof_function(glyph_item_obj->ce, php_pango_cairo_get_glyph_item_ce())) {
+        return php_pango_cairo_get_glyph_string_ce();
+    }
+    return php_pango_get_glyph_string_ce();
 }
 
 /* ----------------------------------------------------------------
@@ -288,7 +297,7 @@ PHP_METHOD(Pango_GlyphItemIterator, prev)
 ------------------------------------------------------------------*/
 
 /* {{{ */
-static void pango_glyph_item_free_obj(zend_object *zobj)
+extern void pango_glyph_item_free_obj(zend_object *zobj)
 {
     pango_glyph_item_object *intern = pango_glyph_item_fetch_object(zobj);
 
@@ -308,7 +317,7 @@ static void pango_glyph_item_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object *pango_glyph_item_obj_ctor(zend_class_entry *ce, pango_glyph_item_object **intern)
+extern zend_object *pango_glyph_item_obj_ctor(zend_class_entry *ce, pango_glyph_item_object **intern)
 {
     pango_glyph_item_object *object = ecalloc(1, sizeof(pango_glyph_item_object) + zend_object_properties_size(ce));
 
@@ -324,7 +333,7 @@ static zend_object *pango_glyph_item_obj_ctor(zend_class_entry *ce, pango_glyph_
 /* }}} */
 
 /* {{{ */
-static zend_object *pango_glyph_item_create_object(zend_class_entry *ce)
+extern zend_object *pango_glyph_item_create_object(zend_class_entry *ce)
 {
     pango_glyph_item_object *intern = NULL;
     zend_object *return_value = pango_glyph_item_obj_ctor(ce, &intern);
@@ -335,7 +344,7 @@ static zend_object *pango_glyph_item_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zval *pango_glyph_item_read_property(zend_object *object, zend_string *member, int type, void **cache_slot, zval *rv)
+extern zval *pango_glyph_item_read_property(zend_object *object, zend_string *member, int type, void **cache_slot, zval *rv)
 {
     pango_glyph_item_object *glyph_item_object = pango_glyph_item_fetch_object(object);
 
@@ -347,7 +356,8 @@ static zval *pango_glyph_item_read_property(zend_object *object, zend_string *me
         return rv;
     }
     else if (strcmp(ZSTR_VAL(member), "glyphs") == 0) {
-        object_init_ex(rv, php_pango_get_glyph_string_ce());
+        zend_class_entry *glyph_string_ce = pango_glyph_item_get_glyph_string_ce(object);
+        object_init_ex(rv, glyph_string_ce);
         pango_glyph_string_object *glyph_string_object = Z_PANGO_GLYPH_STRING_P(rv);
         glyph_string_object->glyph_string = pango_glyph_string_copy(glyph_item_object->glyph_item->glyphs);
         ZVAL_OBJ_COPY(&glyph_string_object->glyph_item_zv, object);
@@ -363,7 +373,7 @@ static zval *pango_glyph_item_read_property(zend_object *object, zend_string *me
 /* }}} */
 
 /* {{{ */
-static HashTable *pango_glyph_item_get_properties_for(zend_object *object, zend_prop_purpose purpose)
+extern HashTable *pango_glyph_item_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     HashTable *props;
     // used in PANGO_ADD_STRUCT_VALUE below
@@ -382,7 +392,8 @@ static HashTable *pango_glyph_item_get_properties_for(zend_object *object, zend_
     ZVAL_OBJ_COPY(&item_object->glyph_item_zv, object);
     zend_hash_str_update(props, "item", sizeof("item")-1, &tmp);
 
-    object_init_ex(&tmp, php_pango_get_glyph_string_ce());
+    zend_class_entry *glyph_string_ce = pango_glyph_item_get_glyph_string_ce(object);
+    object_init_ex(&tmp, glyph_string_ce);
     pango_glyph_string_object *glyph_string_object = Z_PANGO_GLYPH_STRING_P(&tmp);
     glyph_string_object->glyph_string = pango_glyph_string_copy(glyph_item_object->glyph_item->glyphs);
     ZVAL_OBJ_COPY(&glyph_string_object->glyph_item_zv, object);

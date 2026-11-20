@@ -147,14 +147,10 @@ PHP_METHOD(Pango_GlyphString, getWidth)
 /* {{{ */
 PHP_METHOD(Pango_GlyphString, getLogicalWidths)
 {
-    zend_long embedding_level;
     int *logical_widths;
     int num_chars;
 
     ZEND_PARSE_PARAMETERS_NONE();
-    // ZEND_PARSE_PARAMETERS_START(1, 1)
-    //     Z_PARAM_LONG(embedding_level)
-    // ZEND_PARSE_PARAMETERS_END();
 
     zval *glyph_item_zv = &Z_PANGO_GLYPH_STRING_P(ZEND_THIS)->glyph_item_zv;
     zval *layout_line_zv = &Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->layout_line_zv;
@@ -170,7 +166,6 @@ PHP_METHOD(Pango_GlyphString, getLogicalWidths)
         text + Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->offset,
         Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->length,
         Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->analysis.level,
-        // embedding_level,
         logical_widths
     );
 
@@ -188,7 +183,7 @@ PHP_METHOD(Pango_GlyphString, getLogicalWidths)
 ------------------------------------------------------------------*/
 
 /* {{{ */
-static void pango_glyph_string_free_obj(zend_object *zobj)
+extern void pango_glyph_string_free_obj(zend_object *zobj)
 {
     pango_glyph_string_object *intern = pango_glyph_string_fetch_object(zobj);
 
@@ -208,7 +203,7 @@ static void pango_glyph_string_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object *pango_glyph_string_obj_ctor(zend_class_entry *ce, pango_glyph_string_object **intern)
+extern zend_object *pango_glyph_string_obj_ctor(zend_class_entry *ce, pango_glyph_string_object **intern)
 {
     pango_glyph_string_object *object = ecalloc(1, sizeof(pango_glyph_string_object) + zend_object_properties_size(ce));
 
@@ -224,7 +219,7 @@ static zend_object *pango_glyph_string_obj_ctor(zend_class_entry *ce, pango_glyp
 /* }}} */
 
 /* {{{ */
-static zend_object *pango_glyph_string_create_object(zend_class_entry *ce)
+extern zend_object *pango_glyph_string_create_object(zend_class_entry *ce)
 {
     pango_glyph_string_object *intern = NULL;
     zend_object *return_value = pango_glyph_string_obj_ctor(ce, &intern);
@@ -235,7 +230,7 @@ static zend_object *pango_glyph_string_create_object(zend_class_entry *ce)
 /* }}} */
 
 /* {{{ */
-static zval *pango_glyph_string_read_property(zend_object *object, zend_string *member, int type, void **cache_slot, zval *rv)
+extern zval *pango_glyph_string_read_property(zend_object *object, zend_string *member, int type, void **cache_slot, zval *rv)
 {
     pango_glyph_string_object *glyph_string_object = pango_glyph_string_fetch_object(object);
 
@@ -264,7 +259,7 @@ static zval *pango_glyph_string_read_property(zend_object *object, zend_string *
 /* }}} */
 
 /* {{{ */
-static HashTable *pango_glyph_string_get_properties_for(zend_object *object, zend_prop_purpose purpose)
+extern HashTable *pango_glyph_string_get_properties_for(zend_object *object, zend_prop_purpose purpose)
 {
     HashTable *props;
     pango_glyph_string_object *glyph_string_object = pango_glyph_string_fetch_object(object);

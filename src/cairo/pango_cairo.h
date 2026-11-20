@@ -28,12 +28,14 @@
 #include "../font_map.h"
 #include "../layout.h"
 #include "../glyph_string.h"
+#include "../glyph_item.h"
 #include "../layout_line.h"
 
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_font_map_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_layout_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_layout_line_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_glyph_string_ce();
+PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_glyph_item_ce();
 
 
 extern pango_font_map_object *pango_cairo_font_map_fetch_object(zend_object *object);
@@ -48,5 +50,8 @@ extern pango_layout_line_object *pango_cairo_layout_line_fetch_object(zend_objec
 
 extern pango_glyph_string_object *pango_cairo_glyph_string_fetch_object(zend_object *object);
 #define Z_PANGO_CAIRO_GLYPH_STRING_P(zv) pango_cairo_glyph_string_fetch_object(Z_OBJ_P(zv))
+
+extern pango_glyph_item_object *pango_cairo_glyph_item_fetch_object(zend_object *object);
+#define Z_PANGO_CAIRO_GLYPH_ITEM_P(zv) pango_cairo_glyph_item_fetch_object(Z_OBJ_P(zv))
 
 #endif /* PHP_PANGO_PANGO_CAIRO_FONT_MAP_H */

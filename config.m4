@@ -102,8 +102,10 @@ if test "$PHP_PANGO" != "no"; then
     src/attribute/attribute.c
     src/cairo/pango_cairo_context.c
     src/cairo/pango_cairo_font_map.c
-    src/cairo/pango_cairo_layout.c
+    src/cairo/pango_cairo_glyph_item.c
+    src/cairo/pango_cairo_glyph_string.c
     src/cairo/pango_cairo_layout_line.c
+    src/cairo/pango_cairo_layout.c
     src/fc/pango_fc_font_map.c
     src/ft2/pango_ft2_font_map.c
   ]), [$ext_shared],, [-Isrc -Isrc/attribute -Isrc/cairo -Isrc/fc -Isrc/ft2])

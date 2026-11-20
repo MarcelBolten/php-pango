@@ -48,9 +48,7 @@ final readonly class GlyphItem extends \Pango\GlyphItem
      * Note that text is the start of the text for layout, which is then
      * indexed by glyph_item->item->offset.
      */
-    public function show(
-        string $text,
-    ): void {}
+    public function show(): void {}
 
     /**
      * @return GlyphItem[] An array of resulting GlyphItem objects after

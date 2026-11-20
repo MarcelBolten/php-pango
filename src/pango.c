@@ -770,6 +770,8 @@ PHP_MINIT_FUNCTION(pango)
 #endif
     PHP_MINIT(pango_cairo_context)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_cairo_font_map)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(pango_cairo_glyph_item)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(pango_cairo_glyph_string)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_cairo_layout_line)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_cairo_layout)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(pango_font_set_simple)(INIT_FUNC_ARGS_PASSTHRU);

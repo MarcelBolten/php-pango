@@ -35,9 +35,9 @@ typedef struct _pango_glyph_string_object {
 extern pango_glyph_string_object *pango_glyph_string_fetch_object(zend_object *object);
 #define Z_PANGO_GLYPH_STRING_P(zv) pango_glyph_string_fetch_object(Z_OBJ_P(zv))
 
-static void pango_glyph_string_free_obj(zend_object *zobj);
-static zend_object *pango_glyph_string_create_object(zend_class_entry *ce);
-static zval *pango_glyph_string_read_property(zend_object *object, zend_string *member, int type, void **cache_slot, zval *rv);
-static HashTable *pango_glyph_string_get_properties_for(zend_object *object, zend_prop_purpose purpose);
+extern void pango_glyph_string_free_obj(zend_object *zobj);
+extern zend_object *pango_glyph_string_create_object(zend_class_entry *ce);
+extern zval *pango_glyph_string_read_property(zend_object *object, zend_string *member, int type, void **cache_slot, zval *rv);
+extern HashTable *pango_glyph_string_get_properties_for(zend_object *object, zend_prop_purpose purpose);
 
 #endif /* PHP_PANGO_GLYPH_STRING_H */

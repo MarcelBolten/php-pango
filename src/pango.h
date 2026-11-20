@@ -110,6 +110,8 @@ PHP_MINIT_FUNCTION(pango_attr_width);
 PHP_MINIT_FUNCTION(pango_attribute);
 PHP_MINIT_FUNCTION(pango_cairo_context);
 PHP_MINIT_FUNCTION(pango_cairo_font_map);
+PHP_MINIT_FUNCTION(pango_cairo_glyph_item);
+PHP_MINIT_FUNCTION(pango_cairo_glyph_string);
 PHP_MINIT_FUNCTION(pango_cairo_layout);
 PHP_MINIT_FUNCTION(pango_cairo_layout_line);
 PHP_MINIT_FUNCTION(pango_fc_font_map);

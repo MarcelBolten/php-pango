@@ -37,6 +37,12 @@ typedef struct _pango_glyph_item_object {
 extern pango_glyph_item_object *pango_glyph_item_fetch_object(zend_object *object);
 #define Z_PANGO_GLYPH_ITEM_P(zv) pango_glyph_item_fetch_object(Z_OBJ_P(zv))
 
+extern void pango_glyph_item_free_obj(zend_object *zobj);
+extern zend_object *pango_glyph_item_create_object(zend_class_entry *ce);
+extern zval *pango_glyph_item_read_property(zend_object *object, zend_string *member, int type, void **cache_slot, zval *rv);
+extern HashTable *pango_glyph_item_get_properties_for(zend_object *object, zend_prop_purpose purpose);
+extern const char *get_text_from_layout_line(zval *glyph_item_zv);
+
 typedef struct _pango_glyph_item_iter_object {
     PangoGlyphItemIter *glyph_item_iter;
     zval glyph_item_zv;

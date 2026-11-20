@@ -21,10 +21,14 @@
 #endif
 
 #include <php.h>
+#include <pango/pangocairo.h>
+#include <php_cairo_internal.h>
+
 #include "../../php_pango.h"
 #include "../font.h"
 #include "../rectangle.h"
 #include "../glyph_info.h"
+#include "../glyph_item.h"
 #include "../glyph_string.h"
 #include "pango_cairo.h"
 #include "pango_cairo_glyph_string_arginfo.h"
@@ -43,6 +47,19 @@ PHP_PANGO_API zend_class_entry *php_pango_cairo_get_glyph_string_ce()
     return pango_ce_pango_cairo_glyph_string;
 }
 
+static cairo_t *get_cairo_context_from_glyph_string(zval *glyph_string_zv)
+{
+    return Z_CAIRO_CONTEXT_P(
+        &Z_PANGO_CAIRO_LAYOUT_P(
+            &Z_PANGO_CAIRO_LAYOUT_LINE_P(
+                &Z_PANGO_CAIRO_GLYPH_ITEM_P(
+                    &Z_PANGO_CAIRO_GLYPH_STRING_P(glyph_string_zv)->glyph_item_zv
+                )->layout_line_zv
+            )->layout_zval
+        )->cairo_context_zv
+    )->context;
+}
+
 /* ----------------------------------------------------------------
     \PangoCairo\GlyphString Class API
 ------------------------------------------------------------------*/
@@ -50,9 +67,34 @@ PHP_PANGO_API zend_class_entry *php_pango_cairo_get_glyph_string_ce()
 /* {{{ */
 PHP_METHOD(PangoCairo_GlyphString, show)
 {
-    ZEND_PARSE_PARAMETERS_NONE();
+    zval *font_zv;
 
-    RETURN_LONG(pango_glyph_string_get_width(Z_PANGO_GLYPH_STRING_P(ZEND_THIS)->glyph_string));
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(font_zv, php_pango_get_font_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    pango_cairo_show_glyph_string(
+        get_cairo_context_from_glyph_string(ZEND_THIS),
+        pango_font_object_get_font(font_zv),
+        Z_PANGO_CAIRO_GLYPH_STRING_P(ZEND_THIS)->glyph_string
+    );
+}
+/* }}} */
+
+/* {{{ */
+PHP_METHOD(PangoCairo_GlyphString, path)
+{
+    zval *font_zv;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_OBJECT_OF_CLASS(font_zv, php_pango_get_font_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    pango_cairo_glyph_string_path(
+        get_cairo_context_from_glyph_string(ZEND_THIS),
+        pango_font_object_get_font(font_zv),
+        Z_PANGO_CAIRO_GLYPH_STRING_P(ZEND_THIS)->glyph_string
+    );
 }
 /* }}} */
 

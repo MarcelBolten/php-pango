@@ -57,8 +57,8 @@ PHP_METHOD(PangoCairo_LayoutLine, show)
 
     ZEND_PARSE_PARAMETERS_NONE();
 
-    layout_line_object = Z_PANGO_LAYOUT_LINE_P(ZEND_THIS);
-    layout_object = Z_PANGO_LAYOUT_P(&layout_line_object->layout_zval);
+    layout_line_object = Z_PANGO_CAIRO_LAYOUT_LINE_P(ZEND_THIS);
+    layout_object = Z_PANGO_CAIRO_LAYOUT_P(&layout_line_object->layout_zval);
     context_object = Z_CAIRO_CONTEXT_P(&layout_object->cairo_context_zv);
     pango_cairo_show_layout_line(context_object->context, layout_line_object->line);
 }
@@ -73,8 +73,8 @@ PHP_METHOD(PangoCairo_LayoutLine, path)
 
     ZEND_PARSE_PARAMETERS_NONE();
 
-    layout_line_object = Z_PANGO_LAYOUT_LINE_P(ZEND_THIS);
-    layout_object = Z_PANGO_LAYOUT_P(&layout_line_object->layout_zval);
+    layout_line_object = Z_PANGO_CAIRO_LAYOUT_LINE_P(ZEND_THIS);
+    layout_object = Z_PANGO_CAIRO_LAYOUT_P(&layout_line_object->layout_zval);
     context_object = Z_CAIRO_CONTEXT_P(&layout_object->cairo_context_zv);
     pango_cairo_layout_line_path(context_object->context, layout_line_object->line);
 }
@@ -95,8 +95,8 @@ PHP_METHOD(PangoCairo_LayoutLine, getRuns)
 
     array_init(return_value);
     for (GSList *run = runs; run != NULL; run = run->next) {
-        object_init_ex(&run_zv, php_pango_get_glyph_item_ce());
-        glyph_item_object = Z_PANGO_GLYPH_ITEM_P(&run_zv);
+        object_init_ex(&run_zv, php_pango_cairo_get_glyph_item_ce());
+        glyph_item_object = Z_PANGO_CAIRO_GLYPH_ITEM_P(&run_zv);
         glyph_item_object->glyph_item = pango_glyph_item_copy((PangoGlyphItem *)run->data);
         ZVAL_COPY(&glyph_item_object->layout_line_zv, layout_line);
         add_next_index_zval(return_value, &run_zv);
