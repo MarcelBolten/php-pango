@@ -11,6 +11,10 @@ use Pango\ShapeFlags;
 use function Pango\shape_with_flags;
 
 $fontMap = new FontMap();
+$pathToFonts = dirname(__FILE__, 2) . "/assets/fonts";
+$fontMap->addFontFile($pathToFonts . "/DejaVuSans.ttf");
+$fontMap->addFontFile($pathToFonts . "/NotoSansJP-Regular.otf");
+$fontMap->addFontFile($pathToFonts . "/NotoSans-Regular.ttf");
 var_dump($fontMap);
 $context = new Context($fontMap);
 var_dump($context);
