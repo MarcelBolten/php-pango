@@ -28,7 +28,6 @@
 #include <php_cairo_internal.h>
 
 #include "../../php_pango.h"
-#include "../exception.h"
 #include "../glyph_item.h"
 #include "../layout.h"
 #include "../layout_line.h"
