@@ -284,7 +284,7 @@ For now there is no plan to implement this as I only want to get positional info
 - ✅ GlyphInfo
 - 🟨 GlyphItem
     - Instance methods
-        - apply_attrs
+        - ✅ apply_attrs
         - copy
         - ✅ free // internal
         - ✅ get_logical_widths
@@ -308,7 +308,7 @@ For now there is no plan to implement this as I only want to get positional info
         - ✅ extents
         - ✅ extents_range
         - ✅ free // internal
-        - get_logical_widths
+        - ✅ get_logical_widths
         - ✅ get_width
         - index_to_x // skip for now
         - index_to_x_full // skip for now

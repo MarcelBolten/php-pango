@@ -6,11 +6,10 @@
 * add ci build and tests for macos
 * check object referencing, should it be hard copies or pointers or zval ref increase
 * add debug info for objects where applicable
+* make the cairo dependency optional
 
 
 # Structs
-- AttrShape
-- GlyphItem
-- GlyphString
+- 🟪 AttrShape // only placeholder rectangle - without data to fill it
 
 - Ft2/Fc Font
