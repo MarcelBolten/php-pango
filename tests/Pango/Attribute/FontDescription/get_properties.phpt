@@ -29,6 +29,7 @@ Pango\Attribute\FontDescriptionAttribute Object
     [endIndex] => 4294967295
     [desc] => Pango\FontDescription Object
         (
+            [string-representation] => %s
         )
 
 )
