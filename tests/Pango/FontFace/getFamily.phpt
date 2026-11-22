@@ -33,7 +33,9 @@ object(Pango\FontFamily)#%d (1) {
   ["string-representation"]=>
   string(%d) "%s"
 }
-object(Pango\FontFace)#%d (0) {
+object(Pango\FontFace)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 object(Pango\FontFamily)#%d (1) {
   ["string-representation"]=>

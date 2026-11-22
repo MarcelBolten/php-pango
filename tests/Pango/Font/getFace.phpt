@@ -39,6 +39,8 @@ object(Pango\Font)#%d (1) {
   ["string-representation"]=>
   string(%d) "%s"
 }
-object(Pango\FontFace)#%d (0) {
+object(Pango\FontFace)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 Pango\Font::getFace() expects exactly 0 arguments, 1 given

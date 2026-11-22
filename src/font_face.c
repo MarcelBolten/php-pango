@@ -174,6 +174,24 @@ static zend_object *pango_font_face_create_object(zend_class_entry *ce)
 }
 /* }}} */
 
+static HashTable* pango_font_face_get_debug_info(zend_object *zobj, int *is_temp)
+{
+    pango_font_face_object *intern = pango_font_face_fetch_object(zobj);
+    HashTable *debug_info = zend_std_get_properties(zobj);
+    PangoFontDescription *font_desc = pango_font_face_describe(intern->font_face);
+    zval font_str_zv;
+    char *font_str = pango_font_description_to_string(font_desc);
+    *is_temp = 0;
+
+    ZVAL_STRING(&font_str_zv, font_str);
+    g_free(font_str);
+    pango_font_description_free(font_desc);
+
+    zend_hash_str_update(debug_info, "string-representation", sizeof("string-representation") - 1, &font_str_zv);
+
+    return debug_info;
+}
+
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(pango_font_face)
 {
@@ -185,6 +203,7 @@ PHP_MINIT_FUNCTION(pango_font_face)
 
     pango_font_face_object_handlers.offset = offsetof(pango_font_face_object, std);
     pango_font_face_object_handlers.free_obj = pango_font_face_free_obj;
+    pango_font_face_object_handlers.get_debug_info = pango_font_face_get_debug_info;
 
     pango_ce_pango_font_face = register_class_Pango_FontFace();
     pango_ce_pango_font_face->create_object = pango_font_face_create_object;

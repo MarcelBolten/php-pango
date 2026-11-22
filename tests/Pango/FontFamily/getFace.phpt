@@ -53,11 +53,17 @@ object(Pango\FontFamily)#%d (1) {
   ["string-representation"]=>
   string(%d) "%s"
 }
-object(Pango\FontFace)#%d (0) {
+object(Pango\FontFace)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
-object(Pango\FontFace)#%d (0) {
+object(Pango\FontFace)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
-object(Pango\FontFace)#%d (0) {
+object(Pango\FontFace)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 NULL
 Pango\FontFamily::getFace(): Argument #1 ($name) must not contain NUL bytes

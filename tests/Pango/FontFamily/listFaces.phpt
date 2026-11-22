@@ -34,6 +34,8 @@ object(Pango\FontFamily)#%d (1) {
   string(%d) "%s"
 }
 bool(true)
-object(Pango\FontFace)#%d (0) {
+object(Pango\FontFace)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 Pango\FontFamily::listFaces() expects exactly 0 arguments, 1 given
