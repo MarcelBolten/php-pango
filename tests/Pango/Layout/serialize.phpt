@@ -2,12 +2,6 @@
 Pango\Layout::serialize()
 --EXTENSIONS--
 pango
---SKIPIF--
-<?php
-if (strtolower(PHP_OS_FAMILY) === 'windows') {
-    die('xfail - This test is expected to fail on Windows till the new pango version is available via vcpkg');
-}
-?>
 --FILE--
 <?php
 use Pango\Ft2\FontMap;
@@ -27,6 +21,9 @@ var_dump($layout);
 
 $layout->setText('Hello, Παν語!');
 var_dump($layout->serialize());
+
+// TODO: Explicitly add the "unsafe-to-concat" property in the serialized output when the new pango 1.59 is available via vcpkg
+//       In >"is-cluster-start" : true,%A< replace >%A< with >"unsafe-to-concat" : true,<
 
 var_dump($layout->serialize(
     Pango\Layout::SERIALIZE_CONTEXT
@@ -214,15 +211,13 @@ string(%d) "{
               {
                 "glyph" : 82,
                 "width" : %d,
-                "is-cluster-start" : true,
-                "unsafe-to-concat" : true,
+                "is-cluster-start" : true,%A
                 "log-cluster" : 4
               },
               {
                 "glyph" : 15,
                 "width" : %d,
-                "is-cluster-start" : true,
-                "unsafe-to-concat" : true,
+                "is-cluster-start" : true,%A
                 "log-cluster" : 5
               },
               {
