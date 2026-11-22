@@ -195,7 +195,7 @@ static HashTable* pango_font_family_get_debug_info(zend_object *zobj, int *is_te
     pango_font_family_object *intern = pango_font_family_fetch_object(zobj);
     HashTable *debug_info = zend_std_get_properties(zobj);
     zval font_str_zv;
-    char *font_str = (char *)pango_font_family_get_name(intern->font_family);
+    const char *font_str = pango_font_family_get_name(intern->font_family);
     *is_temp = 0;
 
     ZVAL_STRING(&font_str_zv, font_str);
