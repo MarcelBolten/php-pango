@@ -24,7 +24,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 enum(Pango\FontColor::DontCare)
 enum(Pango\FontColor::Required)

@@ -66,7 +66,9 @@ object(Pango\Attribute\FontDescriptionAttribute)#%d (3) {
   ["endIndex"]=>
   int(4294967295)
   ["desc"]=>
-  object(Pango\FontDescription)#%d (0) {
+  object(Pango\FontDescription)#%d (1) {
+    ["string-representation"]=>
+    string(%d) "%s"
   }
 }
 Pango\Attribute\FontDescriptionAttribute::__construct(): Argument #2 ($startIndex) must be between 0 and 4294967295 but -1 given

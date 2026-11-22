@@ -57,7 +57,9 @@ object(Pango\Context)#%d (0) {
 object(Pango\Layout)#%d (0) {
 }
 NULL
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 string(5) "serif"
 NULL

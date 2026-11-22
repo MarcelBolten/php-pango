@@ -14,7 +14,9 @@ var_dump($attrFontDescription->startIndex);
 var_dump($attrFontDescription->endIndex);
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 int(0)
 int(4294967295)

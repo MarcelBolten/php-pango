@@ -126,7 +126,9 @@ array(5) {
     ["endIndex"]=>
     int(4294967295)
     ["desc"]=>
-    object(Pango\FontDescription)#%d (0) {
+    object(Pango\FontDescription)#%d (1) {
+      ["string-representation"]=>
+      string(%d) "%s"
     }
   }
   [3]=>

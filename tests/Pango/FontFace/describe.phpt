@@ -37,6 +37,8 @@ object(Pango\FontFace)#%d (1) {
   ["string-representation"]=>
   string(%d) "%s"
 }
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 Pango\FontFace::describe() expects exactly 0 arguments, 1 given

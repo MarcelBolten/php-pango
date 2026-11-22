@@ -22,7 +22,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#1 (0) {
+object(Pango\FontDescription)#1 (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 string(0) ""
 string(5) "serif"

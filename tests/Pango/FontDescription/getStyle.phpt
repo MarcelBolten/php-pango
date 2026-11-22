@@ -19,10 +19,14 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 enum(Pango\Style::Normal)
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 enum(Pango\Style::Italic)
 Pango\FontDescription::getStyle() expects exactly 0 arguments, 1 given

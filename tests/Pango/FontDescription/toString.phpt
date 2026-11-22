@@ -32,11 +32,15 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 string(6) "Normal"
 string(51) "sans-serif Book Oblique Semi-Expanded Title-Caps 12"
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 string(45) "Cantarell Light Italic Expanded Small-Caps 15"
 string(6) "Normal"

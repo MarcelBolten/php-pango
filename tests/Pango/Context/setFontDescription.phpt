@@ -38,9 +38,13 @@ try {
 object(Pango\Context)#%d (0) {
 }
 NULL
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 bool(true)
 Pango\Context::setFontDescription() expects exactly 1 argument, 0 given

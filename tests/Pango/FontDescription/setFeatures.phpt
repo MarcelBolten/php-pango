@@ -29,7 +29,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 string(6) "cv01=1"
 Pango\FontDescription::setFeatures(): Argument #1 ($features) must not contain NUL bytes

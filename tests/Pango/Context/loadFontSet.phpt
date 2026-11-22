@@ -52,7 +52,9 @@ object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\Context)#%d (0) {
 }
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 object(Pango\Language)#%d (1) {
   ["string-representation"]=>

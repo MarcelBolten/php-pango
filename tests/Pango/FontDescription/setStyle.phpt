@@ -24,7 +24,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#1 (0) {
+object(Pango\FontDescription)#1 (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 enum(Pango\Style::Normal)
 enum(Pango\Style::Italic)

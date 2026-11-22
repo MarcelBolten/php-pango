@@ -17,10 +17,14 @@ var_dump($clonedFontDesc->getSize());
 var_dump($fontDesc->getSize());
 
 ?>
---EXPECT--
-object(Pango\FontDescription)#1 (0) {
+--EXPECTF--
+object(Pango\FontDescription)#1 (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
-object(Pango\FontDescription)#2 (0) {
+object(Pango\FontDescription)#2 (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 bool(true)
 int(13312)

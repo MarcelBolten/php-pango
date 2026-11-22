@@ -29,7 +29,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 string(17) "wght=500,wdth=125"
 Pango\FontDescription::setVariations(): Argument #1 ($variations) must not contain NUL bytes

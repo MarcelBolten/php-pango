@@ -31,7 +31,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 string(10) "sans-serif"
 Pango\FontDescription::setFamily(): Argument #1 ($family) must not contain NUL bytes

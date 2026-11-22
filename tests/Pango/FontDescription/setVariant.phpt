@@ -25,7 +25,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#1 (0) {
+object(Pango\FontDescription)#1 (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 enum(Pango\Variant::SmallCaps)
 Pango\FontDescription::setVariant() expects exactly 1 argument, 0 given

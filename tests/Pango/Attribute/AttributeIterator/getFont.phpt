@@ -88,7 +88,9 @@ array(3) {
   [2]=>
   string(10) "extraAttrs"
 }
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 object(Pango\Language)#%d (1) {
   ["string-representation"]=>

@@ -19,10 +19,14 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 enum(Pango\Weight::Normal)
-object(Pango\FontDescription)#%d (0) {
+object(Pango\FontDescription)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 enum(Pango\Weight::Light)
 Pango\FontDescription::getWeight() expects exactly 0 arguments, 1 given

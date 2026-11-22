@@ -18,7 +18,9 @@ object(Pango\Attribute\FontDescriptionAttribute)#%d (3) {
   ["endIndex"]=>
   int(4294967295)
   ["desc"]=>
-  object(Pango\FontDescription)#%d (0) {
+  object(Pango\FontDescription)#%d (1) {
+    ["string-representation"]=>
+    string(%d) "%s"
   }
 }
 Pango\Attribute\FontDescriptionAttribute Object

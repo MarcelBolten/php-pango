@@ -59,7 +59,9 @@ object(Pango\Attribute\FontDescriptionAttribute)#%d (3) {
   ["endIndex"]=>
   int(5)
   ["desc"]=>
-  object(Pango\FontDescription)#%d (0) {
+  object(Pango\FontDescription)#%d (1) {
+    ["string-representation"]=>
+    string(%d) "%s"
   }
 }
 object(Pango\Attribute\LanguageAttribute)#%d (3) {

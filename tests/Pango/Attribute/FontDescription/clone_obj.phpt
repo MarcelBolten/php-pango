@@ -14,6 +14,8 @@ $copy = clone $attrFontDescription;
 var_dump($attrFontDescription !== $copy);
 ?>
 --EXPECTF--
-object(Pango\FontDescription)#2 (0) {
+object(Pango\FontDescription)#2 (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
 }
 bool(true)
