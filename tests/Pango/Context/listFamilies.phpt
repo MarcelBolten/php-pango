@@ -35,6 +35,6 @@ object(Pango\Context)#%d (0) {
 bool(true)
 object(Pango\FontFamily)#%d (1) {
   ["string-representation"]=>
-  string(11) "DejaVu Sans"
+  string(%d) "%s"
 }
 Pango\Context::listFamilies() expects exactly 0 arguments, 1 given

@@ -44,7 +44,7 @@ object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\FontFamily)#%d (1) {
   ["string-representation"]=>
-  string(4) "Sans"
+  string(%d) "%s"
 }
 NULL
 Pango\FontMap::getFamily(): Argument #1 ($name) must not contain NUL bytes

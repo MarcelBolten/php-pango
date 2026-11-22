@@ -27,7 +27,7 @@ object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\FontFamily)#%d (1) {
   ["string-representation"]=>
-  string(11) "DejaVu Sans"
+  string(%d) "%s"
 }
 string(%d) "%s"
 Pango\FontFamily::getName() expects exactly 0 arguments, 1 given

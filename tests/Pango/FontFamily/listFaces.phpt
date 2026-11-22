@@ -31,7 +31,7 @@ object(Pango\Ft2\FontMap)#%d (0) {
 }
 object(Pango\FontFamily)#%d (1) {
   ["string-representation"]=>
-  string(11) "DejaVu Sans"
+  string(%d) "%s"
 }
 bool(true)
 object(Pango\FontFace)#%d (0) {
