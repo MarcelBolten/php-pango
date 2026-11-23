@@ -31,6 +31,18 @@ $layout->setWidth(-1);
 var_dump($layout->getWidth());
 
 try {
+    $layout->setWidth(1 << 31);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $layout->setWidth(-2);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $layout->setWidth();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -59,6 +71,8 @@ int(-1)
 int(10240)
 int(0)
 int(-1)
+Pango\Layout::setWidth(): Argument #1 ($width) must be less than or equal to 2147483647, or -1 to indicate no width
+Pango\Layout::setWidth(): Argument #1 ($width) must be less than or equal to 2147483647, or -1 to indicate no width
 Pango\Layout::setWidth() expects exactly 1 argument, 0 given
 Pango\Layout::setWidth() expects exactly 1 argument, 2 given
 Pango\Layout::setWidth(): Argument #1 ($width) must be of type int, array given

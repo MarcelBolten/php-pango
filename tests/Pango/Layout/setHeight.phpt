@@ -29,6 +29,18 @@ $layout->setHeight(0);
 var_dump($layout->getHeight());
 
 try {
+    $layout->setHeight(1 << 31);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $layout->setHeight(-(1 << 31) - 1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $layout->setHeight();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -56,6 +68,8 @@ object(Pango\Layout)#%d (0) {
 int(10240)
 int(-2)
 int(0)
+Pango\Layout::setHeight(): Argument #1 ($height) must be between -2147483648 and 2147483647
+Pango\Layout::setHeight(): Argument #1 ($height) must be between -2147483648 and 2147483647
 Pango\Layout::setHeight() expects exactly 1 argument, 0 given
 Pango\Layout::setHeight() expects exactly 1 argument, 2 given
 Pango\Layout::setHeight(): Argument #1 ($height) must be of type int, array given

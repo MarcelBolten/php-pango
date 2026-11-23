@@ -35,6 +35,18 @@ $glyphItem->letterSpace(30);
 var_dump(getXOffsetAndWidth($glyphItem));
 
 try {
+    $glyphItem->letterSpace(1 << 31);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $glyphItem->letterSpace(-(1 << 31) -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $glyphItem->letterSpace();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -105,6 +117,8 @@ array(3) {
     int(%i)
   }
 }
+Pango\GlyphItem::letterSpace(): Argument #1 ($spacing) must be greater than or equal to -2147483648 and less than or equal to 2147483647
+Pango\GlyphItem::letterSpace(): Argument #1 ($spacing) must be greater than or equal to -2147483648 and less than or equal to 2147483647
 Pango\GlyphItem::letterSpace() expects exactly 1 argument, 0 given
 Pango\GlyphItem::letterSpace() expects exactly 1 argument, 2 given
 Pango\GlyphItem::letterSpace(): Argument #1 ($spacing) must be of type int, array given
