@@ -9,6 +9,18 @@ use function Pango\units_from_double;
 var_dump(units_from_double(1.001));
 
 try {
+    units_from_double(NAN);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    units_from_double(INF);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     units_from_double();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -28,6 +40,8 @@ try {
 ?>
 --EXPECTF--
 int(1025)
+Pango\units_from_double(): Argument #1 ($d) must be a finite number, NAN provided
+Pango\units_from_double(): Argument #1 ($d) must be a finite number, INF provided
 Pango\units_from_double() expects exactly 1 argument, 0 given
 Pango\units_from_double() expects exactly 1 argument, 2 given
 Pango\units_from_double(): Argument #1 ($d) must be of type float, array given
