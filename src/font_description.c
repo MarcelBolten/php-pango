@@ -240,6 +240,11 @@ PHP_METHOD(Pango_FontDescription, setSize)
         Z_PARAM_LONG(size)
     ZEND_PARSE_PARAMETERS_END();
 
+    if (size < 0 || size > INT32_MAX) {
+        zend_argument_value_error(1, "must be greater than or equal to 0 and less than or equal to %d", INT32_MAX);
+        RETURN_THROWS();
+    }
+
     pango_font_description_set_size(Z_PANGO_FONT_DESC_P(ZEND_THIS)->font_description, size);
 
     RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
@@ -254,6 +259,11 @@ PHP_METHOD(Pango_FontDescription, setAbsoluteSize)
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_DOUBLE(size)
     ZEND_PARSE_PARAMETERS_END();
+
+    if (size < 0) {
+        zend_argument_value_error(1, "must be greater than or equal to 0");
+        RETURN_THROWS();
+    }
 
     pango_font_description_set_absolute_size(Z_PANGO_FONT_DESC_P(ZEND_THIS)->font_description, size);
 

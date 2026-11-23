@@ -26,12 +26,14 @@ try {
     $font->getGlyphExtents(-1);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
+    assert(str_contains($e->getMessage(), '2147483647') || str_contains($e->getMessage(), '4294967295'));
 }
 
 try {
     $font->getGlyphExtents(4294967296);
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
+    assert(str_contains($e->getMessage(), '2147483647') || str_contains($e->getMessage(), '4294967295'));
 }
 
 try {
@@ -101,7 +103,7 @@ array(3) {
     int(%i)
   }
 }
-Pango\Font::getGlyphExtents(): Argument #1 ($glyph) must be greater than 0 and less than or equal to 2147483647
-Pango\Font::getGlyphExtents(): Argument #1 ($glyph) must be greater than 0 and less than or equal to 2147483647
+Pango\Font::getGlyphExtents(): Argument #1 ($glyph) must be greater than 0 and less than or equal to %d
+Pango\Font::getGlyphExtents(): Argument #1 ($glyph) must be greater than 0 and less than or equal to %d
 Pango\Font::getGlyphExtents() expects exactly 1 argument, 0 given
 Pango\Font::getGlyphExtents() expects exactly 1 argument, 2 given

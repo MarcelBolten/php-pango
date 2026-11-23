@@ -169,6 +169,11 @@ PHP_METHOD(Pango_GlyphItem, letterSpace)
         Z_PARAM_LONG(spacing)
     ZEND_PARSE_PARAMETERS_END();
 
+    if (spacing < INT32_MIN || spacing > INT32_MAX) {
+        zend_argument_value_error(1, "must be greater than or equal to %d and less than or equal to %d", INT32_MIN, INT32_MAX);
+        RETURN_THROWS();
+    }
+
     pango_glyph_item_letter_space(
         orig,
         pango_layout_get_text(layout),

@@ -431,6 +431,15 @@ ZEND_FUNCTION(Pango_units_from_double)
         Z_PARAM_DOUBLE(d)
     ZEND_PARSE_PARAMETERS_END();
 
+    if (zend_isinf(d)) {
+        zend_argument_value_error(1, "must be a finite number, INF provided");
+        RETURN_THROWS();
+    }
+    if (zend_isnan(d)) {
+        zend_argument_value_error(1, "must be a finite number, NAN provided");
+        RETURN_THROWS();
+    }
+
     RETURN_LONG(pango_units_from_double(d));
 }
 /* }}} */

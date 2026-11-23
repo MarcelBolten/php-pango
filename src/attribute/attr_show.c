@@ -47,7 +47,7 @@ zend_class_entry *php_pango_get_attr_show_ce(void)
     \Pango\Attribute\ShowAttribute Class API
 ------------------------------------------------------------------*/
 
-/* {{{ Creates a new letter spacing attribute */
+/* {{{ Creates a new show attribute */
 PHP_METHOD(Pango_Attribute_ShowAttribute, __construct)
 {
     zend_long value;

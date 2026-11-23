@@ -84,6 +84,11 @@ PHP_METHOD(Pango_TabStop, __construct)
         RETURN_THROWS();
     }
 
+    if (position < 0 || position > INT32_MAX) {
+        zend_argument_value_error(2, "must be greater than or equal to 0 and less than or equal to %d", INT32_MAX);
+        RETURN_THROWS();
+    }
+
     zend_update_property(
         ce_pango_tabstop, Z_OBJ_P(ZEND_THIS),
         "alignment", sizeof("alignment") - 1, alignment_zv

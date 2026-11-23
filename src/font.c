@@ -194,6 +194,7 @@ PHP_METHOD(Pango_Font, getFontMap)
 /* {{{ */
 PHP_METHOD(Pango_Font, getGlyphExtents)
 {
+    // TODO: fix this, even on 32 bit systems, need to be able to handle full range of PangoGlyph values (UINT32)
     zend_long glyph;
     PangoRectangle ink_rect;
     PangoRectangle logical_rect;
@@ -203,10 +204,17 @@ PHP_METHOD(Pango_Font, getGlyphExtents)
         Z_PARAM_LONG(glyph)
     ZEND_PARSE_PARAMETERS_END();
 
+    #if SIZEOF_ZEND_LONG == 4
     if (glyph < 0 || glyph > INT32_MAX) {
         zend_argument_value_error(1, "must be greater than 0 and less than or equal to %d", INT32_MAX);
         RETURN_THROWS();
     }
+    #else
+    if (glyph < 0 || glyph > UINT32_MAX) {
+        zend_argument_value_error(1, "must be greater than 0 and less than or equal to %u", UINT32_MAX);
+        RETURN_THROWS();
+    }
+    #endif
 
     pango_font_get_glyph_extents(
         pango_font_object_get_font(ZEND_THIS),

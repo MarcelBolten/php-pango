@@ -1,5 +1,5 @@
 /* This is a generated file, edit layout.stub.php instead.
- * Stub hash: d97e42f270dfc64a3cc8f9fccf6384012f263783 */
+ * Stub hash: cde79dd2836ed4993f3b98276eba45b950bebd43 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Layout___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, context, Pango\\Context, 0)

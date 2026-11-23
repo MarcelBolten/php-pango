@@ -54,7 +54,6 @@ class Layout
      * Sets the text of the layout.
      *
      * This function validates text and renders invalid UTF-8 with a placeholder glyph.
-     * Text will be truncated on encountering a null byte.
      */
     public function setText(
         string $text,
@@ -129,7 +128,10 @@ class Layout
     /**
      * Sets the height to which this Layout should be ellipsized at.
      *
-     * @param int $height The desired height of this Layout in Pango units if positive, or desired number of lines if negative.
+     * @param int $height The desired height of this Layout in Pango units if
+     *                    positive, or desired number of lines if negative. A
+     *                    value of zero will render exactly one line for the
+     *                    entire layout.
      */
     public function setHeight(
         int $height,

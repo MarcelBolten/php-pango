@@ -425,6 +425,15 @@ PHP_METHOD(Pango_Attribute_AttributeList, splice)
         Z_PARAM_LONG(length)
     ZEND_PARSE_PARAMETERS_END();
 
+    if (pos < 0 || pos > INT32_MAX) {
+        zend_argument_value_error(2, "must be greater than or equal to 0 and less than or equal to %d", INT32_MAX);
+        RETURN_THROWS();
+    }
+    if (length < 0 || length > INT32_MAX) {
+        zend_argument_value_error(3, "must be greater than or equal to 0 and less than or equal to %d", INT32_MAX);
+        RETURN_THROWS();
+    }
+
     pango_attr_list_splice(
         Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list,
         Z_PANGO_ATTR_LIST_P(attr_list_zv)->attr_list,

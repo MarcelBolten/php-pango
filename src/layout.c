@@ -131,6 +131,11 @@ PHP_METHOD(Pango_Layout, setText)
         RETURN_THROWS();
     }
 
+    if (ZSTR_LEN(text) > INT32_MAX) {
+        zend_argument_value_error(1, "must be less than or equal to %d bytes long", INT32_MAX);
+        RETURN_THROWS();
+    }
+
     pango_layout_set_text(Z_PANGO_LAYOUT_P(ZEND_THIS)->layout, ZSTR_VAL(text), ZSTR_LEN(text));
 
     RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
@@ -346,6 +351,11 @@ PHP_METHOD(Pango_Layout, setWidth)
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_LONG(width)
     ZEND_PARSE_PARAMETERS_END();
+    
+    if (width < -1 || width > INT32_MAX) {
+        zend_argument_value_error(1, "must be less than or equal to %d, or -1 to indicate no width", INT32_MAX);
+        RETURN_THROWS();
+    }
 
     pango_layout_set_width(Z_PANGO_LAYOUT_P(ZEND_THIS)->layout, width);
 
@@ -361,6 +371,11 @@ PHP_METHOD(Pango_Layout, setHeight)
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_LONG(height)
     ZEND_PARSE_PARAMETERS_END();
+
+    if (height < INT32_MIN || height > INT32_MAX) {
+        zend_argument_value_error(1, "must be between %d and %d", INT32_MIN, INT32_MAX);
+        RETURN_THROWS();
+    }
 
     pango_layout_set_height(Z_PANGO_LAYOUT_P(ZEND_THIS)->layout, height);
 
@@ -519,6 +534,11 @@ PHP_METHOD(Pango_Layout, setIndent)
         Z_PARAM_LONG(indent)
     ZEND_PARSE_PARAMETERS_END();
 
+    if (indent < INT32_MIN || indent > INT32_MAX) {
+        zend_argument_value_error(1, "must be greater than or equal to %d and less than or equal to %d", INT32_MIN, INT32_MAX);
+        RETURN_THROWS();
+    }
+
     pango_layout_set_indent(Z_PANGO_LAYOUT_P(ZEND_THIS)->layout, indent);
 
     RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
@@ -542,6 +562,11 @@ PHP_METHOD(Pango_Layout, setSpacing)
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_LONG(spacing)
     ZEND_PARSE_PARAMETERS_END();
+
+    if (spacing < INT32_MIN || spacing > INT32_MAX) {
+        zend_argument_value_error(1, "must be greater than or equal to %d and less than or equal to %d", INT32_MIN, INT32_MAX);
+        RETURN_THROWS();
+    }
 
     pango_layout_set_spacing(Z_PANGO_LAYOUT_P(ZEND_THIS)->layout, spacing);
 
