@@ -134,7 +134,7 @@ PHP_METHOD(Pango_Layout, setText)
     if (zend_str_has_nul_byte(text)) {
         zend_argument_value_error(1, "must not contain NUL bytes");
         RETURN_THROWS();
-    }    
+    }
 
     pango_layout_set_text(Z_PANGO_LAYOUT_P(ZEND_THIS)->layout, ZSTR_VAL(text), ZSTR_LEN(text));
 

@@ -41,7 +41,7 @@ pango_layout_line_object *pango_layout_line_fetch_object(zend_object *object)
     return (pango_layout_line_object *) ((char*)(object) - offsetof(pango_layout_line_object, std));
 }
 
-PHP_PANGO_API zend_class_entry* php_pango_get_layout_line_ce(void)
+PHP_PANGO_API zend_class_entry *php_pango_get_layout_line_ce(void)
 {
     return pango_ce_pango_layout_line;
 }
@@ -274,7 +274,7 @@ static void pango_layout_line_free_obj(zend_object *zobj)
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_layout_line_obj_ctor(zend_class_entry *ce, pango_layout_line_object **intern)
+static zend_object *pango_layout_line_obj_ctor(zend_class_entry *ce, pango_layout_line_object **intern)
 {
     pango_layout_line_object *object = ecalloc(1, sizeof(pango_layout_line_object) + zend_object_properties_size(ce));
 
@@ -290,7 +290,7 @@ static zend_object* pango_layout_line_obj_ctor(zend_class_entry *ce, pango_layou
 /* }}} */
 
 /* {{{ */
-static zend_object* pango_layout_line_create_object(zend_class_entry *ce)
+static zend_object *pango_layout_line_create_object(zend_class_entry *ce)
 {
     pango_layout_line_object *intern = NULL;
     zend_object *return_value = pango_layout_line_obj_ctor(ce, &intern);
