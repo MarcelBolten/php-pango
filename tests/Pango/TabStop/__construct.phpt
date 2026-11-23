@@ -11,6 +11,18 @@ var_dump(new TabStop(TabAlign::Right, 10240));
 var_dump(new TabStop(TabAlign::Decimal, 10240, "."));
 
 try {
+    new TabStop(TabAlign::Right, -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    new TabStop(TabAlign::Right, 1 << 31);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     new TabStop(TabAlign::Decimal, 10240, ".\0");
 } catch (ValueError $e) {
     echo $e->getMessage(), "\n";
@@ -75,6 +87,8 @@ object(Pango\TabStop)#%d (3) {
   ["decimalChar"]=>
   string(1) "."
 }
+Pango\TabStop::__construct(): Argument #2 ($position) must be greater than or equal to 0 and less than or equal to 2147483647
+Pango\TabStop::__construct(): Argument #2 ($position) must be greater than or equal to 0 and less than or equal to 2147483647
 Pango\TabStop::__construct(): Argument #3 ($decimalChar) must not contain NUL bytes
 Pango\TabStop::__construct(): Argument #3 ($decimalChar) must be a single UTF-8 character
 Pango\TabStop::__construct() expects at least 2 arguments, 0 given

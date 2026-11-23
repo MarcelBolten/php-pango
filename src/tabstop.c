@@ -73,8 +73,8 @@ PHP_METHOD(Pango_TabStop, __construct)
         Z_PARAM_STR_OR_NULL(decimalChar)
     ZEND_PARSE_PARAMETERS_END();
 
-    if (decimalChar && zend_str_has_nul_byte(decimalChar)) {
-        zend_argument_value_error(3, "must not contain NUL bytes");
+    if (position < 0 || position > INT32_MAX) {
+        zend_argument_value_error(2, "must be greater than or equal to 0 and less than or equal to %d", INT32_MAX);
         RETURN_THROWS();
     }
 
@@ -84,8 +84,8 @@ PHP_METHOD(Pango_TabStop, __construct)
         RETURN_THROWS();
     }
 
-    if (position < 0 || position > INT32_MAX) {
-        zend_argument_value_error(2, "must be greater than or equal to 0 and less than or equal to %d", INT32_MAX);
+    if (decimalChar && zend_str_has_nul_byte(decimalChar)) {
+        zend_argument_value_error(3, "must not contain NUL bytes");
         RETURN_THROWS();
     }
 
