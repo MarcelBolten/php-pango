@@ -25,7 +25,6 @@ var_dump($layout->getText());
 $layout->setText("");
 var_dump($layout->getText());
 
-// with NUL byte
 try {
     $layout->setText("Hello,\0 Παν語!");
 } catch (ValueError $e) {

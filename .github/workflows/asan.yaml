@@ -169,6 +169,8 @@ jobs:
           ZEND_DONT_UNLOAD_MODULES: 1
           USE_ZEND_ALLOC: 0
           REPORT_EXIT_STATUS: 1
+          # A trigger to skip tests under ASAN
+          SKIP_ASAN: 1
 
       - name: "Upload test outputs"
         if: ${{ always() }}
