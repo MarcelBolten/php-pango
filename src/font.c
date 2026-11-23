@@ -24,6 +24,7 @@
 #include <Zend/zend_exceptions.h>
 #include <pango/pangoft2.h>
 #include <pango/pangocairo.h>
+#include <harfbuzz/hb.h>
 
 #include "../php_pango.h"
 #include "cairo/pango_cairo.h"
@@ -150,9 +151,10 @@ PHP_METHOD(Pango_Font, getFeatures)
     for (int i = 0; i < num_features; i++) {
         array_init(&tmp_array_zv);
         add_assoc_long(&tmp_array_zv, "tag", features[i].tag);
-        char tag_str[5];
+        char tag_str[4];
         hb_tag_to_string(features[i].tag, tag_str);
         add_assoc_string(&tmp_array_zv, "tag-string", tag_str);
+        // TODO: properly handle unsigned integers on 32bit systems
         add_assoc_long(&tmp_array_zv, "value", features[i].value);
         add_assoc_long(&tmp_array_zv, "start", features[i].start);
         add_assoc_long(&tmp_array_zv, "end", features[i].end);

@@ -8,8 +8,10 @@ use Pango\Context;
 use Pango\Ft2\FontMap;
 use Pango\FontDescription;
 
-$fontMap = new FontMap();
 $pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
+putenv("FONTCONFIG_FILE=$pathToFonts/DejaVuSans_features.conf");
+
+$fontMap = new FontMap();
 $fontMap->addFontFile($pathToFonts . "/DejaVuSans.ttf");
 $fontMap->addFontFile($pathToFonts . "/NotoSansJP-Regular.otf");
 $fontMap->addFontFile($pathToFonts . "/NotoSans-Regular.ttf");
@@ -21,7 +23,10 @@ var_dump($fontDesc);
 $font = $context->loadFont($fontDesc);
 var_dump($font);
 var_dump($font->getFeatures());
-// TODO: test getFeatures() with font that has OpenType features
+
+$font = $context->loadFont(new FontDescription("DejaVu Sans 12"));
+var_dump($font);
+var_dump($font->getFeatures());
 
 try {
     $font->getFeatures(1);
@@ -43,5 +48,37 @@ object(Pango\Font)#%d (1) {
   string(%d) "%s"
 }
 array(0) {
+}
+object(Pango\Font)#%d (1) {
+  ["string-representation"]=>
+  string(%d) "%s"
+}
+array(2) {
+  [0]=>
+  array(5) {
+    ["tag"]=>
+    int(1818847073)
+    ["tag-string"]=>
+    string(4) "liga"
+    ["value"]=>
+    int(0)
+    ["start"]=>
+    int(0)
+    ["end"]=>
+    int(%i)
+  }
+  [1]=>
+  array(5) {
+    ["tag"]=>
+    int(1801810542)
+    ["tag-string"]=>
+    string(4) "kern"
+    ["value"]=>
+    int(1)
+    ["start"]=>
+    int(0)
+    ["end"]=>
+    int(%i)
+  }
 }
 Pango\Font::getFeatures() expects exactly 0 arguments, 1 given
