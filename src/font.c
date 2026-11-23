@@ -151,7 +151,7 @@ PHP_METHOD(Pango_Font, getFeatures)
     for (int i = 0; i < num_features; i++) {
         array_init(&tmp_array_zv);
         add_assoc_long(&tmp_array_zv, "tag", features[i].tag);
-        char tag_str[4];
+        char tag_str[5];
         hb_tag_to_string(features[i].tag, tag_str);
         add_assoc_string(&tmp_array_zv, "tag-string", tag_str);
         // TODO: properly handle unsigned integers on 32bit systems
