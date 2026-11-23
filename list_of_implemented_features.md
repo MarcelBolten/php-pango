@@ -556,7 +556,7 @@ For now there is no plan to implement this as I only want to get positional info
 - ✅ glyph_string_path
 - ✅ show_glyph_string
 #### GlyphItem
-- show_glyph_item ✅
+- ✅ show_glyph_item
 
 # PangoFc
 ## Classes
