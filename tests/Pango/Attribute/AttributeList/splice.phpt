@@ -18,6 +18,30 @@ $work->splice($attributeList2, 15, 0);
 var_dump($work->serialize());
 
 try {
+    $attributeList->splice($attributeList2, -1, 2);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $attributeList->splice($attributeList2, 1 << 31, 2);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $attributeList->splice($attributeList2, 1, -1);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $attributeList->splice($attributeList2, 1, 1 << 31);
+} catch (ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $attributeList->splice();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -64,6 +88,10 @@ string(31) "10 25 size 10
 15 20 weight bold"
 string(31) "10 20 size 10
 15 35 weight bold"
+Pango\Attribute\AttributeList::splice(): Argument #2 ($pos) must be greater than or equal to 0 and less than or equal to 2147483647
+Pango\Attribute\AttributeList::splice(): Argument #2 ($pos) must be greater than or equal to 0 and less than or equal to 2147483647
+Pango\Attribute\AttributeList::splice(): Argument #3 ($length) must be greater than or equal to 0 and less than or equal to 2147483647
+Pango\Attribute\AttributeList::splice(): Argument #3 ($length) must be greater than or equal to 0 and less than or equal to 2147483647
 Pango\Attribute\AttributeList::splice() expects exactly 3 arguments, 0 given
 Pango\Attribute\AttributeList::splice() expects exactly 3 arguments, 1 given
 Pango\Attribute\AttributeList::splice() expects exactly 3 arguments, 2 given

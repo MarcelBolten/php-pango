@@ -16,6 +16,12 @@ $fontDesc->setAbsoluteSize(0);
 var_dump($fontDesc->getSize());
 
 try {
+    $fontDesc->setAbsoluteSize(-1);
+} catch (\ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $fontDesc->setAbsoluteSize();
 } catch (\ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -40,6 +46,7 @@ object(Pango\FontDescription)#%d (1) {
 }
 int(10547)
 int(0)
+Pango\FontDescription::setAbsoluteSize(): Argument #1 ($size) must be greater than or equal to 0
 Pango\FontDescription::setAbsoluteSize() expects exactly 1 argument, 0 given
 Pango\FontDescription::setAbsoluteSize() expects exactly 1 argument, 2 given
 Pango\FontDescription::setAbsoluteSize(): Argument #1 ($size) must be of type float, array given

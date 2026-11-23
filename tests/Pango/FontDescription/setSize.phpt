@@ -16,6 +16,18 @@ $fontDesc->setSize(0);
 var_dump($fontDesc->getSize());
 
 try {
+    $fontDesc->setSize(-1);
+} catch (\ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
+    $fontDesc->setSize(1 << 31);
+} catch (\ValueError $e) {
+    echo $e->getMessage(), "\n";
+}
+
+try {
     $fontDesc->setSize();
 } catch (\ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
@@ -40,6 +52,8 @@ object(Pango\FontDescription)#%d (1) {
 }
 int(10240)
 int(0)
+Pango\FontDescription::setSize(): Argument #1 ($size) must be greater than or equal to 0 and less than or equal to 2147483647
+Pango\FontDescription::setSize(): Argument #1 ($size) must be greater than or equal to 0 and less than or equal to 2147483647
 Pango\FontDescription::setSize() expects exactly 1 argument, 0 given
 Pango\FontDescription::setSize() expects exactly 1 argument, 2 given
 Pango\FontDescription::setSize(): Argument #1 ($size) must be of type int, array given
