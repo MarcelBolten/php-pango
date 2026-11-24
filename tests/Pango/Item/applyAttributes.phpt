@@ -10,9 +10,17 @@ use Pango\Attribute\{
   AttributeList,
   SizeAttribute,
 };
+use Pango\Ft2\FontMap;
+use Pango\Context;
 
-$cairoContext = new Cairo\Context(new Cairo\Surface\Image(Cairo\Surface\ImageFormat::ARGB32, 1, 1));
-var_dump($cairoContext);
+$fontMap = new FontMap();
+$pathToFonts = dirname(__FILE__, 3) . "/assets/fonts";
+$fontMap->addFontFile($pathToFonts . "/DejaVuSans.ttf");
+$fontMap->addFontFile($pathToFonts . "/NotoSansJP-Regular.otf");
+$fontMap->addFontFile($pathToFonts . "/NotoSans-Regular.ttf");
+var_dump($fontMap);
+$context = new Context($fontMap);
+var_dump($context);
 
 // The idea is that you have attributes that don’t affect itemization, such as font features, so you filter them out using pango_attr_list_filter(), itemize your text, then reapply the attributes to the resulting items using this function.
 // The iter should be positioned before the range of the item, and will be advanced past it. This function is meant to be called in a loop over the items resulting from itemization, while passing the iter to each call.
@@ -31,7 +39,7 @@ $itemizeAttributes = $attrList->filter(
 );
 var_dump($itemizeAttributes);
 
-$items = (new PangoCairo\Context($cairoContext))->itemize($text, 0, 17, $itemizeAttributes);
+$items = $context->itemize($text, 0, 17, $itemizeAttributes);
 var_dump($items);
 
 $iter = $attrList->getIterator();
@@ -61,9 +69,9 @@ try {
 }
 ?>
 --EXPECTF--
-object(Cairo\Context)#%d (0) {
+object(Pango\Ft2\FontMap)#%d (0) {
 }
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Context)#%d (0) {
 }
 object(Pango\Attribute\AttributeList)#%d (1) {
   ["string-representation"]=>
