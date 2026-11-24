@@ -160,6 +160,8 @@ PHP_METHOD(Pango_Font, getFeatures)
         add_assoc_long(&tmp_array_zv, "end", features[i].end);
         add_next_index_zval(return_value, &tmp_array_zv);
     }
+
+    #undef NUM_FEATURES
 }
 /* }}} */
 
