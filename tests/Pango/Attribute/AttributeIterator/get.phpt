@@ -41,7 +41,12 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(76) "0 10 size 42
+0 5 font-desc "Sans 12"
+0 2 language en
+0 4294967295 shapeshape"
 }
 object(Pango\Attribute\AttributeIterator)#%d (0) {
 }

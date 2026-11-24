@@ -76,7 +76,56 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(1133) "0 1 size 42
+0 2 absolute-size 43
+0 3 rise 44
+0 4 letter-spacing 45
+0 5 absolute-line-height 46
+0 6 foreground-alpha 47
+0 7 background-alpha 48
+0 8 show 4
+0 9 line-height 50.000000
+0 10 scale 51.000000
+0 11 strikethrough true
+0 12 fallback true
+0 13 allow-breaks true
+0 14 insert-hyphens true
+0 15 word 1
+0 16 sentence 1
+0 17 family "Arial"
+0 18 font-features "kern=0, liga=0"
+0 19 style italic
+0 20 style italic
+0 21 weight bold
+0 22 weight bold
+0 23 variant small-caps
+0 24 variant small-caps
+0 25 stretch ultra-condensed
+0 26 stretch extra-condensed
+0 27 gravity south
+0 28 gravity north
+0 29 gravity-hint natural
+0 30 gravity-hint strong
+0 31 overline single
+0 32 overline single
+0 33 underline double
+0 34 underline double
+0 35 text-transform uppercase
+0 36 text-transform lowercase
+0 37 baseline-shift subscript
+0 38 baseline-shift superscript
+0 39 width 1024
+0 40 foreground #ffff88881111
+0 41 background #b2b222222222
+0 42 underline-color #ffff88881111
+0 43 strikethrough-color #ffff88881111
+0 44 overline-color #ffff88881111
+0 45 font-scale superscript
+0 46 font-desc "Sans Italic 12"
+0 47 language en
+0 4294967295 shapeshape"
 }
 object(Pango\Attribute\AttributeIterator)#%d (0) {
 }

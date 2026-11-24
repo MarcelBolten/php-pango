@@ -76,11 +76,61 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(0) ""
 }
 object(Pango\Attribute\AttributeIterator)#%d (0) {
 }
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(1146) "0 1 size 42
+1 2 absolute-size 43
+2 3 rise 44
+3 4 letter-spacing 45
+4 5 absolute-line-height 46
+5 6 foreground-alpha 47
+6 7 background-alpha 48
+7 8 show 4
+8 9 line-height 50.000000
+9 10 scale 51.000000
+10 11 strikethrough true
+11 12 fallback true
+12 13 allow-breaks true
+13 14 insert-hyphens true
+14 15 word 1
+15 16 sentence 1
+16 17 family "Arial"
+17 18 font-features "kern=0, liga=0"
+18 19 style italic
+19 20 style italic
+20 21 weight bold
+21 22 weight bold
+22 23 variant small-caps
+23 24 variant small-caps
+24 25 stretch ultra-condensed
+25 26 stretch extra-condensed
+26 27 gravity south
+27 28 gravity north
+28 29 gravity-hint natural
+29 30 gravity-hint strong
+30 31 overline single
+31 32 overline single
+32 33 underline double
+33 34 underline double
+34 35 text-transform uppercase
+35 36 text-transform lowercase
+36 37 baseline-shift subscript
+37 38 baseline-shift superscript
+38 39 width 1024
+39 40 foreground #ffff88881111
+40 41 background #b2b222222222
+41 42 underline-color #ffff88881111
+42 43 strikethrough-color #ffff88881111
+43 44 overline-color #ffff88881111
+44 45 font-scale superscript
+45 46 font-desc "Sans Italic 12"
+46 47 language en"
 }
 object(Pango\Attribute\AttributeIterator)#%d (0) {
 }

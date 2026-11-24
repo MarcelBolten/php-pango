@@ -66,7 +66,9 @@ try {
 --EXPECTF--
 object(Pango\MarkupParseResult)#%d (3) {
   ["attrList"]=>
-  object(Pango\Attribute\AttributeList)#%d (0) {
+  object(Pango\Attribute\AttributeList)#%d (1) {
+    ["string-representation"]=>
+    string(0) ""
   }
   ["text"]=>
   string(4) "test"
@@ -75,7 +77,9 @@ object(Pango\MarkupParseResult)#%d (3) {
 }
 object(Pango\MarkupParseResult)#%d (3) {
   ["attrList"]=>
-  object(Pango\Attribute\AttributeList)#%d (0) {
+  object(Pango\Attribute\AttributeList)#%d (1) {
+    ["string-representation"]=>
+    string(0) ""
   }
   ["text"]=>
   string(4) "test"

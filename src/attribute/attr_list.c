@@ -593,6 +593,21 @@ static zend_object *pango_attr_list_clone_obj(zend_object *zobj)
 // }
 /* }}} */
 
+static HashTable* pango_attr_list_object_get_debug_info(zend_object *zobj, int *is_temp)
+{
+    pango_attr_list_object *intern = pango_attr_list_fetch_object(zobj);
+    HashTable *debug_info = zend_std_get_properties(zobj);
+    zval list_str_zv;
+    char *list_str = pango_attr_list_to_string(intern->attr_list);
+    *is_temp = 0;
+
+    ZVAL_STRING(&list_str_zv, list_str);
+
+    zend_hash_str_update(debug_info, "string-representation", sizeof("string-representation") - 1, &list_str_zv);
+
+    return debug_info;
+}
+
 /* ----------------------------------------------------------------
     \Pango\Attribute\AttributeList Definition and registration
 ------------------------------------------------------------------*/
@@ -613,6 +628,7 @@ PHP_MINIT_FUNCTION(pango_attr_list)
     // pango_attr_list_object_handlers.write_property = pango_attr_list_object_write_property;
     pango_attr_list_object_handlers.get_property_ptr_ptr = NULL;
     // pango_attr_list_object_handlers.get_properties_for = pango_attr_list_object_get_properties_for;
+    pango_attr_list_object_handlers.get_debug_info = pango_attr_list_object_get_debug_info;
     pango_attr_list_object_handlers.compare = pango_attr_object_compare;
 
     ce_pango_attr_list = register_class_Pango_Attribute_AttributeList();

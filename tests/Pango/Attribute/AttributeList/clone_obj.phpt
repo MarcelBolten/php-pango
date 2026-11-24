@@ -13,7 +13,11 @@ $copy = clone $attributeList;
 var_dump($copy);
 ?>
 --EXPECT--
-object(Pango\Attribute\AttributeList)#1 (0) {
+object(Pango\Attribute\AttributeList)#1 (1) {
+  ["string-representation"]=>
+  string(0) ""
 }
-object(Pango\Attribute\AttributeList)#2 (0) {
+object(Pango\Attribute\AttributeList)#2 (1) {
+  ["string-representation"]=>
+  string(0) ""
 }

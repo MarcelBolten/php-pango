@@ -37,9 +37,13 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(0) ""
 }
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(13) "10 20 size 42"
 }
 Pango\Attribute\AttributeList::__construct(): Argument #1 ($string) must not contain NUL bytes
 Pango\Attribute\AttributeList::__construct() expects at most 1 argument, 2 given

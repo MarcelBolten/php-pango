@@ -41,7 +41,10 @@ try {
 --EXPECTF--
 object(Pango\MarkupParseResult)#%d (3) {
   ["attrList"]=>
-  object(Pango\Attribute\AttributeList)#%d (0) {
+  object(Pango\Attribute\AttributeList)#%d (1) {
+    ["string-representation"]=>
+    string(58) "0 5 foreground #ffff00000000
+6 11 background #00000000ffff"
   }
   ["text"]=>
   string(11) "Hello World"
@@ -52,7 +55,11 @@ string(58) "0 5 foreground #ffff00000000
 6 11 background #00000000ffff"
 object(Pango\MarkupParseResult)#%d (3) {
   ["attrList"]=>
-  object(Pango\Attribute\AttributeList)#%d (0) {
+  object(Pango\Attribute\AttributeList)#%d (1) {
+    ["string-representation"]=>
+    string(76) "0 1 underline low
+0 5 foreground #ffff00000000
+6 11 background #00000000ffff"
   }
   ["text"]=>
   string(11) "Hello World"

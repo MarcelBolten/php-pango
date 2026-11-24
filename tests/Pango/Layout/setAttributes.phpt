@@ -53,7 +53,9 @@ object(Pango\Context)#%d (0) {
 object(Pango\Layout)#%d (0) {
 }
 NULL
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(13) "10 20 size 42"
 }
 array(1) {
   [0]=>

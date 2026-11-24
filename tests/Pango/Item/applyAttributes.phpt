@@ -29,7 +29,7 @@ var_dump($attrList);
 $itemizeAttributes = $attrList->filter(
   fn (Attribute $attr): bool => $attr instanceof SizeAttribute
 );
-var_dump($itemizeAttributes->toString());
+var_dump($itemizeAttributes);
 
 $items = (new PangoCairo\Context($cairoContext))->itemize($text, 0, 17, $itemizeAttributes);
 var_dump($items);
@@ -65,8 +65,18 @@ object(Cairo\Context)#%d (0) {
 }
 object(Pango\Attribute\AttributeList)#%d (0) {
 }
-string(25) "0 7 size 14
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(86) "0 7 size 14
+7 13 foreground #ffff00000000
+13 16 size 18
+16 17 foreground #00000000ffff"
+}
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(25) "0 7 size 14
 13 16 size 18"
+}
 array(4) {
   [0]=>
   object(Pango\Item)#%d (4) {

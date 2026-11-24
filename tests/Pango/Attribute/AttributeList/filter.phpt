@@ -78,7 +78,10 @@ try {
 }
 ?>
 --EXPECTF--
-object(Pango\Attribute\AttributeList)#%d (0) {
+object(Pango\Attribute\AttributeList)#%d (1) {
+  ["string-representation"]=>
+  string(31) "10 20 size 42
+10 20 weight bold"
 }
 array(1) {
   [0]=>
