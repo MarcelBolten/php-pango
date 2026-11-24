@@ -22,6 +22,7 @@
 
 #include <php.h>
 #include <Zend/zend_enum.h>
+#include <Zend/zend.h>
 
 #include "../php_pango.h"
 #include "attribute/attribute.h"
@@ -95,6 +96,29 @@ static inline zend_class_entry *pango_glyph_item_get_glyph_string_ce(zend_object
 ------------------------------------------------------------------*/
 
 /* {{{ */
+PHP_METHOD(Pango_GlyphItem, __construct)
+{
+    zval *item_zv;
+    zval *glyphs_zv;
+    PangoGlyphItem *glyph_item;
+
+    ZEND_PARSE_PARAMETERS_START(2, 2)
+        Z_PARAM_OBJECT_OF_CLASS(item_zv, php_pango_get_item_ce())
+        Z_PARAM_OBJECT_OF_CLASS(glyphs_zv, php_pango_get_glyph_string_ce())
+    ZEND_PARSE_PARAMETERS_END();
+
+    glyph_item = g_slice_new(PangoGlyphItem);
+    glyph_item->item = pango_item_copy(Z_PANGO_ITEM_P(item_zv)->item);
+    glyph_item->glyphs = pango_glyph_string_copy(Z_PANGO_GLYPH_STRING_P(glyphs_zv)->glyph_string);
+    glyph_item->y_offset = 0;
+    glyph_item->start_x_offset = 0;
+    glyph_item->end_x_offset = 0;
+
+    Z_PANGO_GLYPH_ITEM_P(ZEND_THIS)->glyph_item = glyph_item;
+}
+/* }}} */
+
+/* {{{ */
 PHP_METHOD(Pango_GlyphItem, getLogicalWidths)
 {
     PangoGlyphItem *glyph_item;
@@ -128,16 +152,29 @@ PHP_METHOD(Pango_GlyphItem, applyAttributes)
 {
     zval *attr_list_zv;
     GSList *glyph_items;
+    char* text = NULL;
+    size_t text_len;
 
-    ZEND_PARSE_PARAMETERS_START(1, 1)
+    ZEND_PARSE_PARAMETERS_START(1, 2)
         Z_PARAM_OBJECT_OF_CLASS(attr_list_zv, php_pango_get_attr_list_ce())
+        Z_PARAM_OPTIONAL
+        Z_PARAM_STRING_OR_NULL(text, text_len)
     ZEND_PARSE_PARAMETERS_END();
+
+    if (Z_TYPE_P(&Z_PANGO_GLYPH_ITEM_P(ZEND_THIS)->layout_line_zv) == IS_UNDEF && !text) {
+        zend_throw_error(NULL, "you need to provide the corresponding text");
+        RETURN_THROWS();
+    }
+
+    if (!text) {
+        text = (char *)get_text_from_layout_line(ZEND_THIS);
+    }
 
     glyph_items = pango_glyph_item_apply_attrs(
         // copy the original glyph item before applying attributes
         // as pango_glyph_item_apply_attrs takes ownership of the passed glyph item
         pango_glyph_item_copy(Z_PANGO_GLYPH_ITEM_P(ZEND_THIS)->glyph_item),
-        get_text_from_layout_line(ZEND_THIS),
+        text,
         pango_attr_list_object_get_attr_list(attr_list_zv)
     );
 

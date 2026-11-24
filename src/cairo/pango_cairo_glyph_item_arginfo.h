@@ -1,22 +1,30 @@
 /* This is a generated file, edit pango_cairo_glyph_item.stub.php instead.
- * Stub hash: 5736abe524cb3df61ff8536f61d1ae0b88bc35ec */
+ * Stub hash: d3ff7699071a5084af9e729cbf815afecbeb1d31 */
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_PangoCairo_GlyphItem___construct, 0, 0, 2)
+	ZEND_ARG_OBJ_INFO(0, item, Pango\\Item, 0)
+	ZEND_ARG_OBJ_INFO(0, glyphs, Pango\\GlyphString, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_GlyphItem_show, 0, 0, IS_VOID, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_PangoCairo_GlyphItem_applyAttributes, 0, 1, IS_ARRAY, 0)
 	ZEND_ARG_OBJ_INFO(0, list, Pango\\Attribute\\AttributeList, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 1, "null")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_PangoCairo_GlyphItem_split, 0, 1, PangoCairo\\GlyphItem, 1)
 	ZEND_ARG_TYPE_INFO(0, splitByteIndex, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_METHOD(PangoCairo_GlyphItem, __construct);
 ZEND_METHOD(PangoCairo_GlyphItem, show);
 ZEND_METHOD(PangoCairo_GlyphItem, applyAttributes);
 ZEND_METHOD(PangoCairo_GlyphItem, split);
 
 static const zend_function_entry class_PangoCairo_GlyphItem_methods[] = {
+	ZEND_ME(PangoCairo_GlyphItem, __construct, arginfo_class_PangoCairo_GlyphItem___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(PangoCairo_GlyphItem, show, arginfo_class_PangoCairo_GlyphItem_show, ZEND_ACC_PUBLIC)
 	ZEND_ME(PangoCairo_GlyphItem, applyAttributes, arginfo_class_PangoCairo_GlyphItem_applyAttributes, ZEND_ACC_PUBLIC)
 	ZEND_ME(PangoCairo_GlyphItem, split, arginfo_class_PangoCairo_GlyphItem_split, ZEND_ACC_PUBLIC)

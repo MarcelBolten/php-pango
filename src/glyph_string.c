@@ -157,15 +157,16 @@ PHP_METHOD(Pango_GlyphString, getLogicalWidths)
     zval *layout_zv = &Z_PANGO_LAYOUT_LINE_P(layout_line_zv)->layout_zval;
     PangoLayout *layout = Z_PANGO_LAYOUT_P(layout_zv)->layout;
     const char *text = pango_layout_get_text(layout);
+    PangoItem *item = Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item;
 
-    num_chars = Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->num_chars;
+    num_chars = item->num_chars;
     logical_widths = g_new(int, num_chars);
 
     pango_glyph_string_get_logical_widths(
         Z_PANGO_GLYPH_STRING_P(ZEND_THIS)->glyph_string,
-        text + Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->offset,
-        Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->length,
-        Z_PANGO_GLYPH_ITEM_P(glyph_item_zv)->glyph_item->item->analysis.level,
+        text + item->offset,
+        item->length,
+        item->analysis.level,
         logical_widths
     );
 

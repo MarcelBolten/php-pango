@@ -35,6 +35,8 @@ readonly class GlyphItem
      */
     public int $endXOffset;
 
+    public function __construct(Item $item, GlyphString $glyphs) {}
+
     /**
      * Determine the width corresponding to each character in this glyph item.
      *
@@ -64,7 +66,10 @@ readonly class GlyphItem
      * @return GlyphItem[] An array of resulting GlyphItem objects after
      *                     applying the attributes.
      */
-    public function applyAttributes(Attribute\AttributeList $list): array {}
+    public function applyAttributes(
+        Attribute\AttributeList $list,
+        ?string $text = null,
+    ): array {}
 
     /**
      * Adds spacing between the graphemes of glyphItem to give the effect of

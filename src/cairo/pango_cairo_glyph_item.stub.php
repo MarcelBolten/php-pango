@@ -35,6 +35,8 @@ final readonly class GlyphItem extends \Pango\GlyphItem
      */
     public int $endXOffset;
 
+    public function __construct(\Pango\Item $item, \Pango\GlyphString $glyphs) {}
+
     /**
      * Draws the glyphs in this GlyphItem in the specified cairo context,
      *
@@ -54,7 +56,10 @@ final readonly class GlyphItem extends \Pango\GlyphItem
      * @return GlyphItem[] An array of resulting GlyphItem objects after
      *                     applying the attributes.
      */
-    public function applyAttributes(\Pango\Attribute\AttributeList $list): array {}
+    public function applyAttributes(
+        \Pango\Attribute\AttributeList $list,
+        ?string $text = null,
+    ): array {}
 
     public function split(int $splitByteIndex): ?GlyphItem {}
 }
