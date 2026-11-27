@@ -48,10 +48,9 @@ PHP_PANGO_API zend_class_entry *php_pango_cairo_get_font_map_ce()
     return pango_ce_pango_cairo_font_map;
 }
 
-PHP_PANGO_API PangoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv)
+PHP_PANGO_API PangoCairoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv)
 {
-    pango_font_map_object *obj = Z_PANGO_CAIRO_FONT_MAP_P(zv);
-    return obj->font_map;
+    return (PangoCairoFontMap *) Z_PANGO_CAIRO_FONT_MAP_P(zv)->font_map;
 }
 
 /* {{{ */
@@ -113,8 +112,7 @@ PHP_METHOD(PangoCairo_FontMap, newForFontType)
 /* {{{ */
 PHP_METHOD(PangoCairo_FontMap, getFontType)
 {
-    PangoFontMap *font_map;
-    cairo_font_type_t font_type;
+    PangoCairoFontMap *font_map;
     zend_object *font_type_case;
 
     ZEND_PARSE_PARAMETERS_NONE();
@@ -123,7 +121,7 @@ PHP_METHOD(PangoCairo_FontMap, getFontType)
 
     zend_enum_get_case_by_value(
         &font_type_case, php_cairo_get_fonttype_ce(),
-        pango_cairo_font_map_get_font_type((PangoCairoFontMap *) font_map),
+        pango_cairo_font_map_get_font_type(font_map),
         NULL, false
     );
 
@@ -134,13 +132,13 @@ PHP_METHOD(PangoCairo_FontMap, getFontType)
 /* {{{ */
 PHP_METHOD(PangoCairo_FontMap, getResolution)
 {
-    PangoFontMap *font_map;
+    PangoCairoFontMap *font_map;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     font_map = pango_cairo_font_map_object_get_font_map(ZEND_THIS);
 
-    RETURN_DOUBLE(pango_cairo_font_map_get_resolution((PangoCairoFontMap *) font_map));
+    RETURN_DOUBLE(pango_cairo_font_map_get_resolution(font_map));
 }
 /* }}} */
 
@@ -154,10 +152,8 @@ PHP_METHOD(PangoCairo_FontMap, setDefault)
     ZEND_PARSE_PARAMETERS_END();
 
     pango_cairo_font_map_set_default(
-        (PangoCairoFontMap *) Z_PANGO_CAIRO_FONT_MAP_P(font_map_zv)->font_map
+        pango_cairo_font_map_object_get_font_map(font_map_zv)
     );
-
-    RETURN_OBJ_COPY(Z_OBJ_P(ZEND_THIS));
 }
 /* }}} */
 
@@ -171,7 +167,7 @@ PHP_METHOD(PangoCairo_FontMap, setResolution)
     ZEND_PARSE_PARAMETERS_END();
 
     pango_cairo_font_map_set_resolution(
-        (PangoCairoFontMap *) pango_cairo_font_map_object_get_font_map(ZEND_THIS),
+        pango_cairo_font_map_object_get_font_map(ZEND_THIS),
         factor
     );
 

@@ -15,9 +15,16 @@ final class FontMap extends \Pango\FontMap
     public function __construct() {}
 
     /**
+     * Sets a default PangoCairo\FontMap to use with Cairo.
+     */
+    public static function setDefault(
+        FontMap $fontMap,
+    ): void {}
+
+    /**
      * Gets a default PangoCairo\FontMap to use with Cairo.
      */
-    public static function getDefault(): static {}
+    public static function getDefault(): FontMap {}
 
     /**
      * Creates a new PangoCairo\FontMap object of the type suitable to be used with cairo font backend of type \Cairo\FontType.
@@ -37,13 +44,6 @@ final class FontMap extends \Pango\FontMap
      * Gets the resolution for the font map in “dots per inch”.
      */
     public function getResolution(): float {}
-
-    /**
-     * Sets a default PangoCairo\FontMap to use with Cairo.
-     */
-    public function setDefault(
-        FontMap $fontMap,
-    ): static {}
 
     /**
      * Sets the resolution for the font map.

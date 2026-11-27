@@ -12,27 +12,30 @@ var_dump($fontMap);
 $fontMap2 = new FontMap();
 var_dump($fontMap2);
 
-$fontMap2->setDefault($fontMap);
+FontMap::setDefault($fontMap2);
+var_dump(FontMap::getDefault());
 
 try {
-    $fontMap->setDefault();
+    FontMap::setDefault();
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    $fontMap->setDefault($fontMap, 1);
+    FontMap::setDefault($fontMap, 1);
 } catch (ArgumentCountError $e) {
     echo $e->getMessage(), "\n";
 }
 
 try {
-    $fontMap->setDefault(array());
+    FontMap::setDefault(array());
 } catch (TypeError $e) {
     echo $e->getMessage(), "\n";
 }
 ?>
 --EXPECTF--
+object(PangoCairo\FontMap)#%d (0) {
+}
 object(PangoCairo\FontMap)#%d (0) {
 }
 object(PangoCairo\FontMap)#%d (0) {

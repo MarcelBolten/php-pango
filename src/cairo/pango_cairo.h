@@ -22,7 +22,7 @@
 #define PHP_PANGO_PANGO_CAIRO_FONT_MAP_H
 
 #include <php.h>
-#include <pango/pango.h>
+#include <pango/pangocairo.h>
 
 #include "../../php_pango.h"
 #include "../font_map.h"
@@ -40,7 +40,7 @@ PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_glyph_item_ce();
 
 extern pango_font_map_object *pango_cairo_font_map_fetch_object(zend_object *object);
 #define Z_PANGO_CAIRO_FONT_MAP_P(zv) pango_cairo_font_map_fetch_object(Z_OBJ_P(zv))
-PHP_PANGO_API extern PangoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv);
+PHP_PANGO_API extern PangoCairoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv);
 
 extern pango_layout_object *pango_cairo_layout_fetch_object(zend_object *object);
 #define Z_PANGO_CAIRO_LAYOUT_P(zv) pango_cairo_layout_fetch_object(Z_OBJ_P(zv))
