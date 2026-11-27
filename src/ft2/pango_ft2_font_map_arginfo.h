@@ -1,5 +1,5 @@
 /* This is a generated file, edit pango_ft2_font_map.stub.php instead.
- * Stub hash: cf17b2a6e46de49411b3e18fc78b6730d932aaae */
+ * Stub hash: d0cb6396a9075fe8c6186193c4db3ba895374277 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Pango_Ft2_FontMap___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
