@@ -603,6 +603,8 @@ static HashTable* pango_attr_list_object_get_debug_info(zend_object *zobj, int *
 
     ZVAL_STRING(&list_str_zv, list_str);
 
+    g_free(list_str);
+
     zend_hash_str_update(debug_info, "string-representation", sizeof("string-representation") - 1, &list_str_zv);
 
     return debug_info;
