@@ -30,7 +30,7 @@ class Font
     /**
      * Gets the FontFace to which this font belongs.
      */
-    public function getFace(): FontFace {}
+    public function getFace(): ?FontFace {}
 
     /**
      * Obtain the OpenType features that are provided by the font.
@@ -40,7 +40,7 @@ class Font
     /**
      * Gets the FontMap for which the font was created.
      */
-    public function getFontMap(): FontMap {}
+    public function getFontMap(): ?FontMap {}
 
     /**
      * Gets the glyph extents for the font.

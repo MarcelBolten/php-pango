@@ -27,11 +27,8 @@
 
 PHP_PANGO_API extern zend_class_entry *php_pango_get_font_map_ce(void);
 
-// if font_map is obtained via pango_cairo_font_map_get_default it should not be
-// freed, so we track it in is_default
 typedef struct _pango_font_map_object {
     PangoFontMap *font_map;
-    bool is_default;
     zend_object std;
 } pango_font_map_object;
 extern pango_font_map_object *pango_font_map_fetch_object(zend_object *object);

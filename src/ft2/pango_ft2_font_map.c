@@ -57,7 +57,6 @@ PHP_METHOD(Pango_Ft2_FontMap, __construct)
 
     font_map_object = Z_PANGO_FT2_FONT_MAP_P(ZEND_THIS);
     font_map_object->font_map = pango_ft2_font_map_new();
-    font_map_object->is_default = false;
 }
 /* }}} */
 
@@ -98,7 +97,7 @@ static void pango_ft2_font_map_free_obj(zend_object *zobj)
         return;
     }
 
-    if (intern->font_map && !intern->is_default) {
+    if (intern->font_map) {
         g_object_unref(intern->font_map);
     }
 

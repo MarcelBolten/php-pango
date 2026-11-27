@@ -49,18 +49,24 @@ pango_layout_object *pango_cairo_layout_fetch_object(zend_object *object)
 /* {{{ Creates a PangoLayout based on the Cairo Context object */
 PHP_METHOD(PangoCairo_Layout, __construct)
 {
-    zval *cairo_context_zval = NULL;
+    zval *cairo_context_zv = NULL;
     cairo_context_object *cairo_context_object;
     pango_layout_object *layout_object;
+    PangoFontMap *font_map;
+    PangoContext *context;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_OBJECT_OF_CLASS(cairo_context_zval, php_cairo_get_context_ce())
+        Z_PARAM_OBJECT_OF_CLASS(cairo_context_zv, php_cairo_get_context_ce())
     ZEND_PARSE_PARAMETERS_END();
 
-    cairo_context_object = Z_CAIRO_CONTEXT_P(cairo_context_zval);
+    cairo_context_object = Z_CAIRO_CONTEXT_P(cairo_context_zv);
 
     layout_object = Z_PANGO_LAYOUT_P(ZEND_THIS);
-    layout_object->layout = pango_cairo_create_layout(cairo_context_object->context);
+
+    font_map = (PangoFontMap *)php_pango_cairo_get_default_font_map();
+    context = pango_font_map_create_context(font_map);
+    pango_cairo_update_context(cairo_context_object->context, context);
+    layout_object->layout = pango_layout_new (context);
 
     if (layout_object->layout == NULL) {
         zend_throw_exception(
@@ -71,7 +77,9 @@ PHP_METHOD(PangoCairo_Layout, __construct)
         RETURN_THROWS();
     }
 
-    ZVAL_COPY(&layout_object->cairo_context_zv, cairo_context_zval);
+    ZVAL_COPY(&layout_object->cairo_context_zv, cairo_context_zv);
+    object_init_ex(&layout_object->pango_context_zv, php_pango_cairo_get_context_ce());
+    Z_PANGO_CAIRO_CONTEXT_P(&layout_object->pango_context_zv)->context = context;
 }
 /* }}} */
 

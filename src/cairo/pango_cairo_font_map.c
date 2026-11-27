@@ -53,6 +53,15 @@ PHP_PANGO_API PangoCairoFontMap *pango_cairo_font_map_object_get_font_map(zval *
     return (PangoCairoFontMap *) Z_PANGO_CAIRO_FONT_MAP_P(zv)->font_map;
 }
 
+/* {{{ create a font map if it does not exist yet */
+extern PangoCairoFontMap *php_pango_cairo_get_default_font_map() {
+    if (!PANGO_G(default_font_map)) {
+        PANGO_G(default_font_map) = (PangoCairoFontMap *)pango_cairo_font_map_new();
+    }
+    return PANGO_G(default_font_map);
+}
+/* }}} */
+
 /* {{{ */
 PHP_METHOD(PangoCairo_FontMap, __construct)
 {
@@ -62,7 +71,6 @@ PHP_METHOD(PangoCairo_FontMap, __construct)
 
     font_map_object = Z_PANGO_CAIRO_FONT_MAP_P(ZEND_THIS);
     font_map_object->font_map = pango_cairo_font_map_new();
-    font_map_object->is_default = false;
 }
 /* }}} */
 
@@ -75,8 +83,7 @@ PHP_METHOD(PangoCairo_FontMap, getDefault)
 
     object_init_ex(return_value, pango_ce_pango_cairo_font_map);
     font_map_object = Z_PANGO_CAIRO_FONT_MAP_P(return_value);
-    font_map_object->font_map = pango_cairo_font_map_get_default();
-    font_map_object->is_default = true;
+    font_map_object->font_map = g_object_ref((PangoFontMap *)php_pango_cairo_get_default_font_map());
 }
 /* }}} */
 
@@ -95,7 +102,6 @@ PHP_METHOD(PangoCairo_FontMap, newForFontType)
     font_map_object = Z_PANGO_CAIRO_FONT_MAP_P(return_value);
     font_type = Z_LVAL_P(zend_enum_fetch_case_value(font_type_object));
     font_map_object->font_map = pango_cairo_font_map_new_for_font_type(font_type);
-    font_map_object->is_default = false;
 
     if (!font_map_object->font_map) {
         zend_throw_exception_ex(
@@ -151,9 +157,11 @@ PHP_METHOD(PangoCairo_FontMap, setDefault)
         Z_PARAM_OBJECT_OF_CLASS(font_map_zv, pango_ce_pango_cairo_font_map)
     ZEND_PARSE_PARAMETERS_END();
 
-    pango_cairo_font_map_set_default(
-        pango_cairo_font_map_object_get_font_map(font_map_zv)
-    );
+    if (PANGO_G(default_font_map)) {
+        g_object_unref(PANGO_G(default_font_map));
+    }
+
+    PANGO_G(default_font_map) = g_object_ref(pango_cairo_font_map_object_get_font_map(font_map_zv));
 }
 /* }}} */
 
@@ -236,7 +244,7 @@ static void pango_cairo_font_map_free_obj(zend_object *zobj)
         return;
     }
 
-    if (intern->font_map && !intern->is_default) {
+    if (intern->font_map) {
         g_object_unref(intern->font_map);
     }
 

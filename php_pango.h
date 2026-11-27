@@ -23,6 +23,8 @@
 
 #define PHP_PANGO_VERSION "0.2.0-dev"
 
+#include <pango/pangocairo.h>
+
 extern zend_module_entry pango_module_entry;
 #define phpext_pango_ptr &pango_module_entry
 
@@ -38,8 +40,14 @@ extern zend_module_entry pango_module_entry;
 #include "TSRM.h"
 #endif
 
+ZEND_BEGIN_MODULE_GLOBALS(pango)
+    PangoCairoFontMap *default_font_map;
+ZEND_END_MODULE_GLOBALS(pango)
+
+ZEND_EXTERN_MODULE_GLOBALS(pango)
+
 PHP_MINIT_FUNCTION(pango);
-PHP_MSHUTDOWN_FUNCTION(pango);
+PHP_RSHUTDOWN_FUNCTION(pango);
 PHP_MINFO_FUNCTION(pango);
 
 #ifdef ZTS

@@ -104,7 +104,7 @@ PHP_METHOD(Pango_Fc_FontMap, substituteChanged)
 //         return;
 //     }
 
-//     if (intern->font_map && !intern->is_default) {
+//     if (intern->font_map) {
 //         g_object_unref(intern->font_map);
 //     }
 

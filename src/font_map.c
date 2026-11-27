@@ -235,7 +235,7 @@ PHP_METHOD(Pango_FontMap, loadFontSet)
 //         return;
 //     }
 
-//     if (intern->font_map && !intern->is_default) {
+//     if (intern->font_map) {
 //         g_object_unref(intern->font_map);
 //     }
 

@@ -115,15 +115,19 @@ PHP_METHOD(Pango_Font, getCoverage)
 PHP_METHOD(Pango_Font, getFace)
 {
     PangoFont *font;
-    pango_font_face_object *face_obj;
+    PangoFontFace *face;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     font = pango_font_object_get_font(ZEND_THIS);
+    face = pango_font_get_face(font);
+
+    if (!face) {
+        RETURN_NULL();
+    }
 
     object_init_ex(return_value, php_pango_get_font_face_ce());
-    face_obj = Z_PANGO_FONT_FACE_P(return_value);
-    face_obj->font_face = g_object_ref(pango_font_get_face(font));
+    Z_PANGO_FONT_FACE_P(return_value)->font_face = g_object_ref(face);
 }
 /* }}} */
 
@@ -171,12 +175,15 @@ PHP_METHOD(Pango_Font, getFontMap)
     PangoFont *font;
     PangoFontMap *font_map;
     zend_class_entry *font_map_ce;
-    pango_font_map_object *font_map_obj;
 
     ZEND_PARSE_PARAMETERS_NONE();
 
     font = pango_font_object_get_font(ZEND_THIS);
     font_map = pango_font_get_font_map(font);
+
+    if (!font_map) {
+        RETURN_NULL();
+    }
 
     if (PANGO_FT2_IS_FONT_MAP(font_map)) {
         font_map_ce = php_pango_ft2_get_font_map_ce();
@@ -185,13 +192,7 @@ PHP_METHOD(Pango_Font, getFontMap)
     }
 
     object_init_ex(return_value, font_map_ce);
-    font_map_obj = Z_PANGO_FONT_MAP_P(return_value);
-
-    // The returned data is owned by the instance, so we don’t need to
-    // g_object_ref() it. We also set is_default to true, so that the
-    // destructor doesn’t unref it
-    font_map_obj->font_map = font_map;
-    font_map_obj->is_default = true;
+    Z_PANGO_FONT_MAP_P(return_value)->font_map = g_object_ref(font_map);
 }
 /* }}} */
 

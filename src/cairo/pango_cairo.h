@@ -25,19 +25,24 @@
 #include <pango/pangocairo.h>
 
 #include "../../php_pango.h"
+#include "../context.h"
 #include "../font_map.h"
 #include "../layout.h"
 #include "../glyph_string.h"
 #include "../glyph_item.h"
 #include "../layout_line.h"
 
+PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_context_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_font_map_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_layout_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_layout_line_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_glyph_string_ce();
 PHP_PANGO_API extern zend_class_entry *php_pango_cairo_get_glyph_item_ce();
 
+extern pango_context_object *pango_cairo_context_fetch_object(zend_object *object);
+#define Z_PANGO_CAIRO_CONTEXT_P(zv) pango_cairo_context_fetch_object(Z_OBJ_P(zv))
 
+extern PangoCairoFontMap *php_pango_cairo_get_default_font_map();
 extern pango_font_map_object *pango_cairo_font_map_fetch_object(zend_object *object);
 #define Z_PANGO_CAIRO_FONT_MAP_P(zv) pango_cairo_font_map_fetch_object(Z_OBJ_P(zv))
 PHP_PANGO_API extern PangoCairoFontMap *pango_cairo_font_map_object_get_font_map(zval *zv);

@@ -665,6 +665,13 @@ static const zend_module_dep pango_module_deps[] = {
     ZEND_MOD_END
 };
 
+ZEND_DECLARE_MODULE_GLOBALS(pango)
+
+PHP_GINIT_FUNCTION(pango)
+{
+    ZEND_SECURE_ZERO(pango_globals, sizeof(*pango_globals));
+}
+
 /* {{{ pango_module_entry */
 zend_module_entry pango_module_entry = {
     STANDARD_MODULE_HEADER_EX,
@@ -673,12 +680,16 @@ zend_module_entry pango_module_entry = {
     "pango",
     ext_functions,
     PHP_MINIT(pango),
-    PHP_MSHUTDOWN(pango),
     NULL,
     NULL,
+    PHP_RSHUTDOWN(pango),
     PHP_MINFO(pango),
     PHP_PANGO_VERSION,
-    STANDARD_MODULE_PROPERTIES
+    PHP_MODULE_GLOBALS(pango),
+    PHP_GINIT(pango),
+    NULL,
+    NULL,
+    STANDARD_MODULE_PROPERTIES_EX
 };
 /* }}} */
 
@@ -791,18 +802,16 @@ PHP_MINIT_FUNCTION(pango)
 }
 /* }}} */
 
-/* {{{ PHP_MSHUTDOWN_FUNCTION */
-PHP_MSHUTDOWN_FUNCTION(pango)
+/* {{{ PHP_RSHUTDOWN_FUNCTION */
+PHP_RSHUTDOWN_FUNCTION(pango)
 {
-    /* uncomment this line if you have INI entries
-    UNREGISTER_INI_ENTRIES();
-    */
-    // TODO: add lazy loading and store global reference to font map, only shutdown if we created it
-    PangoFontMap *font_map = pango_cairo_font_map_get_default();
-    if (PANGO_IS_FC_FONT_MAP(font_map)) {
-        pango_fc_font_map_shutdown((PangoFcFontMap *)font_map);
+    if (PANGO_G(default_font_map)) {
+        if (PANGO_IS_FC_FONT_MAP(PANGO_G(default_font_map))) {
+            pango_fc_font_map_shutdown((PangoFcFontMap *)PANGO_G(default_font_map));
+        }
+        g_object_unref(PANGO_G(default_font_map));
+        PANGO_G(default_font_map) = NULL;
     }
-    g_object_unref(font_map);
 
     return SUCCESS;
 }
