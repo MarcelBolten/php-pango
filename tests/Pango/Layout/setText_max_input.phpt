@@ -1,5 +1,5 @@
 --TEST--
-Pango\Layout::setText() 
+Pango\Layout::setText()
 --EXTENSIONS--
 pango
 --SKIPIF--

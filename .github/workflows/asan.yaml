@@ -182,4 +182,3 @@ jobs:
             tests/**/*.out
             tests/**/*.diff
           if-no-files-found: ignore
-          

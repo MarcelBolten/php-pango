@@ -471,7 +471,7 @@ PHP_METHOD(Pango_Attribute_AttributeList, toString)
     ZEND_PARSE_PARAMETERS_NONE();
 
     str = pango_attr_list_to_string(Z_PANGO_ATTR_LIST_P(ZEND_THIS)->attr_list);
-    
+
     RETVAL_STRING(str);
     g_free(str);
     return;

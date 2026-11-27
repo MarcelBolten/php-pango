@@ -172,7 +172,7 @@ static zval *pango_analysis_object_read_property(zend_object *object, zend_strin
             if (attr_type == PANGO_ATTR_LANGUAGE || attr_type == PANGO_ATTR_FONT_DESC) {
                 continue;
             }
-        
+
             zend_class_entry *attr_ce = php_pango_attr_ce_lookup(attr_type);
             if (!attr_ce) {
                 continue; // Skip unsupported attribute types
@@ -205,7 +205,7 @@ static zval *pango_analysis_object_read_property(zend_object *object, zend_strin
                 pango_attribute_object *attr_object = Z_PANGO_ATTRIBUTE_P(&attr_zv);
                 attr_object->attribute = pango_attribute_copy(attr);
             }
-            
+
             add_next_index_zval(rv, &attr_zv);
         }
         return rv;

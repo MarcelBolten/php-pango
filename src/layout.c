@@ -351,7 +351,7 @@ PHP_METHOD(Pango_Layout, setWidth)
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_LONG(width)
     ZEND_PARSE_PARAMETERS_END();
-    
+
     if (width < -1 || width > INT32_MAX) {
         zend_argument_value_error(1, "must be less than or equal to %d, or -1 to indicate no width", INT32_MAX);
         RETURN_THROWS();

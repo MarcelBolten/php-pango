@@ -256,7 +256,7 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getFont)
             pango_attribute_destroy(attr);
             continue;
         }
-        
+
         zend_class_entry *attr_ce = php_pango_attr_ce_lookup(attr_type);
         if (!attr_ce) {
             continue; // Skip unsupported attribute types
@@ -288,7 +288,7 @@ PHP_METHOD(Pango_Attribute_AttributeIterator, getFont)
         } else {
             Z_PANGO_ATTRIBUTE_P(&attr_zv)->attribute = attr;
         }
-        
+
         add_next_index_zval(&tmp, &attr_zv);
     }
     add_assoc_zval(return_value, "extraAttrs", &tmp);

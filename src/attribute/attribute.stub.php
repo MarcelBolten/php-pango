@@ -417,7 +417,7 @@ final readonly class ShapeAttribute extends Attribute
      * @param \Pango\Rectangle $logicalRect The logical rectangle.
      */
     public function __construct(
-        \Pango\Rectangle $inkRect, 
+        \Pango\Rectangle $inkRect,
         \Pango\Rectangle $logicalRect,
         int $startIndex = \Pango\Attribute\Attribute::INDEX_FROM_TEXT_BEGINNING,
         int $endIndex = \Pango\Attribute\Attribute::INDEX_TO_TEXT_END,

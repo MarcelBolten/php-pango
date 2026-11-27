@@ -179,7 +179,7 @@ if test "$PHP_PANGO" != "no"; then
     #     PANGO_SHARED_LIBADD="$PANGO_SHARED_LIBADD -Wl,-z,nodelete"
     #     ;;
     # esac
-    
+
     AC_DEFINE([HAVE_PANGO], [1], [whether pango exists in the system])
   fi
 
