@@ -28,10 +28,12 @@ var_dump($context);
 
 $text = "Hello, Παν語!";
 $attrList = new AttributeList(
-    "0 7 size 14336,"          // Hello,␣
+    "0 17 font-desc \"DejaVu Sans\","
+  . "0 7 size 14336,"          // Hello,␣
   . "7 13 foreground red,"  // Παν
+  . "13 16 font-desc \"Noto Sans JP\","
   . "13 16 size 18432,"        // 語
-  . "16 17 foreground blue" // !
+  . "16 17 foreground blue," // !
 );
 var_dump($attrList);
 
