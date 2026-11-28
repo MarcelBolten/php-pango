@@ -9,6 +9,7 @@ use Pango\Attribute\{
   Attribute,
   AttributeList,
   SizeAttribute,
+  FontDescriptionAttribute
 };
 use function Pango\shape_item;
 
@@ -38,7 +39,8 @@ $attrList = new AttributeList(
 var_dump($attrList);
 
 $itemizeAttributes = $attrList->filter(
-  fn (Attribute $attr): bool => $attr instanceof SizeAttribute
+    fn (Attribute $attr): bool => $attr instanceof SizeAttribute
+        || $attr instanceof FontDescriptionAttribute
 );
 var_dump($itemizeAttributes);
 
@@ -82,15 +84,19 @@ object(Pango\Context)#%d (0) {
 }
 object(Pango\Attribute\AttributeList)#%d (1) {
   ["string-representation"]=>
-  string(86) "0 7 size 14
+  string(152) "0 17 font-desc "DejaVu Sans"
+0 7 size 14336
 7 13 foreground #ffff00000000
-13 16 size 18
+13 16 font-desc "Noto Sans JP"
+13 16 size 18432
 16 17 foreground #00000000ffff"
 }
 object(Pango\Attribute\AttributeList)#%d (1) {
   ["string-representation"]=>
-  string(25) "0 7 size 14
-13 16 size 18"
+  string(91) "0 17 font-desc "DejaVu Sans"
+0 7 size 14336
+13 16 font-desc "Noto Sans JP"
+13 16 size 18432"
 }
 array(4) {
   [0]=>
@@ -238,7 +244,7 @@ object(Pango\GlyphString)#%d (2) {
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(12)
+        int(10780)
         ["xOffset"]=>
         int(0)
         ["yOffset"]=>
@@ -259,7 +265,7 @@ object(Pango\GlyphString)#%d (2) {
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(8)
+        int(8820)
         ["xOffset"]=>
         int(0)
         ["yOffset"]=>
@@ -280,7 +286,7 @@ object(Pango\GlyphString)#%d (2) {
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(4)
+        int(3983)
         ["xOffset"]=>
         int(0)
         ["yOffset"]=>
@@ -301,7 +307,7 @@ object(Pango\GlyphString)#%d (2) {
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(4)
+        int(3983)
         ["xOffset"]=>
         int(0)
         ["yOffset"]=>
@@ -322,7 +328,7 @@ object(Pango\GlyphString)#%d (2) {
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(8)
+        int(8771)
         ["xOffset"]=>
         int(0)
         ["yOffset"]=>
@@ -343,7 +349,7 @@ object(Pango\GlyphString)#%d (2) {
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(4)
+        int(4557)
         ["xOffset"]=>
         int(0)
         ["yOffset"]=>
@@ -364,7 +370,7 @@ object(Pango\GlyphString)#%d (2) {
       ["geometry"]=>
       object(Pango\GlyphGeometry)#%d (3) {
         ["width"]=>
-        int(4)
+        int(4557)
         ["xOffset"]=>
         int(0)
         ["yOffset"]=>
@@ -427,7 +433,7 @@ object(Pango\GlyphItem)#%d (5) {
         ["geometry"]=>
         object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
-          int(12)
+          int(10780)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -448,7 +454,7 @@ object(Pango\GlyphItem)#%d (5) {
         ["geometry"]=>
         object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
-          int(8)
+          int(8820)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -469,7 +475,7 @@ object(Pango\GlyphItem)#%d (5) {
         ["geometry"]=>
         object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
-          int(4)
+          int(3983)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -490,7 +496,7 @@ object(Pango\GlyphItem)#%d (5) {
         ["geometry"]=>
         object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
-          int(4)
+          int(3983)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -511,7 +517,7 @@ object(Pango\GlyphItem)#%d (5) {
         ["geometry"]=>
         object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
-          int(8)
+          int(8771)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -532,7 +538,7 @@ object(Pango\GlyphItem)#%d (5) {
         ["geometry"]=>
         object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
-          int(4)
+          int(4557)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -553,7 +559,7 @@ object(Pango\GlyphItem)#%d (5) {
         ["geometry"]=>
         object(Pango\GlyphGeometry)#%d (3) {
           ["width"]=>
-          int(4)
+          int(4557)
           ["xOffset"]=>
           int(0)
           ["yOffset"]=>
@@ -625,7 +631,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(12)
+            int(10780)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -646,7 +652,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(8)
+            int(8820)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -667,7 +673,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(4)
+            int(3983)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -688,7 +694,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(4)
+            int(3983)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -709,7 +715,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(8)
+            int(8771)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -730,7 +736,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(4)
+            int(4557)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
@@ -751,7 +757,7 @@ array(1) {
           ["geometry"]=>
           object(Pango\GlyphGeometry)#%d (3) {
             ["width"]=>
-            int(4)
+            int(4557)
             ["xOffset"]=>
             int(0)
             ["yOffset"]=>
